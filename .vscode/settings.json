@@ -1,0 +1,57 @@
+{
+    "python.poetryPath": "poetry",
+    "workbench.colorCustomizations": {
+        "activityBar.background": "#0F332F",
+        "titleBar.activeBackground": "#164841",
+        "titleBar.activeForeground": "#F5FCFB"
+    },
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/Thumbs.db": true,
+        "**/*.pyc": {
+            "when": "$(basename).py"
+        },
+        "**/__pycache__": true,
+        "**/__pypackages__": true
+    },
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true,
+    "autoDocstring.docstringFormat": "sphinx-notypes",
+    "autoDocstring.guessTypes": true,
+    "files.insertFinalNewline": true,
+    "files.eol": "\n",
+    "python.testing.pytestArgs": [
+        "--cov=doxysphinx",
+        "--cov-report=xml:coverage.xml"
+    ],
+    "python.linting.flake8Enabled": true,
+    "python.linting.enabled": true,
+    "python.linting.mypyEnabled": true,
+    "python.formatting.provider": "black",
+    "python.linting.banditEnabled": true,
+    "python.sortImports.args": [
+        "--profile",
+        "black"
+    ],
+    "[python]": {
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": true
+        }
+    },
+    "editor.minimap.maxColumn": 120,
+    "editor.rulers": [
+        {
+            "column": 110,
+            "color": "#0b8600"
+        },
+        {
+            "column": 120,
+            "color": "#865100"
+        }
+    ],
+    "editor.formatOnSave": true
+}

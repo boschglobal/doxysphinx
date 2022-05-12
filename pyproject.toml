@@ -1,0 +1,143 @@
+## =====================================================================================
+##  C O P Y R I G H T
+## -------------------------------------------------------------------------------------
+##  Copyright (c) 2022 by Robert Bosch GmbH. All rights reserved.
+##
+##  Author(s):
+##  - Markus Braun, :em engineering methods AG (contracted by Robert Bosch GmbH)
+## =====================================================================================
+
+[tool.poetry]
+name = "doxysphinx"
+version = "2.0.8"
+description = "Integrates doxygen html documentation with sphinx."
+authors = ["Markus Braun <markus.braun@em.ag>"]
+maintainers = []
+license = "Proprietary"
+homepage = "https://github.com/boschglobal/doxysphinx"
+repository = "https://github.com/boschglobal/doxysphinx"
+documentation = "https://github.com/boschglobal/doxysphinx"
+keywords = ["DaC", "docs-as-code", "doxygen", "sphinx"]
+classifiers = [
+    "Topic :: Software Development :: Build Tools",
+    "Topic :: Software Development :: Documentation",
+    "Topic :: Software Development :: Code Generators",
+    "Topic :: Software Development :: Pre-processors",
+    "Topic :: Text Processing :: Markup :: HTML",
+    "Topic :: Text Processing :: Markup :: reStructuredText",
+    "Topic :: Documentation :: Sphinx",
+    "Topic :: Documentation",
+]
+packages = [{ include = "doxysphinx" }]
+
+[tool.poetry.dependencies]
+python = ">=3.8,<3.11"
+lxml = "^4.7.1"
+json5 = "^0.9.6"
+colorama = { version = "^0.4.4", platform = "windows" }
+click = "^8.0.0"
+click-log = "^0.4.0"
+
+[tool.poetry.dev-dependencies]
+lxml-stubs = "^0.3.1"
+pytest = "^7.0.0"
+sphinx = "^4.4.0"
+Pillow = "^9.0.1"
+sphinx-rtd-theme = "^1.0.0"
+sphinxcontrib-needs = "^0.7.6"
+sphinxcontrib-plantuml = "^0.22"
+sphinxcontrib-doxylink = "^1.11.1"
+sphinx-test-reports = "^0.3.6"
+sphinx-theme = "^1.0"
+sphinx-copybutton = "^0.5.0"
+pex = "^2.1.65"
+sphinx-book-theme = "^0.2.0"
+snakeviz = "^2.1.1"
+myst-parser = "^0.17.0"
+Nuitka = "^0.7.3"
+python-semantic-release = "^7.27.0"
+pytest-cov = "^3.0.0"
+pre-commit = "^2.18.1"
+flake8 = "^4.0.1"
+flake8-bugbear = "^22.3.23"
+black = "^22.3.0"
+isort = "^5.10.1"
+bandit = "^1.7.4"
+safety = "^1.10.3"
+flake8-comprehensions = "^3.8.0"
+flake8-simplify = "^0.19.2"
+mypy = "^0.942"
+toml = "^0.10.2"
+types-PyYAML = "^6.0.5"
+cohesion = "^1.0.0"
+pydocstyle = "^6.1.1"
+sphinx-toolbox = "^2.18.2"
+sphinxemoji = "^0.2.0"
+sphinx_design = "^0.1.0"
+
+[tool.poetry.scripts]
+doxysphinx = "doxysphinx.cli:cli"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+#[build-system]
+#requires = ["setuptools>=42", "wheel", "nuitka"]
+#build-backend = "nuitka.distutils.Build"
+
+[tool.pytest.ini_options]
+log_level = "DEBUG"
+testpaths = ["tests"]
+junit_logging = "out-err"
+
+[tool.semantic_release]
+version_variable = ["pyproject.toml:version"]
+changelog_file = "CHANGELOG.md"
+branch = "main"
+commit_message = "chore(release): release {version} published by python-semantic-release [skip ci]"
+commit_author = "github-actions <actions@github.com>"
+# everything following is deactivated: we only want python-semantic-release to create the changelog and the version tags (because everything else is quite buggy)
+upload_to_pypi = false
+upload_to_release = false
+build_command = false
+remove_dist = false
+
+[tool.black]
+line-length=120
+target-version = ['py38']
+# black doesn't need further excludes because it honors the .gitignore file
+extend-exclude = "(docs/)|(demo/)|(\\.vscode)|(\\.idea)|(\\.devcontainer)"
+
+[tool.isort]
+profile = "black"
+
+[tool.bandit]
+exclude_dirs = [
+    ".git",
+    ".build",
+    ".devcontainer",
+    ".github",
+    ".idea",
+    ".package",
+    ".pytest_cache",
+    "__pycache__",
+    ".venv",
+    ".vscode",
+    "dist",
+    "docs",
+    "demo",
+    "tests"
+]
+
+[tool.bandit.assert_used]
+skips = ["*/test_*.py"]
+
+[tool.mypy]
+python_version = 3.8
+show_error_codes = true
+ignore_missing_imports = true
+
+[tool.pydocstyle]
+match_dir="doxysphinx"
+ignore="D301,D213,D212,D203"
