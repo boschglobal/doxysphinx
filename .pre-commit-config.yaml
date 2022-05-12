@@ -1,0 +1,100 @@
+##
+## =====================================================================================
+##  C O P Y R I G H T
+## -------------------------------------------------------------------------------------
+##  Copyright (c) 2022 by Robert Bosch GmbH. All rights reserved.
+##
+##  Author(s):
+##  - Markus Braun, :em engineering methods AG (contracted by Robert Bosch GmbH)
+## =====================================================================================
+##
+
+# See https://pre-commit.com for more information
+# See https://pre-commit.com/hooks.html for more hooks
+#files:
+#  "(.yaml$)|(^conf.*py$)|doxysphinx/.*py$||pyproject.toml$"
+
+exclude:
+  "(^.*tests/.*$)"
+
+default_stages: [commit, manual, push]
+
+repos:
+
+# formatting related
+
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v3.2.0
+  hooks:
+  - id: trailing-whitespace
+  - id: end-of-file-fixer
+  - id: check-yaml
+  - id: check-toml
+  - id: check-case-conflict
+  - id: check-added-large-files
+
+- repo: https://github.com/psf/black
+  rev: 22.3.0
+  hooks:
+  - id: black
+    types: [python]
+
+- repo: https://github.com/pycqa/isort
+  rev: 5.10.1
+  hooks:
+  - id: isort
+    args: ["--profile", "black", "--filter-files"]
+
+- repo: local
+  hooks:
+  - id: flake8
+    name: flake8
+    entry: flake8
+    language: system
+    types: [python]
+
+- repo: https://github.com/pre-commit/mirrors-mypy
+  rev: v0.942
+  hooks:
+  - id: mypy
+    args: [ "--show-error-codes" ]
+    additional_dependencies: [
+      "lxml_stubs",
+      "types-PyYAML"
+    ]
+    types: [python]
+
+- repo: https://github.com/PyCQA/bandit
+  rev: 1.7.4
+  hooks:
+  - id: bandit
+    types: [python]
+
+- repo: https://github.com/pycqa/pydocstyle
+  rev: 6.1.1
+  hooks:
+  - id: pydocstyle
+    additional_dependencies:
+      - toml
+
+- repo: local
+  hooks:
+  - id: safety
+    name: safety
+    entry: poetry run safety
+    args: [check, --full-report, --file]
+    language: system
+    files: "pyproject.toml"
+
+- repo: https://github.com/AleksaC/hadolint-py
+  rev: v1.19.0
+  hooks:
+    - id: hadolint
+      args: [ --ignore, SC2035 ]
+
+- repo: https://github.com/compilerla/conventional-pre-commit
+  rev: v1.3.0
+  hooks:
+    - id: conventional-pre-commit
+      stages: [commit-msg]
+      args: [] # optional: list of Conventional Commits types to allow

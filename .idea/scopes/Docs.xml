@@ -1,0 +1,3 @@
+<component name="DependencyValidationManager">
+  <scope name="Docs" pattern="file[doxysphinx]:docs//*&amp;&amp;!file[doxysphinx]:docs/doxygen//*||file:index.md||file:readme.md" />
+</component>

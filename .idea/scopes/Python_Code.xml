@@ -1,0 +1,3 @@
+<component name="DependencyValidationManager">
+  <scope name="Python Code" pattern="(file[doxysphinx]:doxysphinx//*&amp;&amp;!ext:*||file[doxysphinx]:tests//*)&amp;&amp;!file[doxysphinx]:doxysphinx/bundled//*" />
+</component>

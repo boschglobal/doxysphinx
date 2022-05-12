@@ -1,0 +1,194 @@
+##
+## =====================================================================================
+##  C O P Y R I G H T
+## -------------------------------------------------------------------------------------
+##  Copyright (c) 2022 by Robert Bosch GmbH. All rights reserved.
+##
+##  Author(s):
+##  - Markus Braun, :em engineering methods AG (contracted by Robert Bosch GmbH)
+## =====================================================================================
+##
+
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+env:
+  python-version: 3.9
+
+jobs:
+  prerequisites:
+    runs-on: [ self-hosted ]
+    steps:
+    - name: "install doxygen"
+      run: sudo apt-get install doxygen -y
+      shell: bash
+
+    - name: "install dart-sass"
+      run:  |
+        if ! command -v sass &> /dev/null
+        then
+          echo "sass wasn't found... installing now..."
+          curl -sSL https://github.com/sass/dart-sass/releases/download/1.49.9/dart-sass-1.49.9-linux-x64.tar.gz | \
+          tar -xzvf - --strip-components=1 -C ~/.local/bin dart-sass/sass;
+        fi
+      shell: bash
+
+  checkout:
+    runs-on: [ self-hosted ]
+    steps:
+    - name: "checkout code"
+      uses: actions/checkout@v2
+      with:
+        submodules: false
+        fetch-depth: 0
+        token: ${{ secrets.GITHUBTOKEN }}
+
+  poetry_setup:
+    needs:
+      [ checkout, prerequisites ]
+    runs-on: [ self-hosted ]
+    steps:
+    - name: "LD_LIBRARY_PATH before"
+      run: |
+        echo $LD_LIBRARY_PATH
+
+    - name: "setup python"
+      id: setup-python
+      uses: actions/setup-python@v2
+      with:
+        python-version: ${{ env.python-version }}
+
+    - name: "setup poetry"
+      uses: snok/install-poetry@v1
+      # with:
+      #   virtualenvs-create: true
+      #   virtualenvs-in-project: true
+      #   installer-parallel: true
+
+    - name: "LD_LIBRARY_PATH after"
+      run: |
+        echo $LD_LIBRARY_PATH
+
+    - name: "use correct version"
+      run: |
+        poetry env use ${{ env.python-version }}
+
+    - name: "install dependencies"
+      run: |
+        poetry install
+
+    - name: get virtualenv + LD_LIBRARY_PATH
+      run: |
+        echo VENV_PATH=$(sed "s/ (Activated)//" <<< $(poetry env list --full-path)) >> $GITHUB_ENV
+        echo "LD_LIBRARY_PATH=$LD_LIBRARY_PATH" >> $GITHUB_ENV
+
+    outputs:
+      venv_path: ${{ env.VENV_PATH }}
+      ld_library_path: ${{ env.LD_LIBRARY_PATH }}
+
+  test:
+    needs:
+      [ poetry_setup ]
+    runs-on: [ self-hosted ]
+    env:
+      LD_LIBRARY_PATH: ${{ needs.poetry_setup.outputs.ld_library_path }}
+    steps:
+    - name: "run tests"
+      run: |
+        source ${{ needs.poetry_setup.outputs.venv_path }}/bin/activate
+        pytest --junitxml=.testreport.xml
+
+    - name: "test: report result"
+      uses: dorny/test-reporter@v1
+      if: success() || failure()    # run this step even if previous step failed
+      with:
+        name: pytest results
+        path: .testreport.xml
+        reporter: java-junit
+
+  qa-flake8:
+    needs:
+      [ poetry_setup ]
+    runs-on: [ self-hosted ]
+    env:
+      LD_LIBRARY_PATH: ${{ needs.poetry_setup.outputs.ld_library_path }}
+    steps:
+    - name: "run flake8"
+      run: |
+        source ${{ needs.poetry_setup.outputs.venv_path }}/bin/activate
+        flake8
+
+  qa-black:
+    needs:
+      [ poetry_setup ]
+    runs-on: [ self-hosted ]
+    env:
+      LD_LIBRARY_PATH: ${{ needs.poetry_setup.outputs.ld_library_path }}
+    steps:
+    - name: "run black in check mode"
+      run: |
+        source ${{ needs.poetry_setup.outputs.venv_path }}/bin/activate
+        black --check .
+
+  qa-mypy:
+    needs:
+      [ poetry_setup ]
+    runs-on: [ self-hosted ]
+    env:
+      LD_LIBRARY_PATH: ${{ needs.poetry_setup.outputs.ld_library_path }}
+    steps:
+    - name: "run mypy"
+      run: |
+        source ${{ needs.poetry_setup.outputs.venv_path }}/bin/activate
+        poetry run mypy doxysphinx
+
+  qa-bandit:
+    needs:
+      [ poetry_setup ]
+    runs-on: [ self-hosted ]
+    env:
+      LD_LIBRARY_PATH: ${{ needs.poetry_setup.outputs.ld_library_path }}
+    steps:
+    - name: "run bandit"
+      run: |
+        source ${{ needs.poetry_setup.outputs.venv_path }}/bin/activate
+        bandit -c pyproject.toml -r .
+
+  qa-safety:
+    needs:
+      [ poetry_setup ]
+    runs-on: [ self-hosted ]
+    env:
+      LD_LIBRARY_PATH: ${{ needs.poetry_setup.outputs.ld_library_path }}
+    steps:
+    - name: "run safety"
+      run: |
+        source ${{ needs.poetry_setup.outputs.venv_path }}/bin/activate
+        safety check
+
+  release_tag:
+    needs: [ test, qa-flake8, qa-black, qa-mypy, qa-bandit, qa-safety, poetry_setup ]
+    runs-on: [ self-hosted ]
+    env:
+      LD_LIBRARY_PATH: ${{ needs.poetry_setup.outputs.ld_library_path }}
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main' && !contains(github.event.head_commit.message, 'chore(release):')
+    steps:
+    # We cannot use the github action "relekang/python-semantic-release@master" because
+    # it's running in a container with has several issues..
+    # We configured the python semantic release tool in pyproject.toml to just calculate and bump the version number
+    # write the changelog and create a git tag. This will then be pushed and the CD.yml workflow will create the
+    # final release.
+    - name: semantic release publish
+      id: semantic-release
+      run: |
+        source ${{ needs.poetry_setup.outputs.venv_path }}/bin/activate
+        semantic-release publish
+      env:
+        GH_TOKEN: ${{ secrets.GITHUBTOKEN }}

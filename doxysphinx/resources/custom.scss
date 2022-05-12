@@ -1,0 +1,133 @@
+/**
+=====================================================================================
+ C O P Y R I G H T
+-------------------------------------------------------------------------------------
+ Copyright (c) 2022 by Robert Bosch GmbH. All rights reserved.
+
+ Author(s):
+ - Markus Braun, :em engineering methods AG (contracted by Robert Bosch GmbH)
+=====================================================================================
+*/
+
+/**
+    Doxygen + Doxygen Awesome customizations by doxysphinx
+*/
+
+html {
+    --content-maxwidth: auto !important;
+    --header-background: transparent !important;
+    --page-background-color: transparent !important;
+    --spacing-large: 0px;
+}
+
+/**
+    Doxygen area related css fixes
+*/
+
+.doxygen-content {
+
+    /* Header related stuff */
+    #top {
+
+        /* hide search-box */
+        #MSearchBox {
+            visibility: collapse;
+        }
+
+        /* hide menu */
+        #main-nav {
+            display: none;
+        }
+
+        /* left align header area + headings */
+        #titlearea {
+            padding-left: 0;
+
+            #projectalign {
+                padding-left: 0 !important;
+            }
+        }
+    }
+
+    .header {
+        .headertitle {
+            .title {
+                padding-left: 0 !important;
+            }
+        }
+    }
+
+    /* content fix */
+    .contents {
+        padding-left: 0 !important;
+
+        .memitem {
+            dl {
+                margin: 0 !important;
+            }
+
+            .memdoc {
+                margin-top: 10px;
+            }
+        }
+
+        table.need {
+            display: table;
+        }
+    }
+
+    /** content fixes - members (e.g. in class view) */
+    h2.memtitle {
+        margin-bottom: 0;
+        font-size: 100% !important;
+    }
+
+    div.memitem div.memdoc dl dt {
+        display: block !important;
+        margin: 0 !important;
+        font-size: 100% !important;
+        background: none !important;
+        color: black !important;
+        border: none !important;
+        padding: 0 !important;
+        position: initial !important;
+    }
+
+    div.memproto {
+        margin-bottom: 0;
+    }
+
+    /** table fixes - e.g. directory tables */
+    #main-content .section .directory td.entry {
+        display: table-cell !important;
+        white-space: pre-wrap !important;
+    }
+
+    .need {
+        .line {
+            all: revert;
+        }
+    }
+}
+
+/**
+    General Sphinx fixes
+*/
+
+/* hide sphinx heading - because doxygen pages already have a heading */
+.section h1,
+section h1 {
+    display: none;
+}
+
+
+
+
+/**
+Patches for integrating doxygen awesome with sphinx rtd theme
+*/
+
+#doc-content {
+    margin-left: 0 !important;
+    /* fix for menu space (which isn't visible anyways...) */
+}

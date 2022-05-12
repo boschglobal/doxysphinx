@@ -1,0 +1,24 @@
+##
+## =====================================================================================
+##  C O P Y R I G H T
+## -------------------------------------------------------------------------------------
+##  Copyright (c) 2022 by Robert Bosch GmbH. All rights reserved.
+##
+##  Author(s):
+##  - Markus Braun, :em engineering methods AG (contracted by Robert Bosch GmbH)
+## =====================================================================================
+##
+
+name: "Tools: clean ws"
+
+on:
+  workflow_dispatch:
+
+jobs:
+  tools-cleaner:
+    runs-on: self-hosted
+    steps:
+      - name: "cleanup: workspace"
+        run: |
+          echo "Cleaning up..."
+          sudo rm -rf "${{ github.workspace }}"

@@ -1,0 +1,29 @@
+## =====================================================================================
+##  C O P Y R I G H T
+## -------------------------------------------------------------------------------------
+##  Copyright (c) 2022 by Robert Bosch GmbH. All rights reserved.
+##
+##  Author(s):
+##  - Markus Braun, :em engineering methods AG (contracted by Robert Bosch GmbH)
+## =====================================================================================
+
+[flake8]
+max-line-length = 120
+ignore = D203
+exclude = .git,
+    .build,
+    .devcontainer,
+    .github,
+    .idea,
+    .package,
+    .pytest_cache,
+    .venv,
+    .vscode,
+    dist,
+    docs,
+    demo,
+    tests
+max-complexity = 10
+select = C,E,F,W,B,B950
+extend-ignore = E203, E501
+docstring-convention=pep257
