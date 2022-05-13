@@ -54,7 +54,6 @@ pex = "^2.1.65"
 sphinx-book-theme = "^0.2.0"
 snakeviz = "^2.1.1"
 myst-parser = "^0.17.0"
-Nuitka = "^0.7.3"
 python-semantic-release = "^7.27.0"
 pytest-cov = "^3.0.0"
 pre-commit = "^2.18.1"
@@ -71,8 +70,6 @@ toml = "^0.10.2"
 types-PyYAML = "^6.0.5"
 cohesion = "^1.0.0"
 pydocstyle = "^6.1.1"
-sphinx-toolbox = "^2.18.2"
-sphinxemoji = "^0.2.0"
 sphinx_design = "^0.1.0"
 
 [tool.poetry.scripts]
@@ -81,10 +78,6 @@ doxysphinx = "doxysphinx.cli:cli"
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
-
-#[build-system]
-#requires = ["setuptools>=42", "wheel", "nuitka"]
-#build-backend = "nuitka.distutils.Build"
 
 [tool.pytest.ini_options]
 log_level = "DEBUG"
@@ -104,7 +97,7 @@ build_command = false
 remove_dist = false
 
 [tool.black]
-line-length=120
+line-length = 120
 target-version = ['py38']
 # black doesn't need further excludes because it honors the .gitignore file
 extend-exclude = "(docs/)|(demo/)|(\\.vscode)|(\\.idea)|(\\.devcontainer)"
@@ -127,7 +120,7 @@ exclude_dirs = [
     "dist",
     "docs",
     "demo",
-    "tests"
+    "tests",
 ]
 
 [tool.bandit.assert_used]
@@ -139,5 +132,5 @@ show_error_codes = true
 ignore_missing_imports = true
 
 [tool.pydocstyle]
-match_dir="doxysphinx"
-ignore="D301,D213,D212,D203"
+match_dir = "doxysphinx"
+ignore = "D301,D213,D212,D203"
