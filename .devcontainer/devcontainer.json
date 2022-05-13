@@ -1,9 +1,8 @@
 {
   "name": "doxysphinx",
-  "workspaceFolder": "/workspaces/doxysphinx",
   "build": {
     "dockerfile": "Dockerfile",
-    "context": "..",
+    "context": "../",
     "args": {
       "VARIANT": "3.10"
     }
@@ -30,5 +29,5 @@
   // As a post create command we install the poetry dependencies and also install the pre-commit hooks.
   // It's necessary to do this here because in Dockerfile we do not have the config files (pyproject.toml +
   // .pre-commit-config.yaml) available.
-  "postCreateCommand": "poetry install && poetry run pre-commit install --install-hooks"
+  "postCreateCommand": "poetry config virtualenvs.create false && poetry install && poetry run pre-commit install --install-hooks"
 }
