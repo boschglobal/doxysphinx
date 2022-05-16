@@ -7,19 +7,17 @@
 #  - Markus Braun, :em engineering methods AG (contracted by Robert Bosch GmbH)
 # =====================================================================================
 
+import sys
 from pathlib import Path
 
 import pytest
 
 from doxysphinx.utils.pathlib_fix import path_is_relative_to
 
+older_than_3_9 = sys.version_info < (3, 9)
 
-# @pytest.mark.skip(
-#     reason="This will sometimes fail on python 3.8.X - but at present we've got no idea why. Maybe this "
-#     "has something to do with pathlib3x lib (if it was present but then got uninstalled...) "
-#     "however for now we're providing a custom code fix for this problem. "
-#     "This test is only for manual testing of the issue."
-# )
+
+@pytest.mark.skipif(older_than_3_9, reason="requires python 3.9")
 @pytest.mark.parametrize(
     "path, relative_to",
     [
@@ -95,7 +93,5 @@ def test_pathlib_is_relative_to_works_as_expected(path: Path, relative_to: Path)
         (Path("D:\\this is only a test"), Path("C:\\lets try\\doxy sphinx"), False),
     ],
 )
-def test_path_is_relative_to_works_as_expected(
-    path: Path, relative_to: Path, expected_result: bool
-):
+def test_path_is_relative_to_works_as_expected(path: Path, relative_to: Path, expected_result: bool):
     assert path_is_relative_to(path, relative_to) == expected_result
