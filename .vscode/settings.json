@@ -53,5 +53,6 @@
             "color": "#865100"
         }
     ],
-    "editor.formatOnSave": true
+    "editor.formatOnSave": true,
+    "git.alwaysSignOff": true
 }
