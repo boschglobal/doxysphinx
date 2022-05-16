@@ -38,6 +38,7 @@ jobs:
 
     - name: "Run Tests"
       run: |
+        mkdir -p docs/doxygen
         poetry run pytest --junitxml=.testreport.xml
 
     - name: "Report results"
