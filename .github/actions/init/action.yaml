@@ -33,6 +33,7 @@ runs:
       if ! command -v sass &> /dev/null
       then
         echo "sass wasn't found... installing now..."
+        mkdir -p ~/.local/bin
         curl -sSL https://github.com/sass/dart-sass/releases/download/1.49.9/dart-sass-1.49.9-linux-x64.tar.gz | \
         tar -xzvf - --strip-components=1 -C ~/.local/bin dart-sass/sass;
       fi
