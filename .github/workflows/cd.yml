@@ -19,110 +19,42 @@ env:
   python-version: 3.9
 
 jobs:
-  # we can safely assume that setup was done before by
-  checkout:
-    runs-on: [ self-hosted ]
+  release:
+    runs-on: ubuntu-latest
     steps:
-    - name: "checkout code"
-      uses: actions/checkout@v2
+
+    - name: "Checkout Code"
+      uses: actions/checkout@v3
       with:
         submodules: false
         fetch-depth: 0
-        token: ${{ secrets.GITHUBTOKEN }}
 
-  setup:
-    runs-on: [ self-hosted ]
-    needs: [ checkout ]
-    steps:
-      # until gh composite actions are working as expected or we've got ghes 3.5 where caching is working
-      # we need to repeat these two steps over and over again :-(
-      - name: "setup python"
-        id: setup-python
-        uses: actions/setup-python@v2
-        with:
-          python-version: ${{ env.python-version }}
+    - name: "Ensure Python Environment"
+      uses: ./.github/actions/init
+      with:
+        python-version: 3.9
 
-      - name: "setup poetry"
-        uses: snok/install-poetry@v1
-        with:
-          virtualenvs-create: true
-          virtualenvs-in-project: true
-          installer-parallel: true
+    - name: "Build documentation"
+      run: |
+        make html
 
-      - name: "install dependencies"
-        run: |
-          poetry install
+    - name: "Build pypi package"
+      run: |
+        poetry build
 
-      - name: get version
-        run: |
-          echo "SEMANTIC_VERSION=$(poetry version -s)" >> $GITHUB_ENV
-    outputs:
-      semantic_version: ${{ env.SEMANTIC_VERSION }}
+    - name: "Build pex package"
+      run: |
+        (rm -rf .pex_tmp || true)
+        mkdir .pex_tmp
+        cp -R doxysphinx .pex_tmp
+        poetry export -f requirements.txt --without-hashes -o .requirements.txt
+        poetry run pex --requirement=.requirements.txt --entry-point doxysphinx.cli:cli --sources-directory=.pex_tmp --output-file=dist/doxysphinx.pex
 
-  pypi:
-    runs-on: [ self-hosted ]
-    needs: [ setup ]
-    steps:
-      # until gh composite actions are working as expected or we've got ghes 3.5 where caching is working
-      # we need to repeat these two steps over and over again :-(
-      - name: "setup python"
-        id: setup-python
-        uses: actions/setup-python@v2
-        with:
-          python-version: ${{ env.python-version }}
+    - name: "Deploy to pypi repository"
+      run: |
+        echo "simulated: poetry publish"
 
-      - name: "setup poetry"
-        uses: snok/install-poetry@v1
-        with:
-          virtualenvs-create: true
-          virtualenvs-in-project: true
-          installer-parallel: true
-
-      - name: "build pypi package"
-        run: |
-          poetry build
-
-      - name: "deploy to pypi repository"
-        run: |
-          # TODO: Configure
-          poetry publish
-        env:
-
-  pex:
-    runs-on: [ self-hosted ]
-    needs: [ setup ]
-    steps:
-      # until gh composite actions are working as expected or we've got ghes 3.5 where caching is working
-      # we need to repeat these two steps over and over again :-(
-      - name: "setup python"
-        id: setup-python
-        uses: actions/setup-python@v2
-        with:
-          python-version: ${{ env.python-version }}
-
-      - name: "setup poetry"
-        uses: snok/install-poetry@v1
-        with:
-          virtualenvs-create: true
-          virtualenvs-in-project: true
-          installer-parallel: true
-
-      - name: "build pex package"
-        run: |
-          (rm -rf .pex_tmp || true)
-          mkdir .pex_tmp
-          cp -R doxysphinx .pex_tmp
-          poetry export -f requirements.txt --without-hashes -o .requirements.txt
-          poetry run pex --requirement=.requirements.txt --entry-point doxysphinx.cli:cli --sources-directory=.pex_tmp --output-file=dist/doxysphinx.pex
-
-  deploy:
-    runs-on: [ self-hosted ]
-    needs: [ pex, pypi, setup ]
-    steps:
-
-    # upload created binaries (Note: as semantic-release publish seems to delete the dist folder we have to copy
-    # the binaries to .package/ inside the semantic-release inner buildcommand - see pyproject.toml)
-    - name: Upload binaries to gh-release
+    - name: "Deploy binaries to gh-release"
       uses: softprops/action-gh-release@v1
       with:
         tag_name: "v${{ needs.setup.outputs.semantic_version }}"
@@ -130,45 +62,15 @@ jobs:
         files: |
           dist/*.*
 
-  documentation:
-    needs: [ setup ]
-    runs-on: [ self-hosted ]
-    steps:
-    # we need to ensure that python and poetry is correctly set up for each job (therefore we need to repeat it here...)
-    - name: "setup python"
-      id: setup-python
-      uses: actions/setup-python@v2
-      with:
-        python-version: ${{ env.python-version }}
-
-    - name: "setup poetry"
-      uses: snok/install-poetry@v1
-      with:
-        virtualenvs-create: true
-        virtualenvs-in-project: true
-        installer-parallel: true
-
-    - name: "cleanup docs"
-      run: make clean
-
-    - name: "doxygen"
-      run: make doxygen
-
-    - name: "doxysphinx"
-      run: make doxysphinx
-
-    - name: "sphinx"
-      run: make sphinx
-
-    - name: "upload documentation as artifact"
+    - name: "Upload documentation as artifact"
       uses: actions/upload-artifact@v2
       with:
         name: Project documentation
         path: ${{ github.workspace }}/.build/html
 
-    - name: "publish documentation on gh-pages"
+    - name: "Publish documentation on gh-pages"
       uses: peaceiris/actions-gh-pages@v3
       with:
-          github_token: ${{ secrets.GITHUBTOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
            # Action doesnt take default working-directory into account
           publish_dir: ${{ github.workspace }}/.build/html

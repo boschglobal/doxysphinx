@@ -9,16 +9,30 @@
 ## =====================================================================================
 ##
 
-name: "Tools: repair dpkg"
+name: QA
 
 on:
   workflow_dispatch:
 
+env:
+  python-version: 3.9
+
 jobs:
-  tools-dpkgrepair:
-    runs-on: self-hosted
+  qa:
+    runs-on: ubuntu-latest
+
     steps:
-      - name: "repair: dpkg"
-        run: |
-          echo "Attempting to fix dpkg..."
-          sudo dpkg --configure -a
+    - name: "init: Checkout Code"
+      uses: actions/checkout@v3
+      with:
+        submodules: false
+        fetch-depth: 0
+
+    - name: "init: Ensure Python Environment"
+      uses: ./.github/actions/init
+      with:
+        python-version: 3.9
+
+    - name: "test: Run Tests"
+      run: |
+        poetry run precommit run --all-files
