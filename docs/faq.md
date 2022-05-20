@@ -60,8 +60,27 @@ The mechanism to load the correct one is defined in the [](../conf.py) (`html_cs
 However in general you just need to put your css into a path configured in `html_static_path` and then reference
 it in `html_css_files` and it will get loaded.
 
-## Misc
+## Contribution
 
-### M.1 - Why this logo?
+### C.1 - Some of the graphics in here are sketch files, how can i use them?
 
-Mhmm, ok not that creative... a sphinx that dreams about C++...
+We use [Lunacy](https://icons8.com/lunacy) at present as graphics editor to just get svg files in the end.
+At present Lunacy is free for personal and commercial use.
+
+The sketch format can also be used with [Sketch](https://www.sketch.com/) and other tools like
+[Figma](https://www.figma.com) are also able to at least import it.
+
+However in the end any svg editor will do. If you contribute, contribute svgs. If you're happening to use
+another editing tool that has another native format you can just check the original sources in.
+
+If you want to stay full open source [Inkscape](https://inkscape.org) is a very good option to just have a
+good svg editor.
+
+### C.2 - Which image format should i use for documentation?
+
+In descending order of preference:
+
+* svg
+* png
+
+If these formats cuts information from the original file please also consider providing the original.
