@@ -43,8 +43,7 @@ Doxysphinx follows a relatively easy pipeline architecture:
 
 ### Segmentation overview
 
-```{image} resources/doxysphinx.drawio.svg
-TODO: draw and add the image here
+```{image} resources/inner_workings_segmentation_overview.svg
 ```
 
 ### Explanations
