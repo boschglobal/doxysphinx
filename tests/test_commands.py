@@ -10,6 +10,7 @@
 from pathlib import Path
 
 from click.testing import CliRunner
+
 from doxysphinx.cli import cli
 from doxysphinx.utils.pathlib_fix import path_resolve
 
@@ -33,10 +34,10 @@ def test_build_is_working_as_expected():
         ],
     )
     assert (repo_root / "pyproject.toml").exists()
-    print("test1")
+    if result.exit_code != 0:
+        print("Build had errors - std output stream:")
+        print(result.stdout)
     assert result.exit_code == 0
     print("test2")
-    assert (
-        repo_root / ".build/html/docs/doxygen/demo/html/doxygen.css"
-    ).exists()
+    assert (repo_root / ".build/html/docs/doxygen/demo/html/doxygen.css").exists()
     print("test3")
