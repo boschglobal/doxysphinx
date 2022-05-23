@@ -7,6 +7,8 @@
 #  - Markus Braun, :em engineering methods AG (contracted by Robert Bosch GmbH)
 # =====================================================================================
 """The doxygen module contains classes and functions specific to doxygen."""
+
+import os
 import re
 from pathlib import Path
 from typing import Any, Dict, List, Tuple
@@ -44,8 +46,23 @@ def _is_config_line(line: str) -> bool:
 def _parse_key_val(line: str) -> Tuple[str, str]:
     segments = line.split("=")
     key = segments[0].strip().strip("'\"")
-    value = segments[1].strip().strip("'\"")
+    value = _expand_envvars(segments[1].strip().strip("'\""))
     return key, value
+
+
+def _expand_envvars(val: str) -> str:
+    """Expand environment variables with doxygen pattern style with normal parentheses, e.g. "$(ENV_VARIABLE)".
+
+    :param val: The value to search and expand
+    :return: The expanded or original value
+    """
+    # short circuit if no env var is present
+    if "$(" not in val:
+        return val
+
+    # just replace doxygen env delimiters with python delimiters and format/replace with env.
+    # this is just a poor mans
+    return val.replace("$(", "{").replace(")", "}").format(**os.environ)
 
 
 class DoxygenSettingsValidator:
