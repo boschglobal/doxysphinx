@@ -65,3 +65,8 @@ jobs:
         poetry run semantic-release publish
       # env:
       #  GH_TOKEN: ${{ secrets.GITHUBTOKEN }}
+
+    - name: "Print calculated conventional commit version (current branch only!)" # this is mostly for debugging
+      if: github.event_name == 'push' && github.ref != 'refs/head/main' && !contains(github.event.head_commit.message, 'chore(release):')
+      run: |
+        poetry run semantic-release print-version
