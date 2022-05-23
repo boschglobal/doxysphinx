@@ -12,3 +12,15 @@
 # Changelog
 
 <!--next-version-placeholder-->
+
+## v2.1.0 (2022-05-23)
+### Feature
+* **doxygen:** Env variables in doxygen configs are now supported ([`30a6d58`](https://github.com/boschglobal/doxysphinx/commit/30a6d5869b195ef36df80a1af4dec8e2e0bef530))
+* Initial contribution (internal repo hash: cea2505) ([`76dee42`](https://github.com/boschglobal/doxysphinx/commit/76dee4240394d23bf48fe5bba0bebf2f3902104c))
+
+### Fix
+* **dependencies:** Fixed missing dependency and updated all ([`27fc21d`](https://github.com/boschglobal/doxysphinx/commit/27fc21d5ef3bb6eadfc600af59d390562f4635e5))
+
+### Documentation
+* Add segmentation overview picture to inner workings. ([`05237c3`](https://github.com/boschglobal/doxysphinx/commit/05237c316f402c50c3561cac6948b66a3e046536))
+* Some additions to faq on contributing images ([`d41ed11`](https://github.com/boschglobal/doxysphinx/commit/d41ed119d6115d87ec1615932b56bfe5f607671b))
