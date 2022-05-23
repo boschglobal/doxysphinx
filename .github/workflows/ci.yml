@@ -62,6 +62,8 @@ jobs:
       # write the changelog and create a git tag. This will then be pushed and the CD.yml workflow will create the
       # final release.
       run: |
+        git config user.email "actions@github.com"
+        git config user.name "github-actions"
         poetry run semantic-release publish
       # env:
       #  GH_TOKEN: ${{ secrets.GITHUBTOKEN }}
