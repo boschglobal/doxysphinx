@@ -1,0 +1,76 @@
+##
+## =====================================================================================
+##  C O P Y R I G H T
+## -------------------------------------------------------------------------------------
+##  Copyright (c) 2022 by Robert Bosch GmbH. All rights reserved.
+##
+##  Author(s):
+##  - Markus Braun, :em engineering methods AG (contracted by Robert Bosch GmbH)
+## =====================================================================================
+##
+
+name: CD
+
+on:
+  release:
+    types: [published]
+
+env:
+  python-version: 3.9
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: "Checkout Code"
+      uses: actions/checkout@v3
+      with:
+        submodules: false
+        fetch-depth: 0
+
+    - name: "Ensure Python Environment"
+      uses: ./.github/actions/init
+      with:
+        python-version: 3.9
+
+    - name: "Build documentation"
+      run: |
+        make html
+
+    - name: "Build pypi package"
+      run: |
+        poetry build
+
+    - name: "Build pex package"
+      run: |
+        (rm -rf .pex_tmp || true)
+        mkdir .pex_tmp
+        cp -R doxysphinx .pex_tmp
+        poetry export -f requirements.txt --without-hashes -o .requirements.txt
+        poetry run pex --requirement=.requirements.txt --entry-point doxysphinx.cli:cli --sources-directory=.pex_tmp --output-file=dist/doxysphinx.pex
+
+    - name: "Deploy to pypi repository"
+      run: |
+        echo "simulated: poetry publish"
+
+    - name: "Deploy binaries to gh-release"
+      uses: softprops/action-gh-release@v1
+      with:
+        tag_name: "v${{ needs.setup.outputs.semantic_version }}"
+        token: ${{ secrets.GITHUBTOKEN }}
+        files: |
+          dist/*.*
+
+    - name: "Upload documentation as artifact"
+      uses: actions/upload-artifact@v2
+      with:
+        name: Project documentation
+        path: ${{ github.workspace }}/.build/html
+
+    - name: "Publish documentation on gh-pages"
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+           # Action doesnt take default working-directory into account
+          publish_dir: ${{ github.workspace }}/.build/html

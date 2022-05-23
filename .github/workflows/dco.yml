@@ -1,0 +1,21 @@
+##
+## =====================================================================================
+##  C O P Y R I G H T
+## -------------------------------------------------------------------------------------
+##  Copyright (c) 2022 by Robert Bosch GmbH. All rights reserved.
+##
+##  Author(s):
+##  - Markus Braun, :em engineering methods AG (contracted by Robert Bosch GmbH)
+## =====================================================================================
+##
+
+name: DCO Check
+
+on:
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: tisonkun/actions-dco@v1.1

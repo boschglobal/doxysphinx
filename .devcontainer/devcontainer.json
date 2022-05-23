@@ -1,0 +1,33 @@
+{
+  "name": "doxysphinx",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": "../",
+    "args": {
+      "VARIANT": "3.10"
+    }
+  },
+  "settings": {
+    "terminal.integrated.profiles.linux": {
+      "zsh": {
+        "path": "/bin/zsh"
+      }
+    },
+    "terminal.integrated.defaultProfile.linux": "zsh",
+    "http.proxyStrictSSL": false
+  },
+  "extensions": [
+    "ms-python.python",
+    "eamodio.gitlens",
+    "njpwerner.autodocstring",
+    "ExecutableBookProject.myst-highlight",
+    "DavidAnson.vscode-markdownlint",
+    "tamasfe.even-better-toml",
+    "ryanluker.vscode-coverage-gutters",
+    "SanaAjani.taskrunnercode"
+  ],
+  // As a post create command we install the poetry dependencies and also install the pre-commit hooks.
+  // It's necessary to do this here because in Dockerfile we do not have the config files (pyproject.toml +
+  // .pre-commit-config.yaml) available.
+  "postCreateCommand": "poetry config virtualenvs.create false && poetry install && poetry run pre-commit install --install-hooks"
+}

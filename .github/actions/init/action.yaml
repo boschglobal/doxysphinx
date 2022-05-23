@@ -1,0 +1,58 @@
+##
+## =====================================================================================
+##  C O P Y R I G H T
+## -------------------------------------------------------------------------------------
+##  Copyright (c) 2022 by Robert Bosch GmbH. All rights reserved.
+##
+##  Author(s):
+##  - Markus Braun, :em engineering methods AG (contracted by Robert Bosch GmbH)
+## =====================================================================================
+##
+
+name: "Ensure Everything is initialized for build/test etc."
+description: "Installs python and poetry if necessary"
+inputs:
+  python-version:
+    description: "The version of python to use (default: 3.9)"
+    required: true
+    default: 3.9
+  doc-tools:
+    description: "Whether to install the documentation tools (doxygen + dartsass)"
+    required: true
+    default: true
+runs:
+  using: "composite"
+  steps:
+  - name: "Ensure doxygen"
+    if: inputs.doc-tools
+    run: sudo apt-get install doxygen -y
+    shell: bash
+
+  - name: "Test doxygen"
+    run: doxygen --help
+    shell: bash
+
+  - name: "Ensure dart-sass"
+    run:  |
+      if ! command -v sass &> /dev/null
+      then
+        echo "sass wasn't found... installing now..."
+        mkdir -p ~/.local/bin
+        curl -sSL https://github.com/sass/dart-sass/releases/download/1.49.9/dart-sass-1.49.9-linux-x64.tar.gz | \
+        tar -xzvf - --strip-components=1 -C ~/.local/bin dart-sass/sass;
+      fi
+    shell: bash
+
+  - name: "Ensure poetry"
+    run: pipx install poetry
+    shell: bash
+
+  - name: "Ensure python (with poetry caching)"
+    uses: actions/setup-python@v3
+    with:
+      python-version: ${{ inputs.python-version }}
+      cache: 'poetry'
+
+  - name: "Install dependencies"
+    run: poetry install
+    shell: bash

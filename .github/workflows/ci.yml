@@ -1,0 +1,72 @@
+##
+## =====================================================================================
+##  C O P Y R I G H T
+## -------------------------------------------------------------------------------------
+##  Copyright (c) 2022 by Robert Bosch GmbH. All rights reserved.
+##
+##  Author(s):
+##  - Markus Braun, :em engineering methods AG (contracted by Robert Bosch GmbH)
+## =====================================================================================
+##
+
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+env:
+  python-version: 3.9
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: "Checkout Code"
+      uses: actions/checkout@v3
+      with:
+        submodules: false
+        fetch-depth: 0
+
+    - name: "Ensure Python/Build Environment"
+      uses: ./.github/actions/init
+      with:
+        python-version: 3.9
+
+    - name: "Run Tests"
+      run: |
+        mkdir -p docs/doxygen
+        poetry run pytest --junitxml=.testreport.xml
+
+    - name: "Report results"
+      uses: dorny/test-reporter@v1
+      if: success() || failure()    # run this step even if previous step failed
+      with:
+        name: pytest results
+        path: .testreport.xml
+        reporter: java-junit
+
+    - name: "Run quality checks"
+      run: |
+        poetry run pre-commit run --all-files
+
+    - name: "Update version, changelog and create release tag"
+      if: github.event_name == 'push' && github.ref == 'refs/heads/main' && !contains(github.event.head_commit.message, 'chore(release):')
+      id: semantic-release
+      # We cannot use the github action "relekang/python-semantic-release@master" because
+      # it's running in a container with has several issues..
+      # We configured the python semantic release tool in pyproject.toml to just calculate and bump the version number
+      # write the changelog and create a git tag. This will then be pushed and the CD.yml workflow will create the
+      # final release.
+      run: |
+        poetry run semantic-release publish
+      # env:
+      #  GH_TOKEN: ${{ secrets.GITHUBTOKEN }}
+
+    - name: "Print calculated conventional commit version (current branch only!)" # this is mostly for debugging
+      if: github.event_name == 'push' && github.ref != 'refs/head/main' && !contains(github.event.head_commit.message, 'chore(release):')
+      run: |
+        poetry run semantic-release print-version

@@ -1,0 +1,12 @@
+{
+    "recommendations": [
+        "ms-python.python",
+        "eamodio.gitlens",
+        "njpwerner.autodocstring",
+        "ExecutableBookProject.myst-highlight",
+        "DavidAnson.vscode-markdownlint",
+        "tamasfe.even-better-toml",
+        "ryanluker.vscode-coverage-gutters",
+        "SanaAjani.taskrunnercode"
+    ]
+}
