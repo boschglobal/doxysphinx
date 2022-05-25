@@ -12,7 +12,7 @@
 name: DCO Check
 
 on:
-pull_request:
+  pull_request:
 
 jobs:
   check:
