@@ -21,14 +21,6 @@ def version_from_project_toml() -> str:
         return matches[0]
 
 
-def copyright_string() -> str:
-    """Get the standard copyright string.
-
-    :return: The standard copyright string - something like "2020-2022, Robert Bosch GmbH"
-    """
-    return f"2020-{datetime.datetime.now().year}, Robert Bosch GmbH"
-
-
 def multi_glob(*glob_patterns: str) -> List[str]:
     """Expand the glob_patterns to a list of matching files/directories.
 
@@ -72,13 +64,13 @@ def theme_options(theme: str) -> Dict[str, Any]:
             "collapse_navigation": False,
             "repository_url": "https://github.com/boschglobal/doxysphinx",
             "use_repository_button": True,
+            "use_edit_page_button": True,
             "logo_only": True,
             "show_navbar_depth": 5,
             "home_page_in_toc": True,
-            "extra_navbar": f'<div class="copyright">&copy; {copyright_string()}</div>'
-            f'<div class="attribution">theme based on the '
+            "extra_navbar": '<div class="attribution">theme based on the '
             '<a href="https://sphinx-book-theme.readthedocs.io/">sphinx book theme</a> '
-            f'by the <a href="https://executablebooks.org/">executable book project'
+            'by the <a href="https://executablebooks.org/">executable book project'
             "</a>.</div>",
         }
 

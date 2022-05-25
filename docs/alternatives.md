@@ -10,7 +10,7 @@
 -->
 # Alternatives
 
-If doxysphinx doesn't fit your needs maybe there are some other open source tools which might fit better for you:
+If doxysphinx doesn't fit your needs maybe there are some other open source tools which might be a better fit:
 
 * [Breathe](https://github.com/michaeljones/breathe)
 * [Exhale](https://github.com/svenevs/exhale)
