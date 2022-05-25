@@ -9,14 +9,13 @@
 ## =====================================================================================
 ##
 
-# Test to see if github DCO is working better...
-# name: DCO Check
-#
-# on:
-# pull_request:
-#
-# jobs:
-#  check:
-#    runs-on: ubuntu-latest
-#    steps:
-#      - uses: tisonkun/actions-dco@v1.1
+name: DCO Check
+
+on:
+pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: tisonkun/actions-dco@v1.1
