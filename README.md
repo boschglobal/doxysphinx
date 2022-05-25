@@ -32,10 +32,10 @@ Afterwards sphinx will pick up these rst files and create an integrated document
 
 ## Links
 
-📚 [Doxysphinx Overview](https://doxysphinx.github.io/)
+📚 [Doxysphinx Overview](https://boschglobal.github.io/doxysphinx)
 
-🚀 [Getting Started](https://doxysphinx.github.io/)
+🚀 [Getting Started](https://boschglobal.github.io/doxysphinx/docs/getting_started.html)
 
-💻 [Developer Quickstart](https://doxysphinx.github.io/)
+💻 [Developer Quickstart](https://boschglobal.github.io/doxysphinx/docs/dev_guide.html)
 
 🤖 [Releases](https://github.com/boschglobal/doxysphinx/releases)

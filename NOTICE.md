@@ -14,19 +14,24 @@ depending on whether J's employer (or academic institution) has ownership
 over code that is written for this project.
 
 How to add names to this file:
-    Individual's name <submission email address>.
+
+```plain
+* Individual's name <submission email address>.
+```
 
 If Individual's organization is copyright holder of her contributions add the
 organization's name, optionally also the contributor's name:
 
+```plain
 * Organization's name
   * Individual's name - <submission corporate email address>
+```
 
 Please keep the list sorted.
 
 ## Contributors List
 
 * Robert Bosch GmbH
-  * TODO
+  * Nirmal Sasidharan - <nirmal.sasidharan@de.bosch.com>
 * :em engineering methods AG
   * Markus Braun - <markus.braun@em.ag>

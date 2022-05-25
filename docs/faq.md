@@ -46,7 +46,7 @@ doxysphinx
 
 #### 2. Use the pex package
 
-Head over to the github releases section and download the pex package.
+Head over to the [github releases]({{ repo }}/releases) section and download the pex package.
 This is a self contained executable which should work if you have a compatible python installed.
 
 ## Styling/Customizing
@@ -54,8 +54,8 @@ This is a self contained executable which should work if you have a compatible p
 ### S.1 - Element X looks ugly with my theme Y. How can I change that?
 
 You can try to override the CSS styles for your theme.
-If you take a look into our repo's [](docs/_static/) folder you can see 2 custom theme-override-css files.
-The mechanism to load the correct one is defined in the [](../conf.py) (`html_css_files` setting).
+If you take a look into our repo's [`docs/_static`]({{ code }}/docs/_static/) folder you can see 2 custom theme-override-css files.
+The mechanism to load the correct one is defined in the [`conf.py`]({{ code }}/conf.py) (`html_css_files` setting).
 
 However in general you just need to put your css into a path configured in `html_static_path` and then reference
 it in `html_css_files` and it will get loaded.

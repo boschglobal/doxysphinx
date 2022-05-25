@@ -48,7 +48,7 @@ class Builder:
         force_recreation: bool = False,
     ):
         """
-        Create a RstBuilder that builds rsts for doxygen html files.
+        Create a Builder that builds rsts for doxygen html files.
 
         :param sphinx_source_dir: The sphinx source directory where the rst files are
                                   located (most of the time something like "docs")

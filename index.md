@@ -39,8 +39,8 @@ Doxygen Demo <docs/doxygen/demo/html/index>
 
 docs/dev_guide
 docs/inner_workings.md
-docs/ideas.md
 docs/api/apidoc.rst
+CONTRIBUTE.md
 ```
 
 ```{toctree}
@@ -57,7 +57,7 @@ Welcome to the Doxysphinx documentation!
 
 Doxysphinx is a [doxygen](https://doxygen.nl) and [sphinx](https://sphinx-doc.org) integration tool.
 
-It will make the doxygen documentation appear inside the sphinx documentation frame, e.g.:
+It will make the doxygen documentation appear inside the sphinx documentation:
 
 ````{card}
 ```{image} docs/resources/index_doxysphinx_example.png
@@ -68,9 +68,7 @@ It will make the doxygen documentation appear inside the sphinx documentation fr
 
 It comes as an easy-to-use cli tool and typically runs right after doxygen created it's html documentation.
 Doxysphinx creates restructured text (.rst) files out of these (doxygen) html files.
-
-Afterwards sphinx will pick up these rst files and create an integrated documentation
-(theming is applied, search etc.).
+Afterwards sphinx will pick up these rst files and create an integrated documentation (sphinx theming is applied, search etc.).
 
 ```{image} docs/resources/index_doxysphinx_process.png
 :alt: doxysphinx integration process
@@ -81,19 +79,19 @@ Afterwards sphinx will pick up these rst files and create an integrated document
 
 Doxysphinx is also a traceability enablement tool because as doxygen documentation gets integrated with sphinx
 you can e.g. define and reference [sphinx-needs](https://sphinxcontrib-needs.readthedocs.io/en/latest/)
-objects to link requirements, architecture elements etc. to your source code.
+objects to link requirements, architecture elements, etc. directly in and to your source code.
 
 With that it can be also seen as a little cog in the **docs-as-code** gear.
 
 ## Features
 
 * Reuses doxygens html output...
-  * Graphics are working (hierarchies etc)
+  * Graphics are working (hierarchies, etc.)
   * Doxygen's structure and views are preserved - namespaces, indexes, code views etc.
 * Integration in sphinx brings...
   * Sphinx Theming/Frame applied
   * Sphinx full text search over the doxygen documentation
-* Use sphinx enabled (extensions etc.) restructured text snippets in doxygen comments
+* Use sphinx enabled (directives, extensions, etc.) restructured text snippets in doxygen comments
   * This allows for example to define and reference sphinx need objects like requirements, components etc. down
     in the source code to get full tracability.
 
@@ -105,10 +103,9 @@ With that it can be also seen as a little cog in the **docs-as-code** gear.
   Other Themes might work but aren't styled explicitely.
 
 * [Furo](https://pradyunsg.me/furo/quickstart/) theme will unfortunately not work because of some quality-gates
-  in furo which check for header-tags in output.
-
+  in Furo which check for header-tags in output.
   As doxygen html has such tags and we integrate it directly it won't work with furo.
 
 * Doxysphinx can only include complete doxygen pages. If you want to embedd e.g. a single class or method
   documentation inline in your docs please take a look at [Breathe](https://github.com/michaeljones/breathe)
-  or the other [alternatives](alternatives.md).
+  or the other [alternatives](./docs/alternatives.md).

@@ -12,7 +12,7 @@
 
 :::{tip}
 
-As you know from [Getting started guide](../getting_started.md) your doxygen documentation has to be created
+As you know from [Getting Started-guide](./getting_started.md) your doxygen documentation has to be created
 in the SPHINX_SOURCE directory tree.
 
 We recommend to put it under a special doxygen folder, e.g. to `docs/doxygen/<your_doxygen_module_name>` e.g.
@@ -85,7 +85,7 @@ just see the navigation of this document. There is a toctree link to the demo mo
 ## via document link
 
 This is typically used to reference the root docs or some special page where you know the exact name
-(Don't use it for C++ Symbols, as there are better ways to link them - see <#via_doxylink>).
+(Don't use it for C++ Symbols, as there are better ways to link them - see [](#via-doxylink-symbol-links)).
 
 ```````{grid} 2
 :gutter: 1
@@ -100,7 +100,7 @@ This is typically used to reference the root docs or some special page where you
 :doc:`/docs/doxygen/demo/html/index`
 
 .. relative document link (relative to the current document)
-:doc:`../doxygen/demo/html/index`
+:doc:`doxygen/demo/html/index`
 
 .. with custom caption
 :doc:`C++ Demo Project Doxygen Api Documentation </docs/doxygen/demo/html/index>`
@@ -115,10 +115,10 @@ This is typically used to reference the root docs or some special page where you
 {doc}`/docs/doxygen/demo/html/index`
 
 <!-- relative document link (relative to the current document) -->
-{doc}`../doxygen/demo/html/index`
+{doc}`doxygen/demo/html/index`
 
 <!-- with custom caption (myst or plain markdown) -->
-{doc}`C++ Demo Project Doxygen Api Documentation <../doxygen/demo/html/index>`
+{doc}`C++ Demo Project Doxygen Api Documentation <doxygen/demo/html/index>`
 
 [C++ Demo Project Doxygen Api Documentation](/docs/doxygen/demo/html/index)
 ```
@@ -138,7 +138,7 @@ This is typically used to reference the root docs or some special page where you
 
 .. relative document link (relative to the current document)
 
-:doc:`../doxygen/demo/html/index`
+:doc:`doxygen/demo/html/index`
 
 .. with custom caption
 
@@ -153,10 +153,10 @@ This is typically used to reference the root docs or some special page where you
 {doc}`/docs/doxygen/demo/html/index`
 
 <!-- relative document link (relative to the current document) -->
-{doc}`../doxygen/demo/html/index`
+{doc}`doxygen/demo/html/index`
 
 <!-- with custom caption (myst or plain markdown) -->
-{doc}`C++ Demo Project Doxygen Api Documentation <../doxygen/demo/html/index>`
+{doc}`C++ Demo Project Doxygen Api Documentation <doxygen/demo/html/index>`
 
 [C++ Demo Project Doxygen Api Documentation](/docs/doxygen/demo/html/index)
 ````
@@ -166,11 +166,11 @@ This is typically used to reference the root docs or some special page where you
 
 ## via doxylink symbol links
 
-When you set up doxylink correctly (see [](../getting_started.md#step-2-install-and-setup-doxylink)) you can
+When you set up doxylink correctly (see [](getting_started.md#step-2-install-and-setup-doxylink)) you can
 link C++ symbols directly from your rst sources.
 
-:::info
-doxylink knows the symbols because in the doxygen tagfile all symbols are mapped to the respective html files.
+:::{note}
+doxylink "knows" the symbols because in the doxygen tagfile all symbols are mapped to the respective html files.
 :::
 
 ```````{grid} 2

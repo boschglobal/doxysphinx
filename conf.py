@@ -13,7 +13,6 @@ import sys
 sys.path.append(os.path.abspath("."))
 
 from conf_utils import (  # noqa E402
-    copyright_string,
     last_updated_from_git,
     multi_glob,
     theme_options,
@@ -22,7 +21,7 @@ from conf_utils import (  # noqa E402
 
 # General information about the project.
 project = "Doxysphinx"
-copyright = copyright_string()
+html_show_copyright = False
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -48,7 +47,6 @@ exclude_patterns = multi_glob(
     "dist",
     "demo",
     "docs/_templates",
-    "CONTRIBUTE.md",
     "LICENSE.md",
     "CHANGELOG.md",
     "README.md",
@@ -93,6 +91,8 @@ extensions = [
     "sphinxcontrib.doxylink",
     "sphinx.ext.inheritance_diagram",
     "sphinx_design",
+    # in-repo sphinx extensions:
+    "sphinx_extensions.replacer",
 ]
 
 # Plantuml
@@ -111,6 +111,13 @@ autosummary_generate_overwrite = False
 # Myst
 myst_enable_extensions = ["colon_fence"]
 myst_heading_anchors = 4
+
+# replacer substitutions (can also be given via sphinx -A cli options)
+gh_repo = "https://github.com/boschglobal/doxysphinx"
+html_context = {
+    "repo": f"{gh_repo}",
+    "code": f"{gh_repo}/tree/main",
+}
 
 # needs
 # types definition for sphinx needs

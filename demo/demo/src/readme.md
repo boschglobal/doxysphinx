@@ -2,4 +2,4 @@
 
 This is the mainpage of the doxysphinx demo project.
 
-![Logo](../../../docs/resources/doxysphinx_logo/doxysphinx_logo.svg)
+![Logo](../../../../_static/doxysphinx_logo.svg)

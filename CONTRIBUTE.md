@@ -1,4 +1,4 @@
-# Contribute
+# How to Contribute
 
 First of all, thanks for considering contributing to this project!! Your help is highly appreciated!!
 
@@ -10,8 +10,10 @@ So this document got quite long... here is the very short summary/checklist:
 * [ ] use this [branch naming convention](#branch-naming-convention): `feature/#39_bring_the_unicorns_back`
 * [ ] commits must adhere to the [conventional commits](#conventional-commits) spec.
 * [ ] add copyright header to new file or add yourself as author in existing files.
-* [ ] sign your commits with a developer certificate of origin (dco) - (`git commit -s -m "MESSAGE"`)
-* [ ] only once: add yourself as a contributor to [NOTICE.md](NOTICE.md).
+* [ ] sign your commits with a developer certificate of origin (dco) - (`git commit -s -m "MESSAGE"`) or use
+      vscode which is configured for the repo to do this automatically.
+* [ ] only once: add yourself as a contributor to
+      [NOTICE.md](https://github.com/boschglobal/doxysphinx/blob/main/NOTICE.md).
 
 ## Pull requests only
 
@@ -27,7 +29,7 @@ Simply create separate PRs instead.
 
 Branches should be named with this scheme:
 
-```plain
+```text
 group/short_description
 ```
 
@@ -56,7 +58,7 @@ The following is a slightly adapted version (to doxysphinx) of the excellent
 Each commit message consists of a **header**, a **body** and a **footer**. The header has a special
 format that includes a **type**, a **scope** and a **subject**:
 
-```plain
+```text
 <type>(<scope>): <subject>
 <BLANK LINE>
 <body>
@@ -114,27 +116,27 @@ The rest of the commit message is then used for this.
 
 ### Reverting a commit
 
-If the commit reverts a previous commit, it should begin with `revert:`, followed by the header
-of the reverted commit.
-In the body it should say: `This reverts commit <hash>.`, where the hash is the SHA of the commit
-being reverted.
+If the commit reverts a previous commit, it should begin with `revert:`, followed by the header of the
+reverted commit.
+In the body it should say: `This reverts commit <hash>.`, where the hash is the SHA of the commit being reverted.
 
 ### Examples
 
 * a very short new feature commit message:
 
-  ```plain
+  ```text
   feat: add button that brings the unicorns back
   ```
 
 * a multiple changes (just add a newline and repeat the pattern) + breaking change commit message:
 
-  ```plain
+  ```text
   feat(config): config file support
 
   Now we established our own configuration file mechanism. The previous command line argument based
   mechanism forced the users to always create a script, use makefiles etc. With the new mechanism only a
-  config file needs to be given. Config can be read from yml, toml and json files. As we're often dealing with python projects there is also special support for pyproject.toml.
+  config file needs to be given. Config can be read from yml, toml and json files. As we're often dealing with
+  python projects there is also special support for pyproject.toml.
 
   fixes #59
 
@@ -143,6 +145,7 @@ being reverted.
   docs(config): document config mechanism
 
   The new config mechanism is documentation in our sphinx documentation.
+  ```
 
 ## Legal stuff
 
@@ -152,7 +155,8 @@ Include a copyright notice and license consistent with the style used by this pr
 If your contribution contains code under the copyright of a third party, document its origin, license,
 and copyright holders.
 
-Typically for code this would be through a header. You can use this as a template: [.copyright.tmpl](.copyright.tmpl)
+Typically for code this would be through a header. You can use this as a template:
+[.copyright.tmpl](.copyright.tmpl)
 
 ### Sign your work
 
@@ -228,14 +232,16 @@ Signed-off-by tag, otherwise use a personal email address.
 
 ### Maintain Copyright holder / Contributor list
 
-Each contributor is responsible for identifying themselves in the [NOTICE.md](NOTICE.md)
+Each contributor is responsible for identifying themselves in the
+[NOTICE.md](https://github.com/boschglobal/doxysphinx/blob/main/NOTICE.md)
 file, the project's list of copyright holders and authors. Please add
 the respective information corresponding to the Signed-off-by tag as
 part of your first pull request.
 
 If you are a developer who is authorized to contribute to Ontology Central on
 behalf of your employer, then add your company / organization to the
-list of copyright holders in the [NOTICE.md](NOTICE.md) file. As author of a corporate
+list of copyright holders in the
+[NOTICE.md](https://github.com/boschglobal/doxysphinx/blob/main/NOTICE.md) file. As author of a corporate
 contribution you can also add your name and corporate email address as
 in the Signed-off-by tag.
 
