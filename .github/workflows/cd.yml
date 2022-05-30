@@ -52,7 +52,7 @@ jobs:
 
     - name: "Deploy to pypi repository"
       run: |
-        echo "simulated: poetry publish"
+        poetry publish --dry-run --username ${{ secrets.PYPI_USERNAME }} --password '${{ secrets.PYPI_PASSWORD }}'
 
     - name: "Deploy binaries to gh-release"
       uses: softprops/action-gh-release@v1

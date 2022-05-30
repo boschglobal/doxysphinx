@@ -28,10 +28,6 @@ runs:
     run: sudo apt-get install doxygen -y
     shell: bash
 
-  - name: "Test doxygen"
-    run: doxygen --help
-    shell: bash
-
   - name: "Ensure dart-sass"
     run:  |
       if ! command -v sass &> /dev/null
