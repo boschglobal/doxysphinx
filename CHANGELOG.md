@@ -13,6 +13,14 @@
 
 <!--next-version-placeholder-->
 
+## v2.1.4 (2022-05-30)
+### Fix
+* **ci:** Added precommit caching ([`5df7088`](https://github.com/boschglobal/doxysphinx/commit/5df70887f6b7dc5e3125c74e0be43d09f152a0c2))
+* **ci:** Test commit to test new pypi credentials ([`c98a45a`](https://github.com/boschglobal/doxysphinx/commit/c98a45a7eab2e15a234f194235852dcd97bc7fa2))
+
+### Documentation
+* Improve readme ([`4baec67`](https://github.com/boschglobal/doxysphinx/commit/4baec6778148f162640f5b6519a1d87240276368))
+
 ## v2.1.3 (2022-05-30)
 ### Fix
 * **ci:** Attempt to fix pypi password escaping issue ([`af5c481`](https://github.com/boschglobal/doxysphinx/commit/af5c481f464697fdaebaef3ba7a64800b58f846c))
