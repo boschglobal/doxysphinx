@@ -34,7 +34,7 @@ jobs:
     - name: "Ensure Python/Build Environment"
       uses: ./.github/actions/init
       with:
-        python-version: 3.9
+        python-version: ${{ env.python-version }}
 
     - name: "Run Tests"
       run: |
@@ -48,6 +48,14 @@ jobs:
         name: pytest results
         path: .testreport.xml
         reporter: java-junit
+
+    - name: "cache pre-commit"
+      uses: actions/cache@v3
+      with:
+        path: ~/.cache/pre-commit
+        key: ${{ runner.os }}-py${{ env.python-version }}-precommit-${{ hashFiles('.pre-commit-config.yaml') }}
+        restore-keys: |
+          ${{ runner.os }}-py${{ env.python-version }}
 
     - name: "Run quality checks"
       run: |
