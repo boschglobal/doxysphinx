@@ -13,6 +13,10 @@
 
 <!--next-version-placeholder-->
 
+## v2.1.3 (2022-05-30)
+### Fix
+* **ci:** Attempt to fix pypi password escaping issue ([`af5c481`](https://github.com/boschglobal/doxysphinx/commit/af5c481f464697fdaebaef3ba7a64800b58f846c))
+
 ## v2.1.2 (2022-05-30)
 ### Fix
 * **ci:** Gitignore structure change ([`92466a3`](https://github.com/boschglobal/doxysphinx/commit/92466a3bd3231f1074408ca5786e056ba6858b8c))
