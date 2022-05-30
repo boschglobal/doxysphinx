@@ -13,6 +13,10 @@
 
 <!--next-version-placeholder-->
 
+## v2.1.1 (2022-05-30)
+### Fix
+* **ci:** Activated pypi pushing (dry-run) ([`fbd6fa8`](https://github.com/boschglobal/doxysphinx/commit/fbd6fa812fdfb4c68f87916f1202ea69222d759c))
+
 ## v2.1.0 (2022-05-23)
 ### Feature
 * **doxygen:** Env variables in doxygen configs are now supported ([`30a6d58`](https://github.com/boschglobal/doxysphinx/commit/30a6d5869b195ef36df80a1af4dec8e2e0bef530))
