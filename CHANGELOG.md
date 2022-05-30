@@ -13,6 +13,10 @@
 
 <!--next-version-placeholder-->
 
+## v2.1.2 (2022-05-30)
+### Fix
+* **ci:** Gitignore structure change ([`92466a3`](https://github.com/boschglobal/doxysphinx/commit/92466a3bd3231f1074408ca5786e056ba6858b8c))
+
 ## v2.1.1 (2022-05-30)
 ### Fix
 * **ci:** Activated pypi pushing (dry-run) ([`fbd6fa8`](https://github.com/boschglobal/doxysphinx/commit/fbd6fa812fdfb4c68f87916f1202ea69222d759c))
