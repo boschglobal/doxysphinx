@@ -21,7 +21,7 @@ env:
   python-version: 3.9
 
 jobs:
-  test:
+  ci:
     runs-on: ubuntu-latest
 
     steps:
