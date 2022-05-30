@@ -51,8 +51,11 @@ jobs:
         poetry run pex --requirement=.requirements.txt --entry-point doxysphinx.cli:cli --sources-directory=.pex_tmp --output-file=dist/doxysphinx.pex
 
     - name: "Deploy to pypi repository"
+      env:
+        PYPI_USER = ${{ secrets.PYPI_USERNAME }}
+        PYPI_PASS = ${{ secrets.PYPI_PASS }}
       run: |
-        poetry publish --dry-run --username ${{ secrets.PYPI_USERNAME }} --password '${{ secrets.PYPI_PASSWORD }}'
+        poetry publish --dry-run --username "$PYPI_USER" --password "$PYPI_PASS"
 
     - name: "Deploy binaries to gh-release"
       uses: softprops/action-gh-release@v1
