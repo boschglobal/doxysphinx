@@ -22,13 +22,25 @@
 
 Doxysphinx is a [Doxygen](https://doxygen.nl) and [Sphinx](https://sphinx-doc.org) integration tool.
 
-It will make the doxygen documentation appear inside the sphinx documentation frame.
+It is an easy-to-use cli tool and typically runs right after Doxygen generation.
+It reuses the Doxygen generated HTML output and integrates it into Sphinx document generation.
+With this, Doxysphinx supports all known Doxygen features and at the same time integrates well with the Sphinx output (for example, Sphinx-Themes, search etc.). Doxysphinx, also supports restructured text (rST) annotations within C++ files.
 
-It comes as an easy-to-use cli tool and typically runs right after doxygen created it's html documentation.
-Doxysphinx creates restructured text (.rst) files out of these (doxygen) html files.
+Internally, Doxysphinx creates an rST file for each (Doxygen) HTML file and includes the HTML using `.. raw:: html` directive.
+Later Sphinx picks up these rST files and creates an integrated documentation.
 
-Afterwards sphinx will pick up these rst files and create an integrated documentation
-(theming is applied, search etc.).
+### Doxysphinx vs Breathe vs Exhale
+
+Doxysphinx is more related to [Exhale](https://exhale.readthedocs.io/en/latest/index.html) in its functionality than to [Breathe](https://breathe.readthedocs.io/en/latest/).
+
+Breathe is useful for smaller C++ projects when parts of C++ Doxygen documentation needs to be integrated into the Sphinx documentation using [Breathe directives](https://breathe.readthedocs.io/en/latest/directives.html).
+When the complete C++ Doxygen documentation needs to be integrated into Sphinx, the following options are available:
+
+* [Breathe](https://breathe.readthedocs.io/en/latest/) + [breathe.apidoc](https://github.com/michaeljones/breathe/blob/master/breathe/apidoc.py)
+* [Exhale](https://exhale.readthedocs.io/en/latest/index.html)
+* Doxysphinx
+
+Doxysphinx outperforms the other two options w.r.t to speed and features, as it simply reuses doxygen output.
 
 ## Links
 
