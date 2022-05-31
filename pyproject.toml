@@ -16,7 +16,7 @@ maintainers = []
 license = "Proprietary"
 homepage = "https://github.com/boschglobal/doxysphinx"
 repository = "https://github.com/boschglobal/doxysphinx"
-documentation = "https://github.com/boschglobal/doxysphinx"
+documentation = "https://boschglobal.github.io/doxysphinx"
 keywords = ["DaC", "docs-as-code", "doxygen", "sphinx"]
 classifiers = [
     "Topic :: Software Development :: Build Tools",

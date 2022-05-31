@@ -53,7 +53,7 @@ jobs:
     - name: "Deploy to pypi repository"
       env:
         PYPI_USER: ${{ secrets.PYPI_USERNAME }}
-        PYPI_PASS: ${{ secrets.PYPI_PASS }}
+        PYPI_PASS: ${{ secrets.PYPI_PASSWORD }}
       run: |
         poetry publish --username "$PYPI_USER" --password "$PYPI_PASS" --dry-run
 
