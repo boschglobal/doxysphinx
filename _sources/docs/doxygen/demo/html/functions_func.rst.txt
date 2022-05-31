@@ -1,0 +1,12 @@
+:orphan:
+
+.. title:: Demo: Class Members - Functions
+
+Class Members - Functions
+=========================
+
+.. container:: doxygen-content
+
+   
+   .. raw:: html
+     :file: functions_func.html

@@ -1,0 +1,863 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>How to Contribute &#8212; Doxysphinx</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet">
+  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=84ace793992934648b4de8eed757e5a2" />
+    <link rel="stylesheet" type="text/css" href="_static/css/sphinx-toolbox.css" />
+    <link rel="stylesheet" type="text/css" href="_static/plot_directive.css" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/assets/jsonview.bundle.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-needs/libs/html/datatables.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-needs/common.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-needs/modern.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-needs/layouts.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-needs/styles.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-test-results/common.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme-custom.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/design-tabs.js"></script>
+    <script src="_static/sphinx-book-theme.9d8b4a8b9bb19db25eeaddc40d639ba2.js"></script>
+    <script src="_static/assets/jsonview.bundle.js"></script>
+    <script src="_static/assets/jsonview_loader.js"></script>
+    <script src="_static/sphinx-needs/libs/html/datatables.min.js"></script>
+    <script src="_static/sphinx-needs/libs/html/datatables_loader.js"></script>
+    <script src="_static/sphinx-needs/libs/html/sphinx_needs_collapse.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="doxysphinx.utils.iterators" href="docs/api/doxysphinx.utils/doxysphinx.utils.iterators.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<div class="col-12 col-md-3 bd-sidebar site-navigation " id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/doxysphinx_logo.svg" class="logo" alt="logo">
+      
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="index.html">
+   Overview
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Usage
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="docs/getting_started.html">
+   Getting Started
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="docs/alternatives.html">
+   Alternatives
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="docs/faq.html">
+   FAQ
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Examples
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="docs/linking_to_doxygen.html">
+   Linking to Doxygen
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="docs/using_rst_in_doxygen.html">
+   Commenting in doxygen
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="docs/linking_needs.html">
+   Linking with Sphinx Needs
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="docs/doxygen/demo/html/index.html">
+   Doxygen Demo
+  </a>
+  <input checked class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="docs/doxygen/demo/html/namespaces.html">
+     Namespace List
+    </a>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="docs/doxygen/demo/html/annotated.html">
+     Class List
+    </a>
+    <input checked class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+    <label for="toctree-checkbox-2">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="docs/doxygen/demo/html/classes.html">
+       Class Index
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="docs/doxygen/demo/html/inherits.html">
+       Class Hierarchy
+      </a>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="docs/doxygen/demo/html/functions.html">
+       Class Members
+      </a>
+      <input checked class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+      <label for="toctree-checkbox-3">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="docs/doxygen/demo/html/functions_func.html">
+         Class Members - Functions
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="docs/doxygen/demo/html/files.html">
+     File List
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Development
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="docs/dev_guide.html">
+   Developer Quickstart
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="docs/inner_workings.html">
+   Inner workings
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="docs/api/apidoc.html">
+   API Reference
+  </a>
+  <input checked class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="docs/api/doxysphinx/doxysphinx.cli.html">
+     doxysphinx.cli
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="docs/api/doxysphinx/doxysphinx.doxygen.html">
+     doxysphinx.doxygen
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="docs/api/doxysphinx/doxysphinx.html_parser.html">
+     doxysphinx.html_parser
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="docs/api/doxysphinx/doxysphinx.process.html">
+     doxysphinx.process
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="docs/api/doxysphinx/doxysphinx.resources.html">
+     doxysphinx.resources
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="docs/api/doxysphinx/doxysphinx.sphinx.html">
+     doxysphinx.sphinx
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="docs/api/doxysphinx/doxysphinx.writer.html">
+     doxysphinx.writer
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="docs/api/doxysphinx.utils/doxysphinx.utils.contexts.html">
+     doxysphinx.utils.contexts
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="docs/api/doxysphinx.utils/doxysphinx.utils.exceptions.html">
+     doxysphinx.utils.exceptions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="docs/api/doxysphinx.utils/doxysphinx.utils.files.html">
+     doxysphinx.utils.files
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="docs/api/doxysphinx.utils/doxysphinx.utils.iterators.html">
+     doxysphinx.utils.iterators
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   How to Contribute
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  <div class="attribution">theme based on the <a href="https://sphinx-book-theme.readthedocs.io/">sphinx book theme</a> by the <a href="https://executablebooks.org/">executable book project</a>.</div>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<!-- This is an invisible pixel that we watch to see if we've scrolled. -->
+<div class="sbt-scroll-pixel-helper"></div>
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            <div class="topbar-left">
+                
+                <label class="nav-toggle-button" for="__navigation">
+                    <div class="visually-hidden">Toggle navigation</div>
+                    <i class="fas fa-bars"></i>
+                </label>
+                
+            </div>
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/CONTRIBUTE.md.txt"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/boschglobal/doxysphinx"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        <a class="edit-button" href="https://github.com/boschglobal/doxysphinx/edit/master/CONTRIBUTE.md"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tldr">
+   TLDR
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pull-requests-only">
+   Pull requests only
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#branch-naming-convention">
+   Branch naming convention
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#conventional-commits">
+   Conventional Commits
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#commit-message-format">
+     Commit message format
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#type">
+     Type
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#scope">
+     Scope
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#subject">
+     Subject
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#body">
+     Body
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#footer">
+     Footer
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#reverting-a-commit">
+     Reverting a commit
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#examples">
+     Examples
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#legal-stuff">
+   Legal stuff
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#add-retain-copyright-notices">
+     Add / retain copyright notices
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sign-your-work">
+     Sign your work
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#individual-vs-corporate-contributors">
+     Individual vs. Corporate Contributors
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#maintain-copyright-holder-contributor-list">
+     Maintain Copyright holder / Contributor list
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>How to Contribute</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tldr">
+   TLDR
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pull-requests-only">
+   Pull requests only
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#branch-naming-convention">
+   Branch naming convention
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#conventional-commits">
+   Conventional Commits
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#commit-message-format">
+     Commit message format
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#type">
+     Type
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#scope">
+     Scope
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#subject">
+     Subject
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#body">
+     Body
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#footer">
+     Footer
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#reverting-a-commit">
+     Reverting a commit
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#examples">
+     Examples
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#legal-stuff">
+   Legal stuff
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#add-retain-copyright-notices">
+     Add / retain copyright notices
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sign-your-work">
+     Sign your work
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#individual-vs-corporate-contributors">
+     Individual vs. Corporate Contributors
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#maintain-copyright-holder-contributor-list">
+     Maintain Copyright holder / Contributor list
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="section" id="how-to-contribute">
+<h1>How to Contribute<a class="headerlink" href="#how-to-contribute" title="Permalink to this headline">¶</a></h1>
+<p>First of all, thanks for considering contributing to this project!! Your help is highly appreciated!!</p>
+<div class="section" id="tldr">
+<h2>TLDR<a class="headerlink" href="#tldr" title="Permalink to this headline">¶</a></h2>
+<p>So this document got quite long… here is the very short summary/checklist:</p>
+<ul class="simple">
+<li><p>[ ] don’t commit on main - use <a class="reference internal" href="#pull-requests-only"><span class="std std-doc">pull requests only</span></a></p></li>
+<li><p>[ ] use this <a class="reference internal" href="#branch-naming-convention"><span class="std std-doc">branch naming convention</span></a>: <code class="docutils literal notranslate"><span class="pre">feature/#39_bring_the_unicorns_back</span></code></p></li>
+<li><p>[ ] commits must adhere to the <a class="reference internal" href="#conventional-commits"><span class="std std-doc">conventional commits</span></a> spec.</p></li>
+<li><p>[ ] add copyright header to new file or add yourself as author in existing files.</p></li>
+<li><p>[ ] sign your commits with a developer certificate of origin (dco) - (<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span> <span class="pre">-s</span> <span class="pre">-m</span> <span class="pre">&quot;MESSAGE&quot;</span></code>) or use
+vscode which is configured for the repo to do this automatically.</p></li>
+<li><p>[ ] only once: add yourself as a contributor to
+<a class="reference external" href="https://github.com/boschglobal/doxysphinx/blob/main/NOTICE.md">NOTICE.md</a>.</p></li>
+</ul>
+</div>
+<div class="section" id="pull-requests-only">
+<h2>Pull requests only<a class="headerlink" href="#pull-requests-only" title="Permalink to this headline">¶</a></h2>
+<p>Use pull requests to contribute to this repository.</p>
+<p>Pushes to the <code class="docutils literal notranslate"><span class="pre">main</span></code> branch are automatically rejected.</p>
+<p>Keep your PRs focussed on a single purpose.
+For example, do not implement multiple features or fix multiple bugs in a single PR unless they are interconnected.
+Simply create separate PRs instead.</p>
+</div>
+<div class="section" id="branch-naming-convention">
+<h2>Branch naming convention<a class="headerlink" href="#branch-naming-convention" title="Permalink to this headline">¶</a></h2>
+<p>Branches should be named with this scheme:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>group/short_description
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">group</span></code> denotes the purpose of the contribution:</p>
+<ul class="simple">
+<li><p><strong>feature</strong>: A new feature</p></li>
+<li><p><strong>fix</strong>: A bug fix</p></li>
+<li><p><strong>ci</strong>: GitHub workflow only changes</p></li>
+<li><p><strong>docs</strong>: Documentation only changes</p></li>
+</ul>
+<p>The <code class="docutils literal notranslate"><span class="pre">short</span></code> description should describe the change/feature etc.
+If you have a bigger change please create an issue here in github and use the number as short description,
+e.g. <code class="docutils literal notranslate"><span class="pre">feature/#39_bring_the_unicorns_back</span></code></p>
+</div>
+<div class="section" id="conventional-commits">
+<h2>Conventional Commits<a class="headerlink" href="#conventional-commits" title="Permalink to this headline">¶</a></h2>
+<p>We use <a class="reference external" href="https://www.conventionalcommits.org/en/v1.0.0/">Conventional Commits</a> to automatically calculate the
+semantic version, create the changelog, and publish the release via
+<a class="reference external" href="https://python-semantic-release.readthedocs.io/en/latest/">Python-Semantic-Release</a> tooling.</p>
+<p>The following is a slightly adapted version (to doxysphinx) of the excellent
+<a class="reference external" href="https://github.com/angular/angular.js/blob/master/DEVELOPERS.md#commits">Angular commit style</a>.</p>
+<div class="section" id="commit-message-format">
+<h3>Commit message format<a class="headerlink" href="#commit-message-format" title="Permalink to this headline">¶</a></h3>
+<p>Each commit message consists of a <strong>header</strong>, a <strong>body</strong> and a <strong>footer</strong>. The header has a special
+format that includes a <strong>type</strong>, a <strong>scope</strong> and a <strong>subject</strong>:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>&lt;type&gt;(&lt;scope&gt;): &lt;subject&gt;
+&lt;BLANK LINE&gt;
+&lt;body&gt;
+&lt;BLANK LINE&gt;
+&lt;footer&gt;
+</pre></div>
+</div>
+<p>The <strong>header</strong> is mandatory and the <strong>scope</strong> of the header is optional.</p>
+<p>Any line of the commit message should not be longer than <strong>100 characters!</strong>.
+This allows the message to be easier to read on GitHub as well as in various git tools.</p>
+</div>
+<div class="section" id="type">
+<h3>Type<a class="headerlink" href="#type" title="Permalink to this headline">¶</a></h3>
+<p>Must be one of the following:</p>
+<ul class="simple">
+<li><p><strong>feat</strong>: A new feature</p></li>
+<li><p><strong>fix</strong>: A bug fix</p></li>
+<li><p><strong>docs</strong>: Documentation only changes</p></li>
+<li><p><strong>style</strong>: Changes that do not affect the meaning of the code (white-space, formatting, missing
+semi-colons, etc)</p></li>
+<li><p><strong>refactor</strong>: A code change that neither fixes a bug nor adds a feature</p></li>
+<li><p><strong>perf</strong>: A code change that improves performance</p></li>
+<li><p><strong>test</strong>: Adding missing or correcting existing tests</p></li>
+<li><p><strong>chore</strong>: Changes to the build process or auxiliary tools and libraries such as documentation
+generation</p></li>
+</ul>
+</div>
+<div class="section" id="scope">
+<h3>Scope<a class="headerlink" href="#scope" title="Permalink to this headline">¶</a></h3>
+<p>The scope could be anything specifying place of the commit change. For example <code class="docutils literal notranslate"><span class="pre">parser</span></code>,
+<code class="docutils literal notranslate"><span class="pre">writer</span></code>, <code class="docutils literal notranslate"><span class="pre">config</span></code>, <code class="docutils literal notranslate"><span class="pre">examples</span></code>, <code class="docutils literal notranslate"><span class="pre">cli</span></code> etc…</p>
+<p>You can use <code class="docutils literal notranslate"><span class="pre">*</span></code> when the change affects more than a single scope or just leave <code class="docutils literal notranslate"><span class="pre">(&lt;scope&gt;)</span></code> out completely.</p>
+</div>
+<div class="section" id="subject">
+<h3>Subject<a class="headerlink" href="#subject" title="Permalink to this headline">¶</a></h3>
+<p>The subject contains succinct description of the change:</p>
+<ul class="simple">
+<li><p>use the imperative, present tense: “change” not “changed” nor “changes”</p></li>
+<li><p>don’t capitalize first letter</p></li>
+<li><p>no dot (.) at the end</p></li>
+</ul>
+</div>
+<div class="section" id="body">
+<h3>Body<a class="headerlink" href="#body" title="Permalink to this headline">¶</a></h3>
+<p>Just as in the <strong>subject</strong>, use the imperative, present tense: “change” not “changed” nor “changes”.
+The body should include the motivation for the change and contrast this with previous behavior.</p>
+</div>
+<div class="section" id="footer">
+<h3>Footer<a class="headerlink" href="#footer" title="Permalink to this headline">¶</a></h3>
+<p>The footer should contain any information about <strong>Breaking Changes</strong> and is also the place to
+<a class="reference external" href="https://help.github.com/articles/closing-issues-via-commit-messages/">reference GitHub issues that this commit closes</a>.</p>
+<p><strong>Breaking Changes</strong> should start with the word <code class="docutils literal notranslate"><span class="pre">BREAKING</span> <span class="pre">CHANGE:</span></code> with a space or two newlines.
+The rest of the commit message is then used for this.</p>
+</div>
+<div class="section" id="reverting-a-commit">
+<h3>Reverting a commit<a class="headerlink" href="#reverting-a-commit" title="Permalink to this headline">¶</a></h3>
+<p>If the commit reverts a previous commit, it should begin with <code class="docutils literal notranslate"><span class="pre">revert:</span></code>, followed by the header of the
+reverted commit.
+In the body it should say: <code class="docutils literal notranslate"><span class="pre">This</span> <span class="pre">reverts</span> <span class="pre">commit</span> <span class="pre">&lt;hash&gt;.</span></code>, where the hash is the SHA of the commit being reverted.</p>
+</div>
+<div class="section" id="examples">
+<h3>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p>a very short new feature commit message:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>feat: add button that brings the unicorns back
+</pre></div>
+</div>
+</li>
+<li><p>a multiple changes (just add a newline and repeat the pattern) + breaking change commit message:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>feat(config): config file support
+
+Now we established our own configuration file mechanism. The previous command line argument based
+mechanism forced the users to always create a script, use makefiles etc. With the new mechanism only a
+config file needs to be given. Config can be read from yml, toml and json files. As we&#39;re often dealing with
+python projects there is also special support for pyproject.toml.
+
+fixes #59
+
+BREAKING CHANGE: cli arguments aren&#39;t supported anymore.
+
+docs(config): document config mechanism
+
+The new config mechanism is documentation in our sphinx documentation.
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="legal-stuff">
+<h2>Legal stuff<a class="headerlink" href="#legal-stuff" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="add-retain-copyright-notices">
+<h3>Add / retain copyright notices<a class="headerlink" href="#add-retain-copyright-notices" title="Permalink to this headline">¶</a></h3>
+<p>Include a copyright notice and license consistent with the style used by this project.
+If your contribution contains code under the copyright of a third party, document its origin, license,
+and copyright holders.</p>
+<p>Typically for code this would be through a header. You can use this as a template:
+<a class="reference download internal" download="" href="_downloads/1c1f750a4407d865d6d16a9c2be41211/.copyright.tmpl"><span class="xref download myst">.copyright.tmpl</span></a></p>
+</div>
+<div class="section" id="sign-your-work">
+<h3>Sign your work<a class="headerlink" href="#sign-your-work" title="Permalink to this headline">¶</a></h3>
+<p>This project also tracks patch provenance and licensing using the Developer Certificate of Origin and
+Signed-off-by tags initially developed by the Linux kernel project.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Developer Certificate of Origin
+Version 1.1
+
+Copyright (C) 2004, 2006 The Linux Foundation and its contributors.
+1 Letterman Drive
+Suite D4700
+San Francisco, CA, 94129
+
+Everyone is permitted to copy and distribute verbatim copies of this
+license document, but changing it is not allowed.
+
+
+Developer&#39;s Certificate of Origin 1.1
+
+By making a contribution to this project, I certify that:
+
+(a) The contribution was created in whole or in part by me and I
+    have the right to submit it under the open source license
+    indicated in the file; or
+
+(b) The contribution is based upon previous work that, to the best
+    of my knowledge, is covered under an appropriate open source
+    license and I have the right under that license to submit that
+    work with modifications, whether created in whole or in part
+    by me, under the same open source license (unless I am
+    permitted to submit under a different license), as indicated
+    in the file; or
+
+(c) The contribution was provided directly to me by some other
+    person who certified (a), (b) or (c) and I have not modified
+    it.
+
+(d) I understand and agree that this project and the contribution
+    are public and that a record of the contribution (including all
+    personal information I submit with it, including my sign-off) is
+    maintained indefinitely and may be redistributed consistent with
+    this project or the open source license(s) involved.
+</pre></div>
+</div>
+<p>With the sign-off in a commit message you certify that you authored the
+patch or otherwise have the right to submit it under an open source
+license. The procedure is simple: To certify above Developer’s
+Certificate of Origin 1.1 for your contribution just append a line</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Signed-off-by: Random J Developer &lt;random@developer.example.org&gt;
+</pre></div>
+</div>
+<p>to every commit message using your real name or your pseudonym and a valid
+email address.</p>
+<p>If you have set your <code class="docutils literal notranslate"><span class="pre">user.name</span></code> and <code class="docutils literal notranslate"><span class="pre">user.email</span></code> git configs you can
+automatically sign the commit by running the git-commit command with the
+<code class="docutils literal notranslate"><span class="pre">-s</span></code> option.  There may be multiple sign-offs if more than one developer
+was involved in authoring the contribution.</p>
+</div>
+<div class="section" id="individual-vs-corporate-contributors">
+<h3>Individual vs. Corporate Contributors<a class="headerlink" href="#individual-vs-corporate-contributors" title="Permalink to this headline">¶</a></h3>
+<p>Often employers or academic institution have ownership over code that is
+written in certain circumstances, so please do due diligence to ensure that
+you have the right to submit the code.</p>
+<p>If you are a developer who is authorized to contribute to Ontology Central on behalf of
+your employer, then please use your corporate email address in the
+Signed-off-by tag, otherwise use a personal email address.</p>
+</div>
+<div class="section" id="maintain-copyright-holder-contributor-list">
+<h3>Maintain Copyright holder / Contributor list<a class="headerlink" href="#maintain-copyright-holder-contributor-list" title="Permalink to this headline">¶</a></h3>
+<p>Each contributor is responsible for identifying themselves in the
+<a class="reference external" href="https://github.com/boschglobal/doxysphinx/blob/main/NOTICE.md">NOTICE.md</a>
+file, the project’s list of copyright holders and authors. Please add
+the respective information corresponding to the Signed-off-by tag as
+part of your first pull request.</p>
+<p>If you are a developer who is authorized to contribute to Ontology Central on
+behalf of your employer, then add your company / organization to the
+list of copyright holders in the
+<a class="reference external" href="https://github.com/boschglobal/doxysphinx/blob/main/NOTICE.md">NOTICE.md</a> file. As author of a corporate
+contribution you can also add your name and corporate email address as
+in the Signed-off-by tag.</p>
+<p>If your contribution is covered by this project’s DCO’s clause “(c) The
+contribution was provided directly to me by some other person who
+certified (a), (b) or (c) and I have not modified it”, please add the
+appropriate copyright holder(s) to the <a class="reference internal" href="NOTICE.html"><span class="doc std std-doc">NOTICE.md</span></a> file as part of your
+contribution.</p>
+</div>
+</div>
+</div>
+
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="docs/api/doxysphinx.utils/doxysphinx.utils.iterators.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">doxysphinx.utils.iterators</p>
+        </div>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      Last updated on &#39;Tue May 31 10:36:27 2022&#39;, &#39;f81b020&#39;.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

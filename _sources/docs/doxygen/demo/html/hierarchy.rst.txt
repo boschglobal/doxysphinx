@@ -1,0 +1,12 @@
+:orphan:
+
+.. title:: Demo: Class Hierarchy
+
+Class Hierarchy
+===============
+
+.. container:: doxygen-content
+
+   
+   .. raw:: html
+     :file: hierarchy.html

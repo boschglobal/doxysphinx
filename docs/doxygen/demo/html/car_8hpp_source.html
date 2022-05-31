@@ -1,0 +1,529 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Demo: demo/demo/src/car.hpp Source File &#8212; Doxysphinx</title>
+    
+  <link href="../../../../_static/css/theme.css" rel="stylesheet">
+  <link href="../../../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-book-theme.css?digest=84ace793992934648b4de8eed757e5a2" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/css/sphinx-toolbox.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/plot_directive.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/assets/jsonview.bundle.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/libs/html/datatables.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/modern.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/layouts.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/styles.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-test-results/common.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-book-theme-custom.css" />
+    
+  <link rel="preload" as="script" href="../../../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/clipboard.min.js"></script>
+    <script src="../../../../_static/copybutton.js"></script>
+    <script src="../../../../_static/design-tabs.js"></script>
+    <script src="../../../../_static/sphinx-book-theme.9d8b4a8b9bb19db25eeaddc40d639ba2.js"></script>
+    <script src="../../../../_static/assets/jsonview.bundle.js"></script>
+    <script src="../../../../_static/assets/jsonview_loader.js"></script>
+    <script src="../../../../_static/sphinx-needs/libs/html/datatables.min.js"></script>
+    <script src="../../../../_static/sphinx-needs/libs/html/datatables_loader.js"></script>
+    <script src="../../../../_static/sphinx-needs/libs/html/sphinx_needs_collapse.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<div class="col-12 col-md-3 bd-sidebar site-navigation " id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../../../_static/doxysphinx_logo.svg" class="logo" alt="logo">
+      
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../index.html">
+   Overview
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Usage
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../getting_started.html">
+   Getting Started
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../alternatives.html">
+   Alternatives
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../faq.html">
+   FAQ
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Examples
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../linking_to_doxygen.html">
+   Linking to Doxygen
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../using_rst_in_doxygen.html">
+   Commenting in doxygen
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../linking_needs.html">
+   Linking with Sphinx Needs
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="index.html">
+   Doxygen Demo
+  </a>
+  <input checked class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="namespaces.html">
+     Namespace List
+    </a>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="annotated.html">
+     Class List
+    </a>
+    <input checked class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+    <label for="toctree-checkbox-2">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="classes.html">
+       Class Index
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="inherits.html">
+       Class Hierarchy
+      </a>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="functions.html">
+       Class Members
+      </a>
+      <input checked class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+      <label for="toctree-checkbox-3">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="functions_func.html">
+         Class Members - Functions
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="files.html">
+     File List
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Development
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../dev_guide.html">
+   Developer Quickstart
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../inner_workings.html">
+   Inner workings
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../api/apidoc.html">
+   API Reference
+  </a>
+  <input checked class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../api/doxysphinx/doxysphinx.cli.html">
+     doxysphinx.cli
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../api/doxysphinx/doxysphinx.doxygen.html">
+     doxysphinx.doxygen
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../api/doxysphinx/doxysphinx.html_parser.html">
+     doxysphinx.html_parser
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../api/doxysphinx/doxysphinx.process.html">
+     doxysphinx.process
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../api/doxysphinx/doxysphinx.resources.html">
+     doxysphinx.resources
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../api/doxysphinx/doxysphinx.sphinx.html">
+     doxysphinx.sphinx
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../api/doxysphinx/doxysphinx.writer.html">
+     doxysphinx.writer
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../api/doxysphinx.utils/doxysphinx.utils.contexts.html">
+     doxysphinx.utils.contexts
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../api/doxysphinx.utils/doxysphinx.utils.exceptions.html">
+     doxysphinx.utils.exceptions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../api/doxysphinx.utils/doxysphinx.utils.files.html">
+     doxysphinx.utils.files
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../api/doxysphinx.utils/doxysphinx.utils.iterators.html">
+     doxysphinx.utils.iterators
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../CONTRIBUTE.html">
+   How to Contribute
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  <div class="attribution">theme based on the <a href="https://sphinx-book-theme.readthedocs.io/">sphinx book theme</a> by the <a href="https://executablebooks.org/">executable book project</a>.</div>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<!-- This is an invisible pixel that we watch to see if we've scrolled. -->
+<div class="sbt-scroll-pixel-helper"></div>
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            <div class="topbar-left">
+                
+                <label class="nav-toggle-button" for="__navigation">
+                    <div class="visually-hidden">Toggle navigation</div>
+                    <i class="fas fa-bars"></i>
+                </label>
+                
+            </div>
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../../../_sources/docs/doxygen/demo/html/car_8hpp_source.rst.txt"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.rst</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/boschglobal/doxysphinx"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        <a class="edit-button" href="https://github.com/boschglobal/doxysphinx/edit/master/docs/doxygen/demo/html/car_8hpp_source.rst"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>demo/demo/src/car.hpp Source File</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="section" id="demo-demo-src-car-hpp-source-file">
+<h1>demo/demo/src/car.hpp Source File<a class="headerlink" href="#demo-demo-src-car-hpp-source-file" title="Permalink to this headline">¶</a></h1>
+<div class="doxygen-content docutils container">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Demo: demo/demo/src/car.hpp Source File</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Demo
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.8.17 -->
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',false,false,'search.php','Search');
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_b6c2a257bfab6380ca9b3cb94b12cb25.html">demo</a></li><li class="navelem"><a class="el" href="dir_c729dbd4cb4cab1c0e5283c60243a922.html">demo</a></li><li class="navelem"><a class="el" href="dir_d12214b664c002a5f367cfae088d1bf5.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">car.hpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">// =====================================================================================</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">// C O P Y R I G H T</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">// -------------------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">//  Copyright (c) 2022 by Robert Bosch GmbH. All rights reserved.</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">//  Author(s):</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">//  - Markus Braun, :em engineering methods AG (contracted by Robert Bosch GmbH)</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">// =====================================================================================</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#ifndef DEMO__CAR__INCLUDED</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#define DEMO__CAR__INCLUDED</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="namespacedoxysphinx.html">   19</a></span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacedoxysphinx.html">doxysphinx</a> {</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="namespacedoxysphinx_1_1rst.html">   30</a></span>&#160;<span class="keyword">namespace </span>rst {</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="classdoxysphinx_1_1rst_1_1Car.html">   62</a></span>&#160;<span class="keyword">class </span><a class="code" href="classdoxysphinx_1_1rst_1_1Car.html">Car</a> : <span class="keyword">public</span> TopSecretPrototype&lt;StyleProps::ExtraordinaryAwesomeness, EngineProps::UltraFast&gt;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;{</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00075"></a><span class="lineno"><a class="line" href="classdoxysphinx_1_1rst_1_1Car.html#a7cfbe576ff94465c9f57ea0370284e90">   75</a></span>&#160;        <a class="code" href="classdoxysphinx_1_1rst_1_1Car.html#a7cfbe576ff94465c9f57ea0370284e90">Car</a>(<a class="code" href="classdoxysphinx_1_1rst_1_1Engine.html">Engine</a>&amp; engine, Color&amp; color) {};</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classdoxysphinx_1_1rst_1_1Car.html#a009df10a96c5d18637d13c73fb491c79">enter</a>(Driver&amp; driver);</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        <span class="comment">// enter for person</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classdoxysphinx_1_1rst_1_1Car.html#a009df10a96c5d18637d13c73fb491c79">enter</a>(Person&amp; person);</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classdoxysphinx_1_1rst_1_1Car.html#a81c473fa35c63633a43f0c32de57d0fb">leave</a>(Person&amp; person);</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classdoxysphinx_1_1rst_1_1Car.html#a51e6c0686ce8c21f2197c29fa0e51d06">accelerate</a>(<span class="keywordtype">float</span> target_speed_ms);</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160; </div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classdoxysphinx_1_1rst_1_1Car.html#a768b5e60c3ed7edbbdd3d00d64dd3bbf">brake</a>(<span class="keywordtype">float</span> brake_force_nm);</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;}; <span class="comment">// Car</span></div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160; </div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;} <span class="comment">// rst</span></div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;} <span class="comment">// doxysphinx</span></div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160; </div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="preprocessor">#endif</span></div>
+</div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="aclassdoxysphinx_1_1rst_1_1Car_html_a81c473fa35c63633a43f0c32de57d0fb"><div class="ttname"><a href="classdoxysphinx_1_1rst_1_1Car.html#a81c473fa35c63633a43f0c32de57d0fb">doxysphinx::rst::Car::leave</a></div><div class="ttdeci">void leave(Person &amp;person)</div><div class="ttdoc">leave for person or driver</div></div>
+<div class="ttc" id="aclassdoxysphinx_1_1rst_1_1Car_html"><div class="ttname"><a href="classdoxysphinx_1_1rst_1_1Car.html">doxysphinx::rst::Car</a></div><div class="ttdoc">A car.</div><div class="ttdef"><b>Definition:</b> car.hpp:62</div></div>
+<div class="ttc" id="aclassdoxysphinx_1_1rst_1_1Car_html_a51e6c0686ce8c21f2197c29fa0e51d06"><div class="ttname"><a href="classdoxysphinx_1_1rst_1_1Car.html#a51e6c0686ce8c21f2197c29fa0e51d06">doxysphinx::rst::Car::accelerate</a></div><div class="ttdeci">void accelerate(float target_speed_ms)</div></div>
+<div class="ttc" id="aclassdoxysphinx_1_1rst_1_1Car_html_a009df10a96c5d18637d13c73fb491c79"><div class="ttname"><a href="classdoxysphinx_1_1rst_1_1Car.html#a009df10a96c5d18637d13c73fb491c79">doxysphinx::rst::Car::enter</a></div><div class="ttdeci">void enter(Driver &amp;driver)</div><div class="ttdoc">enter for driver</div></div>
+<div class="ttc" id="aclassdoxysphinx_1_1rst_1_1Engine_html"><div class="ttname"><a href="classdoxysphinx_1_1rst_1_1Engine.html">doxysphinx::rst::Engine</a></div><div class="ttdoc">An engine.</div><div class="ttdef"><b>Definition:</b> engine.hpp:24</div></div>
+<div class="ttc" id="anamespacedoxysphinx_html"><div class="ttname"><a href="namespacedoxysphinx.html">doxysphinx</a></div><div class="ttdoc">The namespace doxysphinx contains all demo code that we need for demonstration of doxysphinx.</div><div class="ttdef"><b>Definition:</b> car.hpp:19</div></div>
+<div class="ttc" id="aclassdoxysphinx_1_1rst_1_1Car_html_a768b5e60c3ed7edbbdd3d00d64dd3bbf"><div class="ttname"><a href="classdoxysphinx_1_1rst_1_1Car.html#a768b5e60c3ed7edbbdd3d00d64dd3bbf">doxysphinx::rst::Car::brake</a></div><div class="ttdeci">void brake(float brake_force_nm)</div><div class="ttdoc">brakes the car</div></div>
+<div class="ttc" id="aclassdoxysphinx_1_1rst_1_1Car_html_a7cfbe576ff94465c9f57ea0370284e90"><div class="ttname"><a href="classdoxysphinx_1_1rst_1_1Car.html#a7cfbe576ff94465c9f57ea0370284e90">doxysphinx::rst::Car::Car</a></div><div class="ttdeci">Car(Engine &amp;engine, Color &amp;color)</div><div class="ttdoc">Creates a new instance of the Car.</div><div class="ttdef"><b>Definition:</b> car.hpp:75</div></div>
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generated by &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
+</body>
+</html>
+</div>
+</div>
+
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      Last updated on &#39;Tue May 31 10:36:27 2022&#39;, &#39;f81b020&#39;.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

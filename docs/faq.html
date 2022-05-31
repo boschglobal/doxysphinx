@@ -1,0 +1,643 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FAQ &#8212; Doxysphinx</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=84ace793992934648b4de8eed757e5a2" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/sphinx-toolbox.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/assets/jsonview.bundle.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/libs/html/datatables.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/modern.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/layouts.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/styles.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-test-results/common.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme-custom.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/design-tabs.js"></script>
+    <script src="../_static/sphinx-book-theme.9d8b4a8b9bb19db25eeaddc40d639ba2.js"></script>
+    <script src="../_static/assets/jsonview.bundle.js"></script>
+    <script src="../_static/assets/jsonview_loader.js"></script>
+    <script src="../_static/sphinx-needs/libs/html/datatables.min.js"></script>
+    <script src="../_static/sphinx-needs/libs/html/datatables_loader.js"></script>
+    <script src="../_static/sphinx-needs/libs/html/sphinx_needs_collapse.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Linking to Doxygen" href="linking_to_doxygen.html" />
+    <link rel="prev" title="Alternatives" href="alternatives.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<div class="col-12 col-md-3 bd-sidebar site-navigation " id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/doxysphinx_logo.svg" class="logo" alt="logo">
+      
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../index.html">
+   Overview
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Usage
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="getting_started.html">
+   Getting Started
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="alternatives.html">
+   Alternatives
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   FAQ
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Examples
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="linking_to_doxygen.html">
+   Linking to Doxygen
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="using_rst_in_doxygen.html">
+   Commenting in doxygen
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="linking_needs.html">
+   Linking with Sphinx Needs
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="doxygen/demo/html/index.html">
+   Doxygen Demo
+  </a>
+  <input checked class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="doxygen/demo/html/namespaces.html">
+     Namespace List
+    </a>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="doxygen/demo/html/annotated.html">
+     Class List
+    </a>
+    <input checked class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+    <label for="toctree-checkbox-2">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="doxygen/demo/html/classes.html">
+       Class Index
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="doxygen/demo/html/inherits.html">
+       Class Hierarchy
+      </a>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="doxygen/demo/html/functions.html">
+       Class Members
+      </a>
+      <input checked class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+      <label for="toctree-checkbox-3">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="doxygen/demo/html/functions_func.html">
+         Class Members - Functions
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="doxygen/demo/html/files.html">
+     File List
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Development
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="dev_guide.html">
+   Developer Quickstart
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="inner_workings.html">
+   Inner workings
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="api/apidoc.html">
+   API Reference
+  </a>
+  <input checked class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="api/doxysphinx/doxysphinx.cli.html">
+     doxysphinx.cli
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="api/doxysphinx/doxysphinx.doxygen.html">
+     doxysphinx.doxygen
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="api/doxysphinx/doxysphinx.html_parser.html">
+     doxysphinx.html_parser
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="api/doxysphinx/doxysphinx.process.html">
+     doxysphinx.process
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="api/doxysphinx/doxysphinx.resources.html">
+     doxysphinx.resources
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="api/doxysphinx/doxysphinx.sphinx.html">
+     doxysphinx.sphinx
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="api/doxysphinx/doxysphinx.writer.html">
+     doxysphinx.writer
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="api/doxysphinx.utils/doxysphinx.utils.contexts.html">
+     doxysphinx.utils.contexts
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="api/doxysphinx.utils/doxysphinx.utils.exceptions.html">
+     doxysphinx.utils.exceptions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="api/doxysphinx.utils/doxysphinx.utils.files.html">
+     doxysphinx.utils.files
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="api/doxysphinx.utils/doxysphinx.utils.iterators.html">
+     doxysphinx.utils.iterators
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../CONTRIBUTE.html">
+   How to Contribute
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  <div class="attribution">theme based on the <a href="https://sphinx-book-theme.readthedocs.io/">sphinx book theme</a> by the <a href="https://executablebooks.org/">executable book project</a>.</div>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<!-- This is an invisible pixel that we watch to see if we've scrolled. -->
+<div class="sbt-scroll-pixel-helper"></div>
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            <div class="topbar-left">
+                
+                <label class="nav-toggle-button" for="__navigation">
+                    <div class="visually-hidden">Toggle navigation</div>
+                    <i class="fas fa-bars"></i>
+                </label>
+                
+            </div>
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/docs/faq.md.txt"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/boschglobal/doxysphinx"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        <a class="edit-button" href="https://github.com/boschglobal/doxysphinx/edit/master/docs/faq.md"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#installation">
+   Installation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#i-1-i-cannot-install-doxysphinx-because-of-dependency-clashes-with-my-existing-environment">
+     I.1 - I cannot install doxysphinx because of dependency clashes with my existing environment
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#use-a-virtual-environment">
+       1. Use a virtual environment
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#use-the-pex-package">
+       2. Use the pex package
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#styling-customizing">
+   Styling/Customizing
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#s-1-element-x-looks-ugly-with-my-theme-y-how-can-i-change-that">
+     S.1 - Element X looks ugly with my theme Y. How can I change that?
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#contribution">
+   Contribution
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#c-1-some-of-the-graphics-in-here-are-sketch-files-how-can-i-use-them">
+     C.1 - Some of the graphics in here are sketch files, how can i use them?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#c-2-which-image-format-should-i-use-for-documentation">
+     C.2 - Which image format should i use for documentation?
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>FAQ</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#installation">
+   Installation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#i-1-i-cannot-install-doxysphinx-because-of-dependency-clashes-with-my-existing-environment">
+     I.1 - I cannot install doxysphinx because of dependency clashes with my existing environment
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#use-a-virtual-environment">
+       1. Use a virtual environment
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#use-the-pex-package">
+       2. Use the pex package
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#styling-customizing">
+   Styling/Customizing
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#s-1-element-x-looks-ugly-with-my-theme-y-how-can-i-change-that">
+     S.1 - Element X looks ugly with my theme Y. How can I change that?
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#contribution">
+   Contribution
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#c-1-some-of-the-graphics-in-here-are-sketch-files-how-can-i-use-them">
+     C.1 - Some of the graphics in here are sketch files, how can i use them?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#c-2-which-image-format-should-i-use-for-documentation">
+     C.2 - Which image format should i use for documentation?
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <!--
+=====================================================================================
+ C O P Y R I G H T
+-------------------------------------------------------------------------------------
+ Copyright (c) 2022 by Robert Bosch GmbH. All rights reserved.
+
+ Author(s):
+ - Markus Braun, :em engineering methods AG (contracted by Robert Bosch GmbH)
+=====================================================================================
+-->
+<div class="section" id="faq">
+<h1>FAQ<a class="headerlink" href="#faq" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="i-1-i-cannot-install-doxysphinx-because-of-dependency-clashes-with-my-existing-environment">
+<h3>I.1 - I cannot install doxysphinx because of dependency clashes with my existing environment<a class="headerlink" href="#i-1-i-cannot-install-doxysphinx-because-of-dependency-clashes-with-my-existing-environment" title="Permalink to this headline">¶</a></h3>
+<p>Doxysphinx doesn’t have many runtime dependencies, however especially click (cli tool) might introduce
+these problems (as it’s very widely used).</p>
+<p>You have several options:</p>
+<div class="section" id="use-a-virtual-environment">
+<h4>1. Use a virtual environment<a class="headerlink" href="#use-a-virtual-environment" title="Permalink to this headline">¶</a></h4>
+<p>First time setup:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># create a new virtual environment in your project root</span>
+python3 -m venv .venv-doxysphinx
+
+<span class="c1"># install doxysphinx into new virtual environment</span>
+.venv-doxysphinx/bin/pip3 installdoxysphinx
+</pre></div>
+</div>
+<p>Usage:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># you then have 2 options to call doxysphinx:</span>
+
+<span class="c1"># Option A): call doxysphinx inside virtualenv</span>
+<span class="nb">source</span> .venv-doxysphinx/bin/activate
+doxysphinx
+
+<span class="c1"># Option B): call doxysphinx directly without activating venv</span>
+.venv-doxysphinx/bin/doxysphinx
+</pre></div>
+</div>
+</div>
+<div class="section" id="use-the-pex-package">
+<h4>2. Use the pex package<a class="headerlink" href="#use-the-pex-package" title="Permalink to this headline">¶</a></h4>
+<p>Head over to the <a class="reference external" href="https://github.com/boschglobal/doxysphinx/releases">github releases</a> section and download the pex package.
+This is a self contained executable which should work if you have a compatible python installed.</p>
+</div>
+</div>
+</div>
+<div class="section" id="styling-customizing">
+<h2>Styling/Customizing<a class="headerlink" href="#styling-customizing" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="s-1-element-x-looks-ugly-with-my-theme-y-how-can-i-change-that">
+<h3>S.1 - Element X looks ugly with my theme Y. How can I change that?<a class="headerlink" href="#s-1-element-x-looks-ugly-with-my-theme-y-how-can-i-change-that" title="Permalink to this headline">¶</a></h3>
+<p>You can try to override the CSS styles for your theme.
+If you take a look into our repo’s <a class="reference external" href="https://github.com/boschglobal/doxysphinx/tree/main/docs/_static/"><code class="docutils literal notranslate"><span class="pre">docs/_static</span></code></a> folder you can see 2 custom theme-override-css files.
+The mechanism to load the correct one is defined in the <a class="reference external" href="https://github.com/boschglobal/doxysphinx/tree/main/conf.py"><code class="docutils literal notranslate"><span class="pre">conf.py</span></code></a> (<code class="docutils literal notranslate"><span class="pre">html_css_files</span></code> setting).</p>
+<p>However in general you just need to put your css into a path configured in <code class="docutils literal notranslate"><span class="pre">html_static_path</span></code> and then reference
+it in <code class="docutils literal notranslate"><span class="pre">html_css_files</span></code> and it will get loaded.</p>
+</div>
+</div>
+<div class="section" id="contribution">
+<h2>Contribution<a class="headerlink" href="#contribution" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="c-1-some-of-the-graphics-in-here-are-sketch-files-how-can-i-use-them">
+<h3>C.1 - Some of the graphics in here are sketch files, how can i use them?<a class="headerlink" href="#c-1-some-of-the-graphics-in-here-are-sketch-files-how-can-i-use-them" title="Permalink to this headline">¶</a></h3>
+<p>We use <a class="reference external" href="https://icons8.com/lunacy">Lunacy</a> at present as graphics editor to just get svg files in the end.
+At present Lunacy is free for personal and commercial use.</p>
+<p>The sketch format can also be used with <a class="reference external" href="https://www.sketch.com/">Sketch</a> and other tools like
+<a class="reference external" href="https://www.figma.com">Figma</a> are also able to at least import it.</p>
+<p>However in the end any svg editor will do. If you contribute, contribute svgs. If you’re happening to use
+another editing tool that has another native format you can just check the original sources in.</p>
+<p>If you want to stay full open source <a class="reference external" href="https://inkscape.org">Inkscape</a> is a very good option to just have a
+good svg editor.</p>
+</div>
+<div class="section" id="c-2-which-image-format-should-i-use-for-documentation">
+<h3>C.2 - Which image format should i use for documentation?<a class="headerlink" href="#c-2-which-image-format-should-i-use-for-documentation" title="Permalink to this headline">¶</a></h3>
+<p>In descending order of preference:</p>
+<ul class="simple">
+<li><p>svg</p></li>
+<li><p>png</p></li>
+</ul>
+<p>If these formats cuts information from the original file please also consider providing the original.</p>
+</div>
+</div>
+</div>
+
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="alternatives.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Alternatives</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="linking_to_doxygen.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Linking to Doxygen</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      Last updated on &#39;Tue May 31 10:36:27 2022&#39;, &#39;f81b020&#39;.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

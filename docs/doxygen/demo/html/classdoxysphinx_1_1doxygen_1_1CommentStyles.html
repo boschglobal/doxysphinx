@@ -1,0 +1,574 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Demo: doxysphinx::doxygen::CommentStyles Class Reference &#8212; Doxysphinx</title>
+    
+  <link href="../../../../_static/css/theme.css" rel="stylesheet">
+  <link href="../../../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-book-theme.css?digest=84ace793992934648b4de8eed757e5a2" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/css/sphinx-toolbox.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/plot_directive.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/assets/jsonview.bundle.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/libs/html/datatables.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/modern.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/layouts.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/styles.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-test-results/common.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-book-theme-custom.css" />
+    
+  <link rel="preload" as="script" href="../../../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/clipboard.min.js"></script>
+    <script src="../../../../_static/copybutton.js"></script>
+    <script src="../../../../_static/design-tabs.js"></script>
+    <script src="../../../../_static/sphinx-book-theme.9d8b4a8b9bb19db25eeaddc40d639ba2.js"></script>
+    <script src="../../../../_static/assets/jsonview.bundle.js"></script>
+    <script src="../../../../_static/assets/jsonview_loader.js"></script>
+    <script src="../../../../_static/sphinx-needs/libs/html/datatables.min.js"></script>
+    <script src="../../../../_static/sphinx-needs/libs/html/datatables_loader.js"></script>
+    <script src="../../../../_static/sphinx-needs/libs/html/sphinx_needs_collapse.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<div class="col-12 col-md-3 bd-sidebar site-navigation " id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../../../_static/doxysphinx_logo.svg" class="logo" alt="logo">
+      
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../index.html">
+   Overview
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Usage
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../getting_started.html">
+   Getting Started
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../alternatives.html">
+   Alternatives
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../faq.html">
+   FAQ
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Examples
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../linking_to_doxygen.html">
+   Linking to Doxygen
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../using_rst_in_doxygen.html">
+   Commenting in doxygen
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../linking_needs.html">
+   Linking with Sphinx Needs
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="index.html">
+   Doxygen Demo
+  </a>
+  <input checked class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="namespaces.html">
+     Namespace List
+    </a>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="annotated.html">
+     Class List
+    </a>
+    <input checked class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+    <label for="toctree-checkbox-2">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="classes.html">
+       Class Index
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="inherits.html">
+       Class Hierarchy
+      </a>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="functions.html">
+       Class Members
+      </a>
+      <input checked class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+      <label for="toctree-checkbox-3">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="functions_func.html">
+         Class Members - Functions
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="files.html">
+     File List
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Development
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../dev_guide.html">
+   Developer Quickstart
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../inner_workings.html">
+   Inner workings
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../api/apidoc.html">
+   API Reference
+  </a>
+  <input checked class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../api/doxysphinx/doxysphinx.cli.html">
+     doxysphinx.cli
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../api/doxysphinx/doxysphinx.doxygen.html">
+     doxysphinx.doxygen
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../api/doxysphinx/doxysphinx.html_parser.html">
+     doxysphinx.html_parser
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../api/doxysphinx/doxysphinx.process.html">
+     doxysphinx.process
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../api/doxysphinx/doxysphinx.resources.html">
+     doxysphinx.resources
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../api/doxysphinx/doxysphinx.sphinx.html">
+     doxysphinx.sphinx
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../api/doxysphinx/doxysphinx.writer.html">
+     doxysphinx.writer
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../api/doxysphinx.utils/doxysphinx.utils.contexts.html">
+     doxysphinx.utils.contexts
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../api/doxysphinx.utils/doxysphinx.utils.exceptions.html">
+     doxysphinx.utils.exceptions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../api/doxysphinx.utils/doxysphinx.utils.files.html">
+     doxysphinx.utils.files
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../api/doxysphinx.utils/doxysphinx.utils.iterators.html">
+     doxysphinx.utils.iterators
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../CONTRIBUTE.html">
+   How to Contribute
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  <div class="attribution">theme based on the <a href="https://sphinx-book-theme.readthedocs.io/">sphinx book theme</a> by the <a href="https://executablebooks.org/">executable book project</a>.</div>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<!-- This is an invisible pixel that we watch to see if we've scrolled. -->
+<div class="sbt-scroll-pixel-helper"></div>
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            <div class="topbar-left">
+                
+                <label class="nav-toggle-button" for="__navigation">
+                    <div class="visually-hidden">Toggle navigation</div>
+                    <i class="fas fa-bars"></i>
+                </label>
+                
+            </div>
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../../../_sources/docs/doxygen/demo/html/classdoxysphinx_1_1doxygen_1_1CommentStyles.rst.txt"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.rst</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/boschglobal/doxysphinx"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        <a class="edit-button" href="https://github.com/boschglobal/doxysphinx/edit/master/docs/doxygen/demo/html/classdoxysphinx_1_1doxygen_1_1CommentStyles.rst"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>CommentStyles Class Reference</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="section" id="commentstyles-class-reference">
+<h1>CommentStyles Class Reference<a class="headerlink" href="#commentstyles-class-reference" title="Permalink to this headline">¶</a></h1>
+<div class="doxygen-content docutils container">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=9"><meta name="generator" content="Doxygen 1.8.17"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Demo: doxysphinx::doxygen::CommentStyles Class Reference</title><link href="tabs.css" rel="stylesheet" type="text/css"><script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="dynsections.js"></script><link href="doxygen.css" rel="stylesheet" type="text/css"><link href="doxygen-awesome.css" rel="stylesheet" type="text/css"></head><body><div id="top"><!-- do not remove this div, it is closed by doxygen! --><div id="titlearea"><table cellspacing="0" cellpadding="0"> <tbody> <tr style="height: 56px;">  <td id="projectalign" style="padding-left: 0.5em;">   <div id="projectname">Demo   </div>  </td> </tr> </tbody></table></div><!-- end header part --><!-- Generated by Doxygen 1.8.17 --><script type="text/javascript" src="menudata.js"></script><script type="text/javascript" src="menu.js"></script><script type="text/javascript">/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */$(function() {  initMenu('',false,false,'search.php','Search');});/* @license-end */</script><div id="main-nav"></div><div id="nav-path" class="navpath">  <ul><li class="navelem"><a class="el" href="namespacedoxysphinx.html">doxysphinx</a></li><li class="navelem"><a class="el" href="namespacedoxysphinx_1_1doxygen.html">doxygen</a></li><li class="navelem"><a class="el" href="classdoxysphinx_1_1doxygen_1_1CommentStyles.html">CommentStyles</a></li>  </ul></div></div><!-- top --><div class="header">  <div class="summary"><a href="#pub-methods">Public Member Functions</a> |<a href="classdoxysphinx_1_1doxygen_1_1CommentStyles-members.html">List of all members</a>  </div>  <div class="headertitle"><div class="title">doxysphinx::doxygen::CommentStyles Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div></div><!--header--><div class="contents"><p><code>#include &lt;<a class="el" href="comment__styles_8hpp_source.html">comment_styles.hpp</a>&gt;</code></p><table class="memberdecls"><tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>Public Member Functions</h2></td></tr><tr class="memitem:ad39ab470cbab92acc5bb0dd5cf78bfd8"><td class="memItemLeft" align="right" valign="top">void </td><td class="memItemRight" valign="bottom"><a class="el" href="classdoxysphinx_1_1doxygen_1_1CommentStyles.html#ad39ab470cbab92acc5bb0dd5cf78bfd8">ensure_javadoc_style_comments_are_working_as_expected</a> () const =0</td></tr><tr class="separator:ad39ab470cbab92acc5bb0dd5cf78bfd8"><td class="memSeparator" colspan="2"> </td></tr><tr class="memitem:a2e51c00e43de6804d75465e15d5f40af"><td class="memItemLeft" align="right" valign="top">void </td><td class="memItemRight" valign="bottom"><a class="el" href="classdoxysphinx_1_1doxygen_1_1CommentStyles.html#a2e51c00e43de6804d75465e15d5f40af">ensure_javadoc_style_comments_with_identation_are_working_as_expected</a> () const =0</td></tr><tr class="separator:a2e51c00e43de6804d75465e15d5f40af"><td class="memSeparator" colspan="2"> </td></tr><tr class="memitem:a7e7609b0a008a5f6714151a6c6c98264"><td class="memItemLeft" align="right" valign="top">void </td><td class="memItemRight" valign="bottom"><a class="el" href="classdoxysphinx_1_1doxygen_1_1CommentStyles.html#a7e7609b0a008a5f6714151a6c6c98264">ensure_javadoc_style_without_stars_are_working_as_expected</a> () const =0</td></tr><tr class="separator:a7e7609b0a008a5f6714151a6c6c98264"><td class="memSeparator" colspan="2"> </td></tr><tr class="memitem:a8ce98dc79b37fcae5ae951d36bae25e9"><td class="memItemLeft" align="right" valign="top">void </td><td class="memItemRight" valign="bottom"><a class="el" href="classdoxysphinx_1_1doxygen_1_1CommentStyles.html#a8ce98dc79b37fcae5ae951d36bae25e9">ensure_qt_style_comments_are_working_as_expected</a> () const =0</td></tr><tr class="separator:a8ce98dc79b37fcae5ae951d36bae25e9"><td class="memSeparator" colspan="2"> </td></tr><tr class="memitem:ac846440917510d8d71a2f9ce9960bf1b"><td class="memItemLeft" align="right" valign="top">void </td><td class="memItemRight" valign="bottom"><a class="el" href="classdoxysphinx_1_1doxygen_1_1CommentStyles.html#ac846440917510d8d71a2f9ce9960bf1b">ensure_qt_style_comments_with_identation_are_working_as_expected</a> () const =0</td></tr><tr class="separator:ac846440917510d8d71a2f9ce9960bf1b"><td class="memSeparator" colspan="2"> </td></tr><tr class="memitem:a449ad1cabc90b414778acb556100fd28"><td class="memItemLeft" align="right" valign="top">void </td><td class="memItemRight" valign="bottom"><a class="el" href="classdoxysphinx_1_1doxygen_1_1CommentStyles.html#a449ad1cabc90b414778acb556100fd28">ensure_qt_style_without_stars_are_working_as_expected</a> () const =0</td></tr><tr class="separator:a449ad1cabc90b414778acb556100fd28"><td class="memSeparator" colspan="2"> </td></tr><tr class="memitem:a2d43c0b7b2a846fd2dbf149f9c3e2ee9"><td class="memItemLeft" align="right" valign="top">void </td><td class="memItemRight" valign="bottom"><a class="el" href="classdoxysphinx_1_1doxygen_1_1CommentStyles.html#a2d43c0b7b2a846fd2dbf149f9c3e2ee9">ensure_slash_style_comments_are_working_as_expected</a> () const =0</td></tr><tr class="separator:a2d43c0b7b2a846fd2dbf149f9c3e2ee9"><td class="memSeparator" colspan="2"> </td></tr><tr class="memitem:ae5268c1e23029248a932fbc2b90f5318"><td class="memItemLeft" align="right" valign="top">void </td><td class="memItemRight" valign="bottom"><a class="el" href="classdoxysphinx_1_1doxygen_1_1CommentStyles.html#ae5268c1e23029248a932fbc2b90f5318">ensure_slash_style_comments_with_asterisk_are_working_as_expected</a> () const =0</td></tr><tr class="separator:ae5268c1e23029248a932fbc2b90f5318"><td class="memSeparator" colspan="2"> </td></tr><tr class="memitem:af86dfc6c802d36aa1bd5078b5517fffc"><td class="memItemLeft" align="right" valign="top">void </td><td class="memItemRight" valign="bottom"><a class="el" href="classdoxysphinx_1_1doxygen_1_1CommentStyles.html#af86dfc6c802d36aa1bd5078b5517fffc">ensure_slash_style_comments_with_identation_are_working_as_expected</a> () const =0</td></tr><tr class="separator:af86dfc6c802d36aa1bd5078b5517fffc"><td class="memSeparator" colspan="2"> </td></tr><tr class="memitem:ae2d62d6adf92b49c928a270b9284e75f"><td class="memItemLeft" align="right" valign="top">void </td><td class="memItemRight" valign="bottom"><a class="el" href="classdoxysphinx_1_1doxygen_1_1CommentStyles.html#ae2d62d6adf92b49c928a270b9284e75f">ensure_slash_style_with_exclamations_are_working_as_expected</a> () const =0</td></tr><tr class="separator:ae2d62d6adf92b49c928a270b9284e75f"><td class="memSeparator" colspan="2"> </td></tr></table><a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2><div class="textblock"><p>This file tests the different doxygen comment styles and the embedding of rst elements.</p>
+<p>It checks for the comment styles as documented <a class="reference external" href="https://www.doxygen.nl/manual/docblocks.html">here in doxygen documentation</a>.</p>
+<p>For integrating rst into doxygen we use the verbatim command as described <a class="reference external" href="https://breathe.readthedocs.io/en/latest/markups.html">here in the breathe docs</a>.</p>
+</div><h2 class="groupheader">Member Function Documentation</h2><a id="ad39ab470cbab92acc5bb0dd5cf78bfd8"></a><h2 class="memtitle"><span class="permalink"><a href="#ad39ab470cbab92acc5bb0dd5cf78bfd8">◆ </a></span>ensure_javadoc_style_comments_are_working_as_expected()</h2><div class="memitem"><div class="memproto"><table class="mlabels">  <tr>  <td class="mlabels-left">      <table class="memname">        <tr>          <td class="memname">void doxysphinx::doxygen::CommentStyles::ensure_javadoc_style_comments_are_working_as_expected </td>          <td>(</td>          <td class="paramname"></td><td>)</td>          <td> const</td>        </tr>      </table>  </td>  <td class="mlabels-right"><span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>  </tr></table></div><div class="memdoc"><div class="admonition-what-you-should-see-here admonition">
+<p class="admonition-title">What you should see here</p>
+<p>This text should be in an admonition box. It was generated from a doxygen javadoc comment <strong>without any special identation</strong>.</p>
+<p><em>Note that we had to add a space between the backslash and the verbatim command in the code because doxygen parsing will freak out if we add the command there…</em></p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * \ verbatim embed:rst</span>
+<span class="cm"> *</span>
+<span class="cm"> * ...rst-content-here...</span>
+<span class="cm"> *</span>
+<span class="cm"> * \ endverbatim</span>
+<span class="cm"> *\/</span>
+<span class="cm"> void ensure_javadoc_style_comments_are_working_as_expected() const = 0;</span>
+</pre></div>
+</div>
+</div>
+</div></div><a id="a2e51c00e43de6804d75465e15d5f40af"></a><h2 class="memtitle"><span class="permalink"><a href="#a2e51c00e43de6804d75465e15d5f40af">◆ </a></span>ensure_javadoc_style_comments_with_identation_are_working_as_expected()</h2><div class="memitem"><div class="memproto"><table class="mlabels">  <tr>  <td class="mlabels-left">      <table class="memname">        <tr>          <td class="memname">void doxysphinx::doxygen::CommentStyles::ensure_javadoc_style_comments_with_identation_are_working_as_expected </td>          <td>(</td>          <td class="paramname"></td><td>)</td>          <td> const</td>        </tr>      </table>  </td>  <td class="mlabels-right"><span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>  </tr></table></div><div class="memdoc"><div class="admonition-what-you-should-see-here admonition">
+<p class="admonition-title">What you should see here</p>
+<p>This text should be in an admonition box. It was generated from a doxygen javadoc comment <strong>with the rst content indented</strong>.</p>
+<p><em>Note that we had to add a space between the backslash and the verbatim command in the code because doxygen parsing will freak out if we add the command there…</em></p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * \ verbatim embed:rst</span>
+<span class="cm"> *</span>
+<span class="cm"> *     ...rst-content-here...</span>
+<span class="cm"> *</span>
+<span class="cm"> * \ endverbatim</span>
+<span class="cm"> *\/</span>
+<span class="cm"> void ensure_javadoc_style_comments_with_identation_are_working_as_expected() const = 0;</span>
+</pre></div>
+</div>
+</div>
+</div></div><a id="a7e7609b0a008a5f6714151a6c6c98264"></a><h2 class="memtitle"><span class="permalink"><a href="#a7e7609b0a008a5f6714151a6c6c98264">◆ </a></span>ensure_javadoc_style_without_stars_are_working_as_expected()</h2><div class="memitem"><div class="memproto"><table class="mlabels">  <tr>  <td class="mlabels-left">      <table class="memname">        <tr>          <td class="memname">void doxysphinx::doxygen::CommentStyles::ensure_javadoc_style_without_stars_are_working_as_expected </td>          <td>(</td>          <td class="paramname"></td><td>)</td>          <td> const</td>        </tr>      </table>  </td>  <td class="mlabels-right"><span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>  </tr></table></div><div class="memdoc"><div class="admonition-what-you-should-see-here admonition">
+<p class="admonition-title">What you should see here</p>
+<p>This text should be in an admonition box. It was generated from a doxygen javadoc comment <strong>without any special identation</strong>.</p>
+<p><em>Note that we had to add a space between the backslash and the verbatim command in the code because doxygen parsing will freak out if we add the command there…</em></p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> \ verbatim embed:rst</span>
+
+<span class="cm">  ...rst-content-here...</span>
+
+<span class="cm"> \ endverbatim</span>
+<span class="cm"> *\/</span>
+<span class="cm"> void ensure_javadoc_style_without_stars_are_working_as_expected() const = 0;</span>
+</pre></div>
+</div>
+</div>
+</div></div><a id="a8ce98dc79b37fcae5ae951d36bae25e9"></a><h2 class="memtitle"><span class="permalink"><a href="#a8ce98dc79b37fcae5ae951d36bae25e9">◆ </a></span>ensure_qt_style_comments_are_working_as_expected()</h2><div class="memitem"><div class="memproto"><table class="mlabels">  <tr>  <td class="mlabels-left">      <table class="memname">        <tr>          <td class="memname">void doxysphinx::doxygen::CommentStyles::ensure_qt_style_comments_are_working_as_expected </td>          <td>(</td>          <td class="paramname"></td><td>)</td>          <td> const</td>        </tr>      </table>  </td>  <td class="mlabels-right"><span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>  </tr></table></div><div class="memdoc"><div class="admonition-what-you-should-see-here admonition">
+<p class="admonition-title">What you should see here</p>
+<p>This text should be in an admonition box. It was generated from a doxygen qt comment <strong>without any special identation</strong>.</p>
+<p><em>Note that we had to add a space between the backslash and the verbatim command in the code because doxygen parsing will freak out if we add the command there…</em></p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/*!</span>
+<span class="cm"> * \ verbatim embed:rst</span>
+<span class="cm"> *</span>
+<span class="cm"> * ...rst-content-here...</span>
+<span class="cm"> *</span>
+<span class="cm"> * \ endverbatim</span>
+<span class="cm"> *\/</span>
+<span class="cm"> void ensure_qt_style_comments_are_working_as_expected() const = 0;</span>
+</pre></div>
+</div>
+</div>
+</div></div><a id="ac846440917510d8d71a2f9ce9960bf1b"></a><h2 class="memtitle"><span class="permalink"><a href="#ac846440917510d8d71a2f9ce9960bf1b">◆ </a></span>ensure_qt_style_comments_with_identation_are_working_as_expected()</h2><div class="memitem"><div class="memproto"><table class="mlabels">  <tr>  <td class="mlabels-left">      <table class="memname">        <tr>          <td class="memname">void doxysphinx::doxygen::CommentStyles::ensure_qt_style_comments_with_identation_are_working_as_expected </td>          <td>(</td>          <td class="paramname"></td><td>)</td>          <td> const</td>        </tr>      </table>  </td>  <td class="mlabels-right"><span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>  </tr></table></div><div class="memdoc"><div class="admonition-what-you-should-see-here admonition">
+<p class="admonition-title">What you should see here</p>
+<p>This text should be in an admonition box. It was generated from a doxygen qt comment <strong>with the rst content indented</strong>.</p>
+<p><em>Note that we had to add a space between the backslash and the verbatim command in the code because doxygen parsing will freak out if we add the command there…</em></p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/*!</span>
+<span class="cm"> * \ verbatim embed:rst</span>
+<span class="cm"> *</span>
+<span class="cm"> *     ...rst-content-here...</span>
+<span class="cm"> *</span>
+<span class="cm"> * \ endverbatim</span>
+<span class="cm"> *\/</span>
+<span class="cm"> void ensure_qt_style_comments_with_identation_are_working_as_expected() const = 0;</span>
+</pre></div>
+</div>
+</div>
+</div></div><a id="a449ad1cabc90b414778acb556100fd28"></a><h2 class="memtitle"><span class="permalink"><a href="#a449ad1cabc90b414778acb556100fd28">◆ </a></span>ensure_qt_style_without_stars_are_working_as_expected()</h2><div class="memitem"><div class="memproto"><table class="mlabels">  <tr>  <td class="mlabels-left">      <table class="memname">        <tr>          <td class="memname">void doxysphinx::doxygen::CommentStyles::ensure_qt_style_without_stars_are_working_as_expected </td>          <td>(</td>          <td class="paramname"></td><td>)</td>          <td> const</td>        </tr>      </table>  </td>  <td class="mlabels-right"><span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>  </tr></table></div><div class="memdoc"><div class="admonition-what-you-should-see-here admonition">
+<p class="admonition-title">What you should see here</p>
+<p>This text should be in an admonition box. It was generated from a doxygen qt comment <strong>without any special identation</strong>.</p>
+<p><em>Note that we had to add a space between the backslash and the verbatim command in the code because doxygen parsing will freak out if we add the command there…</em></p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/*!</span>
+<span class="cm"> \ verbatim embed:rst</span>
+
+<span class="cm">  ...rst-content-here...</span>
+
+<span class="cm"> \ endverbatim</span>
+<span class="cm"> *\/</span>
+<span class="cm"> void ensure_qt_style_without_stars_are_working_as_expected() const = 0;</span>
+</pre></div>
+</div>
+</div>
+</div></div><a id="a2d43c0b7b2a846fd2dbf149f9c3e2ee9"></a><h2 class="memtitle"><span class="permalink"><a href="#a2d43c0b7b2a846fd2dbf149f9c3e2ee9">◆ </a></span>ensure_slash_style_comments_are_working_as_expected()</h2><div class="memitem"><div class="memproto"><table class="mlabels">  <tr>  <td class="mlabels-left">      <table class="memname">        <tr>          <td class="memname">void doxysphinx::doxygen::CommentStyles::ensure_slash_style_comments_are_working_as_expected </td>          <td>(</td>          <td class="paramname"></td><td>)</td>          <td> const</td>        </tr>      </table>  </td>  <td class="mlabels-right"><span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>  </tr></table></div><div class="memdoc"><div class="admonition-what-you-should-see-here admonition">
+<p class="admonition-title">What you should see here</p>
+<p>This text should be in an admonition box. It was generated from a doxygen slash comment <strong>without any special identation</strong>.</p>
+<p><em>Note that we had to add a space between the backslash and the verbatim command in the code because doxygen parsing will freak out if we add the command there…</em></p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">/// \ verbatim embed:rst</span>
+<span class="c1">///</span>
+<span class="c1">/// ...rst-content-here...</span>
+<span class="c1">///</span>
+<span class="c1">/// \ endverbatim</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">ensure_slash_style_comments_are_working_as_expected</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+</div></div><a id="ae5268c1e23029248a932fbc2b90f5318"></a><h2 class="memtitle"><span class="permalink"><a href="#ae5268c1e23029248a932fbc2b90f5318">◆ </a></span>ensure_slash_style_comments_with_asterisk_are_working_as_expected()</h2><div class="memitem"><div class="memproto"><table class="mlabels">  <tr>  <td class="mlabels-left">      <table class="memname">        <tr>          <td class="memname">void doxysphinx::doxygen::CommentStyles::ensure_slash_style_comments_with_asterisk_are_working_as_expected </td>          <td>(</td>          <td class="paramname"></td><td>)</td>          <td> const</td>        </tr>      </table>  </td>  <td class="mlabels-right"><span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>  </tr></table></div><div class="memdoc"><div class="admonition-what-you-should-see-here admonition">
+<p class="admonition-title">What you should see here</p>
+<p>This text should be in an admonition box. It was generated from a doxygen slash comment <strong>without any special identation but with asterisk embed command</strong>.</p>
+<p><em>Note that we had to add a space between the backslash and the verbatim command in the code because doxygen parsing will freak out if we add the command there…</em></p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">/// \ verbatim embed:rst:asterisk</span>
+<span class="c1">///</span>
+<span class="c1">/// ...rst-content-here...</span>
+<span class="c1">///</span>
+<span class="c1">/// \ endverbatim</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">ensure_slash_style_comments_with_asterisk_are_working_as_expected</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+</div></div><a id="af86dfc6c802d36aa1bd5078b5517fffc"></a><h2 class="memtitle"><span class="permalink"><a href="#af86dfc6c802d36aa1bd5078b5517fffc">◆ </a></span>ensure_slash_style_comments_with_identation_are_working_as_expected()</h2><div class="memitem"><div class="memproto"><table class="mlabels">  <tr>  <td class="mlabels-left">      <table class="memname">        <tr>          <td class="memname">void doxysphinx::doxygen::CommentStyles::ensure_slash_style_comments_with_identation_are_working_as_expected </td>          <td>(</td>          <td class="paramname"></td><td>)</td>          <td> const</td>        </tr>      </table>  </td>  <td class="mlabels-right"><span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>  </tr></table></div><div class="memdoc"><div class="admonition-what-you-should-see-here admonition">
+<p class="admonition-title">What you should see here</p>
+<p>This text should be in an admonition box. It was generated from a doxygen slash comment <strong>with the rst content indented</strong>.</p>
+<p><em>Note that we had to add a space between the backslash and the verbatim command in the code because doxygen parsing will freak out if we add the command there…</em></p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">///</span>
+<span class="c1">/// \ verbatim embed:rst</span>
+<span class="c1">///</span>
+<span class="c1">///     ...rst-content-here...</span>
+<span class="c1">///</span>
+<span class="c1">/// \ endverbatim</span>
+<span class="c1">///</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">ensure_slash_style_comments_with_identation_are_working_as_expected</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+</div></div><a id="ae2d62d6adf92b49c928a270b9284e75f"></a><h2 class="memtitle"><span class="permalink"><a href="#ae2d62d6adf92b49c928a270b9284e75f">◆ </a></span>ensure_slash_style_with_exclamations_are_working_as_expected()</h2><div class="memitem"><div class="memproto"><table class="mlabels">  <tr>  <td class="mlabels-left">      <table class="memname">        <tr>          <td class="memname">void doxysphinx::doxygen::CommentStyles::ensure_slash_style_with_exclamations_are_working_as_expected </td>          <td>(</td>          <td class="paramname"></td><td>)</td>          <td> const</td>        </tr>      </table>  </td>  <td class="mlabels-right"><span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>  </tr></table></div><div class="memdoc"><div class="admonition-what-you-should-see-here admonition">
+<p class="admonition-title">What you should see here</p>
+<p>This text should be in an admonition box. It was generated from a doxygen slash comment <strong>with exclamationmarks instead of the third slash</strong>.</p>
+<p><em>Note that we had to add a space between the backslash and the verbatim command in the code because doxygen parsing will freak out if we add the command there…</em></p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//! \ verbatim embed:rst</span>
+<span class="c1">//!</span>
+<span class="c1">//!  ...rst-content-here...</span>
+<span class="c1">//!</span>
+<span class="c1">//! \ endverbatim</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">ensure_slash_style_with_exclamations_are_working_as_expected</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+</div></div><hr>The documentation for this class was generated from the following file:<ul><li>demo/demo/src/<a class="el" href="comment__styles_8hpp_source.html">comment_styles.hpp</a></li></ul></div><!-- contents --><!-- start footer part --><hr class="footer"><address class="footer"><small>Generated by  <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.png" alt="doxygen"></a> 1.8.17</small></address></body></html></div>
+</div>
+
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      Last updated on &#39;Tue May 31 10:36:27 2022&#39;, &#39;f81b020&#39;.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

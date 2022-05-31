@@ -1,0 +1,21 @@
+:orphan:
+
+.. title:: Demo: Welcome to the Doxysphinx Demo C++ project
+
+Demo
+====
+
+.. toctree::
+   :caption: Index
+   :maxdepth: 2
+   :hidden:
+
+   namespaces
+   annotated
+   files
+
+.. container:: doxygen-content
+
+   
+   .. raw:: html
+     :file: index.html
