@@ -13,6 +13,10 @@
 
 <!--next-version-placeholder-->
 
+## v2.1.5 (2022-05-31)
+### Fix
+* **ci:** Fix for really bad typo ([`aa5022d`](https://github.com/boschglobal/doxysphinx/commit/aa5022dd9c97bff90aa80b9e33c45baae2b48665))
+
 ## v2.1.4 (2022-05-30)
 ### Fix
 * **ci:** Added precommit caching ([`5df7088`](https://github.com/boschglobal/doxysphinx/commit/5df70887f6b7dc5e3125c74e0be43d09f152a0c2))
