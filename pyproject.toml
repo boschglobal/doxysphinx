@@ -21,7 +21,6 @@ keywords = ["DaC", "docs-as-code", "doxygen", "sphinx"]
 classifiers = [
     "Topic :: Software Development :: Build Tools",
     "Topic :: Software Development :: Documentation",
-    "Topic :: Software Development :: Code Generators",
     "Topic :: Software Development :: Pre-processors",
     "Topic :: Text Processing :: Markup :: HTML",
     "Topic :: Text Processing :: Markup :: reStructuredText",
