@@ -13,6 +13,9 @@
 
 <!--next-version-placeholder-->
 
+## v2.1.7 (2022-06-01)
+
+
 ## v2.1.6 (2022-05-31)
 ### Fix
 * **ci:** Fix typo at pypi secrets ([`77e333b`](https://github.com/boschglobal/doxysphinx/commit/77e333bf2a3eb564e97f210b8320df4d03d32b64))
