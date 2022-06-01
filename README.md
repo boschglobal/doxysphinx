@@ -19,7 +19,10 @@
 ---
 
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE.md)
-[![Build action: CD](https://github.com/boschglobal/doxysphinx/actions/workflows/cd.yml/badge.svg?branch=main)](https://github.com/boschglobal/doxysphinx/actions/workflows/cd.yml)
+[![Pypi package](https://img.shields.io/pypi/v/doxysphinx?style=plastic)](https://pypi.org/project/doxysphinx/)
+[![supported Python versions](https://img.shields.io/pypi/pyversions/doxysphinx)](https://pypi.org/project/doxysphinx/)
+[![Build action: CI](https://github.com/boschglobal/doxysphinx/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/boschglobal/doxysphinx/actions/workflows/ci.yml)
+[![Build action: CD](https://github.com/boschglobal/doxysphinx/actions/workflows/cd.yml/badge.svg?tag=latest)](https://github.com/boschglobal/doxysphinx/actions/workflows/cd.yml)
 
 Doxysphinx is a [Doxygen](https://doxygen.nl) and [Sphinx](https://sphinx-doc.org) integration tool.
 
