@@ -9,7 +9,7 @@
 
 [tool.poetry]
 name = "doxysphinx"
-version = "2.1.8"
+version = "2.1.9"
 description = "Integrates doxygen html documentation with sphinx."
 authors = [
     "Nirmal Sasidharan <nirmal.sasidharan@de.bosch.com>",

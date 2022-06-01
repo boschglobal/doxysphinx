@@ -13,6 +13,13 @@
 
 <!--next-version-placeholder-->
 
+## v2.1.9 (2022-06-01)
+### Fix
+* **pypi:** Pypi publishing is now active ([`86096fc`](https://github.com/boschglobal/doxysphinx/commit/86096fc3b803efeaa6fea12992cce70f4fc9c9f6))
+
+### Documentation
+* Add more status badges ([`16927d4`](https://github.com/boschglobal/doxysphinx/commit/16927d4c3192268a35e055a9dd046a30a5db4088))
+
 ## v2.1.8 (2022-06-01)
 ### Fix
 * **ci:** Attempt to solve problem of "v" tag ([`632cd60`](https://github.com/boschglobal/doxysphinx/commit/632cd60093522f3785ad28e7dc701698c0fb0291))
