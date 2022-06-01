@@ -13,6 +13,10 @@
 
 <!--next-version-placeholder-->
 
+## v2.1.8 (2022-06-01)
+### Fix
+* **ci:** Attempt to solve problem of "v" tag ([`632cd60`](https://github.com/boschglobal/doxysphinx/commit/632cd60093522f3785ad28e7dc701698c0fb0291))
+
 ## v2.1.7 (2022-06-01)
 
 
