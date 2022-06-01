@@ -377,6 +377,19 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#doxysphinx-vs-breathe-vs-exhale">
+   Doxysphinx vs Breathe vs Exhale
+  </a>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -389,6 +402,19 @@
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#doxysphinx-vs-breathe-vs-exhale">
+   Doxysphinx vs Breathe vs Exhale
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -403,6 +429,7 @@
 
  Author(s):
  - Markus Braun, :em engineering methods AG (contracted by Robert Bosch GmbH)
+ - Nirmal Sasidharan, Robert Bosch Gmbh
 =====================================================================================
 -->
 <div class="section" id="alternatives">
@@ -420,6 +447,18 @@
 <li><p><a class="reference external" href="https://github.com/troelsfr/Gasp">gasp</a></p></li>
 <li><p><a class="reference external" href="https://github.com/jitsuCM/doxygraph">doxygraph</a></p></li>
 </ul>
+<div class="section" id="doxysphinx-vs-breathe-vs-exhale">
+<h2>Doxysphinx vs Breathe vs Exhale<a class="headerlink" href="#doxysphinx-vs-breathe-vs-exhale" title="Permalink to this headline">¶</a></h2>
+<p>The tools <a class="reference external" href="https://breathe.readthedocs.io/en/latest/">Breathe</a> and <a class="reference external" href="https://exhale.readthedocs.io/en/latest/index.html">Exhale</a> needs special mention, as doxysphinx was invented in a large C++ project (&gt; 11,000 C++ files) where we started out with these two tools. With the large project size, Exhale did not perform too well and Breathe did not quite support all C++ and Doxygen features that C++ developers expected. Doxysphinx was invented to overcome these limitations.</p>
+<p>Breathe is useful for smaller C++ projects when parts of C++ Doxygen documentation needs to be integrated into the Sphinx documentation using <a class="reference external" href="https://breathe.readthedocs.io/en/latest/directives.html">Breathe directives</a>.
+When the complete C++ Doxygen documentation needs to be integrated into Sphinx, the following options are available:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/michaeljones/breathe/blob/master/breathe/apidoc.py">breathe.apidoc</a></p></li>
+<li><p><a class="reference external" href="https://exhale.readthedocs.io/en/latest/index.html">Exhale</a></p></li>
+</ul>
+<p>Doxysphinx outperforms the two options w.r.t to speed and features, as it simply reuses Doxygen output.</p>
+<p>Also note that Breathe and Doxysphinx can co-exist in the same project.</p>
+</div>
 </div>
 
 
@@ -449,7 +488,7 @@
     <footer class="footer">
   <p>
     
-      Last updated on &#39;Tue May 31 10:36:27 2022&#39;, &#39;f81b020&#39;.<br/>
+      Last updated on &#39;Wed Jun 1 09:49:43 2022&#39;, &#39;be6ee84&#39;.<br/>
   </p>
 </footer>
 </main>
