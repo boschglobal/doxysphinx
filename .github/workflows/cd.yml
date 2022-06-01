@@ -60,7 +60,6 @@ jobs:
     - name: "Deploy binaries to gh-release"
       uses: softprops/action-gh-release@v1
       with:
-        tag_name: "v${{ needs.setup.outputs.semantic_version }}"
         token: ${{ secrets.GITHUBTOKEN }}
         files: |
           dist/*.*
