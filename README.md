@@ -7,6 +7,7 @@
  Author(s):
  - Markus Braun, :em engineering methods AG (contracted by Robert Bosch GmbH)
  - Nirmal Sasidharan, Robert Bosch Gmbh
+ - Wolfgang Ulmer, Robert Bosch GmbH
 =====================================================================================
 -->
 
@@ -35,8 +36,6 @@ Internally, Doxysphinx creates an rST file for each (Doxygen) HTML file and incl
 Later Sphinx picks up these rST files and creates an integrated documentation.
 
 Check out Doxysphinx alternatives [here](https://github.com/boschglobal/doxysphinx/blob/main/docs/alternatives.md).
-
-## Links
 
 ## Links
 

@@ -33,5 +33,6 @@ Please keep the list sorted.
 
 * Robert Bosch GmbH
   * Nirmal Sasidharan - <nirmal.sasidharan@de.bosch.com>
+  * Wolfgang Ulmer - <wolfgang.ulmer@de.bosch.com>
 * :em engineering methods AG
   * Markus Braun - <markus.braun@em.ag>
