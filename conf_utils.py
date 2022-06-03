@@ -5,6 +5,7 @@
 #
 #  Author(s):
 #  - Markus Braun, :em engineering methods AG (contracted by Robert Bosch GmbH)
+#  - Stefan Schulz, itemis AG (contracted by Robert Bosch GmbH)
 # =====================================================================================
 """Some helper functions for conf.py."""
 import datetime
@@ -65,6 +66,7 @@ def theme_options(theme: str) -> Dict[str, Any]:
             "repository_url": "https://github.com/boschglobal/doxysphinx",
             "use_repository_button": True,
             "use_edit_page_button": True,
+            "repository_branch": "main",
             "logo_only": True,
             "show_navbar_depth": 5,
             "home_page_in_toc": True,
