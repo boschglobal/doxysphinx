@@ -42,12 +42,13 @@ jobs:
         poetry run pytest --junitxml=.testreport.xml
 
     - name: "Report results"
-      uses: dorny/test-reporter@v1
+      uses: mikepenz/action-junit-report@v3
       if: success() || failure()    # run this step even if previous step failed
       with:
-        name: pytest results
-        path: .testreport.xml
-        reporter: java-junit
+        fail_on_failure: true
+        check_name: pytest results
+        report_paths: '.testreport.xml'
+        token: ${{ secrets.GITHUBTOKEN }}
 
     - name: "cache pre-commit"
       uses: actions/cache@v3
