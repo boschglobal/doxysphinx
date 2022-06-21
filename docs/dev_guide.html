@@ -32,9 +32,9 @@
     <link rel="stylesheet" type="text/css" href="../_static/assets/jsonview.bundle.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/libs/html/datatables.min.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/modern.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/layouts.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/styles.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/modern.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-test-results/common.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme-custom.css" />
     
@@ -357,7 +357,7 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         
-        <a class="edit-button" href="https://github.com/boschglobal/doxysphinx/edit/master/docs/dev_guide.md"><button
+        <a class="edit-button" href="https://github.com/boschglobal/doxysphinx/edit/main/docs/dev_guide.md"><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
     </div>
@@ -546,15 +546,15 @@ the following tools if you haven’t them yet:</p>
 <div class="sd-card-title sd-font-weight-bold docutils">
 Installation (see also <a class="reference external" href="https://python-poetry.org/docs/master/#installation">https://python-poetry.org/docs/master/#installation</a>)</div>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="a96adf27-719d-4786-b550-0cfeeac09c43" name="6ee419c9-bc98-4850-99d0-68fd0b8f002b" type="radio">
-</input><label class="sd-tab-label" for="a96adf27-719d-4786-b550-0cfeeac09c43">
+<input checked="checked" id="12594f00-d738-4e63-a6e0-80393fea6a8f" name="012e5141-63f4-4736-827c-f0ff82442206" type="radio">
+</input><label class="sd-tab-label" for="12594f00-d738-4e63-a6e0-80393fea6a8f">
 Linux/Mac</label><div class="sd-tab-content docutils">
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -sSL https://install.python-poetry.org <span class="p">|</span> python3 -
 </pre></div>
 </div>
 </div>
-<input id="087b751a-cdb6-4343-bfef-dbf5d0ba2e2e" name="6ee419c9-bc98-4850-99d0-68fd0b8f002b" type="radio">
-</input><label class="sd-tab-label" for="087b751a-cdb6-4343-bfef-dbf5d0ba2e2e">
+<input id="bdaa86ac-fd23-43c3-869f-b3d37d296cb7" name="012e5141-63f4-4736-827c-f0ff82442206" type="radio">
+</input><label class="sd-tab-label" for="bdaa86ac-fd23-43c3-869f-b3d37d296cb7">
 Windows</label><div class="sd-tab-content docutils">
 <div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="nb">Invoke-WebRequest</span> <span class="n">-Uri</span> <span class="n">https</span><span class="p">://</span><span class="n">install</span><span class="p">.</span><span class="n">python-poetry</span><span class="p">.</span><span class="n">org</span> <span class="n">-UseBasicParsing</span><span class="p">).</span><span class="n">Content</span> <span class="p">|</span> <span class="n">python</span> <span class="p">-</span>
 </pre></div>
@@ -570,8 +570,8 @@ Windows</label><div class="sd-tab-content docutils">
 <div class="section" id="usage">
 <h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="6161f601-d916-4f04-a3fe-ffab85b99145" name="c4c6a7ff-ff0f-4b27-83e6-91702d49fc76" type="radio">
-</input><label class="sd-tab-label" for="6161f601-d916-4f04-a3fe-ffab85b99145">
+<input checked="checked" id="d6f66de9-f7b2-4c85-bc69-4770582d6c17" name="6b7563ee-8824-4f7b-a292-2eb7a202d299" type="radio">
+</input><label class="sd-tab-label" for="d6f66de9-f7b2-4c85-bc69-4770582d6c17">
 devcontainer</label><div class="sd-tab-content docutils">
 <ul>
 <li><p>open the devcontainer</p>
@@ -594,8 +594,8 @@ devcontainer open   <span class="c1"># for opening the devcontainer directly in 
 </li>
 </ul>
 </div>
-<input id="a599943f-0098-4a47-b4cd-6e558da65779" name="c4c6a7ff-ff0f-4b27-83e6-91702d49fc76" type="radio">
-</input><label class="sd-tab-label" for="a599943f-0098-4a47-b4cd-6e558da65779">
+<input id="e31f2a71-db13-47c3-9144-7cbd257dde04" name="6b7563ee-8824-4f7b-a292-2eb7a202d299" type="radio">
+</input><label class="sd-tab-label" for="e31f2a71-db13-47c3-9144-7cbd257dde04">
 native development (windows, linux, etc.)</label><div class="sd-tab-content docutils">
 <ul>
 <li><p>Open the repo in vscode</p></li>
@@ -693,7 +693,7 @@ install it (e.g. via chocolatey “choco install make”), and afterwards config
     <footer class="footer">
   <p>
     
-      Last updated on &#39;Wed Jun 1 12:15:16 2022&#39;, &#39;4e7ad31&#39;.<br/>
+      Last updated on &#39;Tue Jun 21 07:01:00 2022&#39;, &#39;a86a272&#39;.<br/>
   </p>
 </footer>
 </main>
