@@ -13,6 +13,13 @@
 
 <!--next-version-placeholder-->
 
+## v2.1.10 (2022-06-21)
+### Fix
+* Remove duplicate headline ([`f12a371`](https://github.com/boschglobal/doxysphinx/commit/f12a37127b8635504a7b381a749ec8e6679c70ca))
+
+### Documentation
+* Fix sphinx_book_theme config ([`9d59320`](https://github.com/boschglobal/doxysphinx/commit/9d59320389e3cf92927c1b154357dd698695a74b))
+
 ## v2.1.9 (2022-06-01)
 ### Fix
 * **pypi:** Pypi publishing is now active ([`86096fc`](https://github.com/boschglobal/doxysphinx/commit/86096fc3b803efeaa6fea12992cce70f4fc9c9f6))
