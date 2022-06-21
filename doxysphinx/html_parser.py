@@ -158,7 +158,7 @@ class DoxygenHtmlParser:
         """
         normalized_text = text.strip()
 
-        marker_checks = map(lambda x: (x, normalized_text.startswith(x)), self._supported_markers())
+        marker_checks = ((x, normalized_text.startswith(x)) for x in self._supported_markers())
 
         for marker, found in marker_checks:
             if not found:
