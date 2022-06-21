@@ -39,16 +39,7 @@ jobs:
     - name: "Run Tests"
       run: |
         mkdir -p docs/doxygen
-        poetry run pytest --junitxml=.testreport.xml
-
-    - name: "Report results"
-      uses: mikepenz/action-junit-report@v3
-      if: success() || failure()    # run this step even if previous step failed
-      with:
-        fail_on_failure: true
-        check_name: pytest results
-        report_paths: '.testreport.xml'
-        token: ${{ secrets.GITHUBTOKEN }}
+        poetry run pytest --emoji -v --md $GITHUB_STEP_SUMMARY
 
     - name: "cache pre-commit"
       uses: actions/cache@v3

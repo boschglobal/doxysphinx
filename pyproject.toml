@@ -74,6 +74,8 @@ cohesion = "^1.0.0"
 pydocstyle = "^6.1.1"
 sphinx_design = "^0.1.0"
 sphinx-toolbox = "^3.0.0"
+pytest-md = "^0.2.0"
+pytest-emoji = "^0.2.0"
 
 [tool.poetry.scripts]
 doxysphinx = "doxysphinx.cli:cli"
