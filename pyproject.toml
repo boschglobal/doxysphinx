@@ -20,6 +20,7 @@ license = "MIT"
 homepage = "https://github.com/boschglobal/doxysphinx"
 repository = "https://github.com/boschglobal/doxysphinx"
 documentation = "https://boschglobal.github.io/doxysphinx/"
+readme = "README.md"
 keywords = ["DaC", "docs-as-code", "doxygen", "sphinx"]
 classifiers = [
     "Topic :: Software Development :: Build Tools",

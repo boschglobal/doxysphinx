@@ -13,14 +13,14 @@
 
 <div align="center">
 
-<img src="docs/resources/doxysphinx_logo.svg" alt="doxysphinx" width=500 />
+<img src="https://raw.githubusercontent.com/boschglobal/doxysphinx/main/docs/resources/doxysphinx_logo.svg" alt="doxysphinx" width=500 />
 
 </div>
 
 ---
 
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE.md)
-[![Pypi package](https://img.shields.io/pypi/v/doxysphinx?style=plastic)](https://pypi.org/project/doxysphinx/)
+[![Pypi package](https://img.shields.io/pypi/v/doxysphinx)](https://pypi.org/project/doxysphinx/)
 [![supported Python versions](https://img.shields.io/pypi/pyversions/doxysphinx)](https://pypi.org/project/doxysphinx/)
 [![Build action: CI](https://github.com/boschglobal/doxysphinx/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/boschglobal/doxysphinx/actions/workflows/ci.yml)
 [![Build action: CD](https://github.com/boschglobal/doxysphinx/actions/workflows/cd.yml/badge.svg?tag=latest)](https://github.com/boschglobal/doxysphinx/actions/workflows/cd.yml)
