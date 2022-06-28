@@ -164,6 +164,21 @@ This is typically used to reference the root docs or some special page where you
 ``````
 ```````
 
+````{tip}
+As for each doxygen html file an equally named rst file will be created by doxysphinx you can just reference
+the doxygen sections via their names. However as these aren't always obvious here's a list:
+
+| Doxygen page title | html/rst name | example link (e.g. for toctree or doc link) | rendered example |
+| --- | ---   | --- | --- |
+| Main Page | index | `/docs/doxygen/demo/html/index` | {doc}`/docs/doxygen/demo/html/index` |
+| Namespace List | namespaces | `/docs/doxygen/demo/html/namespaces` | {doc}`/docs/doxygen/demo/html/namespaces` |
+| Class List | annotated | `/docs/doxygen/demo/html/annotated` | {doc}`/docs/doxygen/demo/html/annotated` |
+| Class Index | classes | `/docs/doxygen/demo/html/classes` | {doc}`/docs/doxygen/demo/html/classes` |
+| Class Hierachy | inherits | `/docs/doxygen/demo/html/inherits` | {doc}`/docs/doxygen/demo/html/inherits` |
+| Class Members | functions | `/docs/doxygen/demo/html/functions` | {doc}`/docs/doxygen/demo/html/functions` |
+| Files | files | `/docs/doxygen/demo/html/files` | {doc}`/docs/doxygen/demo/html/files` |
+````
+
 ## via doxylink symbol links
 
 When you set up doxylink correctly (see [](getting_started.md#step-2-install-and-setup-doxylink)) you can
