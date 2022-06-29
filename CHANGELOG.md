@@ -13,6 +13,13 @@
 
 <!--next-version-placeholder-->
 
+## v2.1.11 (2022-06-29)
+### Fix
+* **styles:** Doxygens section headings and also markdown headings are now shown ([`85c062d`](https://github.com/boschglobal/doxysphinx/commit/85c062dfe34333c90871a30f2fee3d8dc8108a8a))
+
+### Documentation
+* Added a table of static doxygen page names ([`7dcdeda`](https://github.com/boschglobal/doxysphinx/commit/7dcdedac38b525d53bf4896f753cf07373d1cbcf))
+
 ## v2.1.10 (2022-06-21)
 ### Fix
 * Remove duplicate headline ([`f12a371`](https://github.com/boschglobal/doxysphinx/commit/f12a37127b8635504a7b381a749ec8e6679c70ca))
