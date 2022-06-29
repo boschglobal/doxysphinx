@@ -1563,8 +1563,8 @@ html {
     General Sphinx fixes
 */
 /* hide sphinx heading - because doxygen pages already have a heading */
-.section h1,
-section h1 {
+.section > h1:first-of-type,
+section > h1:first-of-type {
   display: none;
 }
 

@@ -32,9 +32,9 @@
     <link rel="stylesheet" type="text/css" href="../../_static/assets/jsonview.bundle.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/libs/html/datatables.min.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/layouts.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/styles.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/modern.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/styles.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/layouts.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-test-results/common.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-book-theme-custom.css" />
     
@@ -535,7 +535,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">normalized_text</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
 
-        <span class="n">marker_checks</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">normalized_text</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">x</span><span class="p">)),</span> <span class="bp">self</span><span class="o">.</span><span class="n">_supported_markers</span><span class="p">())</span>
+        <span class="n">marker_checks</span> <span class="o">=</span> <span class="p">((</span><span class="n">x</span><span class="p">,</span> <span class="n">normalized_text</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_supported_markers</span><span class="p">())</span>
 
         <span class="k">for</span> <span class="n">marker</span><span class="p">,</span> <span class="n">found</span> <span class="ow">in</span> <span class="n">marker_checks</span><span class="p">:</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="n">found</span><span class="p">:</span>
@@ -572,7 +572,7 @@
     <footer class="footer">
   <p>
     
-      Last updated on &#39;Tue Jun 21 07:01:00 2022&#39;, &#39;a86a272&#39;.<br/>
+      Last updated on &#39;Wed Jun 29 07:14:22 2022&#39;, &#39;9d883b7&#39;.<br/>
   </p>
 </footer>
 </main>

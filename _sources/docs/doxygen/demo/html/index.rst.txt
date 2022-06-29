@@ -1,6 +1,6 @@
 :orphan:
 
-.. title:: Demo: Welcome to the Doxysphinx Demo C++ project
+.. title:: Demo: Main Page
 
 Demo
 ====
