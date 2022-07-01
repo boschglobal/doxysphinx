@@ -35,6 +35,7 @@ Please keep the list sorted.
   * Nirmal Sasidharan - <nirmal.sasidharan@de.bosch.com>
   * Wolfgang Ulmer - <wolfgang.ulmer@de.bosch.com>
 * :em engineering methods AG
+  * Celina Adelhardt - <celina.adelhardt@em.ag>
   * Markus Braun - <markus.braun@em.ag>
 * itemis AG
   * Stefan Schulz - <stefan.schulz@itemis.com>

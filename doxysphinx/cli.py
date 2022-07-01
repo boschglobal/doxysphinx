@@ -5,6 +5,7 @@
 #
 #  Author(s):
 #  - Markus Braun, :em engineering methods AG (contracted by Robert Bosch GmbH)
+#  - Celina Adelhardt, :em engineering methods AG (contracted by Robert Bosch GmbH)
 # =====================================================================================
 
 """
@@ -29,10 +30,10 @@ from typing import Iterator, List
 import click
 import click_log  # type: ignore
 
-from doxysphinx.doxygen import read_doxyfile
+from doxysphinx.doxygen import DoxygenSettingsValidator, read_doxyfile
 from doxysphinx.process import Builder, Cleaner
 from doxysphinx.utils.contexts import TimedContext
-from doxysphinx.utils.pathlib_fix import path_is_relative_to, path_resolve
+from doxysphinx.utils.pathlib_fix import path_resolve
 
 _logger = logging.getLogger()
 click_log.basic_config(_logger)
@@ -73,7 +74,7 @@ def build(doxyfile: List[Path], sphinx_source: Path, sphinx_output: Path):
     """
     _logger.info("starting build command...")
     with TimedContext() as tc:
-        doxygen_html_output_dirs = _read_and_validate_doxygen_out_dirs(doxyfile, sphinx_source)
+        doxygen_html_output_dirs = _read_and_validate_doxygen_config(doxyfile, sphinx_source)
 
         builder = Builder(sphinx_source, sphinx_output)
         for doxy_output in doxygen_html_output_dirs:
@@ -94,7 +95,7 @@ def clean(doxyfile: List[Path], sphinx_source: Path, sphinx_output: Path):
     """
     _logger.info("starting clean command...")
     with TimedContext() as tc:
-        doxygen_html_output_dirs = _read_and_validate_doxygen_out_dirs(doxyfile, sphinx_source)
+        doxygen_html_output_dirs = _read_and_validate_doxygen_config(doxyfile, sphinx_source)
 
         cleaner = Cleaner(sphinx_source, sphinx_output)
         for doxy_output in doxygen_html_output_dirs:
@@ -102,18 +103,43 @@ def clean(doxyfile: List[Path], sphinx_source: Path, sphinx_output: Path):
     _logger.info(f"clean command done in {tc.elapsed_humanized()}.")
 
 
-def _read_and_validate_doxygen_out_dirs(doxy_files: List[Path], sphinx_source: Path) -> Iterator[Path]:
+def _read_and_validate_doxygen_config(doxy_files: List[Path], sphinx_source: Path) -> Iterator[Path]:
     for doxy_file in doxy_files:
         config = read_doxyfile(doxy_file)
         out = Path(config["OUTPUT_DIRECTORY"]) / config["HTML_OUTPUT"]
+
+        validator = DoxygenSettingsValidator()
         absolute_out = path_resolve(out)
-        if not path_is_relative_to(out, sphinx_source):
+        if not validator.validate_doxygen_out_dirs(out, sphinx_source):
             stringified_out = str(out) if out.is_absolute() else f'"{out}" (resolved to "{absolute_out}")'
+
             raise click.UsageError(
                 f'The doxygen OUTPUT_DIR of "{stringified_out}" defined in "{doxy_file}"'
                 f'is not in a sub-path of the sphinx source directory "{sphinx_source}".'
                 "This is not supported."
             )
+        validator.mandatory_settings["OUTPUT_DIRECTORY"] = config["OUTPUT_DIRECTORY"]
+        validator.mandatory_settings["GENERATE_TAGFILE"] = str(out) + "/tagfile.xml"
+        config_errors = validator.validate_doxygen_config(config)
+        if config_errors:
+            msg = ""
+            for key, value in config_errors.items():
+                msg += "Wrong Flag: " + key + " | Set Value: " + value[0] + " | Expected Value: " + value[1] + "\n"
+            raise click.UsageError(
+                f'The doxygen settings defined in "{doxy_file}"'
+                f"do not match the mandatory settings necessary for doxysphinx."
+                f""
+                f"{msg}"
+            )
+
+        optional_errors = validator.validate_doxygen_recommended_settings(config)
+        if optional_errors:
+            msg = ""
+            for key, value in optional_errors.items():
+                msg += "Flag: " + key + " | Set Value: " + value[0] + " | Recommended Value: " + value[1] + "\n"
+            logging.warning("Not all recommended doxygen settings are set correctly.")
+            logging.warning(f"{msg}")
+
         yield absolute_out
 
 
