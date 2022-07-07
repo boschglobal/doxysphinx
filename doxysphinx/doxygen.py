@@ -16,7 +16,7 @@ from typing import Any, Dict, List, Tuple
 
 import json5
 
-from doxysphinx.utils.pathlib_fix import path_is_relative_to
+from doxysphinx.utils.pathlib_fix import path_is_relative_to, path_resolve
 
 
 def read_doxyfile(doxyfile: Path) -> Dict[str, str]:
@@ -100,68 +100,99 @@ class DoxygenSettingsValidator:
     }
     """A dictionary containing further optional settings for the doxygen config."""
 
-    def validate_doxygen_config(self, settings: Dict[str, str]) -> Dict[str, Tuple[str, str]]:
-        """Validate doxygen settings regarding the mandatory settings.
+    validation_errors: List[str] = []
+    """List of the validation errors including the doxyflag with its used and the correct value."""
+    absolute_out: Path
+    """Absolute path of the output directory."""
+    validation_msg = ""
+    """Validation errors merged in one string."""
 
-        :param settings: Imported doxygen settings from doxyfile.
-        :return: Empty dictionary if the validation was successful,
-        dictionary containing the wrong doxygen settings and needed values if not and doxysphinx should exit.
-        """
-        return check_settings(settings, "mandatory")
+    def validate(self, config: Dict[str, str], sphinx_source_dir: Path) -> bool:
+        """Validate the doxygen configuration regarding the output directory, mandatory and optional settings.
 
-    def validate_doxygen_out_dirs(self, out_dir: Path, sphinx_source_dir: Path) -> bool:
+        :param config: the imported doxyfile.
+        :param sphinx_source_dir: the sphinx directory (necessary for output directory validation).
+        :return: False, if there is a deviation to the defined mandatory or optional settings.
         """
-        Validate the output directory given from doxyfile.
+        out_dir_validated = self._validate_doxygen_out_dirs(config, sphinx_source_dir)
+        recommended_settings_validated = self._validate_doxygen_recommended_settings(config)
+        optional_settings_validated = self._validate_doxygen_optional_settings(config)
+        if out_dir_validated and recommended_settings_validated and optional_settings_validated:
+            self.validation_msg = "All doxygen settings are set correctly."
+            return True
+        else:
+            for error in self.validation_errors:
+                self.validation_msg += error + "\n"
+            return False
+
+    def _validate_doxygen_out_dirs(self, config, sphinx_source_dir: Path) -> bool:
+        """
+        Validate the output directory given from doxyfile and set the required values in mandatory settings.
 
         :param out_dir: output directory value in doxyfile.
         :param sphinx_source_dir: sphinx docs source-directory.
         :return: True if doxygen output directory is located inside the sphinx docs root,
         False if not and doxysphinx should exit.
         """
-        if path_is_relative_to(out_dir, sphinx_source_dir):
+        out = Path(config["OUTPUT_DIRECTORY"]) / config["HTML_OUTPUT"]
+        self.absolute_out = path_resolve(out)
+        stringified_out = str(out) if out.is_absolute() else f'"{out}" (resolved to "{self.absolute_out}")'
+
+        self.mandatory_settings["OUTPUT_DIRECTORY"] = config["OUTPUT_DIRECTORY"]
+        self.mandatory_settings["GENERATE_TAGFILE"] = str(out) + "/tagfile.xml"
+
+        if path_is_relative_to(out, sphinx_source_dir):
             return True
         else:
+            self.validation_errors.append(
+                f'The doxygen OUTPUT_DIR of "{stringified_out}" defined in the doxyfile'
+                f' is not in a sub-path of the sphinx source directory "{sphinx_source_dir}".'
+            )
             return False
 
-    def validate_doxygen_recommended_settings(self, settings: Dict[str, str]) -> Dict[str, Tuple[str, str]]:
-        """Check if doxyfile contains the recommended settings with its values.
+    def _validate_doxygen_recommended_settings(self, settings: Dict[str, str]) -> bool:
+        return self._validate_settings(settings, self.mandatory_settings)
 
-        :param settings: doxygen settings from doxyfile.
-        :return: True if the settings have the recommended values, False if not to create a warning.
+    def _validate_doxygen_optional_settings(self, settings: Dict[str, str]) -> bool:
+        """Validate the doxyflags for optional settings and mark the error with an "optional" before the string.
+
+        :param settings: doxygen optional settings
+        :return: True if all optional settings are contained in doxyfile correctly.
         """
-        return check_settings(settings, "optional")
+        validation_errors_old = self.validation_errors.copy()
+        if not self._validate_settings(settings, self.optional_settings):
+            nr_optional_errors = len(self.validation_errors) - len(validation_errors_old)
 
+            for index, item in enumerate(self.validation_errors[-nr_optional_errors:]):
+                self.validation_errors[(index - nr_optional_errors)] = "OPTIONAL: " + item
+            return False
 
-def check_settings(imported_settings: Dict[str, str], setting_type: str) -> Dict[str, Tuple[str, str]]:
-    """Compare the imported doxygen settings with mandatory or recommended settings.
+        return True
 
-    :param imported_settings: Parsed doxygen settings from doxyfile.
-    :param target_settings: Hardcoded dicts with reference values, either mandatory_settings or optional_settings.
-    :return: Empty dictionary if the validation was successful, else dictionary containing the wrong
-    doxygen settings and needed values in case one needs to adapt the doxygen config.
-    """
-    if setting_type == "mandatory":
-        target_settings = DoxygenSettingsValidator.mandatory_settings
-    else:
-        target_settings = DoxygenSettingsValidator.optional_settings
+    def _validate_settings(self, imported_settings: Dict[str, str], target_settings: Dict[str, str]) -> bool:
 
-    if all(item in imported_settings.items() for item in target_settings.items()):
-        return {}
-    else:
-        diffs = {}
+        validation_successful = True
+        if all(item in imported_settings.items() for item in target_settings.items()):
+            return validation_successful
+
         contained_settings_target = {
             key: value for key, value in imported_settings.items() if key in target_settings.keys()
         }
 
         missing_imported_settings = target_settings.keys() - contained_settings_target.keys()
-        if len(missing_imported_settings) > 0:
-            diffs.update({key: ("missing value", target_settings[key]) for key in missing_imported_settings})
+        if missing_imported_settings:
+            for key in missing_imported_settings:
+                self.validation_errors.append((f"Missing value for {key}, but {target_settings[key]} is required."))
+            validation_successful = False
 
         for key in contained_settings_target.keys():
             if not contained_settings_target[key] == target_settings[key]:
-                diffs[key] = (contained_settings_target[key], target_settings[key])
+                self.validation_errors.append(
+                    (f"Wrong value {contained_settings_target[key]} for {key}, {target_settings[key]} is required.")
+                )
+                validation_successful = False
 
-        return diffs
+        return validation_successful
 
 
 def read_js_data_file(js_data_file: Path) -> Any:

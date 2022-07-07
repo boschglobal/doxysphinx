@@ -8,7 +8,7 @@
 # =====================================================================================
 
 from pathlib import Path
-from typing import Dict, Tuple
+from typing import Dict, List
 
 import pytest
 
@@ -29,8 +29,14 @@ from doxysphinx.doxygen import DoxygenSettingsValidator as Validator
                 "GENERATE_TAGFILE": "docs/doxygen/demo/html/tagfile.xml",
                 "CREATE_SUBDIRS": "NO",
                 "SEARCHENGINE": "NO",
+                "HTML_OUTPUT": "html",
+                "GENERATE_XML": "NO",
+                "DOT_IMAGE_FORMAT": "svg",
+                "DOT_TRANSPARENT": "YES",
+                "INTERACTIVE_SVG": "YES",
+                "HTML_EXTRA_STYLESHEET": "YOUR_DOXYGEN_AWESOME_PATH/doxygen-awesome.css",
             },
-            {},  # correct input with another order
+            [],  # correct input with another order
         ),
         (
             {
@@ -43,8 +49,14 @@ from doxysphinx.doxygen import DoxygenSettingsValidator as Validator
                 "GENERATE_TAGFILE": "docs/doxygen/demo/html/tagfile.xml",
                 "CREATE_SUBDIRS": "NO",
                 "SEARCHENGINE": "no",
+                "HTML_OUTPUT": "html",
+                "GENERATE_XML": "NO",
+                "DOT_IMAGE_FORMAT": "svg",
+                "DOT_TRANSPARENT": "YES",
+                "INTERACTIVE_SVG": "YES",
+                "HTML_EXTRA_STYLESHEET": "YOUR_DOXYGEN_AWESOME_PATH/doxygen-awesome.css",
             },
-            {"SEARCHENGINE": ("no", "NO")},  # one param in lower case
+            ["Wrong value no for SEARCHENGINE, NO is required."],  # one param in lower case
         ),
         (
             {
@@ -53,12 +65,22 @@ from doxysphinx.doxygen import DoxygenSettingsValidator as Validator
                 "GENERATE_TREEVIEW": "NO",
                 "ALIASES": "rst",
                 "endrst": "\\endverbatim",
-                "DISABLE_INDEX": "NO",
+                "DISABLE_INDEX": "YES",
                 "GENERATE_HTML": "NO",
                 "GENERATE_TAGFILE": "docs/doxygen/demo/html/tagfile.xml",
                 "CREATE_SUBDIRS": "NO",
+                "GENERATE_XML": "YES",
+                "DOT_IMAGE_FORMAT": "svg",
+                "HTML_OUTPUT": "html",
+                "DOT_TRANSPARENT": "YES",
+                "INTERACTIVE_SVG": "YES",
+                "HTML_EXTRA_STYLESHEET": "YOUR_DOXYGEN_AWESOME_PATH/doxygen-awesome.css",
             },
-            {"GENERATE_HTML": ("NO", "YES")},  # one setting is wrong
+            [
+                "Wrong value YES for DISABLE_INDEX, NO is required.",
+                "Wrong value NO for GENERATE_HTML, YES is required.",
+                "OPTIONAL: Wrong value YES for GENERATE_XML, NO is required.",
+            ],  # two mandatory settings and one optional setting are wrong
         ),
         (
             {
@@ -71,8 +93,40 @@ from doxysphinx.doxygen import DoxygenSettingsValidator as Validator
                 "endrst": "\\endverbatim",
                 "CREATE_SUBDIRS": "NO",
                 "GENERATE_TAGFILE": "docs/doxygen/demo/html/tagfile.xml",
+                "GENERATE_XML": "NO",
+                "DOT_IMAGE_FORMAT": "svg",
+                "HTML_OUTPUT": "html",
+                "DOT_TRANSPARENT": "YES",
+                "INTERACTIVE_SVG": "YES",
             },
-            {"DISABLE_INDEX": ("missing value", "NO")},  # one setting is missing (instead another flag is present)
+            [
+                "Missing value for DISABLE_INDEX, but NO is required.",
+                "OPTIONAL: Missing value for HTML_EXTRA_STYLESHEET, but YOUR_DOXYGEN_AWESOME_PATH/doxygen-awesome.css is required.",
+            ],  # two settings are missing (instead another flag is present),
+        ),
+        (
+            {
+                "OUTPUT_DIRECTORY": "/em-hackathon/code",
+                "SEARCHENGINE": "NO",
+                "GENERATE_TREEVIEW": "NO",
+                "RANDOM_FLAG": "YES",
+                "DISABLE_INDEX": "NO",
+                "HTML_OUTPUT": "html",
+                "GENERATE_HTML": "YES",
+                "ALIASES": "rst",
+                "endrst": "\\endverbatim",
+                "CREATE_SUBDIRS": "NO",
+                "GENERATE_TAGFILE": "/em-hackathon/code/html/tagfile.xml",
+                "GENERATE_XML": "NO",
+                "DOT_IMAGE_FORMAT": "svg",
+                "DOT_TRANSPARENT": "YES",
+                "INTERACTIVE_SVG": "YES",
+                "HTML_EXTRA_STYLESHEET": "YOUR_DOXYGEN_AWESOME_PATH/doxygen-awesome.css",
+            },
+            [
+                'The doxygen OUTPUT_DIR of "/em-hackathon/code/html" defined in the doxyfile'
+                f' is not in a sub-path of the sphinx source directory "{Path("/workspaces/doxysphinx")}".'
+            ],  # wrong output directory
         ),
         (
             {
@@ -87,69 +141,23 @@ from doxysphinx.doxygen import DoxygenSettingsValidator as Validator
                 "GENERATE_TAGFILE": "docs/doxygen/demo/html/tagfile.xml",
                 "ANOTHER_FLAG": "YES",
                 "ANOTHER_TAG": "NO",
+                "GENERATE_XML": "NO",
+                "DOT_IMAGE_FORMAT": "svg",
+                "DOT_TRANSPARENT": "YES",
+                "INTERACTIVE_SVG": "YES",
+                "HTML_OUTPUT": "html",
+                "HTML_EXTRA_STYLESHEET": "YOUR_DOXYGEN_AWESOME_PATH/doxygen-awesome.css",
             },
-            {},  # additional flags in doxyfile
+            [],  # additional flags in doxyfile
         ),
     ],
 )
-def test_doxysettings_validation(validator, test_input: Dict[str, str], expected: Dict[str, Tuple[str, str]]):
-    assert validator.validate_doxygen_config(test_input) == expected
+def test_doxysettings_validation(validator, test_input: Dict[str, str], expected: List[str]):
+    validator.validate(test_input, Path("/workspaces/doxysphinx"))
+    assert validator.validation_errors == expected
 
 
 @pytest.fixture
 def validator():
     validator = Validator()
-    validator.mandatory_settings["OUTPUT_DIRECTORY"] = "docs/doxygen/demo"
-    validator.mandatory_settings["GENERATE_TAGFILE"] = "docs/doxygen/demo/html/tagfile.xml"
     return validator
-
-
-@pytest.mark.parametrize(
-    "test_dir, expected",
-    [
-        ("/workspaces/doxysphinx/docs/doxygen", True),
-        ("/workspaces/doxysphinx", False),  # test_dir is the source_dir itself
-        ("~/em-hackathon/code", False),  # another directory outside the devcontainer
-    ],
-)
-def test_doxy_out_dir_validation(validator, test_dir: str, expected: bool):
-    assert validator.validate_doxygen_out_dirs(Path(test_dir), Path("/workspaces/doxysphinx"))
-
-
-@pytest.mark.parametrize(
-    "test_input, expected",
-    [
-        (
-            {
-                "GENERATE_XML": "NO",
-                "DOT_IMAGE_FORMAT": "svg",
-                "DOT_TRANSPARENT": "YES",
-                "INTERACTIVE_SVG": "YES",
-                "HTML_EXTRA_STYLESHEET": "YOUR_DOXYGEN_AWESOME_PATH/doxygen-awesome.css",
-            },
-            {},  # correct input
-        ),
-        (
-            {
-                "GENERATE_XML": "YES",
-                "DOT_IMAGE_FORMAT": "svg",
-                "DOT_TRANSPARENT": "YES",
-                "INTERACTIVE_SVG": "YES",
-                "HTML_EXTRA_STYLESHEET": "YOUR_DOXYGEN_AWESOME_PATH/doxygen-awesome.css",
-            },
-            {"GENERATE_XML": ("YES", "NO")},  # one changed input
-        ),
-        (
-            {
-                "GENERATE_XML": "NO",
-                "DOT_TRANSPARENT": "YES",
-                "INTERACTIVE_SVG": "YES",
-                "RANDOM FLAG": "YES",
-                "HTML_EXTRA_STYLESHEET": "YOUR_DOXYGEN_AWESOME_PATH/doxygen-awesome.css",
-            },
-            {"DOT_IMAGE_FORMAT": ("missing value", "svg")},  # one missing input & another flag
-        ),
-    ],
-)
-def test_doxy_optional_settings_validation(validator, test_input: Dict[str, str], expected: bool):
-    assert validator.validate_doxygen_recommended_settings(test_input) == expected
