@@ -46,6 +46,25 @@ from doxysphinx.doxygen import DoxygenSettingsValidator as Validator
                 "DISABLE_INDEX": "NO",
                 "GENERATE_HTML": "YES",
                 "endrst": "\\endverbatim",
+                "GENERATE_TAGFILE": "docs/doxygen/demo/tagfile.xml",
+                "CREATE_SUBDIRS": "NO",
+                "SEARCHENGINE": "NO",
+                "GENERATE_XML": "NO",
+                "DOT_IMAGE_FORMAT": "svg",
+                "DOT_TRANSPARENT": "YES",
+                "INTERACTIVE_SVG": "YES",
+                "HTML_EXTRA_STYLESHEET": "YOUR_DOXYGEN_AWESOME_PATH/doxygen-awesome.css",
+            },
+            [],  # missing html_output
+        ),
+        (
+            {
+                "OUTPUT_DIRECTORY": "docs/doxygen/demo",
+                "GENERATE_TREEVIEW": "NO",
+                "ALIASES": "rst",
+                "DISABLE_INDEX": "NO",
+                "GENERATE_HTML": "YES",
+                "endrst": "\\endverbatim",
                 "GENERATE_TAGFILE": "docs/doxygen/demo/html/tagfile.xml",
                 "CREATE_SUBDIRS": "NO",
                 "SEARCHENGINE": "no",
@@ -69,9 +88,9 @@ from doxysphinx.doxygen import DoxygenSettingsValidator as Validator
                 "GENERATE_HTML": "NO",
                 "GENERATE_TAGFILE": "docs/doxygen/demo/html/tagfile.xml",
                 "CREATE_SUBDIRS": "NO",
+                "HTML_OUTPUT": "html",
                 "GENERATE_XML": "YES",
                 "DOT_IMAGE_FORMAT": "svg",
-                "HTML_OUTPUT": "html",
                 "DOT_TRANSPARENT": "YES",
                 "INTERACTIVE_SVG": "YES",
                 "HTML_EXTRA_STYLESHEET": "YOUR_DOXYGEN_AWESOME_PATH/doxygen-awesome.css",
@@ -93,6 +112,7 @@ from doxysphinx.doxygen import DoxygenSettingsValidator as Validator
                 "endrst": "\\endverbatim",
                 "CREATE_SUBDIRS": "NO",
                 "GENERATE_TAGFILE": "docs/doxygen/demo/html/tagfile.xml",
+                "HTML_OUTPUT": "html",
                 "GENERATE_XML": "NO",
                 "DOT_IMAGE_FORMAT": "svg",
                 "HTML_OUTPUT": "html",
@@ -153,6 +173,7 @@ from doxysphinx.doxygen import DoxygenSettingsValidator as Validator
     ],
 )
 def test_doxysettings_validation(validator, test_input: Dict[str, str], expected: List[str]):
+    validator.validation_errors.clear()
     validator.validate(test_input, Path("/workspaces/doxysphinx"))
     assert validator.validation_errors == expected
 
