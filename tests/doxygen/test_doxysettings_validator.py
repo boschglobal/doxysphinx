@@ -146,7 +146,7 @@ from doxysphinx.doxygen import DoxygenSettingsValidator as Validator
             },
             [
                 'The doxygen OUTPUT_DIR of "/em-hackathon/code/html" defined in the doxyfile'
-                f' is not in a sub-path of the sphinx source directory "{Path("/workspaces/doxysphinx")}".'
+                f' is not in a sub-path of the sphinx source directory "{Path(os.getcwd())}".'
             ],  # wrong output directory
         ),
         (
