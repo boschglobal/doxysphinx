@@ -152,11 +152,7 @@ class DoxygenSettingsValidator:
         :return: True if doxygen output directory is located inside the sphinx docs root,
         False if not and doxysphinx should exit.
         """
-        out = (
-            Path(config["OUTPUT_DIRECTORY"]) / config["HTML_OUTPUT"]
-            if "HTML_OUTPUT" in config
-            else Path(config["OUTPUT_DIRECTORY"])
-        )
+        out = Path(config["OUTPUT_DIRECTORY"]) / config["HTML_OUTPUT"]
         self.absolute_out = path_resolve(out)
         stringified_out = str(out) if out.is_absolute() else f'"{out}" (resolved to "{self.absolute_out}")'
 
