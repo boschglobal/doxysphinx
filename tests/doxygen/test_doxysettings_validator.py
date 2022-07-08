@@ -7,6 +7,7 @@
 #  - Celina Adelhardt, :em engineering methods AG (contracted by Robert Bosch GmbH)
 # =====================================================================================
 
+import os
 from pathlib import Path
 from typing import Dict, List
 
@@ -172,9 +173,9 @@ from doxysphinx.doxygen import DoxygenSettingsValidator as Validator
         ),
     ],
 )
-def test_doxysettings_validation(validator, test_input: Dict[str, str], expected: List[str]):
+def test_doxysettings_validation(validator, working_directory, test_input: Dict[str, str], expected: List[str]):
     validator.validation_errors.clear()
-    validator.validate(test_input, Path("/workspaces/doxysphinx"))
+    validator.validate(test_input, working_directory)
     assert validator.validation_errors == expected
 
 
@@ -182,3 +183,8 @@ def test_doxysettings_validation(validator, test_input: Dict[str, str], expected
 def validator():
     validator = Validator()
     return validator
+
+
+@pytest.fixture
+def working_directory():
+    return Path(os.getcwd())
