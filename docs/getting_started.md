@@ -135,13 +135,13 @@ The class :demo:`doxysphinx::rst::Car` implements the car.
 
 Next you have to prepare your doxygen configuration file (doxyfile) to have compatible settings with doxysphinx.
 
-The following settings are mandatory:
+The following settings are mandatory and will be checked by a validator:
 
 You can prepare or optimize your doxygen configuration file (doxyfile) by doing the following:
 
 ### Mandatory settings
 
-these settings are absolutely needed:
+these settings are absolutely needed (Doxysphinx will throw detailed errors in case of incorrect ones):
 
 ```yaml
 OUTPUT_DIRECTORY       = <anywhere_below_you_sphinx_documentation_source_root!!!> # see note below
@@ -184,7 +184,7 @@ look at the [alternatives](./alternatives.md).
 
 ### Recommended settings
 
-these settings are optional but strongly recommended:
+these settings are optional but strongly recommended (you will be warned in case of some value deviations):
 
 ```yaml
 GENERATE_XML           = NO   # Xml output isn't needed for doxysphinx
