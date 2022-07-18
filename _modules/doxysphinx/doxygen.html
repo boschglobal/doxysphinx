@@ -382,6 +382,7 @@
 <span class="c1">#</span>
 <span class="c1">#  Author(s):</span>
 <span class="c1">#  - Markus Braun, :em engineering methods AG (contracted by Robert Bosch GmbH)</span>
+<span class="c1">#  - Celina Adelhardt, :em engineering methods AG (contracted by Robert Bosch GmbH)</span>
 <span class="c1"># =====================================================================================</span>
 <span class="sd">&quot;&quot;&quot;The doxygen module contains classes and functions specific to doxygen.&quot;&quot;&quot;</span>
 
@@ -391,6 +392,8 @@
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Tuple</span>
 
 <span class="kn">import</span> <span class="nn">json5</span>
+
+<span class="kn">from</span> <span class="nn">doxysphinx.utils.pathlib_fix</span> <span class="kn">import</span> <span class="n">path_is_relative_to</span><span class="p">,</span> <span class="n">path_resolve</span>
 
 
 <div class="viewcode-block" id="read_doxyfile"><a class="viewcode-back" href="../../docs/api/doxysphinx/doxysphinx.doxygen.html#doxysphinx.doxygen.read_doxyfile">[docs]</a><span class="k">def</span> <span class="nf">read_doxyfile</span><span class="p">(</span><span class="n">doxyfile</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]:</span>
@@ -449,17 +452,128 @@
 <span class="sd">    Doxysphinx requires some settings to be present/set in a specific way.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-<div class="viewcode-block" id="DoxygenSettingsValidator.validate"><a class="viewcode-back" href="../../docs/api/doxysphinx/doxysphinx.doxygen.html#doxysphinx.doxygen.DoxygenSettingsValidator.validate">[docs]</a>    <span class="k">def</span> <span class="nf">validate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">settings</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Validate doxygen settings.</span>
+    <span class="n">mandatory_settings</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;OUTPUT_DIRECTORY&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;SEARCHENGINE&quot;</span><span class="p">:</span> <span class="s2">&quot;NO&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;GENERATE_TREEVIEW&quot;</span><span class="p">:</span> <span class="s2">&quot;NO&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;DISABLE_INDEX&quot;</span><span class="p">:</span> <span class="s2">&quot;NO&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ALIASES&quot;</span><span class="p">:</span> <span class="s2">&quot;rst&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;endrst&quot;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="se">\\</span><span class="s2">endverbatim&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;GENERATE_HTML&quot;</span><span class="p">:</span> <span class="s2">&quot;YES&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;GENERATE_TAGFILE&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;CREATE_SUBDIRS&quot;</span><span class="p">:</span> <span class="s2">&quot;NO&quot;</span><span class="p">,</span>
+    <span class="p">}</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A dictionary containing mandatory settings for the doxygen config.</span>
+<span class="sd">    The values of OUTPUT_DIRECTORY and GENERATE_TAGFILE will be set after instantiation and validation of the filepaths.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
-<span class="sd">        :param settings: doxygen settings.</span>
-<span class="sd">        :return: True if the validation was successful, False if it wasn&#39;t and doxysphinx</span>
-<span class="sd">                 should exit.</span>
+    <span class="n">optional_settings</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;GENERATE_XML&quot;</span><span class="p">:</span> <span class="s2">&quot;NO&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;DOT_IMAGE_FORMAT&quot;</span><span class="p">:</span> <span class="s2">&quot;svg&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;DOT_TRANSPARENT&quot;</span><span class="p">:</span> <span class="s2">&quot;YES&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;INTERACTIVE_SVG&quot;</span><span class="p">:</span> <span class="s2">&quot;YES&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;HTML_EXTRA_STYLESHEET&quot;</span><span class="p">:</span> <span class="s2">&quot;YOUR_DOXYGEN_AWESOME_PATH/doxygen-awesome.css&quot;</span><span class="p">,</span>
+    <span class="p">}</span>
+    <span class="sd">&quot;&quot;&quot;A dictionary containing further optional settings for the doxygen config.&quot;&quot;&quot;</span>
+
+    <span class="n">validation_errors</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="sd">&quot;&quot;&quot;List of the validation errors including the doxyflag with its used and the correct value.&quot;&quot;&quot;</span>
+    <span class="n">absolute_out</span><span class="p">:</span> <span class="n">Path</span>
+    <span class="sd">&quot;&quot;&quot;Absolute path of the output directory.&quot;&quot;&quot;</span>
+    <span class="n">validation_msg</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;Validation errors merged in one string.&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="DoxygenSettingsValidator.validate"><a class="viewcode-back" href="../../docs/api/doxysphinx/doxysphinx.doxygen.html#doxysphinx.doxygen.DoxygenSettingsValidator.validate">[docs]</a>    <span class="k">def</span> <span class="nf">validate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">],</span> <span class="n">sphinx_source_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Validate the doxygen configuration regarding the output directory, mandatory and optional settings.</span>
+
+<span class="sd">        :param config: the imported doxyfile.</span>
+<span class="sd">        :param sphinx_source_dir: the sphinx directory (necessary for output directory validation).</span>
+<span class="sd">        :return: False, if there is a deviation to the defined mandatory or optional settings.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="c1"># warnings</span>
-        <span class="k">pass</span></div></div>
-        <span class="c1"># errors</span>
+        <span class="n">out_dir_validated</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_validate_doxygen_out_dirs</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="n">sphinx_source_dir</span><span class="p">)</span>
+        <span class="n">recommended_settings_validated</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_validate_doxygen_recommended_settings</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+        <span class="n">optional_settings_validated</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_validate_doxygen_optional_settings</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">out_dir_validated</span> <span class="ow">and</span> <span class="n">recommended_settings_validated</span> <span class="ow">and</span> <span class="n">optional_settings_validated</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">validation_msg</span> <span class="o">=</span> <span class="s2">&quot;All doxygen settings are set correctly.&quot;</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">error</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">validation_errors</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">validation_msg</span> <span class="o">+=</span> <span class="n">error</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
+            <span class="k">return</span> <span class="kc">False</span></div>
+
+    <span class="k">def</span> <span class="nf">_validate_doxygen_out_dirs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">sphinx_source_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Validate the output directory given from doxyfile and set the required values in mandatory settings.</span>
+
+<span class="sd">        :param out_dir: output directory value in doxyfile.</span>
+<span class="sd">        :param sphinx_source_dir: sphinx docs source-directory.</span>
+<span class="sd">        :return: True if doxygen output directory is located inside the sphinx docs root,</span>
+<span class="sd">        False if not and doxysphinx should exit.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">Path</span><span class="p">(</span><span class="n">config</span><span class="p">[</span><span class="s2">&quot;OUTPUT_DIRECTORY&quot;</span><span class="p">])</span> <span class="o">/</span> <span class="n">config</span><span class="p">[</span><span class="s2">&quot;HTML_OUTPUT&quot;</span><span class="p">]</span>
+            <span class="k">if</span> <span class="s2">&quot;HTML_OUTPUT&quot;</span> <span class="ow">in</span> <span class="n">config</span>
+            <span class="k">else</span> <span class="n">Path</span><span class="p">(</span><span class="n">config</span><span class="p">[</span><span class="s2">&quot;OUTPUT_DIRECTORY&quot;</span><span class="p">])</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">absolute_out</span> <span class="o">=</span> <span class="n">path_resolve</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
+        <span class="n">stringified_out</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="k">if</span> <span class="n">out</span><span class="o">.</span><span class="n">is_absolute</span><span class="p">()</span> <span class="k">else</span> <span class="sa">f</span><span class="s1">&#39;&quot;</span><span class="si">{</span><span class="n">out</span><span class="si">}</span><span class="s1">&quot; (resolved to &quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">absolute_out</span><span class="si">}</span><span class="s1">&quot;)&#39;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">mandatory_settings</span><span class="p">[</span><span class="s2">&quot;OUTPUT_DIRECTORY&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s2">&quot;OUTPUT_DIRECTORY&quot;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mandatory_settings</span><span class="p">[</span><span class="s2">&quot;GENERATE_TAGFILE&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/tagfile.xml&quot;</span>
+
+        <span class="k">if</span> <span class="n">path_is_relative_to</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="n">sphinx_source_dir</span><span class="p">):</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">validation_errors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s1">&#39;The doxygen OUTPUT_DIR of &quot;</span><span class="si">{</span><span class="n">stringified_out</span><span class="si">}</span><span class="s1">&quot; defined in the doxyfile&#39;</span>
+                <span class="sa">f</span><span class="s1">&#39; is not in a sub-path of the sphinx source directory &quot;</span><span class="si">{</span><span class="n">sphinx_source_dir</span><span class="si">}</span><span class="s1">&quot;.&#39;</span>
+            <span class="p">)</span>
+            <span class="k">return</span> <span class="kc">False</span>
+
+    <span class="k">def</span> <span class="nf">_validate_doxygen_recommended_settings</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">settings</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_validate_settings</span><span class="p">(</span><span class="n">settings</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">mandatory_settings</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_validate_doxygen_optional_settings</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">settings</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Validate the doxyflags for optional settings and mark the error with an &quot;optional&quot; before the string.</span>
+
+<span class="sd">        :param settings: doxygen optional settings</span>
+<span class="sd">        :return: True if all optional settings are contained in doxyfile correctly.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">validation_errors_old</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">validation_errors</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_validate_settings</span><span class="p">(</span><span class="n">settings</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">optional_settings</span><span class="p">):</span>
+            <span class="n">nr_optional_errors</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">validation_errors</span><span class="p">)</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">validation_errors_old</span><span class="p">)</span>
+
+            <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">validation_errors</span><span class="p">[</span><span class="o">-</span><span class="n">nr_optional_errors</span><span class="p">:]):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">validation_errors</span><span class="p">[(</span><span class="n">index</span> <span class="o">-</span> <span class="n">nr_optional_errors</span><span class="p">)]</span> <span class="o">=</span> <span class="s2">&quot;OPTIONAL: &quot;</span> <span class="o">+</span> <span class="n">item</span>
+            <span class="k">return</span> <span class="kc">False</span>
+
+        <span class="k">return</span> <span class="kc">True</span>
+
+    <span class="k">def</span> <span class="nf">_validate_settings</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">imported_settings</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">],</span> <span class="n">target_settings</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+
+        <span class="n">validation_successful</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">if</span> <span class="nb">all</span><span class="p">(</span><span class="n">item</span> <span class="ow">in</span> <span class="n">imported_settings</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">target_settings</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
+            <span class="k">return</span> <span class="n">validation_successful</span>
+
+        <span class="n">contained_settings_target</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="n">key</span><span class="p">:</span> <span class="n">value</span> <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">imported_settings</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">target_settings</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+        <span class="p">}</span>
+
+        <span class="n">missing_imported_settings</span> <span class="o">=</span> <span class="n">target_settings</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="o">-</span> <span class="n">contained_settings_target</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">missing_imported_settings</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">missing_imported_settings</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">validation_errors</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="sa">f</span><span class="s2">&quot;Missing value for </span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">, but </span><span class="si">{</span><span class="n">target_settings</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="si">}</span><span class="s2"> is required.&quot;</span><span class="p">))</span>
+            <span class="n">validation_successful</span> <span class="o">=</span> <span class="kc">False</span>
+
+        <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">contained_settings_target</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">contained_settings_target</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">==</span> <span class="n">target_settings</span><span class="p">[</span><span class="n">key</span><span class="p">]:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">validation_errors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                    <span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Wrong value </span><span class="si">{</span><span class="n">contained_settings_target</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="si">}</span><span class="s2"> for </span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">target_settings</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="si">}</span><span class="s2"> is required.&quot;</span><span class="p">)</span>
+                <span class="p">)</span>
+                <span class="n">validation_successful</span> <span class="o">=</span> <span class="kc">False</span>
+
+        <span class="k">return</span> <span class="n">validation_successful</span></div>
 
 
 <div class="viewcode-block" id="read_js_data_file"><a class="viewcode-back" href="../../docs/api/doxysphinx/doxysphinx.doxygen.html#doxysphinx.doxygen.read_js_data_file">[docs]</a><span class="k">def</span> <span class="nf">read_js_data_file</span><span class="p">(</span><span class="n">js_data_file</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
@@ -487,7 +601,7 @@
     <footer class="footer">
   <p>
     
-      Last updated on &#39;Wed Jun 29 07:14:22 2022&#39;, &#39;9d883b7&#39;.<br/>
+      Last updated on &#39;Mon Jul 18 14:08:43 2022&#39;, &#39;9e7c104&#39;.<br/>
   </p>
 </footer>
 </main>

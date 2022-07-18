@@ -659,24 +659,24 @@ it and see how things working we recommend to clone the repo, fire up vscode and
 <div class="sd-card-title sd-font-weight-bold docutils">
 DartSass installation</div>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="a247e402-9e38-4ac2-b0fc-caa9c67a8936" name="0b782f96-99e7-42bb-bd8c-8a8f4e964ae0" type="radio">
-</input><label class="sd-tab-label" for="a247e402-9e38-4ac2-b0fc-caa9c67a8936">
+<input checked="checked" id="a2c21110-2f88-4793-82f7-3ccbb92222c5" name="b9207912-4d98-4878-bfa2-db044615394a" type="radio">
+</input><label class="sd-tab-label" for="a2c21110-2f88-4793-82f7-3ccbb92222c5">
 Linux</label><div class="sd-tab-content docutils">
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Linux</span>
 curl -sSL https://github.com/sass/dart-sass/releases/download/1.49.7/dart-sass-1.49.7-linux-x64.tar.gz <span class="p">|</span> tar -xzvf - --strip-components<span class="o">=</span><span class="m">1</span> -C ~/.local/bin dart-sass/sass
 </pre></div>
 </div>
 </div>
-<input id="10c1c70a-7f24-48eb-bfab-da3209020c3e" name="0b782f96-99e7-42bb-bd8c-8a8f4e964ae0" type="radio">
-</input><label class="sd-tab-label" for="10c1c70a-7f24-48eb-bfab-da3209020c3e">
+<input id="c95e16da-6406-4d1d-839f-134c5f8e4363" name="b9207912-4d98-4878-bfa2-db044615394a" type="radio">
+</input><label class="sd-tab-label" for="c95e16da-6406-4d1d-839f-134c5f8e4363">
 Windows</label><div class="sd-tab-content docutils">
 <div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="c"># windows with chocolatey (https://www.chocolatey.org)</span>
 <span class="n">choco</span> <span class="n">install</span> <span class="n">sass</span>
 </pre></div>
 </div>
 </div>
-<input id="47625b9c-ec5a-4993-be60-5c909924b63b" name="0b782f96-99e7-42bb-bd8c-8a8f4e964ae0" type="radio">
-</input><label class="sd-tab-label" for="47625b9c-ec5a-4993-be60-5c909924b63b">
+<input id="4072db84-dea7-4521-ab72-8e63b641e338" name="b9207912-4d98-4878-bfa2-db044615394a" type="radio">
+</input><label class="sd-tab-label" for="4072db84-dea7-4521-ab72-8e63b641e338">
 Other</label><div class="sd-tab-content docutils">
 <p class="sd-card-text">see Releases: <a class="reference external" href="https://github.com/sass/dart-sass/releases">https://github.com/sass/dart-sass/releases</a>.</p>
 </div>
@@ -748,11 +748,11 @@ In your rst files you can then use e.g. (as documented here: <a class="reference
 <div class="section" id="step-3-prepare-doxygen-config">
 <h2>Step 3: Prepare Doxygen Config<a class="headerlink" href="#step-3-prepare-doxygen-config" title="Permalink to this headline">¶</a></h2>
 <p>Next you have to prepare your doxygen configuration file (doxyfile) to have compatible settings with doxysphinx.</p>
-<p>The following settings are mandatory:</p>
+<p>The following settings are mandatory and will be checked by a validator:</p>
 <p>You can prepare or optimize your doxygen configuration file (doxyfile) by doing the following:</p>
 <div class="section" id="mandatory-settings">
 <h3>Mandatory settings<a class="headerlink" href="#mandatory-settings" title="Permalink to this headline">¶</a></h3>
-<p>these settings are absolutely needed:</p>
+<p>these settings are absolutely needed (Doxysphinx will throw detailed errors in case of incorrect ones):</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">OUTPUT_DIRECTORY       = &lt;anywhere_below_you_sphinx_documentation_source_root!!!&gt;</span><span class="w"> </span><span class="c1"># see note below</span><span class="w"></span>
 
 <span class="l l-Scalar l-Scalar-Plain">SEARCHENGINE           = NO</span><span class="w">   </span><span class="c1"># Deactivate search engine (as sphinx has it&#39;s own search)</span><span class="w"></span>
@@ -790,7 +790,7 @@ look at the <a class="reference internal" href="alternatives.html"><span class="
 </div>
 <div class="section" id="recommended-settings">
 <h3>Recommended settings<a class="headerlink" href="#recommended-settings" title="Permalink to this headline">¶</a></h3>
-<p>these settings are optional but strongly recommended:</p>
+<p>these settings are optional but strongly recommended (you will be warned in case of some value deviations):</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">GENERATE_XML           = NO</span><span class="w">   </span><span class="c1"># Xml output isn&#39;t needed for doxysphinx</span><span class="w"></span>
 
 <span class="l l-Scalar l-Scalar-Plain">DOT_IMAGE_FORMAT       = svg</span><span class="w">  </span><span class="c1"># generates nicer svg images</span><span class="w"></span>
@@ -951,7 +951,7 @@ Developers section.</p></li>
     <footer class="footer">
   <p>
     
-      Last updated on &#39;Wed Jun 29 07:14:22 2022&#39;, &#39;9d883b7&#39;.<br/>
+      Last updated on &#39;Mon Jul 18 14:08:43 2022&#39;, &#39;9e7c104&#39;.<br/>
   </p>
 </footer>
 </main>

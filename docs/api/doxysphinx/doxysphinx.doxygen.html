@@ -448,20 +448,58 @@
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DoxygenSettingsValidator</span></span><a class="reference internal" href="../../../_modules/doxysphinx/doxygen.html#DoxygenSettingsValidator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#doxysphinx.doxygen.DoxygenSettingsValidator" title="Permalink to this definition">¶</a></dt>
 <dd><p>Validate doxygen settings for compatibility with doxysphinx.</p>
 <p>Doxysphinx requires some settings to be present/set in a specific way.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="doxysphinx.doxygen.DoxygenSettingsValidator.mandatory_settings">
+<span class="sig-name descname"><span class="pre">mandatory_settings</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'ALIASES':</span> <span class="pre">'rst',</span> <span class="pre">'CREATE_SUBDIRS':</span> <span class="pre">'NO',</span> <span class="pre">'DISABLE_INDEX':</span> <span class="pre">'NO',</span> <span class="pre">'GENERATE_HTML':</span> <span class="pre">'YES',</span> <span class="pre">'GENERATE_TAGFILE':</span> <span class="pre">'',</span> <span class="pre">'GENERATE_TREEVIEW':</span> <span class="pre">'NO',</span> <span class="pre">'OUTPUT_DIRECTORY':</span> <span class="pre">'',</span> <span class="pre">'SEARCHENGINE':</span> <span class="pre">'NO',</span> <span class="pre">'endrst':</span> <span class="pre">'\\endverbatim'}</span></em><a class="headerlink" href="#doxysphinx.doxygen.DoxygenSettingsValidator.mandatory_settings" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Type:</strong>    <code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></p>
+<p>A dictionary containing mandatory settings for the doxygen config.
+The values of OUTPUT_DIRECTORY and GENERATE_TAGFILE will be set after instantiation and validation of the filepaths.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="doxysphinx.doxygen.DoxygenSettingsValidator.optional_settings">
+<span class="sig-name descname"><span class="pre">optional_settings</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'DOT_IMAGE_FORMAT':</span> <span class="pre">'svg',</span> <span class="pre">'DOT_TRANSPARENT':</span> <span class="pre">'YES',</span> <span class="pre">'GENERATE_XML':</span> <span class="pre">'NO',</span> <span class="pre">'HTML_EXTRA_STYLESHEET':</span> <span class="pre">'YOUR_DOXYGEN_AWESOME_PATH/doxygen-awesome.css',</span> <span class="pre">'INTERACTIVE_SVG':</span> <span class="pre">'YES'}</span></em><a class="headerlink" href="#doxysphinx.doxygen.DoxygenSettingsValidator.optional_settings" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Type:</strong>    <code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></p>
+<p>A dictionary containing further optional settings for the doxygen config.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="doxysphinx.doxygen.DoxygenSettingsValidator.validation_errors">
+<span class="sig-name descname"><span class="pre">validation_errors</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="headerlink" href="#doxysphinx.doxygen.DoxygenSettingsValidator.validation_errors" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Type:</strong>    <code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]</p>
+<p>List of the validation errors including the doxyflag with its used and the correct value.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="doxysphinx.doxygen.DoxygenSettingsValidator.absolute_out">
+<span class="sig-name descname"><span class="pre">absolute_out</span></span><a class="headerlink" href="#doxysphinx.doxygen.DoxygenSettingsValidator.absolute_out" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Type:</strong>    <code class="xref py py-class docutils literal notranslate"><span class="pre">Path</span></code></p>
+<p>Absolute path of the output directory.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="doxysphinx.doxygen.DoxygenSettingsValidator.validation_msg">
+<span class="sig-name descname"><span class="pre">validation_msg</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">''</span></em><a class="headerlink" href="#doxysphinx.doxygen.DoxygenSettingsValidator.validation_msg" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Type:</strong>    <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+<p>Validation errors merged in one string.</p>
+</dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="doxysphinx.doxygen.DoxygenSettingsValidator.validate">
-<span class="sig-name descname"><span class="pre">validate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">settings</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/doxysphinx/doxygen.html#DoxygenSettingsValidator.validate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#doxysphinx.doxygen.DoxygenSettingsValidator.validate" title="Permalink to this definition">¶</a></dt>
-<dd><p>Validate doxygen settings.</p>
+<span class="sig-name descname"><span class="pre">validate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sphinx_source_dir</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/doxysphinx/doxygen.html#DoxygenSettingsValidator.validate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#doxysphinx.doxygen.DoxygenSettingsValidator.validate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Validate the doxygen configuration regarding the output directory, mandatory and optional settings.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>settings</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]) – doxygen settings.</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>config</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]) – the imported doxyfile.</p></li>
+<li><p><strong>sphinx_source_dir</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Path</span></code>) – the sphinx directory (necessary for output directory validation).</p></li>
+</ul>
 </dd>
 <dt class="field-even">Return type</dt>
 <dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></p>
 </dd>
 <dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>True if the validation was successful, False if it wasn’t and doxysphinx
-should exit.</p>
+<dd class="field-odd"><p>False, if there is a deviation to the defined mandatory or optional settings.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -514,7 +552,7 @@ should exit.</p>
     <footer class="footer">
   <p>
     
-      Last updated on &#39;Wed Jun 29 07:14:22 2022&#39;, &#39;9d883b7&#39;.<br/>
+      Last updated on &#39;Mon Jul 18 14:08:43 2022&#39;, &#39;9e7c104&#39;.<br/>
   </p>
 </footer>
 </main>
