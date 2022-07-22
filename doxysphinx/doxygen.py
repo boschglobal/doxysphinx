@@ -222,16 +222,16 @@ class DoxygenOutputPathValidator:
     def validate(self, doxygen_html_output: Path) -> bool:
         """Validate a doxygen html output path.
 
-        This is just meant to catch typos in paths etc. It will just check if a "doxygen.svg" file is existing
+        This is just meant to catch typos in paths etc. It will just check if a "doxygen.css" file is existing
         In the html output path.
 
         :param doxygen_html_output: The path where doxygen generates its' html file to.
         :return: True if the path is valid else false.
         """
-        svg_exists = (doxygen_html_output / "doxygen.svg").exists()
+        svg_exists = (doxygen_html_output / "doxygen.css").exists()
         if not svg_exists:
             self.validation_msg = (
                 f'The directory "{doxygen_html_output}" seems to be no valid doxygen html output '
-                "(we're checking for existance of \"doxygen.svg\" and weren't able to find it there)."
+                "(we're checking for existance of \"doxygen.css\" and weren't able to find it there)."
             )
         return svg_exists
