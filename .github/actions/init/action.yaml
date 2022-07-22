@@ -25,17 +25,16 @@ runs:
   steps:
   - name: "Ensure doxygen"
     if: inputs.doc-tools
-    # run: sudo apt-get install doxygen -y
-    run: |
-      if ! command -v doxygen &> /dev/null
-      then
-        wget -c https://www.doxygen.nl/files/doxygen-1.9.4.linux.bin.tar.gz -O /tmp/doxygen.tar.gz \
-        && mkdir -p /tmp/doxygen \
-        && tar -xzvf /tmp/doxygen.tar.gz --strip-components=1 -C /tmp/doxygen/ \
-        && mv /tmp/doxygen/bin/* /usr/bin \
-        && mv /tmp/doxygen/man/man1/* /usr/share/man/man1 \
-        && rm -rf /tmp/doxygen/
-      fi
+    run: sudo apt-get install doxygen -y
+    # latest doxygen (untested)
+    # run: |
+    #  if ! command -v doxygen &> /dev/null
+    #  then
+    #    echo "doxygen wasn't found... installing now..."
+    #    mkdir -p ~/.local/bin
+    #    curl -sSL https://www.doxygen.nl/files/doxygen-1.9.4.linux.bin.tar.gz | \
+    #    tar -xzvf - --strip-components=1 -C ~/.local/bin bin/doxygen;
+    #  fi
 
     shell: bash
 
