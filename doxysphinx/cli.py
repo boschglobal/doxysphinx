@@ -8,6 +8,7 @@
 #  - Celina Adelhardt, :em engineering methods AG (contracted by Robert Bosch GmbH)
 # =====================================================================================
 
+# noqa: D301
 """
 Entry module for the doxysphinx cli.
 
