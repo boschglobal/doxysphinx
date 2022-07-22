@@ -8,6 +8,7 @@
 #  - Celina Adelhardt, :em engineering methods AG (contracted by Robert Bosch GmbH)
 # =====================================================================================
 
+# noqa: D301
 """
 Entry module for the doxysphinx cli.
 
@@ -30,7 +31,11 @@ from typing import Iterator, List
 import click
 import click_log  # type: ignore
 
-from doxysphinx.doxygen import DoxygenSettingsValidator, read_doxyfile
+from doxysphinx.doxygen import (
+    DoxygenOutputPathValidator,
+    DoxygenSettingsValidator,
+    read_doxyfile,
+)
 from doxysphinx.process import Builder, Cleaner
 from doxysphinx.utils.contexts import TimedContext
 
@@ -55,13 +60,20 @@ def cli():
 @cli.command()
 @click.argument("sphinx_source", type=click.Path(file_okay=False, exists=True, path_type=Path))
 @click.argument("sphinx_output", type=click.Path(file_okay=False, path_type=Path))
-@click.argument("doxyfile", nargs=-1, type=click.Path(dir_okay=False, file_okay=True, exists=True, path_type=Path))
-def build(doxyfile: List[Path], sphinx_source: Path, sphinx_output: Path):
+@click.argument("input", nargs=-1, type=click.Path(dir_okay=True, file_okay=True, exists=True, path_type=Path))
+def build(input: List[Path], sphinx_source: Path, sphinx_output: Path):
     """
     Build rst and copy related files for doxygen projects.
 
     SPHINX_SOURCE specifies the root of the sphinx source directory tree while SPHINX_OUTPUT specifies the root of the
-    sphinx output directory tree. The doxygen projects are specified through DOXYFILE (multiple possible).
+    sphinx output directory tree.
+    The doxygen projects are specified through INPUT (multiple possible).
+    INPUT can be:
+    - a doxygen configuration file (aka doxyfile)
+    - a directory which contains the generated doxygen html documentation. Note that specifying a directory
+      will skip the config validation completely and is therefore considered "advanced stuff".
+      You will typically want to use that if you're integrating doxysphinx in a ci build system.
+      If unsure use a doxyfile.
     \f
 
     .. warning::
@@ -73,10 +85,8 @@ def build(doxyfile: List[Path], sphinx_source: Path, sphinx_output: Path):
     """
     _logger.info("starting build command...")
     with TimedContext() as tc:
-        doxygen_html_output_dirs = _read_and_validate_doxygen_config(doxyfile, sphinx_source)
-
         builder = Builder(sphinx_source, sphinx_output)
-        for doxy_output in doxygen_html_output_dirs:
+        for doxy_output in _get_doxygen_outdirs(input, sphinx_source):
             builder.build(doxy_output)
     _logger.info(f"build command done in {tc.elapsed_humanized()}.")
 
@@ -84,41 +94,55 @@ def build(doxyfile: List[Path], sphinx_source: Path, sphinx_output: Path):
 @cli.command()
 @click.argument("sphinx_source", type=click.Path(file_okay=False, exists=True, path_type=Path))
 @click.argument("sphinx_output", type=click.Path(file_okay=False, path_type=Path))
-@click.argument("doxyfile", nargs=-1, type=click.Path(dir_okay=False, file_okay=True, exists=True, path_type=Path))
-def clean(doxyfile: List[Path], sphinx_source: Path, sphinx_output: Path):
+@click.argument("input", nargs=-1, type=click.Path(dir_okay=True, file_okay=True, exists=True, path_type=Path))
+def clean(input: List[Path], sphinx_source: Path, sphinx_output: Path):
     r"""
     Clean up files created by doxysphinx.
 
     SPHINX_SOURCE specifies the root of the sphinx source directory tree while SPHINX_OUTPUT specifies the root of the
-    sphinx output directory tree. The doxygen projects are specified through DOXYFILE (multiple possible).
+    sphinx output directory tree. The doxygen html outputs are specified through INPUT (multiple possible) either
+    by pointing to the doxygen html output directory or by pointing to the doxygen config file (doxyfile).
     """
     _logger.info("starting clean command...")
     with TimedContext() as tc:
-        doxygen_html_output_dirs = _read_and_validate_doxygen_config(doxyfile, sphinx_source)
-
         cleaner = Cleaner(sphinx_source, sphinx_output)
-        for doxy_output in doxygen_html_output_dirs:
+        for doxy_output in _get_doxygen_outdirs(input, sphinx_source):
             cleaner.cleanup(doxy_output)
     _logger.info(f"clean command done in {tc.elapsed_humanized()}.")
 
 
-def _read_and_validate_doxygen_config(doxy_files: List[Path], sphinx_source: Path) -> Iterator[Path]:
-    for doxy_file in doxy_files:
-        config = read_doxyfile(doxy_file)
+def _get_doxygen_outdirs(inputs: List[Path], sphinx_source: Path) -> Iterator[Path]:
+    for i in inputs:
+        if i.is_dir():
+            yield _get_outdir_via_doxyoutputdir(i)
+        else:
+            yield _get_outdir_via_doxyfile(i, sphinx_source)
 
-        validator = DoxygenSettingsValidator()
-        if not validator.validate(config, sphinx_source):
-            if any(item for item in validator.validation_errors if not item.startswith("OPTIONAL")):
-                message = validator.validation_msg
-                raise click.UsageError(
-                    f'The doxygen settings defined in "{doxy_file}"'
-                    f"do not match the mandatory settings necessary for doxysphinx:\n"
-                    f"{message}"
-                )
-            logging.warning("Not all optional doxygen settings are set correctly:\n")
-            logging.warning(f"{validator.validation_msg}")
 
-        yield validator.absolute_out
+def _get_outdir_via_doxyfile(doxyfile: Path, sphinx_source: Path) -> Path:
+    config = read_doxyfile(doxyfile)
+
+    validator = DoxygenSettingsValidator()
+    if not validator.validate(config, sphinx_source):
+        if any(item for item in validator.validation_errors if not item.startswith("OPTIONAL")):
+            message = validator.validation_msg
+            raise click.UsageError(
+                f'The doxygen settings defined in "{doxyfile}"'
+                f"do not match the mandatory settings necessary for doxysphinx:\n"
+                f"{message}"
+            )
+        logging.warning("Not all optional doxygen settings are set correctly:\n")
+        logging.warning(f"{validator.validation_msg}")
+
+    return validator.absolute_out
+
+
+def _get_outdir_via_doxyoutputdir(doxygen_html_output_dir: Path) -> Path:
+    validator = DoxygenOutputPathValidator()
+    if not validator.validate(doxygen_html_output_dir):
+        raise click.UsageError(validator.validation_msg)
+
+    return doxygen_html_output_dir
 
 
 if __name__ == "__main__":

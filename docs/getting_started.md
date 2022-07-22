@@ -135,7 +135,7 @@ The class :demo:`doxysphinx::rst::Car` implements the car.
 
 Next you have to prepare your doxygen configuration file (doxyfile) to have compatible settings with doxysphinx.
 
-The following settings are mandatory and will be checked by a validator:
+The following settings are mandatory and will be checked by a validator (only when using the doxyfile as input):
 
 You can prepare or optimize your doxygen configuration file (doxyfile) by doing the following:
 
@@ -231,7 +231,7 @@ doxysphinx <command> --help
 Build the sphinx rst documents out of the doxygen htmls.
 
 ```bash
-doxysphinx build <SPHINX_SOURCE> <SPHINX_OUTPUT> <DOXYFILE(S)>
+doxysphinx build <SPHINX_SOURCE> <SPHINX_OUTPUT> <INPUT(S)>
 ```
 
 Arguments:
@@ -240,7 +240,7 @@ Arguments:
 |----------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | SPHINX_SOURCE  | The root of your sphinx source/input directory tree.<br/>Often this is the same directory your conf.py is in.                                                               |
 | SPHINX_OUTPUT  | The root of you sphinx output directory tree - where sphinx puts the generated html files to.<br/> This should be the directory where sphinx put's it's main index.html to. |
-| DOXYFILE(S)    | One or many doxygen configuration files that all should stick to the setting recommendation from [STEP-3](#step-3)                                                          |
+| INPUT(S)    | One or many inputs where each input could be either...<ul><li>a doxygen configuration file (doxyfile). This is recommended for "beginners" because it will also check the config for doxysphinx compatibility.</li><li>an output path where the generated doxygen documentation resides. This is more like an "expert"-mode which is especially useful when integrating doxysphinx with buildsystems like cmake etc. which are dynamically generating doxygen configs.</li></ul>
 
 Replace the following arguments:
 
@@ -257,7 +257,7 @@ Please note that sphinx has slightly different output directories depending on t
 If you want to clean the files doxysphinx generated please use the clean command:
 
 ```bash
-doxysphinx clean <SPHINX_SOURCE> <SPHINX_OUTPUT> <DOXYFILE(S)>
+doxysphinx clean <SPHINX_SOURCE> <SPHINX_OUTPUT> <INPUT(S)>
 ```
 
 ### Makefile integration
@@ -266,10 +266,10 @@ Add/extend the following targets in your makefile:
 
 ```makefile
 clean:
-  @doxysphinx clean <SPHINX_SOURCE> <SPHINX_OUTPUT> <DOXYFILE(S)>
+  @doxysphinx clean <SPHINX_SOURCE> <SPHINX_OUTPUT> <INPUT(S)>
 
 doxysphinx:
-  @doxysphinx build <SPHINX_SOURCE> <SPHINX_OUTPUT> <DOXYFILE(S)>
+  @doxysphinx build <SPHINX_SOURCE> <SPHINX_OUTPUT> <INPUT(S)>
 ```
 
 Now you just need to call the doxysphinx target __right after your doxygen is running__.
@@ -309,9 +309,9 @@ this:
 
 Further reading:
 
-* Maybe you want to know more about the inner workings? -> head over to the reference section.
-* Or look at some examples? -> examples.
-* Or do you want to contribute and bring doxysphinx to the next level? Read the contributors guide and the
-  Developers section.
+* Maybe you want to know more about the inner workings? -> head over to the [reference](inner_workings.md) section.
+* Or look at some examples? -> [linking to doxygen](linking_to_doxygen.md).
+* Or do you want to contribute and bring doxysphinx to the next level? Read the [contributors guide](../CONTRIBUTE.md) and the
+  [Developer Quickstart](dev_guide.md).
 
 Or just start documenting 😀.
