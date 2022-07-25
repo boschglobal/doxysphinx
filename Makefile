@@ -37,6 +37,9 @@ doxygen:
 doxysphinx:
 	@poetry run doxysphinx --verbosity=DEBUG build $(DOCS_SOURCE_DIR) $(BUILD_DIR)/html demo/demo.doxyfile
 
+doxysphinx_with_dir:
+	@poetry run doxysphinx --verbosity=DEBUG build $(DOCS_SOURCE_DIR) $(BUILD_DIR)/html docs/doxygen/demo/html
+
 sphinx:
 	@poetry run sphinx-build -M html "$(DOCS_SOURCE_DIR)" "$(BUILD_DIR)" '--keep-going' '-j' 'auto' $(SPHINX_OPTS)
 

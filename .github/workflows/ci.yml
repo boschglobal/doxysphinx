@@ -39,7 +39,7 @@ jobs:
     - name: "Run Tests"
       run: |
         mkdir -p docs/doxygen
-        poetry run pytest --emoji -v --md $GITHUB_STEP_SUMMARY
+        poetry run pytest --emoji -v -s --md $GITHUB_STEP_SUMMARY
 
     - name: "cache pre-commit"
       uses: actions/cache@v3
