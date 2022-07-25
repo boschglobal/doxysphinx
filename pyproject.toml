@@ -87,6 +87,11 @@ doxysphinx = "doxysphinx.cli:cli"
 name = "cz_conventional_commits"
 version = "2.2.0"
 tag_format = "v$version"
+version_files = ["pyproject.toml:version"]
+bump_message = """chore(release): release $current_version → $new_version by commitizen [skip-ci]
+
+Signed-off-by: github-actions <actions@github.com>
+"""
 
 [build-system]
 requires = ["poetry-core"]
