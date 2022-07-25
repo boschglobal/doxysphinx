@@ -56,14 +56,9 @@ jobs:
     - name: "Update version, changelog and create release tag"
       if: github.event_name == 'push' && github.ref == 'refs/heads/main' && !contains(github.event.head_commit.message, 'chore(release):')
       id: semantic-release
-      # We cannot use the github action "relekang/python-semantic-release@master" because
-      # it's running in a container with has several issues..
-      # We configured the python semantic release tool in pyproject.toml to just calculate and bump the version number
-      # write the changelog and create a git tag. This will then be pushed and the CD.yml workflow will create the
-      # final release.
       run: |
         git config user.email "actions@github.com"
         git config user.name "github-actions"
-        poetry run semantic-release publish --verbosity=DEBUG
+        poetry run cz bump --changelog
       env:
         GH_TOKEN: ${{ secrets.GITHUBTOKEN }}
