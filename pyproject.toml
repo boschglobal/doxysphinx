@@ -57,7 +57,6 @@ pex = "^2.1.99"
 sphinx-book-theme = "^0.2.0"
 snakeviz = "^2.1.1"
 myst-parser = "^0.17.2"
-python-semantic-release = "^7.29.6"
 pytest-cov = "^3.0.0"
 pre-commit = "^2.20.0"
 flake8 = "^4.0.1"
@@ -78,9 +77,20 @@ sphinx-toolbox = "^3.1.2"
 flake8-docstrings = "^1.6.0"
 pytest-emoji = "^0.2.0"
 pytest-md = "^0.2.0"
+commitizen = "^2.29.0"
 
 [tool.poetry.scripts]
 doxysphinx = "doxysphinx.cli:cli"
+
+[tool.commitizen]
+name = "cz_conventional_commits"
+version = "2.2.0"
+tag_format = "v$version"
+version_files = ["pyproject.toml:^version"]
+bump_message = """chore(release): release $current_version → $new_version by commitizen [skip-ci]
+
+Signed-off-by: github-actions <actions@github.com>
+"""
 
 [build-system]
 requires = ["poetry-core"]
@@ -92,7 +102,7 @@ testpaths = ["tests"]
 junit_logging = "out-err"
 
 [tool.semantic_release]
-version_source = "tag"
+version_source = "commit"
 version_variable = ["pyproject.toml:version"]
 changelog_file = "CHANGELOG.md"
 branch = "main"
