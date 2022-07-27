@@ -13,6 +13,17 @@
 
 <!--next-version-placeholder-->
 
+## v2.3.0 (2022-07-27)
+
+### Fix
+
+- **ci**: commit to bump version and force a release
+- **ci**: python semantic release is now parsing tags instead of commit logs
+
+### Feat
+
+- **cli**: direct doxygen output path specification is no possible in addition to the doxyfile
+
 ## v2.2.0 (2022-07-18)
 ### Feature
 * **validator:** Fixed path issue in pytest ([`cb02e48`](https://github.com/boschglobal/doxysphinx/commit/cb02e489c6f3272930fee4d9d5648e8f70420183))
