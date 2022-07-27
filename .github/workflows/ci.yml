@@ -58,4 +58,26 @@ jobs:
       id: version-bump
       uses: commitizen-tools/commitizen-action@master
       with:
+        git_name: github-actions
+        git_email: actions@github.com
         github_token: ${{ secrets.GITHUBTOKEN }}
+
+    - name: "Update version, changelog and create release tag"
+      if: github.event_name == 'push' && github.ref == 'refs/heads/main' && !contains(github.event.head_commit.message, 'chore(release):')
+      id: semantic-release
+      run: |
+        git config user.email "actions@github.com"
+        git config user.name "github-actions"
+        poetry run cz bump --changelog
+        git push
+        git push --tags
+        poetry run cz changelog --file-name RELEASE_NOTES.md $(poetry version -s)
+      env:
+        GH_TOKEN: ${{ secrets.GITHUBTOKEN }}
+
+    - name: "Create Release (will be filled in cd)"
+      if: github.event_name == 'push' && github.ref == 'refs/heads/main' && !contains(github.event.head_commit.message, 'chore(release):')
+      uses: softprops/action-gh-release@v1
+      with:
+        body_path: RELEASE_NOTES.md
+        token: ${{ secrets.GITHUBTOKEN }}
