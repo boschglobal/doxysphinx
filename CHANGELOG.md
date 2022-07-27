@@ -13,6 +13,12 @@
 
 <!--next-version-placeholder-->
 
+## v2.3.1 (2022-07-27)
+
+### Fix
+
+- **ci**: commit to bump version and force a release
+
 ## v2.3.0 (2022-07-27)
 
 ### Fix
