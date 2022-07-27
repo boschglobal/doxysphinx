@@ -55,10 +55,7 @@ jobs:
 
     - name: "Update version, changelog and create release tag"
       if: github.event_name == 'push' && github.ref == 'refs/heads/main' && !contains(github.event.head_commit.message, 'chore(release):')
-      id: semantic-release
-      run: |
-        git config user.email "actions@github.com"
-        git config user.name "github-actions"
-        poetry run cz bump --changelog
-      env:
-        GH_TOKEN: ${{ secrets.GITHUBTOKEN }}
+      id: version-bump
+      uses: commitizen-tools/commitizen-action@master
+      with:
+        github_token: ${{ secrets.GITHUBTOKEN }}
