@@ -53,16 +53,7 @@ jobs:
       run: |
         poetry run pre-commit run --all-files
 
-    - name: "Update version, changelog and create release tag"
-      if: github.event_name == 'push' && github.ref == 'refs/heads/main' && !contains(github.event.head_commit.message, 'chore(release):')
-      id: version-bump
-      uses: commitizen-tools/commitizen-action@master
-      with:
-        git_name: github-actions
-        git_email: actions@github.com
-        github_token: ${{ secrets.GITHUBTOKEN }}
-
-    - name: "Update version, changelog and create release tag"
+    - name: "Update version, changelog"
       if: github.event_name == 'push' && github.ref == 'refs/heads/main' && !contains(github.event.head_commit.message, 'chore(release):')
       id: semantic-release
       run: |
