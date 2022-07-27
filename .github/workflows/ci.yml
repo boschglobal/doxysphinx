@@ -58,4 +58,6 @@ jobs:
       id: version-bump
       uses: commitizen-tools/commitizen-action@master
       with:
+        git_name: github-actions
+        git_email: actions@github.com
         github_token: ${{ secrets.GITHUBTOKEN }}
