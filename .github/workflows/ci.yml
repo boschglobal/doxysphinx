@@ -55,14 +55,17 @@ jobs:
 
     - name: "Update version, changelog"
       if: github.event_name == 'push' && github.ref == 'refs/heads/main' && !contains(github.event.head_commit.message, 'chore(release):')
-      id: semantic-release
+      id: versionbump
       run: |
         git config user.email "actions@github.com"
         git config user.name "github-actions"
         poetry run cz bump --changelog
         git push
         git push --tags
-        poetry run cz changelog --file-name RELEASE_NOTES.md $(poetry version -s)
+        export VERSION=$(poetry version -s)
+        poetry run cz changelog --dry-run $VERSION
+        poetry run cz changelog --file-name RELEASE_NOTES.md $VERSION
+        echo "::set-output name=new_version_tag::$VERSION"
       env:
         GH_TOKEN: ${{ secrets.GITHUBTOKEN }}
 
@@ -71,4 +74,5 @@ jobs:
       uses: softprops/action-gh-release@v1
       with:
         body_path: RELEASE_NOTES.md
+        tag: ${{ steps.versionbump.outputs.new_version_tag }}
         token: ${{ secrets.GITHUBTOKEN }}
