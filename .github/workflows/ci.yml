@@ -65,7 +65,8 @@ jobs:
         export VERSION=$(poetry version -s)
         poetry run cz changelog --dry-run $VERSION
         poetry run cz changelog --file-name RELEASE_NOTES.md $VERSION
-        echo "::set-output name=new_version_tag::$VERSION"
+        echo "::set-output name=new_version_tag::v$VERSION"
+        git switch --detach v$VERSION
       env:
         GH_TOKEN: ${{ secrets.GITHUBTOKEN }}
 
