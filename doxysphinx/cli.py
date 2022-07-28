@@ -105,6 +105,7 @@ def clean(doxyfile: List[Path], sphinx_source: Path, sphinx_output: Path):
 def _read_and_validate_doxygen_config(doxy_files: List[Path], sphinx_source: Path) -> Iterator[Path]:
     for doxy_file in doxy_files:
         config = read_doxyfile(doxy_file)
+        # included_configs = get_included_configs(config)
 
         validator = DoxygenSettingsValidator()
         if not validator.validate(config, sphinx_source):

@@ -68,6 +68,24 @@ def _expand_envvars(val: str) -> str:
     return val.replace("$(", "{").replace(")", "}").format(**os.environ)
 
 
+def get_included_configs(config: Dict[str, str]) -> Dict[str, str]:
+    """Read included file from another configuration using the @INCLUDE tag and return the key value pairs as dict.
+
+    :param config: The main configuration in form of a dict.
+    :return: A dict representing all key value pairs defined in the included configuration file.
+    """
+    # get @Include & @Include_path tag from config
+    # @include_path first -> "directory that should be searched before looking in the current working directory"
+    if config.get("INCLUDE_PATH") and config.get("INCLUDE_PATH") != "":
+        included_filepath = Path(config["INCLUDE_PATH"])
+    elif "@INCLUDE" in config and config["@INCLUDE"] != "":
+        included_filepath = Path(os.getcwd()) / config["@INCLUDE"]
+    else:
+        return {}
+
+    return read_doxyfile(included_filepath)
+
+
 class DoxygenSettingsValidator:
     """
     Validate doxygen settings for compatibility with doxysphinx.
