@@ -166,6 +166,7 @@ requirements.txt
 .pex_tmp/
 .doxysphinx.prof
 .package/
+.poetryupvenv
 
 # merged in ignores from .idea/.gitignore (for hash patching)
 # Default ignored files

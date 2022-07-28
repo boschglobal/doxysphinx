@@ -9,7 +9,7 @@
 
 [flake8]
 max-line-length = 120
-ignore = D203
+ignore = D203, D301
 exclude = .git,
     .build,
     .devcontainer,
@@ -24,6 +24,6 @@ exclude = .git,
     demo,
     tests
 max-complexity = 10
-select = C,E,F,W,B,B950
+select = D,C,E,F,W,B,B950
 extend-ignore = E203, E501
 docstring-convention=pep257
