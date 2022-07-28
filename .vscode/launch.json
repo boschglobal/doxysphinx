@@ -32,5 +32,18 @@
                 "${workspaceFolder}/demo/demo.doxyfile"
             ]
         },
+        {
+            "name": "Debug: Python Semantic Release",
+            "type": "python",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "program": "/home/vscode/.local/bin/semantic-release",
+            "justMyCode": false,
+            "args": [
+                "publish",
+                "--verbosity=DEBUG",
+                "--noop"
+            ]
+        },
     ]
 }

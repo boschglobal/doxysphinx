@@ -13,6 +13,46 @@
 
 <!--next-version-placeholder-->
 
+## v2.3.3 (2022-07-28)
+
+### Fix
+
+- **ci**: commit to bump version and force a release
+
+## v2.3.2 (2022-07-27)
+
+### Fix
+
+- **ci**: commit to bump version and force a release
+
+## v2.3.1 (2022-07-27)
+
+### Fix
+
+- **ci**: commit to bump version and force a release
+
+## v2.3.0 (2022-07-27)
+
+### Fix
+
+- **ci**: commit to bump version and force a release
+- **ci**: python semantic release is now parsing tags instead of commit logs
+
+### Feat
+
+- **cli**: direct doxygen output path specification is no possible in addition to the doxyfile
+
+## v2.2.0 (2022-07-18)
+### Feature
+* **validator:** Fixed path issue in pytest ([`cb02e48`](https://github.com/boschglobal/doxysphinx/commit/cb02e489c6f3272930fee4d9d5648e8f70420183))
+* **validator:** Fixed path issues in pytest. ([`38aafc9`](https://github.com/boschglobal/doxysphinx/commit/38aafc9b87615dc611b3b2924f688e15468e7533))
+* **validator:** Solved errors for PR ([`f2b63bd`](https://github.com/boschglobal/doxysphinx/commit/f2b63bd92fb20842c8c5fe7d0d11cbb1618296d5))
+* **validator:** Changed the validator output type. ([`9730b08`](https://github.com/boschglobal/doxysphinx/commit/9730b08a83a3ee92e3f09d4173635179f5b8e982))
+* **validator:** Added a validator to check the flags of the doxyfile ([`16cf2ae`](https://github.com/boschglobal/doxysphinx/commit/16cf2ae514c09e2625cff138babfa1d7bc10e76e))
+
+### Documentation
+* **validator:** Added note to indicate ([`4a6b7b8`](https://github.com/boschglobal/doxysphinx/commit/4a6b7b82d42fe1345694c9d0f48e29a012bbc163))
+
 ## v2.1.11 (2022-06-29)
 ### Fix
 * **styles:** Doxygens section headings and also markdown headings are now shown ([`85c062d`](https://github.com/boschglobal/doxysphinx/commit/85c062dfe34333c90871a30f2fee3d8dc8108a8a))
