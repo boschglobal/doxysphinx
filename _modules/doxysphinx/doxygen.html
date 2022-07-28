@@ -33,8 +33,8 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/libs/html/datatables.min.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/modern.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/styles.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/layouts.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/styles.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-test-results/common.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-book-theme-custom.css" />
     
@@ -587,6 +587,31 @@
     <span class="n">sanitized</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;var .*=&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
     <span class="n">result</span><span class="p">:</span> <span class="n">Any</span> <span class="o">=</span> <span class="n">json5</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">sanitized</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">result</span></div>
+
+
+<div class="viewcode-block" id="DoxygenOutputPathValidator"><a class="viewcode-back" href="../../docs/api/doxysphinx/doxysphinx.doxygen.html#doxysphinx.doxygen.DoxygenOutputPathValidator">[docs]</a><span class="k">class</span> <span class="nc">DoxygenOutputPathValidator</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Validates doxygen html output paths.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Create an instance of DoxygenOutputPathValidator.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">validation_msg</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+
+<div class="viewcode-block" id="DoxygenOutputPathValidator.validate"><a class="viewcode-back" href="../../docs/api/doxysphinx/doxysphinx.doxygen.html#doxysphinx.doxygen.DoxygenOutputPathValidator.validate">[docs]</a>    <span class="k">def</span> <span class="nf">validate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">doxygen_html_output</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Validate a doxygen html output path.</span>
+
+<span class="sd">        This is just meant to catch typos in paths etc. It will just check if a &quot;doxygen.css&quot; file is existing</span>
+<span class="sd">        In the html output path.</span>
+
+<span class="sd">        :param doxygen_html_output: The path where doxygen generates its&#39; html file to.</span>
+<span class="sd">        :return: True if the path is valid else false.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">svg_exists</span> <span class="o">=</span> <span class="p">(</span><span class="n">doxygen_html_output</span> <span class="o">/</span> <span class="s2">&quot;doxygen.css&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">exists</span><span class="p">()</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">svg_exists</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">validation_msg</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="sa">f</span><span class="s1">&#39;The directory &quot;</span><span class="si">{</span><span class="n">doxygen_html_output</span><span class="si">}</span><span class="s1">&quot; seems to be no valid doxygen html output &#39;</span>
+                <span class="s2">&quot;(we&#39;re checking for existance of </span><span class="se">\&quot;</span><span class="s2">doxygen.css</span><span class="se">\&quot;</span><span class="s2"> and weren&#39;t able to find it there).&quot;</span>
+            <span class="p">)</span>
+        <span class="k">return</span> <span class="n">svg_exists</span></div></div>
 </pre></div>
 
               </div>
@@ -601,7 +626,7 @@
     <footer class="footer">
   <p>
     
-      Last updated on &#39;Mon Jul 18 14:08:43 2022&#39;, &#39;9e7c104&#39;.<br/>
+      Last updated on &#39;Thu Jul 28 08:41:35 2022&#39;, &#39;d262476&#39;.<br/>
   </p>
 </footer>
 </main>

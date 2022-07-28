@@ -33,8 +33,8 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/libs/html/datatables.min.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/modern.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/styles.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/layouts.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/styles.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-test-results/common.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-book-theme-custom.css" />
     
@@ -523,6 +523,31 @@ The values of OUTPUT_DIRECTORY and GENERATE_TAGFILE will be set after instantiat
 </dl>
 </dd></dl>
 
+<dl class="py class">
+<dt class="sig sig-object py" id="doxysphinx.doxygen.DoxygenOutputPathValidator">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DoxygenOutputPathValidator</span></span><a class="reference internal" href="../../../_modules/doxysphinx/doxygen.html#DoxygenOutputPathValidator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#doxysphinx.doxygen.DoxygenOutputPathValidator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Validates doxygen html output paths.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="doxysphinx.doxygen.DoxygenOutputPathValidator.validate">
+<span class="sig-name descname"><span class="pre">validate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">doxygen_html_output</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/doxysphinx/doxygen.html#DoxygenOutputPathValidator.validate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#doxysphinx.doxygen.DoxygenOutputPathValidator.validate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Validate a doxygen html output path.</p>
+<p>This is just meant to catch typos in paths etc. It will just check if a “doxygen.css” file is existing
+In the html output path.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>doxygen_html_output</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Path</span></code>) – The path where doxygen generates its’ html file to.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>True if the path is valid else false.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
 </div>
 
 
@@ -552,7 +577,7 @@ The values of OUTPUT_DIRECTORY and GENERATE_TAGFILE will be set after instantiat
     <footer class="footer">
   <p>
     
-      Last updated on &#39;Mon Jul 18 14:08:43 2022&#39;, &#39;9e7c104&#39;.<br/>
+      Last updated on &#39;Thu Jul 28 08:41:35 2022&#39;, &#39;d262476&#39;.<br/>
   </p>
 </footer>
 </main>

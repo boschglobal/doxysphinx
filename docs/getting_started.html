@@ -33,8 +33,8 @@
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/libs/html/datatables.min.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/modern.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/styles.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/layouts.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/styles.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-test-results/common.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme-custom.css" />
     
@@ -659,24 +659,24 @@ it and see how things working we recommend to clone the repo, fire up vscode and
 <div class="sd-card-title sd-font-weight-bold docutils">
 DartSass installation</div>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="a2c21110-2f88-4793-82f7-3ccbb92222c5" name="b9207912-4d98-4878-bfa2-db044615394a" type="radio">
-</input><label class="sd-tab-label" for="a2c21110-2f88-4793-82f7-3ccbb92222c5">
+<input checked="checked" id="eaa3891a-1a00-4ea2-8c6c-33379a3fe415" name="bbc14b94-83ee-4a06-910b-60debf34e716" type="radio">
+</input><label class="sd-tab-label" for="eaa3891a-1a00-4ea2-8c6c-33379a3fe415">
 Linux</label><div class="sd-tab-content docutils">
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Linux</span>
 curl -sSL https://github.com/sass/dart-sass/releases/download/1.49.7/dart-sass-1.49.7-linux-x64.tar.gz <span class="p">|</span> tar -xzvf - --strip-components<span class="o">=</span><span class="m">1</span> -C ~/.local/bin dart-sass/sass
 </pre></div>
 </div>
 </div>
-<input id="c95e16da-6406-4d1d-839f-134c5f8e4363" name="b9207912-4d98-4878-bfa2-db044615394a" type="radio">
-</input><label class="sd-tab-label" for="c95e16da-6406-4d1d-839f-134c5f8e4363">
+<input id="2e174b73-397a-4b08-b022-04681bcd4e87" name="bbc14b94-83ee-4a06-910b-60debf34e716" type="radio">
+</input><label class="sd-tab-label" for="2e174b73-397a-4b08-b022-04681bcd4e87">
 Windows</label><div class="sd-tab-content docutils">
 <div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="c"># windows with chocolatey (https://www.chocolatey.org)</span>
 <span class="n">choco</span> <span class="n">install</span> <span class="n">sass</span>
 </pre></div>
 </div>
 </div>
-<input id="4072db84-dea7-4521-ab72-8e63b641e338" name="b9207912-4d98-4878-bfa2-db044615394a" type="radio">
-</input><label class="sd-tab-label" for="4072db84-dea7-4521-ab72-8e63b641e338">
+<input id="24d14def-1d84-4c2b-833d-6ff191ee98be" name="bbc14b94-83ee-4a06-910b-60debf34e716" type="radio">
+</input><label class="sd-tab-label" for="24d14def-1d84-4c2b-833d-6ff191ee98be">
 Other</label><div class="sd-tab-content docutils">
 <p class="sd-card-text">see Releases: <a class="reference external" href="https://github.com/sass/dart-sass/releases">https://github.com/sass/dart-sass/releases</a>.</p>
 </div>
@@ -748,7 +748,7 @@ In your rst files you can then use e.g. (as documented here: <a class="reference
 <div class="section" id="step-3-prepare-doxygen-config">
 <h2>Step 3: Prepare Doxygen Config<a class="headerlink" href="#step-3-prepare-doxygen-config" title="Permalink to this headline">¶</a></h2>
 <p>Next you have to prepare your doxygen configuration file (doxyfile) to have compatible settings with doxysphinx.</p>
-<p>The following settings are mandatory and will be checked by a validator:</p>
+<p>The following settings are mandatory and will be checked by a validator (only when using the doxyfile as input):</p>
 <p>You can prepare or optimize your doxygen configuration file (doxyfile) by doing the following:</p>
 <div class="section" id="mandatory-settings">
 <h3>Mandatory settings<a class="headerlink" href="#mandatory-settings" title="Permalink to this headline">¶</a></h3>
@@ -832,7 +832,7 @@ doxysphinx &lt;command&gt; --help
 <div class="section" id="build">
 <h3>Build<a class="headerlink" href="#build" title="Permalink to this headline">¶</a></h3>
 <p>Build the sphinx rst documents out of the doxygen htmls.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>doxysphinx build &lt;SPHINX_SOURCE&gt; &lt;SPHINX_OUTPUT&gt; &lt;DOXYFILE<span class="o">(</span>S<span class="o">)</span>&gt;
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>doxysphinx build &lt;SPHINX_SOURCE&gt; &lt;SPHINX_OUTPUT&gt; &lt;INPUT<span class="o">(</span>S<span class="o">)</span>&gt;
 </pre></div>
 </div>
 <p>Arguments:</p>
@@ -849,8 +849,8 @@ doxysphinx &lt;command&gt; --help
 <tr class="row-odd"><td><p>SPHINX_OUTPUT</p></td>
 <td><p>The root of you sphinx output directory tree - where sphinx puts the generated html files to.<br/> This should be the directory where sphinx put’s it’s main index.html to.</p></td>
 </tr>
-<tr class="row-even"><td><p>DOXYFILE(S)</p></td>
-<td><p>One or many doxygen configuration files that all should stick to the setting recommendation from <span class="xref myst">STEP-3</span></p></td>
+<tr class="row-even"><td><p>INPUT(S)</p></td>
+<td><p>One or many inputs where each input could be either…<ul><li>a doxygen configuration file (doxyfile). This is recommended for “beginners” because it will also check the config for doxysphinx compatibility.</li><li>an output path where the generated doxygen documentation resides. This is more like an “expert”-mode which is especially useful when integrating doxysphinx with buildsystems like cmake etc. which are dynamically generating doxygen configs.</li></ul></p></td>
 </tr>
 </tbody>
 </table>
@@ -871,7 +871,7 @@ doxysphinx &lt;command&gt; --help
 <div class="section" id="clean">
 <h3>Clean<a class="headerlink" href="#clean" title="Permalink to this headline">¶</a></h3>
 <p>If you want to clean the files doxysphinx generated please use the clean command:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>doxysphinx clean &lt;SPHINX_SOURCE&gt; &lt;SPHINX_OUTPUT&gt; &lt;DOXYFILE<span class="o">(</span>S<span class="o">)</span>&gt;
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>doxysphinx clean &lt;SPHINX_SOURCE&gt; &lt;SPHINX_OUTPUT&gt; &lt;INPUT<span class="o">(</span>S<span class="o">)</span>&gt;
 </pre></div>
 </div>
 </div>
@@ -879,10 +879,10 @@ doxysphinx &lt;command&gt; --help
 <h3>Makefile integration<a class="headerlink" href="#makefile-integration" title="Permalink to this headline">¶</a></h3>
 <p>Add/extend the following targets in your makefile:</p>
 <div class="highlight-makefile notranslate"><div class="highlight"><pre><span></span><span class="nf">clean</span><span class="o">:</span>
-  @doxysphinx clean &lt;SPHINX_SOURCE&gt; &lt;SPHINX_OUTPUT&gt; &lt;DOXYFILE<span class="o">(</span>S<span class="o">)</span>&gt;
+  @doxysphinx clean &lt;SPHINX_SOURCE&gt; &lt;SPHINX_OUTPUT&gt; &lt;INPUT<span class="o">(</span>S<span class="o">)</span>&gt;
 
 <span class="nf">doxysphinx</span><span class="o">:</span>
-  @doxysphinx build &lt;SPHINX_SOURCE&gt; &lt;SPHINX_OUTPUT&gt; &lt;DOXYFILE<span class="o">(</span>S<span class="o">)</span>&gt;
+  @doxysphinx build &lt;SPHINX_SOURCE&gt; &lt;SPHINX_OUTPUT&gt; &lt;INPUT<span class="o">(</span>S<span class="o">)</span>&gt;
 </pre></div>
 </div>
 <p>Now you just need to call the doxysphinx target <strong>right after your doxygen is running</strong>.</p>
@@ -915,10 +915,10 @@ this:</p>
 <p>🎉 Congratulations you’ve completed the quickstart.</p>
 <p>Further reading:</p>
 <ul class="simple">
-<li><p>Maybe you want to know more about the inner workings? -&gt; head over to the reference section.</p></li>
-<li><p>Or look at some examples? -&gt; examples.</p></li>
-<li><p>Or do you want to contribute and bring doxysphinx to the next level? Read the contributors guide and the
-Developers section.</p></li>
+<li><p>Maybe you want to know more about the inner workings? -&gt; head over to the <a class="reference internal" href="inner_workings.html"><span class="doc std std-doc">reference</span></a> section.</p></li>
+<li><p>Or look at some examples? -&gt; <a class="reference internal" href="linking_to_doxygen.html"><span class="doc std std-doc">linking to doxygen</span></a>.</p></li>
+<li><p>Or do you want to contribute and bring doxysphinx to the next level? Read the <a class="reference internal" href="../CONTRIBUTE.html"><span class="doc std std-doc">contributors guide</span></a> and the
+<a class="reference internal" href="dev_guide.html"><span class="doc std std-doc">Developer Quickstart</span></a>.</p></li>
 </ul>
 <p>Or just start documenting 😀.</p>
 </div>
@@ -951,7 +951,7 @@ Developers section.</p></li>
     <footer class="footer">
   <p>
     
-      Last updated on &#39;Mon Jul 18 14:08:43 2022&#39;, &#39;9e7c104&#39;.<br/>
+      Last updated on &#39;Thu Jul 28 08:41:35 2022&#39;, &#39;d262476&#39;.<br/>
   </p>
 </footer>
 </main>

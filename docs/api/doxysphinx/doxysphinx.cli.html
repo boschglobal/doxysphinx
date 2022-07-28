@@ -33,8 +33,8 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/libs/html/datatables.min.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/modern.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/styles.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/layouts.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/styles.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-test-results/common.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-book-theme-custom.css" />
     
@@ -427,7 +427,16 @@ to) has to live inside sphinx’s input tree.</p>
 <span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#doxysphinx.cli.build" title="Permalink to this definition">¶</a></dt>
 <dd><p>Build rst and copy related files for doxygen projects.</p>
 <p>SPHINX_SOURCE specifies the root of the sphinx source directory tree while SPHINX_OUTPUT specifies the root of the
-sphinx output directory tree. The doxygen projects are specified through DOXYFILE (multiple possible).</p>
+sphinx output directory tree.
+The doxygen projects are specified through INPUT (multiple possible).
+INPUT can be:
+- a doxygen configuration file (aka doxyfile)
+- a directory which contains the generated doxygen html documentation. Note that specifying a directory</p>
+<blockquote>
+<div><p>will skip the config validation completely and is therefore considered “advanced stuff”.
+You will typically want to use that if you’re integrating doxysphinx in a ci build system.
+If unsure use a doxyfile.</p>
+</div></blockquote>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <ul class="simple">
@@ -444,7 +453,8 @@ so doxysphinx’s <code class="docutils literal notranslate"><span class="pre">S
 <span class="sig-name descname"><span class="pre">clean</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#doxysphinx.cli.clean" title="Permalink to this definition">¶</a></dt>
 <dd><p>Clean up files created by doxysphinx.</p>
 <p>SPHINX_SOURCE specifies the root of the sphinx source directory tree while SPHINX_OUTPUT specifies the root of the
-sphinx output directory tree. The doxygen projects are specified through DOXYFILE (multiple possible).</p>
+sphinx output directory tree. The doxygen html outputs are specified through INPUT (multiple possible) either
+by pointing to the doxygen html output directory or by pointing to the doxygen config file (doxyfile).</p>
 </dd></dl>
 
 </div>
@@ -476,7 +486,7 @@ sphinx output directory tree. The doxygen projects are specified through DOXYFIL
     <footer class="footer">
   <p>
     
-      Last updated on &#39;Mon Jul 18 14:08:43 2022&#39;, &#39;9e7c104&#39;.<br/>
+      Last updated on &#39;Thu Jul 28 08:41:35 2022&#39;, &#39;d262476&#39;.<br/>
   </p>
 </footer>
 </main>
