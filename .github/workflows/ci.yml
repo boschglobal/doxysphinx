@@ -75,5 +75,5 @@ jobs:
       uses: softprops/action-gh-release@v1
       with:
         body_path: RELEASE_NOTES.md
-        tag: ${{ steps.versionbump.outputs.new_version_tag }}
+        tag_name: ${{ steps.versionbump.outputs.new_version_tag }}
         token: ${{ secrets.GITHUBTOKEN }}
