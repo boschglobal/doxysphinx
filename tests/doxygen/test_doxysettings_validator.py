@@ -76,7 +76,7 @@ from doxysphinx.doxygen import DoxygenSettingsValidator as Validator
                 "INTERACTIVE_SVG": "YES",
                 "HTML_EXTRA_STYLESHEET": "YOUR_DOXYGEN_AWESOME_PATH/doxygen-awesome.css",
             },
-            ["Wrong value no for SEARCHENGINE, NO is required."],  # one param in lower case
+            ["OPTIONAL: Wrong value no for SEARCHENGINE, NO is required."],  # one param in lower case
         ),
         (
             {
@@ -159,7 +159,7 @@ from doxysphinx.doxygen import DoxygenSettingsValidator as Validator
                 "DISABLE_INDEX": "NO",
                 "GENERATE_HTML": "YES",
                 "CREATE_SUBDIRS": "NO",
-                "GENERATE_TAGFILE": "docs/doxygen/demo/html/tagfile.xml",
+                "GENERATE_TAGFILE": "docs/doxygen/tagfile.xml",
                 "ANOTHER_FLAG": "YES",
                 "ANOTHER_TAG": "NO",
                 "GENERATE_XML": "NO",
@@ -169,7 +169,9 @@ from doxysphinx.doxygen import DoxygenSettingsValidator as Validator
                 "HTML_OUTPUT": "html",
                 "HTML_EXTRA_STYLESHEET": "YOUR_DOXYGEN_AWESOME_PATH/doxygen-awesome.css",
             },
-            [],  # additional flags in doxyfile
+            [
+                "OPTIONAL: Wrong value docs/doxygen/tagfile.xml for GENERATE_TAGFILE, docs/doxygen/demo/html/tagfile.xml is required.",
+            ],  # additional flags in doxyfile & another path for tagfiile
         ),
     ],
 )

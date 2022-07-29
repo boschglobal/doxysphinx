@@ -77,13 +77,11 @@ class DoxygenSettingsValidator:
 
     mandatory_settings = {
         "OUTPUT_DIRECTORY": "",
-        "SEARCHENGINE": "NO",
         "GENERATE_TREEVIEW": "NO",
         "DISABLE_INDEX": "NO",
         "ALIASES": "rst",
         "endrst": "\\endverbatim",
         "GENERATE_HTML": "YES",
-        "GENERATE_TAGFILE": "",
         "CREATE_SUBDIRS": "NO",
     }
     """
@@ -92,11 +90,13 @@ class DoxygenSettingsValidator:
     """
 
     optional_settings = {
+        "SEARCHENGINE": "NO",
         "GENERATE_XML": "NO",
         "DOT_IMAGE_FORMAT": "svg",
         "DOT_TRANSPARENT": "YES",
         "INTERACTIVE_SVG": "YES",
         "HTML_EXTRA_STYLESHEET": "YOUR_DOXYGEN_AWESOME_PATH/doxygen-awesome.css",
+        "GENERATE_TAGFILE": "",
     }
     """A dictionary containing further optional settings for the doxygen config."""
 
@@ -143,7 +143,7 @@ class DoxygenSettingsValidator:
         stringified_out = str(out) if out.is_absolute() else f'"{out}" (resolved to "{self.absolute_out}")'
 
         self.mandatory_settings["OUTPUT_DIRECTORY"] = config["OUTPUT_DIRECTORY"]
-        self.mandatory_settings["GENERATE_TAGFILE"] = str(out) + "/tagfile.xml"
+        self.optional_settings["GENERATE_TAGFILE"] = str(out) + "/tagfile.xml"
 
         if path_is_relative_to(out, sphinx_source_dir):
             return True
