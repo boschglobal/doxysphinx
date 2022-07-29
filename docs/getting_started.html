@@ -659,24 +659,24 @@ it and see how things working we recommend to clone the repo, fire up vscode and
 <div class="sd-card-title sd-font-weight-bold docutils">
 DartSass installation</div>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="eaa3891a-1a00-4ea2-8c6c-33379a3fe415" name="bbc14b94-83ee-4a06-910b-60debf34e716" type="radio">
-</input><label class="sd-tab-label" for="eaa3891a-1a00-4ea2-8c6c-33379a3fe415">
+<input checked="checked" id="7bf688f2-cf19-47f5-b6a5-9454ff245af4" name="a7467d8a-efd3-4fba-bb84-3f37c9c05566" type="radio">
+</input><label class="sd-tab-label" for="7bf688f2-cf19-47f5-b6a5-9454ff245af4">
 Linux</label><div class="sd-tab-content docutils">
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Linux</span>
 curl -sSL https://github.com/sass/dart-sass/releases/download/1.49.7/dart-sass-1.49.7-linux-x64.tar.gz <span class="p">|</span> tar -xzvf - --strip-components<span class="o">=</span><span class="m">1</span> -C ~/.local/bin dart-sass/sass
 </pre></div>
 </div>
 </div>
-<input id="2e174b73-397a-4b08-b022-04681bcd4e87" name="bbc14b94-83ee-4a06-910b-60debf34e716" type="radio">
-</input><label class="sd-tab-label" for="2e174b73-397a-4b08-b022-04681bcd4e87">
+<input id="99dec9ba-75e3-471f-be39-fd3bf365e905" name="a7467d8a-efd3-4fba-bb84-3f37c9c05566" type="radio">
+</input><label class="sd-tab-label" for="99dec9ba-75e3-471f-be39-fd3bf365e905">
 Windows</label><div class="sd-tab-content docutils">
 <div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="c"># windows with chocolatey (https://www.chocolatey.org)</span>
 <span class="n">choco</span> <span class="n">install</span> <span class="n">sass</span>
 </pre></div>
 </div>
 </div>
-<input id="24d14def-1d84-4c2b-833d-6ff191ee98be" name="bbc14b94-83ee-4a06-910b-60debf34e716" type="radio">
-</input><label class="sd-tab-label" for="24d14def-1d84-4c2b-833d-6ff191ee98be">
+<input id="3e10ce2b-2287-44bc-bcdf-76fc493a9e6c" name="a7467d8a-efd3-4fba-bb84-3f37c9c05566" type="radio">
+</input><label class="sd-tab-label" for="3e10ce2b-2287-44bc-bcdf-76fc493a9e6c">
 Other</label><div class="sd-tab-content docutils">
 <p class="sd-card-text">see Releases: <a class="reference external" href="https://github.com/sass/dart-sass/releases">https://github.com/sass/dart-sass/releases</a>.</p>
 </div>
@@ -755,20 +755,12 @@ In your rst files you can then use e.g. (as documented here: <a class="reference
 <p>these settings are absolutely needed (Doxysphinx will throw detailed errors in case of incorrect ones):</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">OUTPUT_DIRECTORY       = &lt;anywhere_below_you_sphinx_documentation_source_root!!!&gt;</span><span class="w"> </span><span class="c1"># see note below</span><span class="w"></span>
 
-<span class="l l-Scalar l-Scalar-Plain">SEARCHENGINE           = NO</span><span class="w">   </span><span class="c1"># Deactivate search engine (as sphinx has it&#39;s own search)</span><span class="w"></span>
 <span class="l l-Scalar l-Scalar-Plain">GENERATE_TREEVIEW      = NO</span><span class="w">   </span><span class="c1"># Deactivate doxygens own treeview (as it doesn&#39;t look right)</span><span class="w"></span>
 <span class="l l-Scalar l-Scalar-Plain">DISABLE_INDEX          = NO</span><span class="w">   </span><span class="c1"># Menu data is crucial for our TOC generation so it mustn&#39;t be disabled</span><span class="w"></span>
 
 <span class="l l-Scalar l-Scalar-Plain">GENERATE_HTML          = YES</span><span class="w">  </span><span class="c1"># Keep sure that you generate HTML which needed for doxysphinx</span><span class="w"></span>
 <span class="l l-Scalar l-Scalar-Plain">ALIASES                = &quot;rst=\verbatim embed:rst:leading-asterisk&quot; \</span><span class="w"></span>
 <span class="w">                         </span><span class="l l-Scalar l-Scalar-Plain">endrst=\endverbatim</span><span class="w">  </span><span class="c1"># This allows you to use rst blocks inside doxygen comments with @rst and @endrst</span><span class="w"></span>
-<span class="l l-Scalar l-Scalar-Plain">GENERATE_TAGFILE       = &lt;OUTPUT_DIRECTORY&gt;/&lt;HTML_OUTPUT&gt;/tagfile.xml</span><span class="w">  </span><span class="c1"># generate a tag file</span><span class="w"></span>
-<span class="w">                              </span><span class="c1"># this could be stored anywhere, however we recommend to put it into the</span><span class="w"></span>
-<span class="w">                              </span><span class="c1"># documentation output folder which is the value of the OUTPUT_DIRECTORY variable</span><span class="w"></span>
-<span class="w">                              </span><span class="c1"># + the value of the HTML_OUTPUT variable (your have to expand it for yourself</span><span class="w"></span>
-<span class="w">                              </span><span class="c1"># because doxygen has no mechanism to reference config settings that were defined</span><span class="w"></span>
-<span class="w">                              </span><span class="c1"># beforehand.</span><span class="w"></span>
-<span class="w">                              </span><span class="c1"># The tagfile is also needed for the doxylink extension</span><span class="w"></span>
 
 <span class="l l-Scalar l-Scalar-Plain">CREATE_SUBDIRS         = NO</span><span class="w">   </span><span class="c1"># NO is the default value and it should be no because doxysphinx can&#39;t handle subdirs right now.</span><span class="w"></span>
 </pre></div>
@@ -792,6 +784,15 @@ look at the <a class="reference internal" href="alternatives.html"><span class="
 <h3>Recommended settings<a class="headerlink" href="#recommended-settings" title="Permalink to this headline">¶</a></h3>
 <p>these settings are optional but strongly recommended (you will be warned in case of some value deviations):</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">GENERATE_XML           = NO</span><span class="w">   </span><span class="c1"># Xml output isn&#39;t needed for doxysphinx</span><span class="w"></span>
+
+<span class="l l-Scalar l-Scalar-Plain">SEARCHENGINE           = NO</span><span class="w">   </span><span class="c1"># deactivate search engine (as sphinx has it&#39;s own search)</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">GENERATE_TAGFILE       = &lt;OUTPUT_DIRECTORY&gt;/&lt;HTML_OUTPUT&gt;/tagfile.xml</span><span class="w">  </span><span class="c1"># generate a tag file</span><span class="w"></span>
+<span class="w">                              </span><span class="c1"># this could be stored anywhere, however we recommend to put it into the</span><span class="w"></span>
+<span class="w">                              </span><span class="c1"># documentation output folder which is the value of the OUTPUT_DIRECTORY variable</span><span class="w"></span>
+<span class="w">                              </span><span class="c1"># + the value of the HTML_OUTPUT variable (your have to expand it for yourself</span><span class="w"></span>
+<span class="w">                              </span><span class="c1"># because doxygen has no mechanism to reference config settings that were defined</span><span class="w"></span>
+<span class="w">                              </span><span class="c1"># beforehand.</span><span class="w"></span>
+<span class="w">                              </span><span class="c1"># The tagfile is also needed for the doxylink extension</span><span class="w"></span>
 
 <span class="l l-Scalar l-Scalar-Plain">DOT_IMAGE_FORMAT       = svg</span><span class="w">  </span><span class="c1"># generates nicer svg images</span><span class="w"></span>
 <span class="l l-Scalar l-Scalar-Plain">DOT_TRANSPARENT        = YES</span><span class="w">  </span><span class="c1"># generate transparent images</span><span class="w"></span>
@@ -951,7 +952,7 @@ this:</p>
     <footer class="footer">
   <p>
     
-      Last updated on &#39;Thu Jul 28 08:41:35 2022&#39;, &#39;d262476&#39;.<br/>
+      Last updated on &#39;Fri Jul 29 08:22:00 2022&#39;, &#39;a6ba388&#39;.<br/>
   </p>
 </footer>
 </main>
