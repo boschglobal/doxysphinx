@@ -124,7 +124,7 @@ def _get_outdir_via_doxyfile(doxyfile: Path, sphinx_source: Path) -> Path:
 
     validator = DoxygenSettingsValidator()
     if not validator.validate(config, sphinx_source):
-        if any(item for item in validator.validation_errors if not item.startswith("OPTIONAL")):
+        if any(item for item in validator.validation_errors if not item.startswith("Hint:")):
             message = validator.validation_msg
             raise click.UsageError(
                 f'The doxygen settings defined in "{doxyfile}"'
