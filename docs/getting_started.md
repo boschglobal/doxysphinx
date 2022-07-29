@@ -146,20 +146,12 @@ these settings are absolutely needed (Doxysphinx will throw detailed errors in c
 ```yaml
 OUTPUT_DIRECTORY       = <anywhere_below_you_sphinx_documentation_source_root!!!> # see note below
 
-SEARCHENGINE           = NO   # Deactivate search engine (as sphinx has it's own search)
 GENERATE_TREEVIEW      = NO   # Deactivate doxygens own treeview (as it doesn't look right)
 DISABLE_INDEX          = NO   # Menu data is crucial for our TOC generation so it mustn't be disabled
 
 GENERATE_HTML          = YES  # Keep sure that you generate HTML which needed for doxysphinx
 ALIASES                = "rst=\verbatim embed:rst:leading-asterisk" \
                          endrst=\endverbatim  # This allows you to use rst blocks inside doxygen comments with @rst and @endrst
-GENERATE_TAGFILE       = <OUTPUT_DIRECTORY>/<HTML_OUTPUT>/tagfile.xml  # generate a tag file
-                              # this could be stored anywhere, however we recommend to put it into the
-                              # documentation output folder which is the value of the OUTPUT_DIRECTORY variable
-                              # + the value of the HTML_OUTPUT variable (your have to expand it for yourself
-                              # because doxygen has no mechanism to reference config settings that were defined
-                              # beforehand.
-                              # The tagfile is also needed for the doxylink extension
 
 CREATE_SUBDIRS         = NO   # NO is the default value and it should be no because doxysphinx can't handle subdirs right now.
 ```
@@ -188,6 +180,15 @@ these settings are optional but strongly recommended (you will be warned in case
 
 ```yaml
 GENERATE_XML           = NO   # Xml output isn't needed for doxysphinx
+
+SEARCHENGINE           = NO   # deactivate search engine (as sphinx has it's own search)
+GENERATE_TAGFILE       = <OUTPUT_DIRECTORY>/<HTML_OUTPUT>/tagfile.xml  # generate a tag file
+                              # this could be stored anywhere, however we recommend to put it into the
+                              # documentation output folder which is the value of the OUTPUT_DIRECTORY variable
+                              # + the value of the HTML_OUTPUT variable (your have to expand it for yourself
+                              # because doxygen has no mechanism to reference config settings that were defined
+                              # beforehand.
+                              # The tagfile is also needed for the doxylink extension
 
 DOT_IMAGE_FORMAT       = svg  # generates nicer svg images
 DOT_TRANSPARENT        = YES  # generate transparent images
