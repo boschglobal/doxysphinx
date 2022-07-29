@@ -169,26 +169,8 @@ class DoxygenSettingsValidator:
             return False
 
     def _validate_doxygen_recommended_settings(self, settings: Dict[str, str]) -> bool:
-        return self._validate_settings(settings, self.mandatory_settings)
-
-    def _validate_doxygen_optional_settings(self, settings: Dict[str, str]) -> bool:
-        """Validate the doxyflags for optional settings and mark the error with an "optional" before the string.
-
-        :param settings: doxygen optional settings
-        :return: True if all optional settings are contained in doxyfile correctly.
-        """
-        validation_errors_old = self.validation_errors.copy()
-        if not self._validate_settings(settings, self.optional_settings):
-            nr_optional_errors = len(self.validation_errors) - len(validation_errors_old)
-
-            for index, item in enumerate(self.validation_errors[-nr_optional_errors:]):
-                self.validation_errors[(index - nr_optional_errors)] = "OPTIONAL: " + item
-            return False
-
-        return True
-
-    def _validate_settings(self, imported_settings: Dict[str, str], target_settings: Dict[str, str]) -> bool:
-
+        imported_settings = settings
+        target_settings = self.mandatory_settings
         validation_successful = True
         if all(item in imported_settings.items() for item in target_settings.items()):
             return validation_successful
@@ -200,13 +182,47 @@ class DoxygenSettingsValidator:
         missing_imported_settings = target_settings.keys() - contained_settings_target.keys()
         if missing_imported_settings:
             for key in missing_imported_settings:
-                self.validation_errors.append((f"Missing value for {key}, but {target_settings[key]} is required."))
+                self.validation_errors.append(
+                    (f"Error: Missing value for {key}, but {target_settings[key]} is required.")
+                )
             validation_successful = False
 
         for key in contained_settings_target.keys():
             if not contained_settings_target[key] == target_settings[key]:
                 self.validation_errors.append(
-                    (f"Wrong value {contained_settings_target[key]} for {key}, {target_settings[key]} is required.")
+                    (
+                        f"Error: Wrong value {contained_settings_target[key]} for {key}, {target_settings[key]} is required."
+                    )
+                )
+                validation_successful = False
+
+        return validation_successful
+
+    def _validate_doxygen_optional_settings(self, settings: Dict[str, str]) -> bool:
+        imported_settings = settings
+        target_settings = self.optional_settings
+        validation_successful = True
+        if all(item in imported_settings.items() for item in target_settings.items()):
+            return validation_successful
+
+        contained_settings_target = {
+            key: value for key, value in imported_settings.items() if key in target_settings.keys()
+        }
+
+        missing_imported_settings = target_settings.keys() - contained_settings_target.keys()
+        if missing_imported_settings:
+            for key in missing_imported_settings:
+                self.validation_errors.append(
+                    (f"Hint: Missing value for {key}, but {target_settings[key]} is recommended.")
+                )
+            validation_successful = False
+
+        for key in contained_settings_target.keys():
+            if not contained_settings_target[key] == target_settings[key]:
+                self.validation_errors.append(
+                    (
+                        f"Hint: Wrong value {contained_settings_target[key]} for {key}, {target_settings[key]} is recommended."
+                    )
                 )
                 validation_successful = False
 

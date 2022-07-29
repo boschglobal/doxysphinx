@@ -57,7 +57,7 @@ from doxysphinx.doxygen import DoxygenSettingsValidator as Validator
                 "INTERACTIVE_SVG": "YES",
                 "HTML_EXTRA_STYLESHEET": "YOUR_DOXYGEN_AWESOME_PATH/doxygen-awesome.css",
             },
-            ["OPTIONAL: Wrong value no for SEARCHENGINE, NO is required."],  # one param in lower case
+            ["Hint: Wrong value no for SEARCHENGINE, NO is recommended."],  # one param in lower case
         ),
         (
             {
@@ -78,9 +78,9 @@ from doxysphinx.doxygen import DoxygenSettingsValidator as Validator
                 "HTML_EXTRA_STYLESHEET": "YOUR_DOXYGEN_AWESOME_PATH/doxygen-awesome.css",
             },
             [
-                "Wrong value YES for DISABLE_INDEX, NO is required.",
-                "Wrong value NO for GENERATE_HTML, YES is required.",
-                "OPTIONAL: Wrong value YES for GENERATE_XML, NO is required.",
+                "Error: Wrong value YES for DISABLE_INDEX, NO is required.",
+                "Error: Wrong value NO for GENERATE_HTML, YES is required.",
+                "Hint: Wrong value YES for GENERATE_XML, NO is recommended.",
             ],  # two mandatory settings and one optional setting are wrong
         ),
         (
@@ -101,8 +101,8 @@ from doxysphinx.doxygen import DoxygenSettingsValidator as Validator
                 "INTERACTIVE_SVG": "YES",
             },
             [
-                "Missing value for DISABLE_INDEX, but NO is required.",
-                "OPTIONAL: Missing value for HTML_EXTRA_STYLESHEET, but YOUR_DOXYGEN_AWESOME_PATH/doxygen-awesome.css is required.",
+                "Error: Missing value for DISABLE_INDEX, but NO is required.",
+                "Hint: Missing value for HTML_EXTRA_STYLESHEET, but YOUR_DOXYGEN_AWESOME_PATH/doxygen-awesome.css is recommended.",
             ],  # two settings are missing (instead another flag is present),
         ),
         (
@@ -150,7 +150,7 @@ from doxysphinx.doxygen import DoxygenSettingsValidator as Validator
                 "HTML_EXTRA_STYLESHEET": "YOUR_DOXYGEN_AWESOME_PATH/doxygen-awesome.css",
             },
             [
-                "OPTIONAL: Wrong value docs/doxygen/tagfile.xml for GENERATE_TAGFILE, docs/doxygen/demo/html/tagfile.xml is required.",
+                "Hint: Wrong value docs/doxygen/tagfile.xml for GENERATE_TAGFILE, docs/doxygen/demo/html/tagfile.xml is recommended.",
             ],  # additional flags in doxyfile & another path for tagfiile
         ),
     ],
