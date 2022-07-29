@@ -13,6 +13,14 @@
 
 <!--next-version-placeholder-->
 
+## v2.3.4 (2022-07-29)
+
+### Fix
+
+- **validator**: fix small bug that broke build command
+- **validator**: adapt error messages of validator
+- **validator**: switch some settings to optional
+
 ## v2.3.3 (2022-07-28)
 
 ### Fix
