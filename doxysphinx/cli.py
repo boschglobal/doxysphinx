@@ -34,7 +34,7 @@ import click_log  # type: ignore
 from doxysphinx.doxygen import (
     DoxygenOutputPathValidator,
     DoxygenSettingsValidator,
-    read_doxyfile,
+    read_doxyconfig,
 )
 from doxysphinx.process import Builder, Cleaner
 from doxysphinx.utils.contexts import TimedContext
@@ -120,7 +120,7 @@ def _get_doxygen_outdirs(inputs: List[Path], sphinx_source: Path) -> Iterator[Pa
 
 
 def _get_outdir_via_doxyfile(doxyfile: Path, sphinx_source: Path) -> Path:
-    config = read_doxyfile(doxyfile)
+    config = read_doxyconfig(doxyfile)
 
     validator = DoxygenSettingsValidator()
     if not validator.validate(config, sphinx_source):

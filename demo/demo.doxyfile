@@ -869,8 +869,6 @@ WARN_LOGFILE           =
 # Configuration options related to the input files
 #---------------------------------------------------------------------------
 
-@INCLUDE                = Doxyfile
-
 # The INPUT tag is used to specify the files and/or directories that contain
 # documented source files. You may enter file names like myfile.cpp or
 # directories like /usr/src/myproject. Separate the files or directories with
