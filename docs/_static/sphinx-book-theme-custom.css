@@ -27,26 +27,24 @@ body {
 .copyright {
     font-size: small;
     font-weight: 300;
-    color: rgba(255, 255, 255, 0.5)
+    color: rgba(0, 0, 0, 0.5);
 }
 
 .attribution {
     font-size: smaller;
     font-weight: 200;
-    color: rgba(255, 255, 255, 0.4)
+    color: rgba(0, 0, 0, 0.4);
 }
 
 .attribution a {
-    color: rgba(255, 255, 255, 0.6)
+    color: rgba(0, 0, 0, 0.6);
+    font-weight: 300;
 }
 
 .attribution a:hover {
-    color: rgba(255, 255, 255, 1)
+    color: rgba(0, 0, 0, 1);
 }
 
-/*.doxygen_content {
-    all: unset !important;
-}*/
 p.rubric {
     border-bottom: none !important;
 }
