@@ -25,6 +25,7 @@ Defines click main command (:func:`cli`) and subcommands (:func:`build`), (:func
 """
 
 import logging
+from dataclasses import dataclass
 from pathlib import Path
 from typing import Iterator, List
 
@@ -41,6 +42,45 @@ from doxysphinx.utils.contexts import TimedContext
 
 _logger = logging.getLogger()
 click_log.basic_config(_logger)
+
+
+@dataclass
+class DoxygenContext:
+    """
+    Represent the options for doxygen that can be set via the cli.
+
+    The doxygen projects are specified through INPUT (multiple possible). INPUT can be:
+    - a doxygen configuration file (aka doxyfile)
+    - a directory, which contains the generated doxygen html documentation. Note that specifying a directory
+      will skip the config validation completely and is therefore considered "advanced stuff".
+      You will typically want to use that if you're integrating doxysphinx in a ci build system.
+      If unsure, use a doxyfile.
+
+    """
+
+    input: List[Path]
+    doxygen_exe: str
+    doxygen_cwd: Path
+
+
+def _doxygen_context():
+    def _(function):
+        function = click.argument(
+            "input", nargs=-1, type=click.Path(dir_okay=True, file_okay=True, exists=True, path_type=Path)
+        )(function)
+        function = click.option(
+            "--doxygen_exe", type=str, default="doxygen", help="Name of the doxygen executable, default is 'doxygen'."
+        )(function)
+        function = click.option(
+            "--doxygen_cwd",
+            type=click.Path(file_okay=False, exists=True, dir_okay=True),
+            default=Path.cwd(),
+            help="Working directory in case another doxygen is used"
+            "(because paths inside the doxyfile are relative to the directory from which doxygen is executed).",
+        )(function)
+        return function
+
+    return _
 
 
 @click.group()
@@ -60,20 +100,13 @@ def cli():
 @cli.command()
 @click.argument("sphinx_source", type=click.Path(file_okay=False, exists=True, path_type=Path))
 @click.argument("sphinx_output", type=click.Path(file_okay=False, path_type=Path))
-@click.argument("input", nargs=-1, type=click.Path(dir_okay=True, file_okay=True, exists=True, path_type=Path))
-def build(input: List[Path], sphinx_source: Path, sphinx_output: Path):
+@_doxygen_context()
+def build(sphinx_source: Path, sphinx_output: Path, **kwargs):
     """
     Build rst and copy related files for doxygen projects.
 
     SPHINX_SOURCE specifies the root of the sphinx source directory tree while SPHINX_OUTPUT specifies the root of the
     sphinx output directory tree.
-    The doxygen projects are specified through INPUT (multiple possible).
-    INPUT can be:
-    - a doxygen configuration file (aka doxyfile)
-    - a directory which contains the generated doxygen html documentation. Note that specifying a directory
-      will skip the config validation completely and is therefore considered "advanced stuff".
-      You will typically want to use that if you're integrating doxysphinx in a ci build system.
-      If unsure use a doxyfile.
     \f
 
     .. warning::
@@ -83,10 +116,11 @@ def build(input: List[Path], sphinx_source: Path, sphinx_output: Path):
        * when using ``sphinx-build -M html`` the html output will be put to ``OUTPUT_DIR/html`` so doxysphinx's
          ``SPHINX_OUTPUT`` should be ``OUTPUT_DIR/html``.
     """
+    doxy_context = DoxygenContext(**kwargs)
     _logger.info("starting build command...")
     with TimedContext() as tc:
         builder = Builder(sphinx_source, sphinx_output)
-        for doxy_output in _get_doxygen_outdirs(input, sphinx_source):
+        for doxy_output in _get_doxygen_outdirs(doxy_context, sphinx_source):
             builder.build(doxy_output)
     _logger.info(f"build command done in {tc.elapsed_humanized()}.")
 
@@ -94,8 +128,8 @@ def build(input: List[Path], sphinx_source: Path, sphinx_output: Path):
 @cli.command()
 @click.argument("sphinx_source", type=click.Path(file_okay=False, exists=True, path_type=Path))
 @click.argument("sphinx_output", type=click.Path(file_okay=False, path_type=Path))
-@click.argument("input", nargs=-1, type=click.Path(dir_okay=True, file_okay=True, exists=True, path_type=Path))
-def clean(input: List[Path], sphinx_source: Path, sphinx_output: Path):
+@_doxygen_context()
+def clean(sphinx_source: Path, sphinx_output: Path, **kwargs):
     r"""
     Clean up files created by doxysphinx.
 
@@ -103,24 +137,25 @@ def clean(input: List[Path], sphinx_source: Path, sphinx_output: Path):
     sphinx output directory tree. The doxygen html outputs are specified through INPUT (multiple possible) either
     by pointing to the doxygen html output directory or by pointing to the doxygen config file (doxyfile).
     """
+    doxy_context = DoxygenContext(**kwargs)
     _logger.info("starting clean command...")
     with TimedContext() as tc:
         cleaner = Cleaner(sphinx_source, sphinx_output)
-        for doxy_output in _get_doxygen_outdirs(input, sphinx_source):
+        for doxy_output in _get_doxygen_outdirs(doxy_context, sphinx_source):
             cleaner.cleanup(doxy_output)
     _logger.info(f"clean command done in {tc.elapsed_humanized()}.")
 
 
-def _get_doxygen_outdirs(inputs: List[Path], sphinx_source: Path) -> Iterator[Path]:
-    for i in inputs:
+def _get_doxygen_outdirs(doxy_context: DoxygenContext, sphinx_source: Path) -> Iterator[Path]:
+    for i in doxy_context.input:
         if i.is_dir():
             yield _get_outdir_via_doxyoutputdir(i)
         else:
-            yield _get_outdir_via_doxyfile(i, sphinx_source)
+            yield _get_outdir_via_doxyfile(i, sphinx_source, doxy_context)
 
 
-def _get_outdir_via_doxyfile(doxyfile: Path, sphinx_source: Path) -> Path:
-    config = read_doxyconfig(doxyfile)
+def _get_outdir_via_doxyfile(doxyfile: Path, sphinx_source: Path, doxy_context: DoxygenContext) -> Path:
+    config = read_doxyconfig(doxyfile, doxy_context.doxygen_exe, doxy_context.doxygen_cwd)
 
     validator = DoxygenSettingsValidator()
     if not validator.validate(config, sphinx_source):

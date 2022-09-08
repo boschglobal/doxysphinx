@@ -54,5 +54,8 @@
         }
     ],
     "editor.formatOnSave": true,
-    "git.alwaysSignOff": true
+    "git.alwaysSignOff": true,
+    "python.analysis.extraPaths": [
+        "./tests/doxygen/doxygen_testfiles"
+    ]
 }

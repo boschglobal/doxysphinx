@@ -232,7 +232,7 @@ doxysphinx <command> --help
 Build the sphinx rst documents out of the doxygen htmls.
 
 ```bash
-doxysphinx build <SPHINX_SOURCE> <SPHINX_OUTPUT> <INPUT(S)>
+doxysphinx build <SPHINX_SOURCE> <SPHINX_OUTPUT> <INPUT(S)> <--doxygen_exe> <--doxygen_cwd>
 ```
 
 Arguments:
@@ -241,7 +241,9 @@ Arguments:
 |----------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | SPHINX_SOURCE  | The root of your sphinx source/input directory tree.<br/>Often this is the same directory your conf.py is in.                                                               |
 | SPHINX_OUTPUT  | The root of you sphinx output directory tree - where sphinx puts the generated html files to.<br/> This should be the directory where sphinx put's it's main index.html to. |
-| INPUT(S)    | One or many inputs where each input could be either...<ul><li>a doxygen configuration file (doxyfile). This is recommended for "beginners" because it will also check the config for doxysphinx compatibility.</li><li>an output path where the generated doxygen documentation resides. This is more like an "expert"-mode which is especially useful when integrating doxysphinx with buildsystems like cmake etc. which are dynamically generating doxygen configs.</li></ul>
+| INPUT(S)    | One or many inputs where each input could be either...<ul><li>a doxygen configuration file (doxyfile). This is recommended for "beginners" because it will also check the config for doxysphinx compatibility.</li><li>an output path where the generated doxygen documentation resides. This is more like an "expert"-mode which is especially useful when integrating doxysphinx with buildsystems like cmake etc. which are dynamically generating doxygen configs.</li></ul> |
+| --doxygen_exe  | The name/path of the doxygen executable. If nothing is entered, the default value is "doxygen". (OPTIONAL) |
+| --doxygen_cwd  | The directory where doxygen is executed. The default value is the current working directory. (OPTIONAL)
 
 Replace the following arguments:
 
