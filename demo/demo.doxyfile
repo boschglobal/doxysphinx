@@ -13,8 +13,8 @@
 # TAG += value [value, ...]
 # Values that contain spaces should be placed between quotes (\" \").
 
-# @INCLUDE_PATH = "demo/includedconfigs"
-# @INCLUDE = "additionalconfig.doxyfile"
+#@INCLUDE_PATH = "demo/includedconfigs"
+#@INCLUDE = "additionalconfig.doxyfile"
 #---------------------------------------------------------------------------
 # Project related configuration options
 #---------------------------------------------------------------------------

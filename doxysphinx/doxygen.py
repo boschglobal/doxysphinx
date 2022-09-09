@@ -49,10 +49,15 @@ def _compare_configs(doxyfile: Path, doxygen_exe: str, doxygen_cwd: Path) -> Dox
     from subprocess import CalledProcessError, run  # nosec: B404
 
     try:
-        default_config = run(f"{doxygen_exe} -s -g -", cwd=doxygen_cwd, capture_output=True)  # nosec: B607, B603
+        default_config = run(  # nosec: B607, B603
+            f"{doxygen_exe} -s -g -", cwd=doxygen_cwd, shell=True, capture_output=True  # nosec: B607, B603, B602
+        )  # nosec: B607, B603
         if default_config.check_returncode:
             custom_config = run(  # nosec: B607, B603
-                f"{doxygen_exe} -x {doxyfile}", cwd=doxygen_cwd, capture_output=True  # nosec: B607, B603
+                f"{doxygen_exe} -x {doxyfile}",
+                cwd=doxygen_cwd,
+                shell=True,  # nosec: B602
+                capture_output=True,  # nosec: B607, B603
             )  # nosec: B607, B603
             custom_config.check_returncode
 
@@ -99,6 +104,7 @@ def _parse_stdout(text: str) -> ConfigDict:
     config_pair = doxy_flag + Suppress("=") + list_items
     config = config_pair.search_string(pure_text).asList()
 
+    # format correcting
     for i in range(len(config)):
         if len(config[i]) > 2:
             flag = config[i][0]
@@ -199,11 +205,12 @@ class DoxygenSettingsValidator:
         stringified_out = str(out) if out.is_absolute() else f'"{out}" (resolved to "{self.absolute_out}")'
 
         self.mandatory_settings["OUTPUT_DIRECTORY"] = str(config["OUTPUT_DIRECTORY"])
-        self.optional_settings["GENERATE_TAGFILE"] = str(out) + "/tagfile.xml"
 
         if path_is_relative_to(out, sphinx_source_dir):
+            self.optional_settings["GENERATE_TAGFILE"] = str(out) + "/tagfile.xml"
             return True
         else:
+            self.optional_settings["GENERATE_TAGFILE"] = "docs/doxygen/demo/html/tagfile.xml"  # default value
             self.validation_errors.append(
                 f'The doxygen OUTPUT_DIR of "{stringified_out}" defined in the doxyfile'
                 f' is not in a sub-path of the sphinx source directory "{sphinx_source_dir}".'
