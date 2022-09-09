@@ -13,6 +13,12 @@
 
 <!--next-version-placeholder-->
 
+## v2.3.6 (2022-09-09)
+
+### Fix
+
+- **styling**: moved rtd style fixes to doxysphinx
+
 ## v2.3.5 (2022-09-09)
 
 ### Fix
