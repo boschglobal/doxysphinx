@@ -32,9 +32,9 @@
     <link rel="stylesheet" type="text/css" href="../../_static/assets/jsonview.bundle.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/libs/html/datatables.min.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/modern.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/layouts.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/styles.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/modern.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-test-results/common.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-book-theme-custom.css" />
     
@@ -388,24 +388,109 @@
 
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span>
 <span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Tuple</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Union</span>
 
 <span class="kn">import</span> <span class="nn">json5</span>
 
 <span class="kn">from</span> <span class="nn">doxysphinx.utils.pathlib_fix</span> <span class="kn">import</span> <span class="n">path_is_relative_to</span><span class="p">,</span> <span class="n">path_resolve</span>
 
+<span class="n">ConfigDict</span> <span class="o">=</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]]</span>
 
-<div class="viewcode-block" id="read_doxyfile"><a class="viewcode-back" href="../../docs/api/doxysphinx/doxysphinx.doxygen.html#doxysphinx.doxygen.read_doxyfile">[docs]</a><span class="k">def</span> <span class="nf">read_doxyfile</span><span class="p">(</span><span class="n">doxyfile</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]:</span>
+
+<div class="viewcode-block" id="DoxyOutput"><a class="viewcode-back" href="../../docs/api/doxysphinx/doxysphinx.doxygen.html#doxysphinx.doxygen.DoxyOutput">[docs]</a><span class="nd">@dataclass</span><span class="p">(</span><span class="n">frozen</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">DoxyOutput</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Class to summarize the strings of the console output and error streams.&quot;&quot;&quot;</span>
+
+    <span class="n">out</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">err</span><span class="p">:</span> <span class="nb">str</span></div>
+
+
+<div class="viewcode-block" id="read_doxyconfig"><a class="viewcode-back" href="../../docs/api/doxysphinx/doxysphinx.doxygen.html#doxysphinx.doxygen.read_doxyconfig">[docs]</a><span class="k">def</span> <span class="nf">read_doxyconfig</span><span class="p">(</span><span class="n">doxyfile</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">doxygen_exe</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">doxygen_cwd</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ConfigDict</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Read doxygen configuration file and returns the configuration key value pairs as dict.</span>
+<span class="sd">    Supplement the doxygen configuration file with the default doxygen configuration and return the final key value pairs as a dict.</span>
 
 <span class="sd">    :param doxyfile: the doxygen configuration file to read</span>
-<span class="sd">    :return: a dict representing all key value pairs defined in doxyfile.</span>
+<span class="sd">    :param doxygen_exe: in case one wants to execute doxygen from another directory.</span>
+<span class="sd">    :return: a dict representing all key-value pairs defined in the final configuration</span>
+<span class="sd">    (including warnings from the console output). The value can either be a single value or a list.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">lines</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">doxyfile</span><span class="o">.</span><span class="n">read_text</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-    <span class="n">pairs</span> <span class="o">=</span> <span class="p">[</span><span class="n">_parse_key_val</span><span class="p">(</span><span class="n">line</span><span class="p">)</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span> <span class="k">if</span> <span class="n">_is_config_line</span><span class="p">(</span><span class="n">line</span><span class="p">)]</span>
-    <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span><span class="n">pairs</span><span class="p">)</span></div>
+    <span class="n">output</span> <span class="o">=</span> <span class="n">_compare_configs</span><span class="p">(</span><span class="n">doxyfile</span><span class="p">,</span> <span class="n">doxygen_exe</span><span class="p">,</span> <span class="n">doxygen_cwd</span><span class="p">)</span>
+    <span class="n">config</span> <span class="o">=</span> <span class="n">_parse_stdout</span><span class="p">(</span><span class="n">output</span><span class="o">.</span><span class="n">out</span><span class="p">)</span>
+    <span class="n">config</span><span class="p">[</span><span class="s2">&quot;WARNINGS&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">_parse_stderr</span><span class="p">(</span><span class="n">output</span><span class="o">.</span><span class="n">err</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">config</span></div>
+
+
+<span class="k">def</span> <span class="nf">_compare_configs</span><span class="p">(</span><span class="n">doxyfile</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">doxygen_exe</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">doxygen_cwd</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DoxyOutput</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">subprocess</span> <span class="kn">import</span> <span class="n">CalledProcessError</span><span class="p">,</span> <span class="n">run</span>  <span class="c1"># nosec: B404</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">default_config</span> <span class="o">=</span> <span class="n">run</span><span class="p">(</span>  <span class="c1"># nosec: B607, B603</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">doxygen_exe</span><span class="si">}</span><span class="s2"> -s -g -&quot;</span><span class="p">,</span> <span class="n">cwd</span><span class="o">=</span><span class="n">doxygen_cwd</span><span class="p">,</span> <span class="n">shell</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">capture_output</span><span class="o">=</span><span class="kc">True</span>  <span class="c1"># nosec: B607, B603, B602</span>
+        <span class="p">)</span>  <span class="c1"># nosec: B607, B603</span>
+        <span class="k">if</span> <span class="n">default_config</span><span class="o">.</span><span class="n">check_returncode</span><span class="p">:</span>
+            <span class="n">custom_config</span> <span class="o">=</span> <span class="n">run</span><span class="p">(</span>  <span class="c1"># nosec: B607, B603</span>
+                <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">doxygen_exe</span><span class="si">}</span><span class="s2"> -x </span><span class="si">{</span><span class="n">doxyfile</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+                <span class="n">cwd</span><span class="o">=</span><span class="n">doxygen_cwd</span><span class="p">,</span>
+                <span class="n">shell</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>  <span class="c1"># nosec: B602</span>
+                <span class="n">capture_output</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>  <span class="c1"># nosec: B607, B603</span>
+            <span class="p">)</span>  <span class="c1"># nosec: B607, B603</span>
+            <span class="n">custom_config</span><span class="o">.</span><span class="n">check_returncode</span>
+
+        <span class="k">return</span> <span class="n">DoxyOutput</span><span class="p">(</span>
+            <span class="n">default_config</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="n">custom_config</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">),</span>
+            <span class="n">default_config</span><span class="o">.</span><span class="n">stderr</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="n">custom_config</span><span class="o">.</span><span class="n">stderr</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">),</span>
+        <span class="p">)</span>
+
+    <span class="k">except</span> <span class="n">CalledProcessError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">DoxyOutput</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Error: </span><span class="si">{</span><span class="n">err</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">_parse_stdout</span><span class="p">(</span><span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ConfigDict</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Remove comment lines and parse the console output via pyparsing to a dictionary.</span>
+
+<span class="sd">    :param text: standard output of the console.</span>
+<span class="sd">    :return: a configuration dictionary with possibility of lists as values.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="kn">from</span> <span class="nn">pyparsing</span> <span class="kn">import</span> <span class="p">(</span>
+        <span class="n">FollowedBy</span><span class="p">,</span>
+        <span class="n">Group</span><span class="p">,</span>
+        <span class="n">LineEnd</span><span class="p">,</span>
+        <span class="n">Literal</span><span class="p">,</span>
+        <span class="n">ParserElement</span><span class="p">,</span>
+        <span class="n">QuotedString</span><span class="p">,</span>
+        <span class="n">Suppress</span><span class="p">,</span>
+        <span class="n">White</span><span class="p">,</span>
+        <span class="n">Word</span><span class="p">,</span>
+        <span class="n">delimited_list</span><span class="p">,</span>
+        <span class="n">printables</span><span class="p">,</span>
+        <span class="n">srange</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="n">lines</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">linesep</span><span class="p">)</span>
+    <span class="n">pure_text</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">linesep</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">line</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span> <span class="k">if</span> <span class="n">_is_config_line</span><span class="p">(</span><span class="n">line</span><span class="p">)])</span>
+
+    <span class="n">ParserElement</span><span class="o">.</span><span class="n">set_default_whitespace_chars</span><span class="p">(</span><span class="s2">&quot; </span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">line_end</span> <span class="o">=</span> <span class="n">LineEnd</span><span class="p">()</span> <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">linesep</span> <span class="o">==</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="k">else</span> <span class="n">White</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\r\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="n">doxy_flag</span> <span class="o">=</span> <span class="n">Word</span><span class="p">(</span><span class="n">srange</span><span class="p">(</span><span class="s2">&quot;[A-Z_]&quot;</span><span class="p">))</span> <span class="o">+</span> <span class="n">FollowedBy</span><span class="p">(</span><span class="s2">&quot;=&quot;</span><span class="p">)</span>
+    <span class="n">list_items</span> <span class="o">=</span> <span class="n">delimited_list</span><span class="p">(</span>
+        <span class="n">QuotedString</span><span class="p">(</span><span class="s1">&#39;&quot;&#39;</span><span class="p">)</span> <span class="o">|</span> <span class="n">QuotedString</span><span class="p">(</span><span class="s2">&quot;&#39;&quot;</span><span class="p">)</span> <span class="o">|</span> <span class="n">Word</span><span class="p">(</span><span class="n">printables</span><span class="p">),</span> <span class="n">Group</span><span class="p">(</span><span class="n">Literal</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="n">line_end</span><span class="p">)</span>
+    <span class="p">)</span>
+    <span class="n">config_pair</span> <span class="o">=</span> <span class="n">doxy_flag</span> <span class="o">+</span> <span class="n">Suppress</span><span class="p">(</span><span class="s2">&quot;=&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="n">list_items</span>
+    <span class="n">config</span> <span class="o">=</span> <span class="n">config_pair</span><span class="o">.</span><span class="n">search_string</span><span class="p">(</span><span class="n">pure_text</span><span class="p">)</span><span class="o">.</span><span class="n">asList</span><span class="p">()</span>
+
+    <span class="c1"># format correcting</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">config</span><span class="p">)):</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">config</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="n">flag</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">val</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">:]</span>
+            <span class="n">config</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">flag</span><span class="p">,</span> <span class="n">val</span><span class="p">]</span>
+
+    <span class="n">config_dict</span> <span class="o">=</span> <span class="p">{</span><span class="n">item</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span> <span class="n">item</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">config</span><span class="p">}</span>
+
+    <span class="k">return</span> <span class="n">config_dict</span>
 
 
 <span class="k">def</span> <span class="nf">_is_config_line</span><span class="p">(</span><span class="n">line</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
@@ -415,34 +500,13 @@
     <span class="k">if</span> <span class="n">normalized_line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;#&quot;</span><span class="p">):</span>
         <span class="k">return</span> <span class="kc">False</span>
 
-    <span class="c1"># true for lines with = in it</span>
-    <span class="k">if</span> <span class="s2">&quot;=&quot;</span> <span class="ow">in</span> <span class="n">normalized_line</span><span class="p">:</span>
-        <span class="k">return</span> <span class="kc">True</span>
-
-    <span class="c1"># false for everything else</span>
-    <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">return</span> <span class="kc">True</span>
 
 
-<span class="k">def</span> <span class="nf">_parse_key_val</span><span class="p">(</span><span class="n">line</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]:</span>
-    <span class="n">segments</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;=&quot;</span><span class="p">)</span>
-    <span class="n">key</span> <span class="o">=</span> <span class="n">segments</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s2">&quot;&#39;</span><span class="se">\&quot;</span><span class="s2">&quot;</span><span class="p">)</span>
-    <span class="n">value</span> <span class="o">=</span> <span class="n">_expand_envvars</span><span class="p">(</span><span class="n">segments</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s2">&quot;&#39;</span><span class="se">\&quot;</span><span class="s2">&quot;</span><span class="p">))</span>
-    <span class="k">return</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span>
+<span class="k">def</span> <span class="nf">_parse_stderr</span><span class="p">(</span><span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
 
-
-<span class="k">def</span> <span class="nf">_expand_envvars</span><span class="p">(</span><span class="n">val</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Expand environment variables with doxygen pattern style with normal parentheses, e.g. &quot;$(ENV_VARIABLE)&quot;.</span>
-
-<span class="sd">    :param val: The value to search and expand</span>
-<span class="sd">    :return: The expanded or original value</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="c1"># short circuit if no env var is present</span>
-    <span class="k">if</span> <span class="s2">&quot;$(&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">val</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">val</span>
-
-    <span class="c1"># just replace doxygen env delimiters with python delimiters and format/replace with env.</span>
-    <span class="c1"># this is just a poor mans</span>
-    <span class="k">return</span> <span class="n">val</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;$(&quot;</span><span class="p">,</span> <span class="s2">&quot;{&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;)&quot;</span><span class="p">,</span> <span class="s2">&quot;}&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">**</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">)</span>
+    <span class="n">lines</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">linesep</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">line</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;warning&quot;</span><span class="p">,</span> <span class="s2">&quot;Hint&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span> <span class="k">if</span> <span class="n">line</span><span class="p">]</span>
 
 
 <div class="viewcode-block" id="DoxygenSettingsValidator"><a class="viewcode-back" href="../../docs/api/doxysphinx/doxysphinx.doxygen.html#doxysphinx.doxygen.DoxygenSettingsValidator">[docs]</a><span class="k">class</span> <span class="nc">DoxygenSettingsValidator</span><span class="p">:</span>
@@ -456,8 +520,7 @@
         <span class="s2">&quot;OUTPUT_DIRECTORY&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
         <span class="s2">&quot;GENERATE_TREEVIEW&quot;</span><span class="p">:</span> <span class="s2">&quot;NO&quot;</span><span class="p">,</span>
         <span class="s2">&quot;DISABLE_INDEX&quot;</span><span class="p">:</span> <span class="s2">&quot;NO&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;ALIASES&quot;</span><span class="p">:</span> <span class="s2">&quot;rst&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;endrst&quot;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="se">\\</span><span class="s2">endverbatim&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ALIASES&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;rst=</span><span class="se">\\</span><span class="s2">verbatim embed:rst:leading-asterisk&quot;</span><span class="p">,</span> <span class="s2">&quot;endrst=</span><span class="se">\\</span><span class="s2">endverbatim&quot;</span><span class="p">],</span>
         <span class="s2">&quot;GENERATE_HTML&quot;</span><span class="p">:</span> <span class="s2">&quot;YES&quot;</span><span class="p">,</span>
         <span class="s2">&quot;CREATE_SUBDIRS&quot;</span><span class="p">:</span> <span class="s2">&quot;NO&quot;</span><span class="p">,</span>
     <span class="p">}</span>
@@ -484,13 +547,16 @@
     <span class="n">validation_msg</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
     <span class="sd">&quot;&quot;&quot;Validation errors merged in one string.&quot;&quot;&quot;</span>
 
-<div class="viewcode-block" id="DoxygenSettingsValidator.validate"><a class="viewcode-back" href="../../docs/api/doxysphinx/doxysphinx.doxygen.html#doxysphinx.doxygen.DoxygenSettingsValidator.validate">[docs]</a>    <span class="k">def</span> <span class="nf">validate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">],</span> <span class="n">sphinx_source_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<div class="viewcode-block" id="DoxygenSettingsValidator.validate"><a class="viewcode-back" href="../../docs/api/doxysphinx/doxysphinx.doxygen.html#doxysphinx.doxygen.DoxygenSettingsValidator.validate">[docs]</a>    <span class="k">def</span> <span class="nf">validate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">:</span> <span class="n">ConfigDict</span><span class="p">,</span> <span class="n">sphinx_source_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;Validate the doxygen configuration regarding the output directory, mandatory and optional settings.</span>
 
 <span class="sd">        :param config: the imported doxyfile.</span>
 <span class="sd">        :param sphinx_source_dir: the sphinx directory (necessary for output directory validation).</span>
 <span class="sd">        :return: False, if there is a deviation to the defined mandatory or optional settings.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="s2">&quot;WARNINGS&quot;</span> <span class="ow">in</span> <span class="n">config</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">validation_errors</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">config</span><span class="p">[</span><span class="s2">&quot;WARNINGS&quot;</span><span class="p">])</span>
+
         <span class="n">out_dir_validated</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_validate_doxygen_out_dirs</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="n">sphinx_source_dir</span><span class="p">)</span>
         <span class="n">recommended_settings_validated</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_validate_doxygen_recommended_settings</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
         <span class="n">optional_settings_validated</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_validate_doxygen_optional_settings</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
@@ -502,7 +568,7 @@
                 <span class="bp">self</span><span class="o">.</span><span class="n">validation_msg</span> <span class="o">+=</span> <span class="n">error</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
             <span class="k">return</span> <span class="kc">False</span></div>
 
-    <span class="k">def</span> <span class="nf">_validate_doxygen_out_dirs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">sphinx_source_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">_validate_doxygen_out_dirs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">:</span> <span class="n">ConfigDict</span><span class="p">,</span> <span class="n">sphinx_source_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Validate the output directory given from doxyfile and set the required values in mandatory settings.</span>
 
@@ -511,27 +577,24 @@
 <span class="sd">        :return: True if doxygen output directory is located inside the sphinx docs root,</span>
 <span class="sd">        False if not and doxysphinx should exit.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">out</span> <span class="o">=</span> <span class="p">(</span>
-            <span class="n">Path</span><span class="p">(</span><span class="n">config</span><span class="p">[</span><span class="s2">&quot;OUTPUT_DIRECTORY&quot;</span><span class="p">])</span> <span class="o">/</span> <span class="n">config</span><span class="p">[</span><span class="s2">&quot;HTML_OUTPUT&quot;</span><span class="p">]</span>
-            <span class="k">if</span> <span class="s2">&quot;HTML_OUTPUT&quot;</span> <span class="ow">in</span> <span class="n">config</span>
-            <span class="k">else</span> <span class="n">Path</span><span class="p">(</span><span class="n">config</span><span class="p">[</span><span class="s2">&quot;OUTPUT_DIRECTORY&quot;</span><span class="p">])</span>
-        <span class="p">)</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">config</span><span class="p">[</span><span class="s2">&quot;OUTPUT_DIRECTORY&quot;</span><span class="p">]))</span> <span class="o">/</span> <span class="s2">&quot;html&quot;</span>  <span class="c1"># config[&quot;HTML_OUTPUT&quot;]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">absolute_out</span> <span class="o">=</span> <span class="n">path_resolve</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
         <span class="n">stringified_out</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="k">if</span> <span class="n">out</span><span class="o">.</span><span class="n">is_absolute</span><span class="p">()</span> <span class="k">else</span> <span class="sa">f</span><span class="s1">&#39;&quot;</span><span class="si">{</span><span class="n">out</span><span class="si">}</span><span class="s1">&quot; (resolved to &quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">absolute_out</span><span class="si">}</span><span class="s1">&quot;)&#39;</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">mandatory_settings</span><span class="p">[</span><span class="s2">&quot;OUTPUT_DIRECTORY&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s2">&quot;OUTPUT_DIRECTORY&quot;</span><span class="p">]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">optional_settings</span><span class="p">[</span><span class="s2">&quot;GENERATE_TAGFILE&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/tagfile.xml&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mandatory_settings</span><span class="p">[</span><span class="s2">&quot;OUTPUT_DIRECTORY&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">config</span><span class="p">[</span><span class="s2">&quot;OUTPUT_DIRECTORY&quot;</span><span class="p">])</span>
 
         <span class="k">if</span> <span class="n">path_is_relative_to</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="n">sphinx_source_dir</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">optional_settings</span><span class="p">[</span><span class="s2">&quot;GENERATE_TAGFILE&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/tagfile.xml&quot;</span>
             <span class="k">return</span> <span class="kc">True</span>
         <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">optional_settings</span><span class="p">[</span><span class="s2">&quot;GENERATE_TAGFILE&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;docs/doxygen/demo/html/tagfile.xml&quot;</span>  <span class="c1"># default value</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">validation_errors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
                 <span class="sa">f</span><span class="s1">&#39;The doxygen OUTPUT_DIR of &quot;</span><span class="si">{</span><span class="n">stringified_out</span><span class="si">}</span><span class="s1">&quot; defined in the doxyfile&#39;</span>
                 <span class="sa">f</span><span class="s1">&#39; is not in a sub-path of the sphinx source directory &quot;</span><span class="si">{</span><span class="n">sphinx_source_dir</span><span class="si">}</span><span class="s1">&quot;.&#39;</span>
             <span class="p">)</span>
             <span class="k">return</span> <span class="kc">False</span>
 
-    <span class="k">def</span> <span class="nf">_validate_doxygen_recommended_settings</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">settings</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">_validate_doxygen_recommended_settings</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">settings</span><span class="p">:</span> <span class="n">ConfigDict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
         <span class="n">imported_settings</span> <span class="o">=</span> <span class="n">settings</span>
         <span class="n">target_settings</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mandatory_settings</span>
         <span class="n">validation_successful</span> <span class="o">=</span> <span class="kc">True</span>
@@ -561,7 +624,7 @@
 
         <span class="k">return</span> <span class="n">validation_successful</span>
 
-    <span class="k">def</span> <span class="nf">_validate_doxygen_optional_settings</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">settings</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">_validate_doxygen_optional_settings</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">settings</span><span class="p">:</span> <span class="n">ConfigDict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
         <span class="n">imported_settings</span> <span class="o">=</span> <span class="n">settings</span>
         <span class="n">target_settings</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">optional_settings</span>
         <span class="n">validation_successful</span> <span class="o">=</span> <span class="kc">True</span>
@@ -618,7 +681,7 @@
 <span class="sd">        This is just meant to catch typos in paths etc. It will just check if a &quot;doxygen.css&quot; file is existing</span>
 <span class="sd">        In the html output path.</span>
 
-<span class="sd">        :param doxygen_html_output: The path where doxygen generates its&#39; html file to.</span>
+<span class="sd">        :param doxygen_html_output: The path where doxygen generates its html file to.</span>
 <span class="sd">        :return: True if the path is valid else false.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">svg_exists</span> <span class="o">=</span> <span class="p">(</span><span class="n">doxygen_html_output</span> <span class="o">/</span> <span class="s2">&quot;doxygen.css&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">exists</span><span class="p">()</span>
@@ -642,7 +705,7 @@
     <footer class="footer">
   <p>
     
-      Last updated on &#39;Fri Jul 29 08:22:00 2022&#39;, &#39;a6ba388&#39;.<br/>
+      Last updated on &#39;Fri Sep 9 12:10:56 2022&#39;, &#39;5bfa249&#39;.<br/>
   </p>
 </footer>
 </main>

@@ -32,9 +32,9 @@
     <link rel="stylesheet" type="text/css" href="../_static/assets/jsonview.bundle.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/libs/html/datatables.min.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/modern.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/layouts.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/styles.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/modern.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-test-results/common.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme-custom.css" />
     
@@ -659,24 +659,24 @@ it and see how things working we recommend to clone the repo, fire up vscode and
 <div class="sd-card-title sd-font-weight-bold docutils">
 DartSass installation</div>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="7bf688f2-cf19-47f5-b6a5-9454ff245af4" name="a7467d8a-efd3-4fba-bb84-3f37c9c05566" type="radio">
-</input><label class="sd-tab-label" for="7bf688f2-cf19-47f5-b6a5-9454ff245af4">
+<input checked="checked" id="c89cdfb5-badc-44a6-968e-6f95163e85df" name="851422ad-a958-4277-bc9a-1f4b12327bdc" type="radio">
+</input><label class="sd-tab-label" for="c89cdfb5-badc-44a6-968e-6f95163e85df">
 Linux</label><div class="sd-tab-content docutils">
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Linux</span>
 curl -sSL https://github.com/sass/dart-sass/releases/download/1.49.7/dart-sass-1.49.7-linux-x64.tar.gz <span class="p">|</span> tar -xzvf - --strip-components<span class="o">=</span><span class="m">1</span> -C ~/.local/bin dart-sass/sass
 </pre></div>
 </div>
 </div>
-<input id="99dec9ba-75e3-471f-be39-fd3bf365e905" name="a7467d8a-efd3-4fba-bb84-3f37c9c05566" type="radio">
-</input><label class="sd-tab-label" for="99dec9ba-75e3-471f-be39-fd3bf365e905">
+<input id="23d43d08-e298-4574-a172-18ef1f5bdc81" name="851422ad-a958-4277-bc9a-1f4b12327bdc" type="radio">
+</input><label class="sd-tab-label" for="23d43d08-e298-4574-a172-18ef1f5bdc81">
 Windows</label><div class="sd-tab-content docutils">
 <div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="c"># windows with chocolatey (https://www.chocolatey.org)</span>
 <span class="n">choco</span> <span class="n">install</span> <span class="n">sass</span>
 </pre></div>
 </div>
 </div>
-<input id="3e10ce2b-2287-44bc-bcdf-76fc493a9e6c" name="a7467d8a-efd3-4fba-bb84-3f37c9c05566" type="radio">
-</input><label class="sd-tab-label" for="3e10ce2b-2287-44bc-bcdf-76fc493a9e6c">
+<input id="b2b91dd8-40af-4837-a062-66f03bcab41a" name="851422ad-a958-4277-bc9a-1f4b12327bdc" type="radio">
+</input><label class="sd-tab-label" for="b2b91dd8-40af-4837-a062-66f03bcab41a">
 Other</label><div class="sd-tab-content docutils">
 <p class="sd-card-text">see Releases: <a class="reference external" href="https://github.com/sass/dart-sass/releases">https://github.com/sass/dart-sass/releases</a>.</p>
 </div>
@@ -833,7 +833,7 @@ doxysphinx &lt;command&gt; --help
 <div class="section" id="build">
 <h3>Build<a class="headerlink" href="#build" title="Permalink to this headline">¶</a></h3>
 <p>Build the sphinx rst documents out of the doxygen htmls.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>doxysphinx build &lt;SPHINX_SOURCE&gt; &lt;SPHINX_OUTPUT&gt; &lt;INPUT<span class="o">(</span>S<span class="o">)</span>&gt;
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>doxysphinx build &lt;SPHINX_SOURCE&gt; &lt;SPHINX_OUTPUT&gt; &lt;INPUT<span class="o">(</span>S<span class="o">)</span>&gt; &lt;--doxygen_exe&gt; &lt;--doxygen_cwd&gt;
 </pre></div>
 </div>
 <p>Arguments:</p>
@@ -852,6 +852,12 @@ doxysphinx &lt;command&gt; --help
 </tr>
 <tr class="row-even"><td><p>INPUT(S)</p></td>
 <td><p>One or many inputs where each input could be either…<ul><li>a doxygen configuration file (doxyfile). This is recommended for “beginners” because it will also check the config for doxysphinx compatibility.</li><li>an output path where the generated doxygen documentation resides. This is more like an “expert”-mode which is especially useful when integrating doxysphinx with buildsystems like cmake etc. which are dynamically generating doxygen configs.</li></ul></p></td>
+</tr>
+<tr class="row-odd"><td><p>–doxygen_exe</p></td>
+<td><p>The name/path of the doxygen executable. If nothing is entered, the default value is “doxygen”. (OPTIONAL)</p></td>
+</tr>
+<tr class="row-even"><td><p>–doxygen_cwd</p></td>
+<td><p>The directory where doxygen is executed. The default value is the current working directory. (OPTIONAL)</p></td>
 </tr>
 </tbody>
 </table>
@@ -952,7 +958,7 @@ this:</p>
     <footer class="footer">
   <p>
     
-      Last updated on &#39;Fri Jul 29 08:22:00 2022&#39;, &#39;a6ba388&#39;.<br/>
+      Last updated on &#39;Fri Sep 9 12:10:56 2022&#39;, &#39;5bfa249&#39;.<br/>
   </p>
 </footer>
 </main>

@@ -32,9 +32,9 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/assets/jsonview.bundle.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/libs/html/datatables.min.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/modern.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/layouts.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/styles.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/modern.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-test-results/common.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-book-theme-custom.css" />
     
@@ -427,16 +427,7 @@ to) has to live inside sphinx’s input tree.</p>
 <span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#doxysphinx.cli.build" title="Permalink to this definition">¶</a></dt>
 <dd><p>Build rst and copy related files for doxygen projects.</p>
 <p>SPHINX_SOURCE specifies the root of the sphinx source directory tree while SPHINX_OUTPUT specifies the root of the
-sphinx output directory tree.
-The doxygen projects are specified through INPUT (multiple possible).
-INPUT can be:
-- a doxygen configuration file (aka doxyfile)
-- a directory which contains the generated doxygen html documentation. Note that specifying a directory</p>
-<blockquote>
-<div><p>will skip the config validation completely and is therefore considered “advanced stuff”.
-You will typically want to use that if you’re integrating doxysphinx in a ci build system.
-If unsure use a doxyfile.</p>
-</div></blockquote>
+sphinx output directory tree.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <ul class="simple">
@@ -455,6 +446,38 @@ so doxysphinx’s <code class="docutils literal notranslate"><span class="pre">S
 <p>SPHINX_SOURCE specifies the root of the sphinx source directory tree while SPHINX_OUTPUT specifies the root of the
 sphinx output directory tree. The doxygen html outputs are specified through INPUT (multiple possible) either
 by pointing to the doxygen html output directory or by pointing to the doxygen config file (doxyfile).</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="doxysphinx.cli.DoxygenContext">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DoxygenContext</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">doxygen_exe</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">doxygen_cwd</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/doxysphinx/cli.html#DoxygenContext"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#doxysphinx.cli.DoxygenContext" title="Permalink to this definition">¶</a></dt>
+<dd><p>Represent the options for doxygen that can be set via the cli.</p>
+<p>The doxygen projects are specified through INPUT (multiple possible). INPUT can be:
+- a doxygen configuration file (aka doxyfile)
+- a directory, which contains the generated doxygen html documentation. Note that specifying a directory</p>
+<blockquote>
+<div><p>will skip the config validation completely and is therefore considered “advanced stuff”.
+You will typically want to use that if you’re integrating doxysphinx in a ci build system.
+If unsure, use a doxyfile.</p>
+</div></blockquote>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="doxysphinx.cli.DoxygenContext.input">
+<span class="sig-name descname"><span class="pre">input</span></span><a class="headerlink" href="#doxysphinx.cli.DoxygenContext.input" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Type:</strong>    <code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">Path</span></code>]</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="doxysphinx.cli.DoxygenContext.doxygen_exe">
+<span class="sig-name descname"><span class="pre">doxygen_exe</span></span><a class="headerlink" href="#doxysphinx.cli.DoxygenContext.doxygen_exe" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Type:</strong>    <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="doxysphinx.cli.DoxygenContext.doxygen_cwd">
+<span class="sig-name descname"><span class="pre">doxygen_cwd</span></span><a class="headerlink" href="#doxysphinx.cli.DoxygenContext.doxygen_cwd" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Type:</strong>    <code class="xref py py-class docutils literal notranslate"><span class="pre">Path</span></code></p>
+</dd></dl>
+
 </dd></dl>
 
 </div>
@@ -486,7 +509,7 @@ by pointing to the doxygen html output directory or by pointing to the doxygen c
     <footer class="footer">
   <p>
     
-      Last updated on &#39;Fri Jul 29 08:22:00 2022&#39;, &#39;a6ba388&#39;.<br/>
+      Last updated on &#39;Fri Sep 9 12:10:56 2022&#39;, &#39;5bfa249&#39;.<br/>
   </p>
 </footer>
 </main>
