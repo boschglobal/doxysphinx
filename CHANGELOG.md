@@ -13,6 +13,19 @@
 
 <!--next-version-placeholder-->
 
+## v2.3.5 (2022-09-09)
+
+### Fix
+
+- **doxygen**: fix warning for wrong outdir
+- **doxygen**: correct the handling of relative paths and adjust pytests
+- **doxygen**: add parser for doxygen config
+- **validator**: fix small bug that broke build command
+- **validator**: adapt error messages of validator
+- **validator**: switch some settings to optional
+- **doxygen**: merge current changes from global repo
+- **doxygen**: respect include-tags in doxyfile
+
 ## v2.3.4 (2022-07-29)
 
 ### Fix
