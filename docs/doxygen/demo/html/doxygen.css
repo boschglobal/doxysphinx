@@ -1491,6 +1491,7 @@ html {
   --header-background: transparent !important;
   --page-background-color: transparent !important;
   --spacing-large: 0px;
+  --separator-color: #dedede;
 }
 
 /**
@@ -1506,6 +1507,7 @@ html {
   /* hide search-box */
   /* hide menu */
   /* left align header area + headings */
+  /* fix breadcrumb separator icon scaling */
 }
 .doxygen-content #top #MSearchBox {
   visibility: collapse;
@@ -1519,11 +1521,15 @@ html {
 .doxygen-content #top #titlearea #projectalign {
   padding-left: 0 !important;
 }
+.doxygen-content #top #nav-path li.navelem:before {
+  transform: translateY(-1px);
+}
 .doxygen-content .header .headertitle .title {
   padding-left: 0 !important;
 }
 .doxygen-content .contents {
   padding-left: 0 !important;
+  /* hide strange new doxygen awesome box-border shadow styles (because they look really ugly in sphinx) */
 }
 .doxygen-content .contents .memitem dl {
   margin: 0 !important;
@@ -1532,7 +1538,15 @@ html {
   margin-top: 10px;
 }
 .doxygen-content .contents table.need {
-  display: table;
+  display: table !important;
+}
+.doxygen-content .contents table.memberdecls {
+  overflow: unset;
+  border-collapse: unset;
+}
+.doxygen-content .contents h2.groupheader {
+  box-shadow: none;
+  border-bottom: 1px solid var(--separator-color);
 }
 .doxygen-content h2.memtitle {
   margin-bottom: 0;
@@ -1575,5 +1589,69 @@ Patches for integrating doxygen awesome with sphinx rtd theme
   margin-left: 0 !important;
   /* fix for menu space (which isn't visible anyways...) */
 }
+
+/**************************************************
+THEME SPECIFIC FIXES
+***************************************************/
+/**
+SPHINX RTD THEME
+
+as all content in RTD Theme is stored under a section with class "wy-nav-content-wrap"
+we store our fixes below that.
+*/
+section.wy-nav-content-wrap {
+  /* Global general settings */
+  /*Adjust the visible text area of RTD theme to be 80%*/
+  /*Global table settings*/
+  /*Forces the table content (td) and headers (th) to warp*/
+  /* Custom general settings*/
+  /*Forces need-tables and need-tables to be top-left aligned*/
+  /* Disables set class for next paragraph - eg. floating of images*/
+  /*Custom tables settings*/
+  /* Class which can be applied to tables. Text is aligned within the cells to the top and left (for table header and cells)*/
+  /* Class to apply stub-collumns also to simple or grid tables */
+  /* Class to apply stub-collumns also to simple or grid tables */
+  /*Classic info table*/
+  /* fix breadcrumb separator icon scaling */
+}
+section.wy-nav-content-wrap .wy-nav-content {
+  max-width: 80% !important;
+}
+section.wy-nav-content-wrap .wy-table-responsive table td,
+section.wy-nav-content-wrap .wy-table-responsive table th {
+  white-space: normal !important;
+}
+section.wy-nav-content-wrap table.NEEDS_TABLE,
+section.wy-nav-content-wrap table.NEEDS_DATATABLES {
+  margin: 0;
+}
+section.wy-nav-content-wrap .clear-both {
+  clear: both;
+}
+section.wy-nav-content-wrap .table-top-left td,
+section.wy-nav-content-wrap .table-top-left th {
+  vertical-align: top !important;
+  text-align: left;
+}
+section.wy-nav-content-wrap .table-stub th:first-child,
+section.wy-nav-content-wrap .table-stub td:first-child {
+  font-weight: 700 !important;
+}
+section.wy-nav-content-wrap .table-info td:not(:first-child) {
+  background-color: #fcfcfc !important;
+}
+section.wy-nav-content-wrap .table-info th:first-child,
+section.wy-nav-content-wrap .table-info td:first-child {
+  background-color: #f3f6f6 !important;
+  font-weight: 700 !important;
+}
+section.wy-nav-content-wrap .doxygen-content #top #nav-path li.navelem:before {
+  transform: translateY(-7px);
+}
+
+/**
+SPHINX BOOK THEME
+
+*/
 
 /*# sourceMappingURL=doxygen.css.map */

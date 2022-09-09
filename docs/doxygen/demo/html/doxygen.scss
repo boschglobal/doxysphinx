@@ -22,6 +22,7 @@ html {
     --header-background: transparent !important;
     --page-background-color: transparent !important;
     --spacing-large: 0px;
+    --separator-color: #dedede;
 }
 
 /**
@@ -51,6 +52,12 @@ html {
                 padding-left: 0 !important;
             }
         }
+
+        /* fix breadcrumb separator icon scaling */
+        #nav-path li.navelem:before {
+            transform: translateY(-1px);
+        }
+
     }
 
     .header {
@@ -76,7 +83,19 @@ html {
         }
 
         table.need {
-            display: table;
+            display: table !important;
+        }
+
+        table.memberdecls {
+            overflow: unset;
+            border-collapse: unset;
+        }
+
+
+        /* hide strange new doxygen awesome box-border shadow styles (because they look really ugly in sphinx) */
+        h2.groupheader {
+            box-shadow: none;
+            border-bottom: 1px solid var(--separator-color);
         }
     }
 
@@ -135,4 +154,88 @@ Patches for integrating doxygen awesome with sphinx rtd theme
     margin-left: 0 !important;
     /* fix for menu space (which isn't visible anyways...) */
 }
+
+/**************************************************
+THEME SPECIFIC FIXES
+***************************************************/
+
+/**
+SPHINX RTD THEME
+
+as all content in RTD Theme is stored under a section with class "wy-nav-content-wrap"
+we store our fixes below that.
+*/
+
+section.wy-nav-content-wrap {
+
+    /* Global general settings */
+
+    /*Adjust the visible text area of RTD theme to be 80%*/
+    .wy-nav-content {
+        max-width: 80% !important;
+    }
+
+    /*Global table settings*/
+
+    /*Forces the table content (td) and headers (th) to warp*/
+    .wy-table-responsive table td,
+    .wy-table-responsive table th {
+        white-space: normal !important;
+    }
+
+    /* Custom general settings*/
+
+    /*Forces need-tables and need-tables to be top-left aligned*/
+    table.NEEDS_TABLE,
+    table.NEEDS_DATATABLES {
+        margin: 0;
+    }
+
+    /* Disables set class for next paragraph - eg. floating of images*/
+    .clear-both {
+        clear: both
+    }
+
+    /*Custom tables settings*/
+
+    /* Class which can be applied to tables. Text is aligned within the cells to the top and left (for table header and cells)*/
+    .table-top-left td,
+    .table-top-left th {
+        vertical-align: top !important;
+        text-align: left;
+    }
+
+    /* Class to apply stub-collumns also to simple or grid tables */
+    /* Class to apply stub-collumns also to simple or grid tables */
+    .table-stub th:first-child,
+    .table-stub td:first-child {
+        font-weight: 700 !important;
+    }
+
+
+    /*Classic info table*/
+    .table-info td:not(:first-child) {
+        background-color: #fcfcfc !important;
+    }
+
+    .table-info th:first-child,
+    .table-info td:first-child {
+        background-color: #f3f6f6 !important;
+        font-weight: 700 !important;
+    }
+
+    /* fix breadcrumb separator icon scaling */
+    .doxygen-content {
+        #top {
+            #nav-path li.navelem:before {
+                transform: translateY(-7px);
+            }
+        }
+    }
+}
+
+/**
+SPHINX BOOK THEME
+
+*/
 
