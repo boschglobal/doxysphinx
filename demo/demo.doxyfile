@@ -13,8 +13,17 @@
 # TAG += value [value, ...]
 # Values that contain spaces should be placed between quotes (\" \").
 
+
+#---------------------------------------------------------------------------
+# Include settings from another configuration file
+#---------------------------------------------------------------------------
+# The included file with the name defined in @INCLUDE is searched by default 
+# in the current working directory. You can also specify a list of directories 
+# that should be searched before looking in the current working directory by @INCLUDE_PATH.
+
 #@INCLUDE_PATH = "demo/includedconfigs"
 #@INCLUDE = "additionalconfig.doxyfile"
+
 #---------------------------------------------------------------------------
 # Project related configuration options
 #---------------------------------------------------------------------------
