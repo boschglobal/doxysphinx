@@ -56,7 +56,6 @@ def update_dict(params: ConfigDict):
             [
                 "Error: Wrong value YES for DISABLE_INDEX, NO is required.",
                 "Error: Wrong value NO for GENERATE_HTML, YES is required.",
-                "Hint: Wrong value YES for GENERATE_XML, NO is recommended.",
             ],  # two mandatory settings and one optional setting are wrong
         ),
         (
@@ -67,7 +66,6 @@ def update_dict(params: ConfigDict):
             },
             [
                 "Error: Missing value for DISABLE_INDEX, but NO is required.",
-                "Hint: Missing value for HTML_EXTRA_STYLESHEET, but YOUR_DOXYGEN_AWESOME_PATH/doxygen-awesome.css is recommended.",
             ],  # two settings are missing
         ),
         (
