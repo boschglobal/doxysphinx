@@ -196,8 +196,7 @@ INTERACTIVE_SVG        = YES  # to be able to scroll and zoom into big images
 ```
 
 ```{note}
-Doxygen awesome <https://jothepro.github.io/doxygen-awesome-css/> is a stylesheet that makes 
-doxygen documentation look beautiful.
+Doxygen awesome <https://jothepro.github.io/doxygen-awesome-css/> is a stylesheet that makes doxygen documentation look beautiful.
 We strongly recommend using it because then the doxygen docs would fit far better with any sphinx theme.
 Just download/clone the doxygen awesome stylesheet and then add it to your doxygen config:
 
