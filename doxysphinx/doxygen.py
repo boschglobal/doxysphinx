@@ -154,11 +154,9 @@ class DoxygenSettingsValidator:
 
     optional_settings = {
         "SEARCHENGINE": "NO",
-        "GENERATE_XML": "NO",
         "DOT_IMAGE_FORMAT": "svg",
         "DOT_TRANSPARENT": "YES",
         "INTERACTIVE_SVG": "YES",
-        "HTML_EXTRA_STYLESHEET": "YOUR_DOXYGEN_AWESOME_PATH/doxygen-awesome.css",
         "GENERATE_TAGFILE": "",
     }
     """A dictionary containing further optional settings for the doxygen config."""

@@ -116,9 +116,6 @@ def build(sphinx_source: Path, sphinx_output: Path, **kwargs):
        * when using ``sphinx-build -M html`` the html output will be put to ``OUTPUT_DIR/html`` so doxysphinx's
          ``SPHINX_OUTPUT`` should be ``OUTPUT_DIR/html``.
     """
-    import os
-
-    os.environ["TEST"] = "Doxysphinx demo as expanded variable."
     doxy_context = DoxygenContext(**kwargs)
     _logger.info("starting build command...")
     with TimedContext() as tc:

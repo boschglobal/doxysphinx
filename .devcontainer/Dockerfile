@@ -46,20 +46,25 @@ RUN wget -c https://netcologne.dl.sourceforge.net/project/plantuml/plantuml.jar 
 
 # Switch to vscode user
 USER vscode
+ARG WORKSPACE_DIR=/workspaces/
+ENV XDG_CACHE_HOME=${WORKSPACE_DIR}/.cache
+WORKDIR ${WORKSPACE_DIR}/
 
 # Install poetry (as vscode so that poetry is installed in the correct home directory)
-RUN curl -sSL https://install.python-poetry.org | python3 -
+#RUN curl -sSL https://install.python-poetry.org | python3
+RUN pipx install poetry \
+    && pipx install poetryup \
+    && pipx install pre-commit
 
 # Install dart-sass (needed for scoping css files to specific html elements)
 # Some dart-sass versions ship with a src folder, which contains the dart binary so we need to extract all
 # contents of the tarball. Note that this will create a src folder in /home/vscode/.local/bin.
-RUN export PLATFORM="$(uname -m | sed 's/aarch64/arm64/' | sed 's/86_//')" && \
+RUN mkdir -p /home/vscode/.local/bin && \
+    export PLATFORM="$(uname -m | sed 's/aarch64/arm64/' | sed 's/86_//')" && \
     echo Installing dart-sass for $PLATFORM && \
     curl -sSL https://github.com/sass/dart-sass/releases/download/1.52.3/dart-sass-1.52.3-linux-${PLATFORM}.tar.gz | \
     tar -xzvf - --strip-components=1 -C /home/vscode/.local/bin dart-sass/
 
-# configure poetry completion
-RUN poetry completions zsh > ~/.oh-my-zsh/plugins/poetry/_poetry
 
 # note that installation of dependencies and pre-commit installation will be done after vscode has started
 # the container.
