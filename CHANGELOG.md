@@ -13,6 +13,15 @@
 
 <!--next-version-placeholder-->
 
+## v2.3.7 (2022-10-17)
+
+### Fix
+
+- **deps**: pyparsing dependency is added correctly now
+- **doxygen**: solve pre-commit errors by whitespaces
+- **doxygen**: fix errors in validator pytest
+- **doxygen**: adapt optional settings for doxyfile and documentation
+
 ## v2.3.6 (2022-09-09)
 
 ### Fix
