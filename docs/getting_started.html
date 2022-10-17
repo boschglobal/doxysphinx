@@ -32,8 +32,8 @@
     <link rel="stylesheet" type="text/css" href="../_static/assets/jsonview.bundle.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/libs/html/datatables.min.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/layouts.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/styles.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/layouts.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/modern.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-test-results/common.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme-custom.css" />
@@ -659,24 +659,24 @@ it and see how things working we recommend to clone the repo, fire up vscode and
 <div class="sd-card-title sd-font-weight-bold docutils">
 DartSass installation</div>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="08335c90-66c7-460c-b1e4-4527c9df1412" name="09743deb-3ca9-4fd3-a63b-b7ca64b61df4" type="radio">
-</input><label class="sd-tab-label" for="08335c90-66c7-460c-b1e4-4527c9df1412">
+<input checked="checked" id="6776b6db-9f1f-4f03-8f82-86aada03ff5b" name="7d780247-99d7-443d-a07b-86b91abfafb2" type="radio">
+</input><label class="sd-tab-label" for="6776b6db-9f1f-4f03-8f82-86aada03ff5b">
 Linux</label><div class="sd-tab-content docutils">
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Linux</span>
 curl -sSL https://github.com/sass/dart-sass/releases/download/1.49.7/dart-sass-1.49.7-linux-x64.tar.gz <span class="p">|</span> tar -xzvf - --strip-components<span class="o">=</span><span class="m">1</span> -C ~/.local/bin dart-sass/sass
 </pre></div>
 </div>
 </div>
-<input id="45907c23-95e4-4d59-9b58-57aec78d1eb9" name="09743deb-3ca9-4fd3-a63b-b7ca64b61df4" type="radio">
-</input><label class="sd-tab-label" for="45907c23-95e4-4d59-9b58-57aec78d1eb9">
+<input id="48a41f32-bfee-4332-9408-b00468145dfe" name="7d780247-99d7-443d-a07b-86b91abfafb2" type="radio">
+</input><label class="sd-tab-label" for="48a41f32-bfee-4332-9408-b00468145dfe">
 Windows</label><div class="sd-tab-content docutils">
 <div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="c"># windows with chocolatey (https://www.chocolatey.org)</span>
 <span class="n">choco</span> <span class="n">install</span> <span class="n">sass</span>
 </pre></div>
 </div>
 </div>
-<input id="89ce1f26-93f6-4681-b9d4-666fa569922b" name="09743deb-3ca9-4fd3-a63b-b7ca64b61df4" type="radio">
-</input><label class="sd-tab-label" for="89ce1f26-93f6-4681-b9d4-666fa569922b">
+<input id="597b7394-9055-417e-8fb8-bc6197d6827b" name="7d780247-99d7-443d-a07b-86b91abfafb2" type="radio">
+</input><label class="sd-tab-label" for="597b7394-9055-417e-8fb8-bc6197d6827b">
 Other</label><div class="sd-tab-content docutils">
 <p class="sd-card-text">see Releases: <a class="reference external" href="https://github.com/sass/dart-sass/releases">https://github.com/sass/dart-sass/releases</a>.</p>
 </div>
@@ -783,9 +783,7 @@ look at the <a class="reference internal" href="alternatives.html"><span class="
 <div class="section" id="recommended-settings">
 <h3>Recommended settings<a class="headerlink" href="#recommended-settings" title="Permalink to this headline">¶</a></h3>
 <p>these settings are optional but strongly recommended (you will be warned in case of some value deviations):</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">GENERATE_XML           = NO</span><span class="w">   </span><span class="c1"># Xml output isn&#39;t needed for doxysphinx</span><span class="w"></span>
-
-<span class="l l-Scalar l-Scalar-Plain">SEARCHENGINE           = NO</span><span class="w">   </span><span class="c1"># deactivate search engine (as sphinx has it&#39;s own search)</span><span class="w"></span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">SEARCHENGINE           = NO</span><span class="w">   </span><span class="c1"># deactivate search engine (as sphinx has it&#39;s own search)</span><span class="w"></span>
 <span class="l l-Scalar l-Scalar-Plain">GENERATE_TAGFILE       = &lt;OUTPUT_DIRECTORY&gt;/&lt;HTML_OUTPUT&gt;/tagfile.xml</span><span class="w">  </span><span class="c1"># generate a tag file</span><span class="w"></span>
 <span class="w">                              </span><span class="c1"># this could be stored anywhere, however we recommend to put it into the</span><span class="w"></span>
 <span class="w">                              </span><span class="c1"># documentation output folder which is the value of the OUTPUT_DIRECTORY variable</span><span class="w"></span>
@@ -797,15 +795,14 @@ look at the <a class="reference internal" href="alternatives.html"><span class="
 <span class="l l-Scalar l-Scalar-Plain">DOT_IMAGE_FORMAT       = svg</span><span class="w">  </span><span class="c1"># generates nicer svg images</span><span class="w"></span>
 <span class="l l-Scalar l-Scalar-Plain">DOT_TRANSPARENT        = YES</span><span class="w">  </span><span class="c1"># generate transparent images</span><span class="w"></span>
 <span class="l l-Scalar l-Scalar-Plain">INTERACTIVE_SVG        = YES</span><span class="w">  </span><span class="c1"># to be able to scroll and zoom into big images</span><span class="w"></span>
-
-<span class="c1"># doxygen awesome</span><span class="w"></span>
-<span class="c1"># ===============</span><span class="w"></span>
-<span class="c1"># doxygen awesome &lt;https://jothepro.github.io/doxygen-awesome-css/&gt; is a stylesheet that makes doxygen documentation look beautiful.</span><span class="w"></span>
-<span class="c1"># We strongly recommend using it # because then the doxygen docs would fit far better with any sphinx theme.</span><span class="w"></span>
-<span class="c1"># Just download/clone the doxygen awesome stylesheet and then add it to your doxygen config:</span><span class="w"></span>
-
-<span class="l l-Scalar l-Scalar-Plain">HTML_EXTRA_STYLESHEET = YOUR_DOXYGEN_AWESOME_PATH/doxygen-awesome.css</span><span class="w"></span>
 </pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Doxygen awesome <a class="reference external" href="https://jothepro.github.io/doxygen-awesome-css/">https://jothepro.github.io/doxygen-awesome-css/</a> is a stylesheet that makes doxygen documentation look beautiful.
+We strongly recommend using it because then the doxygen docs would fit far better with any sphinx theme.
+Just download/clone the doxygen awesome stylesheet and then add it to your doxygen config:</p>
+<p>HTML_EXTRA_STYLESHEET = YOUR_DOXYGEN_AWESOME_PATH/doxygen-awesome.css</p>
 </div>
 </div>
 </div>
@@ -958,7 +955,7 @@ this:</p>
     <footer class="footer">
   <p>
     
-      Last updated on &#39;Fri Sep 9 12:15:05 2022&#39;, &#39;41e9ee9&#39;.<br/>
+      Last updated on &#39;Mon Oct 17 11:35:09 2022&#39;, &#39;43fd6c6&#39;.<br/>
   </p>
 </footer>
 </main>

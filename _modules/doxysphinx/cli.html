@@ -32,8 +32,8 @@
     <link rel="stylesheet" type="text/css" href="../../_static/assets/jsonview.bundle.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/libs/html/datatables.min.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/layouts.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/styles.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/layouts.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/modern.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-test-results/common.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-book-theme-custom.css" />
@@ -493,9 +493,6 @@
 <span class="sd">       * when using ``sphinx-build -M html`` the html output will be put to ``OUTPUT_DIR/html`` so doxysphinx&#39;s</span>
 <span class="sd">         ``SPHINX_OUTPUT`` should be ``OUTPUT_DIR/html``.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="kn">import</span> <span class="nn">os</span>
-
-    <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;TEST&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Doxysphinx demo as expanded variable.&quot;</span>
     <span class="n">doxy_context</span> <span class="o">=</span> <span class="n">DoxygenContext</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
     <span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;starting build command...&quot;</span><span class="p">)</span>
     <span class="k">with</span> <span class="n">TimedContext</span><span class="p">()</span> <span class="k">as</span> <span class="n">tc</span><span class="p">:</span>
@@ -576,7 +573,7 @@
     <footer class="footer">
   <p>
     
-      Last updated on &#39;Fri Sep 9 12:15:05 2022&#39;, &#39;41e9ee9&#39;.<br/>
+      Last updated on &#39;Mon Oct 17 11:35:09 2022&#39;, &#39;43fd6c6&#39;.<br/>
   </p>
 </footer>
 </main>

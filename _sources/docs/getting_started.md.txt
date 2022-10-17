@@ -179,7 +179,6 @@ look at the [alternatives](./alternatives.md).
 these settings are optional but strongly recommended (you will be warned in case of some value deviations):
 
 ```yaml
-GENERATE_XML           = NO   # Xml output isn't needed for doxysphinx
 
 SEARCHENGINE           = NO   # deactivate search engine (as sphinx has it's own search)
 GENERATE_TAGFILE       = <OUTPUT_DIRECTORY>/<HTML_OUTPUT>/tagfile.xml  # generate a tag file
@@ -194,13 +193,15 @@ DOT_IMAGE_FORMAT       = svg  # generates nicer svg images
 DOT_TRANSPARENT        = YES  # generate transparent images
 INTERACTIVE_SVG        = YES  # to be able to scroll and zoom into big images
 
-# doxygen awesome
-# ===============
-# doxygen awesome <https://jothepro.github.io/doxygen-awesome-css/> is a stylesheet that makes doxygen documentation look beautiful.
-# We strongly recommend using it # because then the doxygen docs would fit far better with any sphinx theme.
-# Just download/clone the doxygen awesome stylesheet and then add it to your doxygen config:
+```
+
+```{note}
+Doxygen awesome <https://jothepro.github.io/doxygen-awesome-css/> is a stylesheet that makes doxygen documentation look beautiful.
+We strongly recommend using it because then the doxygen docs would fit far better with any sphinx theme.
+Just download/clone the doxygen awesome stylesheet and then add it to your doxygen config:
 
 HTML_EXTRA_STYLESHEET = YOUR_DOXYGEN_AWESOME_PATH/doxygen-awesome.css
+
 ```
 
 ## Step 4: Run Doxysphinx
