@@ -181,3 +181,4 @@ requirements.txt
 docs/doxygen/graphviz/
 demo/ocilib/
 demo/graphviz/
+tests/toc/*.rst
