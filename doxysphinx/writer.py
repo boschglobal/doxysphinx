@@ -10,135 +10,19 @@
 import html
 import logging
 import re
-from dataclasses import dataclass
 from itertools import chain
 from pathlib import Path
 from textwrap import dedent
-from typing import Any, Dict, Iterator, List, Protocol, Type, Union
+from typing import Iterator, List, Protocol, Type, Union
 
-from lxml import etree  # nosec: B410
-from lxml.etree import _ElementTree  # nosec: B410
+from lxml import etree  # nosec: B410, pylint: disable=import-error
+from lxml.etree import _ElementTree  # nosec: B410, pylint: disable=import-error
 
-from doxysphinx.doxygen import read_js_data_file
 from doxysphinx.html_parser import HtmlParseResult
-
-# noinspection PyMethodMayBeStatic,PyUnusedLocal
+from doxysphinx.toc import DoxygenTocGenerator, TocGenerator
 from doxysphinx.utils.files import write_file
 
-
-class TocGenerator(Protocol):
-    """
-    TocGenerator protocol.
-
-    Gets the source_dir (with the html sources) during init and
-    each file to possibly generate a toctree directive for in the :meth:`generate_toc_for`
-    method. The implementer has then to choose how to implement the toc generation.
-    """
-
-    def __init__(self, source_dir: Path):
-        """
-        Initialize an instance of a TocGenerator.
-
-        :param source_dir: The source directory where all html files reside.
-        """
-        pass
-
-    def generate_toc_for(self, file: Path) -> Iterator[str]:
-        """
-        Generate a toctree directive for a given file.
-
-        :param file: the file to generate the toctree directive for
-        :return: a string iterator representing the lines forming the toctree directive
-        """
-        pass
-
-
-@dataclass
-class _MenuEntry:
-    title: str
-    file: Path
-    children: List["_MenuEntry"]
-
-
-class DoxygenTocGenerator:
-    """
-    A TocGenerator for doxygen.
-
-    Will read the menudata.js to check whether a toctree
-    directive needs to be generated or not.
-    """
-
-    def __init__(self, source_dir: Path):
-        """
-        Initialize an instance of a TocGenerator.
-
-        :param source_dir: The source directory where the doxygen html files reside.
-        """
-        self._menu_lookup = self._load_menu(source_dir / "menudata.js")
-
-    def _load_menu(self, menu_data_js_path: Path) -> Dict[str, _MenuEntry]:
-
-        menu = read_js_data_file(menu_data_js_path)
-
-        item_lookup: Dict[str, _MenuEntry] = dict({item.file.stem: item for item in self._flatten(menu)})
-
-        return item_lookup
-
-    def _flatten(self, item: Dict[str, Any], is_root: bool = True) -> Iterator[_MenuEntry]:
-        if not item:
-            return
-        if is_root:
-            title = "Index"
-
-            # patch url into the dict so that the comparison for children (see below)
-            # is working
-            item["url"] = "index.html"
-            file = Path("index.html")
-        else:
-            title = item["text"]
-            file = Path(item["url"])
-
-        if "children" in item:
-            # doxygens menu will double the current item in the leaf children (maybe
-            # because it's easier to navigate that way in a flyout menu). So we need
-            # to remove the dublicate subentry if any...
-            children = [i for i in item["children"] if not self._is_same_url(i["url"], item["url"])]
-
-            direct_children = [_MenuEntry(i["text"], Path(i["url"]), []) for i in children]
-            yield _MenuEntry(title, file, direct_children)
-            for c in children:
-                yield from self._flatten(c, False)
-
-    @staticmethod
-    def _is_same_url(first: str, second: str) -> bool:
-        normalized_first = first if "#" not in first else first.split("#")[0]
-        normalized_second = second if "#" not in second else second.split("#")[0]
-        return normalized_first == normalized_second
-
-    def generate_toc_for(self, file: Path) -> Iterator[str]:
-        """
-        Generate a toctree directive for a given file.
-
-        Note that the toctree will only be generated when the file is part of a menu
-        structure.
-        :param file: the file to generate the toctree directive for
-        :return: a string iterator representing the lines forming the toctree directive
-        """
-        name = file.stem
-        if name in self._menu_lookup:
-            matching_menu_entry = self._menu_lookup[name]
-
-            children = matching_menu_entry.children
-            if not children:  # when the children list is empty no tocs need to be generated.
-                return
-
-            yield ".. toctree::"
-            yield f"   :caption: {matching_menu_entry.title}"
-            yield "   :maxdepth: 2"
-            yield "   :hidden:"
-            yield ""
-            yield from [f"   {item.file.stem}" for item in matching_menu_entry.children]
-            yield ""
+# pylint: disable=logging-fstring-interpolation
 
 
 class Writer(Protocol):
@@ -155,7 +39,6 @@ class Writer(Protocol):
         :param toc_generator_type: the type to use for generating the toc (has to adhere
             the :class:`TocGenerator` protocol.
         """
-        pass
 
     def write(self, parse_result: HtmlParseResult, target_file: Path) -> Path:
         """
@@ -358,9 +241,9 @@ class RstWriter:
                     content.extend(self._raw_directive())
                     break
                 buffer += current + "\n"
-            except StopIteration:
+            except StopIteration as exc:
                 raise RuntimeError(
                     "End of input-file reached during rst processing. This should never "
                     "happen. Either this tool has a bug or the doxygen input file has a "
                     "severe problem."
-                )
+                ) from exc

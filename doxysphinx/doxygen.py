@@ -32,12 +32,13 @@ class DoxyOutput:
 
 def read_doxyconfig(doxyfile: Path, doxygen_exe: str, doxygen_cwd: Path) -> ConfigDict:
     """
-    Supplement the doxygen configuration file with the default doxygen configuration and return the final key value pairs as a dict.
+    Supplement the doxygen configuration file with the default doxygen configuration and return the final key value
+    pairs as a dict.
 
     :param doxyfile: the doxygen configuration file to read
     :param doxygen_exe: in case one wants to execute doxygen from another directory.
     :return: a dict representing all key-value pairs defined in the final configuration
-    (including warnings from the console output). The value can either be a single value or a list.
+             (including warnings from the console output). The value can either be a single value or a list.
     """
     output = _compare_configs(doxyfile, doxygen_exe, doxygen_cwd)
     config = _parse_stdout(output.out)

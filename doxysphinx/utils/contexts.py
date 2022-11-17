@@ -19,6 +19,7 @@ class TimedContext(object):
     Use it to measure the time taken to process the inner code.
 
     Usage:
+
     .. code-block: python
 
        with TimedContext() as tc:

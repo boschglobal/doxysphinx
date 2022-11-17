@@ -13,6 +13,8 @@ import glob
 import re
 from typing import Any, Dict, List
 
+# pylint: disable=all
+
 
 def version_from_project_toml() -> str:
     """Get the version number from project.toml file."""
@@ -62,13 +64,13 @@ def theme_options(theme: str) -> Dict[str, Any]:
 
     if theme == "sphinx_book_theme":
         return {
-            "collapse_navigation": False,
+            "show_navbar_depth": 1,
+            "collapse_navigation": True,
             "repository_url": "https://github.com/boschglobal/doxysphinx",
             "use_repository_button": True,
             "use_edit_page_button": True,
             "repository_branch": "main",
             "logo_only": True,
-            "show_navbar_depth": 5,
             "home_page_in_toc": True,
             "extra_navbar": '<div class="attribution">theme based on the '
             '<a href="https://sphinx-book-theme.readthedocs.io/">sphinx book theme</a> '
@@ -78,7 +80,8 @@ def theme_options(theme: str) -> Dict[str, Any]:
 
     elif theme == "sphinx_rtd_theme":
         return {
-            "collapse_navigation": False,
+            "show_nav_level": 1,
+            "collapse_navigation": True,
             "github_url": "https://github.com/boschglobal/doxysphinx",
             "repository_url": "https://github.com/boschglobal/doxysphinx",
             "logo_only": False,

@@ -19,6 +19,20 @@
             ]
         },
         {
+            "name": "Debug: Doxysphinx Build Command Graphviz",
+            "type": "python",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "module": "doxysphinx",
+            "args": [
+                "--verbosity=DEBUG",
+                "build",
+                "${workspaceFolder}",
+                "${workspaceFolder}/.build",
+                "${workspaceFolder}/docs/doxygen/graphviz"
+            ]
+        },
+        {
             "name": "Debug: Doxysphinx Clean Command",
             "type": "python",
             "request": "launch",
@@ -33,17 +47,17 @@
             ]
         },
         {
-            "name": "Debug: Python Semantic Release",
+            "name": "Python: Test Cases",
             "type": "python",
             "request": "launch",
             "cwd": "${workspaceFolder}",
-            "program": "/home/vscode/.local/bin/semantic-release",
-            "justMyCode": false,
-            "args": [
-                "publish",
-                "--verbosity=DEBUG",
-                "--noop"
-            ]
-        },
+            "purpose": [
+                "debug-test"
+            ],
+            "console": "integratedTerminal",
+            "env": {
+                "PYTEST_ADDOPTS": "--no-cov"
+            }
+        }
     ]
 }

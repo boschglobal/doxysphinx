@@ -48,3 +48,12 @@ body {
 p.rubric {
     border-bottom: none !important;
 }
+
+/* navigation bar color override */
+.bd-sidebar#site-navigation {
+    background: whitesmoke;
+}
+
+#search-input {
+    border-radius: .3em
+}

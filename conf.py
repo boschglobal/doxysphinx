@@ -7,12 +7,15 @@
 #  - Markus Braun, :em engineering methods AG (contracted by Robert Bosch GmbH)
 # =====================================================================================
 """sphinx configuration file."""
+
+# pylint: disable=invalid-name
+
 import os
 import sys
 
 sys.path.append(os.path.abspath("."))
 
-from conf_utils import (  # noqa E402
+from conf_utils import (  # noqa E402, pylint: disable=wrong-import-position
     last_updated_from_git,
     multi_glob,
     theme_options,
@@ -47,14 +50,13 @@ exclude_patterns = multi_glob(
     "dist",
     "demo",
     "docs/_templates",
+    "docs/auto_api/index.rst",
+    "NOTICE.md",
     "LICENSE.md",
     "CHANGELOG.md",
     "README.md",
     "external/README.md",
 )
-
-# The name of the Pygments (syntax highlighting) style to use.
-# pygments_style = 'sphinx'
 
 # -- Options for HTML output -------------------------------------------------
 # Configure HTML theme (remember to also change doxysphinx)
@@ -73,14 +75,11 @@ github_repository = "any"
 extensions = [
     "sphinxcontrib.needs",
     "sphinxcontrib.plantuml",
-    "sphinxcontrib.test_reports",
     "sphinx.ext.mathjax",
     "sphinx.ext.ifconfig",
-    "sphinx_toolbox.more_autodoc",
     "sphinx.ext.autodoc",
-    "sphinx.ext.autosummary",
+    "autoapi.extension",
     "sphinx.ext.viewcode",
-    "sphinx_autodoc_typehints",
     "myst_parser",
     "matplotlib.sphinxext.plot_directive",
     "sphinx.ext.duration",
@@ -99,14 +98,13 @@ extensions = [
 plantuml = "java -Djava.awt.headless=true -jar /usr/share/plantuml/plantuml.jar"
 plantuml_output_format = "svg"
 
-# Autodoc
-primary_domain = "py"
-highlight_language = "python3"
-autodoc_default_options = {"members": True, "undoc-members": True}
-autodoc_member_order = "bysource"
-add_module_names = False
-autosummary_generate = True
-autosummary_generate_overwrite = False
+# Autoapi
+autoapi_dirs = ["doxysphinx"]
+autoapi_root = "docs/auto_api"
+autoapi_options = ["members", "undoc-members", "show-inheritance", "show-inheritance-diagram", "show-module-summary"]
+autoapi_keep_files = False
+autoapi_add_toctree_entry = False
+autodoc_typehints = "signature"
 
 # Myst
 myst_enable_extensions = ["colon_fence"]

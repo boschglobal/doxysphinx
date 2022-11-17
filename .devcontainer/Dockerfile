@@ -21,7 +21,7 @@ SHELL [ "/bin/zsh", "-c" ]
 # set environment
 ENV PYTHONUNBUFFERED 1
 ENV TZ=Europe/Berlin
-ENV PATH="/home/vscode/.local/bin:${PATH}"
+ENV PATH="/root/.local/bin:${PATH}"
 
 # Install apt dependencies
 # - default-jre for running plantuml
