@@ -63,7 +63,7 @@ class _MenuEntry:
 
     @staticmethod
     def from_json_node(json_node: Dict[str, Any]) -> "_MenuEntry":
-        """Creates a _MenuEntry from a json node (in doxygen's menudata.js).
+        """Create a _MenuEntry from a json node (in doxygen's menudata.js).
 
         Note that this method will build up a _MenuEntry-tree automatically/recursively
 
@@ -83,7 +83,9 @@ class _MenuEntry:
 
     @staticmethod
     def _get_sphinx_toc_compatible_children(json_node: Dict[str, Any]) -> List["_MenuEntry"]:
-        """special handling for index anchors...
+        """Get a "sphinx compatible" view of the children.
+
+        We therefore need a special handling for index anchors
         with doxygen we sometimes have urls in menu entries like:
         # - title: url
           - a: globals_enum.html#index_a
@@ -96,7 +98,6 @@ class _MenuEntry:
         - eliminate all childrens with the same name/file down to one last child
         - then check if the parent has the same name/file and in that case get rid of the child completely
         """
-
         # get all children
         children = [_MenuEntry.from_json_node(c) for c in json_node["children"]] if "children" in json_node else []
         if not children:
@@ -157,11 +158,10 @@ class DoxygenTocGenerator:
         )
 
     def _parse_template(self) -> Tuple[str, str]:
-        """_summary_
+        """Parse a "doxygen html template shell" out of the index.html file.
 
         :return: A Tuple containing the doxygen html before the content area and the content after the content area.
         """
-
         # load html file as string and remove the newline chars
         blueprint = self._source_dir / "index.html"
         complete_html = blueprint.read_text()

@@ -31,9 +31,10 @@ class DoxyOutput:
 
 
 def read_doxyconfig(doxyfile: Path, doxygen_exe: str, doxygen_cwd: Path) -> ConfigDict:
-    """
-    Supplement the doxygen configuration file with the default doxygen configuration and return the final key value
-    pairs as a dict.
+    """Read doxyconfig and get full doxygen configuration (also with default values).
+
+    Supplement the doxygen configuration file with the default doxygen configuration and return the final
+    key value pairs as a dict.
 
     :param doxyfile: the doxygen configuration file to read
     :param doxygen_exe: in case one wants to execute doxygen from another directory.
