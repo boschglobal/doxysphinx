@@ -37,3 +37,13 @@ def apply_if_first(iterable: Iterable[T], check: Predicate[T], action: Action[T]
     found = next((p for p in iterable if check(p)), None)
     if found is not None:
         action(found)
+
+
+def apply(iterable: Iterable[T], action: Action[T]) -> None:
+    """Apply the action function to all elements.
+
+    :param iterable: The input iterable (list etc...)
+    :param action: The action to apply
+    """
+    for item in iterable:
+        action(item)

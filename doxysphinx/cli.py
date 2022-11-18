@@ -15,7 +15,9 @@ Entry module for the doxysphinx cli.
 Defines click main command (:func:`cli`) and subcommands (:func:`build`), (:func:`clean`)
 
 .. note::
+
     * Execute this script directly to start doxysphinx.
+
     * If you need to call a function to start doxysphinx (e.g. for vscode launch config etc.) use the
       :func:`cli` directly.
 
@@ -50,12 +52,13 @@ class DoxygenContext:
     Represent the options for doxygen that can be set via the cli.
 
     The doxygen projects are specified through INPUT (multiple possible). INPUT can be:
-    - a doxygen configuration file (aka doxyfile)
-    - a directory, which contains the generated doxygen html documentation. Note that specifying a directory
-      will skip the config validation completely and is therefore considered "advanced stuff".
-      You will typically want to use that if you're integrating doxysphinx in a ci build system.
-      If unsure, use a doxyfile.
 
+    * a doxygen configuration file (aka doxyfile)
+
+    * a directory, which contains the generated doxygen html documentation.
+      Note that specifying a directory will skip the config validation completely and is therefore considered
+      "advanced stuff". You will typically want to use that if you're integrating doxysphinx in a ci build
+      system. If unsure, use a doxyfile.
     """
 
     input: List[Path]

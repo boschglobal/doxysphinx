@@ -33,7 +33,6 @@ class DirectoryMapper(Protocol):
         :param sphinx_source_dir: the sphinx source directory
         :param sphinx_output_dir: the sphinx output directoryS
         """
-        pass
 
     def map(self, path: Path) -> Path:
         """Calculate the path in output for a given path in input."""

@@ -10,11 +10,11 @@
 """
 Doxysphinx main package.
 
-Doxysphinx uses click to provide a command line interface with sub commands.
+Doxysphinx uses `click <https://click.palletsprojects.com/>`_ to provide a command line interface with
+sub commands similar to e.g. ``git``.
 
 The main command is :func:`doxysphinx.cli.cli()`.
-The "build" and "clean" commands are defined in :mod:`doxysphinx.commands`.
-The commands itself will do some input validation and then call into the
-:class:`doxysphinx.builders.doxygen_rst_builder` which is considered the entry
-point of the main doxysphinx functionality.
+The `build` and `clean` commands are defined in :mod:`doxysphinx.cli`.
+The commands itself will do some input validation and then call into the :class:`doxysphinx.process.Builder`
+which is considered the entrypoint of the main doxysphinx functionality.
 """
