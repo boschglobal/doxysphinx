@@ -24,18 +24,16 @@
     
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=84ace793992934648b4de8eed757e5a2" />
-    <link rel="stylesheet" type="text/css" href="_static/css/sphinx-toolbox.css" />
-    <link rel="stylesheet" type="text/css" href="_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     <link rel="stylesheet" type="text/css" href="_static/assets/jsonview.bundle.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-needs/libs/html/datatables.min.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-needs/common.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-needs/styles.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-needs/layouts.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-needs/modern.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-test-results/common.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-needs/layouts.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-needs/styles.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme-custom.css" />
     
   <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
@@ -144,11 +142,18 @@
    Linking with Sphinx Needs
   </a>
  </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Demo documentations
+ </span>
+</p>
+<ul class="nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="docs/doxygen/demo/html/index.html">
    Doxygen Demo
   </a>
-  <input checked class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
    <i class="fas fa-chevron-down">
    </i>
@@ -156,19 +161,24 @@
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="docs/doxygen/demo/html/namespaces.html">
-     Namespace List
+     Namespaces
     </a>
    </li>
    <li class="toctree-l2 has-children">
-    <a class="reference internal" href="docs/doxygen/demo/html/annotated.html">
-     Class List
+    <a class="reference internal" href="docs/doxygen/demo/html/annotated_classes.html">
+     Classes
     </a>
-    <input checked class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+    <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
     <label for="toctree-checkbox-2">
      <i class="fas fa-chevron-down">
      </i>
     </label>
     <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="docs/doxygen/demo/html/annotated.html">
+       Class List
+      </a>
+     </li>
      <li class="toctree-l3">
       <a class="reference internal" href="docs/doxygen/demo/html/classes.html">
        Class Index
@@ -180,18 +190,23 @@
       </a>
      </li>
      <li class="toctree-l3 has-children">
-      <a class="reference internal" href="docs/doxygen/demo/html/functions.html">
+      <a class="reference internal" href="docs/doxygen/demo/html/functions_class_members.html">
        Class Members
       </a>
-      <input checked class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+      <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
       <label for="toctree-checkbox-3">
        <i class="fas fa-chevron-down">
        </i>
       </label>
       <ul>
        <li class="toctree-l4">
+        <a class="reference internal" href="docs/doxygen/demo/html/functions.html">
+         All
+        </a>
+       </li>
+       <li class="toctree-l4">
         <a class="reference internal" href="docs/doxygen/demo/html/functions_func.html">
-         Class Members - Functions
+         Functions
         </a>
        </li>
       </ul>
@@ -200,7 +215,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="docs/doxygen/demo/html/files.html">
-     File List
+     Files
     </a>
    </li>
   </ul>
@@ -223,69 +238,163 @@
   </a>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="docs/api/apidoc.html">
+  <a class="reference internal" href="docs/apidoc.html">
    API Reference
   </a>
-  <input checked class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
   <label for="toctree-checkbox-4">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="docs/api/doxysphinx/doxysphinx.cli.html">
-     doxysphinx.cli
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="docs/auto_api/doxysphinx/index.html">
+     <code class="xref py py-mod docutils literal notranslate">
+      <span class="pre">
+       doxysphinx
+      </span>
+     </code>
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="docs/api/doxysphinx/doxysphinx.doxygen.html">
-     doxysphinx.doxygen
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="docs/api/doxysphinx/doxysphinx.html_parser.html">
-     doxysphinx.html_parser
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="docs/api/doxysphinx/doxysphinx.process.html">
-     doxysphinx.process
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="docs/api/doxysphinx/doxysphinx.resources.html">
-     doxysphinx.resources
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="docs/api/doxysphinx/doxysphinx.sphinx.html">
-     doxysphinx.sphinx
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="docs/api/doxysphinx/doxysphinx.writer.html">
-     doxysphinx.writer
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="docs/api/doxysphinx.utils/doxysphinx.utils.contexts.html">
-     doxysphinx.utils.contexts
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="docs/api/doxysphinx.utils/doxysphinx.utils.exceptions.html">
-     doxysphinx.utils.exceptions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="docs/api/doxysphinx.utils/doxysphinx.utils.files.html">
-     doxysphinx.utils.files
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="docs/api/doxysphinx.utils/doxysphinx.utils.iterators.html">
-     doxysphinx.utils.iterators
-    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+    <label for="toctree-checkbox-5">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="docs/auto_api/doxysphinx/utils/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         doxysphinx.utils
+        </span>
+       </code>
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+      <label for="toctree-checkbox-6">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="docs/auto_api/doxysphinx/utils/contexts/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           doxysphinx.utils.contexts
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="docs/auto_api/doxysphinx/utils/exceptions/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           doxysphinx.utils.exceptions
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="docs/auto_api/doxysphinx/utils/files/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           doxysphinx.utils.files
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="docs/auto_api/doxysphinx/utils/iterators/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           doxysphinx.utils.iterators
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="docs/auto_api/doxysphinx/utils/pathlib_fix/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           doxysphinx.utils.pathlib_fix
+          </span>
+         </code>
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="docs/auto_api/doxysphinx/cli/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         doxysphinx.cli
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="docs/auto_api/doxysphinx/doxygen/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         doxysphinx.doxygen
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="docs/auto_api/doxysphinx/html_parser/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         doxysphinx.html_parser
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="docs/auto_api/doxysphinx/process/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         doxysphinx.process
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="docs/auto_api/doxysphinx/resources/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         doxysphinx.resources
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="docs/auto_api/doxysphinx/sphinx/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         doxysphinx.sphinx
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="docs/auto_api/doxysphinx/toc/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         doxysphinx.toc
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="docs/auto_api/doxysphinx/writer/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         doxysphinx.writer
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
    </li>
   </ul>
  </li>
@@ -399,15 +508,19 @@
 <h2 id="A">A</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="docs/api/doxysphinx/doxysphinx.doxygen.html#doxysphinx.doxygen.DoxygenSettingsValidator.absolute_out">absolute_out (DoxygenSettingsValidator attribute)</a>
+      <li><a href="docs/auto_api/doxysphinx/doxygen/index.html#doxysphinx.doxygen.DoxygenSettingsValidator.absolute_out">absolute_out (doxysphinx.doxygen.DoxygenSettingsValidator attribute)</a>
 </li>
-      <li><a href="docs/api/doxysphinx.utils/doxysphinx.utils.exceptions.html#doxysphinx.utils.exceptions.ApplicationError">ApplicationError</a>
+      <li><a href="docs/auto_api/doxysphinx/utils/iterators/index.html#doxysphinx.utils.iterators.Action">Action (in module doxysphinx.utils.iterators)</a>
+</li>
+      <li><a href="docs/auto_api/doxysphinx/utils/exceptions/index.html#doxysphinx.utils.exceptions.ApplicationError">ApplicationError</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="docs/api/doxysphinx.utils/doxysphinx.utils.iterators.html#doxysphinx.utils.iterators.apply_if">apply_if() (in module doxysphinx.utils.iterators)</a>
+      <li><a href="docs/auto_api/doxysphinx/utils/iterators/index.html#doxysphinx.utils.iterators.apply">apply() (in module doxysphinx.utils.iterators)</a>
 </li>
-      <li><a href="docs/api/doxysphinx.utils/doxysphinx.utils.iterators.html#doxysphinx.utils.iterators.apply_if_first">apply_if_first() (in module doxysphinx.utils.iterators)</a>
+      <li><a href="docs/auto_api/doxysphinx/utils/iterators/index.html#doxysphinx.utils.iterators.apply_if">apply_if() (in module doxysphinx.utils.iterators)</a>
+</li>
+      <li><a href="docs/auto_api/doxysphinx/utils/iterators/index.html#doxysphinx.utils.iterators.apply_if_first">apply_if_first() (in module doxysphinx.utils.iterators)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -415,15 +528,15 @@
 <h2 id="B">B</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="docs/api/doxysphinx/doxysphinx.process.html#doxysphinx.process.Builder.build">build() (Builder method)</a>
+      <li><a href="docs/auto_api/doxysphinx/process/index.html#doxysphinx.process.Builder.build">build() (doxysphinx.process.Builder method)</a>
 
       <ul>
-        <li><a href="docs/api/doxysphinx/doxysphinx.cli.html#doxysphinx.cli.build">(in module doxysphinx.cli)</a>
+        <li><a href="docs/auto_api/doxysphinx/cli/index.html#doxysphinx.cli.build">(in module doxysphinx.cli)</a>
 </li>
       </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="docs/api/doxysphinx/doxysphinx.process.html#doxysphinx.process.Builder">Builder (class in doxysphinx.process)</a>
+      <li><a href="docs/auto_api/doxysphinx/process/index.html#doxysphinx.process.Builder">Builder (class in doxysphinx.process)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -431,27 +544,29 @@
 <h2 id="C">C</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="docs/api/doxysphinx/doxysphinx.cli.html#doxysphinx.cli.clean">clean() (in module doxysphinx.cli)</a>
+      <li><a href="docs/auto_api/doxysphinx/cli/index.html#doxysphinx.cli.clean">clean() (in module doxysphinx.cli)</a>
 </li>
-      <li><a href="docs/api/doxysphinx/doxysphinx.process.html#doxysphinx.process.Cleaner">Cleaner (class in doxysphinx.process)</a>
+      <li><a href="docs/auto_api/doxysphinx/process/index.html#doxysphinx.process.Cleaner">Cleaner (class in doxysphinx.process)</a>
 </li>
-      <li><a href="docs/api/doxysphinx/doxysphinx.process.html#doxysphinx.process.Cleaner.cleanup">cleanup() (Cleaner method)</a>
+      <li><a href="docs/auto_api/doxysphinx/process/index.html#doxysphinx.process.Cleaner.cleanup">cleanup() (doxysphinx.process.Cleaner method)</a>
 </li>
-      <li><a href="docs/api/doxysphinx/doxysphinx.resources.html#doxysphinx.resources.DoxygenResourceProvider.cleanup_resources">cleanup_resources() (DoxygenResourceProvider method)</a>
+      <li><a href="docs/auto_api/doxysphinx/resources/index.html#doxysphinx.resources.DoxygenResourceProvider.cleanup_resources">cleanup_resources() (doxysphinx.resources.DoxygenResourceProvider method)</a>
 
       <ul>
-        <li><a href="docs/api/doxysphinx/doxysphinx.resources.html#doxysphinx.resources.ResourceProvider.cleanup_resources">(ResourceProvider method)</a>
+        <li><a href="docs/auto_api/doxysphinx/resources/index.html#doxysphinx.resources.ResourceProvider.cleanup_resources">(doxysphinx.resources.ResourceProvider method)</a>
 </li>
       </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="docs/api/doxysphinx/doxysphinx.cli.html#doxysphinx.cli.cli">cli() (in module doxysphinx.cli)</a>
+      <li><a href="docs/auto_api/doxysphinx/cli/index.html#doxysphinx.cli.cli">cli() (in module doxysphinx.cli)</a>
 </li>
-      <li><a href="docs/api/doxysphinx/doxysphinx.html_parser.html#doxysphinx.html_parser.HtmlParseResult.contains_rst">contains_rst (HtmlParseResult attribute)</a>
+      <li><a href="docs/auto_api/doxysphinx/doxygen/index.html#doxysphinx.doxygen.ConfigDict">ConfigDict (in module doxysphinx.doxygen)</a>
 </li>
-      <li><a href="docs/api/doxysphinx.utils/doxysphinx.utils.files.html#doxysphinx.utils.files.copy_if_different">copy_if_different() (in module doxysphinx.utils.files)</a>
+      <li><a href="docs/auto_api/doxysphinx/html_parser/index.html#doxysphinx.html_parser.HtmlParseResult.contains_rst">contains_rst (doxysphinx.html_parser.HtmlParseResult attribute)</a>
 </li>
-      <li><a href="docs/api/doxysphinx/doxysphinx.resources.html#doxysphinx.resources.CssScoper">CssScoper (class in doxysphinx.resources)</a>
+      <li><a href="docs/auto_api/doxysphinx/utils/files/index.html#doxysphinx.utils.files.copy_if_different">copy_if_different() (in module doxysphinx.utils.files)</a>
+</li>
+      <li><a href="docs/auto_api/doxysphinx/resources/index.html#doxysphinx.resources.CssScoper">CssScoper (class in doxysphinx.resources)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -459,47 +574,61 @@
 <h2 id="D">D</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="docs/api/doxysphinx/doxysphinx.sphinx.html#doxysphinx.sphinx.DirectoryMapper">DirectoryMapper (protocol in doxysphinx.sphinx)</a>
+      <li><a href="docs/auto_api/doxysphinx/sphinx/index.html#doxysphinx.sphinx.DirectoryMapper">DirectoryMapper (class in doxysphinx.sphinx)</a>
 </li>
-      <li><a href="docs/api/doxysphinx/doxysphinx.html_parser.html#doxysphinx.html_parser.HtmlParseResult.document_title">document_title (HtmlParseResult attribute)</a>
+      <li><a href="docs/auto_api/doxysphinx/html_parser/index.html#doxysphinx.html_parser.HtmlParseResult.document_title">document_title (doxysphinx.html_parser.HtmlParseResult attribute)</a>
 </li>
-      <li><a href="docs/api/doxysphinx/doxysphinx.cli.html#doxysphinx.cli.DoxygenContext.doxygen_cwd">doxygen_cwd (DoxygenContext attribute)</a>
+      <li><a href="docs/auto_api/doxysphinx/cli/index.html#doxysphinx.cli.DoxygenContext.doxygen_cwd">doxygen_cwd (doxysphinx.cli.DoxygenContext attribute)</a>
 </li>
-      <li><a href="docs/api/doxysphinx/doxysphinx.cli.html#doxysphinx.cli.DoxygenContext.doxygen_exe">doxygen_exe (DoxygenContext attribute)</a>
+      <li><a href="docs/auto_api/doxysphinx/cli/index.html#doxysphinx.cli.DoxygenContext.doxygen_exe">doxygen_exe (doxysphinx.cli.DoxygenContext attribute)</a>
 </li>
-      <li><a href="docs/api/doxysphinx/doxysphinx.cli.html#doxysphinx.cli.DoxygenContext">DoxygenContext (class in doxysphinx.cli)</a>
+      <li><a href="docs/auto_api/doxysphinx/cli/index.html#doxysphinx.cli.DoxygenContext">DoxygenContext (class in doxysphinx.cli)</a>
 </li>
-      <li><a href="docs/api/doxysphinx/doxysphinx.html_parser.html#doxysphinx.html_parser.DoxygenHtmlParser">DoxygenHtmlParser (class in doxysphinx.html_parser)</a>
+      <li><a href="docs/auto_api/doxysphinx/html_parser/index.html#doxysphinx.html_parser.DoxygenHtmlParser">DoxygenHtmlParser (class in doxysphinx.html_parser)</a>
 </li>
-      <li><a href="docs/api/doxysphinx/doxysphinx.doxygen.html#doxysphinx.doxygen.DoxygenOutputPathValidator">DoxygenOutputPathValidator (class in doxysphinx.doxygen)</a>
+      <li><a href="docs/auto_api/doxysphinx/doxygen/index.html#doxysphinx.doxygen.DoxygenOutputPathValidator">DoxygenOutputPathValidator (class in doxysphinx.doxygen)</a>
 </li>
-      <li><a href="docs/api/doxysphinx/doxysphinx.resources.html#doxysphinx.resources.DoxygenResourceProvider">DoxygenResourceProvider (class in doxysphinx.resources)</a>
+      <li><a href="docs/auto_api/doxysphinx/resources/index.html#doxysphinx.resources.DoxygenResourceProvider">DoxygenResourceProvider (class in doxysphinx.resources)</a>
 </li>
-      <li><a href="docs/api/doxysphinx/doxysphinx.doxygen.html#doxysphinx.doxygen.DoxygenSettingsValidator">DoxygenSettingsValidator (class in doxysphinx.doxygen)</a>
+      <li><a href="docs/auto_api/doxysphinx/doxygen/index.html#doxysphinx.doxygen.DoxygenSettingsValidator">DoxygenSettingsValidator (class in doxysphinx.doxygen)</a>
 </li>
-      <li><a href="docs/api/doxysphinx/doxysphinx.writer.html#doxysphinx.writer.DoxygenTocGenerator">DoxygenTocGenerator (class in doxysphinx.writer)</a>
+      <li><a href="docs/auto_api/doxysphinx/toc/index.html#doxysphinx.toc.DoxygenTocGenerator">DoxygenTocGenerator (class in doxysphinx.toc)</a>
 </li>
-      <li><a href="docs/api/doxysphinx/doxysphinx.doxygen.html#doxysphinx.doxygen.DoxyOutput">DoxyOutput (class in doxysphinx.doxygen)</a>
+      <li><a href="docs/auto_api/doxysphinx/doxygen/index.html#doxysphinx.doxygen.DoxyOutput">DoxyOutput (class in doxysphinx.doxygen)</a>
 </li>
+      <li>
+    doxysphinx
+
+      <ul>
+        <li><a href="docs/auto_api/doxysphinx/index.html#module-doxysphinx">module</a>
+</li>
+      </ul></li>
+      <li>
+    doxysphinx.__main__
+
+      <ul>
+        <li><a href="docs/auto_api/doxysphinx/__main__/index.html#module-doxysphinx.__main__">module</a>
+</li>
+      </ul></li>
       <li>
     doxysphinx.cli
 
       <ul>
-        <li><a href="docs/api/doxysphinx/doxysphinx.cli.html#module-doxysphinx.cli">module</a>
+        <li><a href="docs/auto_api/doxysphinx/cli/index.html#module-doxysphinx.cli">module</a>
 </li>
       </ul></li>
       <li>
     doxysphinx.doxygen
 
       <ul>
-        <li><a href="docs/api/doxysphinx/doxysphinx.doxygen.html#module-doxysphinx.doxygen">module</a>
+        <li><a href="docs/auto_api/doxysphinx/doxygen/index.html#module-doxysphinx.doxygen">module</a>
 </li>
       </ul></li>
       <li>
     doxysphinx.html_parser
 
       <ul>
-        <li><a href="docs/api/doxysphinx/doxysphinx.html_parser.html#module-doxysphinx.html_parser">module</a>
+        <li><a href="docs/auto_api/doxysphinx/html_parser/index.html#module-doxysphinx.html_parser">module</a>
 </li>
       </ul></li>
   </ul></td>
@@ -508,56 +637,77 @@
     doxysphinx.process
 
       <ul>
-        <li><a href="docs/api/doxysphinx/doxysphinx.process.html#module-doxysphinx.process">module</a>
+        <li><a href="docs/auto_api/doxysphinx/process/index.html#module-doxysphinx.process">module</a>
 </li>
       </ul></li>
       <li>
     doxysphinx.resources
 
       <ul>
-        <li><a href="docs/api/doxysphinx/doxysphinx.resources.html#module-doxysphinx.resources">module</a>
+        <li><a href="docs/auto_api/doxysphinx/resources/index.html#module-doxysphinx.resources">module</a>
 </li>
       </ul></li>
       <li>
     doxysphinx.sphinx
 
       <ul>
-        <li><a href="docs/api/doxysphinx/doxysphinx.sphinx.html#module-doxysphinx.sphinx">module</a>
+        <li><a href="docs/auto_api/doxysphinx/sphinx/index.html#module-doxysphinx.sphinx">module</a>
+</li>
+      </ul></li>
+      <li>
+    doxysphinx.toc
+
+      <ul>
+        <li><a href="docs/auto_api/doxysphinx/toc/index.html#module-doxysphinx.toc">module</a>
+</li>
+      </ul></li>
+      <li>
+    doxysphinx.utils
+
+      <ul>
+        <li><a href="docs/auto_api/doxysphinx/utils/index.html#module-doxysphinx.utils">module</a>
 </li>
       </ul></li>
       <li>
     doxysphinx.utils.contexts
 
       <ul>
-        <li><a href="docs/api/doxysphinx.utils/doxysphinx.utils.contexts.html#module-doxysphinx.utils.contexts">module</a>
+        <li><a href="docs/auto_api/doxysphinx/utils/contexts/index.html#module-doxysphinx.utils.contexts">module</a>
 </li>
       </ul></li>
       <li>
     doxysphinx.utils.exceptions
 
       <ul>
-        <li><a href="docs/api/doxysphinx.utils/doxysphinx.utils.exceptions.html#module-doxysphinx.utils.exceptions">module</a>
+        <li><a href="docs/auto_api/doxysphinx/utils/exceptions/index.html#module-doxysphinx.utils.exceptions">module</a>
 </li>
       </ul></li>
       <li>
     doxysphinx.utils.files
 
       <ul>
-        <li><a href="docs/api/doxysphinx.utils/doxysphinx.utils.files.html#module-doxysphinx.utils.files">module</a>
+        <li><a href="docs/auto_api/doxysphinx/utils/files/index.html#module-doxysphinx.utils.files">module</a>
 </li>
       </ul></li>
       <li>
     doxysphinx.utils.iterators
 
       <ul>
-        <li><a href="docs/api/doxysphinx.utils/doxysphinx.utils.iterators.html#module-doxysphinx.utils.iterators">module</a>
+        <li><a href="docs/auto_api/doxysphinx/utils/iterators/index.html#module-doxysphinx.utils.iterators">module</a>
+</li>
+      </ul></li>
+      <li>
+    doxysphinx.utils.pathlib_fix
+
+      <ul>
+        <li><a href="docs/auto_api/doxysphinx/utils/pathlib_fix/index.html#module-doxysphinx.utils.pathlib_fix">module</a>
 </li>
       </ul></li>
       <li>
     doxysphinx.writer
 
       <ul>
-        <li><a href="docs/api/doxysphinx/doxysphinx.writer.html#module-doxysphinx.writer">module</a>
+        <li><a href="docs/auto_api/doxysphinx/writer/index.html#module-doxysphinx.writer">module</a>
 </li>
       </ul></li>
   </ul></td>
@@ -566,13 +716,13 @@
 <h2 id="E">E</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="docs/api/doxysphinx.utils/doxysphinx.utils.contexts.html#doxysphinx.utils.contexts.TimedContext.elapsed">elapsed() (TimedContext method)</a>
+      <li><a href="docs/auto_api/doxysphinx/utils/contexts/index.html#doxysphinx.utils.contexts.TimedContext.elapsed">elapsed() (doxysphinx.utils.contexts.TimedContext method)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="docs/api/doxysphinx.utils/doxysphinx.utils.contexts.html#doxysphinx.utils.contexts.TimedContext.elapsed_humanized">elapsed_humanized() (TimedContext method)</a>
+      <li><a href="docs/auto_api/doxysphinx/utils/contexts/index.html#doxysphinx.utils.contexts.TimedContext.elapsed_humanized">elapsed_humanized() (doxysphinx.utils.contexts.TimedContext method)</a>
 </li>
-      <li><a href="docs/api/doxysphinx/doxysphinx.doxygen.html#doxysphinx.doxygen.DoxyOutput.err">err (DoxyOutput attribute)</a>
+      <li><a href="docs/auto_api/doxysphinx/doxygen/index.html#doxysphinx.doxygen.DoxyOutput.err">err (doxysphinx.doxygen.DoxyOutput attribute)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -580,10 +730,10 @@
 <h2 id="G">G</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="docs/api/doxysphinx/doxysphinx.writer.html#doxysphinx.writer.DoxygenTocGenerator.generate_toc_for">generate_toc_for() (DoxygenTocGenerator method)</a>
+      <li><a href="docs/auto_api/doxysphinx/toc/index.html#doxysphinx.toc.DoxygenTocGenerator.generate_toc_for">generate_toc_for() (doxysphinx.toc.DoxygenTocGenerator method)</a>
 
       <ul>
-        <li><a href="docs/api/doxysphinx/doxysphinx.writer.html#doxysphinx.writer.TocGenerator.generate_toc_for">(TocGenerator method)</a>
+        <li><a href="docs/auto_api/doxysphinx/toc/index.html#doxysphinx.toc.TocGenerator.generate_toc_for">(doxysphinx.toc.TocGenerator method)</a>
 </li>
       </ul></li>
   </ul></td>
@@ -592,13 +742,13 @@
 <h2 id="H">H</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="docs/api/doxysphinx/doxysphinx.html_parser.html#doxysphinx.html_parser.HtmlParseResult.html_input_file">html_input_file (HtmlParseResult attribute)</a>
+      <li><a href="docs/auto_api/doxysphinx/html_parser/index.html#doxysphinx.html_parser.HtmlParseResult.html_input_file">html_input_file (doxysphinx.html_parser.HtmlParseResult attribute)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="docs/api/doxysphinx/doxysphinx.html_parser.html#doxysphinx.html_parser.HtmlParser">HtmlParser (protocol in doxysphinx.html_parser)</a>
+      <li><a href="docs/auto_api/doxysphinx/html_parser/index.html#doxysphinx.html_parser.HtmlParser">HtmlParser (class in doxysphinx.html_parser)</a>
 </li>
-      <li><a href="docs/api/doxysphinx/doxysphinx.html_parser.html#doxysphinx.html_parser.HtmlParseResult">HtmlParseResult (class in doxysphinx.html_parser)</a>
+      <li><a href="docs/auto_api/doxysphinx/html_parser/index.html#doxysphinx.html_parser.HtmlParseResult">HtmlParseResult (class in doxysphinx.html_parser)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -606,7 +756,7 @@
 <h2 id="I">I</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="docs/api/doxysphinx/doxysphinx.cli.html#doxysphinx.cli.DoxygenContext.input">input (DoxygenContext attribute)</a>
+      <li><a href="docs/auto_api/doxysphinx/cli/index.html#doxysphinx.cli.DoxygenContext.input">input (doxysphinx.cli.DoxygenContext attribute)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -614,48 +764,58 @@
 <h2 id="M">M</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="docs/api/doxysphinx/doxysphinx.doxygen.html#doxysphinx.doxygen.DoxygenSettingsValidator.mandatory_settings">mandatory_settings (DoxygenSettingsValidator attribute)</a>
+      <li><a href="docs/auto_api/doxysphinx/doxygen/index.html#doxysphinx.doxygen.DoxygenSettingsValidator.mandatory_settings">mandatory_settings (doxysphinx.doxygen.DoxygenSettingsValidator attribute)</a>
 </li>
-      <li><a href="docs/api/doxysphinx/doxysphinx.sphinx.html#doxysphinx.sphinx.DirectoryMapper.map">map() (DirectoryMapper method)</a>
+      <li><a href="docs/auto_api/doxysphinx/sphinx/index.html#doxysphinx.sphinx.DirectoryMapper.map">map() (doxysphinx.sphinx.DirectoryMapper method)</a>
 
       <ul>
-        <li><a href="docs/api/doxysphinx/doxysphinx.sphinx.html#doxysphinx.sphinx.SphinxHtmlBuilderDirectoryMapper.map">(SphinxHtmlBuilderDirectoryMapper method)</a>
+        <li><a href="docs/auto_api/doxysphinx/sphinx/index.html#doxysphinx.sphinx.SphinxHtmlBuilderDirectoryMapper.map">(doxysphinx.sphinx.SphinxHtmlBuilderDirectoryMapper method)</a>
 </li>
       </ul></li>
-      <li><a href="docs/api/doxysphinx/doxysphinx.html_parser.html#doxysphinx.html_parser.HtmlParseResult.meta_title">meta_title (HtmlParseResult attribute)</a>
+      <li><a href="docs/auto_api/doxysphinx/html_parser/index.html#doxysphinx.html_parser.HtmlParseResult.meta_title">meta_title (doxysphinx.html_parser.HtmlParseResult attribute)</a>
 </li>
       <li>
     module
 
       <ul>
-        <li><a href="docs/api/doxysphinx/doxysphinx.cli.html#module-doxysphinx.cli">doxysphinx.cli</a>
+        <li><a href="docs/auto_api/doxysphinx/index.html#module-doxysphinx">doxysphinx</a>
 </li>
-        <li><a href="docs/api/doxysphinx/doxysphinx.doxygen.html#module-doxysphinx.doxygen">doxysphinx.doxygen</a>
+        <li><a href="docs/auto_api/doxysphinx/__main__/index.html#module-doxysphinx.__main__">doxysphinx.__main__</a>
 </li>
-        <li><a href="docs/api/doxysphinx/doxysphinx.html_parser.html#module-doxysphinx.html_parser">doxysphinx.html_parser</a>
+        <li><a href="docs/auto_api/doxysphinx/cli/index.html#module-doxysphinx.cli">doxysphinx.cli</a>
 </li>
-        <li><a href="docs/api/doxysphinx/doxysphinx.process.html#module-doxysphinx.process">doxysphinx.process</a>
+        <li><a href="docs/auto_api/doxysphinx/doxygen/index.html#module-doxysphinx.doxygen">doxysphinx.doxygen</a>
 </li>
-        <li><a href="docs/api/doxysphinx/doxysphinx.resources.html#module-doxysphinx.resources">doxysphinx.resources</a>
+        <li><a href="docs/auto_api/doxysphinx/html_parser/index.html#module-doxysphinx.html_parser">doxysphinx.html_parser</a>
 </li>
-        <li><a href="docs/api/doxysphinx/doxysphinx.sphinx.html#module-doxysphinx.sphinx">doxysphinx.sphinx</a>
+        <li><a href="docs/auto_api/doxysphinx/process/index.html#module-doxysphinx.process">doxysphinx.process</a>
 </li>
-        <li><a href="docs/api/doxysphinx.utils/doxysphinx.utils.contexts.html#module-doxysphinx.utils.contexts">doxysphinx.utils.contexts</a>
+        <li><a href="docs/auto_api/doxysphinx/resources/index.html#module-doxysphinx.resources">doxysphinx.resources</a>
 </li>
-        <li><a href="docs/api/doxysphinx.utils/doxysphinx.utils.exceptions.html#module-doxysphinx.utils.exceptions">doxysphinx.utils.exceptions</a>
+        <li><a href="docs/auto_api/doxysphinx/sphinx/index.html#module-doxysphinx.sphinx">doxysphinx.sphinx</a>
 </li>
-        <li><a href="docs/api/doxysphinx.utils/doxysphinx.utils.files.html#module-doxysphinx.utils.files">doxysphinx.utils.files</a>
+        <li><a href="docs/auto_api/doxysphinx/toc/index.html#module-doxysphinx.toc">doxysphinx.toc</a>
 </li>
-        <li><a href="docs/api/doxysphinx.utils/doxysphinx.utils.iterators.html#module-doxysphinx.utils.iterators">doxysphinx.utils.iterators</a>
+        <li><a href="docs/auto_api/doxysphinx/utils/index.html#module-doxysphinx.utils">doxysphinx.utils</a>
 </li>
-        <li><a href="docs/api/doxysphinx/doxysphinx.writer.html#module-doxysphinx.writer">doxysphinx.writer</a>
+        <li><a href="docs/auto_api/doxysphinx/utils/contexts/index.html#module-doxysphinx.utils.contexts">doxysphinx.utils.contexts</a>
+</li>
+        <li><a href="docs/auto_api/doxysphinx/utils/exceptions/index.html#module-doxysphinx.utils.exceptions">doxysphinx.utils.exceptions</a>
+</li>
+        <li><a href="docs/auto_api/doxysphinx/utils/files/index.html#module-doxysphinx.utils.files">doxysphinx.utils.files</a>
+</li>
+        <li><a href="docs/auto_api/doxysphinx/utils/iterators/index.html#module-doxysphinx.utils.iterators">doxysphinx.utils.iterators</a>
+</li>
+        <li><a href="docs/auto_api/doxysphinx/utils/pathlib_fix/index.html#module-doxysphinx.utils.pathlib_fix">doxysphinx.utils.pathlib_fix</a>
+</li>
+        <li><a href="docs/auto_api/doxysphinx/writer/index.html#module-doxysphinx.writer">doxysphinx.writer</a>
 </li>
       </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="docs/api/doxysphinx.utils/doxysphinx.utils.files.html#doxysphinx.utils.files.multi_glob">multi_glob() (in module doxysphinx.utils.files)</a>
+      <li><a href="docs/auto_api/doxysphinx/utils/files/index.html#doxysphinx.utils.files.multi_glob">multi_glob() (in module doxysphinx.utils.files)</a>
 </li>
-      <li><a href="docs/api/doxysphinx.utils/doxysphinx.utils.files.html#doxysphinx.utils.files.multi_replace_in_file">multi_replace_in_file() (in module doxysphinx.utils.files)</a>
+      <li><a href="docs/auto_api/doxysphinx/utils/files/index.html#doxysphinx.utils.files.multi_replace_in_file">multi_replace_in_file() (in module doxysphinx.utils.files)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -663,11 +823,11 @@
 <h2 id="O">O</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="docs/api/doxysphinx/doxysphinx.doxygen.html#doxysphinx.doxygen.DoxygenSettingsValidator.optional_settings">optional_settings (DoxygenSettingsValidator attribute)</a>
+      <li><a href="docs/auto_api/doxysphinx/doxygen/index.html#doxysphinx.doxygen.DoxygenSettingsValidator.optional_settings">optional_settings (doxysphinx.doxygen.DoxygenSettingsValidator attribute)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="docs/api/doxysphinx/doxysphinx.doxygen.html#doxysphinx.doxygen.DoxyOutput.out">out (DoxyOutput attribute)</a>
+      <li><a href="docs/auto_api/doxysphinx/doxygen/index.html#doxysphinx.doxygen.DoxyOutput.out">out (doxysphinx.doxygen.DoxyOutput attribute)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -675,22 +835,28 @@
 <h2 id="P">P</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="docs/api/doxysphinx/doxysphinx.html_parser.html#doxysphinx.html_parser.DoxygenHtmlParser.parse">parse() (DoxygenHtmlParser method)</a>
+      <li><a href="docs/auto_api/doxysphinx/html_parser/index.html#doxysphinx.html_parser.DoxygenHtmlParser.parse">parse() (doxysphinx.html_parser.DoxygenHtmlParser method)</a>
 
       <ul>
-        <li><a href="docs/api/doxysphinx/doxysphinx.html_parser.html#doxysphinx.html_parser.HtmlParser.parse">(HtmlParser method)</a>
+        <li><a href="docs/auto_api/doxysphinx/html_parser/index.html#doxysphinx.html_parser.HtmlParser.parse">(doxysphinx.html_parser.HtmlParser method)</a>
 </li>
       </ul></li>
-      <li><a href="docs/api/doxysphinx.utils/doxysphinx.utils.exceptions.html#doxysphinx.utils.exceptions.PrerequisiteNotMetError">PrerequisiteNotMetError</a>
+      <li><a href="docs/auto_api/doxysphinx/utils/pathlib_fix/index.html#doxysphinx.utils.pathlib_fix.path_is_relative_to">path_is_relative_to() (in module doxysphinx.utils.pathlib_fix)</a>
+</li>
+      <li><a href="docs/auto_api/doxysphinx/utils/pathlib_fix/index.html#doxysphinx.utils.pathlib_fix.path_resolve">path_resolve() (in module doxysphinx.utils.pathlib_fix)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="docs/api/doxysphinx/doxysphinx.html_parser.html#doxysphinx.html_parser.HtmlParseResult.project">project (HtmlParseResult attribute)</a>
+      <li><a href="docs/auto_api/doxysphinx/utils/iterators/index.html#doxysphinx.utils.iterators.Predicate">Predicate (in module doxysphinx.utils.iterators)</a>
 </li>
-      <li><a href="docs/api/doxysphinx/doxysphinx.resources.html#doxysphinx.resources.DoxygenResourceProvider.provide_resources">provide_resources() (DoxygenResourceProvider method)</a>
+      <li><a href="docs/auto_api/doxysphinx/utils/exceptions/index.html#doxysphinx.utils.exceptions.PrerequisiteNotMetError">PrerequisiteNotMetError</a>
+</li>
+      <li><a href="docs/auto_api/doxysphinx/html_parser/index.html#doxysphinx.html_parser.HtmlParseResult.project">project (doxysphinx.html_parser.HtmlParseResult attribute)</a>
+</li>
+      <li><a href="docs/auto_api/doxysphinx/resources/index.html#doxysphinx.resources.DoxygenResourceProvider.provide_resources">provide_resources() (doxysphinx.resources.DoxygenResourceProvider method)</a>
 
       <ul>
-        <li><a href="docs/api/doxysphinx/doxysphinx.resources.html#doxysphinx.resources.ResourceProvider.provide_resources">(ResourceProvider method)</a>
+        <li><a href="docs/auto_api/doxysphinx/resources/index.html#doxysphinx.resources.ResourceProvider.provide_resources">(doxysphinx.resources.ResourceProvider method)</a>
 </li>
       </ul></li>
   </ul></td>
@@ -699,17 +865,17 @@
 <h2 id="R">R</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="docs/api/doxysphinx/doxysphinx.doxygen.html#doxysphinx.doxygen.read_doxyconfig">read_doxyconfig() (in module doxysphinx.doxygen)</a>
+      <li><a href="docs/auto_api/doxysphinx/doxygen/index.html#doxysphinx.doxygen.read_doxyconfig">read_doxyconfig() (in module doxysphinx.doxygen)</a>
 </li>
-      <li><a href="docs/api/doxysphinx/doxysphinx.doxygen.html#doxysphinx.doxygen.read_js_data_file">read_js_data_file() (in module doxysphinx.doxygen)</a>
+      <li><a href="docs/auto_api/doxysphinx/doxygen/index.html#doxysphinx.doxygen.read_js_data_file">read_js_data_file() (in module doxysphinx.doxygen)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="docs/api/doxysphinx.utils/doxysphinx.utils.files.html#doxysphinx.utils.files.replace_in_file">replace_in_file() (in module doxysphinx.utils.files)</a>
+      <li><a href="docs/auto_api/doxysphinx/utils/files/index.html#doxysphinx.utils.files.replace_in_file">replace_in_file() (in module doxysphinx.utils.files)</a>
 </li>
-      <li><a href="docs/api/doxysphinx/doxysphinx.resources.html#doxysphinx.resources.ResourceProvider">ResourceProvider (protocol in doxysphinx.resources)</a>
+      <li><a href="docs/auto_api/doxysphinx/resources/index.html#doxysphinx.resources.ResourceProvider">ResourceProvider (class in doxysphinx.resources)</a>
 </li>
-      <li><a href="docs/api/doxysphinx/doxysphinx.writer.html#doxysphinx.writer.RstWriter">RstWriter (class in doxysphinx.writer)</a>
+      <li><a href="docs/auto_api/doxysphinx/writer/index.html#doxysphinx.writer.RstWriter">RstWriter (class in doxysphinx.writer)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -717,13 +883,13 @@
 <h2 id="S">S</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="docs/api/doxysphinx/doxysphinx.resources.html#doxysphinx.resources.CssScoper.scope">scope() (CssScoper method)</a>
+      <li><a href="docs/auto_api/doxysphinx/resources/index.html#doxysphinx.resources.CssScoper.scope">scope() (doxysphinx.resources.CssScoper method)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="docs/api/doxysphinx/doxysphinx.sphinx.html#doxysphinx.sphinx.SphinxHtmlBuilderDirectoryMapper">SphinxHtmlBuilderDirectoryMapper (class in doxysphinx.sphinx)</a>
+      <li><a href="docs/auto_api/doxysphinx/sphinx/index.html#doxysphinx.sphinx.SphinxHtmlBuilderDirectoryMapper">SphinxHtmlBuilderDirectoryMapper (class in doxysphinx.sphinx)</a>
 </li>
-      <li><a href="docs/api/doxysphinx.utils/doxysphinx.utils.files.html#doxysphinx.utils.files.stringify_paths">stringify_paths() (in module doxysphinx.utils.files)</a>
+      <li><a href="docs/auto_api/doxysphinx/utils/files/index.html#doxysphinx.utils.files.stringify_paths">stringify_paths() (in module doxysphinx.utils.files)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -731,15 +897,15 @@
 <h2 id="T">T</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="docs/api/doxysphinx.utils/doxysphinx.utils.iterators.html#doxysphinx.utils.iterators.T">T (in module doxysphinx.utils.iterators)</a>
+      <li><a href="docs/auto_api/doxysphinx/utils/iterators/index.html#doxysphinx.utils.iterators.T">T (in module doxysphinx.utils.iterators)</a>
 </li>
-      <li><a href="docs/api/doxysphinx.utils/doxysphinx.utils.contexts.html#doxysphinx.utils.contexts.TimedContext">TimedContext (class in doxysphinx.utils.contexts)</a>
+      <li><a href="docs/auto_api/doxysphinx/utils/contexts/index.html#doxysphinx.utils.contexts.TimedContext">TimedContext (class in doxysphinx.utils.contexts)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="docs/api/doxysphinx/doxysphinx.writer.html#doxysphinx.writer.TocGenerator">TocGenerator (protocol in doxysphinx.writer)</a>
+      <li><a href="docs/auto_api/doxysphinx/toc/index.html#doxysphinx.toc.TocGenerator">TocGenerator (class in doxysphinx.toc)</a>
 </li>
-      <li><a href="docs/api/doxysphinx/doxysphinx.html_parser.html#doxysphinx.html_parser.HtmlParseResult.tree">tree (HtmlParseResult attribute)</a>
+      <li><a href="docs/auto_api/doxysphinx/html_parser/index.html#doxysphinx.html_parser.HtmlParseResult.tree">tree (doxysphinx.html_parser.HtmlParseResult attribute)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -747,19 +913,19 @@
 <h2 id="V">V</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="docs/api/doxysphinx/doxysphinx.doxygen.html#doxysphinx.doxygen.DoxygenOutputPathValidator.validate">validate() (DoxygenOutputPathValidator method)</a>
+      <li><a href="docs/auto_api/doxysphinx/doxygen/index.html#doxysphinx.doxygen.DoxygenOutputPathValidator.validate">validate() (doxysphinx.doxygen.DoxygenOutputPathValidator method)</a>
 
       <ul>
-        <li><a href="docs/api/doxysphinx/doxysphinx.doxygen.html#doxysphinx.doxygen.DoxygenSettingsValidator.validate">(DoxygenSettingsValidator method)</a>
+        <li><a href="docs/auto_api/doxysphinx/doxygen/index.html#doxysphinx.doxygen.DoxygenSettingsValidator.validate">(doxysphinx.doxygen.DoxygenSettingsValidator method)</a>
 </li>
       </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="docs/api/doxysphinx/doxysphinx.doxygen.html#doxysphinx.doxygen.DoxygenSettingsValidator.validation_errors">validation_errors (DoxygenSettingsValidator attribute)</a>
+      <li><a href="docs/auto_api/doxysphinx/doxygen/index.html#doxysphinx.doxygen.DoxygenSettingsValidator.validation_errors">validation_errors (doxysphinx.doxygen.DoxygenSettingsValidator attribute)</a>
 </li>
-      <li><a href="docs/api/doxysphinx/doxysphinx.doxygen.html#doxysphinx.doxygen.DoxygenSettingsValidator.validation_msg">validation_msg (DoxygenSettingsValidator attribute)</a>
+      <li><a href="docs/auto_api/doxysphinx/doxygen/index.html#doxysphinx.doxygen.DoxygenSettingsValidator.validation_msg">validation_msg (doxysphinx.doxygen.DoxygenSettingsValidator attribute)</a>
 </li>
-      <li><a href="docs/api/doxysphinx.utils/doxysphinx.utils.exceptions.html#doxysphinx.utils.exceptions.ValidationError">ValidationError</a>
+      <li><a href="docs/auto_api/doxysphinx/utils/exceptions/index.html#doxysphinx.utils.exceptions.ValidationError">ValidationError</a>
 </li>
   </ul></td>
 </tr></table>
@@ -767,17 +933,17 @@
 <h2 id="W">W</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="docs/api/doxysphinx/doxysphinx.writer.html#doxysphinx.writer.RstWriter.write">write() (RstWriter method)</a>
+      <li><a href="docs/auto_api/doxysphinx/writer/index.html#doxysphinx.writer.RstWriter.write">write() (doxysphinx.writer.RstWriter method)</a>
 
       <ul>
-        <li><a href="docs/api/doxysphinx/doxysphinx.writer.html#doxysphinx.writer.Writer.write">(Writer method)</a>
+        <li><a href="docs/auto_api/doxysphinx/writer/index.html#doxysphinx.writer.Writer.write">(doxysphinx.writer.Writer method)</a>
 </li>
       </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="docs/api/doxysphinx.utils/doxysphinx.utils.files.html#doxysphinx.utils.files.write_file">write_file() (in module doxysphinx.utils.files)</a>
+      <li><a href="docs/auto_api/doxysphinx/utils/files/index.html#doxysphinx.utils.files.write_file">write_file() (in module doxysphinx.utils.files)</a>
 </li>
-      <li><a href="docs/api/doxysphinx/doxysphinx.writer.html#doxysphinx.writer.Writer">Writer (protocol in doxysphinx.writer)</a>
+      <li><a href="docs/auto_api/doxysphinx/writer/index.html#doxysphinx.writer.Writer">Writer (class in doxysphinx.writer)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -796,7 +962,7 @@
     <footer class="footer">
   <p>
     
-      Last updated on &#39;Mon Oct 17 11:35:09 2022&#39;, &#39;43fd6c6&#39;.<br/>
+      Last updated on &#39;Fri Nov 18 08:46:46 2022&#39;, &#39;758cdd4&#39;.<br/>
   </p>
 </footer>
 </main>

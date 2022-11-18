@@ -24,18 +24,16 @@
     
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=84ace793992934648b4de8eed757e5a2" />
-    <link rel="stylesheet" type="text/css" href="../_static/css/sphinx-toolbox.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     <link rel="stylesheet" type="text/css" href="../_static/assets/jsonview.bundle.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/libs/html/datatables.min.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/styles.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/layouts.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/modern.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-test-results/common.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/layouts.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/styles.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme-custom.css" />
     
   <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
@@ -146,11 +144,18 @@
    Linking with Sphinx Needs
   </a>
  </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Demo documentations
+ </span>
+</p>
+<ul class="nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="doxygen/demo/html/index.html">
    Doxygen Demo
   </a>
-  <input checked class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
    <i class="fas fa-chevron-down">
    </i>
@@ -158,19 +163,24 @@
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="doxygen/demo/html/namespaces.html">
-     Namespace List
+     Namespaces
     </a>
    </li>
    <li class="toctree-l2 has-children">
-    <a class="reference internal" href="doxygen/demo/html/annotated.html">
-     Class List
+    <a class="reference internal" href="doxygen/demo/html/annotated_classes.html">
+     Classes
     </a>
-    <input checked class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+    <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
     <label for="toctree-checkbox-2">
      <i class="fas fa-chevron-down">
      </i>
     </label>
     <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="doxygen/demo/html/annotated.html">
+       Class List
+      </a>
+     </li>
      <li class="toctree-l3">
       <a class="reference internal" href="doxygen/demo/html/classes.html">
        Class Index
@@ -182,18 +192,23 @@
       </a>
      </li>
      <li class="toctree-l3 has-children">
-      <a class="reference internal" href="doxygen/demo/html/functions.html">
+      <a class="reference internal" href="doxygen/demo/html/functions_class_members.html">
        Class Members
       </a>
-      <input checked class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+      <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
       <label for="toctree-checkbox-3">
        <i class="fas fa-chevron-down">
        </i>
       </label>
       <ul>
        <li class="toctree-l4">
+        <a class="reference internal" href="doxygen/demo/html/functions.html">
+         All
+        </a>
+       </li>
+       <li class="toctree-l4">
         <a class="reference internal" href="doxygen/demo/html/functions_func.html">
-         Class Members - Functions
+         Functions
         </a>
        </li>
       </ul>
@@ -202,7 +217,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="doxygen/demo/html/files.html">
-     File List
+     Files
     </a>
    </li>
   </ul>
@@ -225,69 +240,163 @@
   </a>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="api/apidoc.html">
+  <a class="reference internal" href="apidoc.html">
    API Reference
   </a>
-  <input checked class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
   <label for="toctree-checkbox-4">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="api/doxysphinx/doxysphinx.cli.html">
-     doxysphinx.cli
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="auto_api/doxysphinx/index.html">
+     <code class="xref py py-mod docutils literal notranslate">
+      <span class="pre">
+       doxysphinx
+      </span>
+     </code>
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="api/doxysphinx/doxysphinx.doxygen.html">
-     doxysphinx.doxygen
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="api/doxysphinx/doxysphinx.html_parser.html">
-     doxysphinx.html_parser
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="api/doxysphinx/doxysphinx.process.html">
-     doxysphinx.process
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="api/doxysphinx/doxysphinx.resources.html">
-     doxysphinx.resources
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="api/doxysphinx/doxysphinx.sphinx.html">
-     doxysphinx.sphinx
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="api/doxysphinx/doxysphinx.writer.html">
-     doxysphinx.writer
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="api/doxysphinx.utils/doxysphinx.utils.contexts.html">
-     doxysphinx.utils.contexts
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="api/doxysphinx.utils/doxysphinx.utils.exceptions.html">
-     doxysphinx.utils.exceptions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="api/doxysphinx.utils/doxysphinx.utils.files.html">
-     doxysphinx.utils.files
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="api/doxysphinx.utils/doxysphinx.utils.iterators.html">
-     doxysphinx.utils.iterators
-    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+    <label for="toctree-checkbox-5">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="auto_api/doxysphinx/utils/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         doxysphinx.utils
+        </span>
+       </code>
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+      <label for="toctree-checkbox-6">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="auto_api/doxysphinx/utils/contexts/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           doxysphinx.utils.contexts
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="auto_api/doxysphinx/utils/exceptions/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           doxysphinx.utils.exceptions
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="auto_api/doxysphinx/utils/files/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           doxysphinx.utils.files
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="auto_api/doxysphinx/utils/iterators/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           doxysphinx.utils.iterators
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="auto_api/doxysphinx/utils/pathlib_fix/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           doxysphinx.utils.pathlib_fix
+          </span>
+         </code>
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="auto_api/doxysphinx/cli/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         doxysphinx.cli
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="auto_api/doxysphinx/doxygen/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         doxysphinx.doxygen
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="auto_api/doxysphinx/html_parser/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         doxysphinx.html_parser
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="auto_api/doxysphinx/process/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         doxysphinx.process
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="auto_api/doxysphinx/resources/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         doxysphinx.resources
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="auto_api/doxysphinx/sphinx/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         doxysphinx.sphinx
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="auto_api/doxysphinx/toc/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         doxysphinx.toc
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="auto_api/doxysphinx/writer/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         doxysphinx.writer
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
    </li>
   </ul>
  </li>
@@ -659,24 +768,24 @@ it and see how things working we recommend to clone the repo, fire up vscode and
 <div class="sd-card-title sd-font-weight-bold docutils">
 DartSass installation</div>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="6776b6db-9f1f-4f03-8f82-86aada03ff5b" name="7d780247-99d7-443d-a07b-86b91abfafb2" type="radio">
-</input><label class="sd-tab-label" for="6776b6db-9f1f-4f03-8f82-86aada03ff5b">
+<input checked="checked" id="ce1619d8-3ff9-41ff-be73-52b190542418" name="2ac1a24d-b1c7-4d21-84d0-400831feee6d" type="radio">
+</input><label class="sd-tab-label" for="ce1619d8-3ff9-41ff-be73-52b190542418">
 Linux</label><div class="sd-tab-content docutils">
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Linux</span>
 curl -sSL https://github.com/sass/dart-sass/releases/download/1.49.7/dart-sass-1.49.7-linux-x64.tar.gz <span class="p">|</span> tar -xzvf - --strip-components<span class="o">=</span><span class="m">1</span> -C ~/.local/bin dart-sass/sass
 </pre></div>
 </div>
 </div>
-<input id="48a41f32-bfee-4332-9408-b00468145dfe" name="7d780247-99d7-443d-a07b-86b91abfafb2" type="radio">
-</input><label class="sd-tab-label" for="48a41f32-bfee-4332-9408-b00468145dfe">
+<input id="0fa98d75-a3a7-4581-96a9-f0861e22bd42" name="2ac1a24d-b1c7-4d21-84d0-400831feee6d" type="radio">
+</input><label class="sd-tab-label" for="0fa98d75-a3a7-4581-96a9-f0861e22bd42">
 Windows</label><div class="sd-tab-content docutils">
 <div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="c"># windows with chocolatey (https://www.chocolatey.org)</span>
 <span class="n">choco</span> <span class="n">install</span> <span class="n">sass</span>
 </pre></div>
 </div>
 </div>
-<input id="597b7394-9055-417e-8fb8-bc6197d6827b" name="7d780247-99d7-443d-a07b-86b91abfafb2" type="radio">
-</input><label class="sd-tab-label" for="597b7394-9055-417e-8fb8-bc6197d6827b">
+<input id="e74fca07-5695-450e-84f6-3c4d48597cf4" name="2ac1a24d-b1c7-4d21-84d0-400831feee6d" type="radio">
+</input><label class="sd-tab-label" for="e74fca07-5695-450e-84f6-3c4d48597cf4">
 Other</label><div class="sd-tab-content docutils">
 <p class="sd-card-text">see Releases: <a class="reference external" href="https://github.com/sass/dart-sass/releases">https://github.com/sass/dart-sass/releases</a>.</p>
 </div>
@@ -797,12 +906,14 @@ look at the <a class="reference internal" href="alternatives.html"><span class="
 <span class="l l-Scalar l-Scalar-Plain">INTERACTIVE_SVG        = YES</span><span class="w">  </span><span class="c1"># to be able to scroll and zoom into big images</span><span class="w"></span>
 </pre></div>
 </div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Doxygen awesome <a class="reference external" href="https://jothepro.github.io/doxygen-awesome-css/">https://jothepro.github.io/doxygen-awesome-css/</a> is a stylesheet that makes doxygen documentation look beautiful.
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p><a class="reference external" href="https://jothepro.github.io/doxygen-awesome-css">Doxygen awesome</a> is a stylesheet that makes doxygen documentation look beautiful.
 We strongly recommend using it because then the doxygen docs would fit far better with any sphinx theme.
 Just download/clone the doxygen awesome stylesheet and then add it to your doxygen config:</p>
-<p>HTML_EXTRA_STYLESHEET = YOUR_DOXYGEN_AWESOME_PATH/doxygen-awesome.css</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">HTML_EXTRA_STYLESHEET = YOUR_DOXYGEN_AWESOME_PATH/doxygen-awesome.css</span><span class="w"></span>
+</pre></div>
+</div>
 </div>
 </div>
 </div>
@@ -955,7 +1066,7 @@ this:</p>
     <footer class="footer">
   <p>
     
-      Last updated on &#39;Mon Oct 17 11:35:09 2022&#39;, &#39;43fd6c6&#39;.<br/>
+      Last updated on &#39;Fri Nov 18 08:46:46 2022&#39;, &#39;758cdd4&#39;.<br/>
   </p>
 </footer>
 </main>

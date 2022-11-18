@@ -29,6 +29,12 @@ docs/faq.md
 docs/linking_to_doxygen.md
 docs/using_rst_in_doxygen.md
 docs/linking_needs.md
+```
+
+```{toctree}
+:hidden:
+:caption: Demo documentations
+:maxdepth: 1
 Doxygen Demo <docs/doxygen/demo/html/index>
 ```
 
@@ -39,7 +45,7 @@ Doxygen Demo <docs/doxygen/demo/html/index>
 
 docs/dev_guide
 docs/inner_workings.md
-docs/api/apidoc.rst
+docs/apidoc.md
 CONTRIBUTE.md
 ```
 

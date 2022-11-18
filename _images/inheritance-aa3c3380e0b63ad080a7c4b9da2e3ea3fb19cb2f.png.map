@@ -1,0 +1,5 @@
+<map id="inheritancee0eda6ca97" name="inheritancee0eda6ca97">
+<area shape="rect" id="node1" title="Abstract base class for generic types." alt="" coords="5,5,77,31"/>
+<area shape="rect" id="node3" title="Base class for protocol classes." alt="" coords="125,5,200,31"/>
+<area shape="rect" id="node2" href="#doxysphinx.html_parser.HtmlParser" target="_top" title="Html Parser Protocol for parsing html files into a neutral format (that can be then processed further)." alt="" coords="248,5,343,31"/>
+</map>

@@ -1,0 +1,104 @@
+:py:mod:`doxysphinx.resources`
+==============================
+
+.. py:module:: doxysphinx.resources
+
+.. autoapi-nested-parse::
+
+   The resources module contains classes will do resource provisioning and patching.
+
+   Resources are stylesheets, images, javascripts etc. that contemplate the html files.
+
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   doxysphinx.resources.ResourceProvider
+   doxysphinx.resources.DoxygenResourceProvider
+   doxysphinx.resources.CssScoper
+
+
+
+
+.. py:class:: ResourceProvider(directory_mapper: doxysphinx.sphinx.DirectoryMapper)
+
+   Bases: :py:obj:`Protocol`
+
+   .. autoapi-inheritance-diagram:: doxysphinx.resources.ResourceProvider
+      :parts: 1
+
+   A resource provider copies/adapts necessary resources (images, stylesheets, etc.) to output.
+
+   .. py:method:: provide_resources(resource_root: pathlib.Path) -> List[pathlib.Path]
+
+      Provide necessary resources to sphinx output directory.
+
+      Can also do postprocessing etc.
+
+      :param resource_root: the root resource input directory (e.g. where the html
+          files are located)
+      :return: A list of resources (their target paths) that were copied/provided.
+          Note that in case of some caching (copy if newer) mechanisms this might
+          return only parts of the resources.
+
+
+   .. py:method:: cleanup_resources(resource_root: pathlib.Path) -> List[pathlib.Path]
+
+      Clean up provided resources that were copied by :meth:`provide_resources`.
+
+      :param resource_root: the root resource input directory (e.g. where the html
+          files are located)
+      :return: A list of resources (their target paths) that were cleaned up/removed.
+
+
+
+.. py:class:: DoxygenResourceProvider(directory_mapper: doxysphinx.sphinx.DirectoryMapper)
+
+   Resource provider that will copy/adapt doxygen html resources to output.
+
+   Resource are e.g. stylesheets, images, javascript files etc.
+
+   .. py:method:: provide_resources(resource_root: pathlib.Path) -> List[pathlib.Path]
+
+      Copy doxygen html resource files (see GLOB_PATTERN below) to sphinx output.
+
+      The content in the raw html directives can then access these directly.
+
+      :type resource_root: the root of the resources (= usually the same folder where
+          the html file are located).
+
+
+   .. py:method:: cleanup_resources(resource_root: pathlib.Path) -> List[pathlib.Path]
+
+      Clean up any provisioned resources that were copied to sphinx output.
+
+
+
+.. py:class:: CssScoper(css_selector: str)
+
+   Scopes css-stylesheets to a special selector.
+
+   This is done with the help of dartsass (a sass processor).
+
+   .. py:method:: scope(stylesheet: pathlib.Path, additional_css_rules: Optional[List[str]] = None, scss_patch_callback: Optional[Callable[[pathlib.Path], None]] = None) -> pathlib.Path
+
+      Scopes a stylesheet to given selector.
+
+      The process is as follows: The original stylesheet will be moved to .original.scss.
+      Then an scss file (same name like stylesheet) that will import that .original.scss
+      file will be created. This will be compiled to the same filename as the original
+      stylesheet with the help of dartsass.
+
+      :param stylesheet: The stylesheet to scope.
+      :param additional_css_rules: Additional css rules to inject.
+      :param scss_patch_callback: A callback that will be called on the original file
+      :return: The path to the written stylesheet (should be identical to stylesheet).
+
+
+

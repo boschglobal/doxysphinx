@@ -24,18 +24,16 @@
     
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=84ace793992934648b4de8eed757e5a2" />
-    <link rel="stylesheet" type="text/css" href="../_static/css/sphinx-toolbox.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     <link rel="stylesheet" type="text/css" href="../_static/assets/jsonview.bundle.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/libs/html/datatables.min.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/styles.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/layouts.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/modern.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-test-results/common.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/layouts.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/styles.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme-custom.css" />
     
   <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
@@ -55,7 +53,7 @@
     <script src="../_static/sphinx-needs/libs/html/sphinx_needs_collapse.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="API Reference" href="api/apidoc.html" />
+    <link rel="next" title="API Reference" href="apidoc.html" />
     <link rel="prev" title="Developer Quickstart" href="dev_guide.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -146,11 +144,18 @@
    Linking with Sphinx Needs
   </a>
  </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Demo documentations
+ </span>
+</p>
+<ul class="nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="doxygen/demo/html/index.html">
    Doxygen Demo
   </a>
-  <input checked class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
    <i class="fas fa-chevron-down">
    </i>
@@ -158,19 +163,24 @@
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="doxygen/demo/html/namespaces.html">
-     Namespace List
+     Namespaces
     </a>
    </li>
    <li class="toctree-l2 has-children">
-    <a class="reference internal" href="doxygen/demo/html/annotated.html">
-     Class List
+    <a class="reference internal" href="doxygen/demo/html/annotated_classes.html">
+     Classes
     </a>
-    <input checked class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+    <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
     <label for="toctree-checkbox-2">
      <i class="fas fa-chevron-down">
      </i>
     </label>
     <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="doxygen/demo/html/annotated.html">
+       Class List
+      </a>
+     </li>
      <li class="toctree-l3">
       <a class="reference internal" href="doxygen/demo/html/classes.html">
        Class Index
@@ -182,18 +192,23 @@
       </a>
      </li>
      <li class="toctree-l3 has-children">
-      <a class="reference internal" href="doxygen/demo/html/functions.html">
+      <a class="reference internal" href="doxygen/demo/html/functions_class_members.html">
        Class Members
       </a>
-      <input checked class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+      <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
       <label for="toctree-checkbox-3">
        <i class="fas fa-chevron-down">
        </i>
       </label>
       <ul>
        <li class="toctree-l4">
+        <a class="reference internal" href="doxygen/demo/html/functions.html">
+         All
+        </a>
+       </li>
+       <li class="toctree-l4">
         <a class="reference internal" href="doxygen/demo/html/functions_func.html">
-         Class Members - Functions
+         Functions
         </a>
        </li>
       </ul>
@@ -202,7 +217,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="doxygen/demo/html/files.html">
-     File List
+     Files
     </a>
    </li>
   </ul>
@@ -225,69 +240,163 @@
   </a>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="api/apidoc.html">
+  <a class="reference internal" href="apidoc.html">
    API Reference
   </a>
-  <input checked class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
   <label for="toctree-checkbox-4">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="api/doxysphinx/doxysphinx.cli.html">
-     doxysphinx.cli
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="auto_api/doxysphinx/index.html">
+     <code class="xref py py-mod docutils literal notranslate">
+      <span class="pre">
+       doxysphinx
+      </span>
+     </code>
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="api/doxysphinx/doxysphinx.doxygen.html">
-     doxysphinx.doxygen
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="api/doxysphinx/doxysphinx.html_parser.html">
-     doxysphinx.html_parser
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="api/doxysphinx/doxysphinx.process.html">
-     doxysphinx.process
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="api/doxysphinx/doxysphinx.resources.html">
-     doxysphinx.resources
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="api/doxysphinx/doxysphinx.sphinx.html">
-     doxysphinx.sphinx
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="api/doxysphinx/doxysphinx.writer.html">
-     doxysphinx.writer
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="api/doxysphinx.utils/doxysphinx.utils.contexts.html">
-     doxysphinx.utils.contexts
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="api/doxysphinx.utils/doxysphinx.utils.exceptions.html">
-     doxysphinx.utils.exceptions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="api/doxysphinx.utils/doxysphinx.utils.files.html">
-     doxysphinx.utils.files
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="api/doxysphinx.utils/doxysphinx.utils.iterators.html">
-     doxysphinx.utils.iterators
-    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+    <label for="toctree-checkbox-5">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="auto_api/doxysphinx/utils/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         doxysphinx.utils
+        </span>
+       </code>
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+      <label for="toctree-checkbox-6">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="auto_api/doxysphinx/utils/contexts/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           doxysphinx.utils.contexts
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="auto_api/doxysphinx/utils/exceptions/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           doxysphinx.utils.exceptions
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="auto_api/doxysphinx/utils/files/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           doxysphinx.utils.files
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="auto_api/doxysphinx/utils/iterators/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           doxysphinx.utils.iterators
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="auto_api/doxysphinx/utils/pathlib_fix/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           doxysphinx.utils.pathlib_fix
+          </span>
+         </code>
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="auto_api/doxysphinx/cli/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         doxysphinx.cli
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="auto_api/doxysphinx/doxygen/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         doxysphinx.doxygen
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="auto_api/doxysphinx/html_parser/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         doxysphinx.html_parser
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="auto_api/doxysphinx/process/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         doxysphinx.process
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="auto_api/doxysphinx/resources/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         doxysphinx.resources
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="auto_api/doxysphinx/sphinx/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         doxysphinx.sphinx
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="auto_api/doxysphinx/toc/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         doxysphinx.toc
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="auto_api/doxysphinx/writer/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         doxysphinx.writer
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
    </li>
   </ul>
  </li>
@@ -500,7 +609,7 @@
 <p>Doxysphinx is a <a class="reference external" href="https://click.palletsprojects.com/">click</a> cli application.</p>
 <div class="section" id="entry">
 <h2>Entry<a class="headerlink" href="#entry" title="Permalink to this headline">¶</a></h2>
-<p>The main entrypoint to doxysphinx is the <a class="reference internal" href="api/doxysphinx/doxysphinx.cli.html#module-doxysphinx.cli" title="doxysphinx.cli"><code class="xref py py-mod docutils literal notranslate"><span class="pre">cli</span></code></a> module and the commands defined in it:</p>
+<p>The main entrypoint to doxysphinx is the <a class="reference internal" href="auto_api/doxysphinx/cli/index.html#module-doxysphinx.cli" title="doxysphinx.cli"><code class="xref py py-mod docutils literal notranslate"><span class="pre">cli</span></code></a> module and the commands defined in it:</p>
 <ul class="simple">
 <li><p>build (which builds the rst files for doxygen)</p></li>
 <li><p>clean (which removes any file created from doxysphinx)</p></li>
@@ -512,19 +621,19 @@ config file (<code class="docutils literal notranslate"><span class="pre">doxyfi
 <h2>1000 ft view<a class="headerlink" href="#ft-view" title="Permalink to this headline">¶</a></h2>
 <p>During build command doxysphinx follows these steps:</p>
 <ul>
-<li><p>A builder is created (for now there’s only one <a class="reference internal" href="api/doxysphinx/doxysphinx.process.html#doxysphinx.process.Builder" title="doxysphinx.process.Builder"><code class="xref py py-class docutils literal notranslate"><span class="pre">Builder</span></code></a>. But in the future
+<li><p>A builder is created (for now there’s only one <a class="reference internal" href="auto_api/doxysphinx/process/index.html#doxysphinx.process.Builder" title="doxysphinx.process.Builder"><code class="xref py py-class docutils literal notranslate"><span class="pre">Builder</span></code></a>. But in the future
 there may be more)</p></li>
 <li><p>This builder represents the whole rst generation/building process which has these phases:</p>
 <ul>
 <li><p><strong>Resource Provisioning</strong>:</p>
 <p>In this step html resources (images, stylesheets, javascript files etc.) are copied to the output
 directory and adapted. The input and output directories are mapped with the help of a
-<a class="reference internal" href="api/doxysphinx/doxysphinx.sphinx.html#doxysphinx.sphinx.DirectoryMapper" title="doxysphinx.sphinx.DirectoryMapper"><code class="xref py py-class docutils literal notranslate"><span class="pre">DirectoryMapper</span></code></a>.</p>
+<a class="reference internal" href="auto_api/doxysphinx/sphinx/index.html#doxysphinx.sphinx.DirectoryMapper" title="doxysphinx.sphinx.DirectoryMapper"><code class="xref py py-class docutils literal notranslate"><span class="pre">DirectoryMapper</span></code></a>.</p>
 </li>
 <li><p><strong>Building Rst Files</strong>:</p>
 <p>Each HTML file found in the doxygen output is parsed (with a
-<a class="reference internal" href="api/doxysphinx/doxysphinx.html_parser.html#doxysphinx.html_parser.HtmlParser" title="doxysphinx.html_parser.HtmlParser"><code class="xref py py-class docutils literal notranslate"><span class="pre">HtmlParser</span></code></a>) and written to an rst file (with a
-<a class="reference internal" href="api/doxysphinx/doxysphinx.writer.html#doxysphinx.writer.Writer" title="doxysphinx.writer.Writer"><code class="xref py py-class docutils literal notranslate"><span class="pre">Writer</span></code></a>).</p>
+<a class="reference internal" href="auto_api/doxysphinx/html_parser/index.html#doxysphinx.html_parser.HtmlParser" title="doxysphinx.html_parser.HtmlParser"><code class="xref py py-class docutils literal notranslate"><span class="pre">HtmlParser</span></code></a>) and written to an rst file (with a
+<a class="reference internal" href="auto_api/doxysphinx/writer/index.html#doxysphinx.writer.Writer" title="doxysphinx.writer.Writer"><code class="xref py py-class docutils literal notranslate"><span class="pre">Writer</span></code></a>).</p>
 </li>
 </ul>
 </li>
@@ -539,12 +648,12 @@ directory and adapted. The input and output directories are mapped with the help
 <h3>Process<a class="headerlink" href="#process" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
 <li><p>Doxygen html output is parsed. This is implemented in
-<a class="reference internal" href="api/doxysphinx/doxysphinx.html_parser.html#doxysphinx.html_parser.DoxygenHtmlParser" title="doxysphinx.html_parser.DoxygenHtmlParser"><code class="xref py py-class docutils literal notranslate"><span class="pre">DoxygenHtmlParser</span></code></a>. The Parser will parse load the html file, do some
+<a class="reference internal" href="auto_api/doxysphinx/html_parser/index.html#doxysphinx.html_parser.DoxygenHtmlParser" title="doxysphinx.html_parser.DoxygenHtmlParser"><code class="xref py py-class docutils literal notranslate"><span class="pre">DoxygenHtmlParser</span></code></a>. The Parser will parse load the html file, do some
 processing (it will extract some metadata and change <code class="docutils literal notranslate"><span class="pre">&lt;pre&gt;</span></code>- and <code class="docutils literal notranslate"><span class="pre">&lt;verbatim&gt;</span></code>-tags into more generic
-<code class="docutils literal notranslate"><span class="pre">&lt;rst&gt;</span></code>-tags) and creates a <a class="reference internal" href="api/doxysphinx/doxysphinx.html_parser.html#doxysphinx.html_parser.HtmlParseResult" title="doxysphinx.html_parser.HtmlParseResult"><code class="xref py py-class docutils literal notranslate"><span class="pre">HtmlParseResult</span></code></a> that contains the metadata
+<code class="docutils literal notranslate"><span class="pre">&lt;rst&gt;</span></code>-tags) and creates a <a class="reference internal" href="auto_api/doxysphinx/html_parser/index.html#doxysphinx.html_parser.HtmlParseResult" title="doxysphinx.html_parser.HtmlParseResult"><code class="xref py py-class docutils literal notranslate"><span class="pre">HtmlParseResult</span></code></a> that contains the metadata
 and the processed DOM as an etree.</p></li>
 <li><p>For each doxygen html file a rst file is created based on the following rules (see
-<a class="reference internal" href="api/doxysphinx/doxysphinx.writer.html#doxysphinx.writer.RstWriter.write" title="doxysphinx.writer.RstWriter.write"><code class="xref py py-meth docutils literal notranslate"><span class="pre">RstWriter.write(...)</span></code></a>):</p>
+<a class="reference internal" href="auto_api/doxysphinx/writer/index.html#doxysphinx.writer.RstWriter.write" title="doxysphinx.writer.RstWriter.write"><code class="xref py py-meth docutils literal notranslate"><span class="pre">RstWriter.write(...)</span></code></a>):</p>
 <ul class="simple">
 <li><p>If the html file doesn’t contain any rst documentation blocks an rst with a raw include directive is
 written. This will directly put the html file into the output (but with sphinx templating/toc etc. “around”).</p></li>
@@ -553,8 +662,8 @@ rst documentation snippets. For each html segment a raw html directive with the 
 written and each rst segment is written directly.</p></li>
 <li><p>The rst files are written in parallel to the html files with the same name but the rst suffix instead of
 the html suffix.</p></li>
-<li><p>The <a class="reference internal" href="api/doxysphinx/doxysphinx.writer.html#doxysphinx.writer.RstWriter" title="doxysphinx.writer.RstWriter"><code class="xref py py-class docutils literal notranslate"><span class="pre">RstWriter</span></code></a> will also create a toctree for some rsts based on the
-<a class="reference internal" href="api/doxysphinx/doxysphinx.writer.html#doxysphinx.writer.DoxygenTocGenerator" title="doxysphinx.writer.DoxygenTocGenerator"><code class="xref py py-class docutils literal notranslate"><span class="pre">DoxygenTocGenerator</span></code></a> implementation.</p></li>
+<li><p>The <a class="reference internal" href="auto_api/doxysphinx/writer/index.html#doxysphinx.writer.RstWriter" title="doxysphinx.writer.RstWriter"><code class="xref py py-class docutils literal notranslate"><span class="pre">RstWriter</span></code></a> will also create a toctree for some rsts based on the
+<code class="xref py py-class docutils literal notranslate"><span class="pre">DoxygenTocGenerator</span></code> implementation.</p></li>
 </ul>
 </li>
 <li><p>When sphinx processes these rst files it will render the results as html to it’s own output directory
@@ -566,10 +675,10 @@ thereby keeping the original file name which means that all doxygen internal lin
 <ul class="simple">
 <li><p>As the sphinx raw html directive isn’t considering resources (css, images, javascript-files etc.) these
 files are copied to the output directory if they are newer (this is done at the beginning of the process) -
-see <a class="reference internal" href="api/doxysphinx/doxysphinx.resources.html#doxysphinx.resources.DoxygenResourceProvider" title="doxysphinx.resources.DoxygenResourceProvider"><code class="xref py py-class docutils literal notranslate"><span class="pre">DoxygenResourceProvider</span></code></a>.</p></li>
+see <a class="reference internal" href="auto_api/doxysphinx/resources/index.html#doxysphinx.resources.DoxygenResourceProvider" title="doxysphinx.resources.DoxygenResourceProvider"><code class="xref py py-class docutils literal notranslate"><span class="pre">DoxygenResourceProvider</span></code></a>.</p></li>
 <li><p>In the ResourceProvider we also patch the doxygen.css file via dartsass to scope it below a special
 div-element (<code class="xref py py-meth docutils literal notranslate"><span class="pre">()</span></code>) and add some extra css rules which change some theme
-css styles. For the scoping see <a class="reference internal" href="api/doxysphinx/doxysphinx.resources.html#doxysphinx.resources.CssScoper" title="doxysphinx.resources.CssScoper"><code class="xref py py-class docutils literal notranslate"><span class="pre">CssScoper</span></code></a>.</p></li>
+css styles. For the scoping see <a class="reference internal" href="auto_api/doxysphinx/resources/index.html#doxysphinx.resources.CssScoper" title="doxysphinx.resources.CssScoper"><code class="xref py py-class docutils literal notranslate"><span class="pre">CssScoper</span></code></a>.</p></li>
 </ul>
 </div>
 </div>
@@ -592,7 +701,7 @@ css styles. For the scoping see <a class="reference internal" href="api/doxysphi
             <p class="prev-next-title">Developer Quickstart</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="api/apidoc.html" title="next page">
+    <a class='right-next' id="next-link" href="apidoc.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">API Reference</p>
@@ -606,7 +715,7 @@ css styles. For the scoping see <a class="reference internal" href="api/doxysphi
     <footer class="footer">
   <p>
     
-      Last updated on &#39;Mon Oct 17 11:35:09 2022&#39;, &#39;43fd6c6&#39;.<br/>
+      Last updated on &#39;Fri Nov 18 08:46:46 2022&#39;, &#39;758cdd4&#39;.<br/>
   </p>
 </footer>
 </main>

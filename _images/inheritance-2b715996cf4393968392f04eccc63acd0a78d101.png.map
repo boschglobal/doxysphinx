@@ -1,0 +1,5 @@
+<map id="inheritance746b9ee29b" name="inheritance746b9ee29b">
+<area shape="rect" id="node1" title="Abstract base class for generic types." alt="" coords="5,5,77,31"/>
+<area shape="rect" id="node2" title="Base class for protocol classes." alt="" coords="125,5,200,31"/>
+<area shape="rect" id="node3" href="#doxysphinx.writer.Writer" target="_top" title="Protocol representing a Writer that write docs&#45;as&#45;code files." alt="" coords="248,5,320,31"/>
+</map>

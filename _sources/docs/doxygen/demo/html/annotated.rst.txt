@@ -5,15 +5,6 @@
 Class List
 ==========
 
-.. toctree::
-   :caption: Classes
-   :maxdepth: 2
-   :hidden:
-
-   classes
-   inherits
-   functions
-
 .. container:: doxygen-content
 
    

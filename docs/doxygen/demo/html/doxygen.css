@@ -1,5 +1,5 @@
 .doxygen-content {
-  /* The standard CSS for doxygen 1.8.17 */
+  /* The standard CSS for doxygen 1.9.1 */
   /* @group Heading Levels */
   /* @end */
   /* @group Link Styling */
@@ -34,46 +34,6 @@
   /* dl.note, dl.warning, dl.attention, dl.pre, dl.post, dl.invariant, dl.deprecated, dl.todo, dl.test, dl.bug, dl.examples */
   /* tooltip related style info */
   /* @group Markdown */
-  /*
-  table.markdownTable {
-  	border-collapse:collapse;
-          margin-top: 4px;
-          margin-bottom: 4px;
-  }
-
-  table.markdownTable td, table.markdownTable th {
-  	border: 1px solid #2D4068;
-  	padding: 3px 7px 2px;
-  }
-
-  table.markdownTableHead tr {
-  }
-
-  table.markdownTableBodyLeft td, table.markdownTable th {
-  	border: 1px solid #2D4068;
-  	padding: 3px 7px 2px;
-  }
-
-  th.markdownTableHeadLeft th.markdownTableHeadRight th.markdownTableHeadCenter th.markdownTableHeadNone {
-  	background-color: #374F7F;
-  	color: #FFFFFF;
-  	font-size: 110%;
-  	padding-bottom: 4px;
-  	padding-top: 5px;
-  }
-
-  th.markdownTableHeadLeft {
-  	text-align: left
-  }
-
-  th.markdownTableHeadRight {
-  	text-align: right
-  }
-
-  th.markdownTableHeadCenter {
-  	text-align: center
-  }
-  */
   /* @end */
 }
 .doxygen-content body, .doxygen-content table, .doxygen-content div, .doxygen-content p, .doxygen-content dl {
@@ -129,7 +89,7 @@
 .doxygen-content p.startli, .doxygen-content p.startdd {
   margin-top: 2px;
 }
-.doxygen-content th p.starttd, .doxygen-content p.intertd, .doxygen-content p.endtd {
+.doxygen-content th p.starttd, .doxygen-content th p.intertd, .doxygen-content th p.endtd {
   font-size: 100%;
   font-weight: 700;
 }
@@ -156,17 +116,71 @@
   font-size: 90%;
   text-align: center;
 }
-.doxygen-content div.qindex, .doxygen-content div.navtab {
-  background-color: #EBEFF6;
-  border: 1px solid #A3B4D7;
-  text-align: center;
+.doxygen-content div.navtab {
+  border-right: 1px solid #A3B4D7;
+  padding-right: 15px;
+  text-align: right;
+  line-height: 110%;
 }
-.doxygen-content div.qindex, .doxygen-content div.navpath {
+.doxygen-content div.navtab table {
+  border-spacing: 0;
+}
+.doxygen-content td.navtab {
+  padding-right: 6px;
+  padding-left: 6px;
+}
+.doxygen-content td.navtabHL {
+  background-image: url("tab_a.png");
+  background-repeat: repeat-x;
+  padding-right: 6px;
+  padding-left: 6px;
+}
+.doxygen-content td.navtabHL a, .doxygen-content td.navtabHL a:visited {
+  color: #fff;
+  text-shadow: 0px 1px 1px black;
+}
+.doxygen-content a.navtab {
+  font-weight: bold;
+}
+.doxygen-content div.qindex {
+  text-align: center;
   width: 100%;
   line-height: 140%;
+  font-size: 130%;
+  color: #A0A0A0;
 }
-.doxygen-content div.navtab {
-  margin-right: 15px;
+.doxygen-content dt.alphachar {
+  font-size: 180%;
+  font-weight: bold;
+}
+.doxygen-content .alphachar a {
+  color: black;
+}
+.doxygen-content .alphachar a:hover, .doxygen-content .alphachar a:visited {
+  text-decoration: none;
+}
+.doxygen-content .classindex dl {
+  padding: 25px;
+  column-count: 1;
+}
+.doxygen-content .classindex dd {
+  display: inline-block;
+  margin-left: 50px;
+  width: 90%;
+  line-height: 1.15em;
+}
+.doxygen-content .classindex dl.odd {
+  background-color: #F8F9FC;
+}
+@media (min-width: 1120px) {
+  .doxygen-content .classindex dl {
+    column-count: 2;
+  }
+}
+@media (min-width: 1320px) {
+  .doxygen-content .classindex dl {
+    column-count: 3;
+  }
 }
 .doxygen-content a {
   color: #3D578C;
@@ -178,15 +192,6 @@
 }
 .doxygen-content a:hover {
   text-decoration: underline;
-}
-.doxygen-content a.qindex {
-  font-weight: bold;
-}
-.doxygen-content a.qindexHL {
-  font-weight: bold;
-  background-color: #9CAFD4;
-  color: #FFFFFF;
-  border: 1px double #869DCA;
 }
 .doxygen-content .contents a.qindexHL:visited {
   color: #FFFFFF;
@@ -1155,9 +1160,11 @@
   font-weight: bold;
   margin-right: 10px;
   padding: 5px;
+  text-align: right;
+  width: 52px;
 }
 .doxygen-content dl.citelist dd {
-  margin: 2px 0;
+  margin: 2px 0 2px 72px;
   padding: 5px 0;
 }
 .doxygen-content div.toc {
@@ -1208,6 +1215,11 @@
 }
 .doxygen-content div.toc li.level4 {
   margin-left: 45px;
+}
+.doxygen-content span.emoji {
+  /* font family used at the site: https://unicode.org/emoji/charts/full-emoji-list.html
+   * font-family: "Noto Color Emoji", "Apple Color Emoji", "Segoe UI Emoji", Times, Symbola, Aegyptus, Code2000, Code2001, Code2002, Musica, serif, LastResort;
+   */
 }
 .doxygen-content .PageDocRTL-title div.toc li.level1 {
   margin-left: 0 !important;

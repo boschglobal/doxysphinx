@@ -1,0 +1,111 @@
+:py:mod:`doxysphinx.html_parser`
+================================
+
+.. py:module:: doxysphinx.html_parser
+
+.. autoapi-nested-parse::
+
+   The html_parser module contains the html parsers that will load the html files.
+
+   To allow several :mod:`writer` implementation to pick up and handle the result of that parsing a html parser
+   must also transform rst snippets into <rst>-nodes.
+
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   doxysphinx.html_parser.HtmlParseResult
+   doxysphinx.html_parser.HtmlParser
+   doxysphinx.html_parser.DoxygenHtmlParser
+
+
+
+
+.. py:class:: HtmlParseResult
+
+   Capsules a parsed html tree with meta information.
+
+   .. py:attribute:: html_input_file
+      :annotation: :pathlib.Path
+
+      The html file that was parsed.
+
+   .. py:attribute:: project
+      :annotation: :str
+
+      The project where this html file belongs to.
+      This can be e.g. a directory name or a component/module name etc.
+
+   .. py:attribute:: meta_title
+      :annotation: :str
+
+      The html meta title if present in the original html.
+      If not just set to document title
+
+   .. py:attribute:: document_title
+      :annotation: :str
+
+      The document title. This is the title that is visible e.g.
+      in sphinx menu structure.
+
+   .. py:attribute:: contains_rst
+      :annotation: :bool
+
+      Whether the tree contains any rst snippet (this is needed for rst generation
+      in a writer)
+
+   .. py:attribute:: tree
+      :annotation: :lxml.etree._ElementTree
+
+      The html/xml element tree.
+
+
+.. py:class:: HtmlParser(source_directory: pathlib.Path)
+
+   Bases: :py:obj:`Protocol`
+
+   .. autoapi-inheritance-diagram:: doxysphinx.html_parser.HtmlParser
+      :parts: 1
+
+   Html Parser Protocol for parsing html files into a neutral format (that can be then processed further).
+
+   You own html parser should find/generate all rst-content in <rst>-tags.
+   The further tooling can then work with that.
+
+   .. py:method:: parse(file: pathlib.Path) -> HtmlParseResult
+      :abstractmethod:
+
+      Parse a html file.
+
+      This method returns a ParseResult (Tuple[bool, _ElementTree]).
+      The first item in the tuple indicates if rst data was found during parsing.
+      The second item is the parsed and normalized html as ElementTree.
+      It is expected that all rst data in this resulting ElementTree is present in special
+      <rst>-tags.
+
+      :param file: The html file to parse
+      :return: The result of the parsing
+
+
+
+.. py:class:: DoxygenHtmlParser(source_directory: pathlib.Path)
+
+   Parser for Doxygen HTML output files.
+
+   .. py:method:: parse(file: pathlib.Path) -> HtmlParseResult
+
+      Parse a doxygen HTML file into an ElementTree and normalizes its inner data to contain <rst>-tags.
+
+      :param file: The html file to parse
+      :type file: Path
+      :return: The result of the parsing
+      :rtype: ParseResult
+
+
+

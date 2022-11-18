@@ -6,13 +6,13 @@ Demo
 ====
 
 .. toctree::
-   :caption: Index
+   :caption: Main Page
    :maxdepth: 2
    :hidden:
 
-   namespaces
-   annotated
-   files
+   Namespaces <namespaces>
+   Classes <annotated_classes>
+   Files <files>
 
 .. container:: doxygen-content
 

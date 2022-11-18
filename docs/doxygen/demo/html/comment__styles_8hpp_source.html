@@ -24,18 +24,16 @@
     
     <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-book-theme.css?digest=84ace793992934648b4de8eed757e5a2" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/css/sphinx-toolbox.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/assets/jsonview.bundle.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/libs/html/datatables.min.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/styles.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/layouts.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/modern.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-test-results/common.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/layouts.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/styles.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-book-theme-custom.css" />
     
   <link rel="preload" as="script" href="../../../../_static/js/index.be7d3bbb2ef33a8344ce.js">
@@ -144,11 +142,18 @@
    Linking with Sphinx Needs
   </a>
  </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Demo documentations
+ </span>
+</p>
+<ul class="nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="index.html">
    Doxygen Demo
   </a>
-  <input checked class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
    <i class="fas fa-chevron-down">
    </i>
@@ -156,19 +161,24 @@
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="namespaces.html">
-     Namespace List
+     Namespaces
     </a>
    </li>
    <li class="toctree-l2 has-children">
-    <a class="reference internal" href="annotated.html">
-     Class List
+    <a class="reference internal" href="annotated_classes.html">
+     Classes
     </a>
-    <input checked class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+    <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
     <label for="toctree-checkbox-2">
      <i class="fas fa-chevron-down">
      </i>
     </label>
     <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="annotated.html">
+       Class List
+      </a>
+     </li>
      <li class="toctree-l3">
       <a class="reference internal" href="classes.html">
        Class Index
@@ -180,18 +190,23 @@
       </a>
      </li>
      <li class="toctree-l3 has-children">
-      <a class="reference internal" href="functions.html">
+      <a class="reference internal" href="functions_class_members.html">
        Class Members
       </a>
-      <input checked class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+      <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
       <label for="toctree-checkbox-3">
        <i class="fas fa-chevron-down">
        </i>
       </label>
       <ul>
        <li class="toctree-l4">
+        <a class="reference internal" href="functions.html">
+         All
+        </a>
+       </li>
+       <li class="toctree-l4">
         <a class="reference internal" href="functions_func.html">
-         Class Members - Functions
+         Functions
         </a>
        </li>
       </ul>
@@ -200,7 +215,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="files.html">
-     File List
+     Files
     </a>
    </li>
   </ul>
@@ -223,69 +238,163 @@
   </a>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../../api/apidoc.html">
+  <a class="reference internal" href="../../../apidoc.html">
    API Reference
   </a>
-  <input checked class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
   <label for="toctree-checkbox-4">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../../api/doxysphinx/doxysphinx.cli.html">
-     doxysphinx.cli
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../../auto_api/doxysphinx/index.html">
+     <code class="xref py py-mod docutils literal notranslate">
+      <span class="pre">
+       doxysphinx
+      </span>
+     </code>
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../../api/doxysphinx/doxysphinx.doxygen.html">
-     doxysphinx.doxygen
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../../api/doxysphinx/doxysphinx.html_parser.html">
-     doxysphinx.html_parser
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../../api/doxysphinx/doxysphinx.process.html">
-     doxysphinx.process
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../../api/doxysphinx/doxysphinx.resources.html">
-     doxysphinx.resources
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../../api/doxysphinx/doxysphinx.sphinx.html">
-     doxysphinx.sphinx
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../../api/doxysphinx/doxysphinx.writer.html">
-     doxysphinx.writer
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../../api/doxysphinx.utils/doxysphinx.utils.contexts.html">
-     doxysphinx.utils.contexts
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../../api/doxysphinx.utils/doxysphinx.utils.exceptions.html">
-     doxysphinx.utils.exceptions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../../api/doxysphinx.utils/doxysphinx.utils.files.html">
-     doxysphinx.utils.files
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../../api/doxysphinx.utils/doxysphinx.utils.iterators.html">
-     doxysphinx.utils.iterators
-    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+    <label for="toctree-checkbox-5">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../../auto_api/doxysphinx/utils/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         doxysphinx.utils
+        </span>
+       </code>
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+      <label for="toctree-checkbox-6">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../auto_api/doxysphinx/utils/contexts/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           doxysphinx.utils.contexts
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../auto_api/doxysphinx/utils/exceptions/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           doxysphinx.utils.exceptions
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../auto_api/doxysphinx/utils/files/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           doxysphinx.utils.files
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../auto_api/doxysphinx/utils/iterators/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           doxysphinx.utils.iterators
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../auto_api/doxysphinx/utils/pathlib_fix/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           doxysphinx.utils.pathlib_fix
+          </span>
+         </code>
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../auto_api/doxysphinx/cli/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         doxysphinx.cli
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../auto_api/doxysphinx/doxygen/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         doxysphinx.doxygen
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../auto_api/doxysphinx/html_parser/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         doxysphinx.html_parser
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../auto_api/doxysphinx/process/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         doxysphinx.process
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../auto_api/doxysphinx/resources/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         doxysphinx.resources
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../auto_api/doxysphinx/sphinx/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         doxysphinx.sphinx
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../auto_api/doxysphinx/toc/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         doxysphinx.toc
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../auto_api/doxysphinx/writer/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         doxysphinx.writer
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
    </li>
   </ul>
  </li>
@@ -401,7 +510,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Demo: demo/demo/src/comment_styles.hpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
@@ -425,7 +534,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Generated by Doxygen 1.8.17 -->
+<!-- Generated by Doxygen 1.9.1 -->
 <script type="text/javascript" src="menudata.js"></script>
 <script type="text/javascript" src="menu.js"></script>
 <script type="text/javascript">
@@ -464,51 +573,49 @@ $(function() {
 <div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="classdoxysphinx_1_1doxygen_1_1CommentStyles.html">   38</a></span>&#160;<span class="keyword">class </span><a class="code" href="classdoxysphinx_1_1doxygen_1_1CommentStyles.html">CommentStyles</a></div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;{</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classdoxysphinx_1_1doxygen_1_1CommentStyles.html#ad39ab470cbab92acc5bb0dd5cf78bfd8">ensure_javadoc_style_comments_are_working_as_expected</a>() <span class="keyword">const</span> = 0;</div>
+<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="classdoxysphinx_1_1doxygen_1_1CommentStyles.html#ad39ab470cbab92acc5bb0dd5cf78bfd8">   63</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classdoxysphinx_1_1doxygen_1_1CommentStyles.html#ad39ab470cbab92acc5bb0dd5cf78bfd8">ensure_javadoc_style_comments_are_working_as_expected</a>() <span class="keyword">const</span> = 0;</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classdoxysphinx_1_1doxygen_1_1CommentStyles.html#a2e51c00e43de6804d75465e15d5f40af">ensure_javadoc_style_comments_with_identation_are_working_as_expected</a>() <span class="keyword">const</span> = 0;</div>
+<div class="line"><a name="l00087"></a><span class="lineno"><a class="line" href="classdoxysphinx_1_1doxygen_1_1CommentStyles.html#a2e51c00e43de6804d75465e15d5f40af">   87</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classdoxysphinx_1_1doxygen_1_1CommentStyles.html#a2e51c00e43de6804d75465e15d5f40af">ensure_javadoc_style_comments_with_identation_are_working_as_expected</a>() <span class="keyword">const</span> = 0;</div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classdoxysphinx_1_1doxygen_1_1CommentStyles.html#a7e7609b0a008a5f6714151a6c6c98264">ensure_javadoc_style_without_stars_are_working_as_expected</a>() <span class="keyword">const</span> = 0;</div>
+<div class="line"><a name="l00111"></a><span class="lineno"><a class="line" href="classdoxysphinx_1_1doxygen_1_1CommentStyles.html#a7e7609b0a008a5f6714151a6c6c98264">  111</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classdoxysphinx_1_1doxygen_1_1CommentStyles.html#a7e7609b0a008a5f6714151a6c6c98264">ensure_javadoc_style_without_stars_are_working_as_expected</a>() <span class="keyword">const</span> = 0;</div>
 <div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160; </div>
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160; </div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classdoxysphinx_1_1doxygen_1_1CommentStyles.html#a8ce98dc79b37fcae5ae951d36bae25e9">ensure_qt_style_comments_are_working_as_expected</a>() <span class="keyword">const</span> = 0;</div>
+<div class="line"><a name="l00136"></a><span class="lineno"><a class="line" href="classdoxysphinx_1_1doxygen_1_1CommentStyles.html#a8ce98dc79b37fcae5ae951d36bae25e9">  136</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classdoxysphinx_1_1doxygen_1_1CommentStyles.html#a8ce98dc79b37fcae5ae951d36bae25e9">ensure_qt_style_comments_are_working_as_expected</a>() <span class="keyword">const</span> = 0;</div>
 <div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160; </div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classdoxysphinx_1_1doxygen_1_1CommentStyles.html#ac846440917510d8d71a2f9ce9960bf1b">ensure_qt_style_comments_with_identation_are_working_as_expected</a>() <span class="keyword">const</span> = 0;</div>
+<div class="line"><a name="l00160"></a><span class="lineno"><a class="line" href="classdoxysphinx_1_1doxygen_1_1CommentStyles.html#ac846440917510d8d71a2f9ce9960bf1b">  160</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classdoxysphinx_1_1doxygen_1_1CommentStyles.html#ac846440917510d8d71a2f9ce9960bf1b">ensure_qt_style_comments_with_identation_are_working_as_expected</a>() <span class="keyword">const</span> = 0;</div>
 <div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160; </div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classdoxysphinx_1_1doxygen_1_1CommentStyles.html#a449ad1cabc90b414778acb556100fd28">ensure_qt_style_without_stars_are_working_as_expected</a>() <span class="keyword">const</span> = 0;</div>
+<div class="line"><a name="l00183"></a><span class="lineno"><a class="line" href="classdoxysphinx_1_1doxygen_1_1CommentStyles.html#a449ad1cabc90b414778acb556100fd28">  183</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classdoxysphinx_1_1doxygen_1_1CommentStyles.html#a449ad1cabc90b414778acb556100fd28">ensure_qt_style_without_stars_are_working_as_expected</a>() <span class="keyword">const</span> = 0;</div>
 <div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160; </div>
 <div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160; </div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classdoxysphinx_1_1doxygen_1_1CommentStyles.html#a2d43c0b7b2a846fd2dbf149f9c3e2ee9">ensure_slash_style_comments_are_working_as_expected</a>() <span class="keyword">const</span> = 0;</div>
+<div class="line"><a name="l00203"></a><span class="lineno"><a class="line" href="classdoxysphinx_1_1doxygen_1_1CommentStyles.html#a2d43c0b7b2a846fd2dbf149f9c3e2ee9">  203</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classdoxysphinx_1_1doxygen_1_1CommentStyles.html#a2d43c0b7b2a846fd2dbf149f9c3e2ee9">ensure_slash_style_comments_are_working_as_expected</a>() <span class="keyword">const</span> = 0;</div>
 <div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160; </div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classdoxysphinx_1_1doxygen_1_1CommentStyles.html#ae5268c1e23029248a932fbc2b90f5318">ensure_slash_style_comments_with_asterisk_are_working_as_expected</a>() <span class="keyword">const</span> = 0;</div>
+<div class="line"><a name="l00222"></a><span class="lineno"><a class="line" href="classdoxysphinx_1_1doxygen_1_1CommentStyles.html#ae5268c1e23029248a932fbc2b90f5318">  222</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classdoxysphinx_1_1doxygen_1_1CommentStyles.html#ae5268c1e23029248a932fbc2b90f5318">ensure_slash_style_comments_with_asterisk_are_working_as_expected</a>() <span class="keyword">const</span> = 0;</div>
 <div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160; </div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classdoxysphinx_1_1doxygen_1_1CommentStyles.html#af86dfc6c802d36aa1bd5078b5517fffc">ensure_slash_style_comments_with_identation_are_working_as_expected</a>() <span class="keyword">const</span> = 0;</div>
+<div class="line"><a name="l00243"></a><span class="lineno"><a class="line" href="classdoxysphinx_1_1doxygen_1_1CommentStyles.html#af86dfc6c802d36aa1bd5078b5517fffc">  243</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classdoxysphinx_1_1doxygen_1_1CommentStyles.html#af86dfc6c802d36aa1bd5078b5517fffc">ensure_slash_style_comments_with_identation_are_working_as_expected</a>() <span class="keyword">const</span> = 0;</div>
 <div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160; </div>
-<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classdoxysphinx_1_1doxygen_1_1CommentStyles.html#ae2d62d6adf92b49c928a270b9284e75f">ensure_slash_style_with_exclamations_are_working_as_expected</a>() <span class="keyword">const</span> = 0;</div>
+<div class="line"><a name="l00262"></a><span class="lineno"><a class="line" href="classdoxysphinx_1_1doxygen_1_1CommentStyles.html#ae2d62d6adf92b49c928a270b9284e75f">  262</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classdoxysphinx_1_1doxygen_1_1CommentStyles.html#ae2d62d6adf92b49c928a270b9284e75f">ensure_slash_style_with_exclamations_are_working_as_expected</a>() <span class="keyword">const</span> = 0;</div>
 <div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160; </div>
 <div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;}</div>
 <div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;}</div>
 <div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160; </div>
 <div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;}</div>
 <div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;<span class="preprocessor">#endif</span></div>
-</div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="aclassdoxysphinx_1_1doxygen_1_1CommentStyles_html_af86dfc6c802d36aa1bd5078b5517fffc"><div class="ttname"><a href="classdoxysphinx_1_1doxygen_1_1CommentStyles.html#af86dfc6c802d36aa1bd5078b5517fffc">doxysphinx::doxygen::CommentStyles::ensure_slash_style_comments_with_identation_are_working_as_expected</a></div><div class="ttdeci">void ensure_slash_style_comments_with_identation_are_working_as_expected() const =0</div></div>
+<div class="ttc" id="aclassdoxysphinx_1_1doxygen_1_1CommentStyles_html"><div class="ttname"><a href="classdoxysphinx_1_1doxygen_1_1CommentStyles.html">doxysphinx::doxygen::CommentStyles</a></div><div class="ttdef"><b>Definition:</b> comment_styles.hpp:39</div></div>
+<div class="ttc" id="aclassdoxysphinx_1_1doxygen_1_1CommentStyles_html_a2d43c0b7b2a846fd2dbf149f9c3e2ee9"><div class="ttname"><a href="classdoxysphinx_1_1doxygen_1_1CommentStyles.html#a2d43c0b7b2a846fd2dbf149f9c3e2ee9">doxysphinx::doxygen::CommentStyles::ensure_slash_style_comments_are_working_as_expected</a></div><div class="ttdeci">void ensure_slash_style_comments_are_working_as_expected() const =0</div></div>
 <div class="ttc" id="aclassdoxysphinx_1_1doxygen_1_1CommentStyles_html_a2e51c00e43de6804d75465e15d5f40af"><div class="ttname"><a href="classdoxysphinx_1_1doxygen_1_1CommentStyles.html#a2e51c00e43de6804d75465e15d5f40af">doxysphinx::doxygen::CommentStyles::ensure_javadoc_style_comments_with_identation_are_working_as_expected</a></div><div class="ttdeci">void ensure_javadoc_style_comments_with_identation_are_working_as_expected() const =0</div></div>
-<div class="ttc" id="aclassdoxysphinx_1_1doxygen_1_1CommentStyles_html_a7e7609b0a008a5f6714151a6c6c98264"><div class="ttname"><a href="classdoxysphinx_1_1doxygen_1_1CommentStyles.html#a7e7609b0a008a5f6714151a6c6c98264">doxysphinx::doxygen::CommentStyles::ensure_javadoc_style_without_stars_are_working_as_expected</a></div><div class="ttdeci">void ensure_javadoc_style_without_stars_are_working_as_expected() const =0</div></div>
-<div class="ttc" id="aclassdoxysphinx_1_1doxygen_1_1CommentStyles_html_ac846440917510d8d71a2f9ce9960bf1b"><div class="ttname"><a href="classdoxysphinx_1_1doxygen_1_1CommentStyles.html#ac846440917510d8d71a2f9ce9960bf1b">doxysphinx::doxygen::CommentStyles::ensure_qt_style_comments_with_identation_are_working_as_expected</a></div><div class="ttdeci">void ensure_qt_style_comments_with_identation_are_working_as_expected() const =0</div></div>
 <div class="ttc" id="aclassdoxysphinx_1_1doxygen_1_1CommentStyles_html_a449ad1cabc90b414778acb556100fd28"><div class="ttname"><a href="classdoxysphinx_1_1doxygen_1_1CommentStyles.html#a449ad1cabc90b414778acb556100fd28">doxysphinx::doxygen::CommentStyles::ensure_qt_style_without_stars_are_working_as_expected</a></div><div class="ttdeci">void ensure_qt_style_without_stars_are_working_as_expected() const =0</div></div>
+<div class="ttc" id="aclassdoxysphinx_1_1doxygen_1_1CommentStyles_html_a7e7609b0a008a5f6714151a6c6c98264"><div class="ttname"><a href="classdoxysphinx_1_1doxygen_1_1CommentStyles.html#a7e7609b0a008a5f6714151a6c6c98264">doxysphinx::doxygen::CommentStyles::ensure_javadoc_style_without_stars_are_working_as_expected</a></div><div class="ttdeci">void ensure_javadoc_style_without_stars_are_working_as_expected() const =0</div></div>
+<div class="ttc" id="aclassdoxysphinx_1_1doxygen_1_1CommentStyles_html_a8ce98dc79b37fcae5ae951d36bae25e9"><div class="ttname"><a href="classdoxysphinx_1_1doxygen_1_1CommentStyles.html#a8ce98dc79b37fcae5ae951d36bae25e9">doxysphinx::doxygen::CommentStyles::ensure_qt_style_comments_are_working_as_expected</a></div><div class="ttdeci">void ensure_qt_style_comments_are_working_as_expected() const =0</div></div>
+<div class="ttc" id="aclassdoxysphinx_1_1doxygen_1_1CommentStyles_html_ac846440917510d8d71a2f9ce9960bf1b"><div class="ttname"><a href="classdoxysphinx_1_1doxygen_1_1CommentStyles.html#ac846440917510d8d71a2f9ce9960bf1b">doxysphinx::doxygen::CommentStyles::ensure_qt_style_comments_with_identation_are_working_as_expected</a></div><div class="ttdeci">void ensure_qt_style_comments_with_identation_are_working_as_expected() const =0</div></div>
 <div class="ttc" id="aclassdoxysphinx_1_1doxygen_1_1CommentStyles_html_ad39ab470cbab92acc5bb0dd5cf78bfd8"><div class="ttname"><a href="classdoxysphinx_1_1doxygen_1_1CommentStyles.html#ad39ab470cbab92acc5bb0dd5cf78bfd8">doxysphinx::doxygen::CommentStyles::ensure_javadoc_style_comments_are_working_as_expected</a></div><div class="ttdeci">void ensure_javadoc_style_comments_are_working_as_expected() const =0</div></div>
-<div class="ttc" id="anamespacedoxysphinx_html"><div class="ttname"><a href="namespacedoxysphinx.html">doxysphinx</a></div><div class="ttdoc">The namespace doxysphinx contains all demo code that we need for demonstration of doxysphinx.</div><div class="ttdef"><b>Definition:</b> car.hpp:19</div></div>
-<div class="ttc" id="aclassdoxysphinx_1_1doxygen_1_1CommentStyles_html"><div class="ttname"><a href="classdoxysphinx_1_1doxygen_1_1CommentStyles.html">doxysphinx::doxygen::CommentStyles</a></div><div class="ttdef"><b>Definition:</b> comment_styles.hpp:38</div></div>
 <div class="ttc" id="aclassdoxysphinx_1_1doxygen_1_1CommentStyles_html_ae2d62d6adf92b49c928a270b9284e75f"><div class="ttname"><a href="classdoxysphinx_1_1doxygen_1_1CommentStyles.html#ae2d62d6adf92b49c928a270b9284e75f">doxysphinx::doxygen::CommentStyles::ensure_slash_style_with_exclamations_are_working_as_expected</a></div><div class="ttdeci">void ensure_slash_style_with_exclamations_are_working_as_expected() const =0</div></div>
 <div class="ttc" id="aclassdoxysphinx_1_1doxygen_1_1CommentStyles_html_ae5268c1e23029248a932fbc2b90f5318"><div class="ttname"><a href="classdoxysphinx_1_1doxygen_1_1CommentStyles.html#ae5268c1e23029248a932fbc2b90f5318">doxysphinx::doxygen::CommentStyles::ensure_slash_style_comments_with_asterisk_are_working_as_expected</a></div><div class="ttdeci">void ensure_slash_style_comments_with_asterisk_are_working_as_expected() const =0</div></div>
-<div class="ttc" id="aclassdoxysphinx_1_1doxygen_1_1CommentStyles_html_a2d43c0b7b2a846fd2dbf149f9c3e2ee9"><div class="ttname"><a href="classdoxysphinx_1_1doxygen_1_1CommentStyles.html#a2d43c0b7b2a846fd2dbf149f9c3e2ee9">doxysphinx::doxygen::CommentStyles::ensure_slash_style_comments_are_working_as_expected</a></div><div class="ttdeci">void ensure_slash_style_comments_are_working_as_expected() const =0</div></div>
-<div class="ttc" id="aclassdoxysphinx_1_1doxygen_1_1CommentStyles_html_a8ce98dc79b37fcae5ae951d36bae25e9"><div class="ttname"><a href="classdoxysphinx_1_1doxygen_1_1CommentStyles.html#a8ce98dc79b37fcae5ae951d36bae25e9">doxysphinx::doxygen::CommentStyles::ensure_qt_style_comments_are_working_as_expected</a></div><div class="ttdeci">void ensure_qt_style_comments_are_working_as_expected() const =0</div></div>
+<div class="ttc" id="aclassdoxysphinx_1_1doxygen_1_1CommentStyles_html_af86dfc6c802d36aa1bd5078b5517fffc"><div class="ttname"><a href="classdoxysphinx_1_1doxygen_1_1CommentStyles.html#af86dfc6c802d36aa1bd5078b5517fffc">doxysphinx::doxygen::CommentStyles::ensure_slash_style_comments_with_identation_are_working_as_expected</a></div><div class="ttdeci">void ensure_slash_style_comments_with_identation_are_working_as_expected() const =0</div></div>
+<div class="ttc" id="anamespacedoxysphinx_html"><div class="ttname"><a href="namespacedoxysphinx.html">doxysphinx</a></div><div class="ttdoc">The namespace doxysphinx contains all demo code that we need for demonstration of doxysphinx.</div><div class="ttdef"><b>Definition:</b> car.hpp:19</div></div>
+</div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.17
+Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
 </small></address>
 </body>
 </html>
@@ -528,7 +635,7 @@ Generated by &#160;<a href="http://www.doxygen.org/index.html">
     <footer class="footer">
   <p>
     
-      Last updated on &#39;Mon Oct 17 11:35:09 2022&#39;, &#39;43fd6c6&#39;.<br/>
+      Last updated on &#39;Fri Nov 18 08:46:46 2022&#39;, &#39;758cdd4&#39;.<br/>
   </p>
 </footer>
 </main>

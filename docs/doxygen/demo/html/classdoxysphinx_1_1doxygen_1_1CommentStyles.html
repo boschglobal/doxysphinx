@@ -24,18 +24,16 @@
     
     <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-book-theme.css?digest=84ace793992934648b4de8eed757e5a2" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/css/sphinx-toolbox.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/assets/jsonview.bundle.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/libs/html/datatables.min.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/styles.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/layouts.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/modern.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-test-results/common.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/layouts.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/styles.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-book-theme-custom.css" />
     
   <link rel="preload" as="script" href="../../../../_static/js/index.be7d3bbb2ef33a8344ce.js">
@@ -144,11 +142,18 @@
    Linking with Sphinx Needs
   </a>
  </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Demo documentations
+ </span>
+</p>
+<ul class="nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="index.html">
    Doxygen Demo
   </a>
-  <input checked class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
    <i class="fas fa-chevron-down">
    </i>
@@ -156,19 +161,24 @@
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="namespaces.html">
-     Namespace List
+     Namespaces
     </a>
    </li>
    <li class="toctree-l2 has-children">
-    <a class="reference internal" href="annotated.html">
-     Class List
+    <a class="reference internal" href="annotated_classes.html">
+     Classes
     </a>
-    <input checked class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+    <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
     <label for="toctree-checkbox-2">
      <i class="fas fa-chevron-down">
      </i>
     </label>
     <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="annotated.html">
+       Class List
+      </a>
+     </li>
      <li class="toctree-l3">
       <a class="reference internal" href="classes.html">
        Class Index
@@ -180,18 +190,23 @@
       </a>
      </li>
      <li class="toctree-l3 has-children">
-      <a class="reference internal" href="functions.html">
+      <a class="reference internal" href="functions_class_members.html">
        Class Members
       </a>
-      <input checked class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+      <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
       <label for="toctree-checkbox-3">
        <i class="fas fa-chevron-down">
        </i>
       </label>
       <ul>
        <li class="toctree-l4">
+        <a class="reference internal" href="functions.html">
+         All
+        </a>
+       </li>
+       <li class="toctree-l4">
         <a class="reference internal" href="functions_func.html">
-         Class Members - Functions
+         Functions
         </a>
        </li>
       </ul>
@@ -200,7 +215,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="files.html">
-     File List
+     Files
     </a>
    </li>
   </ul>
@@ -223,69 +238,163 @@
   </a>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../../api/apidoc.html">
+  <a class="reference internal" href="../../../apidoc.html">
    API Reference
   </a>
-  <input checked class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
   <label for="toctree-checkbox-4">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../../api/doxysphinx/doxysphinx.cli.html">
-     doxysphinx.cli
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../../auto_api/doxysphinx/index.html">
+     <code class="xref py py-mod docutils literal notranslate">
+      <span class="pre">
+       doxysphinx
+      </span>
+     </code>
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../../api/doxysphinx/doxysphinx.doxygen.html">
-     doxysphinx.doxygen
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../../api/doxysphinx/doxysphinx.html_parser.html">
-     doxysphinx.html_parser
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../../api/doxysphinx/doxysphinx.process.html">
-     doxysphinx.process
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../../api/doxysphinx/doxysphinx.resources.html">
-     doxysphinx.resources
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../../api/doxysphinx/doxysphinx.sphinx.html">
-     doxysphinx.sphinx
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../../api/doxysphinx/doxysphinx.writer.html">
-     doxysphinx.writer
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../../api/doxysphinx.utils/doxysphinx.utils.contexts.html">
-     doxysphinx.utils.contexts
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../../api/doxysphinx.utils/doxysphinx.utils.exceptions.html">
-     doxysphinx.utils.exceptions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../../api/doxysphinx.utils/doxysphinx.utils.files.html">
-     doxysphinx.utils.files
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../../api/doxysphinx.utils/doxysphinx.utils.iterators.html">
-     doxysphinx.utils.iterators
-    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+    <label for="toctree-checkbox-5">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../../auto_api/doxysphinx/utils/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         doxysphinx.utils
+        </span>
+       </code>
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+      <label for="toctree-checkbox-6">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../auto_api/doxysphinx/utils/contexts/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           doxysphinx.utils.contexts
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../auto_api/doxysphinx/utils/exceptions/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           doxysphinx.utils.exceptions
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../auto_api/doxysphinx/utils/files/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           doxysphinx.utils.files
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../auto_api/doxysphinx/utils/iterators/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           doxysphinx.utils.iterators
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../auto_api/doxysphinx/utils/pathlib_fix/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           doxysphinx.utils.pathlib_fix
+          </span>
+         </code>
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../auto_api/doxysphinx/cli/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         doxysphinx.cli
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../auto_api/doxysphinx/doxygen/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         doxysphinx.doxygen
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../auto_api/doxysphinx/html_parser/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         doxysphinx.html_parser
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../auto_api/doxysphinx/process/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         doxysphinx.process
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../auto_api/doxysphinx/resources/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         doxysphinx.resources
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../auto_api/doxysphinx/sphinx/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         doxysphinx.sphinx
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../auto_api/doxysphinx/toc/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         doxysphinx.toc
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../auto_api/doxysphinx/writer/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         doxysphinx.writer
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
    </li>
   </ul>
  </li>
@@ -396,7 +505,7 @@
   <div class="section" id="commentstyles-class-reference">
 <h1>CommentStyles Class Reference<a class="headerlink" href="#commentstyles-class-reference" title="Permalink to this headline">¶</a></h1>
 <div class="doxygen-content docutils container">
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=9"><meta name="generator" content="Doxygen 1.8.17"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Demo: doxysphinx::doxygen::CommentStyles Class Reference</title><link href="tabs.css" rel="stylesheet" type="text/css"><script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="dynsections.js"></script><link href="doxygen.css" rel="stylesheet" type="text/css"><link href="doxygen-awesome.css" rel="stylesheet" type="text/css"></head><body><div id="top"><!-- do not remove this div, it is closed by doxygen! --><div id="titlearea"><table cellspacing="0" cellpadding="0"> <tbody> <tr style="height: 56px;">  <td id="projectalign" style="padding-left: 0.5em;">   <div id="projectname">Demo   </div>  </td> </tr> </tbody></table></div><!-- end header part --><!-- Generated by Doxygen 1.8.17 --><script type="text/javascript" src="menudata.js"></script><script type="text/javascript" src="menu.js"></script><script type="text/javascript">/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */$(function() {  initMenu('',false,false,'search.php','Search');});/* @license-end */</script><div id="main-nav"></div><div id="nav-path" class="navpath">  <ul><li class="navelem"><a class="el" href="namespacedoxysphinx.html">doxysphinx</a></li><li class="navelem"><a class="el" href="namespacedoxysphinx_1_1doxygen.html">doxygen</a></li><li class="navelem"><a class="el" href="classdoxysphinx_1_1doxygen_1_1CommentStyles.html">CommentStyles</a></li>  </ul></div></div><!-- top --><div class="header">  <div class="summary"><a href="#pub-methods">Public Member Functions</a> |<a href="classdoxysphinx_1_1doxygen_1_1CommentStyles-members.html">List of all members</a>  </div>  <div class="headertitle"><div class="title">doxysphinx::doxygen::CommentStyles Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div></div><!--header--><div class="contents"><p><code>#include &lt;<a class="el" href="comment__styles_8hpp_source.html">comment_styles.hpp</a>&gt;</code></p><table class="memberdecls"><tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>Public Member Functions</h2></td></tr><tr class="memitem:ad39ab470cbab92acc5bb0dd5cf78bfd8"><td class="memItemLeft" align="right" valign="top">void </td><td class="memItemRight" valign="bottom"><a class="el" href="classdoxysphinx_1_1doxygen_1_1CommentStyles.html#ad39ab470cbab92acc5bb0dd5cf78bfd8">ensure_javadoc_style_comments_are_working_as_expected</a> () const =0</td></tr><tr class="separator:ad39ab470cbab92acc5bb0dd5cf78bfd8"><td class="memSeparator" colspan="2"> </td></tr><tr class="memitem:a2e51c00e43de6804d75465e15d5f40af"><td class="memItemLeft" align="right" valign="top">void </td><td class="memItemRight" valign="bottom"><a class="el" href="classdoxysphinx_1_1doxygen_1_1CommentStyles.html#a2e51c00e43de6804d75465e15d5f40af">ensure_javadoc_style_comments_with_identation_are_working_as_expected</a> () const =0</td></tr><tr class="separator:a2e51c00e43de6804d75465e15d5f40af"><td class="memSeparator" colspan="2"> </td></tr><tr class="memitem:a7e7609b0a008a5f6714151a6c6c98264"><td class="memItemLeft" align="right" valign="top">void </td><td class="memItemRight" valign="bottom"><a class="el" href="classdoxysphinx_1_1doxygen_1_1CommentStyles.html#a7e7609b0a008a5f6714151a6c6c98264">ensure_javadoc_style_without_stars_are_working_as_expected</a> () const =0</td></tr><tr class="separator:a7e7609b0a008a5f6714151a6c6c98264"><td class="memSeparator" colspan="2"> </td></tr><tr class="memitem:a8ce98dc79b37fcae5ae951d36bae25e9"><td class="memItemLeft" align="right" valign="top">void </td><td class="memItemRight" valign="bottom"><a class="el" href="classdoxysphinx_1_1doxygen_1_1CommentStyles.html#a8ce98dc79b37fcae5ae951d36bae25e9">ensure_qt_style_comments_are_working_as_expected</a> () const =0</td></tr><tr class="separator:a8ce98dc79b37fcae5ae951d36bae25e9"><td class="memSeparator" colspan="2"> </td></tr><tr class="memitem:ac846440917510d8d71a2f9ce9960bf1b"><td class="memItemLeft" align="right" valign="top">void </td><td class="memItemRight" valign="bottom"><a class="el" href="classdoxysphinx_1_1doxygen_1_1CommentStyles.html#ac846440917510d8d71a2f9ce9960bf1b">ensure_qt_style_comments_with_identation_are_working_as_expected</a> () const =0</td></tr><tr class="separator:ac846440917510d8d71a2f9ce9960bf1b"><td class="memSeparator" colspan="2"> </td></tr><tr class="memitem:a449ad1cabc90b414778acb556100fd28"><td class="memItemLeft" align="right" valign="top">void </td><td class="memItemRight" valign="bottom"><a class="el" href="classdoxysphinx_1_1doxygen_1_1CommentStyles.html#a449ad1cabc90b414778acb556100fd28">ensure_qt_style_without_stars_are_working_as_expected</a> () const =0</td></tr><tr class="separator:a449ad1cabc90b414778acb556100fd28"><td class="memSeparator" colspan="2"> </td></tr><tr class="memitem:a2d43c0b7b2a846fd2dbf149f9c3e2ee9"><td class="memItemLeft" align="right" valign="top">void </td><td class="memItemRight" valign="bottom"><a class="el" href="classdoxysphinx_1_1doxygen_1_1CommentStyles.html#a2d43c0b7b2a846fd2dbf149f9c3e2ee9">ensure_slash_style_comments_are_working_as_expected</a> () const =0</td></tr><tr class="separator:a2d43c0b7b2a846fd2dbf149f9c3e2ee9"><td class="memSeparator" colspan="2"> </td></tr><tr class="memitem:ae5268c1e23029248a932fbc2b90f5318"><td class="memItemLeft" align="right" valign="top">void </td><td class="memItemRight" valign="bottom"><a class="el" href="classdoxysphinx_1_1doxygen_1_1CommentStyles.html#ae5268c1e23029248a932fbc2b90f5318">ensure_slash_style_comments_with_asterisk_are_working_as_expected</a> () const =0</td></tr><tr class="separator:ae5268c1e23029248a932fbc2b90f5318"><td class="memSeparator" colspan="2"> </td></tr><tr class="memitem:af86dfc6c802d36aa1bd5078b5517fffc"><td class="memItemLeft" align="right" valign="top">void </td><td class="memItemRight" valign="bottom"><a class="el" href="classdoxysphinx_1_1doxygen_1_1CommentStyles.html#af86dfc6c802d36aa1bd5078b5517fffc">ensure_slash_style_comments_with_identation_are_working_as_expected</a> () const =0</td></tr><tr class="separator:af86dfc6c802d36aa1bd5078b5517fffc"><td class="memSeparator" colspan="2"> </td></tr><tr class="memitem:ae2d62d6adf92b49c928a270b9284e75f"><td class="memItemLeft" align="right" valign="top">void </td><td class="memItemRight" valign="bottom"><a class="el" href="classdoxysphinx_1_1doxygen_1_1CommentStyles.html#ae2d62d6adf92b49c928a270b9284e75f">ensure_slash_style_with_exclamations_are_working_as_expected</a> () const =0</td></tr><tr class="separator:ae2d62d6adf92b49c928a270b9284e75f"><td class="memSeparator" colspan="2"> </td></tr></table><a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2><div class="textblock"><p>This file tests the different doxygen comment styles and the embedding of rst elements.</p>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=9"><meta name="generator" content="Doxygen 1.9.1"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Demo: doxysphinx::doxygen::CommentStyles Class Reference</title><link href="tabs.css" rel="stylesheet" type="text/css"><script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="dynsections.js"></script><link href="doxygen.css" rel="stylesheet" type="text/css"><link href="doxygen-awesome.css" rel="stylesheet" type="text/css"></head><body><div id="top"><!-- do not remove this div, it is closed by doxygen! --><div id="titlearea"><table cellspacing="0" cellpadding="0"> <tbody> <tr style="height: 56px;">  <td id="projectalign" style="padding-left: 0.5em;">   <div id="projectname">Demo   </div>  </td> </tr> </tbody></table></div><!-- end header part --><!-- Generated by Doxygen 1.9.1 --><script type="text/javascript" src="menudata.js"></script><script type="text/javascript" src="menu.js"></script><script type="text/javascript">/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */$(function() {  initMenu('',false,false,'search.php','Search');});/* @license-end */</script><div id="main-nav"></div><div id="nav-path" class="navpath">  <ul><li class="navelem"><a class="el" href="namespacedoxysphinx.html">doxysphinx</a></li><li class="navelem"><a class="el" href="namespacedoxysphinx_1_1doxygen.html">doxygen</a></li><li class="navelem"><a class="el" href="classdoxysphinx_1_1doxygen_1_1CommentStyles.html">CommentStyles</a></li>  </ul></div></div><!-- top --><div class="header">  <div class="summary"><a href="#pub-methods">Public Member Functions</a> |<a href="classdoxysphinx_1_1doxygen_1_1CommentStyles-members.html">List of all members</a>  </div>  <div class="headertitle"><div class="title">doxysphinx::doxygen::CommentStyles Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div></div><!--header--><div class="contents"><p><code>#include &lt;<a class="el" href="comment__styles_8hpp_source.html">comment_styles.hpp</a>&gt;</code></p><table class="memberdecls"><tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>Public Member Functions</h2></td></tr><tr class="memitem:ad39ab470cbab92acc5bb0dd5cf78bfd8"><td class="memItemLeft" align="right" valign="top">void </td><td class="memItemRight" valign="bottom"><a class="el" href="classdoxysphinx_1_1doxygen_1_1CommentStyles.html#ad39ab470cbab92acc5bb0dd5cf78bfd8">ensure_javadoc_style_comments_are_working_as_expected</a> () const =0</td></tr><tr class="separator:ad39ab470cbab92acc5bb0dd5cf78bfd8"><td class="memSeparator" colspan="2"> </td></tr><tr class="memitem:a2e51c00e43de6804d75465e15d5f40af"><td class="memItemLeft" align="right" valign="top">void </td><td class="memItemRight" valign="bottom"><a class="el" href="classdoxysphinx_1_1doxygen_1_1CommentStyles.html#a2e51c00e43de6804d75465e15d5f40af">ensure_javadoc_style_comments_with_identation_are_working_as_expected</a> () const =0</td></tr><tr class="separator:a2e51c00e43de6804d75465e15d5f40af"><td class="memSeparator" colspan="2"> </td></tr><tr class="memitem:a7e7609b0a008a5f6714151a6c6c98264"><td class="memItemLeft" align="right" valign="top">void </td><td class="memItemRight" valign="bottom"><a class="el" href="classdoxysphinx_1_1doxygen_1_1CommentStyles.html#a7e7609b0a008a5f6714151a6c6c98264">ensure_javadoc_style_without_stars_are_working_as_expected</a> () const =0</td></tr><tr class="separator:a7e7609b0a008a5f6714151a6c6c98264"><td class="memSeparator" colspan="2"> </td></tr><tr class="memitem:a8ce98dc79b37fcae5ae951d36bae25e9"><td class="memItemLeft" align="right" valign="top">void </td><td class="memItemRight" valign="bottom"><a class="el" href="classdoxysphinx_1_1doxygen_1_1CommentStyles.html#a8ce98dc79b37fcae5ae951d36bae25e9">ensure_qt_style_comments_are_working_as_expected</a> () const =0</td></tr><tr class="separator:a8ce98dc79b37fcae5ae951d36bae25e9"><td class="memSeparator" colspan="2"> </td></tr><tr class="memitem:ac846440917510d8d71a2f9ce9960bf1b"><td class="memItemLeft" align="right" valign="top">void </td><td class="memItemRight" valign="bottom"><a class="el" href="classdoxysphinx_1_1doxygen_1_1CommentStyles.html#ac846440917510d8d71a2f9ce9960bf1b">ensure_qt_style_comments_with_identation_are_working_as_expected</a> () const =0</td></tr><tr class="separator:ac846440917510d8d71a2f9ce9960bf1b"><td class="memSeparator" colspan="2"> </td></tr><tr class="memitem:a449ad1cabc90b414778acb556100fd28"><td class="memItemLeft" align="right" valign="top">void </td><td class="memItemRight" valign="bottom"><a class="el" href="classdoxysphinx_1_1doxygen_1_1CommentStyles.html#a449ad1cabc90b414778acb556100fd28">ensure_qt_style_without_stars_are_working_as_expected</a> () const =0</td></tr><tr class="separator:a449ad1cabc90b414778acb556100fd28"><td class="memSeparator" colspan="2"> </td></tr><tr class="memitem:a2d43c0b7b2a846fd2dbf149f9c3e2ee9"><td class="memItemLeft" align="right" valign="top">void </td><td class="memItemRight" valign="bottom"><a class="el" href="classdoxysphinx_1_1doxygen_1_1CommentStyles.html#a2d43c0b7b2a846fd2dbf149f9c3e2ee9">ensure_slash_style_comments_are_working_as_expected</a> () const =0</td></tr><tr class="separator:a2d43c0b7b2a846fd2dbf149f9c3e2ee9"><td class="memSeparator" colspan="2"> </td></tr><tr class="memitem:ae5268c1e23029248a932fbc2b90f5318"><td class="memItemLeft" align="right" valign="top">void </td><td class="memItemRight" valign="bottom"><a class="el" href="classdoxysphinx_1_1doxygen_1_1CommentStyles.html#ae5268c1e23029248a932fbc2b90f5318">ensure_slash_style_comments_with_asterisk_are_working_as_expected</a> () const =0</td></tr><tr class="separator:ae5268c1e23029248a932fbc2b90f5318"><td class="memSeparator" colspan="2"> </td></tr><tr class="memitem:af86dfc6c802d36aa1bd5078b5517fffc"><td class="memItemLeft" align="right" valign="top">void </td><td class="memItemRight" valign="bottom"><a class="el" href="classdoxysphinx_1_1doxygen_1_1CommentStyles.html#af86dfc6c802d36aa1bd5078b5517fffc">ensure_slash_style_comments_with_identation_are_working_as_expected</a> () const =0</td></tr><tr class="separator:af86dfc6c802d36aa1bd5078b5517fffc"><td class="memSeparator" colspan="2"> </td></tr><tr class="memitem:ae2d62d6adf92b49c928a270b9284e75f"><td class="memItemLeft" align="right" valign="top">void </td><td class="memItemRight" valign="bottom"><a class="el" href="classdoxysphinx_1_1doxygen_1_1CommentStyles.html#ae2d62d6adf92b49c928a270b9284e75f">ensure_slash_style_with_exclamations_are_working_as_expected</a> () const =0</td></tr><tr class="separator:ae2d62d6adf92b49c928a270b9284e75f"><td class="memSeparator" colspan="2"> </td></tr></table><a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2><div class="textblock"><p>This file tests the different doxygen comment styles and the embedding of rst elements.</p>
 <p>It checks for the comment styles as documented <a class="reference external" href="https://www.doxygen.nl/manual/docblocks.html">here in doxygen documentation</a>.</p>
 <p>For integrating rst into doxygen we use the verbatim command as described <a class="reference external" href="https://breathe.readthedocs.io/en/latest/markups.html">here in the breathe docs</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2><a id="ad39ab470cbab92acc5bb0dd5cf78bfd8"></a><h2 class="memtitle"><span class="permalink"><a href="#ad39ab470cbab92acc5bb0dd5cf78bfd8">◆ </a></span>ensure_javadoc_style_comments_are_working_as_expected()</h2><div class="memitem"><div class="memproto"><table class="mlabels">  <tr>  <td class="mlabels-left">      <table class="memname">        <tr>          <td class="memname">void doxysphinx::doxygen::CommentStyles::ensure_javadoc_style_comments_are_working_as_expected </td>          <td>(</td>          <td class="paramname"></td><td>)</td>          <td> const</td>        </tr>      </table>  </td>  <td class="mlabels-right"><span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>  </tr></table></div><div class="memdoc"><div class="admonition-what-you-should-see-here admonition">
@@ -543,7 +652,7 @@
 </pre></div>
 </div>
 </div>
-</div></div><hr>The documentation for this class was generated from the following file:<ul><li>demo/demo/src/<a class="el" href="comment__styles_8hpp_source.html">comment_styles.hpp</a></li></ul></div><!-- contents --><!-- start footer part --><hr class="footer"><address class="footer"><small>Generated by  <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.png" alt="doxygen"></a> 1.8.17</small></address></body></html></div>
+</div></div><hr>The documentation for this class was generated from the following file:<ul><li>demo/demo/src/<a class="el" href="comment__styles_8hpp_source.html">comment_styles.hpp</a></li></ul></div><!-- contents --><!-- start footer part --><hr class="footer"><address class="footer"><small>Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"></a> 1.9.1</small></address></body></html></div>
 </div>
 
 
@@ -559,7 +668,7 @@
     <footer class="footer">
   <p>
     
-      Last updated on &#39;Mon Oct 17 11:35:09 2022&#39;, &#39;43fd6c6&#39;.<br/>
+      Last updated on &#39;Fri Nov 18 08:46:46 2022&#39;, &#39;758cdd4&#39;.<br/>
   </p>
 </footer>
 </main>
