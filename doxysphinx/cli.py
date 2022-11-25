@@ -29,7 +29,7 @@ Defines click main command (:func:`cli`) and subcommands (:func:`build`), (:func
 import logging
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Iterator, List
+from typing import Any, Iterator, List
 
 import click
 import click_log  # type: ignore
@@ -39,7 +39,7 @@ from doxysphinx.doxygen import (
     DoxygenSettingsValidator,
     read_doxyconfig,
 )
-from doxysphinx.process import Builder, Cleaner
+from doxysphinx.process import Builder, Cleaner, ParallelBuilder, SequentialBuilder
 from doxysphinx.utils.contexts import TimedContext
 
 _logger = logging.getLogger()
@@ -101,10 +101,17 @@ def cli():
 
 
 @cli.command()
+@click.option(
+    "--parallel",
+    is_flag=True,
+    show_default=True,
+    default=False,
+    help="whether to split up the work on multiple processors [EXPERIMENTAL!]",
+)
 @click.argument("sphinx_source", type=click.Path(file_okay=False, exists=True, path_type=Path))
 @click.argument("sphinx_output", type=click.Path(file_okay=False, path_type=Path))
 @_doxygen_context()
-def build(sphinx_source: Path, sphinx_output: Path, **kwargs):
+def build(sphinx_source: Path, sphinx_output: Path, parallel: bool, **kwargs):
     """
     Build rst and copy related files for doxygen projects.
 
@@ -122,7 +129,8 @@ def build(sphinx_source: Path, sphinx_output: Path, **kwargs):
     doxy_context = DoxygenContext(**kwargs)
     _logger.info("starting build command...")
     with TimedContext() as tc:
-        builder = Builder(sphinx_source, sphinx_output)
+        BuilderImplementation: Any = ParallelBuilder if parallel else SequentialBuilder
+        builder: Builder = BuilderImplementation(sphinx_source, sphinx_output)
         for doxy_output in _get_doxygen_outdirs(doxy_context, sphinx_source):
             builder.build(doxy_output)
     _logger.info(f"build command done in {tc.elapsed_humanized()}.")

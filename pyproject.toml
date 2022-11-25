@@ -80,6 +80,7 @@ pytest-emoji = "^0.2.0"
 pytest-md = "^0.2.0"
 commitizen = "^2.29.0"
 sphinx-autoapi = "^2.0.0"
+mpire = "^2.6.0"
 
 [tool.poetry.scripts]
 doxysphinx = "doxysphinx.cli:cli"
