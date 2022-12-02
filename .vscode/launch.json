@@ -16,7 +16,8 @@
                 "${workspaceFolder}",
                 "${workspaceFolder}/.build",
                 "${workspaceFolder}/demo/demo.doxyfile"
-            ]
+            ],
+            "preLaunchTask": "doxysphinx clean demo",
         },
         {
             "name": "Debug: Doxysphinx Build Command Graphviz",
