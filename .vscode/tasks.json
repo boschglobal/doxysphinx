@@ -4,6 +4,20 @@
   "version": "2.0.0",
   "tasks": [
     {
+      "label": "doxysphinx clean demo",
+      "type": "shell",
+      "command": "poetry",
+      "args": [
+        "run",
+        "doxysphinx",
+        "--verbosity=DEBUG",
+        "clean",
+        ".",
+        ".build/html",
+        "demo/demo.doxyfile"
+      ]
+    },
+    {
       "label": "run precommit",
       "type": "shell",
       "command": "poetry",
