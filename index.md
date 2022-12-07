@@ -17,6 +17,7 @@
 :caption: Usage
 
 docs/getting_started.md
+docs/syntax/syntax_guide.md
 docs/alternatives.md
 docs/faq.md
 ```
@@ -36,6 +37,7 @@ docs/linking_needs.md
 :caption: Demo documentations
 :maxdepth: 1
 Doxygen Demo <docs/doxygen/demo/html/index>
+docs/test.rst
 ```
 
 ```{toctree}

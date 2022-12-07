@@ -150,8 +150,6 @@ GENERATE_TREEVIEW      = NO   # Deactivate doxygens own treeview (as it doesn't 
 DISABLE_INDEX          = NO   # Menu data is crucial for our TOC generation so it mustn't be disabled
 
 GENERATE_HTML          = YES  # Keep sure that you generate HTML which needed for doxysphinx
-ALIASES                = "rst=\verbatim embed:rst:leading-asterisk" \
-                         endrst=\endverbatim  # This allows you to use rst blocks inside doxygen comments with @rst and @endrst
 
 CREATE_SUBDIRS         = NO   # NO is the default value and it should be no because doxysphinx can't handle subdirs right now.
 ```
@@ -193,6 +191,10 @@ DOT_IMAGE_FORMAT       = svg  # generates nicer svg images
 DOT_TRANSPARENT        = YES  # generate transparent images
 INTERACTIVE_SVG        = YES  # to be able to scroll and zoom into big images
 
+# if you want to use aliases instead of markdown fences for commenting (see syntax guide) you have to add
+# something like this (which doesn't hurt either):
+ALIASES                = "rst=\verbatim embed:rst:leading-asterisk" \
+                         endrst=\endverbatim  # This allows you to use rst blocks inside doxygen comments with @rst and @endrst
 ```
 
 ````{tip}
@@ -300,6 +302,9 @@ Car(Engine& engine, Color& color) {};
 ```
 
 Note the `@rst` and `@endrst` tags. Inside these tags you can write any rst code.
+
+See also the [Syntax Guide](syntax/syntax_guide.md) for a complete documentation on how to comment for doxysphinx.
+
 Now run doxygen, doxysphinx and sphinx and look at the generated documentation. You should see something like
 this:
 
@@ -314,9 +319,12 @@ this:
 
 Further reading:
 
+* To get to know the doxysphinx comment syntax -> see our [syntax guide](syntax/syntax_guide.md).
 * Maybe you want to know more about the inner workings? -> head over to the [reference](inner_workings.md) section.
 * Or look at some examples? -> [linking to doxygen](linking_to_doxygen.md).
 * Or do you want to contribute and bring doxysphinx to the next level? Read the [contributors guide](../CONTRIBUTE.md) and the
   [Developer Quickstart](dev_guide.md).
 
 Or just start documenting 😀.
+
+test test *test* test

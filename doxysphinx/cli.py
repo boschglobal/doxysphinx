@@ -91,14 +91,12 @@ def _doxygen_context():
 @click.version_option()
 @click_log.simple_verbosity_option(_logger)
 def cli():
-    """
-    Integrates doxygen html documentation with sphinx.
+    """Integrates doxygen html documentation with sphinx.
 
     Doxysphinx typically should run right after doxygen. It will generate rst files out of doxygen's html
     files. This has the implication, that the doxygen html output directory (where the rst files are generated
     to) has to live inside sphinx's input tree.
     """
-
     click.secho(f"doxysphinx v{metadata.version('doxysphinx')}", fg="bright_white")
 
 

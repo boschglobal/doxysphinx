@@ -145,7 +145,7 @@ class DoxygenSettingsValidator:
         "OUTPUT_DIRECTORY": "",
         "GENERATE_TREEVIEW": "NO",
         "DISABLE_INDEX": "NO",
-        "ALIASES": ["rst=\\verbatim embed:rst:leading-asterisk", "endrst=\\endverbatim"],
+        # "ALIASES": ["rst=\\verbatim embed:rst:leading-asterisk", "endrst=\\endverbatim"],
         "GENERATE_HTML": "YES",
         "CREATE_SUBDIRS": "NO",
     }
@@ -157,7 +157,6 @@ class DoxygenSettingsValidator:
     optional_settings = {
         "SEARCHENGINE": "NO",
         "DOT_IMAGE_FORMAT": "svg",
-        "DOT_TRANSPARENT": "YES",
         "INTERACTIVE_SVG": "YES",
         "GENERATE_TAGFILE": "",
     }

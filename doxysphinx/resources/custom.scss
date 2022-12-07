@@ -93,6 +93,19 @@ html {
             box-shadow: none;
             border-bottom: 1px solid var(--separator-color);
         }
+
+        /* css hack for inline rst content.
+           as sphinx will automatically create paragraphs (<p>) around all blocks, we'll always get new paragraphs
+           for our inline content in doxygen html. So we add a "marker span block" right before the inline content
+           block and then style the "paragraphiness (/blockrendering)" away here with the next sibling selector (+).
+        */
+        //        .doxysphinx-p {
+        //            display: block;
+        //        }
+
+        .doxysphinx-inline-parent p {
+            display: inline;
+        }
     }
 
     /** content fixes - members (e.g. in class view) */

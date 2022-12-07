@@ -42,6 +42,9 @@
             "source.organizeImports": true
         }
     },
+    "[html]": {
+        "editor.formatOnSave": false
+    },
     "editor.minimap.maxColumn": 120,
     "editor.rulers": [
         {

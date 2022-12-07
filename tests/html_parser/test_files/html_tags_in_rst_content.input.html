@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+
+<head>
+    <title>demo : html tags in rst content</title>
+</head>
+
+<body>
+    <pre class="fragment">
+    .. warning:: no content after the delimiters
+    
+       In markdown it's typical to have the language right behind the beginning codeblock delimiter.
+       Something like <code>```cpp</code> for example. However the doxygen markdown parser will swallow
+       anything behin the delimiters (which means we couldn't make use of information there). So please do
+       not fall into the trap trying to start a rst block with <code>```{rst}</code>!
+    </pre>
+    Just Text
+    <div class="fragment"><div class="line">{rst}</div>
+    <div class="line">.. tip::</div>
+    <div class="line"> </div>
+    <div class="line">   If you see a tip around <span class="keyword">this</span> text it worked!</div>
+    </div><!-- fragment -->
+    <pre class="fragment">
+        .. tip:: another test
+
+           this is just another test
+           <code>here's a codeblock right at the end</code></pre>
+</body>
+
+</html>
