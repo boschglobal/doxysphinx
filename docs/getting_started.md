@@ -135,9 +135,8 @@ The class :demo:`doxysphinx::rst::Car` implements the car.
 
 Next you have to prepare your doxygen configuration file (doxyfile) to have compatible settings with doxysphinx.
 
-The following settings are mandatory and will be checked by a validator (only when using the doxyfile as input):
-
-You can prepare or optimize your doxygen configuration file (doxyfile) by doing the following:
+The following settings are mandatory and will be checked by a validator if you use your doxyfile as input for
+doxysphinx (if you use the doxygen html output directory instead validation will be skipped):
 
 ### Mandatory settings
 
@@ -174,7 +173,7 @@ look at the [alternatives](./alternatives.md).
 
 ### Recommended settings
 
-these settings are optional but strongly recommended (you will be warned in case of some value deviations):
+these settings are optional but strongly recommended (you will be notified in case of some value deviations):
 
 ```yaml
 
@@ -261,7 +260,7 @@ Please note that sphinx has slightly different output directories depending on t
 
 ### Clean
 
-If you want to clean the files doxysphinx generated please use the clean command:
+If you want to remove the files doxysphinx generated please use the clean command:
 
 ```bash
 doxysphinx clean <SPHINX_SOURCE> <SPHINX_OUTPUT> <INPUT(S)>
@@ -326,5 +325,3 @@ Further reading:
   [Developer Quickstart](dev_guide.md).
 
 Or just start documenting 😀.
-
-test test *test* test

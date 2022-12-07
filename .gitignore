@@ -182,3 +182,4 @@ docs/doxygen/graphviz/
 demo/ocilib/
 demo/graphviz/
 tests/toc/*.rst
+docs/auto_api
