@@ -103,7 +103,7 @@ plantuml_output_format = "svg"
 autoapi_dirs = ["doxysphinx"]
 autoapi_root = "docs/auto_api"
 autoapi_options = ["members", "undoc-members", "show-inheritance", "show-inheritance-diagram", "show-module-summary"]
-autoapi_keep_files = False
+autoapi_keep_files = True
 autoapi_add_toctree_entry = False
 autodoc_typehints = "signature"
 

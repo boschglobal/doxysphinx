@@ -1,13 +1,15 @@
 # Rst Block Syntax
 
+For creating blocks of restructured text content in C++ documentation comments that will be rendered by Sphinx.
+
 ## TLDR; Recommended Syntax
 
 - if you want to use the shortest possible syntax use [](#markdown-fences) with directive autodetection.
 - if you're coming from breathe and already have your code commented with breathe markers or if you want
-  to have maximum compatibility: use [](doxygen-aliases).
+  to have maximum compatibility: use [](#doxygen-aliases).
 
 However if you experience any problems with doxygen parsing etc. you might try one of the other options described
-in [](supported-rst-block-delimiters-in-doxygen-comments).
+in [](#supported-rst-block-delimiters-in-doxygen-comments).
 
 ## Markers
 
@@ -23,8 +25,11 @@ The marker can be one of these:
 
 After any marker there has to be a new line (content can start at next line).
 
-As chances are big that you just want to use a sphinx directive we've also got a **shortcut syntax** -
-if the pre content starts with a directive you can leave out the `{rst}`-line, e.g.
+### Directive Autodetection
+
+As chances are quite big that you just want to use a sphinx directive we've also got an autodetection feature:
+if the "verbatim content" starts with a directive you can leave out the markers (in that case the directive syntax is
+the marker), for example...
 
 ```cpp
 /// ```
@@ -33,7 +38,7 @@ if the pre content starts with a directive you can leave out the `{rst}`-line, e
 /// ```
 ```
 
-will also be identified by doxysphinx as a rst block (and processed).
+...will also be identified by doxysphinx as a rst block (and processed).
 
 ## Supported rst block delimiters in doxygen comments
 
@@ -64,7 +69,7 @@ You can use the markdown code fences syntax as follows (you need to have markdow
    Something like <code>\`\`\`cpp</code> for example. However the doxygen markdown parser will swallow anything
    behind the delimiters (which means we couldn't make use of information there). So please do not fall into
    the trap trying to start a rst block with e.g. <code>\`\`\`{rst}</code>. The `{rst}` marker (or any content
-   used by doxysphinx) has to be on the next line. (This is only true if you use markdown code fences - not for
+   used by doxysphinx) **has to be on the next line**. (This is only true if you use markdown code fences - not for
    the other options below).
 ```
 
@@ -122,3 +127,7 @@ And then use the alias like this:
 ///
 /// ...
 ```
+
+## More examples
+
+can be found in our demo documentation [here](../doxygen/demo/html/classdoxysphinx_1_1doxygen_1_1BlockRst.rst).

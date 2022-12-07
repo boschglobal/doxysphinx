@@ -266,11 +266,11 @@ class PreToDivProcessor:
 class MarkdownRstBlockProcessor:
     """Element Processor for doxygen markdown block elements.
 
-    This processor will check if the first line in the markdown block is either `{rst}` (as marker) or
-    if the line
+    This processor will check if the first line in the markdown block is either a supported marker or
+    a directive (auto detection feature).
 
     Markdown block elements in doxygen are getting rendered different to verbatim content.
-    Each Markdown block (delimited with ```) will be something like this in html:
+    Each Markdown block (delimited with 3 backticks) will be something like this in html:
 
     .. code-block:: html
 
