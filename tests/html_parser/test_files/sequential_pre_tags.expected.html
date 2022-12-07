@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+
+<head>
+    <title>demo : Sequential pre tags - last one was missing</title>
+</head>
+
+<body>
+
+<div class="memdoc">
+
+    <p>rst block with html pre tag in doxygen. </p>
+    <p><b>&lt;pre&gt;-html-element</b></p>
+    <p><em>Syntax</em> </p>
+    <div class="fragment"><div class="line">/// &lt;pre&gt; {rst}</div><div class="line">/// .. tip::</div><div class="line">/// </div><div class="line">///    If you see a tip around this text it worked!</div><div class="line">/// &lt;/pre&gt;</div></div>
+    <p><em>Example</em> </p>
+    <snippet type="rst:block">
+.. tip::
+
+If you see a tip around this text it worked!
+</snippet>
+    <p>TEST WO ISSES DENN? SAPRALOT!!</p>
+    <snippet type="rst:block">
+.. info::
+
+Beside the `{rst}`-marker you can also use `{embed:rst}`, `{embed:rst:leading-slashes}`, 
+`{embed:rst:leading-asterisk}`, or the directive autodetection feature.
+</snippet>
+  </div>
+
+</body>
+</html>
