@@ -37,7 +37,6 @@ docs/linking_needs.md
 :caption: Demo documentations
 :maxdepth: 1
 Doxygen Demo <docs/doxygen/demo/html/index>
-docs/test.rst
 ```
 
 ```{toctree}

@@ -7,10 +7,10 @@
 #  - Markus Braun, :em engineering methods AG (contracted by Robert Bosch GmbH)
 # =====================================================================================
 """
-The html_parser module contains the html parsers that will load the html files.
+The html_parser module contains the html parser that will load and process the html files.
 
-To allow several :mod:`writer` implementation to pick up and handle the result of that parsing a html parser
-must also transform rst snippets into <rst>-nodes.
+To allow several :mod:`writer` implementations to pick up and handle the result of that parsing a html parser
+in a neutral way the parser will change all relevant rst/sphinx markup elements to `<snippet>`-elements.
 """
 
 import logging
@@ -27,7 +27,7 @@ from lxml.etree import _Element, _ElementTree  # nosec: B410
 
 @dataclass
 class HtmlParseResult:
-    """Capsules a parsed html tree with meta information."""
+    """Capsules a parsed and processed html tree with meta information."""
 
     html_input_file: Path
     """The html file that was parsed.
@@ -174,8 +174,6 @@ class RstBlockProcessor:
     elements = ["code", "pre"]
     format = "rst"
     is_final = True
-
-    # _marker_regex = re.compile(r"^(rst|restructuredtext|embed:rst(:leading-(asterisk|slashes))?)\s*\r?\n", re.MULTILINE)
 
     _marker_regex = re.compile(
         r"^("  # begin of the line
@@ -363,26 +361,6 @@ def _ends_with_newline(text: str):
     return text.strip(" \t").endswith("\n")
 
 
-_doxygen_comment_cleanup_regex = re.compile(r"^[^\S\r\n]*(\*|\/\/\/|\/\/!)", re.MULTILINE)
-#                                              ^          ^  ^      ^
-#                                              |          |  |      |
-#                                              |          |  |      +--- two slashee followed by a exclamation mark
-#                                              |          |  |           (strange comments...)
-#                                              |          |  +--- three slashes (/// - ms style comments)
-#                                              |          +--- single star (qt style comments)
-#                                              +--- whitespace without newlines (zero or more)
-
-
-def _remove_doxygen_comment_prefixes_old(text: str) -> str:
-    """Removes doxygen comment prefixes from texts."""
-    return _doxygen_comment_cleanup_regex.sub("", text)
-
-    # old faster but incorrect implementation
-    # text = text.replace("\n*", "\n").replace("\n *", "\n")
-    # text = text.replace("\n///", "\n").replace("\n//!", "\n")
-    # return text
-
-
 def _lstrip_str(to_strip: str, from_text: str) -> str:
     ws_stripped = from_text.lstrip()
     if ws_stripped.startswith(to_strip):
@@ -394,14 +372,15 @@ def _lstrip_str(to_strip: str, from_text: str) -> str:
 
 def _remove_doxygen_comment_prefixes(text: str) -> str:
     stripped = text.lstrip()
-    # if leading slashes
+    # if leading slashes syntax
     if stripped.startswith("///"):
         lines = [_lstrip_str("///", line) for line in text.split("\n")]
         return "\n".join(lines)
-    # if asterisk
+    # if asterisk syntax
     elif stripped.startswith("*"):
         lines = [_lstrip_str("*", line) for line in text.split("\n")]
         return "\n".join(lines)
+    # if doubleslash exclamationmark syntax
     elif stripped.startswith("//!"):
         lines = [_lstrip_str("//!", line) for line in text.split("\n")]
         return "\n".join(lines)
@@ -500,22 +479,14 @@ class DoxygenHtmlParser:
         :rtype: ParseResult
         """
 
-        self._logger.debug(f"[{file}]: parsing ...")
-
         tree = etree.parse(file.as_posix())  # type: ignore # nosec B320
-
-        self._logger.debug(f"[{file}]: extracting meta infos...")
 
         meta_title: str = tree.find("//title").text  # type: ignore
         first, *_, last = meta_title.split(":")
         project = first.strip()
         title = last.strip()
 
-        self._logger.debug(f"[{file}]: normalizing tree...")
-
         used_snippet_formats = self._normalize_tree_and_get_used_formats(tree)
-
-        self._logger.debug(f"[{file}]: done.")
 
         return HtmlParseResult(file, project, meta_title, title, used_snippet_formats, tree)
 

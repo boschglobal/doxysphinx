@@ -56,6 +56,7 @@ exclude_patterns = multi_glob(
     "CHANGELOG.md",
     "README.md",
     "external/README.md",
+    "tests",
 )
 
 # -- Options for HTML output -------------------------------------------------
