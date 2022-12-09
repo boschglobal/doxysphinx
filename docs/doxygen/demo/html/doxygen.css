@@ -1542,6 +1542,11 @@ html {
 .doxygen-content .contents {
   padding-left: 0 !important;
   /* hide strange new doxygen awesome box-border shadow styles (because they look really ugly in sphinx) */
+  /* css hack for inline rst content.
+     as sphinx will automatically create paragraphs (<p>) around all blocks, we'll always get new paragraphs
+     for our inline content in doxygen html. So we add a "marker span block" right before the inline content
+     block and then style the "paragraphiness (/blockrendering)" away here with the next sibling selector (+).
+  */
 }
 .doxygen-content .contents .memitem dl {
   margin: 0 !important;
@@ -1559,6 +1564,9 @@ html {
 .doxygen-content .contents h2.groupheader {
   box-shadow: none;
   border-bottom: 1px solid var(--separator-color);
+}
+.doxygen-content .contents .doxysphinx-inline-parent p {
+  display: inline;
 }
 .doxygen-content h2.memtitle {
   margin-bottom: 0;

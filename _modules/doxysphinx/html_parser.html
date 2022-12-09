@@ -31,9 +31,9 @@
     <link rel="stylesheet" type="text/css" href="../../_static/assets/jsonview.bundle.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/libs/html/datatables.min.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/styles.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/modern.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/layouts.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/styles.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-book-theme-custom.css" />
     
   <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
@@ -110,6 +110,33 @@
    Getting Started
   </a>
  </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../docs/syntax/syntax_guide.html">
+   Syntax Guide
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../docs/syntax/rst_block_syntax.html">
+     Rst Block Syntax
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../docs/syntax/rst_inline_syntax.html">
+     Rst Inline Syntax
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../docs/syntax/comment_styles_syntax.html">
+     Comment Syntax
+    </a>
+   </li>
+  </ul>
+ </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../../docs/alternatives.html">
    Alternatives
@@ -153,8 +180,8 @@
   <a class="reference internal" href="../../docs/doxygen/demo/html/index.html">
    Doxygen Demo
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -168,8 +195,8 @@
     <a class="reference internal" href="../../docs/doxygen/demo/html/annotated_classes.html">
      Classes
     </a>
-    <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-    <label for="toctree-checkbox-2">
+    <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+    <label for="toctree-checkbox-3">
      <i class="fas fa-chevron-down">
      </i>
     </label>
@@ -193,8 +220,8 @@
       <a class="reference internal" href="../../docs/doxygen/demo/html/functions_class_members.html">
        Class Members
       </a>
-      <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-      <label for="toctree-checkbox-3">
+      <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+      <label for="toctree-checkbox-4">
        <i class="fas fa-chevron-down">
        </i>
       </label>
@@ -241,8 +268,8 @@
   <a class="reference internal" href="../../docs/apidoc.html">
    API Reference
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-  <label for="toctree-checkbox-4">
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -255,8 +282,8 @@
       </span>
      </code>
     </a>
-    <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
-    <label for="toctree-checkbox-5">
+    <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+    <label for="toctree-checkbox-6">
      <i class="fas fa-chevron-down">
      </i>
     </label>
@@ -269,8 +296,8 @@
         </span>
        </code>
       </a>
-      <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
-      <label for="toctree-checkbox-6">
+      <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+      <label for="toctree-checkbox-7">
        <i class="fas fa-chevron-down">
        </i>
       </label>
@@ -493,23 +520,27 @@
 <span class="c1">#  - Markus Braun, :em engineering methods AG (contracted by Robert Bosch GmbH)</span>
 <span class="c1"># =====================================================================================</span>
 <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">The html_parser module contains the html parsers that will load the html files.</span>
+<span class="sd">The html_parser module contains the html parser that will load and process the html files.</span>
 
-<span class="sd">To allow several :mod:`writer` implementation to pick up and handle the result of that parsing a html parser</span>
-<span class="sd">must also transform rst snippets into &lt;rst&gt;-nodes.</span>
+<span class="sd">To allow several :mod:`writer` implementations to pick up and handle the result of that parsing a html parser</span>
+<span class="sd">in a neutral way the parser will change all relevant rst/sphinx markup elements to `&lt;snippet&gt;`-elements.</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
+<span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">import</span> <span class="nn">re</span>
 <span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span>
+<span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">lru_cache</span>
 <span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Iterator</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Protocol</span><span class="p">,</span> <span class="n">Union</span>
+<span class="kn">from</span> <span class="nn">textwrap</span> <span class="kn">import</span> <span class="n">dedent</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Protocol</span><span class="p">,</span> <span class="n">Set</span>
 
-<span class="kn">from</span> <span class="nn">lxml</span> <span class="kn">import</span> <span class="n">etree</span>  <span class="c1"># nosec: B410</span>
-<span class="kn">from</span> <span class="nn">lxml.etree</span> <span class="kn">import</span> <span class="n">_ElementTree</span>  <span class="c1"># nosec: B410</span>
+<span class="kn">from</span> <span class="nn">lxml</span> <span class="kn">import</span> <span class="n">html</span> <span class="k">as</span> <span class="n">etree</span>  <span class="c1"># nosec: B410</span>
+<span class="kn">from</span> <span class="nn">lxml.etree</span> <span class="kn">import</span> <span class="n">_Element</span><span class="p">,</span> <span class="n">_ElementTree</span>  <span class="c1"># nosec: B410</span>
 
 
 <div class="viewcode-block" id="HtmlParseResult"><a class="viewcode-back" href="../../docs/auto_api/doxysphinx/html_parser/index.html#doxysphinx.html_parser.HtmlParseResult">[docs]</a><span class="nd">@dataclass</span>
 <span class="k">class</span> <span class="nc">HtmlParseResult</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Capsules a parsed html tree with meta information.&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;Capsules a parsed and processed html tree with meta information.&quot;&quot;&quot;</span>
 
     <span class="n">html_input_file</span><span class="p">:</span> <span class="n">Path</span>
     <span class="sd">&quot;&quot;&quot;The html file that was parsed.</span>
@@ -526,9 +557,8 @@
     <span class="sd">&quot;&quot;&quot;The document title. This is the title that is visible e.g.</span>
 <span class="sd">       in sphinx menu structure.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">contains_rst</span><span class="p">:</span> <span class="nb">bool</span>
-    <span class="sd">&quot;&quot;&quot;Whether the tree contains any rst snippet (this is needed for rst generation</span>
-<span class="sd">       in a writer)</span>
+    <span class="n">used_snippet_formats</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Set</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span>
+    <span class="sd">&quot;&quot;&quot;The list of snippet format that are used inside the html tree if any.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">tree</span><span class="p">:</span> <span class="n">_ElementTree</span>
     <span class="sd">&quot;&quot;&quot;The html/xml element tree.</span>
@@ -549,7 +579,6 @@
 <span class="sd">        :param source_directory: the parsing source directory (this is maybe necessary</span>
 <span class="sd">            in some cases for resolvingrelative paths)</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">pass</span>
 
 <div class="viewcode-block" id="HtmlParser.parse"><a class="viewcode-back" href="../../docs/auto_api/doxysphinx/html_parser/index.html#doxysphinx.html_parser.HtmlParser.parse">[docs]</a>    <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">HtmlParseResult</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;Parse a html file.</span>
@@ -566,8 +595,380 @@
         <span class="k">raise</span> <span class="ne">NotImplementedError</span></div></div>
 
 
+<div class="viewcode-block" id="ElementProcessor"><a class="viewcode-back" href="../../docs/auto_api/doxysphinx/html_parser/index.html#doxysphinx.html_parser.ElementProcessor">[docs]</a><span class="k">class</span> <span class="nc">ElementProcessor</span><span class="p">(</span><span class="n">Protocol</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;An ElementProcessor processes specific html elements, one at a time.</span>
+
+<span class="sd">    Typically this is used to either clean up or transform the elements into a neutralized format.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">elements</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="sd">&quot;&quot;&quot;A list of html element names this processor can process.</span>
+
+<span class="sd">       This is for pre-filtering html elements (an optimization). This processors try_process method</span>
+<span class="sd">       is only called on these elements.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">is_final</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="sd">&quot;&quot;&quot;Whether other processors should be called after this one.</span>
+
+<span class="sd">       With a &quot;final processor&quot; (is_final == True) processing of an element stops (no other processors considered)</span>
+<span class="sd">       once the try_process method returns True.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="nb">format</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;None&quot;</span>
+    <span class="sd">&quot;&quot;&quot;The format this element processor processes... like &#39;rst&#39;, &#39;md&#39; etc.&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="ElementProcessor.try_process"><a class="viewcode-back" href="../../docs/auto_api/doxysphinx/html_parser/index.html#doxysphinx.html_parser.ElementProcessor.try_process">[docs]</a>    <span class="k">def</span> <span class="nf">try_process</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">element</span><span class="p">:</span> <span class="n">_Element</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Try to process an element.</span>
+
+<span class="sd">        :param element: The element to check and process</span>
+<span class="sd">        :return: Whether the &quot;processor did it&#39;s thing&quot;/&quot;processing was applied&quot; (True) or not (False)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="kc">False</span></div></div>
+
+
+<div class="viewcode-block" id="RstInlineProcessor"><a class="viewcode-back" href="../../docs/auto_api/doxysphinx/html_parser/index.html#doxysphinx.html_parser.RstInlineProcessor">[docs]</a><span class="k">class</span> <span class="nc">RstInlineProcessor</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Element Processor for inline rst elements.&quot;&quot;&quot;</span>
+
+    <span class="n">elements</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;code&quot;</span><span class="p">]</span>
+    <span class="nb">format</span> <span class="o">=</span> <span class="s2">&quot;rst&quot;</span>
+    <span class="n">is_final</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="n">rst_role_regex</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span>
+        <span class="sa">r</span><span class="s2">&quot;:(?P&lt;role_name&gt;[A-Za-z0-9-_:]*?):[`&#39;</span><span class="se">\&quot;</span><span class="s2">](?P&lt;role_content&gt;.*?)[`&#39;</span><span class="se">\&quot;</span><span class="s2">]&quot;</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">MULTILINE</span> <span class="o">|</span> <span class="n">re</span><span class="o">.</span><span class="n">DOTALL</span>
+    <span class="p">)</span>
+
+<div class="viewcode-block" id="RstInlineProcessor.try_process"><a class="viewcode-back" href="../../docs/auto_api/doxysphinx/html_parser/index.html#doxysphinx.html_parser.RstInlineProcessor.try_process">[docs]</a>    <span class="k">def</span> <span class="nf">try_process</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">element</span><span class="p">:</span> <span class="n">_Element</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Try to process an rst inline element into a neutralized format.</span>
+
+<span class="sd">        :param element: The html element to process</span>
+<span class="sd">        :return: True if the element was processed else False</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># check for content</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">element</span><span class="o">.</span><span class="n">text</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+
+        <span class="c1"># check if syntax matches sphinx/rst role</span>
+        <span class="n">normalized_content</span> <span class="o">=</span> <span class="n">element</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+        <span class="n">match</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rst_role_regex</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">normalized_content</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">match</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+
+        <span class="n">role</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="s2">&quot;role_name&quot;</span><span class="p">)</span>
+        <span class="n">content</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="s2">&quot;role_content&quot;</span><span class="p">)</span>
+
+        <span class="n">element</span><span class="o">.</span><span class="n">tag</span> <span class="o">=</span> <span class="s2">&quot;snippet&quot;</span>
+        <span class="n">element</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;:</span><span class="si">{</span><span class="n">role</span><span class="si">}</span><span class="s2">:`</span><span class="si">{</span><span class="n">content</span><span class="si">}</span><span class="s2">`&quot;</span>
+
+        <span class="n">_ensure_newline_before_element</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
+        <span class="n">_ensure_newline_after_element</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
+
+        <span class="n">element</span><span class="o">.</span><span class="n">attrib</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;rst:inline&quot;</span>
+
+        <span class="c1"># and here the &quot;secret ingredient&quot; to get inline blocks working:</span>
+        <span class="c1"># If doxygen renders an outer &lt;p&gt;-tag then inside cannot be other block element tags (by html rules),</span>
+        <span class="c1"># and sphinx will wrap all blocks with &lt;p&gt;-tags. The browsers will then close opened p tags if they</span>
+        <span class="c1"># come to a nested block element tag (e.g. a div or another p-tag) which makes our inline css trick</span>
+        <span class="c1"># obsolete. That&#39;s why we change any parent p tag to a div tag here:</span>
+        <span class="n">parent</span> <span class="o">=</span> <span class="n">element</span><span class="o">.</span><span class="n">getparent</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">parent</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="s2">&quot;parent is None which cannot happen!? Critical Error!&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">parent</span><span class="o">.</span><span class="n">tag</span> <span class="o">==</span> <span class="s2">&quot;p&quot;</span><span class="p">:</span>
+            <span class="n">parent</span><span class="o">.</span><span class="n">tag</span> <span class="o">=</span> <span class="s2">&quot;div&quot;</span>
+        <span class="n">parent</span><span class="o">.</span><span class="n">attrib</span><span class="p">[</span><span class="s2">&quot;class&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;doxysphinx-inline-parent&quot;</span>
+
+        <span class="k">return</span> <span class="kc">True</span></div></div>
+
+
+<div class="viewcode-block" id="RstBlockProcessor"><a class="viewcode-back" href="../../docs/auto_api/doxysphinx/html_parser/index.html#doxysphinx.html_parser.RstBlockProcessor">[docs]</a><span class="k">class</span> <span class="nc">RstBlockProcessor</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Element Processor for rst block elements.&quot;&quot;&quot;</span>
+
+    <span class="n">elements</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;code&quot;</span><span class="p">,</span> <span class="s2">&quot;pre&quot;</span><span class="p">]</span>
+    <span class="nb">format</span> <span class="o">=</span> <span class="s2">&quot;rst&quot;</span>
+    <span class="n">is_final</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="n">_marker_regex</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span>
+        <span class="sa">r</span><span class="s2">&quot;^(&quot;</span>  <span class="c1"># begin of the line</span>
+        <span class="sa">r</span><span class="s2">&quot;</span><span class="si">{rst}</span><span class="s2">&quot;</span>  <span class="c1"># doxysphinx marker</span>
+        <span class="sa">r</span><span class="s2">&quot;|\.\. [A-Za-z][A-Za-z0-9]+::.*?&quot;</span>  <span class="c1"># directive autodetection</span>
+        <span class="sa">r</span><span class="s2">&quot;|embed:rst(:leading-(asterisk|slashes))?&quot;</span>  <span class="c1"># breathe compatibility markers</span>
+        <span class="sa">r</span><span class="s2">&quot;)\s*\r?\n&quot;</span><span class="p">,</span>  <span class="c1"># end if the line</span>
+        <span class="n">re</span><span class="o">.</span><span class="n">MULTILINE</span><span class="p">,</span>
+    <span class="p">)</span>
+
+<div class="viewcode-block" id="RstBlockProcessor.try_process"><a class="viewcode-back" href="../../docs/auto_api/doxysphinx/html_parser/index.html#doxysphinx.html_parser.RstBlockProcessor.try_process">[docs]</a>    <span class="k">def</span> <span class="nf">try_process</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">element</span><span class="p">:</span> <span class="n">_Element</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Try to process an rst block element into a neutralized format.</span>
+
+<span class="sd">        :param element: The html element to process</span>
+<span class="sd">        :return: True if the element was processed else False</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="n">_flattened_element_text</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">text</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+
+        <span class="k">if</span> <span class="n">content</span> <span class="o">:=</span> <span class="n">_try_parse_rst_block_content</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+
+            <span class="c1"># add newlines around the element tags to have the beginning and closing tags at the beginning of line each</span>
+            <span class="n">_ensure_newline_before_element</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
+            <span class="n">_ensure_newline_after_element</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
+
+            <span class="c1"># add newlines around the content if necessary to have the content in new lines</span>
+            <span class="n">content</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="n">content</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">_starts_with_newline</span><span class="p">(</span><span class="n">content</span><span class="p">)</span> <span class="k">else</span> <span class="n">content</span>
+            <span class="n">content</span> <span class="o">=</span> <span class="n">content</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">_ends_with_newline</span><span class="p">(</span><span class="n">content</span><span class="p">)</span> <span class="k">else</span> <span class="n">content</span>
+
+            <span class="c1"># process/transform element</span>
+            <span class="n">element</span><span class="o">.</span><span class="n">clear</span><span class="p">(</span><span class="n">keep_tail</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
+            <span class="n">element</span><span class="o">.</span><span class="n">tag</span> <span class="o">=</span> <span class="s2">&quot;snippet&quot;</span>
+            <span class="n">element</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">content</span>
+            <span class="n">element</span><span class="o">.</span><span class="n">attrib</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+            <span class="n">element</span><span class="o">.</span><span class="n">attrib</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;rst:block&quot;</span>
+            <span class="k">return</span> <span class="kc">True</span>
+
+        <span class="k">return</span> <span class="kc">False</span></div></div>
+
+
+<div class="viewcode-block" id="PreToDivProcessor"><a class="viewcode-back" href="../../docs/auto_api/doxysphinx/html_parser/index.html#doxysphinx.html_parser.PreToDivProcessor">[docs]</a><span class="k">class</span> <span class="nc">PreToDivProcessor</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;This Element Processor will change &lt;pre&gt;-tags to &lt;div class=&quot;fragments&quot;&gt; tags.</span>
+
+<span class="sd">    We do this because doxysphinx will linearize html output in the writer to have it in one line in</span>
+<span class="sd">    the raw html directive. However this will destroy the newlines in pre tags. To overcome that</span>
+<span class="sd">    We change the pre output here to a div with inner line divs (which is also supported by doxygen).</span>
+
+<span class="sd">    This should be the last processor applied (when everything else is done).</span>
+<span class="sd">    The reason is that it gets really hard to debug if we change the structure inbetween processors.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">elements</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;pre&quot;</span><span class="p">]</span>
+    <span class="nb">format</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="n">is_final</span> <span class="o">=</span> <span class="kc">True</span>
+
+<div class="viewcode-block" id="PreToDivProcessor.try_process"><a class="viewcode-back" href="../../docs/auto_api/doxysphinx/html_parser/index.html#doxysphinx.html_parser.PreToDivProcessor.try_process">[docs]</a>    <span class="k">def</span> <span class="nf">try_process</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">element</span><span class="p">:</span> <span class="n">_Element</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Transform a pre element into a div element.</span>
+
+<span class="sd">        :param element: The html element to process</span>
+<span class="sd">        :return: True if the element was processed else False</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="n">_flattened_element_text</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">text</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+
+        <span class="n">text</span> <span class="o">=</span> <span class="n">dedent</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+
+        <span class="c1"># remove first empty lines at the start and at the end if any</span>
+        <span class="n">lines</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">lines</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
+            <span class="n">lines</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">lines</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
+            <span class="n">lines</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+
+        <span class="n">element</span><span class="o">.</span><span class="n">clear</span><span class="p">(</span><span class="n">keep_tail</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
+        <span class="n">element</span><span class="o">.</span><span class="n">tag</span> <span class="o">=</span> <span class="s2">&quot;div&quot;</span>
+        <span class="n">element</span><span class="o">.</span><span class="n">attrib</span><span class="p">[</span><span class="s2">&quot;class&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;fragment&quot;</span>
+        <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">:</span>
+            <span class="n">line_div</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">Element</span><span class="p">(</span><span class="s2">&quot;div&quot;</span><span class="p">)</span>
+            <span class="n">line_div</span><span class="o">.</span><span class="n">attrib</span><span class="p">[</span><span class="s2">&quot;class&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;line&quot;</span>
+            <span class="n">line_div</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">line</span>
+            <span class="n">element</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">line_div</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="kc">True</span></div></div>
+
+
+<div class="viewcode-block" id="MarkdownRstBlockProcessor"><a class="viewcode-back" href="../../docs/auto_api/doxysphinx/html_parser/index.html#doxysphinx.html_parser.MarkdownRstBlockProcessor">[docs]</a><span class="k">class</span> <span class="nc">MarkdownRstBlockProcessor</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Element Processor for doxygen markdown block elements.</span>
+
+<span class="sd">    This processor will check if the first line in the markdown block is either a supported marker or</span>
+<span class="sd">    a directive (auto detection feature).</span>
+
+<span class="sd">    Markdown block elements in doxygen are getting rendered different to verbatim content.</span>
+<span class="sd">    Each Markdown block (delimited with 3 backticks) will be something like this in html:</span>
+
+<span class="sd">    .. code-block:: html</span>
+
+<span class="sd">       &lt;div class=&quot;fragment&quot;&gt;</span>
+<span class="sd">         &lt;div class=&quot;line&quot;&gt;{rst}&lt;/div&gt;</span>
+<span class="sd">         &lt;div class=&quot;line&quot;&gt;This is rst content&lt;/div&gt;</span>
+<span class="sd">         &lt;div class=&quot;line&quot;&gt; &lt;/div&gt;</span>
+<span class="sd">         &lt;div class=&quot;line&quot;&gt;anything can be used here...&lt;/div&gt;</span>
+<span class="sd">         &lt;div class=&quot;line&quot;&gt; &lt;/div&gt;</span>
+<span class="sd">         &lt;div class=&quot;line&quot;&gt;like an admonition:&lt;/div&gt;</span>
+<span class="sd">         &lt;div class=&quot;line&quot;&gt; &lt;/div&gt;</span>
+<span class="sd">         &lt;div class=&quot;line&quot;&gt;..admonition::&lt;/div&gt;</span>
+<span class="sd">         &lt;div class=&quot;line&quot;&gt;  &lt;/div&gt;</span>
+<span class="sd">         &lt;div class=&quot;line&quot;&gt;  test&lt;/div&gt;</span>
+<span class="sd">       &lt;/div&gt;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">elements</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;div&quot;</span><span class="p">]</span>
+    <span class="nb">format</span> <span class="o">=</span> <span class="s2">&quot;rst&quot;</span>
+    <span class="n">is_final</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="n">_marker_regex</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span>
+        <span class="sa">r</span><span class="s2">&quot;^(&quot;</span>  <span class="c1"># begin of the line</span>
+        <span class="sa">r</span><span class="s2">&quot;</span><span class="si">{rst}</span><span class="s2">&quot;</span>  <span class="c1"># doxysphinx marker</span>
+        <span class="sa">r</span><span class="s2">&quot;|\.\. [A-Za-z][A-Za-z0-9]+::.*?&quot;</span>  <span class="c1"># directive autodetection</span>
+        <span class="sa">r</span><span class="s2">&quot;|embed:rst(:leading-(asterisk|slashes))?&quot;</span>  <span class="c1"># breathe compatibility markers</span>
+        <span class="sa">r</span><span class="s2">&quot;)$&quot;</span><span class="p">,</span>  <span class="c1"># end if the line</span>
+        <span class="n">re</span><span class="o">.</span><span class="n">MULTILINE</span><span class="p">,</span>
+    <span class="p">)</span>
+
+<div class="viewcode-block" id="MarkdownRstBlockProcessor.try_process"><a class="viewcode-back" href="../../docs/auto_api/doxysphinx/html_parser/index.html#doxysphinx.html_parser.MarkdownRstBlockProcessor.try_process">[docs]</a>    <span class="k">def</span> <span class="nf">try_process</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">element</span><span class="p">:</span> <span class="n">_Element</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Try to process an rst block element into a neutralized format.</span>
+
+<span class="sd">        :param element: The html element to process</span>
+<span class="sd">        :return: True if the element was processed else False</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">element</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;class&quot;</span><span class="p">)</span> <span class="o">!=</span> <span class="s2">&quot;fragment&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+
+        <span class="n">lines</span> <span class="o">=</span> <span class="p">[</span><span class="n">_flattened_element_text</span><span class="p">(</span><span class="n">e</span><span class="p">)</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">element</span> <span class="k">if</span> <span class="n">e</span><span class="o">.</span><span class="n">tag</span> <span class="o">==</span> <span class="s2">&quot;div&quot;</span> <span class="ow">and</span> <span class="n">e</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;class&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;line&quot;</span><span class="p">]</span>
+
+        <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">content</span> <span class="o">:=</span> <span class="n">_try_parse_rst_block_content</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+
+            <span class="c1"># add newlines around the element tags to have the beginning and closing tags at the beginning of line each</span>
+            <span class="n">_ensure_newline_before_element</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
+            <span class="n">_ensure_newline_after_element</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
+
+            <span class="c1"># add newlines around the content if necessary to have the content in new lines</span>
+            <span class="n">content</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="n">content</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">_starts_with_newline</span><span class="p">(</span><span class="n">content</span><span class="p">)</span> <span class="k">else</span> <span class="n">content</span>
+            <span class="n">content</span> <span class="o">=</span> <span class="n">content</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">_ends_with_newline</span><span class="p">(</span><span class="n">content</span><span class="p">)</span> <span class="k">else</span> <span class="n">content</span>
+
+            <span class="c1"># process/transform element</span>
+            <span class="n">element</span><span class="o">.</span><span class="n">clear</span><span class="p">(</span><span class="n">keep_tail</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
+            <span class="n">element</span><span class="o">.</span><span class="n">tag</span> <span class="o">=</span> <span class="s2">&quot;snippet&quot;</span>
+            <span class="n">element</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">content</span>
+            <span class="n">element</span><span class="o">.</span><span class="n">attrib</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+            <span class="n">element</span><span class="o">.</span><span class="n">attrib</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;rst:block&quot;</span>
+            <span class="k">return</span> <span class="kc">True</span>
+
+        <span class="k">return</span> <span class="kc">False</span></div></div>
+
+
+<span class="k">def</span> <span class="nf">_flattened_element_text</span><span class="p">(</span><span class="n">element</span><span class="p">:</span> <span class="n">_Element</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Flatten (removes children but keeps the text and html nodes) an element text.&quot;&quot;&quot;</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">element</span><span class="o">.</span><span class="n">text</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">text</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">element</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>  <span class="c1"># test if element has children</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">element</span><span class="o">.</span><span class="n">itertext</span><span class="p">())</span>  <span class="c1"># type: ignore</span>
+
+    <span class="c1"># old implementation that will render the inner html out (maybe we need this in future?)</span>
+    <span class="c1"># rendered_html_including_children = etree.tostring(element, encoding=&quot;unicode&quot;, with_tail=False).strip()</span>
+    <span class="c1"># tag, tag_end_char, rest = rendered_html_including_children.partition(&quot;&gt;&quot;)</span>
+    <span class="c1"># close_tag = f&quot;&lt;/{element.tag}&gt;&quot;</span>
+    <span class="c1"># text = rest[: -len(close_tag)]</span>
+
+    <span class="k">return</span> <span class="n">text</span>
+
+
+<span class="k">def</span> <span class="nf">_starts_with_newline</span><span class="p">(</span><span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s2">&quot; </span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">_ends_with_newline</span><span class="p">(</span><span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s2">&quot; </span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">_lstrip_str</span><span class="p">(</span><span class="n">to_strip</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">from_text</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="n">ws_stripped</span> <span class="o">=</span> <span class="n">from_text</span><span class="o">.</span><span class="n">lstrip</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">ws_stripped</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">to_strip</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">ws_stripped</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">to_strip</span><span class="p">)</span> <span class="p">:]</span>
+
+    <span class="c1"># shouldn&#39;t happen very often for comments</span>
+    <span class="k">return</span> <span class="n">from_text</span>
+
+
+<span class="k">def</span> <span class="nf">_remove_doxygen_comment_prefixes</span><span class="p">(</span><span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="n">stripped</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">lstrip</span><span class="p">()</span>
+    <span class="c1"># if leading slashes syntax</span>
+    <span class="k">if</span> <span class="n">stripped</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;///&quot;</span><span class="p">):</span>
+        <span class="n">lines</span> <span class="o">=</span> <span class="p">[</span><span class="n">_lstrip_str</span><span class="p">(</span><span class="s2">&quot;///&quot;</span><span class="p">,</span> <span class="n">line</span><span class="p">)</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">text</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)]</span>
+        <span class="k">return</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span>
+    <span class="c1"># if asterisk syntax</span>
+    <span class="k">elif</span> <span class="n">stripped</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;*&quot;</span><span class="p">):</span>
+        <span class="n">lines</span> <span class="o">=</span> <span class="p">[</span><span class="n">_lstrip_str</span><span class="p">(</span><span class="s2">&quot;*&quot;</span><span class="p">,</span> <span class="n">line</span><span class="p">)</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">text</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)]</span>
+        <span class="k">return</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span>
+    <span class="c1"># if doubleslash exclamationmark syntax</span>
+    <span class="k">elif</span> <span class="n">stripped</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;//!&quot;</span><span class="p">):</span>
+        <span class="n">lines</span> <span class="o">=</span> <span class="p">[</span><span class="n">_lstrip_str</span><span class="p">(</span><span class="s2">&quot;//!&quot;</span><span class="p">,</span> <span class="n">line</span><span class="p">)</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">text</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)]</span>
+        <span class="k">return</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">text</span>
+
+
+<span class="k">def</span> <span class="nf">_try_parse_rst_block_content</span><span class="p">(</span><span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">text</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+
+    <span class="n">stripped</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+    <span class="n">first_line</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">all_lines_after</span> <span class="o">=</span> <span class="n">stripped</span><span class="o">.</span><span class="n">partition</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">cleaned_line</span> <span class="o">=</span> <span class="n">_remove_doxygen_comment_prefixes</span><span class="p">(</span><span class="n">first_line</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+
+    <span class="n">relevant_content</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">cleaned_line</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;</span><span class="si">{rst}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;embed:rst&quot;</span><span class="p">,</span> <span class="s2">&quot;embed:rst:leading-slashes&quot;</span><span class="p">,</span> <span class="s2">&quot;embed:rst:leading-asterisk&quot;</span><span class="p">]:</span>
+        <span class="n">relevant_content</span> <span class="o">=</span> <span class="n">all_lines_after</span>
+    <span class="k">elif</span> <span class="n">cleaned_line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;.. &quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="s2">&quot;::&quot;</span> <span class="ow">in</span> <span class="n">cleaned_line</span><span class="p">:</span>
+        <span class="n">relevant_content</span> <span class="o">=</span> <span class="n">text</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+
+    <span class="n">clean_content</span> <span class="o">=</span> <span class="n">_remove_doxygen_comment_prefixes</span><span class="p">(</span><span class="n">relevant_content</span><span class="p">)</span>
+    <span class="n">dedented_content</span> <span class="o">=</span> <span class="n">dedent</span><span class="p">(</span><span class="n">clean_content</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">dedented_content</span>
+
+
+<span class="k">def</span> <span class="nf">_ensure_newline_before_element</span><span class="p">(</span><span class="n">element</span><span class="p">:</span> <span class="n">_Element</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Ensure that there is at least one newline character (\\n) before the given element.</span>
+
+<span class="sd">    We need this later during the write phase (see :mod:`writer`) which is line oriented.</span>
+<span class="sd">    When we have a newline in front of our &lt;snippet&gt; elements we can find them more easily/efficiently.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">previous_tag</span> <span class="o">=</span> <span class="n">element</span><span class="o">.</span><span class="n">getprevious</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">previous_tag</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">previous_tag</span><span class="o">.</span><span class="n">tail</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">_ends_with_newline</span><span class="p">(</span><span class="n">previous_tag</span><span class="o">.</span><span class="n">tail</span><span class="p">):</span>
+                <span class="n">previous_tag</span><span class="o">.</span><span class="n">tail</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">previous_tag</span><span class="o">.</span><span class="n">tail</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">previous_tag</span><span class="o">.</span><span class="n">tail</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">parent_tag</span> <span class="o">=</span> <span class="n">element</span><span class="o">.</span><span class="n">getparent</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">parent_tag</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="k">if</span> <span class="n">parent_tag</span><span class="o">.</span><span class="n">text</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">_ends_with_newline</span><span class="p">(</span><span class="n">parent_tag</span><span class="o">.</span><span class="n">text</span><span class="p">):</span>
+                <span class="n">parent_tag</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">parent_tag</span><span class="o">.</span><span class="n">text</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">parent_tag</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
+
+
+<span class="k">def</span> <span class="nf">_ensure_newline_after_element</span><span class="p">(</span><span class="n">element</span><span class="p">:</span> <span class="n">_Element</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Ensure that there is at least one newline character (\\n) after the given element.</span>
+
+<span class="sd">    We need this later during the write phase (see :mod:`writer`) which is line oriented.</span>
+<span class="sd">    When we have a newline after of our &lt;snippet&gt; elements we can find them more easily/efficiently.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">element</span><span class="o">.</span><span class="n">tail</span><span class="p">:</span>
+        <span class="n">element</span><span class="o">.</span><span class="n">tail</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
+        <span class="k">return</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">_starts_with_newline</span><span class="p">(</span><span class="n">element</span><span class="o">.</span><span class="n">tail</span><span class="p">):</span>
+        <span class="n">element</span><span class="o">.</span><span class="n">tail</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="si">{</span><span class="n">element</span><span class="o">.</span><span class="n">tail</span><span class="si">}</span><span class="s2">&quot;</span>
+
+
 <div class="viewcode-block" id="DoxygenHtmlParser"><a class="viewcode-back" href="../../docs/auto_api/doxysphinx/html_parser/index.html#doxysphinx.html_parser.DoxygenHtmlParser">[docs]</a><span class="k">class</span> <span class="nc">DoxygenHtmlParser</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Parser for Doxygen HTML output files.&quot;&quot;&quot;</span>
+
+    <span class="n">_logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+    <span class="n">_processors</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">ElementProcessor</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">RstInlineProcessor</span><span class="p">(),</span>
+        <span class="n">RstBlockProcessor</span><span class="p">(),</span>
+        <span class="n">MarkdownRstBlockProcessor</span><span class="p">(),</span>
+        <span class="n">PreToDivProcessor</span><span class="p">(),</span>
+    <span class="p">]</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source_directory</span><span class="p">:</span> <span class="n">Path</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -576,97 +977,90 @@
 <span class="sd">        :param source_directory:  the directory where the html files are located.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_source_directory</span> <span class="o">=</span> <span class="n">source_directory</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_parser</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">HTMLParser</span><span class="p">()</span>
+        <span class="c1"># self._parser = etree.HTMLParser(huge_tree=True, recover=False)</span>
 
 <div class="viewcode-block" id="DoxygenHtmlParser.parse"><a class="viewcode-back" href="../../docs/auto_api/doxysphinx/html_parser/index.html#doxysphinx.html_parser.DoxygenHtmlParser.parse">[docs]</a>    <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">HtmlParseResult</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Parse a doxygen HTML file into an ElementTree and normalizes its inner data to contain &lt;rst&gt;-tags.</span>
+        <span class="sd">&quot;&quot;&quot;Parse a doxygen HTML file into an ElementTree and normalize its inner data to contain &lt;rst&gt;-tags.</span>
 
 <span class="sd">        :param file: The html file to parse</span>
 <span class="sd">        :type file: Path</span>
 <span class="sd">        :return: The result of the parsing</span>
 <span class="sd">        :rtype: ParseResult</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">tree</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">file</span><span class="o">.</span><span class="n">as_posix</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parser</span><span class="p">)</span>  <span class="c1"># type: ignore # nosec B320</span>
+        <span class="n">tree</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">file</span><span class="o">.</span><span class="n">as_posix</span><span class="p">())</span>  <span class="c1"># type: ignore # nosec B320</span>
 
         <span class="n">meta_title</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;//title&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>  <span class="c1"># type: ignore</span>
         <span class="n">first</span><span class="p">,</span> <span class="o">*</span><span class="n">_</span><span class="p">,</span> <span class="n">last</span> <span class="o">=</span> <span class="n">meta_title</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;:&quot;</span><span class="p">)</span>
         <span class="n">project</span> <span class="o">=</span> <span class="n">first</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
         <span class="n">title</span> <span class="o">=</span> <span class="n">last</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
 
-        <span class="n">rst_found</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_normalize_tree</span><span class="p">(</span><span class="n">tree</span><span class="p">)</span>
+        <span class="n">used_snippet_formats</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_normalize_tree_and_get_used_formats</span><span class="p">(</span><span class="n">tree</span><span class="p">)</span>
 
-        <span class="k">return</span> <span class="n">HtmlParseResult</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">project</span><span class="p">,</span> <span class="n">meta_title</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">rst_found</span><span class="p">,</span> <span class="n">tree</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="n">HtmlParseResult</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">project</span><span class="p">,</span> <span class="n">meta_title</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">used_snippet_formats</span><span class="p">,</span> <span class="n">tree</span><span class="p">)</span></div>
 
-    <span class="k">def</span> <span class="nf">_normalize_tree</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tree</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Normalize a doxygen html tree.</span>
+    <span class="k">def</span> <span class="nf">_should_parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="c1"># if no supported element (identified by closing tag) is in the file...</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">any</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&lt;/</span><span class="si">{</span><span class="n">element</span><span class="si">}</span><span class="s2">&gt;&quot;</span> <span class="ow">in</span> <span class="n">source</span> <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_all_supported_elements</span><span class="p">()):</span>
+            <span class="c1"># fast exit</span>
+            <span class="k">return</span> <span class="kc">False</span>
 
-<span class="sd">        Searches for pre and verbatim tags, re-formats them and creates &lt;rst&gt;-tags out of it. Will also put a newline</span>
-<span class="sd">        behind the closing tag because it&#39;s necessary to have lines that can be clearly assigned to either html-content</span>
-<span class="sd">        or rst content (and in the un-normalized source html we&#39;ve got them mixed at the closing tag).</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">rst_found</span> <span class="o">=</span> <span class="kc">False</span>
-        <span class="k">for</span> <span class="n">pre_tag</span> <span class="ow">in</span> <span class="n">tree</span><span class="o">.</span><span class="n">iter</span><span class="p">(</span><span class="s2">&quot;pre&quot;</span><span class="p">,</span> <span class="s2">&quot;verbatim&quot;</span><span class="p">):</span>
-            <span class="k">if</span> <span class="n">content</span> <span class="o">:=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parse_content</span><span class="p">(</span><span class="n">pre_tag</span><span class="o">.</span><span class="n">text</span><span class="p">):</span>
-                <span class="n">pre_tag</span><span class="o">.</span><span class="n">tag</span> <span class="o">=</span> <span class="s2">&quot;rst&quot;</span>
-                <span class="n">pre_tag</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">content</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
+        <span class="c1"># get content of each element and</span>
 
-                <span class="c1"># add newline after the &lt;rst&gt; tag (so that we can split it up later)</span>
-                <span class="n">pre_tag</span><span class="o">.</span><span class="n">tail</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">pre_tag</span><span class="o">.</span><span class="n">tail</span> <span class="k">else</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="si">{</span><span class="n">pre_tag</span><span class="o">.</span><span class="n">tail</span><span class="si">}</span><span class="s2">&quot;</span>
-
-                <span class="c1"># add newline before the &lt;rst&gt; tag (so that we can split it up later)</span>
-                <span class="n">previous_tag</span> <span class="o">=</span> <span class="n">pre_tag</span><span class="o">.</span><span class="n">getprevious</span><span class="p">()</span>
-                <span class="k">if</span> <span class="n">previous_tag</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-                    <span class="k">if</span> <span class="n">previous_tag</span><span class="o">.</span><span class="n">tail</span><span class="p">:</span>
-                        <span class="k">if</span> <span class="ow">not</span> <span class="n">previous_tag</span><span class="o">.</span><span class="n">tail</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">):</span>
-                            <span class="n">previous_tag</span><span class="o">.</span><span class="n">tail</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">previous_tag</span><span class="o">.</span><span class="n">tail</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
-                    <span class="k">else</span><span class="p">:</span>
-                        <span class="n">previous_tag</span><span class="o">.</span><span class="n">tail</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
-                <span class="k">else</span><span class="p">:</span>
-                    <span class="n">parent_tag</span> <span class="o">=</span> <span class="n">pre_tag</span><span class="o">.</span><span class="n">getparent</span><span class="p">()</span>
-                    <span class="k">if</span> <span class="n">parent_tag</span><span class="o">.</span><span class="n">text</span><span class="p">:</span>
-                        <span class="k">if</span> <span class="ow">not</span> <span class="n">parent_tag</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">):</span>
-                            <span class="n">parent_tag</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">parent_tag</span><span class="o">.</span><span class="n">text</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
-                    <span class="k">else</span><span class="p">:</span>
-                        <span class="n">parent_tag</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
-
-                <span class="n">pre_tag</span><span class="o">.</span><span class="n">attrib</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
-                <span class="n">rst_found</span> <span class="o">=</span> <span class="kc">True</span>
-        <span class="k">return</span> <span class="n">rst_found</span>
-
-    <span class="k">def</span> <span class="nf">_parse_content</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="kc">None</span><span class="p">]:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Parse the content of @rst directives (=pre/verbatim html nodes) in doxygen comments into a line list.</span>
-
-<span class="sd">        If the text contains not the right markers e.g. when using a standard verbatim</span>
-<span class="sd">        block and no rst block in doxygen comments this method returns None.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">normalized_text</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
-
-        <span class="n">marker_checks</span> <span class="o">=</span> <span class="p">((</span><span class="n">x</span><span class="p">,</span> <span class="n">normalized_text</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_supported_markers</span><span class="p">())</span>
-
-        <span class="k">for</span> <span class="n">marker</span><span class="p">,</span> <span class="n">found</span> <span class="ow">in</span> <span class="n">marker_checks</span><span class="p">:</span>
-            <span class="k">if</span> <span class="ow">not</span> <span class="n">found</span><span class="p">:</span>
-                <span class="k">continue</span>
-
-            <span class="n">content</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="n">normalized_text</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">marker</span><span class="p">)</span> <span class="p">:]</span>
-            <span class="c1"># remove doxygen comments</span>
-            <span class="n">content</span> <span class="o">=</span> <span class="n">content</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">*&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> *&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-            <span class="n">content</span> <span class="o">=</span> <span class="n">content</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">///&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">//!&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-
-            <span class="n">content_lines</span> <span class="o">=</span> <span class="n">content</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">:]</span>
-
-            <span class="k">return</span> <span class="n">content_lines</span>
-
-        <span class="k">return</span> <span class="kc">None</span>
+        <span class="k">return</span> <span class="kc">True</span>
 
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">_supported_markers</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Iterator</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
-        <span class="k">yield</span> <span class="s2">&quot;embed:rst:leading-asterisk&quot;</span>
-        <span class="k">yield</span> <span class="s2">&quot;embed:rst:leading-slashes&quot;</span>
-        <span class="k">yield</span> <span class="s2">&quot;embed:rst:inline&quot;</span>
-        <span class="k">yield</span> <span class="s2">&quot;embed:rst&quot;</span></div>
+    <span class="nd">@lru_cache</span><span class="p">(</span><span class="n">maxsize</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">_all_supported_elements</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Set</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+        <span class="k">return</span> <span class="p">{</span><span class="n">e</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">DoxygenHtmlParser</span><span class="o">.</span><span class="n">_processors</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">p</span><span class="o">.</span><span class="n">elements</span><span class="p">}</span>
+
+    <span class="k">def</span> <span class="nf">_normalize_tree_and_get_used_formats</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tree</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Set</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;Normalize a doxygen html tree.</span>
+
+<span class="sd">        Searches for pre and code tags, re-formats them and creates different &lt;snippet-*&gt;-tags out of it.</span>
+<span class="sd">        Will also put a newline behind the closing tag because it&#39;s necessary to have lines that can be clearly</span>
+<span class="sd">        assigned to either html-content or snippet content (and in the un-normalized source html we&#39;ve got them mixed</span>
+<span class="sd">        at the closing tag).</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">used_snipped_formats</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+
+        <span class="c1"># prefetch element candidates.</span>
+        <span class="c1"># We do that because if there are bugs in a processor which will change the tree one might get strange</span>
+        <span class="c1"># behaviors here (processors not applied because the elements where changed during iteration).</span>
+        <span class="c1"># So this is just a means to make debugging easier...</span>
+        <span class="n">element_candidates</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">iter</span><span class="p">(</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">_all_supported_elements</span><span class="p">()))</span>
+
+        <span class="c1"># search for all supported elements in element tree</span>
+        <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">element_candidates</span><span class="p">:</span>
+
+            <span class="c1"># try to apply each processor...</span>
+            <span class="k">for</span> <span class="n">processor</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_processors</span><span class="p">:</span>
+
+                <span class="c1"># if the current element isn&#39;t supported by the current processor skip to the next one</span>
+                <span class="k">if</span> <span class="n">element</span><span class="o">.</span><span class="n">tag</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">processor</span><span class="o">.</span><span class="n">elements</span><span class="p">:</span>
+                    <span class="k">continue</span>
+
+                <span class="c1"># try to process the element</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_try_process</span><span class="p">(</span><span class="n">element</span><span class="p">,</span> <span class="n">processor</span><span class="p">):</span>
+                    <span class="k">continue</span>
+
+                <span class="c1"># if it was processed add the used format to the output...</span>
+                <span class="k">if</span> <span class="n">processor</span><span class="o">.</span><span class="n">format</span><span class="p">:</span>
+                    <span class="n">used_snipped_formats</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">processor</span><span class="o">.</span><span class="n">format</span><span class="p">)</span>
+
+                <span class="c1"># if the processor is final (no further processors considered) -&gt; break the loop</span>
+                <span class="k">if</span> <span class="n">processor</span><span class="o">.</span><span class="n">is_final</span><span class="p">:</span>
+                    <span class="k">break</span>
+
+        <span class="k">return</span> <span class="n">used_snipped_formats</span>
+
+    <span class="k">def</span> <span class="nf">_try_process</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">element</span><span class="p">:</span> <span class="n">_Element</span><span class="p">,</span> <span class="n">processor</span><span class="p">:</span> <span class="n">ElementProcessor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="c1"># fail if element isn&#39;t supported by processor</span>
+        <span class="k">if</span> <span class="n">element</span><span class="o">.</span><span class="n">tag</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">processor</span><span class="o">.</span><span class="n">elements</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+
+        <span class="c1"># fail if processing returns</span>
+        <span class="n">processed</span> <span class="o">=</span> <span class="n">processor</span><span class="o">.</span><span class="n">try_process</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">processed</span></div>
 </pre></div>
 
               </div>
@@ -681,7 +1075,7 @@
     <footer class="footer">
   <p>
     
-      Last updated on &#39;Fri Nov 18 08:46:46 2022&#39;, &#39;758cdd4&#39;.<br/>
+      Last updated on &#39;Fri Dec 9 08:57:07 2022&#39;, &#39;9fd7c71&#39;.<br/>
   </p>
 </footer>
 </main>

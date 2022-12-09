@@ -1,0 +1,12 @@
+:orphan:
+
+.. title:: Demo: demo/demo/src/inline_rst.hpp Source File
+
+demo/demo/src/inline\_rst.hpp Source File
+=========================================
+
+.. container:: doxygen-content
+
+   
+   .. raw:: html
+     :file: inline__rst_8hpp_source.html

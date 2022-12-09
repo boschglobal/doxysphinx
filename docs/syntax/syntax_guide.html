@@ -5,54 +5,56 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CI/CD Process &#8212; Doxysphinx</title>
+    <title>Syntax Guide &#8212; Doxysphinx</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet">
-  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <link href="../../_static/css/theme.css" rel="stylesheet">
+  <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
-    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
   <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
   <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
     
       
 
     
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=84ace793992934648b4de8eed757e5a2" />
-    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/assets/jsonview.bundle.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/libs/html/datatables.min.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/modern.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/layouts.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/styles.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme-custom.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-book-theme.css?digest=84ace793992934648b4de8eed757e5a2" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/assets/jsonview.bundle.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/libs/html/datatables.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/styles.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/modern.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/layouts.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-book-theme-custom.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/design-tabs.js"></script>
-    <script src="../_static/sphinx-book-theme.9d8b4a8b9bb19db25eeaddc40d639ba2.js"></script>
-    <script src="../_static/assets/jsonview.bundle.js"></script>
-    <script src="../_static/assets/jsonview_loader.js"></script>
-    <script src="../_static/sphinx-needs/libs/html/datatables.min.js"></script>
-    <script src="../_static/sphinx-needs/libs/html/datatables_loader.js"></script>
-    <script src="../_static/sphinx-needs/libs/html/sphinx_needs_collapse.js"></script>
-    <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script src="../../_static/sphinx-book-theme.9d8b4a8b9bb19db25eeaddc40d639ba2.js"></script>
+    <script src="../../_static/assets/jsonview.bundle.js"></script>
+    <script src="../../_static/assets/jsonview_loader.js"></script>
+    <script src="../../_static/sphinx-needs/libs/html/datatables.min.js"></script>
+    <script src="../../_static/sphinx-needs/libs/html/datatables_loader.js"></script>
+    <script src="../../_static/sphinx-needs/libs/html/sphinx_needs_collapse.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Rst Block Syntax" href="rst_block_syntax.html" />
+    <link rel="prev" title="Getting Started" href="../getting_started.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -77,24 +79,24 @@
 <div class="col-12 col-md-3 bd-sidebar site-navigation " id="site-navigation">
     
         <div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../index.html">
+    <a class="navbar-brand text-wrap" href="../../index.html">
       
         <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
         
       
       
-      <img src="../_static/doxysphinx_logo.svg" class="logo" alt="logo">
+      <img src="../../_static/doxysphinx_logo.svg" class="logo" alt="logo">
       
       
     </a>
-</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../index.html">
+  <a class="reference internal" href="../../index.html">
    Overview
   </a>
  </li>
@@ -104,19 +106,46 @@
   Usage
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="getting_started.html">
+  <a class="reference internal" href="../getting_started.html">
    Getting Started
   </a>
  </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="current reference internal" href="#">
+   Syntax Guide
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="rst_block_syntax.html">
+     Rst Block Syntax
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="rst_inline_syntax.html">
+     Rst Inline Syntax
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="comment_styles_syntax.html">
+     Comment Syntax
+    </a>
+   </li>
+  </ul>
+ </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="alternatives.html">
+  <a class="reference internal" href="../alternatives.html">
    Alternatives
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="faq.html">
+  <a class="reference internal" href="../faq.html">
    FAQ
   </a>
  </li>
@@ -128,17 +157,17 @@
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="linking_to_doxygen.html">
+  <a class="reference internal" href="../linking_to_doxygen.html">
    Linking to Doxygen
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="using_rst_in_doxygen.html">
+  <a class="reference internal" href="../using_rst_in_doxygen.html">
    Commenting in doxygen
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="linking_needs.html">
+  <a class="reference internal" href="../linking_needs.html">
    Linking with Sphinx Needs
   </a>
  </li>
@@ -150,62 +179,62 @@
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="doxygen/demo/html/index.html">
+  <a class="reference internal" href="../doxygen/demo/html/index.html">
    Doxygen Demo
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="doxygen/demo/html/namespaces.html">
+    <a class="reference internal" href="../doxygen/demo/html/namespaces.html">
      Namespaces
     </a>
    </li>
    <li class="toctree-l2 has-children">
-    <a class="reference internal" href="doxygen/demo/html/annotated_classes.html">
+    <a class="reference internal" href="../doxygen/demo/html/annotated_classes.html">
      Classes
     </a>
-    <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-    <label for="toctree-checkbox-2">
+    <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+    <label for="toctree-checkbox-3">
      <i class="fas fa-chevron-down">
      </i>
     </label>
     <ul>
      <li class="toctree-l3">
-      <a class="reference internal" href="doxygen/demo/html/annotated.html">
+      <a class="reference internal" href="../doxygen/demo/html/annotated.html">
        Class List
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="doxygen/demo/html/classes.html">
+      <a class="reference internal" href="../doxygen/demo/html/classes.html">
        Class Index
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="doxygen/demo/html/inherits.html">
+      <a class="reference internal" href="../doxygen/demo/html/inherits.html">
        Class Hierarchy
       </a>
      </li>
      <li class="toctree-l3 has-children">
-      <a class="reference internal" href="doxygen/demo/html/functions_class_members.html">
+      <a class="reference internal" href="../doxygen/demo/html/functions_class_members.html">
        Class Members
       </a>
-      <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-      <label for="toctree-checkbox-3">
+      <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+      <label for="toctree-checkbox-4">
        <i class="fas fa-chevron-down">
        </i>
       </label>
       <ul>
        <li class="toctree-l4">
-        <a class="reference internal" href="doxygen/demo/html/functions.html">
+        <a class="reference internal" href="../doxygen/demo/html/functions.html">
          All
         </a>
        </li>
        <li class="toctree-l4">
-        <a class="reference internal" href="doxygen/demo/html/functions_func.html">
+        <a class="reference internal" href="../doxygen/demo/html/functions_func.html">
          Functions
         </a>
        </li>
@@ -214,7 +243,7 @@
     </ul>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="doxygen/demo/html/files.html">
+    <a class="reference internal" href="../doxygen/demo/html/files.html">
      Files
     </a>
    </li>
@@ -228,55 +257,55 @@
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="dev_guide.html">
+  <a class="reference internal" href="../dev_guide.html">
    Developer Quickstart
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="inner_workings.html">
+  <a class="reference internal" href="../inner_workings.html">
    Inner workings
   </a>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="apidoc.html">
+  <a class="reference internal" href="../apidoc.html">
    API Reference
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-  <label for="toctree-checkbox-4">
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul>
    <li class="toctree-l2 has-children">
-    <a class="reference internal" href="auto_api/doxysphinx/index.html">
+    <a class="reference internal" href="../auto_api/doxysphinx/index.html">
      <code class="xref py py-mod docutils literal notranslate">
       <span class="pre">
        doxysphinx
       </span>
      </code>
     </a>
-    <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
-    <label for="toctree-checkbox-5">
+    <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+    <label for="toctree-checkbox-6">
      <i class="fas fa-chevron-down">
      </i>
     </label>
     <ul>
      <li class="toctree-l3 has-children">
-      <a class="reference internal" href="auto_api/doxysphinx/utils/index.html">
+      <a class="reference internal" href="../auto_api/doxysphinx/utils/index.html">
        <code class="xref py py-mod docutils literal notranslate">
         <span class="pre">
          doxysphinx.utils
         </span>
        </code>
       </a>
-      <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
-      <label for="toctree-checkbox-6">
+      <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+      <label for="toctree-checkbox-7">
        <i class="fas fa-chevron-down">
        </i>
       </label>
       <ul>
        <li class="toctree-l4">
-        <a class="reference internal" href="auto_api/doxysphinx/utils/contexts/index.html">
+        <a class="reference internal" href="../auto_api/doxysphinx/utils/contexts/index.html">
          <code class="xref py py-mod docutils literal notranslate">
           <span class="pre">
            doxysphinx.utils.contexts
@@ -285,7 +314,7 @@
         </a>
        </li>
        <li class="toctree-l4">
-        <a class="reference internal" href="auto_api/doxysphinx/utils/exceptions/index.html">
+        <a class="reference internal" href="../auto_api/doxysphinx/utils/exceptions/index.html">
          <code class="xref py py-mod docutils literal notranslate">
           <span class="pre">
            doxysphinx.utils.exceptions
@@ -294,7 +323,7 @@
         </a>
        </li>
        <li class="toctree-l4">
-        <a class="reference internal" href="auto_api/doxysphinx/utils/files/index.html">
+        <a class="reference internal" href="../auto_api/doxysphinx/utils/files/index.html">
          <code class="xref py py-mod docutils literal notranslate">
           <span class="pre">
            doxysphinx.utils.files
@@ -303,7 +332,7 @@
         </a>
        </li>
        <li class="toctree-l4">
-        <a class="reference internal" href="auto_api/doxysphinx/utils/iterators/index.html">
+        <a class="reference internal" href="../auto_api/doxysphinx/utils/iterators/index.html">
          <code class="xref py py-mod docutils literal notranslate">
           <span class="pre">
            doxysphinx.utils.iterators
@@ -312,7 +341,7 @@
         </a>
        </li>
        <li class="toctree-l4">
-        <a class="reference internal" href="auto_api/doxysphinx/utils/pathlib_fix/index.html">
+        <a class="reference internal" href="../auto_api/doxysphinx/utils/pathlib_fix/index.html">
          <code class="xref py py-mod docutils literal notranslate">
           <span class="pre">
            doxysphinx.utils.pathlib_fix
@@ -323,7 +352,7 @@
       </ul>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="auto_api/doxysphinx/cli/index.html">
+      <a class="reference internal" href="../auto_api/doxysphinx/cli/index.html">
        <code class="xref py py-mod docutils literal notranslate">
         <span class="pre">
          doxysphinx.cli
@@ -332,7 +361,7 @@
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="auto_api/doxysphinx/doxygen/index.html">
+      <a class="reference internal" href="../auto_api/doxysphinx/doxygen/index.html">
        <code class="xref py py-mod docutils literal notranslate">
         <span class="pre">
          doxysphinx.doxygen
@@ -341,7 +370,7 @@
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="auto_api/doxysphinx/html_parser/index.html">
+      <a class="reference internal" href="../auto_api/doxysphinx/html_parser/index.html">
        <code class="xref py py-mod docutils literal notranslate">
         <span class="pre">
          doxysphinx.html_parser
@@ -350,7 +379,7 @@
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="auto_api/doxysphinx/process/index.html">
+      <a class="reference internal" href="../auto_api/doxysphinx/process/index.html">
        <code class="xref py py-mod docutils literal notranslate">
         <span class="pre">
          doxysphinx.process
@@ -359,7 +388,7 @@
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="auto_api/doxysphinx/resources/index.html">
+      <a class="reference internal" href="../auto_api/doxysphinx/resources/index.html">
        <code class="xref py py-mod docutils literal notranslate">
         <span class="pre">
          doxysphinx.resources
@@ -368,7 +397,7 @@
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="auto_api/doxysphinx/sphinx/index.html">
+      <a class="reference internal" href="../auto_api/doxysphinx/sphinx/index.html">
        <code class="xref py py-mod docutils literal notranslate">
         <span class="pre">
          doxysphinx.sphinx
@@ -377,7 +406,7 @@
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="auto_api/doxysphinx/toc/index.html">
+      <a class="reference internal" href="../auto_api/doxysphinx/toc/index.html">
        <code class="xref py py-mod docutils literal notranslate">
         <span class="pre">
          doxysphinx.toc
@@ -386,7 +415,7 @@
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="auto_api/doxysphinx/writer/index.html">
+      <a class="reference internal" href="../auto_api/doxysphinx/writer/index.html">
        <code class="xref py py-mod docutils literal notranslate">
         <span class="pre">
          doxysphinx.writer
@@ -399,7 +428,7 @@
   </ul>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../CONTRIBUTE.html">
+  <a class="reference internal" href="../../CONTRIBUTE.html">
    How to Contribute
   </a>
  </li>
@@ -444,7 +473,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/docs/release_process.md.txt"><button type="button"
+        <a class="dropdown-buttons" href="../../_sources/docs/syntax/syntax_guide.md.txt"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -464,7 +493,7 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         
-        <a class="edit-button" href="https://github.com/boschglobal/doxysphinx/edit/main/docs/release_process.md"><button
+        <a class="edit-button" href="https://github.com/boschglobal/doxysphinx/edit/main/docs/syntax/syntax_guide.md"><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
     </div>
@@ -491,7 +520,7 @@
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>CI/CD Process</h1>
+                <h1>Syntax Guide</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -502,21 +531,31 @@
             
               <div>
                 
-  <!--
-=====================================================================================
- C O P Y R I G H T
--------------------------------------------------------------------------------------
- Copyright (c) 2022 by Robert Bosch GmbH. All rights reserved.
-
- Author(s):
- - Markus Braun, :em engineering methods AG (contracted by Robert Bosch GmbH)
-=====================================================================================
--->
-<div class="section" id="ci-cd-process">
-<h1>CI/CD Process<a class="headerlink" href="#ci-cd-process" title="Permalink to this headline">¶</a></h1>
-<p>The CI/CD pipeline (github actions) tests the python code, creates a changelog, builds a package and publishes
-the docs (to github pages).</p>
-<p>TODO: Document process here</p>
+  <div class="section" id="syntax-guide">
+<h1>Syntax Guide<a class="headerlink" href="#syntax-guide" title="Permalink to this headline">¶</a></h1>
+<p>Here you can see how you have to write your comments in doxygen for doxysphinx to pick them up.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="rst_block_syntax.html">Rst Block Syntax</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="rst_block_syntax.html#tldr-recommended-syntax">TLDR; Recommended Syntax</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rst_block_syntax.html#markers">Markers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rst_block_syntax.html#supported-rst-block-delimiters-in-doxygen-comments">Supported rst block delimiters in doxygen comments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rst_block_syntax.html#more-examples">More examples</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="rst_inline_syntax.html">Rst Inline Syntax</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="rst_inline_syntax.html#tldr-recommended-syntax">TLDR; Recommended Syntax</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rst_inline_syntax.html#technical-details">Technical Details</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rst_inline_syntax.html#supported-rst-inline-delimiters-in-doxygen-comments">Supported rst inline delimiters in doxygen comments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rst_inline_syntax.html#more-examples">More examples</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="comment_styles_syntax.html">Comment Syntax</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="comment_styles_syntax.html#supported-doxygen-comment-styles">Supported Doxygen Comment Styles</a></li>
+</ul>
+</li>
+</ul>
+</div>
 </div>
 
 
@@ -524,7 +563,21 @@ the docs (to github pages).</p>
               
             
                 <!-- Previous / next buttons -->
-<div class='prev-next-area'>
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="../getting_started.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Getting Started</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="rst_block_syntax.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Rst Block Syntax</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
             
         </div>
@@ -532,7 +585,7 @@ the docs (to github pages).</p>
     <footer class="footer">
   <p>
     
-      Last updated on &#39;Fri Nov 18 08:46:46 2022&#39;, &#39;758cdd4&#39;.<br/>
+      Last updated on &#39;Fri Dec 9 08:57:07 2022&#39;, &#39;9fd7c71&#39;.<br/>
   </p>
 </footer>
 </main>
@@ -541,7 +594,7 @@ the docs (to github pages).</p>
       </div>
     </div>
   
-  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <script src="../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
   </body>
 </html>

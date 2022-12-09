@@ -248,7 +248,7 @@ in the Signed-off-by tag.
 If your contribution is covered by this project's DCO's clause "(c) The
 contribution was provided directly to me by some other person who
 certified (a), (b) or (c) and I have not modified it", please add the
-appropriate copyright holder(s) to the [NOTICE.md](NOTICE.md) file as part of your
+appropriate copyright holder(s) to the [NOTICE.md](https://github.com/boschglobal/doxysphinx/blob/main/NOTICE.md) file as part of your
 contribution.
 
 [SubmittingPatches]:

@@ -17,6 +17,7 @@
 :caption: Usage
 
 docs/getting_started.md
+docs/syntax/syntax_guide.md
 docs/alternatives.md
 docs/faq.md
 ```

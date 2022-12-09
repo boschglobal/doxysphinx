@@ -31,9 +31,9 @@
     <link rel="stylesheet" type="text/css" href="../../../../_static/assets/jsonview.bundle.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/libs/html/datatables.min.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/styles.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/modern.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/layouts.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/styles.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-book-theme-custom.css" />
     
   <link rel="preload" as="script" href="../../../../_static/js/index.be7d3bbb2ef33a8344ce.js">
@@ -112,6 +112,33 @@
    Getting Started
   </a>
  </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../syntax/syntax_guide.html">
+   Syntax Guide
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../syntax/rst_block_syntax.html">
+     Rst Block Syntax
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../syntax/rst_inline_syntax.html">
+     Rst Inline Syntax
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../syntax/comment_styles_syntax.html">
+     Comment Syntax
+    </a>
+   </li>
+  </ul>
+ </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../../../alternatives.html">
    Alternatives
@@ -155,8 +182,8 @@
   <a class="reference internal" href="../../../doxygen/demo/html/index.html">
    Doxygen Demo
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -170,8 +197,8 @@
     <a class="reference internal" href="../../../doxygen/demo/html/annotated_classes.html">
      Classes
     </a>
-    <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-    <label for="toctree-checkbox-2">
+    <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+    <label for="toctree-checkbox-3">
      <i class="fas fa-chevron-down">
      </i>
     </label>
@@ -195,8 +222,8 @@
       <a class="reference internal" href="../../../doxygen/demo/html/functions_class_members.html">
        Class Members
       </a>
-      <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-      <label for="toctree-checkbox-3">
+      <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+      <label for="toctree-checkbox-4">
        <i class="fas fa-chevron-down">
        </i>
       </label>
@@ -243,8 +270,8 @@
   <a class="reference internal" href="../../../apidoc.html">
    API Reference
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-  <label for="toctree-checkbox-4">
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -257,8 +284,8 @@
       </span>
      </code>
     </a>
-    <input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
-    <label for="toctree-checkbox-5">
+    <input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+    <label for="toctree-checkbox-6">
      <i class="fas fa-chevron-down">
      </i>
     </label>
@@ -271,8 +298,8 @@
         </span>
        </code>
       </a>
-      <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
-      <label for="toctree-checkbox-6">
+      <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+      <label for="toctree-checkbox-7">
        <i class="fas fa-chevron-down">
        </i>
       </label>
@@ -527,8 +554,8 @@
         </a>
        </li>
        <li class="toc-h5 nav-item toc-entry">
-        <a class="reference internal nav-link" href="#doxysphinx.html_parser.HtmlParseResult.contains_rst">
-         contains_rst
+        <a class="reference internal nav-link" href="#doxysphinx.html_parser.HtmlParseResult.used_snippet_formats">
+         used_snippet_formats
         </a>
        </li>
        <li class="toc-h5 nav-item toc-entry">
@@ -546,6 +573,146 @@
        <li class="toc-h5 nav-item toc-entry">
         <a class="reference internal nav-link" href="#doxysphinx.html_parser.HtmlParser.parse">
          parse
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#doxysphinx.html_parser.ElementProcessor">
+       ElementProcessor
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#doxysphinx.html_parser.ElementProcessor.elements">
+         elements
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#doxysphinx.html_parser.ElementProcessor.is_final">
+         is_final
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#doxysphinx.html_parser.ElementProcessor.format">
+         format
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#doxysphinx.html_parser.ElementProcessor.try_process">
+         try_process
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#doxysphinx.html_parser.RstInlineProcessor">
+       RstInlineProcessor
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#doxysphinx.html_parser.RstInlineProcessor.elements">
+         elements
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#doxysphinx.html_parser.RstInlineProcessor.format">
+         format
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#doxysphinx.html_parser.RstInlineProcessor.is_final">
+         is_final
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#doxysphinx.html_parser.RstInlineProcessor.rst_role_regex">
+         rst_role_regex
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#doxysphinx.html_parser.RstInlineProcessor.try_process">
+         try_process
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#doxysphinx.html_parser.RstBlockProcessor">
+       RstBlockProcessor
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#doxysphinx.html_parser.RstBlockProcessor.elements">
+         elements
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#doxysphinx.html_parser.RstBlockProcessor.format">
+         format
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#doxysphinx.html_parser.RstBlockProcessor.is_final">
+         is_final
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#doxysphinx.html_parser.RstBlockProcessor.try_process">
+         try_process
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#doxysphinx.html_parser.PreToDivProcessor">
+       PreToDivProcessor
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#doxysphinx.html_parser.PreToDivProcessor.elements">
+         elements
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#doxysphinx.html_parser.PreToDivProcessor.format">
+         format
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#doxysphinx.html_parser.PreToDivProcessor.is_final">
+         is_final
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#doxysphinx.html_parser.PreToDivProcessor.try_process">
+         try_process
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#doxysphinx.html_parser.MarkdownRstBlockProcessor">
+       MarkdownRstBlockProcessor
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#doxysphinx.html_parser.MarkdownRstBlockProcessor.elements">
+         elements
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#doxysphinx.html_parser.MarkdownRstBlockProcessor.format">
+         format
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#doxysphinx.html_parser.MarkdownRstBlockProcessor.is_final">
+         is_final
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#doxysphinx.html_parser.MarkdownRstBlockProcessor.try_process">
+         try_process
         </a>
        </li>
       </ul>
@@ -622,8 +789,8 @@
         </a>
        </li>
        <li class="toc-h5 nav-item toc-entry">
-        <a class="reference internal nav-link" href="#doxysphinx.html_parser.HtmlParseResult.contains_rst">
-         contains_rst
+        <a class="reference internal nav-link" href="#doxysphinx.html_parser.HtmlParseResult.used_snippet_formats">
+         used_snippet_formats
         </a>
        </li>
        <li class="toc-h5 nav-item toc-entry">
@@ -641,6 +808,146 @@
        <li class="toc-h5 nav-item toc-entry">
         <a class="reference internal nav-link" href="#doxysphinx.html_parser.HtmlParser.parse">
          parse
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#doxysphinx.html_parser.ElementProcessor">
+       ElementProcessor
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#doxysphinx.html_parser.ElementProcessor.elements">
+         elements
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#doxysphinx.html_parser.ElementProcessor.is_final">
+         is_final
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#doxysphinx.html_parser.ElementProcessor.format">
+         format
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#doxysphinx.html_parser.ElementProcessor.try_process">
+         try_process
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#doxysphinx.html_parser.RstInlineProcessor">
+       RstInlineProcessor
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#doxysphinx.html_parser.RstInlineProcessor.elements">
+         elements
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#doxysphinx.html_parser.RstInlineProcessor.format">
+         format
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#doxysphinx.html_parser.RstInlineProcessor.is_final">
+         is_final
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#doxysphinx.html_parser.RstInlineProcessor.rst_role_regex">
+         rst_role_regex
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#doxysphinx.html_parser.RstInlineProcessor.try_process">
+         try_process
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#doxysphinx.html_parser.RstBlockProcessor">
+       RstBlockProcessor
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#doxysphinx.html_parser.RstBlockProcessor.elements">
+         elements
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#doxysphinx.html_parser.RstBlockProcessor.format">
+         format
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#doxysphinx.html_parser.RstBlockProcessor.is_final">
+         is_final
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#doxysphinx.html_parser.RstBlockProcessor.try_process">
+         try_process
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#doxysphinx.html_parser.PreToDivProcessor">
+       PreToDivProcessor
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#doxysphinx.html_parser.PreToDivProcessor.elements">
+         elements
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#doxysphinx.html_parser.PreToDivProcessor.format">
+         format
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#doxysphinx.html_parser.PreToDivProcessor.is_final">
+         is_final
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#doxysphinx.html_parser.PreToDivProcessor.try_process">
+         try_process
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#doxysphinx.html_parser.MarkdownRstBlockProcessor">
+       MarkdownRstBlockProcessor
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#doxysphinx.html_parser.MarkdownRstBlockProcessor.elements">
+         elements
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#doxysphinx.html_parser.MarkdownRstBlockProcessor.format">
+         format
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#doxysphinx.html_parser.MarkdownRstBlockProcessor.is_final">
+         is_final
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#doxysphinx.html_parser.MarkdownRstBlockProcessor.try_process">
+         try_process
         </a>
        </li>
       </ul>
@@ -672,9 +979,9 @@
                 
   <div class="section" id="module-doxysphinx.html_parser">
 <span id="doxysphinx-html-parser"></span><h1><a class="reference internal" href="#module-doxysphinx.html_parser" title="doxysphinx.html_parser"><code class="xref py py-mod docutils literal notranslate"><span class="pre">doxysphinx.html_parser</span></code></a><a class="headerlink" href="#module-doxysphinx.html_parser" title="Permalink to this headline">¶</a></h1>
-<p>The html_parser module contains the html parsers that will load the html files.</p>
-<p>To allow several <code class="xref py py-mod docutils literal notranslate"><span class="pre">writer</span></code> implementation to pick up and handle the result of that parsing a html parser
-must also transform rst snippets into &lt;rst&gt;-nodes.</p>
+<p>The html_parser module contains the html parser that will load and process the html files.</p>
+<p>To allow several <code class="xref py py-mod docutils literal notranslate"><span class="pre">writer</span></code> implementations to pick up and handle the result of that parsing a html parser
+in a neutral way the parser will change all relevant rst/sphinx markup elements to <cite>&lt;snippet&gt;</cite>-elements.</p>
 <div class="section" id="module-contents">
 <h2>Module Contents<a class="headerlink" href="#module-contents" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="classes">
@@ -686,12 +993,27 @@ must also transform rst snippets into &lt;rst&gt;-nodes.</p>
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#doxysphinx.html_parser.HtmlParseResult" title="doxysphinx.html_parser.HtmlParseResult"><code class="xref py py-obj docutils literal notranslate"><span class="pre">HtmlParseResult</span></code></a></p></td>
-<td><p>Capsules a parsed html tree with meta information.</p></td>
+<td><p>Capsules a parsed and processed html tree with meta information.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#doxysphinx.html_parser.HtmlParser" title="doxysphinx.html_parser.HtmlParser"><code class="xref py py-obj docutils literal notranslate"><span class="pre">HtmlParser</span></code></a></p></td>
 <td><p>Html Parser Protocol for parsing html files into a neutral format (that can be then processed further).</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#doxysphinx.html_parser.DoxygenHtmlParser" title="doxysphinx.html_parser.DoxygenHtmlParser"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DoxygenHtmlParser</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#doxysphinx.html_parser.ElementProcessor" title="doxysphinx.html_parser.ElementProcessor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ElementProcessor</span></code></a></p></td>
+<td><p>An ElementProcessor processes specific html elements, one at a time.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#doxysphinx.html_parser.RstInlineProcessor" title="doxysphinx.html_parser.RstInlineProcessor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RstInlineProcessor</span></code></a></p></td>
+<td><p>Element Processor for inline rst elements.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#doxysphinx.html_parser.RstBlockProcessor" title="doxysphinx.html_parser.RstBlockProcessor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RstBlockProcessor</span></code></a></p></td>
+<td><p>Element Processor for rst block elements.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#doxysphinx.html_parser.PreToDivProcessor" title="doxysphinx.html_parser.PreToDivProcessor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PreToDivProcessor</span></code></a></p></td>
+<td><p>This Element Processor will change &lt;pre&gt;-tags to &lt;div class=&quot;fragments&quot;&gt; tags.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#doxysphinx.html_parser.MarkdownRstBlockProcessor" title="doxysphinx.html_parser.MarkdownRstBlockProcessor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MarkdownRstBlockProcessor</span></code></a></p></td>
+<td><p>Element Processor for doxygen markdown block elements.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#doxysphinx.html_parser.DoxygenHtmlParser" title="doxysphinx.html_parser.DoxygenHtmlParser"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DoxygenHtmlParser</span></code></a></p></td>
 <td><p>Parser for Doxygen HTML output files.</p></td>
 </tr>
 </tbody>
@@ -699,7 +1021,7 @@ must also transform rst snippets into &lt;rst&gt;-nodes.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="doxysphinx.html_parser.HtmlParseResult">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">doxysphinx.html_parser.</span></span><span class="sig-name descname"><span class="pre">HtmlParseResult</span></span><a class="reference internal" href="../../../../_modules/doxysphinx/html_parser.html#HtmlParseResult"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#doxysphinx.html_parser.HtmlParseResult" title="Permalink to this definition">¶</a></dt>
-<dd><p>Capsules a parsed html tree with meta information.</p>
+<dd><p>Capsules a parsed and processed html tree with meta information.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="doxysphinx.html_parser.HtmlParseResult.html_input_file">
 <span class="sig-name descname"><span class="pre">html_input_file</span></span><em class="property"><span class="w"> </span><span class="pre">:pathlib.Path</span></em><a class="headerlink" href="#doxysphinx.html_parser.HtmlParseResult.html_input_file" title="Permalink to this definition">¶</a></dt>
@@ -728,10 +1050,9 @@ in sphinx menu structure.</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="doxysphinx.html_parser.HtmlParseResult.contains_rst">
-<span class="sig-name descname"><span class="pre">contains_rst</span></span><em class="property"><span class="w"> </span><span class="pre">:bool</span></em><a class="headerlink" href="#doxysphinx.html_parser.HtmlParseResult.contains_rst" title="Permalink to this definition">¶</a></dt>
-<dd><p>Whether the tree contains any rst snippet (this is needed for rst generation
-in a writer)</p>
+<dt class="sig sig-object py" id="doxysphinx.html_parser.HtmlParseResult.used_snippet_formats">
+<span class="sig-name descname"><span class="pre">used_snippet_formats</span></span><em class="property"><span class="w"> </span><span class="pre">:Optional[Set[str]]</span></em><a class="headerlink" href="#doxysphinx.html_parser.HtmlParseResult.used_snippet_formats" title="Permalink to this definition">¶</a></dt>
+<dd><p>The list of snippet format that are used inside the html tree if any.</p>
 </dd></dl>
 
 <dl class="py attribute">
@@ -774,13 +1095,228 @@ It is expected that all rst data in this resulting ElementTree is present in spe
 </dd></dl>
 
 <dl class="py class">
+<dt class="sig sig-object py" id="doxysphinx.html_parser.ElementProcessor">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">doxysphinx.html_parser.</span></span><span class="sig-name descname"><span class="pre">ElementProcessor</span></span><a class="reference internal" href="../../../../_modules/doxysphinx/html_parser.html#ElementProcessor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#doxysphinx.html_parser.ElementProcessor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">Protocol</span></code></p>
+<div class="graphviz"><img src="../../../../_images/inheritance-96cbeacdf73b01aa3af45d04395e32b96012e6af.png" alt="Inheritance diagram of doxysphinx.html_parser.ElementProcessor" usemap="#inheritancea74d3acecd" class="inheritance graphviz" /></div>
+<map id="inheritancea74d3acecd" name="inheritancea74d3acecd">
+<area shape="rect" id="node1" href="#doxysphinx.html_parser.ElementProcessor" target="_top" title="An ElementProcessor processes specific html elements, one at a time." alt="" coords="248,5,387,31"/>
+</map><p>An ElementProcessor processes specific html elements, one at a time.</p>
+<p>Typically this is used to either clean up or transform the elements into a neutralized format.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="doxysphinx.html_parser.ElementProcessor.elements">
+<span class="sig-name descname"><span class="pre">elements</span></span><em class="property"><span class="w"> </span><span class="pre">:List[str]</span> <span class="pre">=</span> <span class="pre">[]</span></em><a class="headerlink" href="#doxysphinx.html_parser.ElementProcessor.elements" title="Permalink to this definition">¶</a></dt>
+<dd><p>A list of html element names this processor can process.</p>
+<p>This is for pre-filtering html elements (an optimization). This processors try_process method
+is only called on these elements.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="doxysphinx.html_parser.ElementProcessor.is_final">
+<span class="sig-name descname"><span class="pre">is_final</span></span><em class="property"><span class="w"> </span><span class="pre">:bool</span> <span class="pre">=</span> <span class="pre">True</span></em><a class="headerlink" href="#doxysphinx.html_parser.ElementProcessor.is_final" title="Permalink to this definition">¶</a></dt>
+<dd><p>Whether other processors should be called after this one.</p>
+<p>With a “final processor” (is_final == True) processing of an element stops (no other processors considered)
+once the try_process method returns True.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="doxysphinx.html_parser.ElementProcessor.format">
+<span class="sig-name descname"><span class="pre">format</span></span><em class="property"><span class="w"> </span><span class="pre">:str</span> <span class="pre">=</span> <span class="pre">None</span></em><a class="headerlink" href="#doxysphinx.html_parser.ElementProcessor.format" title="Permalink to this definition">¶</a></dt>
+<dd><p>The format this element processor processes… like ‘rst’, ‘md’ etc.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="doxysphinx.html_parser.ElementProcessor.try_process">
+<span class="sig-name descname"><span class="pre">try_process</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">lxml.etree._Element</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../../../../_modules/doxysphinx/html_parser.html#ElementProcessor.try_process"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#doxysphinx.html_parser.ElementProcessor.try_process" title="Permalink to this definition">¶</a></dt>
+<dd><p>Try to process an element.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>element</strong> – The element to check and process</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Whether the “processor did it’s thing”/”processing was applied” (True) or not (False)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="doxysphinx.html_parser.RstInlineProcessor">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">doxysphinx.html_parser.</span></span><span class="sig-name descname"><span class="pre">RstInlineProcessor</span></span><a class="reference internal" href="../../../../_modules/doxysphinx/html_parser.html#RstInlineProcessor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#doxysphinx.html_parser.RstInlineProcessor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Element Processor for inline rst elements.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="doxysphinx.html_parser.RstInlineProcessor.elements">
+<span class="sig-name descname"><span class="pre">elements</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">['code']</span></em><a class="headerlink" href="#doxysphinx.html_parser.RstInlineProcessor.elements" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="doxysphinx.html_parser.RstInlineProcessor.format">
+<span class="sig-name descname"><span class="pre">format</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">rst</span></em><a class="headerlink" href="#doxysphinx.html_parser.RstInlineProcessor.format" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="doxysphinx.html_parser.RstInlineProcessor.is_final">
+<span class="sig-name descname"><span class="pre">is_final</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">True</span></em><a class="headerlink" href="#doxysphinx.html_parser.RstInlineProcessor.is_final" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="doxysphinx.html_parser.RstInlineProcessor.rst_role_regex">
+<span class="sig-name descname"><span class="pre">rst_role_regex</span></span><a class="headerlink" href="#doxysphinx.html_parser.RstInlineProcessor.rst_role_regex" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="doxysphinx.html_parser.RstInlineProcessor.try_process">
+<span class="sig-name descname"><span class="pre">try_process</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">lxml.etree._Element</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../../../../_modules/doxysphinx/html_parser.html#RstInlineProcessor.try_process"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#doxysphinx.html_parser.RstInlineProcessor.try_process" title="Permalink to this definition">¶</a></dt>
+<dd><p>Try to process an rst inline element into a neutralized format.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>element</strong> – The html element to process</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>True if the element was processed else False</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="doxysphinx.html_parser.RstBlockProcessor">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">doxysphinx.html_parser.</span></span><span class="sig-name descname"><span class="pre">RstBlockProcessor</span></span><a class="reference internal" href="../../../../_modules/doxysphinx/html_parser.html#RstBlockProcessor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#doxysphinx.html_parser.RstBlockProcessor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Element Processor for rst block elements.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="doxysphinx.html_parser.RstBlockProcessor.elements">
+<span class="sig-name descname"><span class="pre">elements</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">['code',</span> <span class="pre">'pre']</span></em><a class="headerlink" href="#doxysphinx.html_parser.RstBlockProcessor.elements" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="doxysphinx.html_parser.RstBlockProcessor.format">
+<span class="sig-name descname"><span class="pre">format</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">rst</span></em><a class="headerlink" href="#doxysphinx.html_parser.RstBlockProcessor.format" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="doxysphinx.html_parser.RstBlockProcessor.is_final">
+<span class="sig-name descname"><span class="pre">is_final</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">True</span></em><a class="headerlink" href="#doxysphinx.html_parser.RstBlockProcessor.is_final" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="doxysphinx.html_parser.RstBlockProcessor.try_process">
+<span class="sig-name descname"><span class="pre">try_process</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">lxml.etree._Element</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../../../../_modules/doxysphinx/html_parser.html#RstBlockProcessor.try_process"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#doxysphinx.html_parser.RstBlockProcessor.try_process" title="Permalink to this definition">¶</a></dt>
+<dd><p>Try to process an rst block element into a neutralized format.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>element</strong> – The html element to process</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>True if the element was processed else False</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="doxysphinx.html_parser.PreToDivProcessor">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">doxysphinx.html_parser.</span></span><span class="sig-name descname"><span class="pre">PreToDivProcessor</span></span><a class="reference internal" href="../../../../_modules/doxysphinx/html_parser.html#PreToDivProcessor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#doxysphinx.html_parser.PreToDivProcessor" title="Permalink to this definition">¶</a></dt>
+<dd><p>This Element Processor will change &lt;pre&gt;-tags to &lt;div class=”fragments”&gt; tags.</p>
+<p>We do this because doxysphinx will linearize html output in the writer to have it in one line in
+the raw html directive. However this will destroy the newlines in pre tags. To overcome that
+We change the pre output here to a div with inner line divs (which is also supported by doxygen).</p>
+<p>This should be the last processor applied (when everything else is done).
+The reason is that it gets really hard to debug if we change the structure inbetween processors.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="doxysphinx.html_parser.PreToDivProcessor.elements">
+<span class="sig-name descname"><span class="pre">elements</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">['pre']</span></em><a class="headerlink" href="#doxysphinx.html_parser.PreToDivProcessor.elements" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="doxysphinx.html_parser.PreToDivProcessor.format">
+<span class="sig-name descname"><span class="pre">format</span></span><em class="property"><span class="w"> </span><span class="pre">=</span></em><a class="headerlink" href="#doxysphinx.html_parser.PreToDivProcessor.format" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="doxysphinx.html_parser.PreToDivProcessor.is_final">
+<span class="sig-name descname"><span class="pre">is_final</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">True</span></em><a class="headerlink" href="#doxysphinx.html_parser.PreToDivProcessor.is_final" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="doxysphinx.html_parser.PreToDivProcessor.try_process">
+<span class="sig-name descname"><span class="pre">try_process</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">lxml.etree._Element</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../../../../_modules/doxysphinx/html_parser.html#PreToDivProcessor.try_process"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#doxysphinx.html_parser.PreToDivProcessor.try_process" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transform a pre element into a div element.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>element</strong> – The html element to process</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>True if the element was processed else False</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="doxysphinx.html_parser.MarkdownRstBlockProcessor">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">doxysphinx.html_parser.</span></span><span class="sig-name descname"><span class="pre">MarkdownRstBlockProcessor</span></span><a class="reference internal" href="../../../../_modules/doxysphinx/html_parser.html#MarkdownRstBlockProcessor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#doxysphinx.html_parser.MarkdownRstBlockProcessor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Element Processor for doxygen markdown block elements.</p>
+<p>This processor will check if the first line in the markdown block is either a supported marker or
+a directive (auto detection feature).</p>
+<p>Markdown block elements in doxygen are getting rendered different to verbatim content.
+Each Markdown block (delimited with 3 backticks) will be something like this in html:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;fragment&quot;</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;line&quot;</span><span class="p">&gt;</span>{rst}<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;line&quot;</span><span class="p">&gt;</span>This is rst content<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;line&quot;</span><span class="p">&gt;</span> <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;line&quot;</span><span class="p">&gt;</span>anything can be used here...<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;line&quot;</span><span class="p">&gt;</span> <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;line&quot;</span><span class="p">&gt;</span>like an admonition:<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;line&quot;</span><span class="p">&gt;</span> <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;line&quot;</span><span class="p">&gt;</span>..admonition::<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;line&quot;</span><span class="p">&gt;</span>  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;line&quot;</span><span class="p">&gt;</span>  test<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="doxysphinx.html_parser.MarkdownRstBlockProcessor.elements">
+<span class="sig-name descname"><span class="pre">elements</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">['div']</span></em><a class="headerlink" href="#doxysphinx.html_parser.MarkdownRstBlockProcessor.elements" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="doxysphinx.html_parser.MarkdownRstBlockProcessor.format">
+<span class="sig-name descname"><span class="pre">format</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">rst</span></em><a class="headerlink" href="#doxysphinx.html_parser.MarkdownRstBlockProcessor.format" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="doxysphinx.html_parser.MarkdownRstBlockProcessor.is_final">
+<span class="sig-name descname"><span class="pre">is_final</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">True</span></em><a class="headerlink" href="#doxysphinx.html_parser.MarkdownRstBlockProcessor.is_final" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="doxysphinx.html_parser.MarkdownRstBlockProcessor.try_process">
+<span class="sig-name descname"><span class="pre">try_process</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">lxml.etree._Element</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../../../../_modules/doxysphinx/html_parser.html#MarkdownRstBlockProcessor.try_process"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#doxysphinx.html_parser.MarkdownRstBlockProcessor.try_process" title="Permalink to this definition">¶</a></dt>
+<dd><p>Try to process an rst block element into a neutralized format.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>element</strong> – The html element to process</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>True if the element was processed else False</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
 <dt class="sig sig-object py" id="doxysphinx.html_parser.DoxygenHtmlParser">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">doxysphinx.html_parser.</span></span><span class="sig-name descname"><span class="pre">DoxygenHtmlParser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source_directory</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pathlib.Path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/doxysphinx/html_parser.html#DoxygenHtmlParser"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#doxysphinx.html_parser.DoxygenHtmlParser" title="Permalink to this definition">¶</a></dt>
 <dd><p>Parser for Doxygen HTML output files.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="doxysphinx.html_parser.DoxygenHtmlParser.parse">
 <span class="sig-name descname"><span class="pre">parse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pathlib.Path</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#doxysphinx.html_parser.HtmlParseResult" title="doxysphinx.html_parser.HtmlParseResult"><span class="pre">HtmlParseResult</span></a></span></span><a class="reference internal" href="../../../../_modules/doxysphinx/html_parser.html#DoxygenHtmlParser.parse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#doxysphinx.html_parser.DoxygenHtmlParser.parse" title="Permalink to this definition">¶</a></dt>
-<dd><p>Parse a doxygen HTML file into an ElementTree and normalizes its inner data to contain &lt;rst&gt;-tags.</p>
+<dd><p>Parse a doxygen HTML file into an ElementTree and normalize its inner data to contain &lt;rst&gt;-tags.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>file</strong> (<em>Path</em>) – The html file to parse</p>
@@ -827,7 +1363,7 @@ It is expected that all rst data in this resulting ElementTree is present in spe
     <footer class="footer">
   <p>
     
-      Last updated on &#39;Fri Nov 18 08:46:46 2022&#39;, &#39;758cdd4&#39;.<br/>
+      Last updated on &#39;Fri Dec 9 08:57:07 2022&#39;, &#39;9fd7c71&#39;.<br/>
   </p>
 </footer>
 </main>

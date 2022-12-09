@@ -31,9 +31,9 @@
     <link rel="stylesheet" type="text/css" href="../_static/assets/jsonview.bundle.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/libs/html/datatables.min.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/styles.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/modern.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/layouts.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/styles.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme-custom.css" />
     
   <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
@@ -53,7 +53,7 @@
     <script src="../_static/sphinx-needs/libs/html/sphinx_needs_collapse.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Alternatives" href="alternatives.html" />
+    <link rel="next" title="Syntax Guide" href="syntax/syntax_guide.html" />
     <link rel="prev" title="Overview" href="../index.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -112,6 +112,33 @@
    Getting Started
   </a>
  </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="syntax/syntax_guide.html">
+   Syntax Guide
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="syntax/rst_block_syntax.html">
+     Rst Block Syntax
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="syntax/rst_inline_syntax.html">
+     Rst Inline Syntax
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="syntax/comment_styles_syntax.html">
+     Comment Syntax
+    </a>
+   </li>
+  </ul>
+ </li>
  <li class="toctree-l1">
   <a class="reference internal" href="alternatives.html">
    Alternatives
@@ -155,8 +182,8 @@
   <a class="reference internal" href="doxygen/demo/html/index.html">
    Doxygen Demo
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -170,8 +197,8 @@
     <a class="reference internal" href="doxygen/demo/html/annotated_classes.html">
      Classes
     </a>
-    <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-    <label for="toctree-checkbox-2">
+    <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+    <label for="toctree-checkbox-3">
      <i class="fas fa-chevron-down">
      </i>
     </label>
@@ -195,8 +222,8 @@
       <a class="reference internal" href="doxygen/demo/html/functions_class_members.html">
        Class Members
       </a>
-      <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-      <label for="toctree-checkbox-3">
+      <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+      <label for="toctree-checkbox-4">
        <i class="fas fa-chevron-down">
        </i>
       </label>
@@ -243,8 +270,8 @@
   <a class="reference internal" href="apidoc.html">
    API Reference
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-  <label for="toctree-checkbox-4">
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -257,8 +284,8 @@
       </span>
      </code>
     </a>
-    <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
-    <label for="toctree-checkbox-5">
+    <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+    <label for="toctree-checkbox-6">
      <i class="fas fa-chevron-down">
      </i>
     </label>
@@ -271,8 +298,8 @@
         </span>
        </code>
       </a>
-      <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
-      <label for="toctree-checkbox-6">
+      <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+      <label for="toctree-checkbox-7">
        <i class="fas fa-chevron-down">
        </i>
       </label>
@@ -768,24 +795,24 @@ it and see how things working we recommend to clone the repo, fire up vscode and
 <div class="sd-card-title sd-font-weight-bold docutils">
 DartSass installation</div>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="ce1619d8-3ff9-41ff-be73-52b190542418" name="2ac1a24d-b1c7-4d21-84d0-400831feee6d" type="radio">
-</input><label class="sd-tab-label" for="ce1619d8-3ff9-41ff-be73-52b190542418">
+<input checked="checked" id="2820fc28-25ac-45c7-a8f4-315c4a935f13" name="82de6299-34d8-4a6f-87b0-3ff8cf899f9b" type="radio">
+</input><label class="sd-tab-label" for="2820fc28-25ac-45c7-a8f4-315c4a935f13">
 Linux</label><div class="sd-tab-content docutils">
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Linux</span>
 curl -sSL https://github.com/sass/dart-sass/releases/download/1.49.7/dart-sass-1.49.7-linux-x64.tar.gz <span class="p">|</span> tar -xzvf - --strip-components<span class="o">=</span><span class="m">1</span> -C ~/.local/bin dart-sass/sass
 </pre></div>
 </div>
 </div>
-<input id="0fa98d75-a3a7-4581-96a9-f0861e22bd42" name="2ac1a24d-b1c7-4d21-84d0-400831feee6d" type="radio">
-</input><label class="sd-tab-label" for="0fa98d75-a3a7-4581-96a9-f0861e22bd42">
+<input id="2935330e-86d6-4c77-9bb8-2f55c7bed65a" name="82de6299-34d8-4a6f-87b0-3ff8cf899f9b" type="radio">
+</input><label class="sd-tab-label" for="2935330e-86d6-4c77-9bb8-2f55c7bed65a">
 Windows</label><div class="sd-tab-content docutils">
 <div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="c"># windows with chocolatey (https://www.chocolatey.org)</span>
 <span class="n">choco</span> <span class="n">install</span> <span class="n">sass</span>
 </pre></div>
 </div>
 </div>
-<input id="e74fca07-5695-450e-84f6-3c4d48597cf4" name="2ac1a24d-b1c7-4d21-84d0-400831feee6d" type="radio">
-</input><label class="sd-tab-label" for="e74fca07-5695-450e-84f6-3c4d48597cf4">
+<input id="ebf9e279-dbe7-4a31-8175-43dee2d5828f" name="82de6299-34d8-4a6f-87b0-3ff8cf899f9b" type="radio">
+</input><label class="sd-tab-label" for="ebf9e279-dbe7-4a31-8175-43dee2d5828f">
 Other</label><div class="sd-tab-content docutils">
 <p class="sd-card-text">see Releases: <a class="reference external" href="https://github.com/sass/dart-sass/releases">https://github.com/sass/dart-sass/releases</a>.</p>
 </div>
@@ -857,8 +884,8 @@ In your rst files you can then use e.g. (as documented here: <a class="reference
 <div class="section" id="step-3-prepare-doxygen-config">
 <h2>Step 3: Prepare Doxygen Config<a class="headerlink" href="#step-3-prepare-doxygen-config" title="Permalink to this headline">¶</a></h2>
 <p>Next you have to prepare your doxygen configuration file (doxyfile) to have compatible settings with doxysphinx.</p>
-<p>The following settings are mandatory and will be checked by a validator (only when using the doxyfile as input):</p>
-<p>You can prepare or optimize your doxygen configuration file (doxyfile) by doing the following:</p>
+<p>The following settings are mandatory and will be checked by a validator if you use your doxyfile as input for
+doxysphinx (if you use the doxygen html output directory instead validation will be skipped):</p>
 <div class="section" id="mandatory-settings">
 <h3>Mandatory settings<a class="headerlink" href="#mandatory-settings" title="Permalink to this headline">¶</a></h3>
 <p>these settings are absolutely needed (Doxysphinx will throw detailed errors in case of incorrect ones):</p>
@@ -868,8 +895,6 @@ In your rst files you can then use e.g. (as documented here: <a class="reference
 <span class="l l-Scalar l-Scalar-Plain">DISABLE_INDEX          = NO</span><span class="w">   </span><span class="c1"># Menu data is crucial for our TOC generation so it mustn&#39;t be disabled</span><span class="w"></span>
 
 <span class="l l-Scalar l-Scalar-Plain">GENERATE_HTML          = YES</span><span class="w">  </span><span class="c1"># Keep sure that you generate HTML which needed for doxysphinx</span><span class="w"></span>
-<span class="l l-Scalar l-Scalar-Plain">ALIASES                = &quot;rst=\verbatim embed:rst:leading-asterisk&quot; \</span><span class="w"></span>
-<span class="w">                         </span><span class="l l-Scalar l-Scalar-Plain">endrst=\endverbatim</span><span class="w">  </span><span class="c1"># This allows you to use rst blocks inside doxygen comments with @rst and @endrst</span><span class="w"></span>
 
 <span class="l l-Scalar l-Scalar-Plain">CREATE_SUBDIRS         = NO</span><span class="w">   </span><span class="c1"># NO is the default value and it should be no because doxysphinx can&#39;t handle subdirs right now.</span><span class="w"></span>
 </pre></div>
@@ -891,7 +916,7 @@ look at the <a class="reference internal" href="alternatives.html"><span class="
 </div>
 <div class="section" id="recommended-settings">
 <h3>Recommended settings<a class="headerlink" href="#recommended-settings" title="Permalink to this headline">¶</a></h3>
-<p>these settings are optional but strongly recommended (you will be warned in case of some value deviations):</p>
+<p>these settings are optional but strongly recommended (you will be notified in case of some value deviations):</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">SEARCHENGINE           = NO</span><span class="w">   </span><span class="c1"># deactivate search engine (as sphinx has it&#39;s own search)</span><span class="w"></span>
 <span class="l l-Scalar l-Scalar-Plain">GENERATE_TAGFILE       = &lt;OUTPUT_DIRECTORY&gt;/&lt;HTML_OUTPUT&gt;/tagfile.xml</span><span class="w">  </span><span class="c1"># generate a tag file</span><span class="w"></span>
 <span class="w">                              </span><span class="c1"># this could be stored anywhere, however we recommend to put it into the</span><span class="w"></span>
@@ -904,6 +929,11 @@ look at the <a class="reference internal" href="alternatives.html"><span class="
 <span class="l l-Scalar l-Scalar-Plain">DOT_IMAGE_FORMAT       = svg</span><span class="w">  </span><span class="c1"># generates nicer svg images</span><span class="w"></span>
 <span class="l l-Scalar l-Scalar-Plain">DOT_TRANSPARENT        = YES</span><span class="w">  </span><span class="c1"># generate transparent images</span><span class="w"></span>
 <span class="l l-Scalar l-Scalar-Plain">INTERACTIVE_SVG        = YES</span><span class="w">  </span><span class="c1"># to be able to scroll and zoom into big images</span><span class="w"></span>
+
+<span class="c1"># if you want to use aliases instead of markdown fences for commenting (see syntax guide) you have to add</span><span class="w"></span>
+<span class="c1"># something like this (which doesn&#39;t hurt either):</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">ALIASES                = &quot;rst=\verbatim embed:rst:leading-asterisk&quot; \</span><span class="w"></span>
+<span class="w">                         </span><span class="l l-Scalar l-Scalar-Plain">endrst=\endverbatim</span><span class="w">  </span><span class="c1"># This allows you to use rst blocks inside doxygen comments with @rst and @endrst</span><span class="w"></span>
 </pre></div>
 </div>
 <div class="admonition tip">
@@ -985,7 +1015,7 @@ doxysphinx &lt;command&gt; --help
 </div>
 <div class="section" id="clean">
 <h3>Clean<a class="headerlink" href="#clean" title="Permalink to this headline">¶</a></h3>
-<p>If you want to clean the files doxysphinx generated please use the clean command:</p>
+<p>If you want to remove the files doxysphinx generated please use the clean command:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>doxysphinx clean &lt;SPHINX_SOURCE&gt; &lt;SPHINX_OUTPUT&gt; &lt;INPUT<span class="o">(</span>S<span class="o">)</span>&gt;
 </pre></div>
 </div>
@@ -1019,8 +1049,9 @@ doxysphinx &lt;command&gt; --help
 <span class="n">Car</span><span class="p">(</span><span class="n">Engine</span><span class="o">&amp;</span><span class="w"> </span><span class="n">engine</span><span class="p">,</span><span class="w"> </span><span class="n">Color</span><span class="o">&amp;</span><span class="w"> </span><span class="n">color</span><span class="p">)</span><span class="w"> </span><span class="p">{};</span><span class="w"></span>
 </pre></div>
 </div>
-<p>Note the <code class="docutils literal notranslate"><span class="pre">&#64;rst</span></code> and <code class="docutils literal notranslate"><span class="pre">&#64;endrst</span></code> tags. Inside these tags you can write any rst code.
-Now run doxygen, doxysphinx and sphinx and look at the generated documentation. You should see something like
+<p>Note the <code class="docutils literal notranslate"><span class="pre">&#64;rst</span></code> and <code class="docutils literal notranslate"><span class="pre">&#64;endrst</span></code> tags. Inside these tags you can write any rst code.</p>
+<p>See also the <a class="reference internal" href="syntax/syntax_guide.html"><span class="doc std std-doc">Syntax Guide</span></a> for a complete documentation on how to comment for doxysphinx.</p>
+<p>Now run doxygen, doxysphinx and sphinx and look at the generated documentation. You should see something like
 this:</p>
 <a class="reference internal image-reference" href="../_images/getting_started_demo_rendering.png"><img alt="Demo of final generated html" src="../_images/getting_started_demo_rendering.png" style="width: 900px;" /></a>
 </div>
@@ -1030,6 +1061,7 @@ this:</p>
 <p>🎉 Congratulations you’ve completed the quickstart.</p>
 <p>Further reading:</p>
 <ul class="simple">
+<li><p>To get to know the doxysphinx comment syntax -&gt; see our <a class="reference internal" href="syntax/syntax_guide.html"><span class="doc std std-doc">syntax guide</span></a>.</p></li>
 <li><p>Maybe you want to know more about the inner workings? -&gt; head over to the <a class="reference internal" href="inner_workings.html"><span class="doc std std-doc">reference</span></a> section.</p></li>
 <li><p>Or look at some examples? -&gt; <a class="reference internal" href="linking_to_doxygen.html"><span class="doc std std-doc">linking to doxygen</span></a>.</p></li>
 <li><p>Or do you want to contribute and bring doxysphinx to the next level? Read the <a class="reference internal" href="../CONTRIBUTE.html"><span class="doc std std-doc">contributors guide</span></a> and the
@@ -1052,10 +1084,10 @@ this:</p>
             <p class="prev-next-title">Overview</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="alternatives.html" title="next page">
+    <a class='right-next' id="next-link" href="syntax/syntax_guide.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Alternatives</p>
+        <p class="prev-next-title">Syntax Guide</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
@@ -1066,7 +1098,7 @@ this:</p>
     <footer class="footer">
   <p>
     
-      Last updated on &#39;Fri Nov 18 08:46:46 2022&#39;, &#39;758cdd4&#39;.<br/>
+      Last updated on &#39;Fri Dec 9 08:57:07 2022&#39;, &#39;9fd7c71&#39;.<br/>
   </p>
 </footer>
 </main>

@@ -1,0 +1,799 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rst Inline Syntax &#8212; Doxysphinx</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet">
+  <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-book-theme.css?digest=84ace793992934648b4de8eed757e5a2" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/assets/jsonview.bundle.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/libs/html/datatables.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/styles.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/modern.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/layouts.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-book-theme-custom.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script src="../../_static/sphinx-book-theme.9d8b4a8b9bb19db25eeaddc40d639ba2.js"></script>
+    <script src="../../_static/assets/jsonview.bundle.js"></script>
+    <script src="../../_static/assets/jsonview_loader.js"></script>
+    <script src="../../_static/sphinx-needs/libs/html/datatables.min.js"></script>
+    <script src="../../_static/sphinx-needs/libs/html/datatables_loader.js"></script>
+    <script src="../../_static/sphinx-needs/libs/html/sphinx_needs_collapse.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Comment Syntax" href="comment_styles_syntax.html" />
+    <link rel="prev" title="Rst Block Syntax" href="rst_block_syntax.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<div class="col-12 col-md-3 bd-sidebar site-navigation " id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/doxysphinx_logo.svg" class="logo" alt="logo">
+      
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../index.html">
+   Overview
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Usage
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../getting_started.html">
+   Getting Started
+  </a>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="syntax_guide.html">
+   Syntax Guide
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="rst_block_syntax.html">
+     Rst Block Syntax
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Rst Inline Syntax
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="comment_styles_syntax.html">
+     Comment Syntax
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../alternatives.html">
+   Alternatives
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../faq.html">
+   FAQ
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Examples
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../linking_to_doxygen.html">
+   Linking to Doxygen
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../using_rst_in_doxygen.html">
+   Commenting in doxygen
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../linking_needs.html">
+   Linking with Sphinx Needs
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Demo documentations
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../doxygen/demo/html/index.html">
+   Doxygen Demo
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../doxygen/demo/html/namespaces.html">
+     Namespaces
+    </a>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../doxygen/demo/html/annotated_classes.html">
+     Classes
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+    <label for="toctree-checkbox-3">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../doxygen/demo/html/annotated.html">
+       Class List
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../doxygen/demo/html/classes.html">
+       Class Index
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../doxygen/demo/html/inherits.html">
+       Class Hierarchy
+      </a>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../doxygen/demo/html/functions_class_members.html">
+       Class Members
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+      <label for="toctree-checkbox-4">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../doxygen/demo/html/functions.html">
+         All
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../doxygen/demo/html/functions_func.html">
+         Functions
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../doxygen/demo/html/files.html">
+     Files
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Development
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../dev_guide.html">
+   Developer Quickstart
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../inner_workings.html">
+   Inner workings
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../apidoc.html">
+   API Reference
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../auto_api/doxysphinx/index.html">
+     <code class="xref py py-mod docutils literal notranslate">
+      <span class="pre">
+       doxysphinx
+      </span>
+     </code>
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+    <label for="toctree-checkbox-6">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../auto_api/doxysphinx/utils/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         doxysphinx.utils
+        </span>
+       </code>
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+      <label for="toctree-checkbox-7">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../auto_api/doxysphinx/utils/contexts/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           doxysphinx.utils.contexts
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../auto_api/doxysphinx/utils/exceptions/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           doxysphinx.utils.exceptions
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../auto_api/doxysphinx/utils/files/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           doxysphinx.utils.files
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../auto_api/doxysphinx/utils/iterators/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           doxysphinx.utils.iterators
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../auto_api/doxysphinx/utils/pathlib_fix/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           doxysphinx.utils.pathlib_fix
+          </span>
+         </code>
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../auto_api/doxysphinx/cli/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         doxysphinx.cli
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../auto_api/doxysphinx/doxygen/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         doxysphinx.doxygen
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../auto_api/doxysphinx/html_parser/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         doxysphinx.html_parser
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../auto_api/doxysphinx/process/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         doxysphinx.process
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../auto_api/doxysphinx/resources/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         doxysphinx.resources
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../auto_api/doxysphinx/sphinx/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         doxysphinx.sphinx
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../auto_api/doxysphinx/toc/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         doxysphinx.toc
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../auto_api/doxysphinx/writer/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         doxysphinx.writer
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../CONTRIBUTE.html">
+   How to Contribute
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  <div class="attribution">theme based on the <a href="https://sphinx-book-theme.readthedocs.io/">sphinx book theme</a> by the <a href="https://executablebooks.org/">executable book project</a>.</div>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<!-- This is an invisible pixel that we watch to see if we've scrolled. -->
+<div class="sbt-scroll-pixel-helper"></div>
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            <div class="topbar-left">
+                
+                <label class="nav-toggle-button" for="__navigation">
+                    <div class="visually-hidden">Toggle navigation</div>
+                    <i class="fas fa-bars"></i>
+                </label>
+                
+            </div>
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/docs/syntax/rst_inline_syntax.md.txt"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/boschglobal/doxysphinx"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        <a class="edit-button" href="https://github.com/boschglobal/doxysphinx/edit/main/docs/syntax/rst_inline_syntax.md"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tldr-recommended-syntax">
+   TLDR; Recommended Syntax
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#technical-details">
+   Technical Details
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#supported-rst-inline-delimiters-in-doxygen-comments">
+   Supported rst inline delimiters in doxygen comments
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#markdown-inline-block">
+     markdown inline block
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#code-html-element">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       &lt;code&gt;
+      </span>
+     </code>
+     -html-element
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#tt-html-element">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       &lt;tt&gt;
+      </span>
+     </code>
+     -html-element
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#more-examples">
+   More examples
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Rst Inline Syntax</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tldr-recommended-syntax">
+   TLDR; Recommended Syntax
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#technical-details">
+   Technical Details
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#supported-rst-inline-delimiters-in-doxygen-comments">
+   Supported rst inline delimiters in doxygen comments
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#markdown-inline-block">
+     markdown inline block
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#code-html-element">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       &lt;code&gt;
+      </span>
+     </code>
+     -html-element
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#tt-html-element">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       &lt;tt&gt;
+      </span>
+     </code>
+     -html-element
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#more-examples">
+   More examples
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="section" id="rst-inline-syntax">
+<h1>Rst Inline Syntax<a class="headerlink" href="#rst-inline-syntax" title="Permalink to this headline">¶</a></h1>
+<p>For creating inline restructured text content in C++ documentation comments that will be rendered by Sphinx.</p>
+<div class="section" id="tldr-recommended-syntax">
+<h2>TLDR; Recommended Syntax<a class="headerlink" href="#tldr-recommended-syntax" title="Permalink to this headline">¶</a></h2>
+<p>Use the following syntax in your C++ documentation comments to use a sphinx role in-line (note that you have
+to replace the backticks usually used in rst/sphinx with quotes):</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">/// lorem ipsum, `:role:&quot;content of the role&quot;` dolor sit...</span>
+</pre></div>
+</div>
+<p>e.g.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">/// Here you can find the `:doc:&quot;Main Documentation &lt;index&gt;&quot;`. Please read it carefully.</span>
+</pre></div>
+</div>
+<p>This will work only if markdown support is activated in doxygen (highly recommended).</p>
+<p>Futhermore, please note that <strong>you can only use sphinx roles and domains</strong> in the inline syntax for now
+(reasoning see below).</p>
+<p>See below in the methods documentation for other options if you have markdown support disabled.</p>
+</div>
+<div class="section" id="technical-details">
+<h2>Technical Details<a class="headerlink" href="#technical-details" title="Permalink to this headline">¶</a></h2>
+<p>Skip this section if you’re not interested in the technical details…</p>
+<p>Inline rst is a major problem because of the following:</p>
+<ol class="arabic">
+<li><p><strong>Paragraphs all over the place</strong></p>
+<p>Doxygen uses paragraphs (<code class="docutils literal notranslate"><span class="pre">&lt;p&gt;</span></code>-html-tags) for it’s content. Paragraph tags cannot have other block-level
+tags inside them (even no other paragraph tags). The browsers (chromium-based ones, Firefox etc.) are quite
+aggressive in fixing bad nestings here (just to be able to display a page). So e.g. if a nested <code class="docutils literal notranslate"><span class="pre">&lt;p&gt;</span></code>-tag
+is noticed the browsers will close the outer <code class="docutils literal notranslate"><span class="pre">&lt;p&gt;</span></code>-tag right before the inner <code class="docutils literal notranslate"><span class="pre">&lt;p&gt;</span></code>-tag. This will linearize
+the <code class="docutils literal notranslate"><span class="pre">&lt;p&gt;</span></code>-tags and the page could be rendered.</p>
+<p>When we now split our content for mixed rst content as described in <code class="docutils literal notranslate"><span class="pre">:doc:&quot;/docs/inner_workings&quot;</span></code> we end
+up having raw-html blocks and inline-rst blocks (and also other rst blocks but that doesn’t matter here).
+Sphinx will automagically put <code class="docutils literal notranslate"><span class="pre">&lt;p&gt;</span></code>-tags around the inline-rst-block - it’s doing that around all pure
+text based content and we cannot change that.</p>
+<p>Most of the time this results in an html structure with nested <code class="docutils literal notranslate"><span class="pre">&lt;p&gt;</span></code>-tags which will be “fixed” by the
+browsers on loading/rendering of the html page. Why is this a problem? because we cannot style
+(in a css sense) away the blockiness if we have only sibling <code class="docutils literal notranslate"><span class="pre">&lt;p&gt;</span></code>-tags. But we have to for the content
+to appear “in-line”.
+Also we cannot fix the final html structure because we’re too early in the process. We can only create rsts
+which will then be picked up by sphinx to create the final html.</p>
+</li>
+<li><p><strong>Doxygen interpretation/preprocessing</strong></p>
+<p>The main use case for inline rst are sphinx roles which are normally (in rst) written in a form like:</p>
+<div class="highlight-plain notranslate"><div class="highlight"><pre><span></span>:role_name:`role_content`
+</pre></div>
+</div>
+<p>but doxygens internal markdown support will parse the backticks as markdown inline code block and renders
+code-tags all over the place then.</p>
+</li>
+</ol>
+<p>the following solutions/hacks have been applied to overcome the problems:</p>
+<ol class="arabic">
+<li><p><strong>Html-Element-Transformation</strong></p>
+<p>If we encounter a sphinx role in doxysphinx during original doxygen html parsing we change it’s
+parent html tag from <code class="docutils literal notranslate"><span class="pre">&lt;p&gt;</span></code>-tag to <code class="docutils literal notranslate"><span class="pre">&lt;div&gt;</span></code>-tag (because divs can have nested content). We also add a css
+class which we use to style the “blockiness” away (display:inline). The technical implementation is
+has more complexity - if you’re interested just look into the code.</p>
+</li>
+<li><p><strong>Adjusted Syntax for using inline rst and special parsing</strong></p>
+<p>Doxysphinx scans the html for <code class="docutils literal notranslate"><span class="pre">&lt;code&gt;</span></code>-tags but that’s not enough. For doxysphinx to consider a <code class="docutils literal notranslate"><span class="pre">&lt;code&gt;</span></code>-tag as inline
+sphinx snippet it has to be in the format <code class="docutils literal notranslate"><span class="pre">&lt;code&gt;:role:`content`&lt;/code&gt;</span></code> - we validate the syntax here and if it doesn’t match we ignore it.
+The implication is that <strong>you cannot use anything other than roles/domains for inline rst</strong>. In practice this
+means that you cannot use rst’s external link syntax and references for now, which is however so cryptic that
+we’re quite sure that you would rather consider using doxygens link command or just a markdown link.</p>
+<p>Furthermore backticks are also markdown’s verbatim inline delimiters and therefore can only be used when escaped (and even then they create problems with doxygen’s way of parsing).
+Therefore we’re also supporting (and are recommending) quotes (“) and ticks (‘) as role content delimiters.
+So we relaxed the sphinx syntax a little bit here to work better in doxygen comments.</p>
+</li>
+</ol>
+</div>
+<div class="section" id="supported-rst-inline-delimiters-in-doxygen-comments">
+<h2>Supported rst inline delimiters in doxygen comments<a class="headerlink" href="#supported-rst-inline-delimiters-in-doxygen-comments" title="Permalink to this headline">¶</a></h2>
+<p>Technically doxysphinx searches for <code class="docutils literal notranslate"><span class="pre">&lt;pre&gt;</span></code>- or <code class="docutils literal notranslate"><span class="pre">&lt;div</span> <span class="pre">class=&quot;fragment&quot;&gt;</span></code>-elements in doxygen html output
+because these are the elements it uses for verbatim code block content. There are several ways in doxygen to
+create these kind of elements:</p>
+<div class="section" id="markdown-inline-block">
+<h3>markdown inline block<a class="headerlink" href="#markdown-inline-block" title="Permalink to this headline">¶</a></h3>
+<p>You can use markdown inline code syntax:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">/// A markdown inline statement with quotes like this - `:doc:&quot;Main Documentation &lt;index&gt;&quot;` - will work.</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The role content delimiter has to be a quote (“). Ticks and escaped backticks won’t work with markdown inline
+code syntax because of doxygens parser.</p>
+</div>
+</div>
+<div class="section" id="code-html-element">
+<h3><code class="docutils literal notranslate"><span class="pre">&lt;code&gt;</span></code>-html-element<a class="headerlink" href="#code-html-element" title="Permalink to this headline">¶</a></h3>
+<p>You can also use a html <code class="docutils literal notranslate"><span class="pre">&lt;code&gt;</span></code>-element:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">/// A html code element with quotes like this - &lt;code&gt;:doc:&quot;Main Documentation &lt;index&gt;&quot;&lt;/code&gt; - will work.</span>
+<span class="c1">///</span>
+<span class="c1">/// A html code element with ticks like this - &lt;code&gt;:doc:&#39;Main Documentation &lt;index&gt;&#39;&lt;/code&gt; - will work.</span>
+<span class="c1">///</span>
+<span class="c1">/// A html code element with escaped backticks like this - &lt;code&gt;:doc:\`Main Documentation &lt;index&gt;\`&lt;/code&gt; - will work.</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="tt-html-element">
+<h3><code class="docutils literal notranslate"><span class="pre">&lt;tt&gt;</span></code>-html-element<a class="headerlink" href="#tt-html-element" title="Permalink to this headline">¶</a></h3>
+<p>You can also use a html <code class="docutils literal notranslate"><span class="pre">&lt;tt&gt;</span></code>-element:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">/// A html tt element with quotes like this - &lt;tt&gt;:doc:&quot;Main Documentation &lt;index&gt;&quot;&lt;/tt&gt; - will work.</span>
+<span class="c1">///</span>
+<span class="c1">/// A html tt element with ticks like this - &lt;tt&gt;:doc:&#39;Main Documentation &lt;index&gt;&#39;&lt;/tt&gt; - will work.</span>
+<span class="c1">///</span>
+<span class="c1">/// A html tt element with escaped backticks like this - &lt;tt&gt;:doc:\`Main Documentation &lt;index&gt;\`&lt;/tt&gt; - will work.</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="more-examples">
+<h2>More examples<a class="headerlink" href="#more-examples" title="Permalink to this headline">¶</a></h2>
+<p>can be found in our demo documentation <a class="reference internal" href="../doxygen/demo/html/classdoxysphinx_1_1doxygen_1_1InlineRst.html"><span class="doc std std-doc">here</span></a>.</p>
+</div>
+</div>
+
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="rst_block_syntax.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Rst Block Syntax</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="comment_styles_syntax.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Comment Syntax</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      Last updated on &#39;Fri Dec 9 08:57:07 2022&#39;, &#39;9fd7c71&#39;.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
