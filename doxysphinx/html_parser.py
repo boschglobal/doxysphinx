@@ -126,7 +126,7 @@ class RstInlineProcessor:
     )
 
     def try_process(self, element: _Element) -> bool:
-        """Tries to process an rst inline element into a neutralized format.
+        """Try to process an rst inline element into a neutralized format.
 
         :param element: The html element to process
         :return: True if the element was processed else False
@@ -334,7 +334,7 @@ class MarkdownRstBlockProcessor:
 
 
 def _flattened_element_text(element: _Element) -> str:
-    """flatten (removes children but keeps the text and html nodes) an element text."""
+    """Flatten (removes children but keeps the text and html nodes) an element text."""
     text = element.text
     if not text:
         return ""
@@ -501,15 +501,13 @@ class DoxygenHtmlParser:
         return {e for p in DoxygenHtmlParser._processors for e in p.elements}
 
     def _normalize_tree_and_get_used_formats(self, tree) -> Set[str]:
-        """
-        Normalize a doxygen html tree.
+        """Normalize a doxygen html tree.
 
         Searches for pre and code tags, re-formats them and creates different <snippet-*>-tags out of it.
         Will also put a newline behind the closing tag because it's necessary to have lines that can be clearly
         assigned to either html-content or snippet content (and in the un-normalized source html we've got them mixed
         at the closing tag).
         """
-
         used_snipped_formats = set()
 
         # prefetch element candidates.
