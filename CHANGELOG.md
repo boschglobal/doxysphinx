@@ -13,6 +13,16 @@
 
 <!--next-version-placeholder-->
 
+## v3.1.0 (2022-12-09)
+
+### Feat
+
+- **parser**: Now rst inline syntax is supported for sphinx roles and domains.
+
+### Fix
+
+- **parser**: fixed doxygen comment parsing
+
 ## v3.0.0 (2022-11-18)
 
 ## v2.3.7 (2022-10-17)
