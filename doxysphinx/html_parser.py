@@ -106,7 +106,7 @@ class ElementProcessor(Protocol):
     """The format this element processor processes... like 'rst', 'md' etc."""
 
     def try_process(self, element: _Element) -> bool:
-        """tries to process an element.
+        """Try to process an element.
 
         :param element: The element to check and process
         :return: Whether the "processor did it's thing"/"processing was applied" (True) or not (False)
@@ -185,12 +185,11 @@ class RstBlockProcessor:
     )
 
     def try_process(self, element: _Element) -> bool:
-        """Tries to process an rst block element into a neutralized format.
+        """Try to process an rst block element into a neutralized format.
 
         :param element: The html element to process
         :return: True if the element was processed else False
         """
-
         text = _flattened_element_text(element)
         if not text:
             return False
@@ -232,12 +231,11 @@ class PreToDivProcessor:
     is_final = True
 
     def try_process(self, element: _Element) -> bool:
-        """Transforms a pre element into a div element.
+        """Transform a pre element into a div element.
 
         :param element: The html element to process
         :return: True if the element was processed else False
         """
-
         text = _flattened_element_text(element)
         if not text:
             return False
@@ -302,7 +300,7 @@ class MarkdownRstBlockProcessor:
     )
 
     def try_process(self, element: _Element) -> bool:
-        """Tries to process an rst block element into a neutralized format.
+        """Try to process an rst block element into a neutralized format.
 
         :param element: The html element to process
         :return: True if the element was processed else False
@@ -336,7 +334,7 @@ class MarkdownRstBlockProcessor:
 
 
 def _flattened_element_text(element: _Element) -> str:
-    """flattens (removes children but keeps the text and html nodes) and element text."""
+    """flatten (removes children but keeps the text and html nodes) an element text."""
     text = element.text
     if not text:
         return ""
@@ -410,7 +408,7 @@ def _try_parse_rst_block_content(text: str) -> Optional[str]:
 
 
 def _ensure_newline_before_element(element: _Element):
-    """Ensures that there is at least one newline character (\\n) before the given element.
+    """Ensure that there is at least one newline character (\\n) before the given element.
 
     We need this later during the write phase (see :mod:`writer`) which is line oriented.
     When we have a newline in front of our <snippet> elements we can find them more easily/efficiently.
@@ -434,12 +432,11 @@ def _ensure_newline_before_element(element: _Element):
 
 
 def _ensure_newline_after_element(element: _Element):
-    """Ensures that there is at least one newline character (\\n) after the given element.
+    """Ensure that there is at least one newline character (\\n) after the given element.
 
     We need this later during the write phase (see :mod:`writer`) which is line oriented.
     When we have a newline after of our <snippet> elements we can find them more easily/efficiently.
     """
-
     if not element.tail:
         element.tail = "\n"
         return
@@ -453,6 +450,13 @@ class DoxygenHtmlParser:
 
     _logger = logging.getLogger(__name__)
 
+    _processors: List[ElementProcessor] = [
+        RstInlineProcessor(),
+        RstBlockProcessor(),
+        MarkdownRstBlockProcessor(),
+        PreToDivProcessor(),
+    ]
+
     def __init__(self, source_directory: Path):
         """
         Create an instance of a doxygen html parser.
@@ -462,23 +466,14 @@ class DoxygenHtmlParser:
         self._source_directory = source_directory
         # self._parser = etree.HTMLParser(huge_tree=True, recover=False)
 
-        self._processors: List[ElementProcessor] = [
-            RstInlineProcessor(),
-            RstBlockProcessor(),
-            MarkdownRstBlockProcessor(),
-            PreToDivProcessor(),
-        ]
-
     def parse(self, file: Path) -> HtmlParseResult:
-        """
-        Parse a doxygen HTML file into an ElementTree and normalizes its inner data to contain <rst>-tags.
+        """Parse a doxygen HTML file into an ElementTree and normalize its inner data to contain <rst>-tags.
 
         :param file: The html file to parse
         :type file: Path
         :return: The result of the parsing
         :rtype: ParseResult
         """
-
         tree = etree.parse(file.as_posix())  # type: ignore # nosec B320
 
         meta_title: str = tree.find("//title").text  # type: ignore
@@ -500,9 +495,10 @@ class DoxygenHtmlParser:
 
         return True
 
+    @staticmethod
     @lru_cache(maxsize=2)
-    def _all_supported_elements(self) -> Set[str]:
-        return {e for p in self._processors for e in p.elements}
+    def _all_supported_elements() -> Set[str]:
+        return {e for p in DoxygenHtmlParser._processors for e in p.elements}
 
     def _normalize_tree_and_get_used_formats(self, tree) -> Set[str]:
         """
