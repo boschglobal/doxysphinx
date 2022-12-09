@@ -21,20 +21,8 @@ namespace doxysphinx
 namespace doxygen
 {
 
-/**
- @verbatim embed:rst
-
- Doxygen Comment Style Testfile
- ==============================
-
- This file tests the different doxygen comment styles and the embedding of rst elements.
-
- It checks for the comment styles as documented `here in doxygen documentation <https://www.doxygen.nl/manual/docblocks.html>`_.
-
- For integrating rst into doxygen we use the verbatim command as described `here in the breathe docs <https://breathe.readthedocs.io/en/latest/markups.html>`_.
-
- @endverbatim
-*/
+/// @brief Demonstration of doxygen comment style usage. See also `:doc:"Comment Syntax Documentation </docs/syntax/comment_styles_syntax>"`.
+///
 class CommentStyles
 {
   public:
@@ -202,7 +190,7 @@ class CommentStyles
     /// \endverbatim
     void ensure_slash_style_comments_are_working_as_expected() const = 0;
 
-    /// \verbatim embed:rst:asterisk
+    /// \verbatim embed:rst:leading-asterisk
     /// .. admonition:: What you should see here
     ///
     ///    This text should be in an admonition box. It was generated from a doxygen slash comment **without any special identation but with asterisk embed command**.
@@ -211,7 +199,7 @@ class CommentStyles
     ///
     ///    .. code:: cpp
     ///
-    ///       /// \ verbatim embed:rst:asterisk
+    ///       /// \ verbatim embed:rst:leading-asterisk
     ///       ///
     ///       /// ...rst-content-here...
     ///       ///

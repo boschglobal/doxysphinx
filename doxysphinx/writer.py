@@ -59,6 +59,12 @@ class RstWriter:
 
     _logger = logging.getLogger(__name__)
 
+    # compiled regex for combining adjacent rst blocks
+    _rst_join_regex = re.compile(r"</snippet>\s*<snippet.*?>")
+
+    # regex for searching inline elements
+    _rst_element_regex = re.compile(r"<snippet type=\"(?P<type>.*?)\">((?P<inline_content>.*?)</snippet>)?$")
+
     def __init__(self, source_directory: Path, toc_generator_type: Type[TocGenerator] = DoxygenTocGenerator):
         """
         Create a new rst writer.
@@ -79,9 +85,6 @@ class RstWriter:
                 "`": r"\`",
             }
         )
-
-        # compiled regex for combining adjacent rst blocks
-        self._rst_join_regex = re.compile(r"</rst>\s*<rst>")
 
     def _rst_safe_encode(self, text: str) -> str:
         return text.translate(self._rst_safe_encode_map)
@@ -104,7 +107,7 @@ class RstWriter:
         toc = self._toc_gen.generate_toc_for(html_file)
         content = []
 
-        if parse_result.contains_rst:
+        if parse_result.used_snippet_formats:
             # for rst containing htmls we create a mixed (raw html + rst block) rst
             self._logger.debug(f"writing mixed rst for {parse_result.html_input_file}")
             content.extend(self._mixed_rst(tree))
@@ -211,15 +214,47 @@ class RstWriter:
         while True:
             try:
                 current = next(line_iter)
-                if current.startswith("<rst>"):
+
+                if match := self._rst_element_regex.match(current):
                     content.append(f"  {buffer}")
                     buffer = ""
-                    self._iterate_rst(line_iter, content)
+                    snippet_type = match.group("type")
+                    if snippet_type == "rst:inline":
+                        inline_rst = match.group("inline_content")
+                        self._append_inline_rst_and_prefix(inline_rst, content)
+                        content.extend(self._raw_directive())
+                        # self._iterate_rst(line_iter, content)
+                        # this is done by _iterate_rst isn't it? -> content.extend(self._raw_directive())
+                    else:
+                        self._iterate_rst(line_iter, content)
                 else:
                     buffer += current
             except StopIteration:
                 break
         content.append(f"  {buffer}")
+
+    def _append_inline_rst_and_prefix(self, inline_content: str, content: List[str]):
+        decoded_line = html.unescape(inline_content.strip())
+        last_content_line = content.pop()
+        if last_content_line.endswith(" "):
+            last_content_line = f"{last_content_line[:-1]}&nbsp;"
+        # last_content_line += '<em class="doxysphinx-inline-rst-content-before-marker"> </em>'
+        content.append(last_content_line)
+        content.append("")
+        content.append(f"{decoded_line}")
+        content.append("")
+
+    # def _append_inline_rst_and_prefix(self, inline_content: str, content: List[str]):
+    #     decoded_line = html.unescape(inline_content.strip())
+    #     content.append("")
+    #     # content.append(".. container:: doxysphinx-inline-rst-content-before-marker")
+    #     # content.append("")
+    #     # content.append("   dummy")
+    #     # content.append("")
+    #     content.append(".. container:: doxysphinx-inline-content-wrapper")
+    #     content.append("")
+    #     content.append(f"   {decoded_line}")
+    #     content.append("")
 
     def _iterate_rst(self, line_iter: Iterator[str], content: List[str]):
         """Iterate over rst lines."""
@@ -230,7 +265,7 @@ class RstWriter:
         while True:
             try:
                 current = next(line_iter)
-                if current.startswith("</rst>"):
+                if current.strip().startswith("</snippet>"):
                     # dedent buffer and convert it to lines
                     dedented_buffer = dedent(buffer)
                     buffer_lines = dedented_buffer.split("\n")

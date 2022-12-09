@@ -135,9 +135,8 @@ The class :demo:`doxysphinx::rst::Car` implements the car.
 
 Next you have to prepare your doxygen configuration file (doxyfile) to have compatible settings with doxysphinx.
 
-The following settings are mandatory and will be checked by a validator (only when using the doxyfile as input):
-
-You can prepare or optimize your doxygen configuration file (doxyfile) by doing the following:
+The following settings are mandatory and will be checked by a validator if you use your doxyfile as input for
+doxysphinx (if you use the doxygen html output directory instead validation will be skipped):
 
 ### Mandatory settings
 
@@ -150,8 +149,6 @@ GENERATE_TREEVIEW      = NO   # Deactivate doxygens own treeview (as it doesn't 
 DISABLE_INDEX          = NO   # Menu data is crucial for our TOC generation so it mustn't be disabled
 
 GENERATE_HTML          = YES  # Keep sure that you generate HTML which needed for doxysphinx
-ALIASES                = "rst=\verbatim embed:rst:leading-asterisk" \
-                         endrst=\endverbatim  # This allows you to use rst blocks inside doxygen comments with @rst and @endrst
 
 CREATE_SUBDIRS         = NO   # NO is the default value and it should be no because doxysphinx can't handle subdirs right now.
 ```
@@ -176,7 +173,7 @@ look at the [alternatives](./alternatives.md).
 
 ### Recommended settings
 
-these settings are optional but strongly recommended (you will be warned in case of some value deviations):
+these settings are optional but strongly recommended (you will be notified in case of some value deviations):
 
 ```yaml
 
@@ -193,6 +190,10 @@ DOT_IMAGE_FORMAT       = svg  # generates nicer svg images
 DOT_TRANSPARENT        = YES  # generate transparent images
 INTERACTIVE_SVG        = YES  # to be able to scroll and zoom into big images
 
+# if you want to use aliases instead of markdown fences for commenting (see syntax guide) you have to add
+# something like this (which doesn't hurt either):
+ALIASES                = "rst=\verbatim embed:rst:leading-asterisk" \
+                         endrst=\endverbatim  # This allows you to use rst blocks inside doxygen comments with @rst and @endrst
 ```
 
 ````{tip}
@@ -259,7 +260,7 @@ Please note that sphinx has slightly different output directories depending on t
 
 ### Clean
 
-If you want to clean the files doxysphinx generated please use the clean command:
+If you want to remove the files doxysphinx generated please use the clean command:
 
 ```bash
 doxysphinx clean <SPHINX_SOURCE> <SPHINX_OUTPUT> <INPUT(S)>
@@ -300,6 +301,9 @@ Car(Engine& engine, Color& color) {};
 ```
 
 Note the `@rst` and `@endrst` tags. Inside these tags you can write any rst code.
+
+See also the [Syntax Guide](syntax/syntax_guide.md) for a complete documentation on how to comment for doxysphinx.
+
 Now run doxygen, doxysphinx and sphinx and look at the generated documentation. You should see something like
 this:
 
@@ -314,6 +318,7 @@ this:
 
 Further reading:
 
+* To get to know the doxysphinx comment syntax -> see our [syntax guide](syntax/syntax_guide.md).
 * Maybe you want to know more about the inner workings? -> head over to the [reference](inner_workings.md) section.
 * Or look at some examples? -> [linking to doxygen](linking_to_doxygen.md).
 * Or do you want to contribute and bring doxysphinx to the next level? Read the [contributors guide](../CONTRIBUTE.md) and the

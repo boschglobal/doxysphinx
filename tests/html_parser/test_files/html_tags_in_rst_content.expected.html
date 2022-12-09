@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+
+<head>
+    <title>demo : html tags in rst content</title>
+</head>
+
+<body>
+    <snippet type="rst:block">
+.. warning:: no content after the delimiters
+
+   In markdown it's typical to have the language right behind the beginning codeblock delimiter.
+   Something like ```cpp for example. However the doxygen markdown parser will swallow
+   anything behin the delimiters (which means we couldn't make use of information there). So please do
+   not fall into the trap trying to start a rst block with ```{rst}!
+</snippet>
+    Just Text
+    <snippet type="rst:block">
+.. tip::
+
+   If you see a tip around this text it worked!
+</snippet>
+<!-- fragment -->
+    <snippet type="rst:block">
+.. tip:: another test
+
+   this is just another test
+   here's a codeblock right at the end
+</snippet>
+</body>
+
+</html>

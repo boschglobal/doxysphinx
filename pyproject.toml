@@ -103,6 +103,8 @@ build-backend = "poetry.core.masonry.api"
 log_level = "DEBUG"
 testpaths = ["tests"]
 junit_logging = "out-err"
+markers = ["speed: manual speed tests"]
+addopts = "-m 'not speed'"
 
 [tool.semantic_release]
 version_source = "commit"
@@ -158,6 +160,9 @@ ignore_missing_imports = true
 [tool.pydocstyle]
 match_dir = "doxysphinx"
 ignore = "D301,D213,D212,D203"
+
+[tool.pylint]
+disable = ["logging-fstring-interpolation"]
 
 [tool.pylint.FORMAT]
 max-line-length = 120
