@@ -66,6 +66,15 @@ sphinx-autoapi = "^2.0.0"
 lxml-stubs = "^0.4.0"
 types-pyyaml = "^6.0.12.2"
 
+# ci build dependencies
+[tool.poetry.group.ci]
+optional = true
+[tool.poetry.group.ci.dependencies]
+pytest = "*"
+pytest-cov = "*"
+pytest-emoji = "*"
+pex = "*"
+
 [tool.poetry.scripts]
 doxysphinx = "doxysphinx.cli:cli"
 
