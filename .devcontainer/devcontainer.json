@@ -4,7 +4,8 @@
     "dockerfile": "Dockerfile",
     "context": "../",
     "args": {
-      "VARIANT": "3.10"
+      "VARIANT": "3.10",
+      "WORKSPACE_DIR": "${containerWorkspaceFolder}"
     }
   },
   "settings": {
@@ -20,7 +21,7 @@
     "vscode": {
       // Set *default* container specific settings.json values on container create.
       "settings": {
-        "python.poetryPath": "/usr/local/py-utils/bin/poetry",
+        "python.poetryPath": "/home/vscode/.local/bin/poetry",
         //"python.defaultInterpreterPath": "${containerWorkspaceFolder}/.venv/bin/python",
         "python.analysis.extraPaths": [
           "${containerWorkspaceFolder}"
@@ -41,6 +42,7 @@
   // As a post create command we install the poetry dependencies and also install the pre-commit hooks.
   // It's necessary to do this here because in Dockerfile we do not have the config files (pyproject.toml +
   // .pre-commit-config.yaml) available.
-  //"postCreateCommand": "poetry config virtualenvs.create false && poetry lock && poetry install && pre-commit install --install-hooks"
-  //"onCreateCommand": "poetry completions bash >> ~/.bash_completion && poetry config virtualenvs.in-project true && poetry install && pre-commit install --install-hooks"
+  // "postCreateCommand": "pre-commit install --install-hooks && pre-commit autoupdate",
+  "onCreateCommand": "poetry completions bash >> ~/.bash_completion && poetry install --with docs && pre-commit install --install-hooks && pre-commit autoupdate",
+  "remoteUser": "vscode"
 }

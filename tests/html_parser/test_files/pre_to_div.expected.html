@@ -6,6 +6,12 @@
 </head>
 
 <body>
+    <snippet type="rst:block">
+.. tip::
+
+   This snippet here is needed to trigger the pre-to-div-postprocessor.
+   Only when there is "mixed"-content it will be triggered.
+</snippet>
     <div class="fragment"><div class="line">This is preformatted content</div><div class="line">without any rst in it.</div><div class="line">The parser should change this to a div tag</div><div class="line">with class "fragment" and subdivs </div><div class="line">with class "line" for each line.</div></div>
 </body>
 

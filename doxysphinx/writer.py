@@ -107,7 +107,7 @@ class RstWriter:
         toc = self._toc_gen.generate_toc_for(html_file)
         content = []
 
-        if parse_result.used_snippet_formats:
+        if tree:
             # for rst containing htmls we create a mixed (raw html + rst block) rst
             self._logger.debug(f"writing mixed rst for {parse_result.html_input_file}")
             content.extend(self._mixed_rst(tree))

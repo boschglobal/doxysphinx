@@ -4,20 +4,6 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "doxysphinx clean demo",
-      "type": "shell",
-      "command": "poetry",
-      "args": [
-        "run",
-        "doxysphinx",
-        "--verbosity=DEBUG",
-        "clean",
-        ".",
-        ".build/html",
-        "demo/demo.doxyfile"
-      ]
-    },
-    {
       "label": "run precommit",
       "type": "shell",
       "command": "poetry",
@@ -58,6 +44,37 @@
         "check",
         "--help"
       ]
-    }
+    },
+    // helpers for debugging
+    {
+      "label": "_DEBUG: doxysphinx clean",
+      "type": "shell",
+      "command": "poetry",
+      "args": [
+        "run",
+        "doxysphinx",
+        "--verbosity=DEBUG",
+        "clean",
+        ".",
+        ".build/html",
+        "demo/demo.doxyfile"
+      ]
+    },
+    {
+      "label": "_DEBUG: make doxygen",
+      "type": "shell",
+      "command": "make",
+      "args": [
+        "doxygen",
+      ]
+    },
+    {
+      "label": "_DEBUG: clean",
+      "dependsOn": [
+        // comment out the following depending on your needs (e.g. you can skip make doxygen if you ran that once)
+        "_DEBUG: make doxygen",
+        "_DEBUG: doxysphinx clean"
+      ]
+    },
   ]
 }

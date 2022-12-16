@@ -14,10 +14,10 @@
                 "--verbosity=DEBUG",
                 "build",
                 "${workspaceFolder}",
-                "${workspaceFolder}/.build",
-                "${workspaceFolder}/demo/demo.doxyfile"
+                "${workspaceFolder}/.build/html",
+                "${workspaceFolder}/docs/doxygen/demo/html"
             ],
-            "preLaunchTask": "doxysphinx clean demo",
+            "preLaunchTask": "_DEBUG: clean",
         },
         {
             "name": "Debug: Doxysphinx Build Command Graphviz",
@@ -29,7 +29,7 @@
                 "--verbosity=DEBUG",
                 "build",
                 "${workspaceFolder}",
-                "${workspaceFolder}/.build",
+                "${workspaceFolder}/.build/html",
                 "${workspaceFolder}/docs/doxygen/graphviz"
             ]
         },

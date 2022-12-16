@@ -92,7 +92,9 @@ class _FileByNameAndSize:
         return f"{self.path.__repr__()} [{self.size}]"
 
 
-def copy_if_different(source_dir: Path, target_dir: Path, *patterns: str) -> List[Path]:
+def copy_if_different(
+    source_dir: Path, target_dir: Path, *patterns: str, ignore_files: Optional[List[Path]] = None
+) -> List[Path]:
     """
      Copy files with given glob patterns from source_dir to target_dir but only if the files are different.
 
@@ -110,16 +112,28 @@ def copy_if_different(source_dir: Path, target_dir: Path, *patterns: str) -> Lis
 
     # for each source file try to find a target (an existing file)
     source_files = multi_glob(source_dir, *patterns)
-    target_files: List[Path] = [t for t in [target_dir / f.relative_to(source_dir) for f in source_files] if t.exists()]
+    if ignore_files:
+        for ignored in ignore_files:
+            if ignored in source_files:
+                source_files.remove(ignored)
 
-    # create the set difference to find the files that need to be copied
-    source_files_set = {_FileByNameAndSize(s) for s in source_files}
-    target_files_set = {_FileByNameAndSize(t) for t in target_files}
-    files_to_copy = source_files_set - target_files_set
+    # if the target directory is not empty then get the files to copy based on size...
+    if any(Path(target_dir).iterdir()):
+        target_files: List[Path] = [
+            t for t in [target_dir / f.relative_to(source_dir) for f in source_files] if t.exists()
+        ]
+
+        # create the set difference to find the files that need to be copied
+        source_files_set = {_FileByNameAndSize(s) for s in source_files}
+        target_files_set = {_FileByNameAndSize(t) for t in target_files}
+        files_to_copy = [f.path for f in (source_files_set - target_files_set)]
+    # else just take all source files
+    else:
+        files_to_copy = source_files
 
     result: List[Path] = []
     for file in files_to_copy:
-        source_file = file.path
+        source_file = file
         target_file = target_dir / source_file.relative_to(source_dir)
         target_file.parent.mkdir(parents=True, exist_ok=True)
         shutil.copy(source_file, target_file)

@@ -15,7 +15,9 @@ These represent the main functionality of doxysphinx.
 
 import logging
 from pathlib import Path
-from typing import List, Type
+from typing import List, Optional, Tuple, Type
+
+from mpire import WorkerPool
 
 from doxysphinx.html_parser import DoxygenHtmlParser, HtmlParser
 from doxysphinx.resources import DoxygenResourceProvider, ResourceProvider
@@ -46,6 +48,7 @@ class Builder:
         parser_type: Type[HtmlParser] = DoxygenHtmlParser,
         writer_type: Type[Writer] = RstWriter,
         force_recreation: bool = False,
+        parallel=True,
     ):
         """
         Create a Builder that builds rsts for doxygen html files.
@@ -67,7 +70,9 @@ class Builder:
         # these will be used later lazily
         self._parser_type = parser_type
         self._writer_type = writer_type
+
         self._force_recreation = force_recreation
+        self._parallel = parallel
 
     def build(self, doxygen_html_dir: Path):
         """
@@ -87,21 +92,31 @@ class Builder:
         self._logger.info(f"created {len(created_rsts)} rst-files in {doxygen_html_dir}")
 
     def _build(self, doxygen_html_dir: Path) -> List[Path]:
-        result_list: List[Path] = []
         parser = self._parser_type(doxygen_html_dir)
         writer = self._writer_type(doxygen_html_dir)
+        task_args: Tuple[HtmlParser, Writer] = (parser, writer)
 
-        for html_file in doxygen_html_dir.glob("*.html"):
-            parse_result = parser.parse(html_file)
+        files = [f for f in doxygen_html_dir.glob("*.html") if self._should_build_rst(f.with_suffix(".rst"), f)]
 
-            # for now, we just write the rst parallel to the html file
-            rst_file = html_file.with_suffix(".rst")
+        if self._parallel:
+            with WorkerPool() as pool:
+                pool.set_shared_objects(task_args)
+                result = pool.map(self._run, files)
+                return result
+        else:
+            return [self._run((parser, writer), f) for f in files]
 
-            # if the rst file is either not existing or it is older than the html file...
-            if self._should_build_rst(rst_file, html_file):
-                result_list.append(writer.write(parse_result, rst_file))
+    def _run(self, task_args: Tuple[HtmlParser, Writer], file: Path) -> Path:
+        parser, writer = task_args
+        parse_result = parser.parse(file)
 
-        return result_list
+        # for now, we just write the rst parallel to the html file
+        rst_file = file.with_suffix(".rst")
+
+        # if the rst file is either not existing or it is older than the html file...
+        result = writer.write(parse_result, rst_file)
+
+        return result
 
     def _should_build_rst(self, rst_file: Path, html_file: Path) -> bool:
         # always build if force mode is on
@@ -132,6 +147,7 @@ class Cleaner:
         sphinx_output_dir: Path,
         dir_mapper_type: Type[DirectoryMapper] = SphinxHtmlBuilderDirectoryMapper,
         resource_provider_type: Type[ResourceProvider] = DoxygenResourceProvider,
+        parallel: bool = True,
     ):
         """
         Create a Cleaner that will cleanup things that the :class:`Builder` created.
@@ -148,6 +164,7 @@ class Cleaner:
         """
         self._dir_mapper = dir_mapper_type(sphinx_source_dir, sphinx_output_dir)
         self._resource_provider = resource_provider_type(self._dir_mapper)
+        self._parallel = parallel
 
     def cleanup(self, doxygen_html_dir: Path):
         """
@@ -164,11 +181,20 @@ class Cleaner:
         self._logger.info(f"deleted {len(deleted_rsts)} rst-files from {doxygen_html_dir}")
 
     def _cleanup(self, doxygen_html_dir: Path) -> List[Path]:
-        result_list: List[Path] = []
-        for file_path in doxygen_html_dir.glob("*.html"):
-            target_rst_path = file_path.with_suffix(".rst")
-            if target_rst_path.exists():
-                target_rst_path.unlink()
-                result_list.append(target_rst_path)
-                self._logger.debug(f"deleted {target_rst_path}")
-        return result_list
+        files = list(doxygen_html_dir.glob("*.html"))
+
+        if self._parallel:
+            with WorkerPool() as pool:
+                pool.set_shared_objects(self._logger)
+                return pool.map(self._delete_corresponding_file, files)
+        else:
+            return [result for file in files if (result := self._delete_corresponding_file(self._logger, file))]
+
+    @staticmethod
+    def _delete_corresponding_file(logger: logging.Logger, html_file: Path) -> Optional[Path]:
+        target_rst_path = html_file.with_suffix(".rst")
+        if target_rst_path.exists():
+            target_rst_path.unlink()
+            logger.debug(f"deleted {target_rst_path}")
+            return target_rst_path
+        return None

@@ -21,7 +21,7 @@ SHELL [ "/bin/zsh", "-c" ]
 # set environment
 ENV PYTHONUNBUFFERED 1
 ENV TZ=Europe/Berlin
-ENV PATH="/root/.local/bin:${PATH}"
+ENV PATH="/root/.local/bin:/home/vscode/.local/bin:${PATH}"
 
 # Install apt dependencies
 # - default-jre for running plantuml
@@ -54,25 +54,46 @@ RUN wget -c https://netcologne.dl.sourceforge.net/project/plantuml/plantuml.jar 
 
 # Switch to vscode user
 USER vscode
-ARG WORKSPACE_DIR=/workspaces/
-ENV XDG_CACHE_HOME=${WORKSPACE_DIR}/.cache
+
+# set workspace dir and ensure it's present
+# set cache home directory to in-repo directory (so it will survive container rebuilds and speed up startup
+# and dependency resolution)
+ARG WORKSPACE_DIR
 WORKDIR ${WORKSPACE_DIR}/
 
-# Install poetry (as vscode so that poetry is installed in the correct home directory)
-#RUN curl -sSL https://install.python-poetry.org | python3
-RUN pipx install poetry \
-    && pipx install poetryup \
-    && pipx install pre-commit
+# set cache home directory to in-repo directory (so it will survive container rebuilds and speed up startup
+# and dependency resolution)
+ENV XDG_CACHE_HOME=${WORKSPACE_DIR}/.cache
 
-# Install dart-sass (needed for scoping css files to specific html elements)
-# Some dart-sass versions ship with a src folder, which contains the dart binary so we need to extract all
-# contents of the tarball. Note that this will create a src folder in /home/vscode/.local/bin.
-RUN mkdir -p /home/vscode/.local/bin && \
-    export PLATFORM="$(uname -m | sed 's/aarch64/arm64/' | sed 's/86_//')" && \
-    echo Installing dart-sass for $PLATFORM && \
-    curl -sSL https://github.com/sass/dart-sass/releases/download/1.52.3/dart-sass-1.52.3-linux-${PLATFORM}.tar.gz | \
-    tar -xzvf - --strip-components=1 -C /home/vscode/.local/bin dart-sass/
+# Install poetry (we're not use pipx here because poetry in a virtualenv has it's issues...)
+RUN curl -sSL https://install.python-poetry.org | python3 - \
+    && poetry completions bash >> ~/.bash_completion
 
+# Install precommit globally in the container (with pipx installation we had error messages during pre-commit
+# checks like "/usr/local/bin/python: No module named pre_commit" - seems it needs the python module available
+# in the global python environment
+RUN pip install pre-commit
+
+# Install poetryup to update pyproject.toml dependencies
+RUN pipx install poetryup
+
+# Inject + Install QA tooling
+RUN pipx inject flake8 flake8-bugbear flake8-comprehensions flake8-simplify cohesion pydocstyle \
+    flake8-docstrings pep8-naming \
+    && pipx inject mypy lxml-stubs types-PyYAML \
+    && pipx install isort \
+    && pipx install safety \
+    && pipx install commitizen
+
+# install pytest
+RUN pipx install pytest && pipx inject pytest pytest-cov pytest-emoji pytest-md
+
+# install pex for packaging
+RUN pipx install pex
+
+# for pylint we would need to install c libs in it's pipx env and also whitelist them in pyproject.toml
+# thats the reason why we deactivated that for now...
+#RUN pipx inject pylint lxml mpire
 
 # note that installation of dependencies and pre-commit installation will be done after vscode has started
 # the container.

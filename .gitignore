@@ -183,3 +183,5 @@ demo/ocilib/
 demo/graphviz/
 tests/toc/*.rst
 docs/auto_api
+*pyinstruments.html
+future/

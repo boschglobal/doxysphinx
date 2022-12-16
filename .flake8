@@ -9,7 +9,7 @@
 
 [flake8]
 max-line-length = 120
-ignore = D203, D301
+ignore = D203, D301, W503
 exclude = .git,
     .build,
     .devcontainer,

@@ -15,7 +15,7 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Dict, List, Union
 
-import json5
+import pyjson5
 
 from doxysphinx.utils.pathlib_fix import path_is_relative_to, path_resolve
 
@@ -51,17 +51,21 @@ def _compare_configs(doxyfile: Path, doxygen_exe: str, doxygen_cwd: Path) -> Dox
     from subprocess import CalledProcessError, run  # nosec: B404
 
     try:
-        default_config = run(  # nosec: B607, B603
-            f"{doxygen_exe} -s -g -", cwd=doxygen_cwd, shell=True, capture_output=True  # nosec: B607, B603, B602
-        )  # nosec: B607, B603
-        if default_config.check_returncode:
-            custom_config = run(  # nosec: B607, B603
-                f"{doxygen_exe} -x {doxyfile}",
-                cwd=doxygen_cwd,
-                shell=True,  # nosec: B602
-                capture_output=True,  # nosec: B607, B603
-            )  # nosec: B607, B603
-            custom_config.check_returncode
+        default_config = run(
+            f"{doxygen_exe} -s -g -",
+            cwd=doxygen_cwd,
+            shell=True,  # nosec: B602
+            capture_output=True,
+            check=True,
+        )
+
+        custom_config = run(
+            f"{doxygen_exe} -x {doxyfile}",
+            cwd=doxygen_cwd,
+            shell=True,  # nosec: B602
+            capture_output=True,
+            check=True,
+        )
 
         return DoxyOutput(
             default_config.stdout.decode("utf-8") + custom_config.stdout.decode("utf-8"),
@@ -286,7 +290,7 @@ def read_js_data_file(js_data_file: Path) -> Any:
     """
     data = js_data_file.read_text(encoding="utf-8")
     sanitized = re.sub(r"var .*=", "", data)
-    result: Any = json5.loads(sanitized)
+    result: Any = pyjson5.loads(sanitized)
     return result
 
 

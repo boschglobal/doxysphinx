@@ -12,24 +12,19 @@ The resources module contains classes will do resource provisioning and patching
 Resources are stylesheets, images, javascripts etc. that contemplate the html files.
 """
 
+import hashlib
 import logging
 import pkgutil
 from pathlib import Path
-from subprocess import run  # nosec: B404
-from typing import Callable, List, Optional, Protocol, Union
+from typing import Any, Callable, List, Optional, Protocol, Union
+
+import sass
 
 from doxysphinx.sphinx import DirectoryMapper
 
 # noinspection PyMethodMayBeStatic,PyUnusedLocal
-from doxysphinx.utils.exceptions import ApplicationError, PrerequisiteNotMetError
-from doxysphinx.utils.files import (
-    copy_if_different,
-    multi_glob,
-    replace_in_file,
-    stringify_paths,
-    write_file,
-)
-from doxysphinx.utils.iterators import apply_if_first
+from doxysphinx.utils.exceptions import ApplicationError
+from doxysphinx.utils.files import copy_if_different, multi_glob, stringify_paths
 
 
 class ResourceProvider(Protocol):
@@ -99,10 +94,10 @@ class DoxygenResourceProvider:
         self._css_scoper = CssScoper(".doxygen-content")
         self._custom_styles = self._load_custom_styles()
 
-    def _load_custom_styles(self) -> List[str]:
+    def _load_custom_styles(self) -> str:
         data: Union[bytes, None] = pkgutil.get_data(__name__, "resources/custom.scss")
         if data:
-            return data.decode("utf-8").split("\n")
+            return "\n" + data.decode("utf-8") + "\n"
         else:
             self._logger.critical("could not read custom styles out of package. Exiting.... sorry! :-(")
             exit()
@@ -119,11 +114,36 @@ class DoxygenResourceProvider:
         target = self._dir_mapper.map(resource_root)
         target.mkdir(parents=True, exist_ok=True)
 
-        copied_files = copy_if_different(resource_root, target, *self._provisioning_glob_pattern)
+        # copy file that are different in target, except for css files that we post process later (the
+        # difference check would fail for them anyway)
+        doxygen_css = resource_root / "doxygen.css"
+        doxygen_awesome_css = resource_root / "doxygen-awesome.css"
+        css_files_for_postprocessing = [doxygen_css, doxygen_awesome_css]
+        copied_files = copy_if_different(
+            resource_root, target, *self._provisioning_glob_pattern, ignore_files=css_files_for_postprocessing
+        )
 
         self._logger.debug(f"copied files:\n{stringify_paths(copied_files)}")
 
-        self._post_process(copied_files)
+        # postprocessing (patching + sass)
+        # ... for doxygen.css
+        written_doxygen_css = self._css_scoper.scope(
+            stylesheet=doxygen_css,
+            target=target / doxygen_css.name,
+            additional_css_rules=self._custom_styles,
+            content_patch_callback=lambda s: str.replace(s, "code.JavaDocCode\n", "code.JavaDocCode {\n"),
+        )
+        if written_doxygen_css:
+            copied_files.append(written_doxygen_css)
+        # ... for doxygen_awesome.css if existing
+        if doxygen_awesome_css.exists():
+            written_doxygen_awesome_css = self._css_scoper.scope(
+                stylesheet=doxygen_awesome_css,
+                target=target / doxygen_awesome_css.name,
+                content_patch_callback=lambda s: str.replace(s, "invert()", '#{"invert()"}'),
+            )
+            if written_doxygen_awesome_css:
+                copied_files.append(written_doxygen_awesome_css)
 
         return copied_files
 
@@ -143,37 +163,24 @@ class DoxygenResourceProvider:
 
         return files_deleted
 
-    def _post_process(self, copied_files: List[Path]):
-        # stylesheet scoping
-        apply_if_first(
-            copied_files,
-            lambda p: p.name == "doxygen.css",
-            self._patch_doxygen_stylesheet,
-        )
-        apply_if_first(
-            copied_files,
-            lambda p: p.name == "doxygen-awesome.css",
-            self._patch_doxygen_awesome_stylesheet,
-        )
-
-    def _patch_doxygen_stylesheet(self, doxygen_css_file: Path):
-        self._css_scoper.scope(
-            doxygen_css_file,
-            self._custom_styles,
-            scss_patch_callback=lambda file: replace_in_file(file, "code.JavaDocCode\n", "code.JavaDocCode {\n"),
-        )
-
-    def _patch_doxygen_awesome_stylesheet(self, doxygen_awesome_css_file: Path):
-        self._css_scoper.scope(
-            doxygen_awesome_css_file,
-            scss_patch_callback=lambda file: replace_in_file(file, "invert()", '#{"invert()"}'),
-        )
-
 
 class CssScoper:
     """Scopes css-stylesheets to a special selector.
 
-    This is done with the help of dartsass (a sass processor).
+    This is done with the help of libsass (as the sass-syntax extends css with nesting).
+
+    Our original problem was that the doxygen stylesheet and the sphinx theme stylesheets collide in some
+    ways (e.g. global styles like heading-styles etc...). We therefore needed to have a mechanism to apply
+    doxygen stylesheets only to doxygen content (not to the outer sphinx theme shell). We do this via sass,
+    because sass is css compatible but adds some nice features to it. You can for example nest styles.
+    We use that here to define an outer class and nest the whole doxygen stylesheet below it in a temporary
+    sass stylesheet which then gets compiled back to css. With this
+    we kill 2 birds with one stone:
+    - all doxygen rules are now scoped so they are not applied to the sphinx bits shell anymore....
+    - all doxygen rules now are more specialized than any of the outer sphinx style rules. This mean they
+      win when the styles are evaluated in the browser.
+    In the end that means that sphinx styles are applied to sphinx bits and doxygen styles are applied to
+    doxygen bits. We still need to fix some minor issues with a custom stylesheet (which we also apply here).
     """
 
     _logger = logging.getLogger(__name__)
@@ -189,76 +196,92 @@ class CssScoper:
     def scope(
         self,
         stylesheet: Path,
-        additional_css_rules: Optional[List[str]] = None,
-        scss_patch_callback: Optional[Callable[[Path], None]] = None,
-    ) -> Path:
-        """
-        Scopes a stylesheet to given selector.
+        target: Path,
+        additional_css_rules: Optional[str] = None,
+        content_patch_callback: Optional[Callable[[str], str]] = None,
+    ) -> Optional[Path]:
+        """Scope a stylesheet to given selector.
 
-        The process is as follows: The original stylesheet will be moved to .original.scss.
-        Then an scss file (same name like stylesheet) that will import that .original.scss
-        file will be created. This will be compiled to the same filename as the original
-        stylesheet with the help of dartsass.
+        The process is as follows: The original stylesheet is read, processed, hashed and compiled to the
+        target. If a target already exists and the hash is identical nothing is compiled and written.
 
-        :param stylesheet: The stylesheet to scope.
+        :param stylesheet: The path to a stylesheet to scope.
+        :param: target: The path to a stylesheet where the results are written to.
         :param additional_css_rules: Additional css rules to inject.
-        :param scss_patch_callback: A callback that will be called on the original file
+        :param scss_patch_callback: A callback that will be called on the original file.
+               Note: we had a bug in doxygen.css and a sass compatibility fix for doxygen-awesome that made
+               this mechanism necessary. With one of the recent doxygen versions the doxygen.css bug was fixed
+               however we still keep it here some time.
         :return: The path to the written stylesheet (should be identical to stylesheet).
         """
-        # move original stylesheet to .original.scss
-        original = stylesheet.with_suffix(".original.scss")
-        self._move(stylesheet, original)
+        if stylesheet == target:
+            raise ApplicationError(f"source ({stylesheet}) and target ({target}) stylesheets cannot be identical.")
 
-        # execute patch callback if any
-        if scss_patch_callback:
-            scss_patch_callback(original)
+        # load stylesheet and apply patches
+        css_content = stylesheet.read_text()
 
-        # create .scss (sass) file that will import the .original.scss but scoped to
-        # the selector
-        content = [f"{self._selector} {{", f'   @import "{original.name}";', "}", ""]
+        if content_patch_callback:
+            css_content = content_patch_callback(css_content)
 
-        if additional_css_rules:  # add additional styles if any
-            content.extend(additional_css_rules)
+        # create .scss (sass) content scoped to the selector
+        content = f"{self._selector} {{\n{css_content}\n}}\n"  # here we scope the content to a given css selector
 
-        sass_stylesheet = stylesheet.with_suffix(".scss")
-        write_file(sass_stylesheet, content)
+        if additional_css_rules:
+            content += additional_css_rules
 
-        # compile scoped scss to css (thereby retaining original file)
-        self._call_sass(sass_stylesheet, stylesheet)
+        new_hash_digest = hashlib.blake2b(content.encode("utf-8")).hexdigest()
 
-        # remove scoping from html element (if any) where typically variables are
-        # stored, because this will only work globally.
-        replace_in_file(stylesheet, f"{self._selector} html {{", "html {")
+        old_hash_digest = self._read_hash_digest(target)
+        if new_hash_digest == old_hash_digest:
+            return None
 
-        self._logger.debug(f"scoped stylesheet '{stylesheet}' to selector '{self._selector}'.")
-        return stylesheet
+        # add hash digest to content
+        content = (
+            f"/* {new_hash_digest} <- doxysphinx hash digest for the original input css that leads"
+            f"to the css below */\n{content}"
+        )
+
+        # compile the scss to a css
+        compiled_css: Any = sass.compile(
+            string=content,
+            output_style="expanded",
+            indented=False,
+            include_paths=[str(stylesheet.parent)],
+        )
+
+        # the sass compiler does also scope the html element (where typically css variables are
+        # stored). We need to remove that scoping again because it will only work if it's in global scope.
+        compiled_css = compiled_css.replace(f"{self._selector} html {{", "html {")
+
+        # write stylesheet
+        target.write_text(compiled_css)
+
+        self._logger.debug(
+            f"scoped original stylesheet '{stylesheet}' to selector '{self._selector}' in target '{target}'."
+        )
+        return target
+
+    @staticmethod
+    def _read_hash_digest(file: Path) -> str:
+        if not file.exists():
+            return ""
+
+        digest_line: str
+        with open(file, mode="r", encoding="utf") as f:
+            digest_line = f.readline()
+            # sometimes sass renders an @charset css directive which has to be on the first line (by css spec)
+            # so in that case our hash digest is on the second line and we need to adapt to that...
+            if digest_line.startswith("@charset"):
+                digest_line = f.readline()
+
+        if not digest_line.startswith("/* "):
+            return ""
+
+        digest = digest_line[3:].split(" <- ")[0]
+        return digest
 
     @staticmethod
     def _move(original: Path, new: Path):
         if new.exists():
             new.unlink()
         original.rename(new)
-
-    @staticmethod
-    def _call_sass(sass_file: Path, output_css_file: Path):
-        try:
-            result = run(["sass", sass_file, output_css_file])  # nosec: B607, B603
-            result.check_returncode()
-
-            if result.stderr:
-                message = (
-                    "Sass Compiler had errors "
-                    f"(call: sass {sass_file}"  # type: ignore [str-bytes-safe]
-                    f"{output_css_file}): \n{result.stderr}"
-                )
-
-                raise ApplicationError(message)
-        except FileNotFoundError:
-            raise PrerequisiteNotMetError(
-                "The dart-sass-compiler 'sass' wasn't found. This is a prerequisite "
-                "for us to fix stylesheet issues when integrating doxygen html "
-                "documentation with sphinx. Please install it either by using the "
-                "official guide (https://sass-lang.com/install) or by downloading the "
-                "binary directly and putting it on your $PATH "
-                "(https://github.com/sass/dart-sass/releases)."
-            )

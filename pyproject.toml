@@ -35,17 +35,17 @@ classifiers = [
 packages = [{ include = "doxysphinx" }]
 
 [tool.poetry.dependencies]
-python = ">=3.8,<3.11"
+python = ">=3.8,<3.12"
 lxml = "^4.9.1"
-json5 = "^0.9.8"
 colorama = { version = "^0.4.5", platform = "windows" }
 click = "^8.1.3"
 click-log = "^0.4.0"
 pyparsing = "^3.0.9"
+mpire = "^2.6.0"
+pyjson5 = "^1.6.2"
+libsass = "^0.22.0"
 
-[tool.poetry.group.dev.dependencies]
-lxml-stubs = "^0.3.1"
-pytest = "^7.1.2"
+[tool.poetry.group.sphinx.dependencies]
 sphinx = "^4.5.0"
 Pillow = "^9.2.0"
 sphinx-rtd-theme = "^1.0.0"
@@ -55,32 +55,16 @@ sphinxcontrib-doxylink = "^1.12.0"
 sphinx-test-reports = "^0.3.7"
 sphinx-theme = "^1.0"
 sphinx-copybutton = "^0.5.0"
-pex = "^2.1.99"
 sphinx-book-theme = "^0.2.0"
-snakeviz = "^2.1.1"
 myst-parser = "^0.17.2"
-pytest-cov = "^3.0.0"
-pre-commit = "^2.20.0"
-flake8 = "^4.0.1"
-flake8-bugbear = "^22.7.1"
-black = "^22.6.0"
-isort = "^5.10.1"
-bandit = "^1.7.4"
-safety = "^1.10.3"
-flake8-comprehensions = "^3.10.0"
-flake8-simplify = "^0.19.2"
-mypy = "^0.942"
 toml = "^0.10.2"
-types-PyYAML = "^6.0.10"
-cohesion = "^1.0.0"
-pydocstyle = "^6.1.1"
 sphinx_design = "^0.1.0"
 sphinx-toolbox = "^3.1.2"
-flake8-docstrings = "^1.6.0"
-pytest-emoji = "^0.2.0"
-pytest-md = "^0.2.0"
-commitizen = "^2.29.0"
 sphinx-autoapi = "^2.0.0"
+
+[tool.poetry.group.typedefs.dependencies]
+lxml-stubs = "^0.4.0"
+types-pyyaml = "^6.0.12.2"
 
 [tool.poetry.scripts]
 doxysphinx = "doxysphinx.cli:cli"
@@ -105,22 +89,6 @@ testpaths = ["tests"]
 junit_logging = "out-err"
 markers = ["speed: manual speed tests"]
 addopts = "-m 'not speed'"
-
-[tool.semantic_release]
-version_source = "commit"
-version_variable = ["pyproject.toml:version"]
-changelog_file = "CHANGELOG.md"
-branch = "main"
-commit_message = """chore(release): release {version} published by python-semantic-release [skip ci]
-
-Signed-off-by: github-actions <actions@github.com>
-"""
-commit_author = "github-actions <actions@github.com>"
-# everything following is deactivated: we only want python-semantic-release to create the changelog and the version tags (because everything else is quite buggy)
-upload_to_pypi = false
-upload_to_release = false
-build_command = false
-remove_dist = false
 
 [tool.black]
 line-length = 120
@@ -163,6 +131,7 @@ ignore = "D301,D213,D212,D203"
 
 [tool.pylint]
 disable = ["logging-fstring-interpolation"]
+extension-pkg-allow-list = ["lxml", "mpire"]
 
 [tool.pylint.FORMAT]
 max-line-length = 120

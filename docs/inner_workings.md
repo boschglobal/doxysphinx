@@ -75,7 +75,7 @@ During build command doxysphinx follows these steps:
 - As the sphinx raw html directive isn't considering resources (css, images, javascript-files etc.) these
   files are copied to the output directory if they are newer (this is done at the beginning of the process) -
   see {py:class}`~doxysphinx.resources.DoxygenResourceProvider`.
-- In the ResourceProvider we also patch the doxygen.css file via dartsass to scope it below a special
+- In the ResourceProvider we also patch the doxygen.css file via libsass to scope it below a special
   div-element ({py:meth}`~doxysphinx.writer.RstWriter.`) and add some extra css rules which change some theme
   css styles. For the scoping see {py:class}`~doxysphinx.resources.CssScoper`.
 

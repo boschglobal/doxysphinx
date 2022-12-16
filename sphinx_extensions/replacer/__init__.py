@@ -25,7 +25,7 @@ def setup(app: Sphinx):
     """Setups up the replacer extension."""
     app.connect("source-read", JinjaReplacer.source_read_handler)
 
-    return {"parallel_read_safe": True, "parallel_write_safe": True, "version": "0.1.0"}
+    return {"parallel_read_safe": False, "parallel_write_safe": True, "version": "0.1.0"}
 
 
 class JinjaReplacer:
@@ -41,7 +41,6 @@ class JinjaReplacer:
         """
         if app.builder.format != "html":
             return
-
         source_text = source[0]
         rendered = app.builder.templates.render_string(source_text, app.config.html_context)
         source[0] = rendered
