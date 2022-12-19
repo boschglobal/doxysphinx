@@ -521,7 +521,7 @@ class DoxygenHtmlParser:
             return False
         elif filename.startswith("globals_"):
             return False
-        elif filename in ["annotated", "classes", "functions", "modules", "globals", "files"]:
+        elif filename in ["classes", "functions", "modules", "globals", "files"]:
             return False
 
         # check for doxygen verbatim elements we are interested in (if none are present we can skip the file)
