@@ -73,6 +73,7 @@ optional = true
 pytest = "*"
 pytest-cov = "*"
 pytest-emoji = "*"
+pytest-md = "*"
 pex = "*"
 
 [tool.poetry.scripts]
