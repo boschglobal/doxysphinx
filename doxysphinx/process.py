@@ -12,7 +12,7 @@ The process module contains the :class:`Builder` and :class:`Cleaner` classes.
 
 These represent the main functionality of doxysphinx.
 """
-
+import hashlib
 import logging
 from pathlib import Path
 from typing import List, Type
@@ -97,13 +97,18 @@ class Builder:
             # for now, we just write the rst parallel to the html file
             rst_file = html_file.with_suffix(".rst")
 
-            # if the rst file is either not existing or it is older than the html file...
-            if self._should_build_rst(rst_file, html_file):
-                result_list.append(writer.write(parse_result, rst_file))
+            # get hash of the html file
+            html_text = html_file.read_text()
+            html_hash = hashlib.blake2b(html_text.encode("utf-8")).hexdigest()
+
+            # if the rst file is either not existing or the html file is not changed...
+            if self._should_build_rst(rst_file, html_hash):
+                result_list.append(writer.write(parse_result, rst_file, html_hash))
 
         return result_list
 
-    def _should_build_rst(self, rst_file: Path, html_file: Path) -> bool:
+    def _should_build_rst(self, rst_file: Path, html_hash: str) -> bool:
+
         # always build if force mode is on
         if self._force_recreation:
             return True
@@ -112,10 +117,16 @@ class Builder:
         if not rst_file.exists():
             return True
 
-        # only build if rst_file is older than html file (=doxygen ran inbetween)
-        rst_modification_time = rst_file.stat().st_mtime
-        html_modification_time = html_file.stat().st_mtime
-        if rst_modification_time < html_modification_time:
+        # read the line first line of RST file
+        with open(rst_file, encoding="utf-8") as myfile:
+            rst_content = [next(myfile) for x in range(1)]
+
+        # return false if meta data is not found in first line
+        if not rst_content[0].startswith(".. meta::"):
+            return False
+
+        # return true if hash matches with the meta data
+        if rst_content[0].split(":")[-1] != html_hash + "\n":
             return True
 
         return False

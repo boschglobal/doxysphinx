@@ -40,7 +40,7 @@ class Writer(Protocol):
             the :class:`TocGenerator` protocol.
         """
 
-    def write(self, parse_result: HtmlParseResult, target_file: Path) -> Path:
+    def write(self, parse_result: HtmlParseResult, target_file: Path, html_hash: str) -> Path:
         """
         Write a parsed html result to a target file.
 
@@ -89,7 +89,7 @@ class RstWriter:
     def _rst_safe_encode(self, text: str) -> str:
         return text.translate(self._rst_safe_encode_map)
 
-    def write(self, parse_result: HtmlParseResult, target_file: Path) -> Path:
+    def write(self, parse_result: HtmlParseResult, target_file: Path, html_hash: str) -> Path:
         """
         Write html content to the target_file.
 
@@ -116,7 +116,11 @@ class RstWriter:
             self._logger.debug(f"writing raw placeholder rst for {parse_result.html_input_file}")
             content.extend(self._raw_placeholder_rst(html_file))
 
-        file_content = chain(preamble, toc, self._containerd(content))
+        # get meta directive with hash of HTML file
+        meta_directive_for_htm_hash = self._create_meta_directive_for_html_hash(html_hash)
+
+        file_content = chain(meta_directive_for_htm_hash, preamble, toc, self._containerd(content))
+
         write_file(target_file, file_content)
 
         return target_file
@@ -134,6 +138,14 @@ class RstWriter:
         yield f"{_safe_title}"
         yield "=" * len(_safe_title)
         yield ""
+
+    def _create_meta_directive_for_html_hash(self, html_hash: str) -> Iterator[str]:
+        """Create a meta data directive with hash of the html
+
+        :param html_hash: hash of the HTML file
+        :yield: meta directive to be added at the top of rst file
+        """
+        yield f".. meta::{html_hash}"
 
     @staticmethod
     def _containerd(content: List[str]) -> Iterator[str]:
