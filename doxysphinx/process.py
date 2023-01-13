@@ -5,6 +5,7 @@
 #
 #  Author(s):
 #  - Markus Braun, :em engineering methods AG (contracted by Robert Bosch GmbH)
+#  - Aniket Salve, Robert Bosch GmbH
 # =====================================================================================
 
 """
@@ -126,7 +127,8 @@ class Builder:
             return False
 
         # return true if hash matches with the meta data
-        if rst_content[0].split(":")[-1] != html_hash + "\n":
+        hash_from_rst = rst_content[0].split(":")[-1].rstrip()
+        if hash_from_rst != html_hash:
             return True
 
         return False

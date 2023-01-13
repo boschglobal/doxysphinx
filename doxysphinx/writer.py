@@ -5,6 +5,7 @@
 #
 #  Author(s):
 #  - Markus Braun, :em engineering methods AG (contracted by Robert Bosch GmbH)
+#  - Aniket Salve, Robert Bosch GmbH
 # =====================================================================================
 """The writer module contains classes that write the docs-as-code output files."""
 import html
