@@ -267,7 +267,7 @@ this:
 
 Further reading:
 
-* To link from sphinx documentation directly to doxygen documented symbols -> see our [setting up doxylink](doxylink_setup.md) guide (stroingly recommended).
+* To link from sphinx documentation directly to doxygen documented symbols -> see our [setting up doxylink](doxylink_setup.md) guide (__strongly recommended__).
 * To get to know the doxysphinx comment syntax -> see our [syntax guide](syntax/syntax_guide.md).
 * Maybe you want to know more about the inner workings? -> head over to the [reference](inner_workings.md) section.
 * Or look at some examples? -> [linking to doxygen](linking_to_doxygen.md).
