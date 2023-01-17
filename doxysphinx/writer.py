@@ -141,7 +141,7 @@ class RstWriter:
         yield ""
 
     def _create_meta_directive_for_html_hash(self, html_hash: str) -> Iterator[str]:
-        """Create a meta data directive with hash of the html
+        """Create a meta data directive with hash of the html.
 
         :param html_hash: hash of the HTML file
         :yield: meta directive to be added at the top of rst file
