@@ -229,7 +229,7 @@ doxysphinx:
 
 Now you just need to call the doxysphinx target __right after your doxygen is running__.
 
-### Step 4: Use rst snippets in your C/C++ Sourcecode
+## Step 4: Use rst snippets in your C/C++ Sourcecode
 
 Finally we can start using rst snippets in doxygen comments.
 
@@ -265,9 +265,14 @@ this:
 
 🎉 Congratulations you've completed the quickstart.
 
-Further reading:
+## Further Recommendation
 
-* To link from sphinx documentation directly to doxygen documented symbols -> see our [setting up doxylink](doxylink_setup.md) guide (__strongly recommended__).
+### Recommended Setup
+
+* To link from sphinx documentation directly to doxygen documented symbols -> see our [setting up doxylink](doxylink_setup.md) guide.(__Strongly recommended.__)
+
+### Related Reading
+
 * To get to know the doxysphinx comment syntax -> see our [syntax guide](syntax/syntax_guide.md).
 * Maybe you want to know more about the inner workings? -> head over to the [reference](inner_workings.md) section.
 * Or look at some examples? -> [linking to doxygen](linking_to_doxygen.md).
