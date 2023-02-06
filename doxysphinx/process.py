@@ -100,7 +100,6 @@ class Builder:
 
             # get hash of the html file
             html_text = html_file.read_text()
-            html_text = "".join(line.strip() for line in html_text.split("\n"))
             html_hash = hashlib.blake2b(html_text.encode("utf-8")).hexdigest()
 
             # if the rst file is either not existing or the html file is not changed...
