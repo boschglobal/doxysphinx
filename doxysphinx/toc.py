@@ -1,7 +1,7 @@
 # =====================================================================================
 #  C O P Y R I G H T
 # -------------------------------------------------------------------------------------
-#  Copyright (c) 2022 by Robert Bosch GmbH. All rights reserved.
+#  Copyright (c) 2023 by Robert Bosch GmbH. All rights reserved.
 #
 #  Author(s):
 #  - Markus Braun, :em engineering methods AG (contracted by Robert Bosch GmbH)
