@@ -32,8 +32,8 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/libs/html/datatables.min.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/styles.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/modern.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/layouts.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/modern.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-book-theme-custom.css" />
     
   <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
@@ -431,6 +431,18 @@
   </a>
  </li>
 </ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Related Topics
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../docs/doxylink_setup.html">
+   Doxylink Setup
+  </a>
+ </li>
+</ul>
 
     </div>
 </nav> <!-- To handle the deprecated key -->
@@ -514,7 +526,7 @@
 <span></span><span class="c1"># =====================================================================================</span>
 <span class="c1">#  C O P Y R I G H T</span>
 <span class="c1"># -------------------------------------------------------------------------------------</span>
-<span class="c1">#  Copyright (c) 2022 by Robert Bosch GmbH. All rights reserved.</span>
+<span class="c1">#  Copyright (c) 2023 by Robert Bosch GmbH. All rights reserved.</span>
 <span class="c1">#</span>
 <span class="c1">#  Author(s):</span>
 <span class="c1">#  - Markus Braun, :em engineering methods AG (contracted by Robert Bosch GmbH)</span>
@@ -529,7 +541,7 @@
 
 
 <div class="viewcode-block" id="DirectoryMapper"><a class="viewcode-back" href="../../docs/auto_api/doxysphinx/sphinx/index.html#doxysphinx.sphinx.DirectoryMapper">[docs]</a><span class="k">class</span> <span class="nc">DirectoryMapper</span><span class="p">(</span><span class="n">Protocol</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Mapper that will calculate the output file path for an input file.</span>
 
 <span class="sd">    In docs-as-code tooling (e.g. sphinx) often files from a source dir</span>
@@ -540,7 +552,7 @@
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sphinx_source_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">sphinx_output_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Protocol for a directory mapper constructor.</span>
 
 <span class="sd">        :param sphinx_source_dir: the sphinx source directory</span>
@@ -548,19 +560,19 @@
 <span class="sd">        &quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="DirectoryMapper.map"><a class="viewcode-back" href="../../docs/auto_api/doxysphinx/sphinx/index.html#doxysphinx.sphinx.DirectoryMapper.map">[docs]</a>    <span class="k">def</span> <span class="nf">map</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Path</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Calculate the path in output for a given path in input.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Calculate the path in output for a given path in input.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">Path</span><span class="p">()</span></div></div>
 
 
 <div class="viewcode-block" id="SphinxHtmlBuilderDirectoryMapper"><a class="viewcode-back" href="../../docs/auto_api/doxysphinx/sphinx/index.html#doxysphinx.sphinx.SphinxHtmlBuilderDirectoryMapper">[docs]</a><span class="k">class</span> <span class="nc">SphinxHtmlBuilderDirectoryMapper</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Mapper that will calculate the output file path for an input file.</span>
 
 <span class="sd">    This is based on the logic that the sphinx html builder would use.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sphinx_source_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">sphinx_output_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Create a sphinx html builder directory mapper.</span>
 
 <span class="sd">        This mapper resembles the behavior of the sphinx html build considering path</span>
@@ -573,7 +585,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">output</span> <span class="o">=</span> <span class="n">sphinx_output_dir</span>
 
 <div class="viewcode-block" id="SphinxHtmlBuilderDirectoryMapper.map"><a class="viewcode-back" href="../../docs/auto_api/doxysphinx/sphinx/index.html#doxysphinx.sphinx.SphinxHtmlBuilderDirectoryMapper.map">[docs]</a>    <span class="k">def</span> <span class="nf">map</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Path</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Calculate the path in output for a given path in input.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Calculate the path in output for a given path in input.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">path</span><span class="o">.</span><span class="n">is_absolute</span><span class="p">():</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_map_absolute</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
@@ -602,7 +614,7 @@
     <footer class="footer">
   <p>
     
-      Last updated on &#39;Fri Dec 9 08:57:07 2022&#39;, &#39;9fd7c71&#39;.<br/>
+      Last updated on &#39;Thu Feb 16 08:26:42 2023&#39;, &#39;f75544d&#39;.<br/>
   </p>
 </footer>
 </main>

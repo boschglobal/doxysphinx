@@ -32,8 +32,8 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/libs/html/datatables.min.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/styles.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/modern.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/layouts.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/modern.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-book-theme-custom.css" />
     
   <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
@@ -431,6 +431,18 @@
   </a>
  </li>
 </ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Related Topics
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../docs/doxylink_setup.html">
+   Doxylink Setup
+  </a>
+ </li>
+</ul>
 
     </div>
 </nav> <!-- To handle the deprecated key -->
@@ -514,7 +526,7 @@
 <span></span><span class="c1"># =====================================================================================</span>
 <span class="c1">#  C O P Y R I G H T</span>
 <span class="c1"># -------------------------------------------------------------------------------------</span>
-<span class="c1">#  Copyright (c) 2022 by Robert Bosch GmbH. All rights reserved.</span>
+<span class="c1">#  Copyright (c) 2023 by Robert Bosch GmbH. All rights reserved.</span>
 <span class="c1">#</span>
 <span class="c1">#  Author(s):</span>
 <span class="c1">#  - Markus Braun, :em engineering methods AG (contracted by Robert Bosch GmbH)</span>
@@ -546,10 +558,10 @@
 
 
 <div class="viewcode-block" id="ResourceProvider"><a class="viewcode-back" href="../../docs/auto_api/doxysphinx/resources/index.html#doxysphinx.resources.ResourceProvider">[docs]</a><span class="k">class</span> <span class="nc">ResourceProvider</span><span class="p">(</span><span class="n">Protocol</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;A resource provider copies/adapts necessary resources (images, stylesheets, etc.) to output.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A resource provider copies/adapts necessary resources (images, stylesheets, etc.) to output.&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">directory_mapper</span><span class="p">:</span> <span class="n">DirectoryMapper</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Protocol constructor.</span>
 
 <span class="sd">        :param directory_mapper: the directory mapper to use.</span>
@@ -557,7 +569,7 @@
         <span class="k">pass</span>
 
 <div class="viewcode-block" id="ResourceProvider.provide_resources"><a class="viewcode-back" href="../../docs/auto_api/doxysphinx/resources/index.html#doxysphinx.resources.ResourceProvider.provide_resources">[docs]</a>    <span class="k">def</span> <span class="nf">provide_resources</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">resource_root</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Path</span><span class="p">]:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Provide necessary resources to sphinx output directory.</span>
 
 <span class="sd">        Can also do postprocessing etc.</span>
@@ -571,7 +583,7 @@
         <span class="k">return</span> <span class="p">[]</span></div>
 
 <div class="viewcode-block" id="ResourceProvider.cleanup_resources"><a class="viewcode-back" href="../../docs/auto_api/doxysphinx/resources/index.html#doxysphinx.resources.ResourceProvider.cleanup_resources">[docs]</a>    <span class="k">def</span> <span class="nf">cleanup_resources</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">resource_root</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Path</span><span class="p">]:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Clean up provided resources that were copied by :meth:`provide_resources`.</span>
 
 <span class="sd">        :param resource_root: the root resource input directory (e.g. where the html</span>
@@ -582,7 +594,7 @@
 
 
 <div class="viewcode-block" id="DoxygenResourceProvider"><a class="viewcode-back" href="../../docs/auto_api/doxysphinx/resources/index.html#doxysphinx.resources.DoxygenResourceProvider">[docs]</a><span class="k">class</span> <span class="nc">DoxygenResourceProvider</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Resource provider that will copy/adapt doxygen html resources to output.</span>
 
 <span class="sd">    Resource are e.g. stylesheets, images, javascript files etc.</span>
@@ -603,7 +615,7 @@
     <span class="n">_cleanup_glob_pattern</span> <span class="o">=</span> <span class="n">_provisioning_glob_pattern</span> <span class="o">+</span> <span class="p">[</span><span class="s2">&quot;*.scss&quot;</span><span class="p">]</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">directory_mapper</span><span class="p">:</span> <span class="n">DirectoryMapper</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Create a doxygen resource provider.</span>
 
 <span class="sd">        :param directory_mapper: a directory mapper to use.</span>
@@ -621,7 +633,7 @@
             <span class="n">exit</span><span class="p">()</span>
 
 <div class="viewcode-block" id="DoxygenResourceProvider.provide_resources"><a class="viewcode-back" href="../../docs/auto_api/doxysphinx/resources/index.html#doxysphinx.resources.DoxygenResourceProvider.provide_resources">[docs]</a>    <span class="k">def</span> <span class="nf">provide_resources</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">resource_root</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Path</span><span class="p">]:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Copy doxygen html resource files (see GLOB_PATTERN below) to sphinx output.</span>
 
 <span class="sd">        The content in the raw html directives can then access these directly.</span>
@@ -641,7 +653,7 @@
         <span class="k">return</span> <span class="n">copied_files</span></div>
 
 <div class="viewcode-block" id="DoxygenResourceProvider.cleanup_resources"><a class="viewcode-back" href="../../docs/auto_api/doxysphinx/resources/index.html#doxysphinx.resources.DoxygenResourceProvider.cleanup_resources">[docs]</a>    <span class="k">def</span> <span class="nf">cleanup_resources</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">resource_root</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Path</span><span class="p">]:</span>
-        <span class="sd">&quot;&quot;&quot;Clean up any provisioned resources that were copied to sphinx output.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Clean up any provisioned resources that were copied to sphinx output.&quot;&quot;&quot;</span>
         <span class="n">target</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dir_mapper</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">resource_root</span><span class="p">)</span>
         <span class="n">target</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
@@ -684,7 +696,7 @@
 
 
 <div class="viewcode-block" id="CssScoper"><a class="viewcode-back" href="../../docs/auto_api/doxysphinx/resources/index.html#doxysphinx.resources.CssScoper">[docs]</a><span class="k">class</span> <span class="nc">CssScoper</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Scopes css-stylesheets to a special selector.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Scopes css-stylesheets to a special selector.</span>
 
 <span class="sd">    This is done with the help of dartsass (a sass processor).</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -692,7 +704,7 @@
     <span class="n">_logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">css_selector</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Create a new CssScoper.</span>
 
 <span class="sd">        :param css_selector: The selector where the stylesheets should be scoped under.</span>
@@ -705,7 +717,7 @@
         <span class="n">additional_css_rules</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">scss_patch_callback</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Callable</span><span class="p">[[</span><span class="n">Path</span><span class="p">],</span> <span class="kc">None</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Path</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Scopes a stylesheet to given selector.</span>
 
 <span class="sd">        The process is as follows: The original stylesheet will be moved to .original.scss.</span>
@@ -789,7 +801,7 @@
     <footer class="footer">
   <p>
     
-      Last updated on &#39;Fri Dec 9 08:57:07 2022&#39;, &#39;9fd7c71&#39;.<br/>
+      Last updated on &#39;Thu Feb 16 08:26:42 2023&#39;, &#39;f75544d&#39;.<br/>
   </p>
 </footer>
 </main>

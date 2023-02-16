@@ -32,8 +32,8 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/libs/html/datatables.min.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/styles.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/modern.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/layouts.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/modern.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-book-theme-custom.css" />
     
   <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
@@ -431,6 +431,18 @@
   </a>
  </li>
 </ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Related Topics
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../docs/doxylink_setup.html">
+   Doxylink Setup
+  </a>
+ </li>
+</ul>
 
     </div>
 </nav> <!-- To handle the deprecated key -->
@@ -514,7 +526,7 @@
 <span></span><span class="c1"># =====================================================================================</span>
 <span class="c1">#  C O P Y R I G H T</span>
 <span class="c1"># -------------------------------------------------------------------------------------</span>
-<span class="c1">#  Copyright (c) 2022 by Robert Bosch GmbH. All rights reserved.</span>
+<span class="c1">#  Copyright (c) 2023 by Robert Bosch GmbH. All rights reserved.</span>
 <span class="c1">#</span>
 <span class="c1">#  Author(s):</span>
 <span class="c1">#  - Markus Braun, :em engineering methods AG (contracted by Robert Bosch GmbH)</span>
@@ -537,14 +549,14 @@
 
 <div class="viewcode-block" id="DoxyOutput"><a class="viewcode-back" href="../../docs/auto_api/doxysphinx/doxygen/index.html#doxysphinx.doxygen.DoxyOutput">[docs]</a><span class="nd">@dataclass</span><span class="p">(</span><span class="n">frozen</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="k">class</span> <span class="nc">DoxyOutput</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Class to summarize the strings of the console output and error streams.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Class to summarize the strings of the console output and error streams.&quot;&quot;&quot;</span>
 
     <span class="n">out</span><span class="p">:</span> <span class="nb">str</span>
     <span class="n">err</span><span class="p">:</span> <span class="nb">str</span></div>
 
 
 <div class="viewcode-block" id="read_doxyconfig"><a class="viewcode-back" href="../../docs/auto_api/doxysphinx/doxygen/index.html#doxysphinx.doxygen.read_doxyconfig">[docs]</a><span class="k">def</span> <span class="nf">read_doxyconfig</span><span class="p">(</span><span class="n">doxyfile</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">doxygen_exe</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">doxygen_cwd</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ConfigDict</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Read doxyconfig and get full doxygen configuration (also with default values).</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Read doxyconfig and get full doxygen configuration (also with default values).</span>
 
 <span class="sd">    Supplement the doxygen configuration file with the default doxygen configuration and return the final</span>
 <span class="sd">    key value pairs as a dict.</span>
@@ -586,7 +598,7 @@
 
 
 <span class="k">def</span> <span class="nf">_parse_stdout</span><span class="p">(</span><span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ConfigDict</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Remove comment lines and parse the console output via pyparsing to a dictionary.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Remove comment lines and parse the console output via pyparsing to a dictionary.</span>
 
 <span class="sd">    :param text: standard output of the console.</span>
 <span class="sd">    :return: a configuration dictionary with possibility of lists as values.</span>
@@ -648,7 +660,7 @@
 
 
 <div class="viewcode-block" id="DoxygenSettingsValidator"><a class="viewcode-back" href="../../docs/auto_api/doxysphinx/doxygen/index.html#doxysphinx.doxygen.DoxygenSettingsValidator">[docs]</a><span class="k">class</span> <span class="nc">DoxygenSettingsValidator</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Validate doxygen settings for compatibility with doxysphinx.</span>
 
 <span class="sd">    Doxysphinx requires some settings to be present/set in a specific way.</span>
@@ -662,7 +674,7 @@
         <span class="s2">&quot;GENERATE_HTML&quot;</span><span class="p">:</span> <span class="s2">&quot;YES&quot;</span><span class="p">,</span>
         <span class="s2">&quot;CREATE_SUBDIRS&quot;</span><span class="p">:</span> <span class="s2">&quot;NO&quot;</span><span class="p">,</span>
     <span class="p">}</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    A dictionary containing mandatory settings for the doxygen config.</span>
 <span class="sd">    The values of OUTPUT_DIRECTORY and GENERATE_TAGFILE will be set after instantiation and validation of the filepaths.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -673,17 +685,17 @@
         <span class="s2">&quot;INTERACTIVE_SVG&quot;</span><span class="p">:</span> <span class="s2">&quot;YES&quot;</span><span class="p">,</span>
         <span class="s2">&quot;GENERATE_TAGFILE&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
     <span class="p">}</span>
-    <span class="sd">&quot;&quot;&quot;A dictionary containing further optional settings for the doxygen config.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A dictionary containing further optional settings for the doxygen config.&quot;&quot;&quot;</span>
 
     <span class="n">validation_errors</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="sd">&quot;&quot;&quot;List of the validation errors including the doxyflag with its used and the correct value.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;List of the validation errors including the doxyflag with its used and the correct value.&quot;&quot;&quot;</span>
     <span class="n">absolute_out</span><span class="p">:</span> <span class="n">Path</span>
-    <span class="sd">&quot;&quot;&quot;Absolute path of the output directory.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Absolute path of the output directory.&quot;&quot;&quot;</span>
     <span class="n">validation_msg</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
-    <span class="sd">&quot;&quot;&quot;Validation errors merged in one string.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Validation errors merged in one string.&quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="DoxygenSettingsValidator.validate"><a class="viewcode-back" href="../../docs/auto_api/doxysphinx/doxygen/index.html#doxysphinx.doxygen.DoxygenSettingsValidator.validate">[docs]</a>    <span class="k">def</span> <span class="nf">validate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">:</span> <span class="n">ConfigDict</span><span class="p">,</span> <span class="n">sphinx_source_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Validate the doxygen configuration regarding the output directory, mandatory and optional settings.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Validate the doxygen configuration regarding the output directory, mandatory and optional settings.</span>
 
 <span class="sd">        :param config: the imported doxyfile.</span>
 <span class="sd">        :param sphinx_source_dir: the sphinx directory (necessary for output directory validation).</span>
@@ -704,7 +716,7 @@
             <span class="k">return</span> <span class="kc">False</span></div>
 
     <span class="k">def</span> <span class="nf">_validate_doxygen_out_dirs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">:</span> <span class="n">ConfigDict</span><span class="p">,</span> <span class="n">sphinx_source_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Validate the output directory given from doxyfile and set the required values in mandatory settings.</span>
 
 <span class="sd">        :param out_dir: output directory value in doxyfile.</span>
@@ -791,7 +803,7 @@
 
 
 <div class="viewcode-block" id="read_js_data_file"><a class="viewcode-back" href="../../docs/auto_api/doxysphinx/doxygen/index.html#doxysphinx.doxygen.read_js_data_file">[docs]</a><span class="k">def</span> <span class="nf">read_js_data_file</span><span class="p">(</span><span class="n">js_data_file</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Read a doxygen javascript data file (e.g. menudata.js) and returns the data as json structure.</span>
 
 <span class="sd">    :param js_data_file: The doxygen js data file to use.</span>
@@ -804,14 +816,14 @@
 
 
 <div class="viewcode-block" id="DoxygenOutputPathValidator"><a class="viewcode-back" href="../../docs/auto_api/doxysphinx/doxygen/index.html#doxysphinx.doxygen.DoxygenOutputPathValidator">[docs]</a><span class="k">class</span> <span class="nc">DoxygenOutputPathValidator</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Validates doxygen html output paths.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Validates doxygen html output paths.&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Create an instance of DoxygenOutputPathValidator.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create an instance of DoxygenOutputPathValidator.&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">validation_msg</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
 
 <div class="viewcode-block" id="DoxygenOutputPathValidator.validate"><a class="viewcode-back" href="../../docs/auto_api/doxysphinx/doxygen/index.html#doxysphinx.doxygen.DoxygenOutputPathValidator.validate">[docs]</a>    <span class="k">def</span> <span class="nf">validate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">doxygen_html_output</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Validate a doxygen html output path.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Validate a doxygen html output path.</span>
 
 <span class="sd">        This is just meant to catch typos in paths etc. It will just check if a &quot;doxygen.css&quot; file is existing</span>
 <span class="sd">        In the html output path.</span>
@@ -840,7 +852,7 @@
     <footer class="footer">
   <p>
     
-      Last updated on &#39;Fri Dec 9 08:57:07 2022&#39;, &#39;9fd7c71&#39;.<br/>
+      Last updated on &#39;Thu Feb 16 08:26:42 2023&#39;, &#39;f75544d&#39;.<br/>
   </p>
 </footer>
 </main>

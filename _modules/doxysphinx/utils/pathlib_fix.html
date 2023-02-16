@@ -32,8 +32,8 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/libs/html/datatables.min.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/styles.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/modern.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/layouts.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/modern.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-book-theme-custom.css" />
     
   <link rel="preload" as="script" href="../../../_static/js/index.be7d3bbb2ef33a8344ce.js">
@@ -431,6 +431,18 @@
   </a>
  </li>
 </ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Related Topics
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../docs/doxylink_setup.html">
+   Doxylink Setup
+  </a>
+ </li>
+</ul>
 
     </div>
 </nav> <!-- To handle the deprecated key -->
@@ -514,7 +526,7 @@
 <span></span><span class="c1"># =====================================================================================</span>
 <span class="c1">#  C O P Y R I G H T</span>
 <span class="c1"># -------------------------------------------------------------------------------------</span>
-<span class="c1">#  Copyright (c) 2022 by Robert Bosch GmbH. All rights reserved.</span>
+<span class="c1">#  Copyright (c) 2023 by Robert Bosch GmbH. All rights reserved.</span>
 <span class="c1">#</span>
 <span class="c1">#  Author(s):</span>
 <span class="c1">#  - Markus Braun, :em engineering methods AG (contracted by Robert Bosch GmbH)</span>
@@ -525,7 +537,7 @@
 
 
 <div class="viewcode-block" id="path_resolve"><a class="viewcode-back" href="../../../docs/auto_api/doxysphinx/utils/pathlib_fix/index.html#doxysphinx.utils.pathlib_fix.path_resolve">[docs]</a><span class="k">def</span> <span class="nf">path_resolve</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Path</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Fix/Workaround for bug https://bugs.python.org/issue38671.</span>
 
 <span class="sd">    On Windows resolve will not return correct absolute paths for non-existing files</span>
@@ -541,7 +553,7 @@
 
 
 <div class="viewcode-block" id="path_is_relative_to"><a class="viewcode-back" href="../../../docs/auto_api/doxysphinx/utils/pathlib_fix/index.html#doxysphinx.utils.pathlib_fix.path_is_relative_to">[docs]</a><span class="k">def</span> <span class="nf">path_is_relative_to</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">base</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Fix/Workaround for strange behavior in python 3.8.</span>
 
 <span class="sd">    The issue is that Path.is_relative_to complains about PosixPath not having such an attribute in a</span>
@@ -564,7 +576,7 @@
     <footer class="footer">
   <p>
     
-      Last updated on &#39;Fri Dec 9 08:57:07 2022&#39;, &#39;9fd7c71&#39;.<br/>
+      Last updated on &#39;Thu Feb 16 08:26:42 2023&#39;, &#39;f75544d&#39;.<br/>
   </p>
 </footer>
 </main>

@@ -59,17 +59,17 @@ Functions
      system. If unsure, use a doxyfile.
 
    .. py:attribute:: input
-      :annotation: :List[pathlib.Path]
+      :type: List[pathlib.Path]
 
       
 
    .. py:attribute:: doxygen_exe
-      :annotation: :str
+      :type: str
 
       
 
    .. py:attribute:: doxygen_cwd
-      :annotation: :pathlib.Path
+      :type: pathlib.Path
 
       
 

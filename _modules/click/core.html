@@ -32,8 +32,8 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/libs/html/datatables.min.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/styles.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/modern.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/layouts.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/modern.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-book-theme-custom.css" />
     
   <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
@@ -431,6 +431,18 @@
   </a>
  </li>
 </ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Related Topics
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../docs/doxylink_setup.html">
+   Doxylink Setup
+  </a>
+ </li>
+</ul>
 
     </div>
 </nav> <!-- To handle the deprecated key -->
@@ -561,7 +573,7 @@
 <span class="k">def</span> <span class="nf">_complete_visible_commands</span><span class="p">(</span>
     <span class="n">ctx</span><span class="p">:</span> <span class="s2">&quot;Context&quot;</span><span class="p">,</span> <span class="n">incomplete</span><span class="p">:</span> <span class="nb">str</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">t</span><span class="o">.</span><span class="n">Iterator</span><span class="p">[</span><span class="n">t</span><span class="o">.</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="s2">&quot;Command&quot;</span><span class="p">]]:</span>
-    <span class="sd">&quot;&quot;&quot;List all the subcommands of a group that start with the</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;List all the subcommands of a group that start with the</span>
 <span class="sd">    incomplete value and aren&#39;t hidden.</span>
 
 <span class="sd">    :param ctx: Invocation context for the group.</span>
@@ -609,7 +621,7 @@
 <span class="k">def</span> <span class="nf">augment_usage_errors</span><span class="p">(</span>
     <span class="n">ctx</span><span class="p">:</span> <span class="s2">&quot;Context&quot;</span><span class="p">,</span> <span class="n">param</span><span class="p">:</span> <span class="n">t</span><span class="o">.</span><span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Parameter&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">t</span><span class="o">.</span><span class="n">Iterator</span><span class="p">[</span><span class="kc">None</span><span class="p">]:</span>
-    <span class="sd">&quot;&quot;&quot;Context manager that attaches extra information to exceptions.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Context manager that attaches extra information to exceptions.&quot;&quot;&quot;</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="k">yield</span>
     <span class="k">except</span> <span class="n">BadParameter</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
@@ -628,7 +640,7 @@
     <span class="n">invocation_order</span><span class="p">:</span> <span class="n">t</span><span class="o">.</span><span class="n">Sequence</span><span class="p">[</span><span class="s2">&quot;Parameter&quot;</span><span class="p">],</span>
     <span class="n">declaration_order</span><span class="p">:</span> <span class="n">t</span><span class="o">.</span><span class="n">Sequence</span><span class="p">[</span><span class="s2">&quot;Parameter&quot;</span><span class="p">],</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">t</span><span class="o">.</span><span class="n">List</span><span class="p">[</span><span class="s2">&quot;Parameter&quot;</span><span class="p">]:</span>
-    <span class="sd">&quot;&quot;&quot;Given a sequence of parameters in the order as should be considered</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Given a sequence of parameters in the order as should be considered</span>
 <span class="sd">    for processing and an iterable of parameters that exist, this returns</span>
 <span class="sd">    a list in the correct order as they should be processed.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -645,7 +657,7 @@
 
 
 <span class="k">class</span> <span class="nc">ParameterSource</span><span class="p">(</span><span class="n">enum</span><span class="o">.</span><span class="n">Enum</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;This is an :class:`~enum.Enum` that indicates the source of a</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;This is an :class:`~enum.Enum` that indicates the source of a</span>
 <span class="sd">    parameter&#39;s value.</span>
 
 <span class="sd">    Use :meth:`click.Context.get_parameter_source` to get the</span>
@@ -659,19 +671,19 @@
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">COMMANDLINE</span> <span class="o">=</span> <span class="n">enum</span><span class="o">.</span><span class="n">auto</span><span class="p">()</span>
-    <span class="sd">&quot;&quot;&quot;The value was provided by the command line args.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;The value was provided by the command line args.&quot;&quot;&quot;</span>
     <span class="n">ENVIRONMENT</span> <span class="o">=</span> <span class="n">enum</span><span class="o">.</span><span class="n">auto</span><span class="p">()</span>
-    <span class="sd">&quot;&quot;&quot;The value was provided with an environment variable.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;The value was provided with an environment variable.&quot;&quot;&quot;</span>
     <span class="n">DEFAULT</span> <span class="o">=</span> <span class="n">enum</span><span class="o">.</span><span class="n">auto</span><span class="p">()</span>
-    <span class="sd">&quot;&quot;&quot;Used the default specified by the parameter.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Used the default specified by the parameter.&quot;&quot;&quot;</span>
     <span class="n">DEFAULT_MAP</span> <span class="o">=</span> <span class="n">enum</span><span class="o">.</span><span class="n">auto</span><span class="p">()</span>
-    <span class="sd">&quot;&quot;&quot;Used a default provided by :attr:`Context.default_map`.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Used a default provided by :attr:`Context.default_map`.&quot;&quot;&quot;</span>
     <span class="n">PROMPT</span> <span class="o">=</span> <span class="n">enum</span><span class="o">.</span><span class="n">auto</span><span class="p">()</span>
-    <span class="sd">&quot;&quot;&quot;Used a prompt to confirm a default or provide a value.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Used a prompt to confirm a default or provide a value.&quot;&quot;&quot;</span>
 
 
 <span class="k">class</span> <span class="nc">Context</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;The context is a special internal object that holds state relevant</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;The context is a special internal object that holds state relevant</span>
 <span class="sd">    for the script execution at every single level.  It&#39;s normally invisible</span>
 <span class="sd">    to commands unless they opt-in to getting access to it.</span>
 
@@ -943,7 +955,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_exit_stack</span> <span class="o">=</span> <span class="n">ExitStack</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">to_info_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">t</span><span class="o">.</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">t</span><span class="o">.</span><span class="n">Any</span><span class="p">]:</span>
-        <span class="sd">&quot;&quot;&quot;Gather information that could be useful for a tool generating</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Gather information that could be useful for a tool generating</span>
 <span class="sd">        user-facing documentation. This traverses the entire CLI</span>
 <span class="sd">        structure.</span>
 
@@ -976,7 +988,7 @@
 
     <span class="nd">@contextmanager</span>
     <span class="k">def</span> <span class="nf">scope</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cleanup</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">t</span><span class="o">.</span><span class="n">Iterator</span><span class="p">[</span><span class="s2">&quot;Context&quot;</span><span class="p">]:</span>
-        <span class="sd">&quot;&quot;&quot;This helper method can be used with the context object to promote</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;This helper method can be used with the context object to promote</span>
 <span class="sd">        it to the current thread local (see :func:`get_current_context`).</span>
 <span class="sd">        The default behavior of this is to invoke the cleanup functions which</span>
 <span class="sd">        can be disabled by setting `cleanup` to `False`.  The cleanup</span>
@@ -1014,7 +1026,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">meta</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">t</span><span class="o">.</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">t</span><span class="o">.</span><span class="n">Any</span><span class="p">]:</span>
-        <span class="sd">&quot;&quot;&quot;This is a dictionary which is shared with all the contexts</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;This is a dictionary which is shared with all the contexts</span>
 <span class="sd">        that are nested.  It exists so that click utilities can store some</span>
 <span class="sd">        state here if they need to.  It is however the responsibility of</span>
 <span class="sd">        that code to manage this dictionary well.</span>
@@ -1041,7 +1053,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_meta</span>
 
     <span class="k">def</span> <span class="nf">make_formatter</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">HelpFormatter</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Creates the :class:`~click.HelpFormatter` for the help and</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Creates the :class:`~click.HelpFormatter` for the help and</span>
 <span class="sd">        usage output.</span>
 
 <span class="sd">        To quickly customize the formatter class used without overriding</span>
@@ -1055,7 +1067,7 @@
         <span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">with_resource</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context_manager</span><span class="p">:</span> <span class="n">t</span><span class="o">.</span><span class="n">ContextManager</span><span class="p">[</span><span class="n">V</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">V</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Register a resource as if it were used in a ``with``</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Register a resource as if it were used in a ``with``</span>
 <span class="sd">        statement. The resource will be cleaned up when the context is</span>
 <span class="sd">        popped.</span>
 
@@ -1084,7 +1096,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_exit_stack</span><span class="o">.</span><span class="n">enter_context</span><span class="p">(</span><span class="n">context_manager</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">call_on_close</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="p">:</span> <span class="n">t</span><span class="o">.</span><span class="n">Callable</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">t</span><span class="o">.</span><span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">t</span><span class="o">.</span><span class="n">Callable</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">t</span><span class="o">.</span><span class="n">Any</span><span class="p">]:</span>
-        <span class="sd">&quot;&quot;&quot;Register a function to be called when the context tears down.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Register a function to be called when the context tears down.</span>
 
 <span class="sd">        This can be used to close resources opened during the script</span>
 <span class="sd">        execution. Resources that support Python&#39;s context manager</span>
@@ -1096,7 +1108,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_exit_stack</span><span class="o">.</span><span class="n">callback</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Invoke all close callbacks registered with</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Invoke all close callbacks registered with</span>
 <span class="sd">        :meth:`call_on_close`, and exit all context managers entered</span>
 <span class="sd">        with :meth:`with_resource`.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -1106,7 +1118,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">command_path</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;The computed command path.  This is used for the ``usage``</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;The computed command path.  This is used for the ``usage``</span>
 <span class="sd">        information on the help page.  It&#39;s automatically created by</span>
 <span class="sd">        combining the info names of the chain of contexts to the root.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -1124,14 +1136,14 @@
         <span class="k">return</span> <span class="n">rv</span><span class="o">.</span><span class="n">lstrip</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">find_root</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Context&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Finds the outermost context.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Finds the outermost context.&quot;&quot;&quot;</span>
         <span class="n">node</span> <span class="o">=</span> <span class="bp">self</span>
         <span class="k">while</span> <span class="n">node</span><span class="o">.</span><span class="n">parent</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">node</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">parent</span>
         <span class="k">return</span> <span class="n">node</span>
 
     <span class="k">def</span> <span class="nf">find_object</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">object_type</span><span class="p">:</span> <span class="n">t</span><span class="o">.</span><span class="n">Type</span><span class="p">[</span><span class="n">V</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">t</span><span class="o">.</span><span class="n">Optional</span><span class="p">[</span><span class="n">V</span><span class="p">]:</span>
-        <span class="sd">&quot;&quot;&quot;Finds the closest object of a given type.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Finds the closest object of a given type.&quot;&quot;&quot;</span>
         <span class="n">node</span><span class="p">:</span> <span class="n">t</span><span class="o">.</span><span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Context&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span>
 
         <span class="k">while</span> <span class="n">node</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
@@ -1143,7 +1155,7 @@
         <span class="k">return</span> <span class="kc">None</span>
 
     <span class="k">def</span> <span class="nf">ensure_object</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">object_type</span><span class="p">:</span> <span class="n">t</span><span class="o">.</span><span class="n">Type</span><span class="p">[</span><span class="n">V</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">V</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Like :meth:`find_object` but sets the innermost object to a</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Like :meth:`find_object` but sets the innermost object to a</span>
 <span class="sd">        new instance of `object_type` if it does not exist.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">rv</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">find_object</span><span class="p">(</span><span class="n">object_type</span><span class="p">)</span>
@@ -1164,7 +1176,7 @@
         <span class="o">...</span>
 
     <span class="k">def</span> <span class="nf">lookup_default</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">call</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">t</span><span class="o">.</span><span class="n">Optional</span><span class="p">[</span><span class="n">t</span><span class="o">.</span><span class="n">Any</span><span class="p">]:</span>
-        <span class="sd">&quot;&quot;&quot;Get the default for a parameter from :attr:`default_map`.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the default for a parameter from :attr:`default_map`.</span>
 
 <span class="sd">        :param name: Name of the parameter.</span>
 <span class="sd">        :param call: If the default is a callable, call it. Disable to</span>
@@ -1184,7 +1196,7 @@
         <span class="k">return</span> <span class="kc">None</span>
 
     <span class="k">def</span> <span class="nf">fail</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;te.NoReturn&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Aborts the execution of the program with a specific error</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Aborts the execution of the program with a specific error</span>
 <span class="sd">        message.</span>
 
 <span class="sd">        :param message: the error message to fail with.</span>
@@ -1192,27 +1204,27 @@
         <span class="k">raise</span> <span class="n">UsageError</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">abort</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;te.NoReturn&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Aborts the script.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Aborts the script.&quot;&quot;&quot;</span>
         <span class="k">raise</span> <span class="n">Abort</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">exit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">code</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;te.NoReturn&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Exits the application with a given exit code.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Exits the application with a given exit code.&quot;&quot;&quot;</span>
         <span class="k">raise</span> <span class="n">Exit</span><span class="p">(</span><span class="n">code</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">get_usage</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Helper method to get formatted usage string for the current</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Helper method to get formatted usage string for the current</span>
 <span class="sd">        context and command.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">command</span><span class="o">.</span><span class="n">get_usage</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">get_help</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Helper method to get formatted help page for the current</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Helper method to get formatted help page for the current</span>
 <span class="sd">        context and command.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">command</span><span class="o">.</span><span class="n">get_help</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">_make_sub_context</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">command</span><span class="p">:</span> <span class="s2">&quot;Command&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Context&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Create a new context of the same type as this context, but</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a new context of the same type as this context, but</span>
 <span class="sd">        for a new command.</span>
 
 <span class="sd">        :meta private:</span>
@@ -1225,7 +1237,7 @@
         <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">t</span><span class="o">.</span><span class="n">Any</span><span class="p">,</span>
         <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">t</span><span class="o">.</span><span class="n">Any</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">t</span><span class="o">.</span><span class="n">Any</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Invokes a command callback in exactly the way it expects.  There</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Invokes a command callback in exactly the way it expects.  There</span>
 <span class="sd">        are two ways to invoke this method:</span>
 
 <span class="sd">        1.  the first argument can be a callback and all other arguments and</span>
@@ -1275,7 +1287,7 @@
     <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span>
         <span class="n">__self</span><span class="p">,</span> <span class="n">__cmd</span><span class="p">:</span> <span class="s2">&quot;Command&quot;</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">t</span><span class="o">.</span><span class="n">Any</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">t</span><span class="o">.</span><span class="n">Any</span>  <span class="c1"># noqa: B902</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">t</span><span class="o">.</span><span class="n">Any</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Similar to :meth:`invoke` but fills in default keyword</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Similar to :meth:`invoke` but fills in default keyword</span>
 <span class="sd">        arguments from the current context if the other command expects</span>
 <span class="sd">        it.  This cannot invoke callbacks directly, only other commands.</span>
 
@@ -1294,7 +1306,7 @@
         <span class="k">return</span> <span class="n">__self</span><span class="o">.</span><span class="n">invoke</span><span class="p">(</span><span class="n">__cmd</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">set_parameter_source</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">source</span><span class="p">:</span> <span class="n">ParameterSource</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Set the source of a parameter. This indicates the location</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set the source of a parameter. This indicates the location</span>
 <span class="sd">        from which the value of the parameter was obtained.</span>
 
 <span class="sd">        :param name: The name of the parameter.</span>
@@ -1303,7 +1315,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_parameter_source</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">source</span>
 
     <span class="k">def</span> <span class="nf">get_parameter_source</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">t</span><span class="o">.</span><span class="n">Optional</span><span class="p">[</span><span class="n">ParameterSource</span><span class="p">]:</span>
-        <span class="sd">&quot;&quot;&quot;Get the source of a parameter. This indicates the location</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the source of a parameter. This indicates the location</span>
 <span class="sd">        from which the value of the parameter was obtained.</span>
 
 <span class="sd">        This can be useful for determining when a user specified a value</span>
@@ -1322,7 +1334,7 @@
 
 
 <span class="k">class</span> <span class="nc">BaseCommand</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;The base command implements the minimal API contract of commands.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;The base command implements the minimal API contract of commands.</span>
 <span class="sd">    Most code will never use this as it does not implement a lot of useful</span>
 <span class="sd">    functionality but it can act as the direct subclass of alternative</span>
 <span class="sd">    parsing methods that do not depend on the Click parser.</span>
@@ -1372,7 +1384,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">context_settings</span><span class="p">:</span> <span class="n">t</span><span class="o">.</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">t</span><span class="o">.</span><span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="n">context_settings</span>
 
     <span class="k">def</span> <span class="nf">to_info_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">t</span><span class="o">.</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">t</span><span class="o">.</span><span class="n">Any</span><span class="p">]:</span>
-        <span class="sd">&quot;&quot;&quot;Gather information that could be useful for a tool generating</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Gather information that could be useful for a tool generating</span>
 <span class="sd">        user-facing documentation. This traverses the entire structure</span>
 <span class="sd">        below this command.</span>
 
@@ -1401,7 +1413,7 @@
         <span class="n">parent</span><span class="p">:</span> <span class="n">t</span><span class="o">.</span><span class="n">Optional</span><span class="p">[</span><span class="n">Context</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="o">**</span><span class="n">extra</span><span class="p">:</span> <span class="n">t</span><span class="o">.</span><span class="n">Any</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Context</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;This function when given an info name and arguments will kick</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;This function when given an info name and arguments will kick</span>
 <span class="sd">        off the parsing and create a new :class:`Context`.  It does not</span>
 <span class="sd">        invoke the actual command callback though.</span>
 
@@ -1434,20 +1446,20 @@
         <span class="k">return</span> <span class="n">ctx</span>
 
     <span class="k">def</span> <span class="nf">parse_args</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">,</span> <span class="n">args</span><span class="p">:</span> <span class="n">t</span><span class="o">.</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">t</span><span class="o">.</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
-        <span class="sd">&quot;&quot;&quot;Given a context and a list of arguments this creates the parser</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Given a context and a list of arguments this creates the parser</span>
 <span class="sd">        and parses the arguments, then modifies the context as necessary.</span>
 <span class="sd">        This is automatically invoked by :meth:`make_context`.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Base commands do not know how to parse arguments.&quot;</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">invoke</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">t</span><span class="o">.</span><span class="n">Any</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Given a context, this invokes the command.  The default</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Given a context, this invokes the command.  The default</span>
 <span class="sd">        implementation is raising a not implemented error.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Base commands are not invokable by default&quot;</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">shell_complete</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">,</span> <span class="n">incomplete</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">t</span><span class="o">.</span><span class="n">List</span><span class="p">[</span><span class="s2">&quot;CompletionItem&quot;</span><span class="p">]:</span>
-        <span class="sd">&quot;&quot;&quot;Return a list of completions for the incomplete value. Looks</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return a list of completions for the incomplete value. Looks</span>
 <span class="sd">        at the names of chained multi-commands.</span>
 
 <span class="sd">        Any command could be part of a chained multi-command, so sibling</span>
@@ -1506,7 +1518,7 @@
         <span class="n">windows_expand_args</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
         <span class="o">**</span><span class="n">extra</span><span class="p">:</span> <span class="n">t</span><span class="o">.</span><span class="n">Any</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">t</span><span class="o">.</span><span class="n">Any</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;This is the way to invoke a script with all the bells and</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;This is the way to invoke a script with all the bells and</span>
 <span class="sd">        whistles as a command line application.  This will always terminate</span>
 <span class="sd">        the application after a call.  If this is not wanted, ``SystemExit``</span>
 <span class="sd">        needs to be caught.</span>
@@ -1616,7 +1628,7 @@
         <span class="n">prog_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
         <span class="n">complete_var</span><span class="p">:</span> <span class="n">t</span><span class="o">.</span><span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Check if the shell is asking for tab completion, process</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Check if the shell is asking for tab completion, process</span>
 <span class="sd">        that, then exit early. Called from :meth:`main` before the</span>
 <span class="sd">        program is invoked.</span>
 
@@ -1639,12 +1651,12 @@
         <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">rv</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">t</span><span class="o">.</span><span class="n">Any</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">t</span><span class="o">.</span><span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">t</span><span class="o">.</span><span class="n">Any</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Alias for :meth:`main`.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Alias for :meth:`main`.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">main</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
 
 <span class="k">class</span> <span class="nc">Command</span><span class="p">(</span><span class="n">BaseCommand</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Commands are the basic building block of command line interfaces in</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Commands are the basic building block of command line interfaces in</span>
 <span class="sd">    Click.  A basic command handles command line parsing and might dispatch</span>
 <span class="sd">    more parsing to commands nested below it.</span>
 
@@ -1730,7 +1742,7 @@
         <span class="k">return</span> <span class="n">info_dict</span>
 
     <span class="k">def</span> <span class="nf">get_usage</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Formats the usage line into a string and returns it.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Formats the usage line into a string and returns it.</span>
 
 <span class="sd">        Calls :meth:`format_usage` internally.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -1748,7 +1760,7 @@
         <span class="k">return</span> <span class="n">rv</span>
 
     <span class="k">def</span> <span class="nf">format_usage</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">,</span> <span class="n">formatter</span><span class="p">:</span> <span class="n">HelpFormatter</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Writes the usage line into the formatter.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Writes the usage line into the formatter.</span>
 
 <span class="sd">        This is a low-level method called by :meth:`get_usage`.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -1756,7 +1768,7 @@
         <span class="n">formatter</span><span class="o">.</span><span class="n">write_usage</span><span class="p">(</span><span class="n">ctx</span><span class="o">.</span><span class="n">command_path</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">pieces</span><span class="p">))</span>
 
     <span class="k">def</span> <span class="nf">collect_usage_pieces</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">t</span><span class="o">.</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
-        <span class="sd">&quot;&quot;&quot;Returns all the pieces that go into the usage line and returns</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns all the pieces that go into the usage line and returns</span>
 <span class="sd">        it as a list of strings.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">rv</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">options_metavar</span><span class="p">]</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">options_metavar</span> <span class="k">else</span> <span class="p">[]</span>
@@ -1767,7 +1779,7 @@
         <span class="k">return</span> <span class="n">rv</span>
 
     <span class="k">def</span> <span class="nf">get_help_option_names</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">t</span><span class="o">.</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
-        <span class="sd">&quot;&quot;&quot;Returns the names for the help option.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the names for the help option.&quot;&quot;&quot;</span>
         <span class="n">all_names</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">ctx</span><span class="o">.</span><span class="n">help_option_names</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">:</span>
             <span class="n">all_names</span><span class="o">.</span><span class="n">difference_update</span><span class="p">(</span><span class="n">param</span><span class="o">.</span><span class="n">opts</span><span class="p">)</span>
@@ -1775,7 +1787,7 @@
         <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">all_names</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">get_help_option</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">t</span><span class="o">.</span><span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Option&quot;</span><span class="p">]:</span>
-        <span class="sd">&quot;&quot;&quot;Returns the help option object.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the help option object.&quot;&quot;&quot;</span>
         <span class="n">help_options</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_help_option_names</span><span class="p">(</span><span class="n">ctx</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="ow">not</span> <span class="n">help_options</span> <span class="ow">or</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_help_option</span><span class="p">:</span>
@@ -1796,14 +1808,14 @@
         <span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">make_parser</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">OptionParser</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Creates the underlying option parser for this command.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Creates the underlying option parser for this command.&quot;&quot;&quot;</span>
         <span class="n">parser</span> <span class="o">=</span> <span class="n">OptionParser</span><span class="p">(</span><span class="n">ctx</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_params</span><span class="p">(</span><span class="n">ctx</span><span class="p">):</span>
             <span class="n">param</span><span class="o">.</span><span class="n">add_to_parser</span><span class="p">(</span><span class="n">parser</span><span class="p">,</span> <span class="n">ctx</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">parser</span>
 
     <span class="k">def</span> <span class="nf">get_help</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Formats the help into a string and returns it.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Formats the help into a string and returns it.</span>
 
 <span class="sd">        Calls :meth:`format_help` internally.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -1812,7 +1824,7 @@
         <span class="k">return</span> <span class="n">formatter</span><span class="o">.</span><span class="n">getvalue</span><span class="p">()</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">get_short_help_str</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">limit</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">45</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Gets short help for the command or makes it by shortening the</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Gets short help for the command or makes it by shortening the</span>
 <span class="sd">        long help string.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">short_help</span><span class="p">:</span>
@@ -1828,7 +1840,7 @@
         <span class="k">return</span> <span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">format_help</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">,</span> <span class="n">formatter</span><span class="p">:</span> <span class="n">HelpFormatter</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Writes the help into the formatter if it exists.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Writes the help into the formatter if it exists.</span>
 
 <span class="sd">        This is a low-level method called by :meth:`get_help`.</span>
 
@@ -1845,7 +1857,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">format_epilog</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">formatter</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">format_help_text</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">,</span> <span class="n">formatter</span><span class="p">:</span> <span class="n">HelpFormatter</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Writes the help text to the formatter if it exists.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Writes the help text to the formatter if it exists.&quot;&quot;&quot;</span>
         <span class="n">text</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">help</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">help</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span>
 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">deprecated</span><span class="p">:</span>
@@ -1859,7 +1871,7 @@
                 <span class="n">formatter</span><span class="o">.</span><span class="n">write_text</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">format_options</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">,</span> <span class="n">formatter</span><span class="p">:</span> <span class="n">HelpFormatter</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Writes all the options into the formatter if they exist.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Writes all the options into the formatter if they exist.&quot;&quot;&quot;</span>
         <span class="n">opts</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_params</span><span class="p">(</span><span class="n">ctx</span><span class="p">):</span>
             <span class="n">rv</span> <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">get_help_record</span><span class="p">(</span><span class="n">ctx</span><span class="p">)</span>
@@ -1871,7 +1883,7 @@
                 <span class="n">formatter</span><span class="o">.</span><span class="n">write_dl</span><span class="p">(</span><span class="n">opts</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">format_epilog</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">,</span> <span class="n">formatter</span><span class="p">:</span> <span class="n">HelpFormatter</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Writes the epilog into the formatter if it exists.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Writes the epilog into the formatter if it exists.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">epilog</span><span class="p">:</span>
             <span class="n">epilog</span> <span class="o">=</span> <span class="n">inspect</span><span class="o">.</span><span class="n">cleandoc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">epilog</span><span class="p">)</span>
             <span class="n">formatter</span><span class="o">.</span><span class="n">write_paragraph</span><span class="p">()</span>
@@ -1904,7 +1916,7 @@
         <span class="k">return</span> <span class="n">args</span>
 
     <span class="k">def</span> <span class="nf">invoke</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">t</span><span class="o">.</span><span class="n">Any</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Given a context, this invokes the attached callback (if it exists)</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Given a context, this invokes the attached callback (if it exists)</span>
 <span class="sd">        in the right way.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">deprecated</span><span class="p">:</span>
@@ -1917,7 +1929,7 @@
             <span class="k">return</span> <span class="n">ctx</span><span class="o">.</span><span class="n">invoke</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">callback</span><span class="p">,</span> <span class="o">**</span><span class="n">ctx</span><span class="o">.</span><span class="n">params</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">shell_complete</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">,</span> <span class="n">incomplete</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">t</span><span class="o">.</span><span class="n">List</span><span class="p">[</span><span class="s2">&quot;CompletionItem&quot;</span><span class="p">]:</span>
-        <span class="sd">&quot;&quot;&quot;Return a list of completions for the incomplete value. Looks</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return a list of completions for the incomplete value. Looks</span>
 <span class="sd">        at the names of options and chained multi-commands.</span>
 
 <span class="sd">        :param ctx: Invocation context for this command.</span>
@@ -1953,7 +1965,7 @@
 
 
 <span class="k">class</span> <span class="nc">MultiCommand</span><span class="p">(</span><span class="n">Command</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;A multi command is the basic implementation of a command that</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A multi command is the basic implementation of a command that</span>
 <span class="sd">    dispatches to subcommands.  The most common version is the</span>
 <span class="sd">    :class:`Group`.</span>
 
@@ -2046,7 +2058,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">format_commands</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">formatter</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">result_callback</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">replace</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">t</span><span class="o">.</span><span class="n">Callable</span><span class="p">[[</span><span class="n">F</span><span class="p">],</span> <span class="n">F</span><span class="p">]:</span>
-        <span class="sd">&quot;&quot;&quot;Adds a result callback to the command.  By default if a</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Adds a result callback to the command.  By default if a</span>
 <span class="sd">        result callback is already registered this will chain them but</span>
 <span class="sd">        this can be disabled with the `replace` parameter.  The result</span>
 <span class="sd">        callback is invoked with the return value of the subcommand</span>
@@ -2091,7 +2103,7 @@
         <span class="k">return</span> <span class="n">decorator</span>
 
     <span class="k">def</span> <span class="nf">format_commands</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">,</span> <span class="n">formatter</span><span class="p">:</span> <span class="n">HelpFormatter</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Extra format methods for multi methods that adds all the commands</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Extra format methods for multi methods that adds all the commands</span>
 <span class="sd">        after the options.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">commands</span> <span class="o">=</span> <span class="p">[]</span>
@@ -2229,19 +2241,19 @@
         <span class="k">return</span> <span class="n">cmd_name</span> <span class="k">if</span> <span class="n">cmd</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span> <span class="n">cmd</span><span class="p">,</span> <span class="n">args</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
 
     <span class="k">def</span> <span class="nf">get_command</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">,</span> <span class="n">cmd_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">t</span><span class="o">.</span><span class="n">Optional</span><span class="p">[</span><span class="n">Command</span><span class="p">]:</span>
-        <span class="sd">&quot;&quot;&quot;Given a context and a command name, this returns a</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Given a context and a command name, this returns a</span>
 <span class="sd">        :class:`Command` object if it exists or returns `None`.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">raise</span> <span class="ne">NotImplementedError</span>
 
     <span class="k">def</span> <span class="nf">list_commands</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">t</span><span class="o">.</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
-        <span class="sd">&quot;&quot;&quot;Returns a list of subcommand names in the order they should</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns a list of subcommand names in the order they should</span>
 <span class="sd">        appear.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="p">[]</span>
 
     <span class="k">def</span> <span class="nf">shell_complete</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">,</span> <span class="n">incomplete</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">t</span><span class="o">.</span><span class="n">List</span><span class="p">[</span><span class="s2">&quot;CompletionItem&quot;</span><span class="p">]:</span>
-        <span class="sd">&quot;&quot;&quot;Return a list of completions for the incomplete value. Looks</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return a list of completions for the incomplete value. Looks</span>
 <span class="sd">        at the names of options, subcommands, and chained</span>
 <span class="sd">        multi-commands.</span>
 
@@ -2261,7 +2273,7 @@
 
 
 <span class="k">class</span> <span class="nc">Group</span><span class="p">(</span><span class="n">MultiCommand</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;A group allows a command to have subcommands attached. This is</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A group allows a command to have subcommands attached. This is</span>
 <span class="sd">    the most common way to implement nesting in Click.</span>
 
 <span class="sd">    :param name: The name of the group command.</span>
@@ -2313,7 +2325,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">commands</span><span class="p">:</span> <span class="n">t</span><span class="o">.</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Command</span><span class="p">]</span> <span class="o">=</span> <span class="n">commands</span>
 
     <span class="k">def</span> <span class="nf">add_command</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cmd</span><span class="p">:</span> <span class="n">Command</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="n">t</span><span class="o">.</span><span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Registers another :class:`Command` with this group.  If the name</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Registers another :class:`Command` with this group.  If the name</span>
 <span class="sd">        is not provided, the name of the command is used.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">name</span> <span class="o">=</span> <span class="n">name</span> <span class="ow">or</span> <span class="n">cmd</span><span class="o">.</span><span class="n">name</span>
@@ -2335,7 +2347,7 @@
     <span class="k">def</span> <span class="nf">command</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">t</span><span class="o">.</span><span class="n">Any</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">t</span><span class="o">.</span><span class="n">Any</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">t</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="n">t</span><span class="o">.</span><span class="n">Callable</span><span class="p">[[</span><span class="n">t</span><span class="o">.</span><span class="n">Callable</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">t</span><span class="o">.</span><span class="n">Any</span><span class="p">]],</span> <span class="n">Command</span><span class="p">],</span> <span class="n">Command</span><span class="p">]:</span>
-        <span class="sd">&quot;&quot;&quot;A shortcut decorator for declaring and attaching a command to</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;A shortcut decorator for declaring and attaching a command to</span>
 <span class="sd">        the group. This takes the same arguments as :func:`command` and</span>
 <span class="sd">        immediately registers the created command with this group by</span>
 <span class="sd">        calling :meth:`add_command`.</span>
@@ -2386,7 +2398,7 @@
     <span class="k">def</span> <span class="nf">group</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">t</span><span class="o">.</span><span class="n">Any</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">t</span><span class="o">.</span><span class="n">Any</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">t</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="n">t</span><span class="o">.</span><span class="n">Callable</span><span class="p">[[</span><span class="n">t</span><span class="o">.</span><span class="n">Callable</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">t</span><span class="o">.</span><span class="n">Any</span><span class="p">]],</span> <span class="s2">&quot;Group&quot;</span><span class="p">],</span> <span class="s2">&quot;Group&quot;</span><span class="p">]:</span>
-        <span class="sd">&quot;&quot;&quot;A shortcut decorator for declaring and attaching a group to</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;A shortcut decorator for declaring and attaching a group to</span>
 <span class="sd">        the group. This takes the same arguments as :func:`group` and</span>
 <span class="sd">        immediately registers the created group with this group by</span>
 <span class="sd">        calling :meth:`add_command`.</span>
@@ -2435,7 +2447,7 @@
 
 
 <span class="k">class</span> <span class="nc">CommandCollection</span><span class="p">(</span><span class="n">MultiCommand</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;A command collection is a multi command that merges multiple multi</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A command collection is a multi command that merges multiple multi</span>
 <span class="sd">    commands together into one.  This is a straightforward implementation</span>
 <span class="sd">    that accepts a list of different multi commands as sources and</span>
 <span class="sd">    provides all the commands for each of them.</span>
@@ -2452,7 +2464,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">sources</span><span class="p">:</span> <span class="n">t</span><span class="o">.</span><span class="n">List</span><span class="p">[</span><span class="n">MultiCommand</span><span class="p">]</span> <span class="o">=</span> <span class="n">sources</span> <span class="ow">or</span> <span class="p">[]</span>
 
     <span class="k">def</span> <span class="nf">add_source</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">multi_cmd</span><span class="p">:</span> <span class="n">MultiCommand</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Adds a new multi command to the chain dispatcher.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Adds a new multi command to the chain dispatcher.&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">sources</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">multi_cmd</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">get_command</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">,</span> <span class="n">cmd_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">t</span><span class="o">.</span><span class="n">Optional</span><span class="p">[</span><span class="n">Command</span><span class="p">]:</span>
@@ -2477,7 +2489,7 @@
 
 
 <span class="k">def</span> <span class="nf">_check_iter</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="n">t</span><span class="o">.</span><span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">t</span><span class="o">.</span><span class="n">Iterator</span><span class="p">[</span><span class="n">t</span><span class="o">.</span><span class="n">Any</span><span class="p">]:</span>
-    <span class="sd">&quot;&quot;&quot;Check if the value is iterable but not a string. Raises a type</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Check if the value is iterable but not a string. Raises a type</span>
 <span class="sd">    error, or return an iterator over the value.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
@@ -2487,7 +2499,7 @@
 
 
 <span class="k">class</span> <span class="nc">Parameter</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;A parameter to a command comes in two versions: they are either</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;A parameter to a command comes in two versions: they are either</span>
 <span class="sd">    :class:`Option`\s or :class:`Argument`\s.  Other subclasses are currently</span>
 <span class="sd">    not supported by design as some of the internals for parsing are</span>
 <span class="sd">    intentionally not finalized.</span>
@@ -2648,7 +2660,7 @@
                         <span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">to_info_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">t</span><span class="o">.</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">t</span><span class="o">.</span><span class="n">Any</span><span class="p">]:</span>
-        <span class="sd">&quot;&quot;&quot;Gather information that could be useful for a tool generating</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Gather information that could be useful for a tool generating</span>
 <span class="sd">        user-facing documentation.</span>
 
 <span class="sd">        Use :meth:`click.Context.to_info_dict` to traverse the entire</span>
@@ -2679,7 +2691,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">human_readable_name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Returns the human readable name of this parameter.  This is the</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the human readable name of this parameter.  This is the</span>
 <span class="sd">        same as the name for options, but the metavar for arguments.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>  <span class="c1"># type: ignore</span>
@@ -2713,7 +2725,7 @@
     <span class="k">def</span> <span class="nf">get_default</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">,</span> <span class="n">call</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">t</span><span class="o">.</span><span class="n">Optional</span><span class="p">[</span><span class="n">t</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="n">t</span><span class="o">.</span><span class="n">Any</span><span class="p">,</span> <span class="n">t</span><span class="o">.</span><span class="n">Callable</span><span class="p">[[],</span> <span class="n">t</span><span class="o">.</span><span class="n">Any</span><span class="p">]]]:</span>
-        <span class="sd">&quot;&quot;&quot;Get the default for the parameter. Tries</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the default for the parameter. Tries</span>
 <span class="sd">        :meth:`Context.lookup_default` first, then the local default.</span>
 
 <span class="sd">        :param ctx: Current context.</span>
@@ -2767,7 +2779,7 @@
         <span class="k">return</span> <span class="n">value</span><span class="p">,</span> <span class="n">source</span>
 
     <span class="k">def</span> <span class="nf">type_cast_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">t</span><span class="o">.</span><span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">t</span><span class="o">.</span><span class="n">Any</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Convert and validate a value against the option&#39;s</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Convert and validate a value against the option&#39;s</span>
 <span class="sd">        :attr:`type`, :attr:`multiple`, and :attr:`nargs`.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
@@ -2889,14 +2901,14 @@
         <span class="k">return</span> <span class="p">[]</span>
 
     <span class="k">def</span> <span class="nf">get_error_hint</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Get a stringified version of the param for use in error messages to</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get a stringified version of the param for use in error messages to</span>
 <span class="sd">        indicate which param caused the error.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">hint_list</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">opts</span> <span class="ow">or</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">human_readable_name</span><span class="p">]</span>
         <span class="k">return</span> <span class="s2">&quot; / &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&#39;</span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2">&#39;&quot;</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">hint_list</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">shell_complete</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">,</span> <span class="n">incomplete</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">t</span><span class="o">.</span><span class="n">List</span><span class="p">[</span><span class="s2">&quot;CompletionItem&quot;</span><span class="p">]:</span>
-        <span class="sd">&quot;&quot;&quot;Return a list of completions for the incomplete value. If a</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return a list of completions for the incomplete value. If a</span>
 <span class="sd">        ``shell_complete`` function was given during init, it is used.</span>
 <span class="sd">        Otherwise, the :attr:`type`</span>
 <span class="sd">        :meth:`~click.types.ParamType.shell_complete` function is used.</span>
@@ -2920,7 +2932,7 @@
 
 
 <span class="k">class</span> <span class="nc">Option</span><span class="p">(</span><span class="n">Parameter</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Options are usually optional values on the command line and</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Options are usually optional values on the command line and</span>
 <span class="sd">    have some extra features that arguments don&#39;t have.</span>
 
 <span class="sd">    All other parameters are passed onwards to the parameter constructor.</span>
@@ -3337,7 +3349,7 @@
         <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">get_default</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">call</span><span class="o">=</span><span class="n">call</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">prompt_for_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">t</span><span class="o">.</span><span class="n">Any</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;This is an alternative flow that can be activated in the full</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;This is an alternative flow that can be activated in the full</span>
 <span class="sd">        value processing if a value does not exist.  It will prompt the</span>
 <span class="sd">        user until a valid value exists and then returns the processed</span>
 <span class="sd">        value as result.</span>
@@ -3436,7 +3448,7 @@
 
 
 <span class="k">class</span> <span class="nc">Argument</span><span class="p">(</span><span class="n">Parameter</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Arguments are positional parameters to a command.  They generally</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Arguments are positional parameters to a command.  They generally</span>
 <span class="sd">    provide fewer features than options but can have infinite ``nargs``</span>
 <span class="sd">    and are required by default.</span>
 
@@ -3523,7 +3535,7 @@
     <footer class="footer">
   <p>
     
-      Last updated on &#39;Fri Dec 9 08:57:07 2022&#39;, &#39;9fd7c71&#39;.<br/>
+      Last updated on &#39;Thu Feb 16 08:26:42 2023&#39;, &#39;f75544d&#39;.<br/>
   </p>
 </footer>
 </main>

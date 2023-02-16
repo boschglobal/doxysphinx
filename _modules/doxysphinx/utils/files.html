@@ -32,8 +32,8 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/libs/html/datatables.min.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/styles.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/modern.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/layouts.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/modern.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-book-theme-custom.css" />
     
   <link rel="preload" as="script" href="../../../_static/js/index.be7d3bbb2ef33a8344ce.js">
@@ -431,6 +431,18 @@
   </a>
  </li>
 </ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Related Topics
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../docs/doxylink_setup.html">
+   Doxylink Setup
+  </a>
+ </li>
+</ul>
 
     </div>
 </nav> <!-- To handle the deprecated key -->
@@ -514,7 +526,7 @@
 <span></span><span class="c1"># =====================================================================================</span>
 <span class="c1">#  C O P Y R I G H T</span>
 <span class="c1"># -------------------------------------------------------------------------------------</span>
-<span class="c1">#  Copyright (c) 2022 by Robert Bosch GmbH. All rights reserved.</span>
+<span class="c1">#  Copyright (c) 2023 by Robert Bosch GmbH. All rights reserved.</span>
 <span class="c1">#</span>
 <span class="c1">#  Author(s):</span>
 <span class="c1">#  - Markus Braun, :em engineering methods AG (contracted by Robert Bosch GmbH)</span>
@@ -530,7 +542,7 @@
 
 
 <div class="viewcode-block" id="write_file"><a class="viewcode-back" href="../../../docs/auto_api/doxysphinx/utils/files/index.html#doxysphinx.utils.files.write_file">[docs]</a><span class="k">def</span> <span class="nf">write_file</span><span class="p">(</span><span class="n">file</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">separator</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Write an array of lines to a file in one call.</span>
 
 <span class="sd">    :param file: The path to the file.</span>
@@ -548,7 +560,7 @@
 
 
 <div class="viewcode-block" id="replace_in_file"><a class="viewcode-back" href="../../../docs/auto_api/doxysphinx/utils/files/index.html#doxysphinx.utils.files.replace_in_file">[docs]</a><span class="k">def</span> <span class="nf">replace_in_file</span><span class="p">(</span><span class="n">file</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">search</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">replacement</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Replace a text in a file.</span>
 
 <span class="sd">    :param file: The file to do the replacement in.</span>
@@ -559,7 +571,7 @@
 
 
 <div class="viewcode-block" id="multi_replace_in_file"><a class="viewcode-back" href="../../../docs/auto_api/doxysphinx/utils/files/index.html#doxysphinx.utils.files.multi_replace_in_file">[docs]</a><span class="k">def</span> <span class="nf">multi_replace_in_file</span><span class="p">(</span><span class="n">file</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="o">*</span><span class="n">search_replace_pair</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Replace text inside a file. Supports multiple replacements.</span>
 
 <span class="sd">    :param file: The file to do the replacement in.</span>
@@ -572,7 +584,7 @@
 
 
 <div class="viewcode-block" id="multi_glob"><a class="viewcode-back" href="../../../docs/auto_api/doxysphinx/utils/files/index.html#doxysphinx.utils.files.multi_glob">[docs]</a><span class="k">def</span> <span class="nf">multi_glob</span><span class="p">(</span><span class="n">directory</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="o">*</span><span class="n">patterns</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Path</span><span class="p">]:</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Evaluate multiple glob patterns at once.</span>
 
 <span class="sd">    :param directory: The source directory (where to evaluate the glob pattern)</span>
@@ -583,7 +595,7 @@
 
 
 <span class="k">class</span> <span class="nc">_FileByNameAndSize</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Implementation Detail.</span>
 
 <span class="sd">    A Path Wrapper that implements its identity via name and size only</span>
@@ -606,7 +618,7 @@
 
 
 <div class="viewcode-block" id="copy_if_different"><a class="viewcode-back" href="../../../docs/auto_api/doxysphinx/utils/files/index.html#doxysphinx.utils.files.copy_if_different">[docs]</a><span class="k">def</span> <span class="nf">copy_if_different</span><span class="p">(</span><span class="n">source_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">target_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="o">*</span><span class="n">patterns</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Path</span><span class="p">]:</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">     Copy files with given glob patterns from source_dir to target_dir but only if the files are different.</span>
 
 <span class="sd">    :param source_dir: The source directory of the files to copy</span>
@@ -642,7 +654,7 @@
 
 
 <div class="viewcode-block" id="stringify_paths"><a class="viewcode-back" href="../../../docs/auto_api/doxysphinx/utils/files/index.html#doxysphinx.utils.files.stringify_paths">[docs]</a><span class="k">def</span> <span class="nf">stringify_paths</span><span class="p">(</span><span class="n">paths</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="n">Path</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Convert a list of paths to a bulleted string where each path is on a new line.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert a list of paths to a bulleted string where each path is on a new line.&quot;&quot;&quot;</span>
     <span class="n">path_list</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">paths</span><span class="p">]</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">path_list</span><span class="p">:</span>
         <span class="k">return</span> <span class="s2">&quot;[]&quot;</span>
@@ -661,7 +673,7 @@
     <footer class="footer">
   <p>
     
-      Last updated on &#39;Fri Dec 9 08:57:07 2022&#39;, &#39;9fd7c71&#39;.<br/>
+      Last updated on &#39;Thu Feb 16 08:26:42 2023&#39;, &#39;f75544d&#39;.<br/>
   </p>
 </footer>
 </main>

@@ -32,8 +32,8 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/libs/html/datatables.min.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/styles.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/modern.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/layouts.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/modern.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-book-theme-custom.css" />
     
   <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
@@ -431,6 +431,18 @@
   </a>
  </li>
 </ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Related Topics
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../docs/doxylink_setup.html">
+   Doxylink Setup
+  </a>
+ </li>
+</ul>
 
     </div>
 </nav> <!-- To handle the deprecated key -->
@@ -514,7 +526,7 @@
 <span></span><span class="c1"># =====================================================================================</span>
 <span class="c1">#  C O P Y R I G H T</span>
 <span class="c1"># -------------------------------------------------------------------------------------</span>
-<span class="c1">#  Copyright (c) 2022 by Robert Bosch GmbH. All rights reserved.</span>
+<span class="c1">#  Copyright (c) 2023 by Robert Bosch GmbH. All rights reserved.</span>
 <span class="c1">#</span>
 <span class="c1">#  Author(s):</span>
 <span class="c1">#  - Markus Braun, :em engineering methods AG (contracted by Robert Bosch GmbH)</span>
@@ -532,7 +544,7 @@
 
 
 <div class="viewcode-block" id="TocGenerator"><a class="viewcode-back" href="../../docs/auto_api/doxysphinx/toc/index.html#doxysphinx.toc.TocGenerator">[docs]</a><span class="k">class</span> <span class="nc">TocGenerator</span><span class="p">(</span><span class="n">Protocol</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    TocGenerator protocol.</span>
 
 <span class="sd">    Gets the source_dir (with the html sources) during init and</span>
@@ -541,14 +553,14 @@
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Initialize an instance of a TocGenerator.</span>
 
 <span class="sd">        :param source_dir: The source directory where all html files reside.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="TocGenerator.generate_toc_for"><a class="viewcode-back" href="../../docs/auto_api/doxysphinx/toc/index.html#doxysphinx.toc.TocGenerator.generate_toc_for">[docs]</a>    <span class="k">def</span> <span class="nf">generate_toc_for</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Iterable</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Generate a toctree directive for a given file.</span>
 
 <span class="sd">        :param file: the file to generate the toctree directive for</span>
@@ -576,7 +588,7 @@
 
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">from_json_node</span><span class="p">(</span><span class="n">json_node</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="s2">&quot;_MenuEntry&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Create a _MenuEntry from a json node (in doxygen&#39;s menudata.js).</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a _MenuEntry from a json node (in doxygen&#39;s menudata.js).</span>
 
 <span class="sd">        Note that this method will build up a _MenuEntry-tree automatically/recursively</span>
 
@@ -596,7 +608,7 @@
 
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">_get_sphinx_toc_compatible_children</span><span class="p">(</span><span class="n">json_node</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="s2">&quot;_MenuEntry&quot;</span><span class="p">]:</span>
-        <span class="sd">&quot;&quot;&quot;Get a &quot;sphinx compatible&quot; view of the children.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get a &quot;sphinx compatible&quot; view of the children.</span>
 
 <span class="sd">        We therefore need a special handling for index anchors</span>
 <span class="sd">        with doxygen we sometimes have urls in menu entries like:</span>
@@ -641,7 +653,7 @@
 
 
 <div class="viewcode-block" id="DoxygenTocGenerator"><a class="viewcode-back" href="../../docs/auto_api/doxysphinx/toc/index.html#doxysphinx.toc.DoxygenTocGenerator">[docs]</a><span class="k">class</span> <span class="nc">DoxygenTocGenerator</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    A TocGenerator for doxygen.</span>
 
 <span class="sd">    Will read the menudata.js to check whether a toctree</span>
@@ -649,7 +661,7 @@
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Initialize an instance of a TocGenerator.</span>
 
 <span class="sd">        :param source_dir: The source directory where the doxygen html files reside.</span>
@@ -671,7 +683,7 @@
         <span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">_parse_template</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]:</span>
-        <span class="sd">&quot;&quot;&quot;Parse a &quot;doxygen html template shell&quot; out of the index.html file.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Parse a &quot;doxygen html template shell&quot; out of the index.html file.</span>
 
 <span class="sd">        :return: A Tuple containing the doxygen html before the content area and the content after the content area.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -714,7 +726,7 @@
             <span class="sa">f</span><span class="s2">&quot;.. title:: </span><span class="si">{</span><span class="n">structural_dummy</span><span class="o">.</span><span class="n">title</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
             <span class="s2">&quot;&quot;</span><span class="p">,</span>
             <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">structural_dummy</span><span class="o">.</span><span class="n">title</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
-            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="s1">&#39;-&#39;</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">structural_dummy</span><span class="o">.</span><span class="n">title</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="s1">&#39;-&#39;</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="n">structural_dummy</span><span class="o">.</span><span class="n">title</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
             <span class="s2">&quot;&quot;</span><span class="p">,</span>
             <span class="s2">&quot;.. container:: doxygen-content&quot;</span><span class="p">,</span>
             <span class="s2">&quot;&quot;</span><span class="p">,</span>
@@ -754,7 +766,7 @@
                 <span class="k">yield from</span> <span class="bp">self</span><span class="o">.</span><span class="n">_flatten_tree</span><span class="p">(</span><span class="o">*</span><span class="n">entry</span><span class="o">.</span><span class="n">children</span><span class="p">)</span>
 
 <div class="viewcode-block" id="DoxygenTocGenerator.generate_toc_for"><a class="viewcode-back" href="../../docs/auto_api/doxysphinx/toc/index.html#doxysphinx.toc.DoxygenTocGenerator.generate_toc_for">[docs]</a>    <span class="k">def</span> <span class="nf">generate_toc_for</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Iterator</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Generate a toctree directive for a given file.</span>
 
 <span class="sd">        Note that the toctree will only be generated when the file is part of a menu</span>
@@ -791,7 +803,7 @@
     <footer class="footer">
   <p>
     
-      Last updated on &#39;Fri Dec 9 08:57:07 2022&#39;, &#39;9fd7c71&#39;.<br/>
+      Last updated on &#39;Thu Feb 16 08:26:42 2023&#39;, &#39;f75544d&#39;.<br/>
   </p>
 </footer>
 </main>

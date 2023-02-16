@@ -32,8 +32,8 @@
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/libs/html/datatables.min.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/styles.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/modern.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/layouts.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/modern.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-book-theme-custom.css" />
     
   <link rel="preload" as="script" href="../../../../_static/js/index.be7d3bbb2ef33a8344ce.js">
@@ -430,6 +430,18 @@
  <li class="toctree-l1">
   <a class="reference internal" href="../../../../CONTRIBUTE.html">
    How to Contribute
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Related Topics
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../doxylink_setup.html">
+   Doxylink Setup
   </a>
  </li>
 </ul>
@@ -1024,40 +1036,40 @@ in a neutral way the parser will change all relevant rst/sphinx markup elements 
 <dd><p>Capsules a parsed and processed html tree with meta information.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="doxysphinx.html_parser.HtmlParseResult.html_input_file">
-<span class="sig-name descname"><span class="pre">html_input_file</span></span><em class="property"><span class="w"> </span><span class="pre">:pathlib.Path</span></em><a class="headerlink" href="#doxysphinx.html_parser.HtmlParseResult.html_input_file" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">html_input_file</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">pathlib.Path</span></em><a class="headerlink" href="#doxysphinx.html_parser.HtmlParseResult.html_input_file" title="Permalink to this definition">¶</a></dt>
 <dd><p>The html file that was parsed.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="doxysphinx.html_parser.HtmlParseResult.project">
-<span class="sig-name descname"><span class="pre">project</span></span><em class="property"><span class="w"> </span><span class="pre">:str</span></em><a class="headerlink" href="#doxysphinx.html_parser.HtmlParseResult.project" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">project</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#doxysphinx.html_parser.HtmlParseResult.project" title="Permalink to this definition">¶</a></dt>
 <dd><p>The project where this html file belongs to.
 This can be e.g. a directory name or a component/module name etc.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="doxysphinx.html_parser.HtmlParseResult.meta_title">
-<span class="sig-name descname"><span class="pre">meta_title</span></span><em class="property"><span class="w"> </span><span class="pre">:str</span></em><a class="headerlink" href="#doxysphinx.html_parser.HtmlParseResult.meta_title" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">meta_title</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#doxysphinx.html_parser.HtmlParseResult.meta_title" title="Permalink to this definition">¶</a></dt>
 <dd><p>The html meta title if present in the original html.
 If not just set to document title</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="doxysphinx.html_parser.HtmlParseResult.document_title">
-<span class="sig-name descname"><span class="pre">document_title</span></span><em class="property"><span class="w"> </span><span class="pre">:str</span></em><a class="headerlink" href="#doxysphinx.html_parser.HtmlParseResult.document_title" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">document_title</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#doxysphinx.html_parser.HtmlParseResult.document_title" title="Permalink to this definition">¶</a></dt>
 <dd><p>The document title. This is the title that is visible e.g.
 in sphinx menu structure.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="doxysphinx.html_parser.HtmlParseResult.used_snippet_formats">
-<span class="sig-name descname"><span class="pre">used_snippet_formats</span></span><em class="property"><span class="w"> </span><span class="pre">:Optional[Set[str]]</span></em><a class="headerlink" href="#doxysphinx.html_parser.HtmlParseResult.used_snippet_formats" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">used_snippet_formats</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Set</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#doxysphinx.html_parser.HtmlParseResult.used_snippet_formats" title="Permalink to this definition">¶</a></dt>
 <dd><p>The list of snippet format that are used inside the html tree if any.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="doxysphinx.html_parser.HtmlParseResult.tree">
-<span class="sig-name descname"><span class="pre">tree</span></span><em class="property"><span class="w"> </span><span class="pre">:lxml.etree._ElementTree</span></em><a class="headerlink" href="#doxysphinx.html_parser.HtmlParseResult.tree" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">tree</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">lxml.etree._ElementTree</span></em><a class="headerlink" href="#doxysphinx.html_parser.HtmlParseResult.tree" title="Permalink to this definition">¶</a></dt>
 <dd><p>The html/xml element tree.</p>
 </dd></dl>
 
@@ -1105,7 +1117,7 @@ It is expected that all rst data in this resulting ElementTree is present in spe
 <p>Typically this is used to either clean up or transform the elements into a neutralized format.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="doxysphinx.html_parser.ElementProcessor.elements">
-<span class="sig-name descname"><span class="pre">elements</span></span><em class="property"><span class="w"> </span><span class="pre">:List[str]</span> <span class="pre">=</span> <span class="pre">[]</span></em><a class="headerlink" href="#doxysphinx.html_parser.ElementProcessor.elements" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">elements</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="headerlink" href="#doxysphinx.html_parser.ElementProcessor.elements" title="Permalink to this definition">¶</a></dt>
 <dd><p>A list of html element names this processor can process.</p>
 <p>This is for pre-filtering html elements (an optimization). This processors try_process method
 is only called on these elements.</p>
@@ -1113,7 +1125,7 @@ is only called on these elements.</p>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="doxysphinx.html_parser.ElementProcessor.is_final">
-<span class="sig-name descname"><span class="pre">is_final</span></span><em class="property"><span class="w"> </span><span class="pre">:bool</span> <span class="pre">=</span> <span class="pre">True</span></em><a class="headerlink" href="#doxysphinx.html_parser.ElementProcessor.is_final" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">is_final</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#doxysphinx.html_parser.ElementProcessor.is_final" title="Permalink to this definition">¶</a></dt>
 <dd><p>Whether other processors should be called after this one.</p>
 <p>With a “final processor” (is_final == True) processing of an element stops (no other processors considered)
 once the try_process method returns True.</p>
@@ -1121,7 +1133,7 @@ once the try_process method returns True.</p>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="doxysphinx.html_parser.ElementProcessor.format">
-<span class="sig-name descname"><span class="pre">format</span></span><em class="property"><span class="w"> </span><span class="pre">:str</span> <span class="pre">=</span> <span class="pre">None</span></em><a class="headerlink" href="#doxysphinx.html_parser.ElementProcessor.format" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">format</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'None'</span></em><a class="headerlink" href="#doxysphinx.html_parser.ElementProcessor.format" title="Permalink to this definition">¶</a></dt>
 <dd><p>The format this element processor processes… like ‘rst’, ‘md’ etc.</p>
 </dd></dl>
 
@@ -1147,17 +1159,17 @@ once the try_process method returns True.</p>
 <dd><p>Element Processor for inline rst elements.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="doxysphinx.html_parser.RstInlineProcessor.elements">
-<span class="sig-name descname"><span class="pre">elements</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">['code']</span></em><a class="headerlink" href="#doxysphinx.html_parser.RstInlineProcessor.elements" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">elements</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['code']</span></em><a class="headerlink" href="#doxysphinx.html_parser.RstInlineProcessor.elements" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="doxysphinx.html_parser.RstInlineProcessor.format">
-<span class="sig-name descname"><span class="pre">format</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">rst</span></em><a class="headerlink" href="#doxysphinx.html_parser.RstInlineProcessor.format" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">format</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'rst'</span></em><a class="headerlink" href="#doxysphinx.html_parser.RstInlineProcessor.format" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="doxysphinx.html_parser.RstInlineProcessor.is_final">
-<span class="sig-name descname"><span class="pre">is_final</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">True</span></em><a class="headerlink" href="#doxysphinx.html_parser.RstInlineProcessor.is_final" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">is_final</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#doxysphinx.html_parser.RstInlineProcessor.is_final" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -1187,17 +1199,17 @@ once the try_process method returns True.</p>
 <dd><p>Element Processor for rst block elements.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="doxysphinx.html_parser.RstBlockProcessor.elements">
-<span class="sig-name descname"><span class="pre">elements</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">['code',</span> <span class="pre">'pre']</span></em><a class="headerlink" href="#doxysphinx.html_parser.RstBlockProcessor.elements" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">elements</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['code',</span> <span class="pre">'pre']</span></em><a class="headerlink" href="#doxysphinx.html_parser.RstBlockProcessor.elements" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="doxysphinx.html_parser.RstBlockProcessor.format">
-<span class="sig-name descname"><span class="pre">format</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">rst</span></em><a class="headerlink" href="#doxysphinx.html_parser.RstBlockProcessor.format" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">format</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'rst'</span></em><a class="headerlink" href="#doxysphinx.html_parser.RstBlockProcessor.format" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="doxysphinx.html_parser.RstBlockProcessor.is_final">
-<span class="sig-name descname"><span class="pre">is_final</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">True</span></em><a class="headerlink" href="#doxysphinx.html_parser.RstBlockProcessor.is_final" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">is_final</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#doxysphinx.html_parser.RstBlockProcessor.is_final" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -1227,17 +1239,17 @@ We change the pre output here to a div with inner line divs (which is also suppo
 The reason is that it gets really hard to debug if we change the structure inbetween processors.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="doxysphinx.html_parser.PreToDivProcessor.elements">
-<span class="sig-name descname"><span class="pre">elements</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">['pre']</span></em><a class="headerlink" href="#doxysphinx.html_parser.PreToDivProcessor.elements" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">elements</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['pre']</span></em><a class="headerlink" href="#doxysphinx.html_parser.PreToDivProcessor.elements" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="doxysphinx.html_parser.PreToDivProcessor.format">
-<span class="sig-name descname"><span class="pre">format</span></span><em class="property"><span class="w"> </span><span class="pre">=</span></em><a class="headerlink" href="#doxysphinx.html_parser.PreToDivProcessor.format" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">format</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">''</span></em><a class="headerlink" href="#doxysphinx.html_parser.PreToDivProcessor.format" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="doxysphinx.html_parser.PreToDivProcessor.is_final">
-<span class="sig-name descname"><span class="pre">is_final</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">True</span></em><a class="headerlink" href="#doxysphinx.html_parser.PreToDivProcessor.is_final" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">is_final</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#doxysphinx.html_parser.PreToDivProcessor.is_final" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -1280,17 +1292,17 @@ Each Markdown block (delimited with 3 backticks) will be something like this in 
 </div>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="doxysphinx.html_parser.MarkdownRstBlockProcessor.elements">
-<span class="sig-name descname"><span class="pre">elements</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">['div']</span></em><a class="headerlink" href="#doxysphinx.html_parser.MarkdownRstBlockProcessor.elements" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">elements</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['div']</span></em><a class="headerlink" href="#doxysphinx.html_parser.MarkdownRstBlockProcessor.elements" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="doxysphinx.html_parser.MarkdownRstBlockProcessor.format">
-<span class="sig-name descname"><span class="pre">format</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">rst</span></em><a class="headerlink" href="#doxysphinx.html_parser.MarkdownRstBlockProcessor.format" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">format</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'rst'</span></em><a class="headerlink" href="#doxysphinx.html_parser.MarkdownRstBlockProcessor.format" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="doxysphinx.html_parser.MarkdownRstBlockProcessor.is_final">
-<span class="sig-name descname"><span class="pre">is_final</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">True</span></em><a class="headerlink" href="#doxysphinx.html_parser.MarkdownRstBlockProcessor.is_final" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">is_final</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#doxysphinx.html_parser.MarkdownRstBlockProcessor.is_final" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -1363,7 +1375,7 @@ Each Markdown block (delimited with 3 backticks) will be something like this in 
     <footer class="footer">
   <p>
     
-      Last updated on &#39;Fri Dec 9 08:57:07 2022&#39;, &#39;9fd7c71&#39;.<br/>
+      Last updated on &#39;Thu Feb 16 08:26:42 2023&#39;, &#39;f75544d&#39;.<br/>
   </p>
 </footer>
 </main>

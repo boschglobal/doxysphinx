@@ -32,8 +32,8 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/libs/html/datatables.min.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/styles.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/modern.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/layouts.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/modern.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-book-theme-custom.css" />
     
   <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
@@ -431,6 +431,18 @@
   </a>
  </li>
 </ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Related Topics
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../docs/doxylink_setup.html">
+   Doxylink Setup
+  </a>
+ </li>
+</ul>
 
     </div>
 </nav> <!-- To handle the deprecated key -->
@@ -514,10 +526,11 @@
 <span></span><span class="c1"># =====================================================================================</span>
 <span class="c1">#  C O P Y R I G H T</span>
 <span class="c1"># -------------------------------------------------------------------------------------</span>
-<span class="c1">#  Copyright (c) 2022 by Robert Bosch GmbH. All rights reserved.</span>
+<span class="c1">#  Copyright (c) 2023 by Robert Bosch GmbH. All rights reserved.</span>
 <span class="c1">#</span>
 <span class="c1">#  Author(s):</span>
 <span class="c1">#  - Markus Braun, :em engineering methods AG (contracted by Robert Bosch GmbH)</span>
+<span class="c1">#  - Aniket Salve, Robert Bosch GmbH</span>
 <span class="c1"># =====================================================================================</span>
 
 <span class="sd">&quot;&quot;&quot;</span>
@@ -525,7 +538,7 @@
 
 <span class="sd">These represent the main functionality of doxysphinx.</span>
 <span class="sd">&quot;&quot;&quot;</span>
-
+<span class="kn">import</span> <span class="nn">hashlib</span>
 <span class="kn">import</span> <span class="nn">logging</span>
 <span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Type</span>
@@ -537,7 +550,7 @@
 
 
 <div class="viewcode-block" id="Builder"><a class="viewcode-back" href="../../docs/auto_api/doxysphinx/process/index.html#doxysphinx.process.Builder">[docs]</a><span class="k">class</span> <span class="nc">Builder</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    The Builder builds target docs-as-code files out of an existing html documentation.</span>
 
 <span class="sd">    For each an every html file a rst file is created that imports the html content</span>
@@ -560,7 +573,7 @@
         <span class="n">writer_type</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">Writer</span><span class="p">]</span> <span class="o">=</span> <span class="n">RstWriter</span><span class="p">,</span>
         <span class="n">force_recreation</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Create a Builder that builds rsts for doxygen html files.</span>
 
 <span class="sd">        :param sphinx_source_dir: The sphinx source directory where the rst files are</span>
@@ -583,7 +596,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_force_recreation</span> <span class="o">=</span> <span class="n">force_recreation</span>
 
 <div class="viewcode-block" id="Builder.build"><a class="viewcode-back" href="../../docs/auto_api/doxysphinx/process/index.html#doxysphinx.process.Builder.build">[docs]</a>    <span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">doxygen_html_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Generate a rst file for each doxygen html file.</span>
 
 <span class="sd">        Also copies necessary resources.</span>
@@ -610,13 +623,18 @@
             <span class="c1"># for now, we just write the rst parallel to the html file</span>
             <span class="n">rst_file</span> <span class="o">=</span> <span class="n">html_file</span><span class="o">.</span><span class="n">with_suffix</span><span class="p">(</span><span class="s2">&quot;.rst&quot;</span><span class="p">)</span>
 
-            <span class="c1"># if the rst file is either not existing or it is older than the html file...</span>
-            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_should_build_rst</span><span class="p">(</span><span class="n">rst_file</span><span class="p">,</span> <span class="n">html_file</span><span class="p">):</span>
-                <span class="n">result_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">writer</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">parse_result</span><span class="p">,</span> <span class="n">rst_file</span><span class="p">))</span>
+            <span class="c1"># get hash of the html file</span>
+            <span class="n">html_text</span> <span class="o">=</span> <span class="n">html_file</span><span class="o">.</span><span class="n">read_text</span><span class="p">()</span>
+            <span class="n">html_hash</span> <span class="o">=</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">blake2b</span><span class="p">(</span><span class="n">html_text</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
+
+            <span class="c1"># if the rst file is either not existing or the html file is not changed...</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_should_build_rst</span><span class="p">(</span><span class="n">rst_file</span><span class="p">,</span> <span class="n">html_hash</span><span class="p">):</span>
+                <span class="n">result_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">writer</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">parse_result</span><span class="p">,</span> <span class="n">rst_file</span><span class="p">,</span> <span class="n">html_hash</span><span class="p">))</span>
 
         <span class="k">return</span> <span class="n">result_list</span>
 
-    <span class="k">def</span> <span class="nf">_should_build_rst</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rst_file</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">html_file</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">_should_build_rst</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rst_file</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">html_hash</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+
         <span class="c1"># always build if force mode is on</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_force_recreation</span><span class="p">:</span>
             <span class="k">return</span> <span class="kc">True</span>
@@ -625,17 +643,24 @@
         <span class="k">if</span> <span class="ow">not</span> <span class="n">rst_file</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
             <span class="k">return</span> <span class="kc">True</span>
 
-        <span class="c1"># only build if rst_file is older than html file (=doxygen ran inbetween)</span>
-        <span class="n">rst_modification_time</span> <span class="o">=</span> <span class="n">rst_file</span><span class="o">.</span><span class="n">stat</span><span class="p">()</span><span class="o">.</span><span class="n">st_mtime</span>
-        <span class="n">html_modification_time</span> <span class="o">=</span> <span class="n">html_file</span><span class="o">.</span><span class="n">stat</span><span class="p">()</span><span class="o">.</span><span class="n">st_mtime</span>
-        <span class="k">if</span> <span class="n">rst_modification_time</span> <span class="o">&lt;</span> <span class="n">html_modification_time</span><span class="p">:</span>
+        <span class="c1"># read the line first line of RST file</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">rst_file</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">myfile</span><span class="p">:</span>
+            <span class="n">rst_content</span> <span class="o">=</span> <span class="p">[</span><span class="nb">next</span><span class="p">(</span><span class="n">myfile</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">)]</span>
+
+        <span class="c1"># return false if meta data is not found in first line</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">rst_content</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;.. meta::&quot;</span><span class="p">):</span>
+            <span class="k">return</span> <span class="kc">False</span>
+
+        <span class="c1"># return true if hash matches with the meta data</span>
+        <span class="n">hash_from_rst</span> <span class="o">=</span> <span class="n">rst_content</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;:&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">rstrip</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">hash_from_rst</span> <span class="o">!=</span> <span class="n">html_hash</span><span class="p">:</span>
             <span class="k">return</span> <span class="kc">True</span>
 
         <span class="k">return</span> <span class="kc">False</span></div>
 
 
 <div class="viewcode-block" id="Cleaner"><a class="viewcode-back" href="../../docs/auto_api/doxysphinx/process/index.html#doxysphinx.process.Cleaner">[docs]</a><span class="k">class</span> <span class="nc">Cleaner</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;The cleaner cleans files created and copied by the builder.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;The cleaner cleans files created and copied by the builder.&quot;&quot;&quot;</span>
 
     <span class="n">_logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 
@@ -646,7 +671,7 @@
         <span class="n">dir_mapper_type</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">DirectoryMapper</span><span class="p">]</span> <span class="o">=</span> <span class="n">SphinxHtmlBuilderDirectoryMapper</span><span class="p">,</span>
         <span class="n">resource_provider_type</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">ResourceProvider</span><span class="p">]</span> <span class="o">=</span> <span class="n">DoxygenResourceProvider</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Create a Cleaner that will cleanup things that the :class:`Builder` created.</span>
 
 <span class="sd">        :param sphinx_source_dir: The sphinx source directory where the rst files are</span>
@@ -663,7 +688,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_resource_provider</span> <span class="o">=</span> <span class="n">resource_provider_type</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_dir_mapper</span><span class="p">)</span>
 
 <div class="viewcode-block" id="Cleaner.cleanup"><a class="viewcode-back" href="../../docs/auto_api/doxysphinx/process/index.html#doxysphinx.process.Cleaner.cleanup">[docs]</a>    <span class="k">def</span> <span class="nf">cleanup</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">doxygen_html_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Clean up files that were generated by the build method.</span>
 
 <span class="sd">        :param doxygen_html_dir: The html output directory of doxygen where the</span>
@@ -699,7 +724,7 @@
     <footer class="footer">
   <p>
     
-      Last updated on &#39;Fri Dec 9 08:57:07 2022&#39;, &#39;9fd7c71&#39;.<br/>
+      Last updated on &#39;Thu Feb 16 08:26:42 2023&#39;, &#39;f75544d&#39;.<br/>
   </p>
 </footer>
 </main>

@@ -1,3 +1,4 @@
+.. meta::19d9b7ea20e361d11d38f5324b1e28322ebbbc3b126d72dde3ea220833f12ff73c3426979f2198393a8d4ae759b163eea2a1118c24a2160f1ae8eaf27e0cff19
 :orphan:
 
 .. title:: Demo: Graph Legend

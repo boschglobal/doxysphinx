@@ -35,17 +35,14 @@ Attributes
 
 
 .. py:data:: T
-   
 
    
 
 .. py:data:: Predicate
-   
 
    
 
 .. py:data:: Action
-   
 
    
 

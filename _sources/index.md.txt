@@ -6,6 +6,7 @@
 
  Author(s):
  - Markus Braun, :em engineering methods AG (contracted by Robert Bosch GmbH)
+ - Aniket Salve, Robert Bosch GmbH
 =====================================================================================
 -->
 
@@ -54,6 +55,14 @@ CONTRIBUTE.md
 :hidden:
 :maxdepth: 1
 :caption: Other stuff
+```
+
+```{toctree}
+:hidden:
+:maxdepth: 1
+:caption: Related Topics
+
+docs/doxylink_setup.md
 ```
 
 Welcome to the Doxysphinx documentation!

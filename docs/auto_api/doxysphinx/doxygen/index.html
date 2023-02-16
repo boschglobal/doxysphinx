@@ -32,8 +32,8 @@
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/libs/html/datatables.min.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/styles.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/modern.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/layouts.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/modern.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-book-theme-custom.css" />
     
   <link rel="preload" as="script" href="../../../../_static/js/index.be7d3bbb2ef33a8344ce.js">
@@ -433,6 +433,18 @@
   </a>
  </li>
 </ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Related Topics
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../doxylink_setup.html">
+   Doxylink Setup
+  </a>
+ </li>
+</ul>
 
     </div>
 </nav> <!-- To handle the deprecated key -->
@@ -823,12 +835,12 @@
 <dd><p>Class to summarize the strings of the console output and error streams.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="doxysphinx.doxygen.DoxyOutput.out">
-<span class="sig-name descname"><span class="pre">out</span></span><em class="property"><span class="w"> </span><span class="pre">:str</span></em><a class="headerlink" href="#doxysphinx.doxygen.DoxyOutput.out" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">out</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#doxysphinx.doxygen.DoxyOutput.out" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="doxysphinx.doxygen.DoxyOutput.err">
-<span class="sig-name descname"><span class="pre">err</span></span><em class="property"><span class="w"> </span><span class="pre">:str</span></em><a class="headerlink" href="#doxysphinx.doxygen.DoxyOutput.err" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">err</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#doxysphinx.doxygen.DoxyOutput.err" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -873,19 +885,19 @@ The values of OUTPUT_DIRECTORY and GENERATE_TAGFILE will be set after instantiat
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="doxysphinx.doxygen.DoxygenSettingsValidator.validation_errors">
-<span class="sig-name descname"><span class="pre">validation_errors</span></span><em class="property"><span class="w"> </span><span class="pre">:List[str]</span> <span class="pre">=</span> <span class="pre">[]</span></em><a class="headerlink" href="#doxysphinx.doxygen.DoxygenSettingsValidator.validation_errors" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">validation_errors</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="headerlink" href="#doxysphinx.doxygen.DoxygenSettingsValidator.validation_errors" title="Permalink to this definition">¶</a></dt>
 <dd><p>List of the validation errors including the doxyflag with its used and the correct value.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="doxysphinx.doxygen.DoxygenSettingsValidator.absolute_out">
-<span class="sig-name descname"><span class="pre">absolute_out</span></span><em class="property"><span class="w"> </span><span class="pre">:pathlib.Path</span></em><a class="headerlink" href="#doxysphinx.doxygen.DoxygenSettingsValidator.absolute_out" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">absolute_out</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">pathlib.Path</span></em><a class="headerlink" href="#doxysphinx.doxygen.DoxygenSettingsValidator.absolute_out" title="Permalink to this definition">¶</a></dt>
 <dd><p>Absolute path of the output directory.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="doxysphinx.doxygen.DoxygenSettingsValidator.validation_msg">
-<span class="sig-name descname"><span class="pre">validation_msg</span></span><em class="property"><span class="w"> </span><span class="pre">=</span></em><a class="headerlink" href="#doxysphinx.doxygen.DoxygenSettingsValidator.validation_msg" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">validation_msg</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">''</span></em><a class="headerlink" href="#doxysphinx.doxygen.DoxygenSettingsValidator.validation_msg" title="Permalink to this definition">¶</a></dt>
 <dd><p>Validation errors merged in one string.</p>
 </dd></dl>
 
@@ -975,7 +987,7 @@ In the html output path.</p>
     <footer class="footer">
   <p>
     
-      Last updated on &#39;Fri Dec 9 08:57:07 2022&#39;, &#39;9fd7c71&#39;.<br/>
+      Last updated on &#39;Thu Feb 16 08:26:42 2023&#39;, &#39;f75544d&#39;.<br/>
   </p>
 </footer>
 </main>

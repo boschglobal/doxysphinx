@@ -32,7 +32,7 @@ Classes
 
    Protocol representing a Writer that write docs-as-code files.
 
-   .. py:method:: write(parse_result: doxysphinx.html_parser.HtmlParseResult, target_file: pathlib.Path) -> pathlib.Path
+   .. py:method:: write(parse_result: doxysphinx.html_parser.HtmlParseResult, target_file: pathlib.Path, html_hash: str) -> pathlib.Path
 
       Write a parsed html result to a target file.
 
@@ -49,7 +49,7 @@ Classes
 
    Writes sphinx-rst files to disk.
 
-   .. py:method:: write(parse_result: doxysphinx.html_parser.HtmlParseResult, target_file: pathlib.Path) -> pathlib.Path
+   .. py:method:: write(parse_result: doxysphinx.html_parser.HtmlParseResult, target_file: pathlib.Path, html_hash: str) -> pathlib.Path
 
       Write html content to the target_file.
 

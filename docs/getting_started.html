@@ -32,8 +32,8 @@
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/libs/html/datatables.min.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/styles.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/modern.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/layouts.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/modern.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme-custom.css" />
     
   <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
@@ -433,6 +433,18 @@
   </a>
  </li>
 </ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Related Topics
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="doxylink_setup.html">
+   Doxylink Setup
+  </a>
+ </li>
+</ul>
 
     </div>
 </nav> <!-- To handle the deprecated key -->
@@ -541,25 +553,8 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#step-2-install-and-setup-doxylink">
-   Step 2: Install and setup Doxylink
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#setup">
-     Setup
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#registration">
-     Registration
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#step-3-prepare-doxygen-config">
-   Step 3: Prepare Doxygen Config
+  <a class="reference internal nav-link" href="#step-2-prepare-doxygen-config">
+   Step 2: Prepare Doxygen Config
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -575,8 +570,8 @@
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#step-4-run-doxysphinx">
-   Step 4: Run Doxysphinx
+  <a class="reference internal nav-link" href="#step-3-run-doxysphinx">
+   Step 3: Run Doxysphinx
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -606,17 +601,34 @@
      Makefile integration
     </a>
    </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#step-5-use-rst-snippets-in-your-c-c-sourcecode">
-     Step 5: Use rst snippets in your C/C++ Sourcecode
-    </a>
-   </li>
   </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#step-4-use-rst-snippets-in-your-c-c-sourcecode">
+   Step 4: Use rst snippets in your C/C++ Sourcecode
+  </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#done">
    Done
   </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#further-recommendation">
+   Further Recommendation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#recommended-setup">
+     Recommended Setup
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#related-reading">
+     Related Reading
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -661,25 +673,8 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#step-2-install-and-setup-doxylink">
-   Step 2: Install and setup Doxylink
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#setup">
-     Setup
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#registration">
-     Registration
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#step-3-prepare-doxygen-config">
-   Step 3: Prepare Doxygen Config
+  <a class="reference internal nav-link" href="#step-2-prepare-doxygen-config">
+   Step 2: Prepare Doxygen Config
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -695,8 +690,8 @@
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#step-4-run-doxysphinx">
-   Step 4: Run Doxysphinx
+  <a class="reference internal nav-link" href="#step-3-run-doxysphinx">
+   Step 3: Run Doxysphinx
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -726,17 +721,34 @@
      Makefile integration
     </a>
    </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#step-5-use-rst-snippets-in-your-c-c-sourcecode">
-     Step 5: Use rst snippets in your C/C++ Sourcecode
-    </a>
-   </li>
   </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#step-4-use-rst-snippets-in-your-c-c-sourcecode">
+   Step 4: Use rst snippets in your C/C++ Sourcecode
+  </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#done">
    Done
   </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#further-recommendation">
+   Further Recommendation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#recommended-setup">
+     Recommended Setup
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#related-reading">
+     Related Reading
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -755,6 +767,7 @@
 
  Author(s):
  - Markus Braun, :em engineering methods AG (contracted by Robert Bosch GmbH)
+ - Aniket Salve, Robert Bosch GmbH
 =====================================================================================
 -->
 <div class="section" id="getting-started">
@@ -795,24 +808,24 @@ it and see how things working we recommend to clone the repo, fire up vscode and
 <div class="sd-card-title sd-font-weight-bold docutils">
 DartSass installation</div>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="2820fc28-25ac-45c7-a8f4-315c4a935f13" name="82de6299-34d8-4a6f-87b0-3ff8cf899f9b" type="radio">
-</input><label class="sd-tab-label" for="2820fc28-25ac-45c7-a8f4-315c4a935f13">
+<input checked="checked" id="69bfaed4-db88-4b2c-a96a-7e9bb38f686a" name="8759f67c-7360-45ec-a33c-1d53d0b48db6" type="radio">
+</input><label class="sd-tab-label" for="69bfaed4-db88-4b2c-a96a-7e9bb38f686a">
 Linux</label><div class="sd-tab-content docutils">
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Linux</span>
-curl -sSL https://github.com/sass/dart-sass/releases/download/1.49.7/dart-sass-1.49.7-linux-x64.tar.gz <span class="p">|</span> tar -xzvf - --strip-components<span class="o">=</span><span class="m">1</span> -C ~/.local/bin dart-sass/sass
+curl<span class="w"> </span>-sSL<span class="w"> </span>https://github.com/sass/dart-sass/releases/download/1.49.7/dart-sass-1.49.7-linux-x64.tar.gz<span class="w"> </span><span class="p">|</span><span class="w"> </span>tar<span class="w"> </span>-xzvf<span class="w"> </span>-<span class="w"> </span>--strip-components<span class="o">=</span><span class="m">1</span><span class="w"> </span>-C<span class="w"> </span>~/.local/bin<span class="w"> </span>dart-sass/sass
 </pre></div>
 </div>
 </div>
-<input id="2935330e-86d6-4c77-9bb8-2f55c7bed65a" name="82de6299-34d8-4a6f-87b0-3ff8cf899f9b" type="radio">
-</input><label class="sd-tab-label" for="2935330e-86d6-4c77-9bb8-2f55c7bed65a">
+<input id="3d01c80d-7eeb-4185-8621-d83ec0ecf3d3" name="8759f67c-7360-45ec-a33c-1d53d0b48db6" type="radio">
+</input><label class="sd-tab-label" for="3d01c80d-7eeb-4185-8621-d83ec0ecf3d3">
 Windows</label><div class="sd-tab-content docutils">
 <div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="c"># windows with chocolatey (https://www.chocolatey.org)</span>
 <span class="n">choco</span> <span class="n">install</span> <span class="n">sass</span>
 </pre></div>
 </div>
 </div>
-<input id="ebf9e279-dbe7-4a31-8175-43dee2d5828f" name="82de6299-34d8-4a6f-87b0-3ff8cf899f9b" type="radio">
-</input><label class="sd-tab-label" for="ebf9e279-dbe7-4a31-8175-43dee2d5828f">
+<input id="8239a4f9-c88f-4ef8-96d6-0af4901a17c2" name="8759f67c-7360-45ec-a33c-1d53d0b48db6" type="radio">
+</input><label class="sd-tab-label" for="8239a4f9-c88f-4ef8-96d6-0af4901a17c2">
 Other</label><div class="sd-tab-content docutils">
 <p class="sd-card-text">see Releases: <a class="reference external" href="https://github.com/sass/dart-sass/releases">https://github.com/sass/dart-sass/releases</a>.</p>
 </div>
@@ -827,7 +840,7 @@ Other</label><div class="sd-tab-content docutils">
 <h2>Step 1: Installing Doxysphinx<a class="headerlink" href="#step-1-installing-doxysphinx" title="Permalink to this headline">¶</a></h2>
 <p>Doxysphinx is distributed as <a class="reference external" href="https://todo_add_link_here">pypi package</a>.</p>
 <p>Install it with:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pip install doxysphinx
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>doxysphinx
 </pre></div>
 </div>
 <div class="admonition note">
@@ -836,67 +849,22 @@ Other</label><div class="sd-tab-content docutils">
 some alternatives.</p>
 </div>
 </div>
-<div class="section" id="step-2-install-and-setup-doxylink">
-<h2>Step 2: Install and setup Doxylink<a class="headerlink" href="#step-2-install-and-setup-doxylink" title="Permalink to this headline">¶</a></h2>
-<p>This is completely optional but we strongly recommend to install
-<a class="reference external" href="https://github.com/sphinx-contrib/doxylink">doxylink</a> for linking from sphinx documentation
-directly to doxygen documented symbols like functions, classes etc.</p>
-<div class="section" id="setup">
-<h3>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h3>
-<p>Install pip package:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pip install sphinxcontrib-doxylink
-</pre></div>
-</div>
-<p>Activate the doxylink extension in your sphinx <code class="docutils literal notranslate"><span class="pre">conf.py</span></code>:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">extensions</span> <span class="o">=</span> <span class="p">[</span>
-  <span class="c1"># all the other extension</span>
-  <span class="s2">&quot;sphinxcontrib.doxylink&quot;</span><span class="p">,</span>
-<span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="registration">
-<h3>Registration<a class="headerlink" href="#registration" title="Permalink to this headline">¶</a></h3>
-<p>Doxylink “knows” the c++ symbols by reading tagfiles that are generated by doxygen (this is also the reason
-why tagfiles need to be enabled in doxygen config - see <a class="reference internal" href="#step-3-prepare-doxygen-config"><span class="std std-doc">Step 3: Prepare Doxygen Config</span></a>).</p>
-<p>You now need to register your doxygen documentations with in your sphinx <code class="docutils literal notranslate"><span class="pre">conf.py</span></code>
-with doxylink with the <code class="docutils literal notranslate"><span class="pre">doxylink</span></code> variable:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">doxygen_root</span> <span class="o">=</span> <span class="s2">&quot;docs/doxygen&quot;</span> <span class="c1"># this is just a convenience variable</span>
-<span class="n">doxylink</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;demo&quot;</span><span class="p">:</span> <span class="p">(</span>  <span class="c1"># &quot;demo&quot; is the role name that you can later use in sphinx to reference this doxygen documentation (see below)</span>
-        <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">doxygen_root</span><span class="si">}</span><span class="s2">/demo/html/tagfile.xml&quot;</span><span class="p">,</span> <span class="c1"># the first parameter of this tuple is the tagfile</span>
-        <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">doxygen_root</span><span class="si">}</span><span class="s2">/demo/html&quot;</span><span class="p">,</span> <span class="c1"># the second parameter of this tuple is a relative path pointing from</span>
-                                     <span class="c1"># sphinx output directory to the doxygen output folder inside the output</span>
-                                     <span class="c1"># directory tree.</span>
-                                     <span class="c1"># Doxylink will use the tagfile to get the html file name of the symbol you want</span>
-                                     <span class="c1"># to link and then prefix it with this path to generate html links (&lt;a&gt;-tags).</span>
-    <span class="p">),</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-<p>Register all your doxygen documentions via this mechanism.
-In your rst files you can then use e.g. (as documented here: <a class="reference external" href="https://sphinxcontrib-doxylink.readthedocs.io/en/stable/">https://sphinxcontrib-doxylink.readthedocs.io/en/stable/</a>)</p>
-<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>The class <span class="na">:demo:</span><span class="nv">`doxysphinx::rst::Car`</span> implements the car.
-</pre></div>
-</div>
-</div>
-</div>
-<div class="section" id="step-3-prepare-doxygen-config">
-<h2>Step 3: Prepare Doxygen Config<a class="headerlink" href="#step-3-prepare-doxygen-config" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="step-2-prepare-doxygen-config">
+<h2>Step 2: Prepare Doxygen Config<a class="headerlink" href="#step-2-prepare-doxygen-config" title="Permalink to this headline">¶</a></h2>
 <p>Next you have to prepare your doxygen configuration file (doxyfile) to have compatible settings with doxysphinx.</p>
 <p>The following settings are mandatory and will be checked by a validator if you use your doxyfile as input for
 doxysphinx (if you use the doxygen html output directory instead validation will be skipped):</p>
 <div class="section" id="mandatory-settings">
 <h3>Mandatory settings<a class="headerlink" href="#mandatory-settings" title="Permalink to this headline">¶</a></h3>
 <p>these settings are absolutely needed (Doxysphinx will throw detailed errors in case of incorrect ones):</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">OUTPUT_DIRECTORY       = &lt;anywhere_below_you_sphinx_documentation_source_root!!!&gt;</span><span class="w"> </span><span class="c1"># see note below</span><span class="w"></span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">OUTPUT_DIRECTORY       = &lt;anywhere_below_you_sphinx_documentation_source_root!!!&gt;</span><span class="w"> </span><span class="c1"># see note below</span>
 
-<span class="l l-Scalar l-Scalar-Plain">GENERATE_TREEVIEW      = NO</span><span class="w">   </span><span class="c1"># Deactivate doxygens own treeview (as it doesn&#39;t look right)</span><span class="w"></span>
-<span class="l l-Scalar l-Scalar-Plain">DISABLE_INDEX          = NO</span><span class="w">   </span><span class="c1"># Menu data is crucial for our TOC generation so it mustn&#39;t be disabled</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">GENERATE_TREEVIEW      = NO</span><span class="w">   </span><span class="c1"># Deactivate doxygens own treeview (as it doesn&#39;t look right)</span>
+<span class="l l-Scalar l-Scalar-Plain">DISABLE_INDEX          = NO</span><span class="w">   </span><span class="c1"># Menu data is crucial for our TOC generation so it mustn&#39;t be disabled</span>
 
-<span class="l l-Scalar l-Scalar-Plain">GENERATE_HTML          = YES</span><span class="w">  </span><span class="c1"># Keep sure that you generate HTML which needed for doxysphinx</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">GENERATE_HTML          = YES</span><span class="w">  </span><span class="c1"># Keep sure that you generate HTML which needed for doxysphinx</span>
 
-<span class="l l-Scalar l-Scalar-Plain">CREATE_SUBDIRS         = NO</span><span class="w">   </span><span class="c1"># NO is the default value and it should be no because doxysphinx can&#39;t handle subdirs right now.</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">CREATE_SUBDIRS         = NO</span><span class="w">   </span><span class="c1"># NO is the default value and it should be no because doxysphinx can&#39;t handle subdirs right now.</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -917,23 +885,23 @@ look at the <a class="reference internal" href="alternatives.html"><span class="
 <div class="section" id="recommended-settings">
 <h3>Recommended settings<a class="headerlink" href="#recommended-settings" title="Permalink to this headline">¶</a></h3>
 <p>these settings are optional but strongly recommended (you will be notified in case of some value deviations):</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">SEARCHENGINE           = NO</span><span class="w">   </span><span class="c1"># deactivate search engine (as sphinx has it&#39;s own search)</span><span class="w"></span>
-<span class="l l-Scalar l-Scalar-Plain">GENERATE_TAGFILE       = &lt;OUTPUT_DIRECTORY&gt;/&lt;HTML_OUTPUT&gt;/tagfile.xml</span><span class="w">  </span><span class="c1"># generate a tag file</span><span class="w"></span>
-<span class="w">                              </span><span class="c1"># this could be stored anywhere, however we recommend to put it into the</span><span class="w"></span>
-<span class="w">                              </span><span class="c1"># documentation output folder which is the value of the OUTPUT_DIRECTORY variable</span><span class="w"></span>
-<span class="w">                              </span><span class="c1"># + the value of the HTML_OUTPUT variable (your have to expand it for yourself</span><span class="w"></span>
-<span class="w">                              </span><span class="c1"># because doxygen has no mechanism to reference config settings that were defined</span><span class="w"></span>
-<span class="w">                              </span><span class="c1"># beforehand.</span><span class="w"></span>
-<span class="w">                              </span><span class="c1"># The tagfile is also needed for the doxylink extension</span><span class="w"></span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">SEARCHENGINE           = NO</span><span class="w">   </span><span class="c1"># deactivate search engine (as sphinx has it&#39;s own search)</span>
+<span class="l l-Scalar l-Scalar-Plain">GENERATE_TAGFILE       = &lt;OUTPUT_DIRECTORY&gt;/&lt;HTML_OUTPUT&gt;/tagfile.xml</span><span class="w">  </span><span class="c1"># generate a tag file</span>
+<span class="w">                              </span><span class="c1"># this could be stored anywhere, however we recommend to put it into the</span>
+<span class="w">                              </span><span class="c1"># documentation output folder which is the value of the OUTPUT_DIRECTORY variable</span>
+<span class="w">                              </span><span class="c1"># + the value of the HTML_OUTPUT variable (your have to expand it for yourself</span>
+<span class="w">                              </span><span class="c1"># because doxygen has no mechanism to reference config settings that were defined</span>
+<span class="w">                              </span><span class="c1"># beforehand.</span>
+<span class="w">                              </span><span class="c1"># The tagfile is also needed for the doxylink extension</span>
 
-<span class="l l-Scalar l-Scalar-Plain">DOT_IMAGE_FORMAT       = svg</span><span class="w">  </span><span class="c1"># generates nicer svg images</span><span class="w"></span>
-<span class="l l-Scalar l-Scalar-Plain">DOT_TRANSPARENT        = YES</span><span class="w">  </span><span class="c1"># generate transparent images</span><span class="w"></span>
-<span class="l l-Scalar l-Scalar-Plain">INTERACTIVE_SVG        = YES</span><span class="w">  </span><span class="c1"># to be able to scroll and zoom into big images</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">DOT_IMAGE_FORMAT       = svg</span><span class="w">  </span><span class="c1"># generates nicer svg images</span>
+<span class="l l-Scalar l-Scalar-Plain">DOT_TRANSPARENT        = YES</span><span class="w">  </span><span class="c1"># generate transparent images</span>
+<span class="l l-Scalar l-Scalar-Plain">INTERACTIVE_SVG        = YES</span><span class="w">  </span><span class="c1"># to be able to scroll and zoom into big images</span>
 
-<span class="c1"># if you want to use aliases instead of markdown fences for commenting (see syntax guide) you have to add</span><span class="w"></span>
-<span class="c1"># something like this (which doesn&#39;t hurt either):</span><span class="w"></span>
-<span class="l l-Scalar l-Scalar-Plain">ALIASES                = &quot;rst=\verbatim embed:rst:leading-asterisk&quot; \</span><span class="w"></span>
-<span class="w">                         </span><span class="l l-Scalar l-Scalar-Plain">endrst=\endverbatim</span><span class="w">  </span><span class="c1"># This allows you to use rst blocks inside doxygen comments with @rst and @endrst</span><span class="w"></span>
+<span class="c1"># if you want to use aliases instead of markdown fences for commenting (see syntax guide) you have to add</span>
+<span class="c1"># something like this (which doesn&#39;t hurt either):</span>
+<span class="l l-Scalar l-Scalar-Plain">ALIASES                = &quot;rst=\verbatim embed:rst:leading-asterisk&quot; \</span>
+<span class="w">                         </span><span class="l l-Scalar l-Scalar-Plain">endrst=\endverbatim</span><span class="w">  </span><span class="c1"># This allows you to use rst blocks inside doxygen comments with @rst and @endrst</span>
 </pre></div>
 </div>
 <div class="admonition tip">
@@ -941,14 +909,14 @@ look at the <a class="reference internal" href="alternatives.html"><span class="
 <p><a class="reference external" href="https://jothepro.github.io/doxygen-awesome-css">Doxygen awesome</a> is a stylesheet that makes doxygen documentation look beautiful.
 We strongly recommend using it because then the doxygen docs would fit far better with any sphinx theme.
 Just download/clone the doxygen awesome stylesheet and then add it to your doxygen config:</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">HTML_EXTRA_STYLESHEET = YOUR_DOXYGEN_AWESOME_PATH/doxygen-awesome.css</span><span class="w"></span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">HTML_EXTRA_STYLESHEET = YOUR_DOXYGEN_AWESOME_PATH/doxygen-awesome.css</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="section" id="step-4-run-doxysphinx">
-<h2>Step 4: Run Doxysphinx<a class="headerlink" href="#step-4-run-doxysphinx" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="step-3-run-doxysphinx">
+<h2>Step 3: Run Doxysphinx<a class="headerlink" href="#step-3-run-doxysphinx" title="Permalink to this headline">¶</a></h2>
 <p>Now it’s time to run doxysphinx.</p>
 <p>You can either do it manually or integrate it in your makefile, cmake, whatever…</p>
 <div class="section" id="manually">
@@ -962,8 +930,8 @@ Just download/clone the doxygen awesome stylesheet and then add it to your doxyg
 <h4>Get help<a class="headerlink" href="#get-help" title="Permalink to this headline">¶</a></h4>
 <p>Show command and usage information. This will also show the most up to date documentation as this guide will
 only handle the basics:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>doxysphinx --help
-doxysphinx &lt;command&gt; --help
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>doxysphinx<span class="w"> </span>--help
+doxysphinx<span class="w"> </span>&lt;command&gt;<span class="w"> </span>--help
 </pre></div>
 </div>
 </div>
@@ -971,7 +939,7 @@ doxysphinx &lt;command&gt; --help
 <div class="section" id="build">
 <h3>Build<a class="headerlink" href="#build" title="Permalink to this headline">¶</a></h3>
 <p>Build the sphinx rst documents out of the doxygen htmls.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>doxysphinx build &lt;SPHINX_SOURCE&gt; &lt;SPHINX_OUTPUT&gt; &lt;INPUT<span class="o">(</span>S<span class="o">)</span>&gt; &lt;--doxygen_exe&gt; &lt;--doxygen_cwd&gt;
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>doxysphinx<span class="w"> </span>build<span class="w"> </span>&lt;SPHINX_SOURCE&gt;<span class="w"> </span>&lt;SPHINX_OUTPUT&gt;<span class="w"> </span>&lt;INPUT<span class="o">(</span>S<span class="o">)</span>&gt;<span class="w"> </span>&lt;--doxygen_exe&gt;<span class="w"> </span>&lt;--doxygen_cwd&gt;
 </pre></div>
 </div>
 <p>Arguments:</p>
@@ -1016,7 +984,7 @@ doxysphinx &lt;command&gt; --help
 <div class="section" id="clean">
 <h3>Clean<a class="headerlink" href="#clean" title="Permalink to this headline">¶</a></h3>
 <p>If you want to remove the files doxysphinx generated please use the clean command:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>doxysphinx clean &lt;SPHINX_SOURCE&gt; &lt;SPHINX_OUTPUT&gt; &lt;INPUT<span class="o">(</span>S<span class="o">)</span>&gt;
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>doxysphinx<span class="w"> </span>clean<span class="w"> </span>&lt;SPHINX_SOURCE&gt;<span class="w"> </span>&lt;SPHINX_OUTPUT&gt;<span class="w"> </span>&lt;INPUT<span class="o">(</span>S<span class="o">)</span>&gt;
 </pre></div>
 </div>
 </div>
@@ -1024,16 +992,17 @@ doxysphinx &lt;command&gt; --help
 <h3>Makefile integration<a class="headerlink" href="#makefile-integration" title="Permalink to this headline">¶</a></h3>
 <p>Add/extend the following targets in your makefile:</p>
 <div class="highlight-makefile notranslate"><div class="highlight"><pre><span></span><span class="nf">clean</span><span class="o">:</span>
-  @doxysphinx clean &lt;SPHINX_SOURCE&gt; &lt;SPHINX_OUTPUT&gt; &lt;INPUT<span class="o">(</span>S<span class="o">)</span>&gt;
+<span class="w">  </span>@doxysphinx<span class="w"> </span>clean<span class="w"> </span>&lt;SPHINX_SOURCE&gt;<span class="w"> </span>&lt;SPHINX_OUTPUT&gt;<span class="w"> </span>&lt;INPUT<span class="o">(</span>S<span class="o">)</span>&gt;
 
 <span class="nf">doxysphinx</span><span class="o">:</span>
-  @doxysphinx build &lt;SPHINX_SOURCE&gt; &lt;SPHINX_OUTPUT&gt; &lt;INPUT<span class="o">(</span>S<span class="o">)</span>&gt;
+<span class="w">  </span>@doxysphinx<span class="w"> </span>build<span class="w"> </span>&lt;SPHINX_SOURCE&gt;<span class="w"> </span>&lt;SPHINX_OUTPUT&gt;<span class="w"> </span>&lt;INPUT<span class="o">(</span>S<span class="o">)</span>&gt;
 </pre></div>
 </div>
 <p>Now you just need to call the doxysphinx target <strong>right after your doxygen is running</strong>.</p>
 </div>
-<div class="section" id="step-5-use-rst-snippets-in-your-c-c-sourcecode">
-<h3>Step 5: Use rst snippets in your C/C++ Sourcecode<a class="headerlink" href="#step-5-use-rst-snippets-in-your-c-c-sourcecode" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="step-4-use-rst-snippets-in-your-c-c-sourcecode">
+<h2>Step 4: Use rst snippets in your C/C++ Sourcecode<a class="headerlink" href="#step-4-use-rst-snippets-in-your-c-c-sourcecode" title="Permalink to this headline">¶</a></h2>
 <p>Finally we can start using rst snippets in doxygen comments.</p>
 <p>Open some C/C++ file and add a comment like this to one of your functions/methods/whatever:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">/// @brief Creates a new instance of the Car.</span>
@@ -1046,7 +1015,7 @@ doxysphinx &lt;command&gt; --help
 <span class="c1">///    Rst text can also be included after the params.</span>
 <span class="c1">///</span>
 <span class="c1">/// @endrst</span>
-<span class="n">Car</span><span class="p">(</span><span class="n">Engine</span><span class="o">&amp;</span><span class="w"> </span><span class="n">engine</span><span class="p">,</span><span class="w"> </span><span class="n">Color</span><span class="o">&amp;</span><span class="w"> </span><span class="n">color</span><span class="p">)</span><span class="w"> </span><span class="p">{};</span><span class="w"></span>
+<span class="n">Car</span><span class="p">(</span><span class="n">Engine</span><span class="o">&amp;</span><span class="w"> </span><span class="n">engine</span><span class="p">,</span><span class="w"> </span><span class="n">Color</span><span class="o">&amp;</span><span class="w"> </span><span class="n">color</span><span class="p">)</span><span class="w"> </span><span class="p">{};</span>
 </pre></div>
 </div>
 <p>Note the <code class="docutils literal notranslate"><span class="pre">&#64;rst</span></code> and <code class="docutils literal notranslate"><span class="pre">&#64;endrst</span></code> tags. Inside these tags you can write any rst code.</p>
@@ -1055,11 +1024,20 @@ doxysphinx &lt;command&gt; --help
 this:</p>
 <a class="reference internal image-reference" href="../_images/getting_started_demo_rendering.png"><img alt="Demo of final generated html" src="../_images/getting_started_demo_rendering.png" style="width: 900px;" /></a>
 </div>
-</div>
 <div class="section" id="done">
 <h2>Done<a class="headerlink" href="#done" title="Permalink to this headline">¶</a></h2>
 <p>🎉 Congratulations you’ve completed the quickstart.</p>
-<p>Further reading:</p>
+</div>
+<div class="section" id="further-recommendation">
+<h2>Further Recommendation<a class="headerlink" href="#further-recommendation" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="recommended-setup">
+<h3>Recommended Setup<a class="headerlink" href="#recommended-setup" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>To link from sphinx documentation directly to doxygen documented symbols -&gt; see our <a class="reference internal" href="doxylink_setup.html"><span class="doc std std-doc">setting up doxylink</span></a> guide.(<strong>Strongly recommended.</strong>)</p></li>
+</ul>
+</div>
+<div class="section" id="related-reading">
+<h3>Related Reading<a class="headerlink" href="#related-reading" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>To get to know the doxysphinx comment syntax -&gt; see our <a class="reference internal" href="syntax/syntax_guide.html"><span class="doc std std-doc">syntax guide</span></a>.</p></li>
 <li><p>Maybe you want to know more about the inner workings? -&gt; head over to the <a class="reference internal" href="inner_workings.html"><span class="doc std std-doc">reference</span></a> section.</p></li>
@@ -1068,6 +1046,7 @@ this:</p>
 <a class="reference internal" href="dev_guide.html"><span class="doc std std-doc">Developer Quickstart</span></a>.</p></li>
 </ul>
 <p>Or just start documenting 😀.</p>
+</div>
 </div>
 </div>
 
@@ -1098,7 +1077,7 @@ this:</p>
     <footer class="footer">
   <p>
     
-      Last updated on &#39;Fri Dec 9 08:57:07 2022&#39;, &#39;9fd7c71&#39;.<br/>
+      Last updated on &#39;Thu Feb 16 08:26:42 2023&#39;, &#39;f75544d&#39;.<br/>
   </p>
 </footer>
 </main>

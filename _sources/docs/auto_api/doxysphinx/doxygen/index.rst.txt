@@ -42,7 +42,6 @@ Attributes
 
 
 .. py:data:: ConfigDict
-   
 
    
 
@@ -51,12 +50,12 @@ Attributes
    Class to summarize the strings of the console output and error streams.
 
    .. py:attribute:: out
-      :annotation: :str
+      :type: str
 
       
 
    .. py:attribute:: err
-      :annotation: :str
+      :type: str
 
       
 
@@ -81,28 +80,27 @@ Attributes
    Doxysphinx requires some settings to be present/set in a specific way.
 
    .. py:attribute:: mandatory_settings
-      
 
       A dictionary containing mandatory settings for the doxygen config.
       The values of OUTPUT_DIRECTORY and GENERATE_TAGFILE will be set after instantiation and validation of the filepaths.
 
    .. py:attribute:: optional_settings
-      
 
       A dictionary containing further optional settings for the doxygen config.
 
    .. py:attribute:: validation_errors
-      :annotation: :List[str] = []
+      :type: List[str]
+      :value: []
 
       List of the validation errors including the doxyflag with its used and the correct value.
 
    .. py:attribute:: absolute_out
-      :annotation: :pathlib.Path
+      :type: pathlib.Path
 
       Absolute path of the output directory.
 
    .. py:attribute:: validation_msg
-      :annotation: = 
+      :value: ''
 
       Validation errors merged in one string.
 
