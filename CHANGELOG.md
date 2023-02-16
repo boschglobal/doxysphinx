@@ -13,6 +13,13 @@
 
 <!--next-version-placeholder-->
 
+## v3.2.0 (2023-02-16)
+
+### Feat
+
+- **code**: Removed emptyspaces before creating hash
+- **incremental_behaviour**: added incremental behaviour for doxysphinx
+
 ## v3.1.0 (2022-12-09)
 
 ### Feat
