@@ -1,7 +1,7 @@
 ## =====================================================================================
 ##  C O P Y R I G H T
 ## -------------------------------------------------------------------------------------
-##  Copyright (c) 2022 by Robert Bosch GmbH. All rights reserved.
+##  Copyright (c) 2023 by Robert Bosch GmbH. All rights reserved.
 ##
 ##  Author(s):
 ##  - Markus Braun, :em engineering methods AG (contracted by Robert Bosch GmbH)
@@ -14,6 +14,7 @@ description = "Integrates doxygen html documentation with sphinx."
 authors = [
     "Nirmal Sasidharan <nirmal.sasidharan@de.bosch.com>",
     "Markus Braun <markus.braun@em.ag>",
+    "Aniket Salve <aniketdilip.salve@bosch.com>",
 ]
 maintainers = ["Nirmal Sasidharan <nirmal.sasidharan@de.bosch.com>"]
 license = "MIT"
@@ -64,7 +65,7 @@ pre-commit = "^2.20.0"
 flake8 = "^4.0.1"
 flake8-bugbear = "^22.7.1"
 black = "^22.6.0"
-isort = "^5.10.1"
+isort = "^5.12.0"
 bandit = "^1.7.4"
 safety = "^1.10.3"
 flake8-comprehensions = "^3.10.0"
