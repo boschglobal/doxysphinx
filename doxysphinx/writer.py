@@ -147,6 +147,7 @@ class RstWriter:
         :yield: meta directive to be added at the top of rst file
         """
         yield f".. meta::{html_hash}"
+        yield ""
 
     @staticmethod
     def _containerd(content: List[str]) -> Iterator[str]:
