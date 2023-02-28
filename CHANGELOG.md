@@ -13,6 +13,12 @@
 
 <!--next-version-placeholder-->
 
+## v3.2.1 (2023-02-28)
+
+### Fix
+
+- **rst_indent_warning**: Fixed rst indent warning
+
 ## v3.2.0 (2023-02-16)
 
 ### Feat
