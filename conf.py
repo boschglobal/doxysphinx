@@ -70,7 +70,9 @@ html_title = project
 html_css_files = [f"{html_theme.replace('_', '-')}-custom.css"]
 html_js_files = []
 if html_theme == "sphinx_book_theme":
-    html_js_files.append("js/customize-navbar.js")
+    html_js_files.append("js/customize-navbar-book.js")
+elif html_theme == "sphinx_rtd_theme":
+    html_js_files.append("js/customize-navbar-rtd.js")
 html_logo = "docs/resources/doxysphinx_logo.svg"
 html_last_updated_fmt = last_updated_from_git(html_theme_options["repository_url"])
 

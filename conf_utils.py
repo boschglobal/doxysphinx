@@ -80,8 +80,8 @@ def theme_options(theme: str) -> Dict[str, Any]:
 
     elif theme == "sphinx_rtd_theme":
         return {
-            "show_nav_level": 1,
-            "collapse_navigation": True,
+            "show_nav_level": 5,
+            "collapse_navigation": False,
             "github_url": "https://github.com/boschglobal/doxysphinx",
             "repository_url": "https://github.com/boschglobal/doxysphinx",
             "logo_only": False,

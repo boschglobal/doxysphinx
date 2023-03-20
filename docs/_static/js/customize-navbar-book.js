@@ -14,7 +14,7 @@
 /**
  * This function stores and updates the session store with active href
  * If href is not present in nav bar then last state for session storage
- * is shown as active state in navbar 
+ * is shown as active state in navbar
  */
 function findCurrentRoute() {
 
@@ -45,11 +45,11 @@ function findCurrentRoute() {
  * Adds current class to UL tags
  * Adds current and active classes to LI tags
  *
- * For all 2nd level and about parent UL nodes, the corresponding 
+ * For all 2nd level and about parent UL nodes, the corresponding
  * input tag is checked so that the navbar is expanded. This is achieved using flag
- * 
+ *
  * @param {ParentNode | null} element Parent node of last active LI tag
- * @param {Boolean} flag flag to check if input should be checked or not 
+ * @param {Boolean} flag flag to check if input should be checked or not
  */
 function recursiveParentClassAppend(element, flag) {
     if (element.nodeName == "UL") {
