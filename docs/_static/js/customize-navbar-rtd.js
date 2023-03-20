@@ -15,6 +15,8 @@
  * This function stores and updates the session store with active href
  * If href is not present in nav bar then last state for session storage
  * is shown as active state in navbar
+ *
+ * The classes are customized for sphinx-rtd-theme
  */
 function findCurrentRoute() {
 
@@ -45,7 +47,8 @@ function findCurrentRoute() {
 /**
  * This function recursively parses the parent nodes
  * Adds current class to UL tags
- * Adds current and active classes to LI tags
+ * Adds current class to LI tags
+ * Adds aria-expanded attribute to UL and LI tags
  *
  * For all 2nd level and about parent UL nodes, the corresponding
  * input tag is checked so that the navbar is expanded. This is achieved using flag
@@ -55,9 +58,6 @@ function findCurrentRoute() {
  */
 function recursiveParentClassAppend(element, flag) {
     if (element.nodeName == "UL") {
-        // if (flag && element.getElementsByTagName("input")) {
-        //     element.getElementsByTagName("input")[0].setAttribute("checked", "");
-        // }
         element.classList.add("current")
         element.setAttribute("aria-expanded", "true")
         if (element.parentNode.nodeName == "LI") {

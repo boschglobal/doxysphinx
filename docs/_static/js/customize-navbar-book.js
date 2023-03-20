@@ -15,6 +15,8 @@
  * This function stores and updates the session store with active href
  * If href is not present in nav bar then last state for session storage
  * is shown as active state in navbar
+ *
+ * The classes are customized for sphinx-book-theme
  */
 function findCurrentRoute() {
 
