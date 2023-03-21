@@ -6,11 +6,13 @@
 #  Author(s):
 #  - Markus Braun, :em engineering methods AG (contracted by Robert Bosch GmbH)
 #  - Celina Adelhardt, :em engineering methods AG (contracted by Robert Bosch GmbH)
+#  - Gergely Meszaros, Stream HPC B.V. (contracted by Advanced Micro Devices Inc.)
 # =====================================================================================
 """The doxygen module contains classes and functions specific to doxygen."""
 
 import os
 import re
+import shutil
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Dict, List, Union
@@ -50,18 +52,17 @@ def read_doxyconfig(doxyfile: Path, doxygen_exe: str, doxygen_cwd: Path) -> Conf
 def _compare_configs(doxyfile: Path, doxygen_exe: str, doxygen_cwd: Path) -> DoxyOutput:
     from subprocess import CalledProcessError, run  # nosec: B404
 
+    doxygen = shutil.which(doxygen_exe)
+    if doxygen is None:
+        return DoxyOutput("", f"Command not found: {doxygen_exe}")
+
     try:
-        default_config = run(  # nosec: B607, B603
-            f"{doxygen_exe} -s -g -", cwd=doxygen_cwd, shell=True, capture_output=True  # nosec: B607, B603, B602
-        )  # nosec: B607, B603
-        if default_config.check_returncode:
-            custom_config = run(  # nosec: B607, B603
-                f"{doxygen_exe} -x {doxyfile}",
-                cwd=doxygen_cwd,
-                shell=True,  # nosec: B602
-                capture_output=True,  # nosec: B607, B603
-            )  # nosec: B607, B603
-            custom_config.check_returncode
+        default_config = run(  # nosec: B603
+            [doxygen_exe, "-s", "-g", "-"], cwd=doxygen_cwd, capture_output=True, check=True
+        )
+        custom_config = run(  # nosec: B603
+            [doxygen_exe, "-x", doxyfile.absolute()], cwd=doxygen_cwd, capture_output=True, check=False
+        )
 
         return DoxyOutput(
             default_config.stdout.decode("utf-8") + custom_config.stdout.decode("utf-8"),
