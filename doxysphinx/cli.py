@@ -6,6 +6,7 @@
 #  Author(s):
 #  - Markus Braun, :em engineering methods AG (contracted by Robert Bosch GmbH)
 #  - Celina Adelhardt, :em engineering methods AG (contracted by Robert Bosch GmbH)
+#  - Gergely Meszaros, Stream HPC B.V. (contracted by Advanced Micro Devices Inc.)
 # =====================================================================================
 
 # noqa: D301
@@ -161,7 +162,7 @@ def _get_outdir_via_doxyfile(doxyfile: Path, sphinx_source: Path, doxy_context: 
     config = read_doxyconfig(doxyfile, doxy_context.doxygen_exe, doxy_context.doxygen_cwd)
 
     validator = DoxygenSettingsValidator()
-    if not validator.validate(config, sphinx_source):
+    if not validator.validate(config, sphinx_source, doxy_context.doxygen_cwd):
         if any(item for item in validator.validation_errors if not item.startswith("Hint:")):
             message = validator.validation_msg
             raise click.UsageError(
