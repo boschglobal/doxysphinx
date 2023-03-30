@@ -67,6 +67,7 @@ html_theme = "sphinx_book_theme"
 html_theme_options = theme_options(html_theme)
 html_static_path = ["docs/_static/"]
 html_title = project
+html_css_files = [f"{html_theme.replace('_', '-')}-custom.css"]
 html_logo = "docs/resources/doxysphinx_logo.svg"
 html_last_updated_fmt = last_updated_from_git()
 

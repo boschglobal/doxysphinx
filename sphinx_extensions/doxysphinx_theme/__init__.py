@@ -9,7 +9,7 @@
 
 """Doxysphinx themes extension.
 
-This extensions add custom CSS and javascript files depending on theme.
+This extensions add custom javascript files depending on theme.
 Currently only supporting Book and RTD theme.
 """
 
@@ -26,7 +26,7 @@ def setup(app: Sphinx):
 
 
 def doxysphinx_theme_extension(app: Sphinx, config: Config):
-    """Add custom javascript files and CSS files specific to theme and set theme options.
+    """Add custom javascript files specific to theme and set theme options.
 
     :param app: Sphinx app
     :param config: Sphinx config
@@ -37,9 +37,7 @@ def doxysphinx_theme_extension(app: Sphinx, config: Config):
 
     if config.html_theme == "sphinx_book_theme":
         app.add_js_file("js/customize-navbar-book.js")
-        app.add_css_file("sphinx-book-theme-custom.css")
 
     elif config.html_theme == "sphinx_rtd_theme":
         app.add_js_file("js/customize-navbar-rtd.js")
-        app.add_css_file("sphinx-rtd-theme-custom.css")
         config.html_theme_options["collapse_navigation"] = False
