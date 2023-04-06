@@ -13,6 +13,12 @@
 
 <!--next-version-placeholder-->
 
+## v3.2.2 (2023-04-06)
+
+### Fix
+
+- **doxygen**: Don't launch doxygen from a shell
+
 ## v3.2.1 (2023-02-28)
 
 ### Fix
