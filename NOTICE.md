@@ -40,3 +40,5 @@ Please keep the list sorted.
   * Markus Braun - <markus.braun@em.ag>
 * itemis AG
   * Stefan Schulz - <stefan.schulz@itemis.com>
+* Stream HPC B.V.
+  * Gergely Meszaros <gergely@streamhpc.com>
