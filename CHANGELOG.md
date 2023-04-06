@@ -13,6 +13,12 @@
 
 <!--next-version-placeholder-->
 
+## v3.2.3 (2023-04-06)
+
+### Fix
+
+- **doxygen_cwd**: Interpret paths relative to working dir
+
 ## v3.2.2 (2023-04-06)
 
 ### Fix
