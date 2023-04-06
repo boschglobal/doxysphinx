@@ -32,8 +32,8 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/libs/html/datatables.min.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/styles.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/modern.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/layouts.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/modern.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-book-theme-custom.css" />
     
   <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
@@ -531,11 +531,13 @@
 <span class="c1">#  Author(s):</span>
 <span class="c1">#  - Markus Braun, :em engineering methods AG (contracted by Robert Bosch GmbH)</span>
 <span class="c1">#  - Celina Adelhardt, :em engineering methods AG (contracted by Robert Bosch GmbH)</span>
+<span class="c1">#  - Gergely Meszaros, Stream HPC B.V. (contracted by Advanced Micro Devices Inc.)</span>
 <span class="c1"># =====================================================================================</span>
 <span class="sd">&quot;&quot;&quot;The doxygen module contains classes and functions specific to doxygen.&quot;&quot;&quot;</span>
 
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">shutil</span>
 <span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span>
 <span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Union</span>
@@ -575,18 +577,17 @@
 <span class="k">def</span> <span class="nf">_compare_configs</span><span class="p">(</span><span class="n">doxyfile</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">doxygen_exe</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">doxygen_cwd</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DoxyOutput</span><span class="p">:</span>
     <span class="kn">from</span> <span class="nn">subprocess</span> <span class="kn">import</span> <span class="n">CalledProcessError</span><span class="p">,</span> <span class="n">run</span>  <span class="c1"># nosec: B404</span>
 
+    <span class="n">doxygen</span> <span class="o">=</span> <span class="n">shutil</span><span class="o">.</span><span class="n">which</span><span class="p">(</span><span class="n">doxygen_exe</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">doxygen</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">DoxyOutput</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Command not found: </span><span class="si">{</span><span class="n">doxygen_exe</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
     <span class="k">try</span><span class="p">:</span>
-        <span class="n">default_config</span> <span class="o">=</span> <span class="n">run</span><span class="p">(</span>  <span class="c1"># nosec: B607, B603</span>
-            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">doxygen_exe</span><span class="si">}</span><span class="s2"> -s -g -&quot;</span><span class="p">,</span> <span class="n">cwd</span><span class="o">=</span><span class="n">doxygen_cwd</span><span class="p">,</span> <span class="n">shell</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">capture_output</span><span class="o">=</span><span class="kc">True</span>  <span class="c1"># nosec: B607, B603, B602</span>
-        <span class="p">)</span>  <span class="c1"># nosec: B607, B603</span>
-        <span class="k">if</span> <span class="n">default_config</span><span class="o">.</span><span class="n">check_returncode</span><span class="p">:</span>
-            <span class="n">custom_config</span> <span class="o">=</span> <span class="n">run</span><span class="p">(</span>  <span class="c1"># nosec: B607, B603</span>
-                <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">doxygen_exe</span><span class="si">}</span><span class="s2"> -x </span><span class="si">{</span><span class="n">doxyfile</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
-                <span class="n">cwd</span><span class="o">=</span><span class="n">doxygen_cwd</span><span class="p">,</span>
-                <span class="n">shell</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>  <span class="c1"># nosec: B602</span>
-                <span class="n">capture_output</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>  <span class="c1"># nosec: B607, B603</span>
-            <span class="p">)</span>  <span class="c1"># nosec: B607, B603</span>
-            <span class="n">custom_config</span><span class="o">.</span><span class="n">check_returncode</span>
+        <span class="n">default_config</span> <span class="o">=</span> <span class="n">run</span><span class="p">(</span>  <span class="c1"># nosec: B603</span>
+            <span class="p">[</span><span class="n">doxygen_exe</span><span class="p">,</span> <span class="s2">&quot;-s&quot;</span><span class="p">,</span> <span class="s2">&quot;-g&quot;</span><span class="p">,</span> <span class="s2">&quot;-&quot;</span><span class="p">],</span> <span class="n">cwd</span><span class="o">=</span><span class="n">doxygen_cwd</span><span class="p">,</span> <span class="n">capture_output</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">check</span><span class="o">=</span><span class="kc">True</span>
+        <span class="p">)</span>
+        <span class="n">custom_config</span> <span class="o">=</span> <span class="n">run</span><span class="p">(</span>  <span class="c1"># nosec: B603</span>
+            <span class="p">[</span><span class="n">doxygen_exe</span><span class="p">,</span> <span class="s2">&quot;-x&quot;</span><span class="p">,</span> <span class="n">doxyfile</span><span class="o">.</span><span class="n">absolute</span><span class="p">()],</span> <span class="n">cwd</span><span class="o">=</span><span class="n">doxygen_cwd</span><span class="p">,</span> <span class="n">capture_output</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">check</span><span class="o">=</span><span class="kc">False</span>
+        <span class="p">)</span>
 
         <span class="k">return</span> <span class="n">DoxyOutput</span><span class="p">(</span>
             <span class="n">default_config</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="n">custom_config</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">),</span>
@@ -852,7 +853,7 @@
     <footer class="footer">
   <p>
     
-      Last updated on &#39;Tue Feb 28 15:41:47 2023&#39;, &#39;ac42670&#39;.<br/>
+      Last updated on &#39;Thu Apr 6 08:03:11 2023&#39;, &#39;61bc550&#39;.<br/>
   </p>
 </footer>
 </main>
