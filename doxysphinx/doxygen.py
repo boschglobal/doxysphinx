@@ -170,17 +170,18 @@ class DoxygenSettingsValidator:
     validation_msg = ""
     """Validation errors merged in one string."""
 
-    def validate(self, config: ConfigDict, sphinx_source_dir: Path) -> bool:
+    def validate(self, config: ConfigDict, sphinx_source_dir: Path, doxygen_cwd: Path) -> bool:
         """Validate the doxygen configuration regarding the output directory, mandatory and optional settings.
 
         :param config: the imported doxyfile.
         :param sphinx_source_dir: the sphinx directory (necessary for output directory validation).
+        :param doxygen_cwd the directory for doxygen, paths from doxyfile are relative from here
         :return: False, if there is a deviation to the defined mandatory or optional settings.
         """
         if "WARNINGS" in config:
             self.validation_errors.extend(config["WARNINGS"])
 
-        out_dir_validated = self._validate_doxygen_out_dirs(config, sphinx_source_dir)
+        out_dir_validated = self._validate_doxygen_out_dirs(config, sphinx_source_dir, doxygen_cwd)
         recommended_settings_validated = self._validate_doxygen_recommended_settings(config)
         optional_settings_validated = self._validate_doxygen_optional_settings(config)
         if out_dir_validated and recommended_settings_validated and optional_settings_validated:
@@ -191,23 +192,24 @@ class DoxygenSettingsValidator:
                 self.validation_msg += error + "\n"
             return False
 
-    def _validate_doxygen_out_dirs(self, config: ConfigDict, sphinx_source_dir: Path) -> bool:
+    def _validate_doxygen_out_dirs(self, config: ConfigDict, sphinx_source_dir: Path, doxygen_cwd: Path) -> bool:
         """
         Validate the output directory given from doxyfile and set the required values in mandatory settings.
 
         :param out_dir: output directory value in doxyfile.
         :param sphinx_source_dir: sphinx docs source-directory.
+        :param doxygen_cwd the directory for doxygen, paths from doxyfile are relative from here
         :return: True if doxygen output directory is located inside the sphinx docs root,
         False if not and doxysphinx should exit.
         """
-        out = Path(str(config["OUTPUT_DIRECTORY"])) / "html"  # config["HTML_OUTPUT"]
+        out = Path(doxygen_cwd) / str(config["OUTPUT_DIRECTORY"]) / "html"  # config["HTML_OUTPUT"]
         self.absolute_out = path_resolve(out)
         stringified_out = str(out) if out.is_absolute() else f'"{out}" (resolved to "{self.absolute_out}")'
 
         self.mandatory_settings["OUTPUT_DIRECTORY"] = str(config["OUTPUT_DIRECTORY"])
 
         if path_is_relative_to(out, sphinx_source_dir):
-            self.optional_settings["GENERATE_TAGFILE"] = str(out) + "/tagfile.xml"
+            self.optional_settings["GENERATE_TAGFILE"] = os.path.relpath(out / "tagfile.xml", doxygen_cwd)
             return True
         else:
             self.optional_settings["GENERATE_TAGFILE"] = "docs/doxygen/demo/html/tagfile.xml"  # default value
