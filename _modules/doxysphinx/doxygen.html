@@ -31,8 +31,8 @@
     <link rel="stylesheet" type="text/css" href="../../_static/assets/jsonview.bundle.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/libs/html/datatables.min.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/styles.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/layouts.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/styles.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/modern.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-book-theme-custom.css" />
     
@@ -695,17 +695,18 @@
     <span class="n">validation_msg</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Validation errors merged in one string.&quot;&quot;&quot;</span>
 
-<div class="viewcode-block" id="DoxygenSettingsValidator.validate"><a class="viewcode-back" href="../../docs/auto_api/doxysphinx/doxygen/index.html#doxysphinx.doxygen.DoxygenSettingsValidator.validate">[docs]</a>    <span class="k">def</span> <span class="nf">validate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">:</span> <span class="n">ConfigDict</span><span class="p">,</span> <span class="n">sphinx_source_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<div class="viewcode-block" id="DoxygenSettingsValidator.validate"><a class="viewcode-back" href="../../docs/auto_api/doxysphinx/doxygen/index.html#doxysphinx.doxygen.DoxygenSettingsValidator.validate">[docs]</a>    <span class="k">def</span> <span class="nf">validate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">:</span> <span class="n">ConfigDict</span><span class="p">,</span> <span class="n">sphinx_source_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">doxygen_cwd</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Validate the doxygen configuration regarding the output directory, mandatory and optional settings.</span>
 
 <span class="sd">        :param config: the imported doxyfile.</span>
 <span class="sd">        :param sphinx_source_dir: the sphinx directory (necessary for output directory validation).</span>
+<span class="sd">        :param doxygen_cwd the directory for doxygen, paths from doxyfile are relative from here</span>
 <span class="sd">        :return: False, if there is a deviation to the defined mandatory or optional settings.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="s2">&quot;WARNINGS&quot;</span> <span class="ow">in</span> <span class="n">config</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">validation_errors</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">config</span><span class="p">[</span><span class="s2">&quot;WARNINGS&quot;</span><span class="p">])</span>
 
-        <span class="n">out_dir_validated</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_validate_doxygen_out_dirs</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="n">sphinx_source_dir</span><span class="p">)</span>
+        <span class="n">out_dir_validated</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_validate_doxygen_out_dirs</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="n">sphinx_source_dir</span><span class="p">,</span> <span class="n">doxygen_cwd</span><span class="p">)</span>
         <span class="n">recommended_settings_validated</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_validate_doxygen_recommended_settings</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
         <span class="n">optional_settings_validated</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_validate_doxygen_optional_settings</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">out_dir_validated</span> <span class="ow">and</span> <span class="n">recommended_settings_validated</span> <span class="ow">and</span> <span class="n">optional_settings_validated</span><span class="p">:</span>
@@ -716,23 +717,24 @@
                 <span class="bp">self</span><span class="o">.</span><span class="n">validation_msg</span> <span class="o">+=</span> <span class="n">error</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
             <span class="k">return</span> <span class="kc">False</span></div>
 
-    <span class="k">def</span> <span class="nf">_validate_doxygen_out_dirs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">:</span> <span class="n">ConfigDict</span><span class="p">,</span> <span class="n">sphinx_source_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">_validate_doxygen_out_dirs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">:</span> <span class="n">ConfigDict</span><span class="p">,</span> <span class="n">sphinx_source_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">doxygen_cwd</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Validate the output directory given from doxyfile and set the required values in mandatory settings.</span>
 
 <span class="sd">        :param out_dir: output directory value in doxyfile.</span>
 <span class="sd">        :param sphinx_source_dir: sphinx docs source-directory.</span>
+<span class="sd">        :param doxygen_cwd the directory for doxygen, paths from doxyfile are relative from here</span>
 <span class="sd">        :return: True if doxygen output directory is located inside the sphinx docs root,</span>
 <span class="sd">        False if not and doxysphinx should exit.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">out</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">config</span><span class="p">[</span><span class="s2">&quot;OUTPUT_DIRECTORY&quot;</span><span class="p">]))</span> <span class="o">/</span> <span class="s2">&quot;html&quot;</span>  <span class="c1"># config[&quot;HTML_OUTPUT&quot;]</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">doxygen_cwd</span><span class="p">)</span> <span class="o">/</span> <span class="nb">str</span><span class="p">(</span><span class="n">config</span><span class="p">[</span><span class="s2">&quot;OUTPUT_DIRECTORY&quot;</span><span class="p">])</span> <span class="o">/</span> <span class="s2">&quot;html&quot;</span>  <span class="c1"># config[&quot;HTML_OUTPUT&quot;]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">absolute_out</span> <span class="o">=</span> <span class="n">path_resolve</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
         <span class="n">stringified_out</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="k">if</span> <span class="n">out</span><span class="o">.</span><span class="n">is_absolute</span><span class="p">()</span> <span class="k">else</span> <span class="sa">f</span><span class="s1">&#39;&quot;</span><span class="si">{</span><span class="n">out</span><span class="si">}</span><span class="s1">&quot; (resolved to &quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">absolute_out</span><span class="si">}</span><span class="s1">&quot;)&#39;</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">mandatory_settings</span><span class="p">[</span><span class="s2">&quot;OUTPUT_DIRECTORY&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">config</span><span class="p">[</span><span class="s2">&quot;OUTPUT_DIRECTORY&quot;</span><span class="p">])</span>
 
         <span class="k">if</span> <span class="n">path_is_relative_to</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="n">sphinx_source_dir</span><span class="p">):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">optional_settings</span><span class="p">[</span><span class="s2">&quot;GENERATE_TAGFILE&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/tagfile.xml&quot;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">optional_settings</span><span class="p">[</span><span class="s2">&quot;GENERATE_TAGFILE&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">relpath</span><span class="p">(</span><span class="n">out</span> <span class="o">/</span> <span class="s2">&quot;tagfile.xml&quot;</span><span class="p">,</span> <span class="n">doxygen_cwd</span><span class="p">)</span>
             <span class="k">return</span> <span class="kc">True</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">optional_settings</span><span class="p">[</span><span class="s2">&quot;GENERATE_TAGFILE&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;docs/doxygen/demo/html/tagfile.xml&quot;</span>  <span class="c1"># default value</span>
@@ -853,7 +855,7 @@
     <footer class="footer">
   <p>
     
-      Last updated on &#39;Thu Apr 6 08:03:11 2023&#39;, &#39;61bc550&#39;.<br/>
+      Last updated on &#39;Thu Apr 6 14:28:45 2023&#39;, &#39;cc8fe1e&#39;.<br/>
   </p>
 </footer>
 </main>

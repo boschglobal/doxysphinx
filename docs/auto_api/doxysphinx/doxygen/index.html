@@ -31,8 +31,8 @@
     <link rel="stylesheet" type="text/css" href="../../../../_static/assets/jsonview.bundle.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/libs/html/datatables.min.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/styles.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/layouts.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/styles.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/modern.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-book-theme-custom.css" />
     
@@ -903,7 +903,7 @@ The values of OUTPUT_DIRECTORY and GENERATE_TAGFILE will be set after instantiat
 
 <dl class="py method">
 <dt class="sig sig-object py" id="doxysphinx.doxygen.DoxygenSettingsValidator.validate">
-<span class="sig-name descname"><span class="pre">validate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ConfigDict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sphinx_source_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pathlib.Path</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../../../../_modules/doxysphinx/doxygen.html#DoxygenSettingsValidator.validate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#doxysphinx.doxygen.DoxygenSettingsValidator.validate" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">validate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ConfigDict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sphinx_source_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pathlib.Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">doxygen_cwd</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pathlib.Path</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../../../../_modules/doxysphinx/doxygen.html#DoxygenSettingsValidator.validate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#doxysphinx.doxygen.DoxygenSettingsValidator.validate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Validate the doxygen configuration regarding the output directory, mandatory and optional settings.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -912,10 +912,9 @@ The values of OUTPUT_DIRECTORY and GENERATE_TAGFILE will be set after instantiat
 <li><p><strong>sphinx_source_dir</strong> – the sphinx directory (necessary for output directory validation).</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>False, if there is a deviation to the defined mandatory or optional settings.</p>
-</dd>
 </dl>
+<p>:param doxygen_cwd the directory for doxygen, paths from doxyfile are relative from here
+:return: False, if there is a deviation to the defined mandatory or optional settings.</p>
 </dd></dl>
 
 </dd></dl>
@@ -987,7 +986,7 @@ In the html output path.</p>
     <footer class="footer">
   <p>
     
-      Last updated on &#39;Thu Apr 6 08:03:11 2023&#39;, &#39;61bc550&#39;.<br/>
+      Last updated on &#39;Thu Apr 6 14:28:45 2023&#39;, &#39;cc8fe1e&#39;.<br/>
   </p>
 </footer>
 </main>
