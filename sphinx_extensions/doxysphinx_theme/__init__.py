@@ -37,7 +37,9 @@ def doxysphinx_theme_extension(app: Sphinx, config: Config):
 
     if config.html_theme == "sphinx_book_theme":
         app.add_js_file("js/customize-navbar-book.js")
+        app.add_css_file("css/sphinx-book-theme-custom.css")
 
     elif config.html_theme == "sphinx_rtd_theme":
         app.add_js_file("js/customize-navbar-rtd.js")
+        app.add_css_file("css/sphinx-rtd-theme-custom.css")
         config.html_theme_options["collapse_navigation"] = False
