@@ -8,41 +8,47 @@
       "WORKSPACE_DIR": "${containerWorkspaceFolder}"
     }
   },
-  "settings": {
-    "terminal.integrated.profiles.linux": {
-      "zsh": {
-        "path": "/bin/zsh"
-      }
-    },
-    "terminal.integrated.defaultProfile.linux": "zsh",
-    "http.proxyStrictSSL": false
-  },
   "customizations": {
     "vscode": {
       // Set *default* container specific settings.json values on container create.
       "settings": {
+        "python.defaultInterpreterPath": "${containerWorkspaceFolder}/.venv/bin/python",
+        "python.linting.banditEnabled": true,
+        "python.linting.banditPath": "/usr/local/py-utils/bin/bandit",
+        "python.linting.mypyEnabled": true,
+        "python.linting.mypyPath": "/usr/local/py-utils/bin/mypy",
+        "python.linting.pylintEnabled": false,
+        "python.linting.flake8Enabled": true,
+        "python.linting.flake8Path": "/usr/local/py-utils/bin/flake8",
         "python.poetryPath": "/home/vscode/.local/bin/poetry",
         //"python.defaultInterpreterPath": "${containerWorkspaceFolder}/.venv/bin/python",
         "python.analysis.extraPaths": [
           "${containerWorkspaceFolder}"
-        ]
-      }
+        ],
+        "terminal.integrated.profiles.linux": {
+          "zsh": {
+            "path": "/bin/zsh"
+          }
+        },
+        "terminal.integrated.defaultProfile.linux": "zsh",
+        "http.proxyStrictSSL": false
+      },
+      "extensions": [
+        "ms-python.python",
+        "eamodio.gitlens",
+        "njpwerner.autodocstring",
+        "ExecutableBookProject.myst-highlight",
+        "DavidAnson.vscode-markdownlint",
+        "tamasfe.even-better-toml",
+        "ryanluker.vscode-coverage-gutters",
+        "SanaAjani.taskrunnercode"
+      ]
     }
   },
-  "extensions": [
-    "ms-python.python",
-    "eamodio.gitlens",
-    "njpwerner.autodocstring",
-    "ExecutableBookProject.myst-highlight",
-    "DavidAnson.vscode-markdownlint",
-    "tamasfe.even-better-toml",
-    "ryanluker.vscode-coverage-gutters",
-    "SanaAjani.taskrunnercode"
-  ],
   // As a post create command we install the poetry dependencies and also install the pre-commit hooks.
   // It's necessary to do this here because in Dockerfile we do not have the config files (pyproject.toml +
   // .pre-commit-config.yaml) available.
   // "postCreateCommand": "pre-commit install --install-hooks && pre-commit autoupdate",
-  "onCreateCommand": "poetry completions bash >> ~/.bash_completion && poetry install --with docs && pre-commit install --install-hooks && pre-commit autoupdate",
+  "onCreateCommand": "poetry install --with docs && pre-commit install --install-hooks && pre-commit autoupdate",
   "remoteUser": "vscode"
 }

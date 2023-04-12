@@ -11,7 +11,7 @@
 ##
 
 ARG VARIANT=3.10
-FROM mcr.microsoft.com/vscode/devcontainers/python:${VARIANT}
+FROM mcr.microsoft.com/devcontainers/python:${VARIANT}
 
 LABEL maintainer="Bosch Doxysphinx Team <https://github.com/boschglobal/doxysphinx/>"
 
@@ -29,18 +29,18 @@ ENV PATH="/root/.local/bin:/home/vscode/.local/bin:${PATH}"
 # - doxygen
 # - imagemagick (sphinx dependency)
 RUN apt-get update \
- && export DEBIAN_FRONTEND=noninteractive \
- && apt-get install --no-install-recommends -y \
-      default-jre \
-      graphviz \
-      doxygen \
-      imagemagick \
- && apt-get autoremove \
- && apt-get clean \
- && rm -rf /var/lib/apt/lists/*
+    && export DEBIAN_FRONTEND=noninteractive \
+    && apt-get install --no-install-recommends -y \
+    default-jre \
+    graphviz \
+    doxygen \
+    imagemagick \
+    && apt-get autoremove \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 
 # Update doxygen to latest
-RUN wget -c https://www.doxygen.nl/files/doxygen-1.9.5.linux.bin.tar.gz -O /tmp/doxygen.tar.gz \
+RUN wget -c https://www.doxygen.nl/files/doxygen-1.9.6.linux.bin.tar.gz -O /tmp/doxygen.tar.gz \
     && mkdir -p /tmp/doxygen \
     && tar -xzvf /tmp/doxygen.tar.gz --strip-components=1 -C /tmp/doxygen/ \
     && mv /tmp/doxygen/bin/* /usr/bin \
@@ -69,13 +69,13 @@ ENV XDG_CACHE_HOME=${WORKSPACE_DIR}/.cache
 RUN curl -sSL https://install.python-poetry.org | python3 - \
     && poetry completions bash >> ~/.bash_completion
 
+# Install poetry up plugin to update dependencies
+RUN poetry self add poetry-plugin-up
+
 # Install precommit globally in the container (with pipx installation we had error messages during pre-commit
 # checks like "/usr/local/bin/python: No module named pre_commit" - seems it needs the python module available
 # in the global python environment
 RUN pip install pre-commit
-
-# Install poetryup to update pyproject.toml dependencies
-RUN pipx install poetryup
 
 # Inject + Install QA tooling
 RUN pipx inject flake8 flake8-bugbear flake8-comprehensions flake8-simplify cohesion pydocstyle \
