@@ -1,10 +1,11 @@
 # =====================================================================================
 #  C O P Y R I G H T
 # -------------------------------------------------------------------------------------
-#  Copyright (c) 2022 by Robert Bosch GmbH. All rights reserved.
+#  Copyright (c) 2023 by Robert Bosch GmbH. All rights reserved.
 #
 #  Author(s):
 #  - Celina Adelhardt, :em engineering methods AG (contracted by Robert Bosch GmbH)
+#  - Gergely Meszaros, Stream HPC B.V. (contracted by Advanced Micro Devices Inc.)
 # =====================================================================================
 
 from pathlib import Path
@@ -93,7 +94,7 @@ def test_doxysettings_validation(
     validator, working_directory, test_dict: ConfigDict, expected_validation_errors: List[str]
 ):
     validator.validation_errors.clear()
-    validator.validate(test_dict, working_directory)
+    validator.validate(test_dict, working_directory, working_directory)
     assert validator.validation_errors == expected_validation_errors
 
 

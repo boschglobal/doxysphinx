@@ -1,10 +1,11 @@
 # =====================================================================================
 #  C O P Y R I G H T
 # -------------------------------------------------------------------------------------
-#  Copyright (c) 2022 by Robert Bosch GmbH. All rights reserved.
+#  Copyright (c) 2023 by Robert Bosch GmbH. All rights reserved.
 #
 #  Author(s):
 #  - Markus Braun, :em engineering methods AG (contracted by Robert Bosch GmbH)
+#  - Aniket Salve, Robert Bosch GmbH
 # =====================================================================================
 
 """
@@ -12,16 +13,16 @@ The process module contains the :class:`Builder` and :class:`Cleaner` classes.
 
 These represent the main functionality of doxysphinx.
 """
-
 import logging
 from pathlib import Path
-from typing import List, Optional, Tuple, Type
+from typing import Iterable, List, Optional, Tuple, Type
 
 from mpire import WorkerPool
 
 from doxysphinx.html_parser import DoxygenHtmlParser, HtmlParser
 from doxysphinx.resources import DoxygenResourceProvider, ResourceProvider
 from doxysphinx.sphinx import DirectoryMapper, SphinxHtmlBuilderDirectoryMapper
+from doxysphinx.utils.files import hash_blake2b
 from doxysphinx.writer import RstWriter, Writer
 
 
@@ -96,44 +97,68 @@ class Builder:
         writer = self._writer_type(doxygen_html_dir)
         task_args: Tuple[HtmlParser, Writer] = (parser, writer)
 
-        files = [f for f in doxygen_html_dir.glob("*.html") if self._should_build_rst(f.with_suffix(".rst"), f)]
+        files_with_hashes = self._get_doxy_htmls_to_process_with_hashes(doxygen_html_dir)
 
         if self._parallel:
             with WorkerPool() as pool:
                 pool.set_shared_objects(task_args)
-                result = pool.map(self._run, files)
+                result = pool.map(self._run, files_with_hashes)
                 return result
         else:
-            return [self._run((parser, writer), f) for f in files]
+            return [self._run((parser, writer), f) for f in files_with_hashes]
 
-    def _run(self, task_args: Tuple[HtmlParser, Writer], file: Path) -> Path:
+    def _get_doxy_htmls_to_process_with_hashes(self, doxygen_html_dir: Path) -> Iterable[Tuple[Path, str]]:
+        """Get all doxygen html files to process with their hashes (blake2b).
+
+        The hashes are used to implement incremental behavior. So only files which aren't the same are
+        processed.
+        """
+        for html_file in doxygen_html_dir.glob("*.html"):
+            rst_file = html_file.with_suffix(".rst")
+
+            hash_from_html = hash_blake2b(html_file)
+
+            if not rst_file.exists():
+                yield html_file, hash_from_html
+                continue
+
+            hash_from_rst = self._get_html_hash_from_rst(rst_file)
+
+            if hash_from_rst == hash_from_html:
+                continue
+
+            yield html_file, hash_from_html
+
+    def _get_html_hash_from_rst(self, rst_file: Path) -> Optional[str]:
+        if not rst_file.exists():
+            return None
+
+        with rst_file.open(encoding="utf-8") as file:
+            rst_content = [next(file) for x in range(1)]
+
+        if not rst_content:
+            return None
+
+        if not rst_content[0].startswith(".. meta::"):
+            return None
+
+        # take everything from the last ":" onwards and return it (=the hash)
+        hash_from_rst = rst_content[0].split(":")[-1].rstrip()
+        return hash_from_rst
+
+    def _run(self, task_args: Tuple[HtmlParser, Writer], file_and_hash: Tuple[Path, str]) -> Path:
         parser, writer = task_args
-        parse_result = parser.parse(file)
+        html_file, html_hash = file_and_hash
 
-        # for now, we just write the rst parallel to the html file
-        rst_file = file.with_suffix(".rst")
+        # parse the doxygen html file
+        parse_result = parser.parse(html_file)
 
-        # if the rst file is either not existing or it is older than the html file...
-        result = writer.write(parse_result, rst_file)
+        rst_file = html_file.with_suffix(".rst")
+
+        # write the corresponding rst file
+        result = writer.write(parse_result, rst_file, html_hash)
 
         return result
-
-    def _should_build_rst(self, rst_file: Path, html_file: Path) -> bool:
-        # always build if force mode is on
-        if self._force_recreation:
-            return True
-
-        # always build if rst file is not existing
-        if not rst_file.exists():
-            return True
-
-        # only build if rst_file is older than html file (=doxygen ran inbetween)
-        rst_modification_time = rst_file.stat().st_mtime
-        html_modification_time = html_file.stat().st_mtime
-        if rst_modification_time < html_modification_time:
-            return True
-
-        return False
 
 
 class Cleaner:

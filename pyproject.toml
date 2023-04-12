@@ -1,7 +1,7 @@
 ## =====================================================================================
 ##  C O P Y R I G H T
 ## -------------------------------------------------------------------------------------
-##  Copyright (c) 2022 by Robert Bosch GmbH. All rights reserved.
+##  Copyright (c) 2023 by Robert Bosch GmbH. All rights reserved.
 ##
 ##  Author(s):
 ##  - Markus Braun, :em engineering methods AG (contracted by Robert Bosch GmbH)
@@ -9,11 +9,12 @@
 
 [tool.poetry]
 name = "doxysphinx"
-version = "3.1.0"
+version = "3.2.3"
 description = "Integrates doxygen html documentation with sphinx."
 authors = [
     "Nirmal Sasidharan <nirmal.sasidharan@de.bosch.com>",
     "Markus Braun <markus.braun@em.ag>",
+    "Aniket Salve <aniketdilip.salve@bosch.com>",
 ]
 maintainers = ["Nirmal Sasidharan <nirmal.sasidharan@de.bosch.com>"]
 license = "MIT"
@@ -82,7 +83,7 @@ doxysphinx = "doxysphinx.cli:cli"
 
 [tool.commitizen]
 name = "cz_conventional_commits"
-version = "3.1.0"
+version = "3.2.3"
 tag_format = "v$version"
 version_files = ["pyproject.toml:^version"]
 bump_message = """chore(release): release $current_version → $new_version by commitizen [skip-ci]

@@ -52,6 +52,7 @@
             "type": "python",
             "request": "launch",
             "cwd": "${workspaceFolder}",
+            "module": "pytest",
             "purpose": [
                 "debug-test"
             ],

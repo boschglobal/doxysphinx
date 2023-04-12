@@ -1,7 +1,7 @@
 # =====================================================================================
 #  C O P Y R I G H T
 # -------------------------------------------------------------------------------------
-#  Copyright (c) 2022 by Robert Bosch GmbH. All rights reserved.
+#  Copyright (c) 2023 by Robert Bosch GmbH. All rights reserved.
 #
 #  Author(s):
 #  - Markus Braun, :em engineering methods AG (contracted by Robert Bosch GmbH)
@@ -204,7 +204,6 @@ class RstBlockProcessor:
             return False
 
         if content := _try_parse_rst_block_content(text):
-
             # add newlines around the element tags to have the beginning and closing tags at the beginning of line each
             _ensure_newline_before_element(element)
             _ensure_newline_after_element(element)
@@ -321,7 +320,6 @@ class MarkdownRstBlockProcessor:
         text = "\n".join(lines)
 
         if content := _try_parse_rst_block_content(text):
-
             # add newlines around the element tags to have the beginning and closing tags at the beginning of line each
             _ensure_newline_before_element(element)
             _ensure_newline_after_element(element)
@@ -553,7 +551,6 @@ class DoxygenHtmlParser:
 
         # search for all supported elements in element tree and apply the processors
         for element in element_candidates:
-
             # apply the processors on the element
             applied_processors = self._apply_processors(element, self._processors)
             detected_formats = [p.format for p in applied_processors if p.format]
@@ -570,10 +567,8 @@ class DoxygenHtmlParser:
 
     @staticmethod
     def _apply_processors(element: _Element, processors: List[ElementProcessor]) -> Iterable[ElementProcessor]:
-
         # try to apply each processor...
         for processor in processors:
-
             # if the current element isn't supported by the current processor skip to the next one
             if element.tag not in processor.elements:
                 continue

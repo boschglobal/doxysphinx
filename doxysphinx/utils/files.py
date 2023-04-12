@@ -1,13 +1,14 @@
 # =====================================================================================
 #  C O P Y R I G H T
 # -------------------------------------------------------------------------------------
-#  Copyright (c) 2022 by Robert Bosch GmbH. All rights reserved.
+#  Copyright (c) 2023 by Robert Bosch GmbH. All rights reserved.
 #
 #  Author(s):
 #  - Markus Braun, :em engineering methods AG (contracted by Robert Bosch GmbH)
 # =====================================================================================
 """The files module contains several file related helper functions."""
 
+import hashlib
 import os
 import shutil
 from pathlib import Path
@@ -148,3 +149,22 @@ def stringify_paths(paths: Iterable[Path]) -> str:
     if not path_list:
         return "[]"
     return "- " + "\n- ".join(path_list)
+
+
+def hash_blake2b(file: Path, chunk_size: int = 65536) -> str:
+    """Fast file hash based on blake2b hash algorithm.
+
+    :param file: Path to a file to calculate the hash for
+    :param chunk_size: The size of the chunks that are read from the file. Use this if you really need to
+        optimize for performance for your special use case. Note that the default (64k) turned out the fastest
+        in some very naive adhoc tests... so there may be room for improvement here.
+
+    """
+    with file.open("rb") as f:
+        file_hash = hashlib.blake2b()
+        while chunk := f.read(chunk_size):
+            file_hash.update(chunk)
+        return file_hash.hexdigest()
+
+
+# TODO/IDEA try out murmur3 implementation once it's hashlib compilant (https://github.com/hajimes/mmh3/issues/39)

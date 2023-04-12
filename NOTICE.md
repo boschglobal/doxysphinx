@@ -34,8 +34,11 @@ Please keep the list sorted.
 * Robert Bosch GmbH
   * Nirmal Sasidharan - <nirmal.sasidharan@de.bosch.com>
   * Wolfgang Ulmer - <wolfgang.ulmer@de.bosch.com>
+  * Aniket Salve - <aniketdilip.salve@bosch.com>
 * :em engineering methods AG
   * Celina Adelhardt - <celina.adelhardt@em.ag>
   * Markus Braun - <markus.braun@em.ag>
 * itemis AG
   * Stefan Schulz - <stefan.schulz@itemis.com>
+* Stream HPC B.V.
+  * Gergely Meszaros <gergely@streamhpc.com>

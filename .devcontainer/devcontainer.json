@@ -20,10 +20,24 @@
         "python.linting.pylintEnabled": false,
         "python.linting.flake8Enabled": true,
         "python.linting.flake8Path": "/usr/local/py-utils/bin/flake8",
+        "python.formatting.provider": "black",
+        "python.formatting.blackPath": "/usr/local/py-utils/bin/black",
         "python.poetryPath": "/home/vscode/.local/bin/poetry",
-        //"python.defaultInterpreterPath": "${containerWorkspaceFolder}/.venv/bin/python",
         "python.analysis.extraPaths": [
           "${containerWorkspaceFolder}"
+        ],
+        "python.analysis.exclude": [
+          ".build",
+          ".cache",
+          ".github",
+          ".idea",
+          ".mypy_cache",
+          ".pytest_cache",
+          "build",
+          "demo",
+          "dist",
+          "docs",
+          "external"
         ],
         "terminal.integrated.profiles.linux": {
           "zsh": {
@@ -35,8 +49,9 @@
       },
       "extensions": [
         "ms-python.python",
-        "eamodio.gitlens",
         "njpwerner.autodocstring",
+        "KevinRose.vsc-python-indent",
+        "eamodio.gitlens",
         "ExecutableBookProject.myst-highlight",
         "DavidAnson.vscode-markdownlint",
         "tamasfe.even-better-toml",

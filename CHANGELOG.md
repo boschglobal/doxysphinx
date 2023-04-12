@@ -13,6 +13,31 @@
 
 <!--next-version-placeholder-->
 
+## v3.2.3 (2023-04-06)
+
+### Fix
+
+- **doxygen_cwd**: Interpret paths relative to working dir
+
+## v3.2.2 (2023-04-06)
+
+### Fix
+
+- **doxygen**: Don't launch doxygen from a shell
+
+## v3.2.1 (2023-02-28)
+
+### Fix
+
+- **rst_indent_warning**: Fixed rst indent warning
+
+## v3.2.0 (2023-02-16)
+
+### Feat
+
+- **code**: Removed emptyspaces before creating hash
+- **incremental_behaviour**: added incremental behaviour for doxysphinx
+
 ## v3.1.0 (2022-12-09)
 
 ### Feat
