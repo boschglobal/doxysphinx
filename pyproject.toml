@@ -147,3 +147,20 @@ extension-pkg-allow-list = ["lxml", "mpire"]
 
 [tool.pylint.FORMAT]
 max-line-length = 120
+
+[tool.pyright]
+exclude = [
+    ".build",
+    ".cache",
+    ".devcontainer",
+    ".github",
+    ".idea",
+    ".mypy_cache",
+    ".pytest_cache",
+    ".venv",
+    ".vscode",
+    "demo",
+    "dist",
+    "docs",
+    "external"
+]

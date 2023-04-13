@@ -176,9 +176,10 @@ class CssScoper:
     We use that here to define an outer class and nest the whole doxygen stylesheet below it in a temporary
     sass stylesheet which then gets compiled back to css. With this
     we kill 2 birds with one stone:
-    - all doxygen rules are now scoped so they are not applied to the sphinx bits shell anymore....
-    - all doxygen rules now are more specialized than any of the outer sphinx style rules. This mean they
-      win when the styles are evaluated in the browser.
+    * all doxygen rules are now scoped so they are not applied to the sphinx bits shell anymore....
+    * all doxygen rules now are more specialized than any of the outer sphinx style rules.
+      This mean they win when the styles are evaluated in the browser.
+
     In the end that means that sphinx styles are applied to sphinx bits and doxygen styles are applied to
     doxygen bits. We still need to fix some minor issues with a custom stylesheet (which we also apply here).
     """

@@ -174,7 +174,7 @@ class DoxygenSettingsValidator:
 
         :param config: the imported doxyfile.
         :param sphinx_source_dir: the sphinx directory (necessary for output directory validation).
-        :param doxygen_cwd the directory for doxygen, paths from doxyfile are relative from here
+        :param doxygen_cwd: the directory for doxygen, paths from doxyfile are relative from here
         :return: False, if there is a deviation to the defined mandatory or optional settings.
         """
         if "WARNINGS" in config:

@@ -105,7 +105,7 @@ class Builder:
                 result = pool.map(self._run, files_with_hashes)
                 return result
         else:
-            return [self._run((parser, writer), f) for f in files_with_hashes]
+            return [self._run((parser, writer), f[0], f[1]) for f in files_with_hashes]
 
     def _get_doxy_htmls_to_process_with_hashes(self, doxygen_html_dir: Path) -> Iterable[Tuple[Path, str]]:
         """Get all doxygen html files to process with their hashes (blake2b).
@@ -125,6 +125,7 @@ class Builder:
             hash_from_rst = self._get_html_hash_from_rst(rst_file)
 
             if hash_from_rst == hash_from_html:
+                self._logger.debug(f"skipping {html_file} as the rst was created before.")
                 continue
 
             yield html_file, hash_from_html
@@ -146,9 +147,8 @@ class Builder:
         hash_from_rst = rst_content[0].split(":")[-1].rstrip()
         return hash_from_rst
 
-    def _run(self, task_args: Tuple[HtmlParser, Writer], file_and_hash: Tuple[Path, str]) -> Path:
+    def _run(self, task_args: Tuple[HtmlParser, Writer], html_file: Path, html_hash: str) -> Path:
         parser, writer = task_args
-        html_file, html_hash = file_and_hash
 
         # parse the doxygen html file
         parse_result = parser.parse(html_file)
