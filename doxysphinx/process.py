@@ -97,7 +97,7 @@ class Builder:
         writer = self._writer_type(doxygen_html_dir)
         task_args: Tuple[HtmlParser, Writer] = (parser, writer)
 
-        files_with_hashes = self._get_doxy_htmls_to_process_with_hashes(doxygen_html_dir)
+        files_with_hashes = list(self._get_doxy_htmls_to_process_with_hashes(doxygen_html_dir))
 
         if self._parallel:
             with WorkerPool() as pool:
