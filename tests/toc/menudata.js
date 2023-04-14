@@ -253,4 +253,7 @@ var menudata={children:[
 {text:"w",url:"globals_defs_w.html#index_w"},
 {text:"x",url:"globals_defs_x.html#index_x"},
 {text:"y",url:"globals_defs_y.html#index_y"},
-{text:"z",url:"globals_defs_z.html#index_z"}]}]}]}]}
+{text:"z",url:"globals_defs_z.html#index_z"}]}]}]},
+{text: "Illegal/#^ chárs", url: "a.html", children: [
+{ text: "Child1", url: "a.html" },
+{ text: "Child2", url: "b.html" }]}]}

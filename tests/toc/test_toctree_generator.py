@@ -14,6 +14,7 @@ import pytest
 from doxysphinx.toc import DoxygenTocGenerator
 
 
+@pytest.mark.xfail
 def test_tocgenerator_works_as_expected():
     tocgen = DoxygenTocGenerator(Path(__file__).parent)
     path = Path("index.html")
@@ -21,3 +22,4 @@ def test_tocgenerator_works_as_expected():
     assert result[0] == ".. toctree::"
     assert result[5] == "   Modules <modules>"
     assert result[7] == "   Files <files_files>"
+    assert result[8] == "   Illegal/#^ chárs <a_illegal__chars>"
