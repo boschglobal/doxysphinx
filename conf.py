@@ -38,7 +38,7 @@ release = version_from_project_toml()
 needs_sphinx = "4.4.0"
 source_suffix = ".rst"
 master_doc = "index"
-language = None
+language = "en"
 templates_path = ["docs/_templates"]
 
 # List of patterns, relative to source directory, that match files and

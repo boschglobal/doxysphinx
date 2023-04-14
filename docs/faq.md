@@ -12,6 +12,8 @@
 
 ## Installation
 
+(faq-i-1)=
+
 ### I.1 - I cannot install doxysphinx because of dependency clashes with my existing environment
 
 Doxysphinx doesn't have many runtime dependencies, however especially click (cli tool) might introduce

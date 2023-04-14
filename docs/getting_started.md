@@ -54,8 +54,8 @@ pip install doxysphinx
 ```
 
 ```{note}
-If you have trouble installing/running the package, please look into our [FAQ](faq.md#I.1) where we describe
-some alternatives.
+If you have trouble installing/running the package, please look into our {ref}`FAQ (section I.1) <faq-i-1>`
+where we describe some alternatives.
 ```
 
 ## Step 2: Prepare Doxygen Config
