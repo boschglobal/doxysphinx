@@ -14,7 +14,6 @@ import pytest
 from doxysphinx.toc import DoxygenTocGenerator
 
 
-@pytest.mark.xfail
 def test_tocgenerator_works_as_expected():
     tocgen = DoxygenTocGenerator(Path(__file__).parent)
     path = Path("index.html")
