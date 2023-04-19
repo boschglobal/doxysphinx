@@ -14,6 +14,10 @@ import pytest
 
 
 @pytest.fixture(scope="session", autouse=True)
+def run_doxygen_fixture():
+    run_doxygen()
+
+
 def run_doxygen():
     """Run doxygen before executing any test.
 

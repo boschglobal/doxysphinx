@@ -102,10 +102,17 @@ def cli():
 
 
 @cli.command()
+@click.option(
+    "--parallel/--sequential",
+    default=True,
+    help="parallel will separate the work among all available processor cores where possible while sequential "
+    "won't. The default is 'parallel' - 'sequential' might come in handy when debugging or tracing problems "
+    "because of the linear output.",
+)
 @click.argument("sphinx_source", type=click.Path(file_okay=False, exists=True, path_type=Path))
 @click.argument("sphinx_output", type=click.Path(file_okay=False, path_type=Path))
 @_doxygen_context()
-def build(sphinx_source: Path, sphinx_output: Path, **kwargs):
+def build(parallel: bool, sphinx_source: Path, sphinx_output: Path, **kwargs):
     """
     Build rst and copy related files for doxygen projects.
 
@@ -122,18 +129,25 @@ def build(sphinx_source: Path, sphinx_output: Path, **kwargs):
     """
     doxy_context = DoxygenContext(**kwargs)
     _logger.info("starting build command...")
-    with TimedContext() as tc:
-        builder = Builder(sphinx_source, sphinx_output)
+    with TimedContext() as timed_scope:
+        builder = Builder(sphinx_source, sphinx_output, parallel=parallel)
         for doxy_output in _get_doxygen_outdirs(doxy_context, sphinx_source):
             builder.build(doxy_output)
-    _logger.info(f"build command done in {tc.elapsed_humanized()}.")
+    _logger.info(f"build command done in {timed_scope.elapsed_humanized()} ({timed_scope.elapsed()}).")
 
 
 @cli.command()
+@click.option(
+    "--parallel/--sequential",
+    default=True,
+    help="parallel will separate the work among all available processor cores where possible while sequential "
+    "won't. The default is 'parallel' - 'sequential' might come in handy when debugging or tracing problems "
+    "because of the linear output.",
+)
 @click.argument("sphinx_source", type=click.Path(file_okay=False, exists=True, path_type=Path))
 @click.argument("sphinx_output", type=click.Path(file_okay=False, path_type=Path))
 @_doxygen_context()
-def clean(sphinx_source: Path, sphinx_output: Path, **kwargs):
+def clean(parallel: bool, sphinx_source: Path, sphinx_output: Path, **kwargs):
     r"""
     Clean up files created by doxysphinx.
 
@@ -144,7 +158,7 @@ def clean(sphinx_source: Path, sphinx_output: Path, **kwargs):
     doxy_context = DoxygenContext(**kwargs)
     _logger.info("starting clean command...")
     with TimedContext() as tc:
-        cleaner = Cleaner(sphinx_source, sphinx_output)
+        cleaner = Cleaner(sphinx_source, sphinx_output, parallel=parallel)
         for doxy_output in _get_doxygen_outdirs(doxy_context, sphinx_source):
             cleaner.cleanup(doxy_output)
     _logger.info(f"clean command done in {tc.elapsed_humanized()}.")

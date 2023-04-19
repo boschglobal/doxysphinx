@@ -51,7 +51,7 @@ jobs:
 
     - name: "Run quality checks"
       run: |
-        poetry run pre-commit run --all-files
+        SKIP=poetry-lock poetry run pre-commit run --all-files
 
     - name: "Update version, changelog"
       if: github.event_name == 'push' && github.ref == 'refs/heads/main' && !contains(github.event.head_commit.message, 'chore(release):')

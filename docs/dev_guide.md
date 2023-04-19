@@ -121,6 +121,20 @@ the following tools if you haven't them yet:
 
   You can then see the generated documentation by opening `.build/html/index.html`.
 
+## Updating dependencies
+
+If you want to update the projects dependencies do the following:
+
+- checkin/stash all your local changes (so you could reverse easily and see the differences quite easy)
+- update your dependencies:
+
+  ```shell
+  poetry up --latest --without ci
+  ```
+
+- review the updates e.g. in vscode with git diff
+- test everything 😄
+
 ## Troubleshooting
 
 ### Module not found errors

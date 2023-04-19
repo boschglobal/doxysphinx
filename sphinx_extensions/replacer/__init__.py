@@ -41,7 +41,6 @@ class JinjaReplacer:
         """
         if app.builder.format != "html":
             return
-
         source_text = source[0]
         rendered = app.builder.templates.render_string(source_text, app.config.html_context)
         source[0] = rendered

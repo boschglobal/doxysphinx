@@ -17,7 +17,7 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Dict, List, Union
 
-import json5
+import pyjson5
 
 from doxysphinx.utils.pathlib_fix import path_is_relative_to, path_resolve
 
@@ -130,7 +130,6 @@ def _is_config_line(line: str) -> bool:
 
 
 def _parse_stderr(text: str) -> List[str]:
-
     lines = text.split(os.linesep)
     return [line.replace("warning", "Hint") for line in lines if line]
 
@@ -175,7 +174,7 @@ class DoxygenSettingsValidator:
 
         :param config: the imported doxyfile.
         :param sphinx_source_dir: the sphinx directory (necessary for output directory validation).
-        :param doxygen_cwd the directory for doxygen, paths from doxyfile are relative from here
+        :param doxygen_cwd: the directory for doxygen, paths from doxyfile are relative from here
         :return: False, if there is a deviation to the defined mandatory or optional settings.
         """
         if "WARNINGS" in config:
@@ -289,7 +288,7 @@ def read_js_data_file(js_data_file: Path) -> Any:
     """
     data = js_data_file.read_text(encoding="utf-8")
     sanitized = re.sub(r"var .*=", "", data)
-    result: Any = json5.loads(sanitized)
+    result: Any = pyjson5.loads(sanitized)
     return result
 
 

@@ -17,7 +17,7 @@ inputs:
     required: true
     default: 3.9
   doc-tools:
-    description: "Whether to install the documentation tools (doxygen + dartsass)"
+    description: "Whether to install the documentation tools (doxygen)"
     required: true
     default: true
 runs:
@@ -38,17 +38,6 @@ runs:
 
     shell: bash
 
-  - name: "Ensure dart-sass"
-    run:  |
-      if ! command -v sass &> /dev/null
-      then
-        echo "sass wasn't found... installing now..."
-        mkdir -p ~/.local/bin
-        curl -sSL https://github.com/sass/dart-sass/releases/download/1.49.9/dart-sass-1.49.9-linux-x64.tar.gz | \
-        tar -xzvf - --strip-components=1 -C ~/.local/bin dart-sass/sass;
-      fi
-    shell: bash
-
   - name: "Ensure poetry"
     run: pipx install poetry
     shell: bash
@@ -60,5 +49,5 @@ runs:
       cache: 'poetry'
 
   - name: "Install dependencies"
-    run: poetry install
+    run: poetry install --with=ci
     shell: bash

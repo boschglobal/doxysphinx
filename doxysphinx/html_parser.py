@@ -19,10 +19,12 @@ from dataclasses import dataclass
 from functools import lru_cache
 from pathlib import Path
 from textwrap import dedent
-from typing import List, Optional, Protocol, Set
+from typing import Iterable, List, Optional, Protocol, Set, Tuple
 
 from lxml import html as etree  # nosec: B410
 from lxml.etree import _Element, _ElementTree  # nosec: B410
+
+from doxysphinx.utils.exceptions import ApplicationError
 
 
 @dataclass
@@ -45,10 +47,11 @@ class HtmlParseResult:
        in sphinx menu structure.
     """
     used_snippet_formats: Optional[Set[str]]
-    """The list of snippet format that are used inside the html tree if any.
+    """The list of snippet formats that are used inside the html tree if any.
     """
-    tree: _ElementTree
-    """The html/xml element tree.
+    tree: Optional[_ElementTree]
+    """The html/xml element tree or None if nothing was parsed because the html shouldn't be handled as mixed
+       mode content.
     """
 
 
@@ -105,6 +108,11 @@ class ElementProcessor(Protocol):
     format: str = "None"
     """The format this element processor processes... like 'rst', 'md' etc."""
 
+    # can_process_regex: str = ""
+    # """A regex that, when used on an html file checks whether the current element processor
+    #    can process that file (finds elements). This is (as optimiziation) for a quick check before loading the
+    #    complete dom (and for eventually skipping it)."""
+
     def try_process(self, element: _Element) -> bool:
         """Try to process an element.
 
@@ -122,7 +130,7 @@ class RstInlineProcessor:
     is_final = True
 
     rst_role_regex = re.compile(
-        r":(?P<role_name>[A-Za-z0-9-_:]*?):[`'\"](?P<role_content>.*?)[`'\"]", re.MULTILINE | re.DOTALL
+        r"\s*?:(?P<role_name>[A-Za-z0-9-_:]*?):[`'\"](?P<role_content>.*?)[`'\"]\s*?", re.MULTILINE | re.DOTALL
     )
 
     def try_process(self, element: _Element) -> bool:
@@ -136,8 +144,9 @@ class RstInlineProcessor:
             return False
 
         # check if syntax matches sphinx/rst role
-        normalized_content = element.text.strip()
-        match = self.rst_role_regex.match(normalized_content)
+        # normalized_content = element.text.strip()
+        # match = self.rst_role_regex.match(normalized_content)
+        match = self.rst_role_regex.match(element.text)
         if match is None:
             return False
 
@@ -195,7 +204,6 @@ class RstBlockProcessor:
             return False
 
         if content := _try_parse_rst_block_content(text):
-
             # add newlines around the element tags to have the beginning and closing tags at the beginning of line each
             _ensure_newline_before_element(element)
             _ensure_newline_after_element(element)
@@ -222,8 +230,7 @@ class PreToDivProcessor:
     the raw html directive. However this will destroy the newlines in pre tags. To overcome that
     We change the pre output here to a div with inner line divs (which is also supported by doxygen).
 
-    This should be the last processor applied (when everything else is done).
-    The reason is that it gets really hard to debug if we change the structure inbetween processors.
+    This processor is special because it should only run when any other processor has done something.
     """
 
     elements = ["pre"]
@@ -313,7 +320,6 @@ class MarkdownRstBlockProcessor:
         text = "\n".join(lines)
 
         if content := _try_parse_rst_block_content(text):
-
             # add newlines around the element tags to have the beginning and closing tags at the beginning of line each
             _ensure_newline_before_element(element)
             _ensure_newline_after_element(element)
@@ -454,8 +460,13 @@ class DoxygenHtmlParser:
         RstInlineProcessor(),
         RstBlockProcessor(),
         MarkdownRstBlockProcessor(),
-        PreToDivProcessor(),
     ]
+    """ Processors can transform/normalize the tree."""
+
+    _post_processors: List[ElementProcessor] = [PreToDivProcessor()]
+    """ Post processors are only executed when any other processor changed the tree before."""
+
+    _title_regex = re.compile(r"<title>(.*?)</title>")
 
     def __init__(self, source_directory: Path):
         """
@@ -464,7 +475,6 @@ class DoxygenHtmlParser:
         :param source_directory:  the directory where the html files are located.
         """
         self._source_directory = source_directory
-        # self._parser = etree.HTMLParser(huge_tree=True, recover=False)
 
     def parse(self, file: Path) -> HtmlParseResult:
         """Parse a doxygen HTML file into an ElementTree and normalize its inner data to contain <rst>-tags.
@@ -474,33 +484,56 @@ class DoxygenHtmlParser:
         :return: The result of the parsing
         :rtype: ParseResult
         """
-        tree = etree.parse(file.as_posix())  # type: ignore # nosec B320
+        buffer = file.read_text()
+        tree = etree.document_fromstring(buffer).getroottree()
 
-        meta_title: str = tree.find("//title").text  # type: ignore
+        meta_title, project, title = self._read_project_and_title(buffer, file)
+
+        if self._should_parse(buffer, file):
+            used_snippet_formats = self._normalize_tree(tree)
+
+            if used_snippet_formats:
+                return HtmlParseResult(file, project, meta_title, title, used_snippet_formats, tree)
+
+        return HtmlParseResult(file, project, meta_title, title, None, None)
+
+    @staticmethod
+    def _read_project_and_title(source: str, file: Path) -> Tuple[str, str, str]:
+        title_match = DoxygenHtmlParser._title_regex.search(source)
+        if not title_match:
+            raise ApplicationError(f"html file {file} seems to have no <title>-element.")
+        meta_title: str = title_match.group(1)
         first, *_, last = meta_title.split(":")
         project = first.strip()
         title = last.strip()
+        return meta_title, project, title
 
-        used_snippet_formats = self._normalize_tree_and_get_used_formats(tree)
-
-        return HtmlParseResult(file, project, meta_title, title, used_snippet_formats, tree)
-
-    def _should_parse(self, source: str) -> bool:
-        # if no supported element (identified by closing tag) is in the file...
-        if not any(f"</{element}>" in source for element in self._all_supported_elements()):
-            # fast exit
+    def _should_parse(self, source: str, file: Path) -> bool:
+        # fail fast for doxygen htmls were no docs could be present:
+        filename = file.stem
+        if filename.endswith("_source"):  # source code listings shouldn't be parsed by us
+            return False
+        # elif filename.startswith("dir_"): # in fact dirs can have comments via @dir special command
+        #    return False
+        elif filename.startswith("functions_"):
+            return False
+        elif filename.startswith("globals_"):
+            return False
+        elif filename in ["classes", "functions", "modules", "globals", "files"]:
             return False
 
-        # get content of each element and
-
-        return True
+        # check for doxygen verbatim elements we are interested in (if none are present we can skip the file)
+        if any(s in source for s in ["<code", "<pre", '<div class="fragment"']):
+            return True
+        else:
+            return False
 
     @staticmethod
     @lru_cache(maxsize=2)
     def _all_supported_elements() -> Set[str]:
         return {e for p in DoxygenHtmlParser._processors for e in p.elements}
 
-    def _normalize_tree_and_get_used_formats(self, tree) -> Set[str]:
+    def _normalize_tree(self, tree) -> Set[str]:
         """Normalize a doxygen html tree.
 
         Searches for pre and code tags, re-formats them and creates different <snippet-*>-tags out of it.
@@ -508,7 +541,7 @@ class DoxygenHtmlParser:
         assigned to either html-content or snippet content (and in the un-normalized source html we've got them mixed
         at the closing tag).
         """
-        used_snipped_formats = set()
+        found_snippet_formats = set()
 
         # prefetch element candidates.
         # We do that because if there are bugs in a processor which will change the tree one might get strange
@@ -516,35 +549,38 @@ class DoxygenHtmlParser:
         # So this is just a means to make debugging easier...
         element_candidates = list(tree.iter(*self._all_supported_elements()))
 
-        # search for all supported elements in element tree
+        # search for all supported elements in element tree and apply the processors
         for element in element_candidates:
+            # apply the processors on the element
+            applied_processors = self._apply_processors(element, self._processors)
+            detected_formats = [p.format for p in applied_processors if p.format]
+            found_snippet_formats.update(detected_formats)
 
-            # try to apply each processor...
-            for processor in self._processors:
+        # if the tree was normalized (= snippets were found) apply the post-
+        if found_snippet_formats:
+            for element in element_candidates:
+                applied_post_processors = self._apply_processors(element, self._post_processors)
+                detected_formats = [p.format for p in applied_post_processors if p.format]
+                found_snippet_formats.update(detected_formats)
 
-                # if the current element isn't supported by the current processor skip to the next one
-                if element.tag not in processor.elements:
-                    continue
+        return found_snippet_formats
 
-                # try to process the element
-                if not self._try_process(element, processor):
-                    continue
+    @staticmethod
+    def _apply_processors(element: _Element, processors: List[ElementProcessor]) -> Iterable[ElementProcessor]:
+        # try to apply each processor...
+        for processor in processors:
+            # if the current element isn't supported by the current processor skip to the next one
+            if element.tag not in processor.elements:
+                continue
 
-                # if it was processed add the used format to the output...
-                if processor.format:
-                    used_snipped_formats.add(processor.format)
+            # process element
+            processed = processor.try_process(element)
+            if not processed:
+                continue
 
-                # if the processor is final (no further processors considered) -> break the loop
-                if processor.is_final:
-                    break
+            # return the processor because it could process the element
+            yield processor
 
-        return used_snipped_formats
-
-    def _try_process(self, element: _Element, processor: ElementProcessor) -> bool:
-        # fail if element isn't supported by processor
-        if element.tag not in processor.elements:
-            return False
-
-        # fail if processing returns
-        processed = processor.try_process(element)
-        return processed
+            # if the processor is final stop moving over processors...
+            if processor.is_final:
+                break

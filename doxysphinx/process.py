@@ -13,14 +13,16 @@ The process module contains the :class:`Builder` and :class:`Cleaner` classes.
 
 These represent the main functionality of doxysphinx.
 """
-import hashlib
 import logging
 from pathlib import Path
-from typing import List, Type
+from typing import Iterable, List, Optional, Tuple, Type
+
+from mpire import WorkerPool
 
 from doxysphinx.html_parser import DoxygenHtmlParser, HtmlParser
 from doxysphinx.resources import DoxygenResourceProvider, ResourceProvider
 from doxysphinx.sphinx import DirectoryMapper, SphinxHtmlBuilderDirectoryMapper
+from doxysphinx.utils.files import hash_blake2b
 from doxysphinx.writer import RstWriter, Writer
 
 
@@ -47,6 +49,7 @@ class Builder:
         parser_type: Type[HtmlParser] = DoxygenHtmlParser,
         writer_type: Type[Writer] = RstWriter,
         force_recreation: bool = False,
+        parallel=True,
     ):
         """
         Create a Builder that builds rsts for doxygen html files.
@@ -68,7 +71,9 @@ class Builder:
         # these will be used later lazily
         self._parser_type = parser_type
         self._writer_type = writer_type
+
         self._force_recreation = force_recreation
+        self._parallel = parallel
 
     def build(self, doxygen_html_dir: Path):
         """
@@ -88,50 +93,72 @@ class Builder:
         self._logger.info(f"created {len(created_rsts)} rst-files in {doxygen_html_dir}")
 
     def _build(self, doxygen_html_dir: Path) -> List[Path]:
-        result_list: List[Path] = []
         parser = self._parser_type(doxygen_html_dir)
         writer = self._writer_type(doxygen_html_dir)
+        task_args: Tuple[HtmlParser, Writer] = (parser, writer)
 
+        files_with_hashes = list(self._get_doxy_htmls_to_process_with_hashes(doxygen_html_dir))
+
+        if self._parallel:
+            with WorkerPool() as pool:
+                pool.set_shared_objects(task_args)
+                result = pool.map(self._run, files_with_hashes)
+                return result
+        else:
+            return [self._run((parser, writer), f[0], f[1]) for f in files_with_hashes]
+
+    def _get_doxy_htmls_to_process_with_hashes(self, doxygen_html_dir: Path) -> Iterable[Tuple[Path, str]]:
+        """Get all doxygen html files to process with their hashes (blake2b).
+
+        The hashes are used to implement incremental behavior. So only files which aren't the same are
+        processed.
+        """
         for html_file in doxygen_html_dir.glob("*.html"):
-            parse_result = parser.parse(html_file)
-
-            # for now, we just write the rst parallel to the html file
             rst_file = html_file.with_suffix(".rst")
 
-            # get hash of the html file
-            html_text = html_file.read_text()
-            html_hash = hashlib.blake2b(html_text.encode("utf-8")).hexdigest()
+            hash_from_html = hash_blake2b(html_file)
 
-            # if the rst file is either not existing or the html file is not changed...
-            if self._should_build_rst(rst_file, html_hash):
-                result_list.append(writer.write(parse_result, rst_file, html_hash))
+            if not rst_file.exists():
+                yield html_file, hash_from_html
+                continue
 
-        return result_list
+            hash_from_rst = self._get_html_hash_from_rst(rst_file)
 
-    def _should_build_rst(self, rst_file: Path, html_hash: str) -> bool:
+            if hash_from_rst == hash_from_html:
+                self._logger.debug(f"skipping {html_file} as the rst was created before.")
+                continue
 
-        # always build if force mode is on
-        if self._force_recreation:
-            return True
+            yield html_file, hash_from_html
 
-        # always build if rst file is not existing
+    def _get_html_hash_from_rst(self, rst_file: Path) -> Optional[str]:
         if not rst_file.exists():
-            return True
+            return None
 
-        # read the line first line of RST file
-        with open(rst_file, encoding="utf-8") as myfile:
-            rst_content = [next(myfile) for x in range(1)]
+        with rst_file.open(encoding="utf-8") as file:
+            rst_content = [next(file) for x in range(1)]
 
-        # return false if meta data is not found in first line
+        if not rst_content:
+            return None
+
         if not rst_content[0].startswith(".. meta::"):
-            return False
+            return None
 
-        # return true if hash matches with the meta data
+        # take everything from the last ":" onwards and return it (=the hash)
         hash_from_rst = rst_content[0].split(":")[-1].rstrip()
-        if hash_from_rst != html_hash:
-            return True
+        return hash_from_rst
 
-        return False
+    def _run(self, task_args: Tuple[HtmlParser, Writer], html_file: Path, html_hash: str) -> Path:
+        parser, writer = task_args
+
+        # parse the doxygen html file
+        parse_result = parser.parse(html_file)
+
+        rst_file = html_file.with_suffix(".rst")
+
+        # write the corresponding rst file
+        result = writer.write(parse_result, rst_file, html_hash)
+
+        return result
 
 
 class Cleaner:
@@ -145,6 +172,7 @@ class Cleaner:
         sphinx_output_dir: Path,
         dir_mapper_type: Type[DirectoryMapper] = SphinxHtmlBuilderDirectoryMapper,
         resource_provider_type: Type[ResourceProvider] = DoxygenResourceProvider,
+        parallel: bool = True,
     ):
         """
         Create a Cleaner that will cleanup things that the :class:`Builder` created.
@@ -161,6 +189,7 @@ class Cleaner:
         """
         self._dir_mapper = dir_mapper_type(sphinx_source_dir, sphinx_output_dir)
         self._resource_provider = resource_provider_type(self._dir_mapper)
+        self._parallel = parallel
 
     def cleanup(self, doxygen_html_dir: Path):
         """
@@ -177,11 +206,20 @@ class Cleaner:
         self._logger.info(f"deleted {len(deleted_rsts)} rst-files from {doxygen_html_dir}")
 
     def _cleanup(self, doxygen_html_dir: Path) -> List[Path]:
-        result_list: List[Path] = []
-        for file_path in doxygen_html_dir.glob("*.html"):
-            target_rst_path = file_path.with_suffix(".rst")
-            if target_rst_path.exists():
-                target_rst_path.unlink()
-                result_list.append(target_rst_path)
-                self._logger.debug(f"deleted {target_rst_path}")
-        return result_list
+        files = list(doxygen_html_dir.glob("*.html"))
+
+        if self._parallel:
+            with WorkerPool() as pool:
+                pool.set_shared_objects(self._logger)
+                return pool.map(self._delete_corresponding_file, files)
+        else:
+            return [result for file in files if (result := self._delete_corresponding_file(self._logger, file))]
+
+    @staticmethod
+    def _delete_corresponding_file(logger: logging.Logger, html_file: Path) -> Optional[Path]:
+        target_rst_path = html_file.with_suffix(".rst")
+        if target_rst_path.exists():
+            target_rst_path.unlink()
+            logger.debug(f"deleted {target_rst_path}")
+            return target_rst_path
+        return None

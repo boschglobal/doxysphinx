@@ -153,9 +153,9 @@ class DoxygenTocGenerator:
         apply(structural_dummies, self._prepare_structural_dummy)
         apply(structural_dummies, self._create_toc_file_for_structural_dummy)
 
-        self._menu_lookup: Dict[str, _MenuEntry] = dict(
-            {e.docname: e for e in self._flatten_tree(self._menu) if not e.is_leaf}
-        )
+        self._menu_lookup: Dict[str, _MenuEntry] = {
+            e.docname: e for e in self._flatten_tree(self._menu) if not e.is_leaf
+        }
 
     def _parse_template(self) -> Tuple[str, str]:
         """Parse a "doxygen html template shell" out of the index.html file.
@@ -194,7 +194,6 @@ class DoxygenTocGenerator:
         structural_dummy.docname = toc_docname
 
     def _create_toc_file_for_structural_dummy(self, structural_dummy: _MenuEntry):
-
         prefix, suffix = self._doxy_html_template
 
         content = [
