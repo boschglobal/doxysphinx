@@ -77,6 +77,7 @@ pytest-emoji = "*"
 pytest-md = "*"
 pex = "*"
 pre-commit = "*"
+commitizen = "*"
 
 [tool.poetry.scripts]
 doxysphinx = "doxysphinx.cli:cli"
@@ -162,5 +163,5 @@ exclude = [
     "demo",
     "dist",
     "docs",
-    "external"
+    "external",
 ]

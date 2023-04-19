@@ -36,7 +36,7 @@
     "python.linting.banditEnabled": true,
     "isort.args": [
         "--profile",
-        "black "
+        "black"
     ],
     "[python]": {
         "editor.codeActionsOnSave": {
