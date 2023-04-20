@@ -84,20 +84,35 @@ Classes
 
    Scopes css-stylesheets to a special selector.
 
-   This is done with the help of dartsass (a sass processor).
+   This is done with the help of libsass (as the sass-syntax extends css with nesting).
 
-   .. py:method:: scope(stylesheet: pathlib.Path, additional_css_rules: Optional[List[str]] = None, scss_patch_callback: Optional[Callable[[pathlib.Path], None]] = None) -> pathlib.Path
+   Our original problem was that the doxygen stylesheet and the sphinx theme stylesheets collide in some
+   ways (e.g. global styles like heading-styles etc...). We therefore needed to have a mechanism to apply
+   doxygen stylesheets only to doxygen content (not to the outer sphinx theme shell). We do this via sass,
+   because sass is css compatible but adds some nice features to it. You can for example nest styles.
+   We use that here to define an outer class and nest the whole doxygen stylesheet below it in a temporary
+   sass stylesheet which then gets compiled back to css. With this
+   we kill 2 birds with one stone:
+   * all doxygen rules are now scoped so they are not applied to the sphinx bits shell anymore....
+   * all doxygen rules now are more specialized than any of the outer sphinx style rules (they will win in browser).
 
-      Scopes a stylesheet to given selector.
+   In the end that means that sphinx styles are applied to sphinx bits and doxygen styles are applied to
+   doxygen bits. We still need to fix some minor issues with a custom stylesheet (which we also apply here).
 
-      The process is as follows: The original stylesheet will be moved to .original.scss.
-      Then an scss file (same name like stylesheet) that will import that .original.scss
-      file will be created. This will be compiled to the same filename as the original
-      stylesheet with the help of dartsass.
+   .. py:method:: scope(stylesheet: pathlib.Path, target: pathlib.Path, additional_css_rules: Optional[str] = None, content_patch_callback: Optional[Callable[[str], str]] = None) -> Optional[pathlib.Path]
 
-      :param stylesheet: The stylesheet to scope.
+      Scope a stylesheet to given selector.
+
+      The process is as follows: The original stylesheet is read, processed, hashed and compiled to the
+      target. If a target already exists and the hash is identical nothing is compiled and written.
+
+      :param stylesheet: The path to a stylesheet to scope.
+      :param: target: The path to a stylesheet where the results are written to.
       :param additional_css_rules: Additional css rules to inject.
-      :param scss_patch_callback: A callback that will be called on the original file
+      :param scss_patch_callback: A callback that will be called on the original file.
+             Note: we had a bug in doxygen.css and a sass compatibility fix for doxygen-awesome that made
+             this mechanism necessary. With one of the recent doxygen versions the doxygen.css bug was fixed
+             however we still keep it here some time.
       :return: The path to the written stylesheet (should be identical to stylesheet).
 
 

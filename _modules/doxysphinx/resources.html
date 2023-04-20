@@ -1,7 +1,7 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -54,7 +54,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
+    <meta name="docsearch:language" content="en">
     
 
     <!-- Google Analytics -->
@@ -347,6 +347,15 @@
          </code>
         </a>
        </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../docs/auto_api/doxysphinx/utils/rst/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           doxysphinx.utils.rst
+          </span>
+         </code>
+        </a>
+       </li>
       </ul>
      </li>
      <li class="toctree-l3">
@@ -537,24 +546,19 @@
 <span class="sd">Resources are stylesheets, images, javascripts etc. that contemplate the html files.</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
+<span class="kn">import</span> <span class="nn">hashlib</span>
 <span class="kn">import</span> <span class="nn">logging</span>
 <span class="kn">import</span> <span class="nn">pkgutil</span>
 <span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
-<span class="kn">from</span> <span class="nn">subprocess</span> <span class="kn">import</span> <span class="n">run</span>  <span class="c1"># nosec: B404</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Protocol</span><span class="p">,</span> <span class="n">Union</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Protocol</span><span class="p">,</span> <span class="n">Union</span>
+
+<span class="kn">import</span> <span class="nn">sass</span>
 
 <span class="kn">from</span> <span class="nn">doxysphinx.sphinx</span> <span class="kn">import</span> <span class="n">DirectoryMapper</span>
 
 <span class="c1"># noinspection PyMethodMayBeStatic,PyUnusedLocal</span>
-<span class="kn">from</span> <span class="nn">doxysphinx.utils.exceptions</span> <span class="kn">import</span> <span class="n">ApplicationError</span><span class="p">,</span> <span class="n">PrerequisiteNotMetError</span>
-<span class="kn">from</span> <span class="nn">doxysphinx.utils.files</span> <span class="kn">import</span> <span class="p">(</span>
-    <span class="n">copy_if_different</span><span class="p">,</span>
-    <span class="n">multi_glob</span><span class="p">,</span>
-    <span class="n">replace_in_file</span><span class="p">,</span>
-    <span class="n">stringify_paths</span><span class="p">,</span>
-    <span class="n">write_file</span><span class="p">,</span>
-<span class="p">)</span>
-<span class="kn">from</span> <span class="nn">doxysphinx.utils.iterators</span> <span class="kn">import</span> <span class="n">apply_if_first</span>
+<span class="kn">from</span> <span class="nn">doxysphinx.utils.exceptions</span> <span class="kn">import</span> <span class="n">ApplicationError</span>
+<span class="kn">from</span> <span class="nn">doxysphinx.utils.files</span> <span class="kn">import</span> <span class="n">copy_if_different</span><span class="p">,</span> <span class="n">multi_glob</span><span class="p">,</span> <span class="n">stringify_paths</span>
 
 
 <div class="viewcode-block" id="ResourceProvider"><a class="viewcode-back" href="../../docs/auto_api/doxysphinx/resources/index.html#doxysphinx.resources.ResourceProvider">[docs]</a><span class="k">class</span> <span class="nc">ResourceProvider</span><span class="p">(</span><span class="n">Protocol</span><span class="p">):</span>
@@ -624,10 +628,10 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_css_scoper</span> <span class="o">=</span> <span class="n">CssScoper</span><span class="p">(</span><span class="s2">&quot;.doxygen-content&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_custom_styles</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_load_custom_styles</span><span class="p">()</span>
 
-    <span class="k">def</span> <span class="nf">_load_custom_styles</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+    <span class="k">def</span> <span class="nf">_load_custom_styles</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
         <span class="n">data</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">bytes</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="n">pkgutil</span><span class="o">.</span><span class="n">get_data</span><span class="p">(</span><span class="vm">__name__</span><span class="p">,</span> <span class="s2">&quot;resources/custom.scss&quot;</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">data</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">data</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="n">data</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">critical</span><span class="p">(</span><span class="s2">&quot;could not read custom styles out of package. Exiting.... sorry! :-(&quot;</span><span class="p">)</span>
             <span class="n">exit</span><span class="p">()</span>
@@ -644,11 +648,36 @@
         <span class="n">target</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dir_mapper</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">resource_root</span><span class="p">)</span>
         <span class="n">target</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
-        <span class="n">copied_files</span> <span class="o">=</span> <span class="n">copy_if_different</span><span class="p">(</span><span class="n">resource_root</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">_provisioning_glob_pattern</span><span class="p">)</span>
+        <span class="c1"># copy file that are different in target, except for css files that we post process later (the</span>
+        <span class="c1"># difference check would fail for them anyway)</span>
+        <span class="n">doxygen_css</span> <span class="o">=</span> <span class="n">resource_root</span> <span class="o">/</span> <span class="s2">&quot;doxygen.css&quot;</span>
+        <span class="n">doxygen_awesome_css</span> <span class="o">=</span> <span class="n">resource_root</span> <span class="o">/</span> <span class="s2">&quot;doxygen-awesome.css&quot;</span>
+        <span class="n">css_files_for_postprocessing</span> <span class="o">=</span> <span class="p">[</span><span class="n">doxygen_css</span><span class="p">,</span> <span class="n">doxygen_awesome_css</span><span class="p">]</span>
+        <span class="n">copied_files</span> <span class="o">=</span> <span class="n">copy_if_different</span><span class="p">(</span>
+            <span class="n">resource_root</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">_provisioning_glob_pattern</span><span class="p">,</span> <span class="n">ignore_files</span><span class="o">=</span><span class="n">css_files_for_postprocessing</span>
+        <span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;copied files:</span><span class="se">\n</span><span class="si">{</span><span class="n">stringify_paths</span><span class="p">(</span><span class="n">copied_files</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">_post_process</span><span class="p">(</span><span class="n">copied_files</span><span class="p">)</span>
+        <span class="c1"># postprocessing (patching + sass)</span>
+        <span class="c1"># ... for doxygen.css</span>
+        <span class="n">written_doxygen_css</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_css_scoper</span><span class="o">.</span><span class="n">scope</span><span class="p">(</span>
+            <span class="n">stylesheet</span><span class="o">=</span><span class="n">doxygen_css</span><span class="p">,</span>
+            <span class="n">target</span><span class="o">=</span><span class="n">target</span> <span class="o">/</span> <span class="n">doxygen_css</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+            <span class="n">additional_css_rules</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_custom_styles</span><span class="p">,</span>
+            <span class="n">content_patch_callback</span><span class="o">=</span><span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="nb">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="s2">&quot;code.JavaDocCode</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;code.JavaDocCode {</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">),</span>
+        <span class="p">)</span>
+        <span class="k">if</span> <span class="n">written_doxygen_css</span><span class="p">:</span>
+            <span class="n">copied_files</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">written_doxygen_css</span><span class="p">)</span>
+        <span class="c1"># ... for doxygen_awesome.css if existing</span>
+        <span class="k">if</span> <span class="n">doxygen_awesome_css</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+            <span class="n">written_doxygen_awesome_css</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_css_scoper</span><span class="o">.</span><span class="n">scope</span><span class="p">(</span>
+                <span class="n">stylesheet</span><span class="o">=</span><span class="n">doxygen_awesome_css</span><span class="p">,</span>
+                <span class="n">target</span><span class="o">=</span><span class="n">target</span> <span class="o">/</span> <span class="n">doxygen_awesome_css</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+                <span class="n">content_patch_callback</span><span class="o">=</span><span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="nb">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="s2">&quot;invert()&quot;</span><span class="p">,</span> <span class="s1">&#39;#{&quot;invert()&quot;}&#39;</span><span class="p">),</span>
+            <span class="p">)</span>
+            <span class="k">if</span> <span class="n">written_doxygen_awesome_css</span><span class="p">:</span>
+                <span class="n">copied_files</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">written_doxygen_awesome_css</span><span class="p">)</span>
 
         <span class="k">return</span> <span class="n">copied_files</span></div>
 
@@ -666,39 +695,26 @@
                 <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;deleted </span><span class="si">{</span><span class="n">target_file</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
                 <span class="n">files_deleted</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">target_file</span><span class="p">)</span>
 
-        <span class="k">return</span> <span class="n">files_deleted</span></div>
-
-    <span class="k">def</span> <span class="nf">_post_process</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">copied_files</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Path</span><span class="p">]):</span>
-        <span class="c1"># stylesheet scoping</span>
-        <span class="n">apply_if_first</span><span class="p">(</span>
-            <span class="n">copied_files</span><span class="p">,</span>
-            <span class="k">lambda</span> <span class="n">p</span><span class="p">:</span> <span class="n">p</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;doxygen.css&quot;</span><span class="p">,</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_patch_doxygen_stylesheet</span><span class="p">,</span>
-        <span class="p">)</span>
-        <span class="n">apply_if_first</span><span class="p">(</span>
-            <span class="n">copied_files</span><span class="p">,</span>
-            <span class="k">lambda</span> <span class="n">p</span><span class="p">:</span> <span class="n">p</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;doxygen-awesome.css&quot;</span><span class="p">,</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_patch_doxygen_awesome_stylesheet</span><span class="p">,</span>
-        <span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">_patch_doxygen_stylesheet</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">doxygen_css_file</span><span class="p">:</span> <span class="n">Path</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_css_scoper</span><span class="o">.</span><span class="n">scope</span><span class="p">(</span>
-            <span class="n">doxygen_css_file</span><span class="p">,</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_custom_styles</span><span class="p">,</span>
-            <span class="n">scss_patch_callback</span><span class="o">=</span><span class="k">lambda</span> <span class="n">file</span><span class="p">:</span> <span class="n">replace_in_file</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="s2">&quot;code.JavaDocCode</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;code.JavaDocCode {</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">),</span>
-        <span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">_patch_doxygen_awesome_stylesheet</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">doxygen_awesome_css_file</span><span class="p">:</span> <span class="n">Path</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_css_scoper</span><span class="o">.</span><span class="n">scope</span><span class="p">(</span>
-            <span class="n">doxygen_awesome_css_file</span><span class="p">,</span>
-            <span class="n">scss_patch_callback</span><span class="o">=</span><span class="k">lambda</span> <span class="n">file</span><span class="p">:</span> <span class="n">replace_in_file</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="s2">&quot;invert()&quot;</span><span class="p">,</span> <span class="s1">&#39;#{&quot;invert()&quot;}&#39;</span><span class="p">),</span>
-        <span class="p">)</span></div>
+        <span class="k">return</span> <span class="n">files_deleted</span></div></div>
 
 
 <div class="viewcode-block" id="CssScoper"><a class="viewcode-back" href="../../docs/auto_api/doxysphinx/resources/index.html#doxysphinx.resources.CssScoper">[docs]</a><span class="k">class</span> <span class="nc">CssScoper</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Scopes css-stylesheets to a special selector.</span>
 
-<span class="sd">    This is done with the help of dartsass (a sass processor).</span>
+<span class="sd">    This is done with the help of libsass (as the sass-syntax extends css with nesting).</span>
+
+<span class="sd">    Our original problem was that the doxygen stylesheet and the sphinx theme stylesheets collide in some</span>
+<span class="sd">    ways (e.g. global styles like heading-styles etc...). We therefore needed to have a mechanism to apply</span>
+<span class="sd">    doxygen stylesheets only to doxygen content (not to the outer sphinx theme shell). We do this via sass,</span>
+<span class="sd">    because sass is css compatible but adds some nice features to it. You can for example nest styles.</span>
+<span class="sd">    We use that here to define an outer class and nest the whole doxygen stylesheet below it in a temporary</span>
+<span class="sd">    sass stylesheet which then gets compiled back to css. With this</span>
+<span class="sd">    we kill 2 birds with one stone:</span>
+<span class="sd">    * all doxygen rules are now scoped so they are not applied to the sphinx bits shell anymore....</span>
+<span class="sd">    * all doxygen rules now are more specialized than any of the outer sphinx style rules (they will win in browser).</span>
+
+<span class="sd">    In the end that means that sphinx styles are applied to sphinx bits and doxygen styles are applied to</span>
+<span class="sd">    doxygen bits. We still need to fix some minor issues with a custom stylesheet (which we also apply here).</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">_logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
@@ -714,79 +730,95 @@
 <div class="viewcode-block" id="CssScoper.scope"><a class="viewcode-back" href="../../docs/auto_api/doxysphinx/resources/index.html#doxysphinx.resources.CssScoper.scope">[docs]</a>    <span class="k">def</span> <span class="nf">scope</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">stylesheet</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
-        <span class="n">additional_css_rules</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">scss_patch_callback</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Callable</span><span class="p">[[</span><span class="n">Path</span><span class="p">],</span> <span class="kc">None</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Path</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Scopes a stylesheet to given selector.</span>
+        <span class="n">target</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
+        <span class="n">additional_css_rules</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">content_patch_callback</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Callable</span><span class="p">[[</span><span class="nb">str</span><span class="p">],</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Path</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Scope a stylesheet to given selector.</span>
 
-<span class="sd">        The process is as follows: The original stylesheet will be moved to .original.scss.</span>
-<span class="sd">        Then an scss file (same name like stylesheet) that will import that .original.scss</span>
-<span class="sd">        file will be created. This will be compiled to the same filename as the original</span>
-<span class="sd">        stylesheet with the help of dartsass.</span>
+<span class="sd">        The process is as follows: The original stylesheet is read, processed, hashed and compiled to the</span>
+<span class="sd">        target. If a target already exists and the hash is identical nothing is compiled and written.</span>
 
-<span class="sd">        :param stylesheet: The stylesheet to scope.</span>
+<span class="sd">        :param stylesheet: The path to a stylesheet to scope.</span>
+<span class="sd">        :param: target: The path to a stylesheet where the results are written to.</span>
 <span class="sd">        :param additional_css_rules: Additional css rules to inject.</span>
-<span class="sd">        :param scss_patch_callback: A callback that will be called on the original file</span>
+<span class="sd">        :param scss_patch_callback: A callback that will be called on the original file.</span>
+<span class="sd">               Note: we had a bug in doxygen.css and a sass compatibility fix for doxygen-awesome that made</span>
+<span class="sd">               this mechanism necessary. With one of the recent doxygen versions the doxygen.css bug was fixed</span>
+<span class="sd">               however we still keep it here some time.</span>
 <span class="sd">        :return: The path to the written stylesheet (should be identical to stylesheet).</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="c1"># move original stylesheet to .original.scss</span>
-        <span class="n">original</span> <span class="o">=</span> <span class="n">stylesheet</span><span class="o">.</span><span class="n">with_suffix</span><span class="p">(</span><span class="s2">&quot;.original.scss&quot;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_move</span><span class="p">(</span><span class="n">stylesheet</span><span class="p">,</span> <span class="n">original</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">stylesheet</span> <span class="o">==</span> <span class="n">target</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">ApplicationError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;source (</span><span class="si">{</span><span class="n">stylesheet</span><span class="si">}</span><span class="s2">) and target (</span><span class="si">{</span><span class="n">target</span><span class="si">}</span><span class="s2">) stylesheets cannot be identical.&quot;</span><span class="p">)</span>
 
-        <span class="c1"># execute patch callback if any</span>
-        <span class="k">if</span> <span class="n">scss_patch_callback</span><span class="p">:</span>
-            <span class="n">scss_patch_callback</span><span class="p">(</span><span class="n">original</span><span class="p">)</span>
+        <span class="c1"># load stylesheet and apply patches</span>
+        <span class="n">css_content</span> <span class="o">=</span> <span class="n">stylesheet</span><span class="o">.</span><span class="n">read_text</span><span class="p">()</span>
 
-        <span class="c1"># create .scss (sass) file that will import the .original.scss but scoped to</span>
-        <span class="c1"># the selector</span>
-        <span class="n">content</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_selector</span><span class="si">}</span><span class="s2"> </span><span class="se">{{</span><span class="s2">&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;   @import &quot;</span><span class="si">{</span><span class="n">original</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s1">&quot;;&#39;</span><span class="p">,</span> <span class="s2">&quot;}&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">content_patch_callback</span><span class="p">:</span>
+            <span class="n">css_content</span> <span class="o">=</span> <span class="n">content_patch_callback</span><span class="p">(</span><span class="n">css_content</span><span class="p">)</span>
 
-        <span class="k">if</span> <span class="n">additional_css_rules</span><span class="p">:</span>  <span class="c1"># add additional styles if any</span>
-            <span class="n">content</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">additional_css_rules</span><span class="p">)</span>
+        <span class="c1"># create .scss (sass) content scoped to the selector</span>
+        <span class="n">content</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_selector</span><span class="si">}</span><span class="s2"> </span><span class="se">{{\n</span><span class="si">{</span><span class="n">css_content</span><span class="si">}</span><span class="se">\n}}\n</span><span class="s2">&quot;</span>  <span class="c1"># here we scope the content to a given css selector</span>
 
-        <span class="n">sass_stylesheet</span> <span class="o">=</span> <span class="n">stylesheet</span><span class="o">.</span><span class="n">with_suffix</span><span class="p">(</span><span class="s2">&quot;.scss&quot;</span><span class="p">)</span>
-        <span class="n">write_file</span><span class="p">(</span><span class="n">sass_stylesheet</span><span class="p">,</span> <span class="n">content</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">additional_css_rules</span><span class="p">:</span>
+            <span class="n">content</span> <span class="o">+=</span> <span class="n">additional_css_rules</span>
 
-        <span class="c1"># compile scoped scss to css (thereby retaining original file)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_call_sass</span><span class="p">(</span><span class="n">sass_stylesheet</span><span class="p">,</span> <span class="n">stylesheet</span><span class="p">)</span>
+        <span class="n">new_hash_digest</span> <span class="o">=</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">blake2b</span><span class="p">(</span><span class="n">content</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
 
-        <span class="c1"># remove scoping from html element (if any) where typically variables are</span>
-        <span class="c1"># stored, because this will only work globally.</span>
-        <span class="n">replace_in_file</span><span class="p">(</span><span class="n">stylesheet</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_selector</span><span class="si">}</span><span class="s2"> html </span><span class="se">{{</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;html {&quot;</span><span class="p">)</span>
+        <span class="n">old_hash_digest</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_read_hash_digest</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">new_hash_digest</span> <span class="o">==</span> <span class="n">old_hash_digest</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;scoped stylesheet &#39;</span><span class="si">{</span><span class="n">stylesheet</span><span class="si">}</span><span class="s2">&#39; to selector &#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_selector</span><span class="si">}</span><span class="s2">&#39;.&quot;</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">stylesheet</span></div>
+        <span class="c1"># add hash digest to content</span>
+        <span class="n">content</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;/* </span><span class="si">{</span><span class="n">new_hash_digest</span><span class="si">}</span><span class="s2"> &lt;- doxysphinx hash digest for the original input css that leads&quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;to the css below */</span><span class="se">\n</span><span class="si">{</span><span class="n">content</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="p">)</span>
+
+        <span class="c1"># compile the scss to a css</span>
+        <span class="n">compiled_css</span><span class="p">:</span> <span class="n">Any</span> <span class="o">=</span> <span class="n">sass</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span>
+            <span class="n">string</span><span class="o">=</span><span class="n">content</span><span class="p">,</span>
+            <span class="n">output_style</span><span class="o">=</span><span class="s2">&quot;expanded&quot;</span><span class="p">,</span>
+            <span class="n">indented</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+            <span class="n">include_paths</span><span class="o">=</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">stylesheet</span><span class="o">.</span><span class="n">parent</span><span class="p">)],</span>
+        <span class="p">)</span>
+
+        <span class="c1"># the sass compiler does also scope the html element (where typically css variables are</span>
+        <span class="c1"># stored). We need to remove that scoping again because it will only work if it&#39;s in global scope.</span>
+        <span class="n">compiled_css</span> <span class="o">=</span> <span class="n">compiled_css</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_selector</span><span class="si">}</span><span class="s2"> html </span><span class="se">{{</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;html {&quot;</span><span class="p">)</span>
+
+        <span class="c1"># write stylesheet</span>
+        <span class="n">target</span><span class="o">.</span><span class="n">write_text</span><span class="p">(</span><span class="n">compiled_css</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;scoped original stylesheet &#39;</span><span class="si">{</span><span class="n">stylesheet</span><span class="si">}</span><span class="s2">&#39; to selector &#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_selector</span><span class="si">}</span><span class="s2">&#39; in target &#39;</span><span class="si">{</span><span class="n">target</span><span class="si">}</span><span class="s2">&#39;.&quot;</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">target</span></div>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_read_hash_digest</span><span class="p">(</span><span class="n">file</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">file</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+            <span class="k">return</span> <span class="s2">&quot;&quot;</span>
+
+        <span class="n">digest_line</span><span class="p">:</span> <span class="nb">str</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">digest_line</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
+            <span class="c1"># sometimes sass renders an @charset css directive which has to be on the first line (by css spec)</span>
+            <span class="c1"># so in that case our hash digest is on the second line and we need to adapt to that...</span>
+            <span class="k">if</span> <span class="n">digest_line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;@charset&quot;</span><span class="p">):</span>
+                <span class="n">digest_line</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">digest_line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;/* &quot;</span><span class="p">):</span>
+            <span class="k">return</span> <span class="s2">&quot;&quot;</span>
+
+        <span class="n">digest</span> <span class="o">=</span> <span class="n">digest_line</span><span class="p">[</span><span class="mi">3</span><span class="p">:]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; &lt;- &quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">digest</span>
 
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">_move</span><span class="p">(</span><span class="n">original</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">new</span><span class="p">:</span> <span class="n">Path</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">new</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
             <span class="n">new</span><span class="o">.</span><span class="n">unlink</span><span class="p">()</span>
-        <span class="n">original</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">new</span><span class="p">)</span>
-
-    <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">_call_sass</span><span class="p">(</span><span class="n">sass_file</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">output_css_file</span><span class="p">:</span> <span class="n">Path</span><span class="p">):</span>
-        <span class="k">try</span><span class="p">:</span>
-            <span class="n">result</span> <span class="o">=</span> <span class="n">run</span><span class="p">([</span><span class="s2">&quot;sass&quot;</span><span class="p">,</span> <span class="n">sass_file</span><span class="p">,</span> <span class="n">output_css_file</span><span class="p">])</span>  <span class="c1"># nosec: B607, B603</span>
-            <span class="n">result</span><span class="o">.</span><span class="n">check_returncode</span><span class="p">()</span>
-
-            <span class="k">if</span> <span class="n">result</span><span class="o">.</span><span class="n">stderr</span><span class="p">:</span>
-                <span class="n">message</span> <span class="o">=</span> <span class="p">(</span>
-                    <span class="s2">&quot;Sass Compiler had errors &quot;</span>
-                    <span class="sa">f</span><span class="s2">&quot;(call: sass </span><span class="si">{</span><span class="n">sass_file</span><span class="si">}</span><span class="s2">&quot;</span>  <span class="c1"># type: ignore [str-bytes-safe]</span>
-                    <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">output_css_file</span><span class="si">}</span><span class="s2">): </span><span class="se">\n</span><span class="si">{</span><span class="n">result</span><span class="o">.</span><span class="n">stderr</span><span class="si">}</span><span class="s2">&quot;</span>
-                <span class="p">)</span>
-
-                <span class="k">raise</span> <span class="n">ApplicationError</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
-        <span class="k">except</span> <span class="ne">FileNotFoundError</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="n">PrerequisiteNotMetError</span><span class="p">(</span>
-                <span class="s2">&quot;The dart-sass-compiler &#39;sass&#39; wasn&#39;t found. This is a prerequisite &quot;</span>
-                <span class="s2">&quot;for us to fix stylesheet issues when integrating doxygen html &quot;</span>
-                <span class="s2">&quot;documentation with sphinx. Please install it either by using the &quot;</span>
-                <span class="s2">&quot;official guide (https://sass-lang.com/install) or by downloading the &quot;</span>
-                <span class="s2">&quot;binary directly and putting it on your $PATH &quot;</span>
-                <span class="s2">&quot;(https://github.com/sass/dart-sass/releases).&quot;</span>
-            <span class="p">)</span></div>
+        <span class="n">original</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">new</span><span class="p">)</span></div>
 </pre></div>
 
               </div>
@@ -801,7 +833,7 @@
     <footer class="footer">
   <p>
     
-      Last updated on &#39;Thu Apr 6 14:28:45 2023&#39;, &#39;cc8fe1e&#39;.<br/>
+      Last updated on &#39;Thu Apr 20 08:34:04 2023&#39;, &#39;d0a6476&#39;.<br/>
   </p>
 </footer>
 </main>

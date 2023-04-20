@@ -1,7 +1,7 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -54,7 +54,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
+    <meta name="docsearch:language" content="en">
     
 
     <!-- Google Analytics -->
@@ -347,6 +347,15 @@
          </code>
         </a>
        </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../docs/auto_api/doxysphinx/utils/rst/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           doxysphinx.utils.rst
+          </span>
+         </code>
+        </a>
+       </li>
       </ul>
      </li>
      <li class="toctree-l3">
@@ -538,14 +547,16 @@
 
 <span class="sd">These represent the main functionality of doxysphinx.</span>
 <span class="sd">&quot;&quot;&quot;</span>
-<span class="kn">import</span> <span class="nn">hashlib</span>
 <span class="kn">import</span> <span class="nn">logging</span>
 <span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Type</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Iterable</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Type</span>
+
+<span class="kn">from</span> <span class="nn">mpire</span> <span class="kn">import</span> <span class="n">WorkerPool</span>
 
 <span class="kn">from</span> <span class="nn">doxysphinx.html_parser</span> <span class="kn">import</span> <span class="n">DoxygenHtmlParser</span><span class="p">,</span> <span class="n">HtmlParser</span>
 <span class="kn">from</span> <span class="nn">doxysphinx.resources</span> <span class="kn">import</span> <span class="n">DoxygenResourceProvider</span><span class="p">,</span> <span class="n">ResourceProvider</span>
 <span class="kn">from</span> <span class="nn">doxysphinx.sphinx</span> <span class="kn">import</span> <span class="n">DirectoryMapper</span><span class="p">,</span> <span class="n">SphinxHtmlBuilderDirectoryMapper</span>
+<span class="kn">from</span> <span class="nn">doxysphinx.utils.files</span> <span class="kn">import</span> <span class="n">hash_blake2b</span>
 <span class="kn">from</span> <span class="nn">doxysphinx.writer</span> <span class="kn">import</span> <span class="n">RstWriter</span><span class="p">,</span> <span class="n">Writer</span>
 
 
@@ -572,6 +583,7 @@
         <span class="n">parser_type</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">HtmlParser</span><span class="p">]</span> <span class="o">=</span> <span class="n">DoxygenHtmlParser</span><span class="p">,</span>
         <span class="n">writer_type</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">Writer</span><span class="p">]</span> <span class="o">=</span> <span class="n">RstWriter</span><span class="p">,</span>
         <span class="n">force_recreation</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">parallel</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
     <span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Create a Builder that builds rsts for doxygen html files.</span>
@@ -593,7 +605,9 @@
         <span class="c1"># these will be used later lazily</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_parser_type</span> <span class="o">=</span> <span class="n">parser_type</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_writer_type</span> <span class="o">=</span> <span class="n">writer_type</span>
+
         <span class="bp">self</span><span class="o">.</span><span class="n">_force_recreation</span> <span class="o">=</span> <span class="n">force_recreation</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_parallel</span> <span class="o">=</span> <span class="n">parallel</span>
 
 <div class="viewcode-block" id="Builder.build"><a class="viewcode-back" href="../../docs/auto_api/doxysphinx/process/index.html#doxysphinx.process.Builder.build">[docs]</a>    <span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">doxygen_html_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -613,50 +627,72 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;created </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">created_rsts</span><span class="p">)</span><span class="si">}</span><span class="s2"> rst-files in </span><span class="si">{</span><span class="n">doxygen_html_dir</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
 
     <span class="k">def</span> <span class="nf">_build</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">doxygen_html_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Path</span><span class="p">]:</span>
-        <span class="n">result_list</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Path</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="n">parser</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parser_type</span><span class="p">(</span><span class="n">doxygen_html_dir</span><span class="p">)</span>
         <span class="n">writer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_writer_type</span><span class="p">(</span><span class="n">doxygen_html_dir</span><span class="p">)</span>
+        <span class="n">task_args</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">HtmlParser</span><span class="p">,</span> <span class="n">Writer</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">parser</span><span class="p">,</span> <span class="n">writer</span><span class="p">)</span>
 
+        <span class="n">files_with_hashes</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_get_doxy_htmls_to_process_with_hashes</span><span class="p">(</span><span class="n">doxygen_html_dir</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parallel</span><span class="p">:</span>
+            <span class="k">with</span> <span class="n">WorkerPool</span><span class="p">()</span> <span class="k">as</span> <span class="n">pool</span><span class="p">:</span>
+                <span class="n">pool</span><span class="o">.</span><span class="n">set_shared_objects</span><span class="p">(</span><span class="n">task_args</span><span class="p">)</span>
+                <span class="n">result</span> <span class="o">=</span> <span class="n">pool</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_run</span><span class="p">,</span> <span class="n">files_with_hashes</span><span class="p">)</span>
+                <span class="k">return</span> <span class="n">result</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_run</span><span class="p">((</span><span class="n">parser</span><span class="p">,</span> <span class="n">writer</span><span class="p">),</span> <span class="n">f</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">f</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">files_with_hashes</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">_get_doxy_htmls_to_process_with_hashes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">doxygen_html_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Iterable</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="n">Path</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get all doxygen html files to process with their hashes (blake2b).</span>
+
+<span class="sd">        The hashes are used to implement incremental behavior. So only files which aren&#39;t the same are</span>
+<span class="sd">        processed.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">for</span> <span class="n">html_file</span> <span class="ow">in</span> <span class="n">doxygen_html_dir</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">&quot;*.html&quot;</span><span class="p">):</span>
-            <span class="n">parse_result</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">html_file</span><span class="p">)</span>
-
-            <span class="c1"># for now, we just write the rst parallel to the html file</span>
             <span class="n">rst_file</span> <span class="o">=</span> <span class="n">html_file</span><span class="o">.</span><span class="n">with_suffix</span><span class="p">(</span><span class="s2">&quot;.rst&quot;</span><span class="p">)</span>
 
-            <span class="c1"># get hash of the html file</span>
-            <span class="n">html_text</span> <span class="o">=</span> <span class="n">html_file</span><span class="o">.</span><span class="n">read_text</span><span class="p">()</span>
-            <span class="n">html_hash</span> <span class="o">=</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">blake2b</span><span class="p">(</span><span class="n">html_text</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
+            <span class="n">hash_from_html</span> <span class="o">=</span> <span class="n">hash_blake2b</span><span class="p">(</span><span class="n">html_file</span><span class="p">)</span>
 
-            <span class="c1"># if the rst file is either not existing or the html file is not changed...</span>
-            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_should_build_rst</span><span class="p">(</span><span class="n">rst_file</span><span class="p">,</span> <span class="n">html_hash</span><span class="p">):</span>
-                <span class="n">result_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">writer</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">parse_result</span><span class="p">,</span> <span class="n">rst_file</span><span class="p">,</span> <span class="n">html_hash</span><span class="p">))</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">rst_file</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+                <span class="k">yield</span> <span class="n">html_file</span><span class="p">,</span> <span class="n">hash_from_html</span>
+                <span class="k">continue</span>
 
-        <span class="k">return</span> <span class="n">result_list</span>
+            <span class="n">hash_from_rst</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_html_hash_from_rst</span><span class="p">(</span><span class="n">rst_file</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">_should_build_rst</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rst_file</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">html_hash</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">hash_from_rst</span> <span class="o">==</span> <span class="n">hash_from_html</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;skipping </span><span class="si">{</span><span class="n">html_file</span><span class="si">}</span><span class="s2"> as the rst was created before.&quot;</span><span class="p">)</span>
+                <span class="k">continue</span>
 
-        <span class="c1"># always build if force mode is on</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_force_recreation</span><span class="p">:</span>
-            <span class="k">return</span> <span class="kc">True</span>
+            <span class="k">yield</span> <span class="n">html_file</span><span class="p">,</span> <span class="n">hash_from_html</span>
 
-        <span class="c1"># always build if rst file is not existing</span>
+    <span class="k">def</span> <span class="nf">_get_html_hash_from_rst</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rst_file</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">rst_file</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
-            <span class="k">return</span> <span class="kc">True</span>
+            <span class="k">return</span> <span class="kc">None</span>
 
-        <span class="c1"># read the line first line of RST file</span>
-        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">rst_file</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">myfile</span><span class="p">:</span>
-            <span class="n">rst_content</span> <span class="o">=</span> <span class="p">[</span><span class="nb">next</span><span class="p">(</span><span class="n">myfile</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">)]</span>
+        <span class="k">with</span> <span class="n">rst_file</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+            <span class="n">rst_content</span> <span class="o">=</span> <span class="p">[</span><span class="nb">next</span><span class="p">(</span><span class="n">file</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">)]</span>
 
-        <span class="c1"># return false if meta data is not found in first line</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">rst_content</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span>
+
         <span class="k">if</span> <span class="ow">not</span> <span class="n">rst_content</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;.. meta::&quot;</span><span class="p">):</span>
-            <span class="k">return</span> <span class="kc">False</span>
+            <span class="k">return</span> <span class="kc">None</span>
 
-        <span class="c1"># return true if hash matches with the meta data</span>
+        <span class="c1"># take everything from the last &quot;:&quot; onwards and return it (=the hash)</span>
         <span class="n">hash_from_rst</span> <span class="o">=</span> <span class="n">rst_content</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;:&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">rstrip</span><span class="p">()</span>
-        <span class="k">if</span> <span class="n">hash_from_rst</span> <span class="o">!=</span> <span class="n">html_hash</span><span class="p">:</span>
-            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">return</span> <span class="n">hash_from_rst</span>
 
-        <span class="k">return</span> <span class="kc">False</span></div>
+    <span class="k">def</span> <span class="nf">_run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task_args</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">HtmlParser</span><span class="p">,</span> <span class="n">Writer</span><span class="p">],</span> <span class="n">html_file</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">html_hash</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Path</span><span class="p">:</span>
+        <span class="n">parser</span><span class="p">,</span> <span class="n">writer</span> <span class="o">=</span> <span class="n">task_args</span>
+
+        <span class="c1"># parse the doxygen html file</span>
+        <span class="n">parse_result</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">html_file</span><span class="p">)</span>
+
+        <span class="n">rst_file</span> <span class="o">=</span> <span class="n">html_file</span><span class="o">.</span><span class="n">with_suffix</span><span class="p">(</span><span class="s2">&quot;.rst&quot;</span><span class="p">)</span>
+
+        <span class="c1"># write the corresponding rst file</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">writer</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">parse_result</span><span class="p">,</span> <span class="n">rst_file</span><span class="p">,</span> <span class="n">html_hash</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">result</span></div>
 
 
 <div class="viewcode-block" id="Cleaner"><a class="viewcode-back" href="../../docs/auto_api/doxysphinx/process/index.html#doxysphinx.process.Cleaner">[docs]</a><span class="k">class</span> <span class="nc">Cleaner</span><span class="p">:</span>
@@ -670,6 +706,7 @@
         <span class="n">sphinx_output_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
         <span class="n">dir_mapper_type</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">DirectoryMapper</span><span class="p">]</span> <span class="o">=</span> <span class="n">SphinxHtmlBuilderDirectoryMapper</span><span class="p">,</span>
         <span class="n">resource_provider_type</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">ResourceProvider</span><span class="p">]</span> <span class="o">=</span> <span class="n">DoxygenResourceProvider</span><span class="p">,</span>
+        <span class="n">parallel</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
     <span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Create a Cleaner that will cleanup things that the :class:`Builder` created.</span>
@@ -686,6 +723,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_dir_mapper</span> <span class="o">=</span> <span class="n">dir_mapper_type</span><span class="p">(</span><span class="n">sphinx_source_dir</span><span class="p">,</span> <span class="n">sphinx_output_dir</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_resource_provider</span> <span class="o">=</span> <span class="n">resource_provider_type</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_dir_mapper</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_parallel</span> <span class="o">=</span> <span class="n">parallel</span>
 
 <div class="viewcode-block" id="Cleaner.cleanup"><a class="viewcode-back" href="../../docs/auto_api/doxysphinx/process/index.html#doxysphinx.process.Cleaner.cleanup">[docs]</a>    <span class="k">def</span> <span class="nf">cleanup</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">doxygen_html_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -702,14 +740,23 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;deleted </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">deleted_rsts</span><span class="p">)</span><span class="si">}</span><span class="s2"> rst-files from </span><span class="si">{</span><span class="n">doxygen_html_dir</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
 
     <span class="k">def</span> <span class="nf">_cleanup</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">doxygen_html_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Path</span><span class="p">]:</span>
-        <span class="n">result_list</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Path</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="k">for</span> <span class="n">file_path</span> <span class="ow">in</span> <span class="n">doxygen_html_dir</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">&quot;*.html&quot;</span><span class="p">):</span>
-            <span class="n">target_rst_path</span> <span class="o">=</span> <span class="n">file_path</span><span class="o">.</span><span class="n">with_suffix</span><span class="p">(</span><span class="s2">&quot;.rst&quot;</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">target_rst_path</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
-                <span class="n">target_rst_path</span><span class="o">.</span><span class="n">unlink</span><span class="p">()</span>
-                <span class="n">result_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">target_rst_path</span><span class="p">)</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;deleted </span><span class="si">{</span><span class="n">target_rst_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">result_list</span></div>
+        <span class="n">files</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">doxygen_html_dir</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">&quot;*.html&quot;</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parallel</span><span class="p">:</span>
+            <span class="k">with</span> <span class="n">WorkerPool</span><span class="p">()</span> <span class="k">as</span> <span class="n">pool</span><span class="p">:</span>
+                <span class="n">pool</span><span class="o">.</span><span class="n">set_shared_objects</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="p">)</span>
+                <span class="k">return</span> <span class="n">pool</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_delete_corresponding_file</span><span class="p">,</span> <span class="n">files</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">[</span><span class="n">result</span> <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">files</span> <span class="k">if</span> <span class="p">(</span><span class="n">result</span> <span class="o">:=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_delete_corresponding_file</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="p">,</span> <span class="n">file</span><span class="p">))]</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_delete_corresponding_file</span><span class="p">(</span><span class="n">logger</span><span class="p">:</span> <span class="n">logging</span><span class="o">.</span><span class="n">Logger</span><span class="p">,</span> <span class="n">html_file</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Path</span><span class="p">]:</span>
+        <span class="n">target_rst_path</span> <span class="o">=</span> <span class="n">html_file</span><span class="o">.</span><span class="n">with_suffix</span><span class="p">(</span><span class="s2">&quot;.rst&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">target_rst_path</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+            <span class="n">target_rst_path</span><span class="o">.</span><span class="n">unlink</span><span class="p">()</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;deleted </span><span class="si">{</span><span class="n">target_rst_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">target_rst_path</span>
+        <span class="k">return</span> <span class="kc">None</span></div>
 </pre></div>
 
               </div>
@@ -724,7 +771,7 @@
     <footer class="footer">
   <p>
     
-      Last updated on &#39;Thu Apr 6 14:28:45 2023&#39;, &#39;cc8fe1e&#39;.<br/>
+      Last updated on &#39;Thu Apr 20 08:34:04 2023&#39;, &#39;d0a6476&#39;.<br/>
   </p>
 </footer>
 </main>

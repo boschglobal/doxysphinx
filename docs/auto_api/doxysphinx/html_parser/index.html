@@ -1,7 +1,7 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -56,7 +56,7 @@
     <link rel="next" title="doxysphinx.process" href="../process/index.html" />
     <link rel="prev" title="doxysphinx.doxygen" href="../doxygen/index.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
+    <meta name="docsearch:language" content="en">
     
 
     <!-- Google Analytics -->
@@ -345,6 +345,15 @@
          <code class="xref py py-mod docutils literal notranslate">
           <span class="pre">
            doxysphinx.utils.pathlib_fix
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../utils/rst/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           doxysphinx.utils.rst
           </span>
          </code>
         </a>
@@ -1064,13 +1073,14 @@ in sphinx menu structure.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="doxysphinx.html_parser.HtmlParseResult.used_snippet_formats">
 <span class="sig-name descname"><span class="pre">used_snippet_formats</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Set</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#doxysphinx.html_parser.HtmlParseResult.used_snippet_formats" title="Permalink to this definition">¶</a></dt>
-<dd><p>The list of snippet format that are used inside the html tree if any.</p>
+<dd><p>The list of snippet formats that are used inside the html tree if any.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="doxysphinx.html_parser.HtmlParseResult.tree">
-<span class="sig-name descname"><span class="pre">tree</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">lxml.etree._ElementTree</span></em><a class="headerlink" href="#doxysphinx.html_parser.HtmlParseResult.tree" title="Permalink to this definition">¶</a></dt>
-<dd><p>The html/xml element tree.</p>
+<span class="sig-name descname"><span class="pre">tree</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">lxml.etree._ElementTree</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#doxysphinx.html_parser.HtmlParseResult.tree" title="Permalink to this definition">¶</a></dt>
+<dd><p>The html/xml element tree or None if nothing was parsed because the html shouldn’t be handled as mixed
+mode content.</p>
 </dd></dl>
 
 </dd></dl>
@@ -1235,8 +1245,7 @@ once the try_process method returns True.</p>
 <p>We do this because doxysphinx will linearize html output in the writer to have it in one line in
 the raw html directive. However this will destroy the newlines in pre tags. To overcome that
 We change the pre output here to a div with inner line divs (which is also supported by doxygen).</p>
-<p>This should be the last processor applied (when everything else is done).
-The reason is that it gets really hard to debug if we change the structure inbetween processors.</p>
+<p>This processor is special because it should only run when any other processor has done something.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="doxysphinx.html_parser.PreToDivProcessor.elements">
 <span class="sig-name descname"><span class="pre">elements</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['pre']</span></em><a class="headerlink" href="#doxysphinx.html_parser.PreToDivProcessor.elements" title="Permalink to this definition">¶</a></dt>
@@ -1375,7 +1384,7 @@ Each Markdown block (delimited with 3 backticks) will be something like this in 
     <footer class="footer">
   <p>
     
-      Last updated on &#39;Thu Apr 6 14:28:45 2023&#39;, &#39;cc8fe1e&#39;.<br/>
+      Last updated on &#39;Thu Apr 20 08:34:04 2023&#39;, &#39;d0a6476&#39;.<br/>
   </p>
 </footer>
 </main>

@@ -1,7 +1,7 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -54,9 +54,9 @@
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
     <link rel="next" title="doxysphinx.doxygen" href="../doxygen/index.html" />
-    <link rel="prev" title="doxysphinx.utils.pathlib_fix" href="../utils/pathlib_fix/index.html" />
+    <link rel="prev" title="doxysphinx.utils.rst" href="../utils/rst/index.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
+    <meta name="docsearch:language" content="en">
     
 
     <!-- Google Analytics -->
@@ -345,6 +345,15 @@
          <code class="xref py py-mod docutils literal notranslate">
           <span class="pre">
            doxysphinx.utils.pathlib_fix
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../utils/rst/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           doxysphinx.utils.rst
           </span>
          </code>
         </a>
@@ -716,10 +725,10 @@ see the correct signatures.</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="#doxysphinx.cli.cli" title="doxysphinx.cli.cli"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cli</span></code></a>()</p></td>
 <td><p>Integrates doxygen html documentation with sphinx.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#doxysphinx.cli.build" title="doxysphinx.cli.build"><code class="xref py py-obj docutils literal notranslate"><span class="pre">build</span></code></a>(sphinx_source, sphinx_output, **kwargs)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#doxysphinx.cli.build" title="doxysphinx.cli.build"><code class="xref py py-obj docutils literal notranslate"><span class="pre">build</span></code></a>(parallel, sphinx_source, sphinx_output, **kwargs)</p></td>
 <td><p>Build rst and copy related files for doxygen projects.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#doxysphinx.cli.clean" title="doxysphinx.cli.clean"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clean</span></code></a>(sphinx_source, sphinx_output, **kwargs)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#doxysphinx.cli.clean" title="doxysphinx.cli.clean"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clean</span></code></a>(parallel, sphinx_source, sphinx_output, **kwargs)</p></td>
 <td><p>Clean up files created by doxysphinx.</p></td>
 </tr>
 </tbody>
@@ -764,7 +773,7 @@ to) has to live inside sphinx’s input tree.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="doxysphinx.cli.build">
-<span class="sig-prename descclassname"><span class="pre">doxysphinx.cli.</span></span><span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sphinx_source</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pathlib.Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sphinx_output</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pathlib.Path</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#doxysphinx.cli.build" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">doxysphinx.cli.</span></span><span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parallel</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sphinx_source</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pathlib.Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sphinx_output</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pathlib.Path</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#doxysphinx.cli.build" title="Permalink to this definition">¶</a></dt>
 <dd><p>Build rst and copy related files for doxygen projects.</p>
 <p>SPHINX_SOURCE specifies the root of the sphinx source directory tree while SPHINX_OUTPUT specifies the root of the
 sphinx output directory tree.</p>
@@ -781,7 +790,7 @@ so doxysphinx’s <code class="docutils literal notranslate"><span class="pre">S
 
 <dl class="py function">
 <dt class="sig sig-object py" id="doxysphinx.cli.clean">
-<span class="sig-prename descclassname"><span class="pre">doxysphinx.cli.</span></span><span class="sig-name descname"><span class="pre">clean</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sphinx_source</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pathlib.Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sphinx_output</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pathlib.Path</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#doxysphinx.cli.clean" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">doxysphinx.cli.</span></span><span class="sig-name descname"><span class="pre">clean</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parallel</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sphinx_source</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pathlib.Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sphinx_output</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pathlib.Path</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#doxysphinx.cli.clean" title="Permalink to this definition">¶</a></dt>
 <dd><p>Clean up files created by doxysphinx.</p>
 <p>SPHINX_SOURCE specifies the root of the sphinx source directory tree while SPHINX_OUTPUT specifies the root of the
 sphinx output directory tree. The doxygen html outputs are specified through INPUT (multiple possible) either
@@ -798,11 +807,11 @@ by pointing to the doxygen html output directory or by pointing to the doxygen c
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="../utils/pathlib_fix/index.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="../utils/rst/index.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><code class="xref py py-mod docutils literal notranslate"><span class="pre">doxysphinx.utils.pathlib_fix</span></code></p>
+            <p class="prev-next-title"><code class="xref py py-mod docutils literal notranslate"><span class="pre">doxysphinx.utils.rst</span></code></p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="../doxygen/index.html" title="next page">
@@ -819,7 +828,7 @@ by pointing to the doxygen html output directory or by pointing to the doxygen c
     <footer class="footer">
   <p>
     
-      Last updated on &#39;Thu Apr 6 14:28:45 2023&#39;, &#39;cc8fe1e&#39;.<br/>
+      Last updated on &#39;Thu Apr 20 08:34:04 2023&#39;, &#39;d0a6476&#39;.<br/>
   </p>
 </footer>
 </main>

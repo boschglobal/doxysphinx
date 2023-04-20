@@ -24,6 +24,7 @@ Functions
    doxysphinx.utils.files.multi_glob
    doxysphinx.utils.files.copy_if_different
    doxysphinx.utils.files.stringify_paths
+   doxysphinx.utils.files.hash_blake2b
 
 
 
@@ -64,7 +65,7 @@ Functions
    :returns: The list of found files/directories
 
 
-.. py:function:: copy_if_different(source_dir: pathlib.Path, target_dir: pathlib.Path, *patterns: str) -> List[pathlib.Path]
+.. py:function:: copy_if_different(source_dir: pathlib.Path, target_dir: pathlib.Path, *patterns: str, ignore_files: Optional[List[pathlib.Path]] = None) -> List[pathlib.Path]
 
     Copy files with given glob patterns from source_dir to target_dir but only if the files are different.
 
@@ -77,5 +78,16 @@ Functions
 .. py:function:: stringify_paths(paths: Iterable[pathlib.Path]) -> str
 
    Convert a list of paths to a bulleted string where each path is on a new line.
+
+
+.. py:function:: hash_blake2b(file: pathlib.Path, chunk_size: int = 65536) -> str
+
+   Fast file hash based on blake2b hash algorithm.
+
+   :param file: Path to a file to calculate the hash for
+   :param chunk_size: The size of the chunks that are read from the file. Use this if you really need to
+       optimize for performance for your special use case. Note that the default (64k) turned out the fastest
+       in some very naive adhoc tests... so there may be room for improvement here.
+
 
 

@@ -1,7 +1,7 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -56,7 +56,7 @@
     <link rel="next" title="Comment Syntax" href="comment_styles_syntax.html" />
     <link rel="prev" title="Rst Block Syntax" href="rst_block_syntax.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
+    <meta name="docsearch:language" content="en">
     
 
     <!-- Google Analytics -->
@@ -345,6 +345,15 @@
          <code class="xref py py-mod docutils literal notranslate">
           <span class="pre">
            doxysphinx.utils.pathlib_fix
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../auto_api/doxysphinx/utils/rst/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           doxysphinx.utils.rst
           </span>
          </code>
         </a>
@@ -696,7 +705,7 @@ which will then be picked up by sphinx to create the final html.</p>
 </li>
 <li><p><strong>Doxygen interpretation/preprocessing</strong></p>
 <p>The main use case for inline rst are sphinx roles which are normally (in rst) written in a form like:</p>
-<div class="highlight-plain notranslate"><div class="highlight"><pre><span></span>:role_name:`role_content`
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>:role_name:<span class="nv">`role_content`</span>
 </pre></div>
 </div>
 <p>but doxygens internal markdown support will parse the backticks as markdown inline code block and renders
@@ -796,7 +805,7 @@ code syntax because of doxygens parser.</p>
     <footer class="footer">
   <p>
     
-      Last updated on &#39;Thu Apr 6 14:28:45 2023&#39;, &#39;cc8fe1e&#39;.<br/>
+      Last updated on &#39;Thu Apr 20 08:34:04 2023&#39;, &#39;d0a6476&#39;.<br/>
   </p>
 </footer>
 </main>

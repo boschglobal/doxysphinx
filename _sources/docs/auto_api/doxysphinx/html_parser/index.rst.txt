@@ -62,12 +62,13 @@ Classes
    .. py:attribute:: used_snippet_formats
       :type: Optional[Set[str]]
 
-      The list of snippet format that are used inside the html tree if any.
+      The list of snippet formats that are used inside the html tree if any.
 
    .. py:attribute:: tree
-      :type: lxml.etree._ElementTree
+      :type: Optional[lxml.etree._ElementTree]
 
-      The html/xml element tree.
+      The html/xml element tree or None if nothing was parsed because the html shouldn't be handled as mixed
+      mode content.
 
 
 .. py:class:: HtmlParser(source_directory: pathlib.Path)
@@ -210,8 +211,7 @@ Classes
    the raw html directive. However this will destroy the newlines in pre tags. To overcome that
    We change the pre output here to a div with inner line divs (which is also supported by doxygen).
 
-   This should be the last processor applied (when everything else is done).
-   The reason is that it gets really hard to debug if we change the structure inbetween processors.
+   This processor is special because it should only run when any other processor has done something.
 
    .. py:attribute:: elements
       :value: ['pre']

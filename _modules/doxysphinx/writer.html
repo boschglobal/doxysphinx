@@ -1,7 +1,7 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -54,7 +54,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
+    <meta name="docsearch:language" content="en">
     
 
     <!-- Google Analytics -->
@@ -347,6 +347,15 @@
          </code>
         </a>
        </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../docs/auto_api/doxysphinx/utils/rst/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           doxysphinx.utils.rst
+          </span>
+         </code>
+        </a>
+       </li>
       </ul>
      </li>
      <li class="toctree-l3">
@@ -633,7 +642,7 @@
         <span class="n">toc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_toc_gen</span><span class="o">.</span><span class="n">generate_toc_for</span><span class="p">(</span><span class="n">html_file</span><span class="p">)</span>
         <span class="n">content</span> <span class="o">=</span> <span class="p">[]</span>
 
-        <span class="k">if</span> <span class="n">parse_result</span><span class="o">.</span><span class="n">used_snippet_formats</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">tree</span><span class="p">:</span>
             <span class="c1"># for rst containing htmls we create a mixed (raw html + rst block) rst</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;writing mixed rst for </span><span class="si">{</span><span class="n">parse_result</span><span class="o">.</span><span class="n">html_input_file</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
             <span class="n">content</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_mixed_rst</span><span class="p">(</span><span class="n">tree</span><span class="p">))</span>
@@ -835,7 +844,7 @@
     <footer class="footer">
   <p>
     
-      Last updated on &#39;Thu Apr 6 14:28:45 2023&#39;, &#39;cc8fe1e&#39;.<br/>
+      Last updated on &#39;Thu Apr 20 08:34:04 2023&#39;, &#39;d0a6476&#39;.<br/>
   </p>
 </footer>
 </main>

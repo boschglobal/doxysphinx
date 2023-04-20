@@ -1,7 +1,7 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -54,7 +54,7 @@
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
+    <meta name="docsearch:language" content="en">
     
 
     <!-- Google Analytics -->
@@ -347,6 +347,15 @@
          </code>
         </a>
        </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../docs/auto_api/doxysphinx/utils/rst/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           doxysphinx.utils.rst
+          </span>
+         </code>
+        </a>
+       </li>
       </ul>
      </li>
      <li class="toctree-l3">
@@ -533,6 +542,7 @@
 <span class="c1"># =====================================================================================</span>
 <span class="sd">&quot;&quot;&quot;The files module contains several file related helper functions.&quot;&quot;&quot;</span>
 
+<span class="kn">import</span> <span class="nn">hashlib</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">shutil</span>
 <span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
@@ -617,7 +627,9 @@
         <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="fm">__repr__</span><span class="p">()</span><span class="si">}</span><span class="s2"> [</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="si">}</span><span class="s2">]&quot;</span>
 
 
-<div class="viewcode-block" id="copy_if_different"><a class="viewcode-back" href="../../../docs/auto_api/doxysphinx/utils/files/index.html#doxysphinx.utils.files.copy_if_different">[docs]</a><span class="k">def</span> <span class="nf">copy_if_different</span><span class="p">(</span><span class="n">source_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">target_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="o">*</span><span class="n">patterns</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Path</span><span class="p">]:</span>
+<div class="viewcode-block" id="copy_if_different"><a class="viewcode-back" href="../../../docs/auto_api/doxysphinx/utils/files/index.html#doxysphinx.utils.files.copy_if_different">[docs]</a><span class="k">def</span> <span class="nf">copy_if_different</span><span class="p">(</span>
+    <span class="n">source_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">target_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="o">*</span><span class="n">patterns</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">ignore_files</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Path</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Path</span><span class="p">]:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">     Copy files with given glob patterns from source_dir to target_dir but only if the files are different.</span>
 
@@ -635,16 +647,28 @@
 
     <span class="c1"># for each source file try to find a target (an existing file)</span>
     <span class="n">source_files</span> <span class="o">=</span> <span class="n">multi_glob</span><span class="p">(</span><span class="n">source_dir</span><span class="p">,</span> <span class="o">*</span><span class="n">patterns</span><span class="p">)</span>
-    <span class="n">target_files</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Path</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">t</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="p">[</span><span class="n">target_dir</span> <span class="o">/</span> <span class="n">f</span><span class="o">.</span><span class="n">relative_to</span><span class="p">(</span><span class="n">source_dir</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">source_files</span><span class="p">]</span> <span class="k">if</span> <span class="n">t</span><span class="o">.</span><span class="n">exists</span><span class="p">()]</span>
+    <span class="k">if</span> <span class="n">ignore_files</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">ignored</span> <span class="ow">in</span> <span class="n">ignore_files</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">ignored</span> <span class="ow">in</span> <span class="n">source_files</span><span class="p">:</span>
+                <span class="n">source_files</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">ignored</span><span class="p">)</span>
 
-    <span class="c1"># create the set difference to find the files that need to be copied</span>
-    <span class="n">source_files_set</span> <span class="o">=</span> <span class="p">{</span><span class="n">_FileByNameAndSize</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">source_files</span><span class="p">}</span>
-    <span class="n">target_files_set</span> <span class="o">=</span> <span class="p">{</span><span class="n">_FileByNameAndSize</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">target_files</span><span class="p">}</span>
-    <span class="n">files_to_copy</span> <span class="o">=</span> <span class="n">source_files_set</span> <span class="o">-</span> <span class="n">target_files_set</span>
+    <span class="c1"># if the target directory is not empty then get the files to copy based on size...</span>
+    <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="n">target_dir</span><span class="p">)</span><span class="o">.</span><span class="n">iterdir</span><span class="p">()):</span>
+        <span class="n">target_files</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Path</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="n">t</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="p">[</span><span class="n">target_dir</span> <span class="o">/</span> <span class="n">f</span><span class="o">.</span><span class="n">relative_to</span><span class="p">(</span><span class="n">source_dir</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">source_files</span><span class="p">]</span> <span class="k">if</span> <span class="n">t</span><span class="o">.</span><span class="n">exists</span><span class="p">()</span>
+        <span class="p">]</span>
+
+        <span class="c1"># create the set difference to find the files that need to be copied</span>
+        <span class="n">source_files_set</span> <span class="o">=</span> <span class="p">{</span><span class="n">_FileByNameAndSize</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">source_files</span><span class="p">}</span>
+        <span class="n">target_files_set</span> <span class="o">=</span> <span class="p">{</span><span class="n">_FileByNameAndSize</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">target_files</span><span class="p">}</span>
+        <span class="n">files_to_copy</span> <span class="o">=</span> <span class="p">[</span><span class="n">f</span><span class="o">.</span><span class="n">path</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="p">(</span><span class="n">source_files_set</span> <span class="o">-</span> <span class="n">target_files_set</span><span class="p">)]</span>
+    <span class="c1"># else just take all source files</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">files_to_copy</span> <span class="o">=</span> <span class="n">source_files</span>
 
     <span class="n">result</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Path</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">files_to_copy</span><span class="p">:</span>
-        <span class="n">source_file</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">path</span>
+        <span class="n">source_file</span> <span class="o">=</span> <span class="n">file</span>
         <span class="n">target_file</span> <span class="o">=</span> <span class="n">target_dir</span> <span class="o">/</span> <span class="n">source_file</span><span class="o">.</span><span class="n">relative_to</span><span class="p">(</span><span class="n">source_dir</span><span class="p">)</span>
         <span class="n">target_file</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
         <span class="n">shutil</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">source_file</span><span class="p">,</span> <span class="n">target_file</span><span class="p">)</span>
@@ -659,6 +683,25 @@
     <span class="k">if</span> <span class="ow">not</span> <span class="n">path_list</span><span class="p">:</span>
         <span class="k">return</span> <span class="s2">&quot;[]&quot;</span>
     <span class="k">return</span> <span class="s2">&quot;- &quot;</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">- &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path_list</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="hash_blake2b"><a class="viewcode-back" href="../../../docs/auto_api/doxysphinx/utils/files/index.html#doxysphinx.utils.files.hash_blake2b">[docs]</a><span class="k">def</span> <span class="nf">hash_blake2b</span><span class="p">(</span><span class="n">file</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">chunk_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">65536</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Fast file hash based on blake2b hash algorithm.</span>
+
+<span class="sd">    :param file: Path to a file to calculate the hash for</span>
+<span class="sd">    :param chunk_size: The size of the chunks that are read from the file. Use this if you really need to</span>
+<span class="sd">        optimize for performance for your special use case. Note that the default (64k) turned out the fastest</span>
+<span class="sd">        in some very naive adhoc tests... so there may be room for improvement here.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">with</span> <span class="n">file</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">file_hash</span> <span class="o">=</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">blake2b</span><span class="p">()</span>
+        <span class="k">while</span> <span class="n">chunk</span> <span class="o">:=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">chunk_size</span><span class="p">):</span>
+            <span class="n">file_hash</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">chunk</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">file_hash</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span></div>
+
+
+<span class="c1"># TODO/IDEA try out murmur3 implementation once it&#39;s hashlib compilant (https://github.com/hajimes/mmh3/issues/39)</span>
 </pre></div>
 
               </div>
@@ -673,7 +716,7 @@
     <footer class="footer">
   <p>
     
-      Last updated on &#39;Thu Apr 6 14:28:45 2023&#39;, &#39;cc8fe1e&#39;.<br/>
+      Last updated on &#39;Thu Apr 20 08:34:04 2023&#39;, &#39;d0a6476&#39;.<br/>
   </p>
 </footer>
 </main>

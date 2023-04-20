@@ -1,7 +1,7 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -56,7 +56,7 @@
     <link rel="next" title="doxysphinx.utils.iterators" href="../iterators/index.html" />
     <link rel="prev" title="doxysphinx.utils.exceptions" href="../exceptions/index.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
+    <meta name="docsearch:language" content="en">
     
 
     <!-- Google Analytics -->
@@ -349,6 +349,15 @@
          </code>
         </a>
        </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../rst/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           doxysphinx.utils.rst
+          </span>
+         </code>
+        </a>
+       </li>
       </ul>
      </li>
      <li class="toctree-l3">
@@ -570,6 +579,11 @@
        stringify_paths
       </a>
      </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#doxysphinx.utils.files.hash_blake2b">
+       hash_blake2b
+      </a>
+     </li>
     </ul>
    </li>
   </ul>
@@ -634,6 +648,11 @@
        stringify_paths
       </a>
      </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#doxysphinx.utils.files.hash_blake2b">
+       hash_blake2b
+      </a>
+     </li>
     </ul>
    </li>
   </ul>
@@ -677,6 +696,9 @@
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#doxysphinx.utils.files.stringify_paths" title="doxysphinx.utils.files.stringify_paths"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stringify_paths</span></code></a>(→ str)</p></td>
 <td><p>Convert a list of paths to a bulleted string where each path is on a new line.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#doxysphinx.utils.files.hash_blake2b" title="doxysphinx.utils.files.hash_blake2b"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hash_blake2b</span></code></a>(→ str)</p></td>
+<td><p>Fast file hash based on blake2b hash algorithm.</p></td>
 </tr>
 </tbody>
 </table>
@@ -745,7 +767,7 @@ if you want to force a windows “crlf” file use ‘rn’., defaults to None</
 
 <dl class="py function">
 <dt class="sig sig-object py" id="doxysphinx.utils.files.copy_if_different">
-<span class="sig-prename descclassname"><span class="pre">doxysphinx.utils.files.</span></span><span class="sig-name descname"><span class="pre">copy_if_different</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pathlib.Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pathlib.Path</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">patterns</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">pathlib.Path</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../../../../_modules/doxysphinx/utils/files.html#copy_if_different"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#doxysphinx.utils.files.copy_if_different" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">doxysphinx.utils.files.</span></span><span class="sig-name descname"><span class="pre">copy_if_different</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pathlib.Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pathlib.Path</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">patterns</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore_files</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">pathlib.Path</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">pathlib.Path</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../../../../_modules/doxysphinx/utils/files.html#copy_if_different"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#doxysphinx.utils.files.copy_if_different" title="Permalink to this definition">¶</a></dt>
 <dd><blockquote>
 <div><p>Copy files with given glob patterns from source_dir to target_dir but only if the files are different.</p>
 </div></blockquote>
@@ -767,6 +789,22 @@ if you want to force a windows “crlf” file use ‘rn’., defaults to None</
 <dt class="sig sig-object py" id="doxysphinx.utils.files.stringify_paths">
 <span class="sig-prename descclassname"><span class="pre">doxysphinx.utils.files.</span></span><span class="sig-name descname"><span class="pre">stringify_paths</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paths</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">pathlib.Path</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../../../../../_modules/doxysphinx/utils/files.html#stringify_paths"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#doxysphinx.utils.files.stringify_paths" title="Permalink to this definition">¶</a></dt>
 <dd><p>Convert a list of paths to a bulleted string where each path is on a new line.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="doxysphinx.utils.files.hash_blake2b">
+<span class="sig-prename descclassname"><span class="pre">doxysphinx.utils.files.</span></span><span class="sig-name descname"><span class="pre">hash_blake2b</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pathlib.Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chunk_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">65536</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../../../../../_modules/doxysphinx/utils/files.html#hash_blake2b"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#doxysphinx.utils.files.hash_blake2b" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fast file hash based on blake2b hash algorithm.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>file</strong> – Path to a file to calculate the hash for</p></li>
+<li><p><strong>chunk_size</strong> – The size of the chunks that are read from the file. Use this if you really need to
+optimize for performance for your special use case. Note that the default (64k) turned out the fastest
+in some very naive adhoc tests… so there may be room for improvement here.</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 </div>
@@ -800,7 +838,7 @@ if you want to force a windows “crlf” file use ‘rn’., defaults to None</
     <footer class="footer">
   <p>
     
-      Last updated on &#39;Thu Apr 6 14:28:45 2023&#39;, &#39;cc8fe1e&#39;.<br/>
+      Last updated on &#39;Thu Apr 20 08:34:04 2023&#39;, &#39;d0a6476&#39;.<br/>
   </p>
 </footer>
 </main>

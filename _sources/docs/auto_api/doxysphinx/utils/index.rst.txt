@@ -20,5 +20,6 @@ Submodules
    files/index.rst
    iterators/index.rst
    pathlib_fix/index.rst
+   rst/index.rst
 
 

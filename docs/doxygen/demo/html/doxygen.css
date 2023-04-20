@@ -1,3 +1,4 @@
+/* d809cc658cd40e3f5571a7220749396da27e304024e0300a9bbb1d8920a74f83f17757e4e80f5271436ed6bc925829c46b1b68c7fb518a8839569a0ffc4c1983 <- doxysphinx hash digest for the original input css that leadsto the css below */
 .doxygen-content {
   /* The standard CSS for doxygen 1.9.1 */
   /* @group Heading Levels */
@@ -7,23 +8,23 @@
   /* @group Code Colorization */
   /* @end */
   /*
-  .search {
-  	color: #003399;
-  	font-weight: bold;
-  }
+.search {
+	color: #003399;
+	font-weight: bold;
+}
 
-  form.search {
-  	margin-bottom: 0px;
-  	margin-top: 0px;
-  }
+form.search {
+	margin-bottom: 0px;
+	margin-top: 0px;
+}
 
-  input.search {
-  	font-size: 75%;
-  	color: #000080;
-  	font-weight: normal;
-  	background-color: #e8eef2;
-  }
-  */
+input.search {
+	font-size: 75%;
+	color: #000080;
+	font-weight: normal;
+	background-color: #e8eef2;
+}
+*/
   /* @group Member Descriptions */
   /* @end */
   /* @group Member Details */
@@ -36,21 +37,26 @@
   /* @group Markdown */
   /* @end */
 }
+
 .doxygen-content body, .doxygen-content table, .doxygen-content div, .doxygen-content p, .doxygen-content dl {
-  font: 400 14px/22px Roboto, sans-serif;
+  font: 400 14px/22px Roboto,sans-serif;
 }
+
 .doxygen-content p.reference, .doxygen-content p.definition {
-  font: 400 14px/22px Roboto, sans-serif;
+  font: 400 14px/22px Roboto,sans-serif;
 }
+
 .doxygen-content h1.groupheader {
   font-size: 150%;
 }
+
 .doxygen-content .title {
-  font: 400 14px/28px Roboto, sans-serif;
+  font: 400 14px/28px Roboto,sans-serif;
   font-size: 150%;
   font-weight: bold;
   margin: 10px 2px;
 }
+
 .doxygen-content h2.groupheader {
   border-bottom: 1px solid #879ECB;
   color: #354C7B;
@@ -61,9 +67,11 @@
   padding-bottom: 4px;
   width: 100%;
 }
+
 .doxygen-content h3.groupheader {
   font-size: 100%;
 }
+
 .doxygen-content h1, .doxygen-content h2, .doxygen-content h3, .doxygen-content h4, .doxygen-content h5, .doxygen-content h6 {
   -webkit-transition: text-shadow 0.5s linear;
   -moz-transition: text-shadow 0.5s linear;
@@ -72,12 +80,15 @@
   transition: text-shadow 0.5s linear;
   margin-right: 15px;
 }
+
 .doxygen-content h1.glow, .doxygen-content h2.glow, .doxygen-content h3.glow, .doxygen-content h4.glow, .doxygen-content h5.glow, .doxygen-content h6.glow {
   text-shadow: 0 0 15px cyan;
 }
+
 .doxygen-content dt {
   font-weight: bold;
 }
+
 .doxygen-content ul.multicol {
   -moz-column-gap: 1em;
   -webkit-column-gap: 1em;
@@ -86,62 +97,78 @@
   -webkit-column-count: 3;
   column-count: 3;
 }
+
 .doxygen-content p.startli, .doxygen-content p.startdd {
   margin-top: 2px;
 }
+
 .doxygen-content th p.starttd, .doxygen-content th p.intertd, .doxygen-content th p.endtd {
   font-size: 100%;
   font-weight: 700;
 }
+
 .doxygen-content p.starttd {
   margin-top: 0px;
 }
+
 .doxygen-content p.endli {
   margin-bottom: 0px;
 }
+
 .doxygen-content p.enddd {
   margin-bottom: 4px;
 }
+
 .doxygen-content p.endtd {
   margin-bottom: 2px;
 }
+
 .doxygen-content caption {
   font-weight: bold;
 }
+
 .doxygen-content span.legend {
   font-size: 70%;
   text-align: center;
 }
+
 .doxygen-content h3.version {
   font-size: 90%;
   text-align: center;
 }
+
 .doxygen-content div.navtab {
   border-right: 1px solid #A3B4D7;
   padding-right: 15px;
   text-align: right;
   line-height: 110%;
 }
+
 .doxygen-content div.navtab table {
   border-spacing: 0;
 }
+
 .doxygen-content td.navtab {
   padding-right: 6px;
   padding-left: 6px;
 }
+
 .doxygen-content td.navtabHL {
   background-image: url("tab_a.png");
   background-repeat: repeat-x;
   padding-right: 6px;
   padding-left: 6px;
 }
+
 .doxygen-content td.navtabHL a, .doxygen-content td.navtabHL a:visited {
   color: #fff;
   text-shadow: 0px 1px 1px black;
 }
+
 .doxygen-content a.navtab {
   font-weight: bold;
 }
+
 .doxygen-content div.qindex {
   text-align: center;
   width: 100%;
@@ -149,77 +176,97 @@
   font-size: 130%;
   color: #A0A0A0;
 }
+
 .doxygen-content dt.alphachar {
   font-size: 180%;
   font-weight: bold;
 }
+
 .doxygen-content .alphachar a {
   color: black;
 }
+
 .doxygen-content .alphachar a:hover, .doxygen-content .alphachar a:visited {
   text-decoration: none;
 }
+
 .doxygen-content .classindex dl {
   padding: 25px;
   column-count: 1;
 }
+
 .doxygen-content .classindex dd {
   display: inline-block;
   margin-left: 50px;
   width: 90%;
   line-height: 1.15em;
 }
+
 .doxygen-content .classindex dl.odd {
   background-color: #F8F9FC;
 }
+
 @media (min-width: 1120px) {
   .doxygen-content .classindex dl {
     column-count: 2;
   }
 }
+
 @media (min-width: 1320px) {
   .doxygen-content .classindex dl {
     column-count: 3;
   }
 }
+
 .doxygen-content a {
   color: #3D578C;
   font-weight: normal;
   text-decoration: none;
 }
+
 .doxygen-content .contents a:visited {
   color: #4665A2;
 }
+
 .doxygen-content a:hover {
   text-decoration: underline;
 }
+
 .doxygen-content .contents a.qindexHL:visited {
   color: #FFFFFF;
 }
+
 .doxygen-content a.el {
   font-weight: bold;
 }
+
 .doxygen-content a.code, .doxygen-content a.code:visited, .doxygen-content a.line, .doxygen-content a.line:visited {
   color: #4665A2;
 }
+
 .doxygen-content a.codeRef, .doxygen-content a.codeRef:visited, .doxygen-content a.lineRef, .doxygen-content a.lineRef:visited {
   color: #4665A2;
 }
+
 .doxygen-content dl.el {
   margin-left: -1cm;
 }
+
 .doxygen-content ul {
   overflow: hidden;
   /*Fixed: list item bullets overlap floating elements*/
 }
+
 .doxygen-content #side-nav ul {
   overflow: visible;
   /* reset ul rule for scroll bar in GENERATE_TREEVIEW window */
 }
+
 .doxygen-content #main-nav ul {
   overflow: visible;
   /* reset ul rule for the navigation bar drop down lists */
 }
+
 .doxygen-content .fragment {
   text-align: left;
   direction: ltr;
@@ -227,6 +274,7 @@
   /*Fixed: fragment lines overlap floating elements*/
   overflow-y: hidden;
 }
+
 .doxygen-content pre.fragment {
   border: 1px solid #C4CFE5;
   background-color: #FBFCFD;
@@ -239,6 +287,7 @@
   font-family: monospace, fixed;
   font-size: 105%;
 }
+
 .doxygen-content div.fragment {
   padding: 0 0 1px 0;
   /*Fixed: last line underline overlap border*/
@@ -246,11 +295,12 @@
   background-color: #FBFCFD;
   border: 1px solid #C4CFE5;
 }
+
 .doxygen-content div.line {
   font-family: monospace, fixed;
   font-size: 13px;
   min-height: 13px;
-  line-height: 1;
+  line-height: 1.0;
   text-wrap: unrestricted;
   white-space: -moz-pre-wrap;
   /* Moz */
@@ -277,14 +327,17 @@
   transition-property: background-color, box-shadow;
   transition-duration: 0.5s;
 }
+
 .doxygen-content div.line:after {
-  content: "\a";
+  content: "\000A";
   white-space: pre;
 }
+
 .doxygen-content div.line.glow {
   background-color: cyan;
   box-shadow: 0 0 10px cyan;
 }
+
 .doxygen-content span.lineno {
   padding-right: 4px;
   text-align: right;
@@ -292,12 +345,15 @@
   background-color: #E8E8E8;
   white-space: pre;
 }
+
 .doxygen-content span.lineno a {
   background-color: #D8D8D8;
 }
+
 .doxygen-content span.lineno a:hover {
   background-color: #C8C8C8;
 }
+
 .doxygen-content .lineno {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -306,6 +362,7 @@
   -ms-user-select: none;
   user-select: none;
 }
+
 .doxygen-content div.ah, .doxygen-content span.ah {
   background-color: black;
   font-weight: bold;
@@ -315,40 +372,47 @@
   padding: 0.2em;
   border: solid thin #333;
   border-radius: 0.5em;
-  -webkit-border-radius: 0.5em;
-  -moz-border-radius: 0.5em;
+  -webkit-border-radius: .5em;
+  -moz-border-radius: .5em;
   box-shadow: 2px 2px 3px #999;
   -webkit-box-shadow: 2px 2px 3px #999;
   -moz-box-shadow: rgba(0, 0, 0, 0.15) 2px 2px 2px;
   background-image: -webkit-gradient(linear, left top, left bottom, from(#eee), to(#000), color-stop(0.3, #444));
   background-image: -moz-linear-gradient(center top, #eee 0%, #444 40%, #000 110%);
 }
+
 .doxygen-content div.classindex ul {
   list-style: none;
   padding-left: 0;
 }
+
 .doxygen-content div.classindex span.ai {
   display: inline-block;
 }
+
 .doxygen-content div.groupHeader {
   margin-left: 16px;
   margin-top: 12px;
   font-weight: bold;
 }
+
 .doxygen-content div.groupText {
   margin-left: 16px;
   font-style: italic;
 }
+
 .doxygen-content body {
   background-color: white;
   color: black;
   margin: 0;
 }
+
 .doxygen-content div.contents {
   margin-top: 10px;
   margin-left: 12px;
   margin-right: 8px;
 }
+
 .doxygen-content td.indexkey {
   background-color: #EBEFF6;
   font-weight: bold;
@@ -358,107 +422,135 @@
   white-space: nowrap;
   vertical-align: top;
 }
+
 .doxygen-content td.indexvalue {
   background-color: #EBEFF6;
   border: 1px solid #C4CFE5;
   padding: 2px 10px;
   margin: 2px 0px;
 }
+
 .doxygen-content tr.memlist {
   background-color: #EEF1F7;
 }
+
 .doxygen-content p.formulaDsp {
   text-align: center;
 }
+
 .doxygen-content img.formulaInl, .doxygen-content img.inline {
   vertical-align: middle;
 }
+
 .doxygen-content div.center {
   text-align: center;
   margin-top: 0px;
   margin-bottom: 0px;
   padding: 0px;
 }
+
 .doxygen-content div.center img {
   border: 0px;
 }
+
 .doxygen-content address.footer {
   text-align: right;
   padding-right: 12px;
 }
+
 .doxygen-content img.footer {
   border: 0px;
   vertical-align: middle;
 }
+
 .doxygen-content span.keyword {
   color: #008000;
 }
+
 .doxygen-content span.keywordtype {
   color: #604020;
 }
+
 .doxygen-content span.keywordflow {
   color: #e08000;
 }
+
 .doxygen-content span.comment {
   color: #800000;
 }
+
 .doxygen-content span.preprocessor {
   color: #806020;
 }
+
 .doxygen-content span.stringliteral {
   color: #002080;
 }
+
 .doxygen-content span.charliteral {
   color: #008080;
 }
+
 .doxygen-content span.vhdldigit {
   color: #ff00ff;
 }
+
 .doxygen-content span.vhdlchar {
   color: #000000;
 }
+
 .doxygen-content span.vhdlkeyword {
   color: #700070;
 }
+
 .doxygen-content span.vhdllogic {
   color: #ff0000;
 }
+
 .doxygen-content blockquote {
   background-color: #F7F8FB;
   border-left: 2px solid #9CAFD4;
   margin: 0 24px 0 4px;
   padding: 0 12px 0 16px;
 }
+
 .doxygen-content blockquote.DocNodeRTL {
   border-left: 0;
   border-right: 2px solid #9CAFD4;
   margin: 0 4px 0 24px;
   padding: 0 16px 0 12px;
 }
+
 .doxygen-content td.tiny {
   font-size: 75%;
 }
+
 .doxygen-content .dirtab {
   padding: 4px;
   border-collapse: collapse;
   border: 1px solid #A3B4D7;
 }
+
 .doxygen-content th.dirtab {
   background: #EBEFF6;
   font-weight: bold;
 }
+
 .doxygen-content hr {
   height: 0px;
   border: none;
   border-top: 1px solid #4A6AAA;
 }
+
 .doxygen-content hr.footer {
   height: 1px;
 }
+
 .doxygen-content table.memberdecls {
   border-spacing: 0px;
   padding: 0px;
 }
+
 .doxygen-content .memberdecls td, .doxygen-content .fieldtable tr {
   -webkit-transition-property: background-color, box-shadow;
   -webkit-transition-duration: 0.5s;
@@ -471,10 +563,12 @@
   transition-property: background-color, box-shadow;
   transition-duration: 0.5s;
 }
+
 .doxygen-content .memberdecls td.glow, .doxygen-content .fieldtable tr.glow {
   background-color: cyan;
   box-shadow: 0 0 15px cyan;
 }
+
 .doxygen-content .mdescLeft, .doxygen-content .mdescRight,
 .doxygen-content .memItemLeft, .doxygen-content .memItemRight,
 .doxygen-content .memTemplItemLeft, .doxygen-content .memTemplItemRight, .doxygen-content .memTemplParams {
@@ -483,27 +577,33 @@
   margin: 4px;
   padding: 1px 0 0 8px;
 }
+
 .doxygen-content .mdescLeft, .doxygen-content .mdescRight {
   padding: 0px 8px 4px 8px;
   color: #555;
 }
+
 .doxygen-content .memSeparator {
   border-bottom: 1px solid #DEE4F0;
   line-height: 1px;
   margin: 0px;
   padding: 0px;
 }
+
 .doxygen-content .memItemLeft, .doxygen-content .memTemplItemLeft {
   white-space: nowrap;
 }
+
 .doxygen-content .memItemRight, .doxygen-content .memTemplItemRight {
   width: 100%;
 }
+
 .doxygen-content .memTemplParams {
   color: #4665A2;
   white-space: nowrap;
   font-size: 80%;
 }
+
 .doxygen-content .memtitle {
   padding: 8px;
   border-top: 1px solid #A8B8D9;
@@ -519,17 +619,20 @@
   font-weight: 300;
   float: left;
 }
+
 .doxygen-content .permalink {
   font-size: 65%;
   display: inline-block;
   vertical-align: middle;
 }
+
 .doxygen-content .memtemplate {
   font-size: 80%;
   color: #4665A2;
   font-weight: normal;
   margin-left: 9px;
 }
+
 .doxygen-content .memnav {
   background-color: #EBEFF6;
   border: 1px solid #A3B4D7;
@@ -538,9 +641,11 @@
   margin-right: 15px;
   padding: 2px;
 }
+
 .doxygen-content .mempage {
   width: 100%;
 }
+
 .doxygen-content .memitem {
   padding: 0;
   margin-bottom: 10px;
@@ -553,16 +658,20 @@
   display: table !important;
   width: 100%;
 }
+
 .doxygen-content .memitem.glow {
   box-shadow: 0 0 15px cyan;
 }
+
 .doxygen-content .memname {
   font-weight: 400;
   margin-left: 6px;
 }
+
 .doxygen-content .memname td {
   vertical-align: bottom;
 }
+
 .doxygen-content .memproto, .doxygen-content dl.reflist dt {
   border-top: 1px solid #A8B8D9;
   border-left: 1px solid #A8B8D9;
@@ -582,10 +691,12 @@
   -webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.15);
   -webkit-border-top-right-radius: 4px;
 }
+
 .doxygen-content .overload {
-  font-family: "courier new", courier, monospace;
+  font-family: "courier new",courier,monospace;
   font-size: 65%;
 }
+
 .doxygen-content .memdoc, .doxygen-content dl.reflist dd {
   border-bottom: 1px solid #A8B8D9;
   border-left: 1px solid #A8B8D9;
@@ -609,60 +720,76 @@
   -webkit-border-bottom-right-radius: 4px;
   -webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.15);
 }
+
 .doxygen-content dl.reflist dt {
   padding: 5px;
 }
+
 .doxygen-content dl.reflist dd {
   margin: 0px 0px 10px 0px;
   padding: 5px;
 }
+
 .doxygen-content .paramkey {
   text-align: right;
 }
+
 .doxygen-content .paramtype {
   white-space: nowrap;
 }
+
 .doxygen-content .paramname {
   color: #602020;
   white-space: nowrap;
 }
+
 .doxygen-content .paramname em {
   font-style: normal;
 }
+
 .doxygen-content .paramname code {
   line-height: 14px;
 }
+
 .doxygen-content .params, .doxygen-content .retval, .doxygen-content .exception, .doxygen-content .tparams {
   margin-left: 0px;
   padding-left: 0px;
 }
+
 .doxygen-content .params .paramname, .doxygen-content .retval .paramname, .doxygen-content .tparams .paramname, .doxygen-content .exception .paramname {
   font-weight: bold;
   vertical-align: top;
 }
+
 .doxygen-content .params .paramtype, .doxygen-content .tparams .paramtype {
   font-style: italic;
   vertical-align: top;
 }
+
 .doxygen-content .params .paramdir, .doxygen-content .tparams .paramdir {
-  font-family: "courier new", courier, monospace;
+  font-family: "courier new",courier,monospace;
   vertical-align: top;
 }
+
 .doxygen-content table.mlabels {
   border-spacing: 0px;
 }
+
 .doxygen-content td.mlabels-left {
   width: 100%;
   padding: 0px;
 }
+
 .doxygen-content td.mlabels-right {
   vertical-align: bottom;
   padding: 0px;
   white-space: nowrap;
 }
+
 .doxygen-content span.mlabels {
   margin-left: 8px;
 }
+
 .doxygen-content span.mlabel {
   background-color: #728DC1;
   border-top: 1px solid #5373B4;
@@ -678,31 +805,38 @@
   white-space: nowrap;
   vertical-align: middle;
 }
+
 .doxygen-content div.directory {
   margin: 10px 0px;
   border-top: 1px solid #9CAFD4;
   border-bottom: 1px solid #9CAFD4;
   width: 100%;
 }
+
 .doxygen-content .directory table {
   border-collapse: collapse;
 }
+
 .doxygen-content .directory td {
   margin: 0px;
   padding: 0px;
   vertical-align: top;
 }
+
 .doxygen-content .directory td.entry {
   white-space: nowrap;
   padding-right: 6px;
   padding-top: 3px;
 }
+
 .doxygen-content .directory td.entry a {
   outline: none;
 }
+
 .doxygen-content .directory td.entry a img {
   border: none;
 }
+
 .doxygen-content .directory td.desc {
   width: 100%;
   padding-left: 6px;
@@ -710,25 +844,30 @@
   padding-top: 3px;
   border-left: 1px solid rgba(0, 0, 0, 0.05);
 }
+
 .doxygen-content .directory tr.even {
   padding-left: 6px;
   background-color: #F7F8FB;
 }
+
 .doxygen-content .directory img {
   vertical-align: -30%;
 }
+
 .doxygen-content .directory .levels {
   white-space: nowrap;
   width: 100%;
   text-align: right;
   font-size: 9pt;
 }
+
 .doxygen-content .directory .levels span {
   cursor: pointer;
   padding-left: 2px;
   padding-right: 2px;
   color: #3D578C;
 }
+
 .doxygen-content .arrow {
   color: #9CAFD4;
   -webkit-user-select: none;
@@ -742,6 +881,7 @@
   width: 16px;
   height: 22px;
 }
+
 .doxygen-content .icon {
   font-family: Arial, Helvetica;
   font-weight: bold;
@@ -756,11 +896,13 @@
   margin-left: 2px;
   margin-right: 2px;
 }
+
 .doxygen-content .icona {
   width: 24px;
   height: 22px;
   display: inline-block;
 }
+
 .doxygen-content .iconfopen {
   width: 24px;
   height: 18px;
@@ -771,6 +913,7 @@
   vertical-align: top;
   display: inline-block;
 }
+
 .doxygen-content .iconfclosed {
   width: 24px;
   height: 18px;
@@ -781,6 +924,7 @@
   vertical-align: top;
   display: inline-block;
 }
+
 .doxygen-content .icondoc {
   width: 24px;
   height: 18px;
@@ -791,9 +935,11 @@
   vertical-align: top;
   display: inline-block;
 }
+
 .doxygen-content table.directory {
-  font: 400 14px Roboto, sans-serif;
+  font: 400 14px Roboto,sans-serif;
 }
+
 .doxygen-content div.dynheader {
   margin-top: 8px;
   -webkit-touch-callout: none;
@@ -803,22 +949,27 @@
   -ms-user-select: none;
   user-select: none;
 }
+
 .doxygen-content address {
   font-style: normal;
   color: #2A3D61;
 }
+
 .doxygen-content table.doxtable caption {
   caption-side: top;
 }
+
 .doxygen-content table.doxtable {
   border-collapse: collapse;
   margin-top: 4px;
   margin-bottom: 4px;
 }
+
 .doxygen-content table.doxtable td, .doxygen-content table.doxtable th {
   border: 1px solid #2D4068;
   padding: 3px 7px 2px;
 }
+
 .doxygen-content table.doxtable th {
   background-color: #374F7F;
   color: #FFFFFF;
@@ -826,6 +977,7 @@
   padding-bottom: 4px;
   padding-top: 5px;
 }
+
 .doxygen-content table.fieldtable {
   /*width: 100%;*/
   margin-bottom: 10px;
@@ -838,31 +990,39 @@
   -webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.15);
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.15);
 }
+
 .doxygen-content .fieldtable td, .doxygen-content .fieldtable th {
   padding: 3px 7px 2px;
 }
+
 .doxygen-content .fieldtable td.fieldtype, .doxygen-content .fieldtable td.fieldname {
   white-space: nowrap;
   border-right: 1px solid #A8B8D9;
   border-bottom: 1px solid #A8B8D9;
   vertical-align: top;
 }
+
 .doxygen-content .fieldtable td.fieldname {
   padding-top: 3px;
 }
+
 .doxygen-content .fieldtable td.fielddoc {
   border-bottom: 1px solid #A8B8D9;
   /*width: 100%;*/
 }
+
 .doxygen-content .fieldtable td.fielddoc p:first-child {
   margin-top: 0px;
 }
+
 .doxygen-content .fieldtable td.fielddoc p:last-child {
   margin-bottom: 2px;
 }
+
 .doxygen-content .fieldtable tr:last-child td {
   border-bottom: none;
 }
+
 .doxygen-content .fieldtable th {
   background-image: url("nav_f.png");
   background-repeat: repeat-x;
@@ -881,6 +1041,7 @@
   border-top-right-radius: 4px;
   border-bottom: 1px solid #A8B8D9;
 }
+
 .doxygen-content .tabsearch {
   top: 0px;
   left: 10px;
@@ -890,6 +1051,7 @@
   overflow: hidden;
   font-size: 13px;
 }
+
 .doxygen-content .navpath ul {
   font-size: 11px;
   background-image: url("tab_b.png");
@@ -903,6 +1065,7 @@
   margin: 0px;
   padding: 0px;
 }
+
 .doxygen-content .navpath li {
   list-style-type: none;
   float: left;
@@ -913,19 +1076,22 @@
   background-position: right;
   color: #364D7C;
 }
+
 .doxygen-content .navpath li.navelem a {
   height: 32px;
   display: block;
   text-decoration: none;
   outline: none;
   color: #283A5D;
-  font-family: "Lucida Grande", Geneva, Helvetica, Arial, sans-serif;
+  font-family: 'Lucida Grande',Geneva,Helvetica,Arial,sans-serif;
   text-shadow: 0px 1px 1px rgba(255, 255, 255, 0.9);
   text-decoration: none;
 }
+
 .doxygen-content .navpath li.navelem a:hover {
   color: #6884BD;
 }
+
 .doxygen-content .navpath li.footer {
   list-style-type: none;
   float: right;
@@ -937,6 +1103,7 @@
   color: #364D7C;
   font-size: 8pt;
 }
+
 .doxygen-content div.summary {
   float: right;
   font-size: 8pt;
@@ -944,9 +1111,11 @@
   width: 50%;
   text-align: right;
 }
+
 .doxygen-content div.summary a {
   white-space: nowrap;
 }
+
 .doxygen-content table.classindex {
   margin: 10px;
   white-space: nowrap;
@@ -957,14 +1126,17 @@
   border-spacing: 0;
   padding: 0;
 }
+
 .doxygen-content div.ingroups {
   font-size: 8pt;
   width: 50%;
   text-align: left;
 }
+
 .doxygen-content div.ingroups a {
   white-space: nowrap;
 }
+
 .doxygen-content div.header {
   background-image: url("nav_h.png");
   background-repeat: repeat-x;
@@ -972,30 +1144,37 @@
   margin: 0px;
   border-bottom: 1px solid #C4CFE5;
 }
+
 .doxygen-content div.headertitle {
   padding: 5px 5px 5px 10px;
 }
+
 .doxygen-content .PageDocRTL-title div.headertitle {
   text-align: right;
   direction: rtl;
 }
+
 .doxygen-content dl {
   padding: 0 0 0 0;
 }
+
 .doxygen-content dl.section {
   margin-left: 0px;
   padding-left: 0px;
 }
+
 .doxygen-content dl.section.DocNodeRTL {
   margin-right: 0px;
   padding-right: 0px;
 }
+
 .doxygen-content dl.note {
   margin-left: -7px;
   padding-left: 3px;
   border-left: 4px solid;
   border-color: #D0C000;
 }
+
 .doxygen-content dl.note.DocNodeRTL {
   margin-left: 0;
   padding-left: 0;
@@ -1005,12 +1184,14 @@
   border-right: 4px solid;
   border-color: #D0C000;
 }
+
 .doxygen-content dl.warning, .doxygen-content dl.attention {
   margin-left: -7px;
   padding-left: 3px;
   border-left: 4px solid;
   border-color: #FF0000;
 }
+
 .doxygen-content dl.warning.DocNodeRTL, .doxygen-content dl.attention.DocNodeRTL {
   margin-left: 0;
   padding-left: 0;
@@ -1020,12 +1201,14 @@
   border-right: 4px solid;
   border-color: #FF0000;
 }
+
 .doxygen-content dl.pre, .doxygen-content dl.post, .doxygen-content dl.invariant {
   margin-left: -7px;
   padding-left: 3px;
   border-left: 4px solid;
   border-color: #00D000;
 }
+
 .doxygen-content dl.pre.DocNodeRTL, .doxygen-content dl.post.DocNodeRTL, .doxygen-content dl.invariant.DocNodeRTL {
   margin-left: 0;
   padding-left: 0;
@@ -1035,12 +1218,14 @@
   border-right: 4px solid;
   border-color: #00D000;
 }
+
 .doxygen-content dl.deprecated {
   margin-left: -7px;
   padding-left: 3px;
   border-left: 4px solid;
   border-color: #505050;
 }
+
 .doxygen-content dl.deprecated.DocNodeRTL {
   margin-left: 0;
   padding-left: 0;
@@ -1050,12 +1235,14 @@
   border-right: 4px solid;
   border-color: #505050;
 }
+
 .doxygen-content dl.todo {
   margin-left: -7px;
   padding-left: 3px;
   border-left: 4px solid;
   border-color: #00C0E0;
 }
+
 .doxygen-content dl.todo.DocNodeRTL {
   margin-left: 0;
   padding-left: 0;
@@ -1065,12 +1252,14 @@
   border-right: 4px solid;
   border-color: #00C0E0;
 }
+
 .doxygen-content dl.test {
   margin-left: -7px;
   padding-left: 3px;
   border-left: 4px solid;
   border-color: #3030E0;
 }
+
 .doxygen-content dl.test.DocNodeRTL {
   margin-left: 0;
   padding-left: 0;
@@ -1080,12 +1269,14 @@
   border-right: 4px solid;
   border-color: #3030E0;
 }
+
 .doxygen-content dl.bug {
   margin-left: -7px;
   padding-left: 3px;
   border-left: 4px solid;
   border-color: #C08050;
 }
+
 .doxygen-content dl.bug.DocNodeRTL {
   margin-left: 0;
   padding-left: 0;
@@ -1095,65 +1286,82 @@
   border-right: 4px solid;
   border-color: #C08050;
 }
+
 .doxygen-content dl.section dd {
   margin-bottom: 6px;
 }
+
 .doxygen-content #projectlogo {
   text-align: center;
   vertical-align: bottom;
   border-collapse: separate;
 }
+
 .doxygen-content #projectlogo img {
   border: 0px none;
 }
+
 .doxygen-content #projectalign {
   vertical-align: middle;
 }
+
 .doxygen-content #projectname {
-  font: 300% Tahoma, Arial, sans-serif;
+  font: 300% Tahoma, Arial,sans-serif;
   margin: 0px;
   padding: 2px 0px;
 }
+
 .doxygen-content #projectbrief {
-  font: 120% Tahoma, Arial, sans-serif;
+  font: 120% Tahoma, Arial,sans-serif;
   margin: 0px;
   padding: 0px;
 }
+
 .doxygen-content #projectnumber {
-  font: 50% Tahoma, Arial, sans-serif;
+  font: 50% Tahoma, Arial,sans-serif;
   margin: 0px;
   padding: 0px;
 }
+
 .doxygen-content #titlearea {
   padding: 0px;
   margin: 0px;
   width: 100%;
   border-bottom: 1px solid #5373B4;
 }
+
 .doxygen-content .image {
   text-align: center;
 }
+
 .doxygen-content .dotgraph {
   text-align: center;
 }
+
 .doxygen-content .mscgraph {
   text-align: center;
 }
+
 .doxygen-content .plantumlgraph {
   text-align: center;
 }
+
 .doxygen-content .diagraph {
   text-align: center;
 }
+
 .doxygen-content .caption {
   font-weight: bold;
 }
+
 .doxygen-content div.zoom {
   border: 1px solid #90A5CE;
 }
+
 .doxygen-content dl.citelist {
   margin-bottom: 50px;
 }
+
 .doxygen-content dl.citelist dt {
   color: #334975;
   float: left;
@@ -1163,10 +1371,12 @@
   text-align: right;
   width: 52px;
 }
+
 .doxygen-content dl.citelist dd {
   margin: 2px 0 2px 72px;
   padding: 5px 0;
 }
+
 .doxygen-content div.toc {
   padding: 14px 25px;
   background-color: #F4F6FA;
@@ -1177,66 +1387,81 @@
   margin: 0 8px 10px 10px;
   width: 200px;
 }
+
 .doxygen-content .PageDocRTL-title div.toc {
   float: left !important;
   text-align: right;
 }
+
 .doxygen-content div.toc li {
   background: url("bdwn.png") no-repeat scroll 0 5px transparent;
-  font: 10px/1.2 Verdana, DejaVu Sans, Geneva, sans-serif;
+  font: 10px/1.2 Verdana,DejaVu Sans,Geneva,sans-serif;
   margin-top: 5px;
   padding-left: 10px;
   padding-top: 2px;
 }
+
 .doxygen-content .PageDocRTL-title div.toc li {
   background-position-x: right !important;
   padding-left: 0 !important;
   padding-right: 10px;
 }
+
 .doxygen-content div.toc h3 {
-  font: bold 12px/1.2 Arial, FreeSans, sans-serif;
+  font: bold 12px/1.2 Arial,FreeSans,sans-serif;
   color: #4665A2;
   border-bottom: 0 none;
   margin: 0;
 }
+
 .doxygen-content div.toc ul {
   list-style: none outside none;
   border: medium none;
   padding: 0px;
 }
+
 .doxygen-content div.toc li.level1 {
   margin-left: 0px;
 }
+
 .doxygen-content div.toc li.level2 {
   margin-left: 15px;
 }
+
 .doxygen-content div.toc li.level3 {
   margin-left: 30px;
 }
+
 .doxygen-content div.toc li.level4 {
   margin-left: 45px;
 }
+
 .doxygen-content span.emoji {
   /* font family used at the site: https://unicode.org/emoji/charts/full-emoji-list.html
-   * font-family: "Noto Color Emoji", "Apple Color Emoji", "Segoe UI Emoji", Times, Symbola, Aegyptus, Code2000, Code2001, Code2002, Musica, serif, LastResort;
-   */
+         * font-family: "Noto Color Emoji", "Apple Color Emoji", "Segoe UI Emoji", Times, Symbola, Aegyptus, Code2000, Code2001, Code2002, Musica, serif, LastResort;
+         */
 }
+
 .doxygen-content .PageDocRTL-title div.toc li.level1 {
   margin-left: 0 !important;
   margin-right: 0;
 }
+
 .doxygen-content .PageDocRTL-title div.toc li.level2 {
   margin-left: 0 !important;
   margin-right: 15px;
 }
+
 .doxygen-content .PageDocRTL-title div.toc li.level3 {
   margin-left: 0 !important;
   margin-right: 30px;
 }
+
 .doxygen-content .PageDocRTL-title div.toc li.level4 {
   margin-left: 0 !important;
   margin-right: 45px;
 }
+
 .doxygen-content .inherit_header {
   font-weight: bold;
   color: gray;
@@ -1248,20 +1473,25 @@
   -ms-user-select: none;
   user-select: none;
 }
+
 .doxygen-content .inherit_header td {
   padding: 6px 0px 2px 5px;
 }
+
 .doxygen-content .inherit {
   display: none;
 }
+
 .doxygen-content tr.heading h2 {
   margin-top: 12px;
   margin-bottom: 4px;
 }
+
 .doxygen-content .ttc {
   position: absolute;
   display: none;
 }
+
 .doxygen-content #powerTip {
   cursor: default;
   white-space: nowrap;
@@ -1277,29 +1507,36 @@
   position: absolute;
   z-index: 2147483647;
 }
+
 .doxygen-content #powerTip div.ttdoc {
   color: grey;
   font-style: italic;
 }
+
 .doxygen-content #powerTip div.ttname a {
   font-weight: bold;
 }
+
 .doxygen-content #powerTip div.ttname {
   font-weight: bold;
 }
+
 .doxygen-content #powerTip div.ttdeci {
   color: #006318;
 }
+
 .doxygen-content #powerTip div {
   margin: 0px;
   padding: 0px;
-  font: 12px/16px Roboto, sans-serif;
+  font: 12px/16px Roboto,sans-serif;
 }
+
 .doxygen-content #powerTip:before, .doxygen-content #powerTip:after {
   content: "";
   position: absolute;
   margin: 0px;
 }
+
 .doxygen-content #powerTip.n:after, .doxygen-content #powerTip.n:before,
 .doxygen-content #powerTip.s:after, .doxygen-content #powerTip.s:before,
 .doxygen-content #powerTip.w:after, .doxygen-content #powerTip.w:before,
@@ -1314,96 +1551,117 @@
   width: 0;
   position: absolute;
 }
+
 .doxygen-content #powerTip.n:after, .doxygen-content #powerTip.s:after,
 .doxygen-content #powerTip.w:after, .doxygen-content #powerTip.e:after,
 .doxygen-content #powerTip.nw:after, .doxygen-content #powerTip.ne:after,
 .doxygen-content #powerTip.sw:after, .doxygen-content #powerTip.se:after {
   border-color: rgba(255, 255, 255, 0);
 }
+
 .doxygen-content #powerTip.n:before, .doxygen-content #powerTip.s:before,
 .doxygen-content #powerTip.w:before, .doxygen-content #powerTip.e:before,
 .doxygen-content #powerTip.nw:before, .doxygen-content #powerTip.ne:before,
 .doxygen-content #powerTip.sw:before, .doxygen-content #powerTip.se:before {
   border-color: rgba(128, 128, 128, 0);
 }
+
 .doxygen-content #powerTip.n:after, .doxygen-content #powerTip.n:before,
 .doxygen-content #powerTip.ne:after, .doxygen-content #powerTip.ne:before,
 .doxygen-content #powerTip.nw:after, .doxygen-content #powerTip.nw:before {
   top: 100%;
 }
+
 .doxygen-content #powerTip.n:after, .doxygen-content #powerTip.ne:after, .doxygen-content #powerTip.nw:after {
   border-top-color: #FFFFFF;
   border-width: 10px;
   margin: 0px -10px;
 }
+
 .doxygen-content #powerTip.n:before {
   border-top-color: #808080;
   border-width: 11px;
   margin: 0px -11px;
 }
+
 .doxygen-content #powerTip.n:after, .doxygen-content #powerTip.n:before {
   left: 50%;
 }
+
 .doxygen-content #powerTip.nw:after, .doxygen-content #powerTip.nw:before {
   right: 14px;
 }
+
 .doxygen-content #powerTip.ne:after, .doxygen-content #powerTip.ne:before {
   left: 14px;
 }
+
 .doxygen-content #powerTip.s:after, .doxygen-content #powerTip.s:before,
 .doxygen-content #powerTip.se:after, .doxygen-content #powerTip.se:before,
 .doxygen-content #powerTip.sw:after, .doxygen-content #powerTip.sw:before {
   bottom: 100%;
 }
+
 .doxygen-content #powerTip.s:after, .doxygen-content #powerTip.se:after, .doxygen-content #powerTip.sw:after {
   border-bottom-color: #FFFFFF;
   border-width: 10px;
   margin: 0px -10px;
 }
+
 .doxygen-content #powerTip.s:before, .doxygen-content #powerTip.se:before, .doxygen-content #powerTip.sw:before {
   border-bottom-color: #808080;
   border-width: 11px;
   margin: 0px -11px;
 }
+
 .doxygen-content #powerTip.s:after, .doxygen-content #powerTip.s:before {
   left: 50%;
 }
+
 .doxygen-content #powerTip.sw:after, .doxygen-content #powerTip.sw:before {
   right: 14px;
 }
+
 .doxygen-content #powerTip.se:after, .doxygen-content #powerTip.se:before {
   left: 14px;
 }
+
 .doxygen-content #powerTip.e:after, .doxygen-content #powerTip.e:before {
   left: 100%;
 }
+
 .doxygen-content #powerTip.e:after {
   border-left-color: #FFFFFF;
   border-width: 10px;
   top: 50%;
   margin-top: -10px;
 }
+
 .doxygen-content #powerTip.e:before {
   border-left-color: #808080;
   border-width: 11px;
   top: 50%;
   margin-top: -11px;
 }
+
 .doxygen-content #powerTip.w:after, .doxygen-content #powerTip.w:before {
   right: 100%;
 }
+
 .doxygen-content #powerTip.w:after {
   border-right-color: #FFFFFF;
   border-width: 10px;
   top: 50%;
   margin-top: -10px;
 }
+
 .doxygen-content #powerTip.w:before {
   border-right-color: #808080;
   border-width: 11px;
   top: 50%;
   margin-top: -11px;
 }
+
 @media print {
   .doxygen-content #top {
     display: none;
@@ -1434,15 +1692,18 @@
     display: inline;
   }
 }
+
 .doxygen-content table.markdownTable {
   border-collapse: collapse;
   margin-top: 4px;
   margin-bottom: 4px;
 }
+
 .doxygen-content table.markdownTable td, .doxygen-content table.markdownTable th {
   border: 1px solid #2D4068;
   padding: 3px 7px 2px;
 }
+
 .doxygen-content th.markdownTableHeadLeft, .doxygen-content th.markdownTableHeadRight, .doxygen-content th.markdownTableHeadCenter, .doxygen-content th.markdownTableHeadNone {
   background-color: #374F7F;
   color: #FFFFFF;
@@ -1450,37 +1711,46 @@
   padding-bottom: 4px;
   padding-top: 5px;
 }
+
 .doxygen-content th.markdownTableHeadLeft, .doxygen-content td.markdownTableBodyLeft {
   text-align: left;
 }
+
 .doxygen-content th.markdownTableHeadRight, .doxygen-content td.markdownTableBodyRight {
   text-align: right;
 }
+
 .doxygen-content th.markdownTableHeadCenter, .doxygen-content td.markdownTableBodyCenter {
   text-align: center;
 }
+
 .doxygen-content .DocNodeRTL {
   text-align: right;
   direction: rtl;
 }
+
 .doxygen-content .DocNodeLTR {
   text-align: left;
   direction: ltr;
 }
+
 .doxygen-content table.DocNodeRTL {
   width: auto;
   margin-right: 0;
   margin-left: auto;
 }
+
 .doxygen-content table.DocNodeLTR {
   width: auto;
   margin-right: auto;
   margin-left: 0;
 }
+
 .doxygen-content tt, .doxygen-content code, .doxygen-content kbd, .doxygen-content samp {
   display: inline-block;
   direction: ltr;
 }
+
 .doxygen-content u {
   text-decoration: underline;
 }
@@ -1515,63 +1785,83 @@ html {
   /** content fixes - members (e.g. in class view) */
   /** table fixes - e.g. directory tables */
 }
+
 .doxygen-content #top {
   /* hide search-box */
   /* hide menu */
   /* left align header area + headings */
   /* fix breadcrumb separator icon scaling */
 }
+
 .doxygen-content #top #MSearchBox {
   visibility: collapse;
 }
+
 .doxygen-content #top #main-nav {
   display: none;
 }
+
 .doxygen-content #top #titlearea {
   padding-left: 0;
 }
+
 .doxygen-content #top #titlearea #projectalign {
   padding-left: 0 !important;
 }
+
+.doxygen-content #top #titlearea table {
+  display: table;
+}
+
 .doxygen-content #top #nav-path li.navelem:before {
   transform: translateY(-1px);
 }
+
 .doxygen-content .header .headertitle .title {
   padding-left: 0 !important;
 }
+
 .doxygen-content .contents {
   padding-left: 0 !important;
   /* hide strange new doxygen awesome box-border shadow styles (because they look really ugly in sphinx) */
   /* css hack for inline rst content.
-     as sphinx will automatically create paragraphs (<p>) around all blocks, we'll always get new paragraphs
-     for our inline content in doxygen html. So we add a "marker span block" right before the inline content
-     block and then style the "paragraphiness (/blockrendering)" away here with the next sibling selector (+).
-  */
+           as sphinx will automatically create paragraphs (<p>) around all blocks, we'll always get new paragraphs
+           for our inline content in doxygen html. So we add a "marker span block" right before the inline content
+           block and then style the "paragraphiness (/blockrendering)" away here with the next sibling selector (+).
+        */
 }
+
 .doxygen-content .contents .memitem dl {
   margin: 0 !important;
 }
+
 .doxygen-content .contents .memitem .memdoc {
   margin-top: 10px;
 }
+
 .doxygen-content .contents table.need {
   display: table !important;
 }
+
 .doxygen-content .contents table.memberdecls {
   overflow: unset;
   border-collapse: unset;
 }
+
 .doxygen-content .contents h2.groupheader {
   box-shadow: none;
   border-bottom: 1px solid var(--separator-color);
 }
+
 .doxygen-content .contents .doxysphinx-inline-parent p {
   display: inline;
 }
+
 .doxygen-content h2.memtitle {
   margin-bottom: 0;
   font-size: 100% !important;
 }
+
 .doxygen-content div.memitem div.memdoc dl dt {
   display: block !important;
   margin: 0 !important;
@@ -1582,13 +1872,16 @@ html {
   padding: 0 !important;
   position: initial !important;
 }
+
 .doxygen-content div.memproto {
   margin-bottom: 0;
 }
+
 .doxygen-content #main-content .section .directory td.entry {
   display: table-cell !important;
   white-space: pre-wrap !important;
 }
+
 .doxygen-content .need .line {
   all: revert;
 }
@@ -1634,37 +1927,46 @@ section.wy-nav-content-wrap {
   /*Classic info table*/
   /* fix breadcrumb separator icon scaling */
 }
+
 section.wy-nav-content-wrap .wy-nav-content {
   max-width: 80% !important;
 }
+
 section.wy-nav-content-wrap .wy-table-responsive table td,
 section.wy-nav-content-wrap .wy-table-responsive table th {
   white-space: normal !important;
 }
+
 section.wy-nav-content-wrap table.NEEDS_TABLE,
 section.wy-nav-content-wrap table.NEEDS_DATATABLES {
   margin: 0;
 }
+
 section.wy-nav-content-wrap .clear-both {
   clear: both;
 }
+
 section.wy-nav-content-wrap .table-top-left td,
 section.wy-nav-content-wrap .table-top-left th {
   vertical-align: top !important;
   text-align: left;
 }
+
 section.wy-nav-content-wrap .table-stub th:first-child,
 section.wy-nav-content-wrap .table-stub td:first-child {
   font-weight: 700 !important;
 }
+
 section.wy-nav-content-wrap .table-info td:not(:first-child) {
   background-color: #fcfcfc !important;
 }
+
 section.wy-nav-content-wrap .table-info th:first-child,
 section.wy-nav-content-wrap .table-info td:first-child {
   background-color: #f3f6f6 !important;
   font-weight: 700 !important;
 }
+
 section.wy-nav-content-wrap .doxygen-content #top #nav-path li.navelem:before {
   transform: translateY(-7px);
 }
@@ -1673,5 +1975,3 @@ section.wy-nav-content-wrap .doxygen-content #top #nav-path li.navelem:before {
 SPHINX BOOK THEME
 
 */
-
-/*# sourceMappingURL=doxygen.css.map */

@@ -181,7 +181,7 @@ the doxygen sections via their names. However as these aren't always obvious her
 
 ## via doxylink symbol links
 
-When you set up doxylink correctly (see [](getting_started.md#step-2-install-and-setup-doxylink)) you can
+When you set up doxylink correctly (see [Doxylink Setup](doxylink_setup.md)) you can
 link C++ symbols directly from your rst sources.
 
 :::{note}

@@ -83,7 +83,7 @@ Functions
    to) has to live inside sphinx's input tree.
 
 
-.. py:function:: build(sphinx_source: pathlib.Path, sphinx_output: pathlib.Path, **kwargs)
+.. py:function:: build(parallel: bool, sphinx_source: pathlib.Path, sphinx_output: pathlib.Path, **kwargs)
 
    Build rst and copy related files for doxygen projects.
 
@@ -100,7 +100,7 @@ Functions
         ``SPHINX_OUTPUT`` should be ``OUTPUT_DIR/html``.
 
 
-.. py:function:: clean(sphinx_source: pathlib.Path, sphinx_output: pathlib.Path, **kwargs)
+.. py:function:: clean(parallel: bool, sphinx_source: pathlib.Path, sphinx_output: pathlib.Path, **kwargs)
 
    Clean up files created by doxysphinx.
 

@@ -1,7 +1,7 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -54,7 +54,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
+    <meta name="docsearch:language" content="en">
     
 
     <!-- Google Analytics -->
@@ -343,6 +343,15 @@
          <code class="xref py py-mod docutils literal notranslate">
           <span class="pre">
            doxysphinx.utils.pathlib_fix
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../docs/auto_api/doxysphinx/utils/rst/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           doxysphinx.utils.rst
           </span>
          </code>
         </a>
@@ -678,9 +687,9 @@
         <span class="n">apply</span><span class="p">(</span><span class="n">structural_dummies</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_prepare_structural_dummy</span><span class="p">)</span>
         <span class="n">apply</span><span class="p">(</span><span class="n">structural_dummies</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_toc_file_for_structural_dummy</span><span class="p">)</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">_menu_lookup</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">_MenuEntry</span><span class="p">]</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
-            <span class="p">{</span><span class="n">e</span><span class="o">.</span><span class="n">docname</span><span class="p">:</span> <span class="n">e</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_flatten_tree</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_menu</span><span class="p">)</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">e</span><span class="o">.</span><span class="n">is_leaf</span><span class="p">}</span>
-        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_menu_lookup</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">_MenuEntry</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="n">e</span><span class="o">.</span><span class="n">docname</span><span class="p">:</span> <span class="n">e</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_flatten_tree</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_menu</span><span class="p">)</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">e</span><span class="o">.</span><span class="n">is_leaf</span>
+        <span class="p">}</span>
 
     <span class="k">def</span> <span class="nf">_parse_template</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Parse a &quot;doxygen html template shell&quot; out of the index.html file.</span>
@@ -719,7 +728,6 @@
         <span class="n">structural_dummy</span><span class="o">.</span><span class="n">docname</span> <span class="o">=</span> <span class="n">toc_docname</span>
 
     <span class="k">def</span> <span class="nf">_create_toc_file_for_structural_dummy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">structural_dummy</span><span class="p">:</span> <span class="n">_MenuEntry</span><span class="p">):</span>
-
         <span class="n">prefix</span><span class="p">,</span> <span class="n">suffix</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_doxy_html_template</span>
 
         <span class="n">content</span> <span class="o">=</span> <span class="p">[</span>
@@ -803,7 +811,7 @@
     <footer class="footer">
   <p>
     
-      Last updated on &#39;Thu Apr 6 14:28:45 2023&#39;, &#39;cc8fe1e&#39;.<br/>
+      Last updated on &#39;Thu Apr 20 08:34:04 2023&#39;, &#39;d0a6476&#39;.<br/>
   </p>
 </footer>
 </main>

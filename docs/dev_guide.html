@@ -1,7 +1,7 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -56,7 +56,7 @@
     <link rel="next" title="Inner workings" href="inner_workings.html" />
     <link rel="prev" title="File List" href="doxygen/demo/html/files.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
+    <meta name="docsearch:language" content="en">
     
 
     <!-- Google Analytics -->
@@ -349,6 +349,15 @@
          </code>
         </a>
        </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="auto_api/doxysphinx/utils/rst/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           doxysphinx.utils.rst
+          </span>
+         </code>
+        </a>
+       </li>
       </ul>
      </li>
      <li class="toctree-l3">
@@ -553,6 +562,11 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#updating-dependencies">
+   Updating dependencies
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#troubleshooting">
    Troubleshooting
   </a>
@@ -616,6 +630,11 @@
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#usage">
    Usage
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#updating-dependencies">
+   Updating dependencies
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -694,15 +713,15 @@ the following tools if you haven’t them yet:</p>
 <div class="sd-card-title sd-font-weight-bold docutils">
 Installation (see also <a class="reference external" href="https://python-poetry.org/docs/master/#installation">https://python-poetry.org/docs/master/#installation</a>)</div>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="63ad5d9c-74e7-4d09-a7b3-a100617d3c1a" name="de7e2738-da80-4d68-a530-a32505f89319" type="radio">
-</input><label class="sd-tab-label" for="63ad5d9c-74e7-4d09-a7b3-a100617d3c1a">
+<input checked="checked" id="0b329f2c-aa49-4ca7-82a2-e8eb11496238" name="67888a06-8d8a-465f-92bc-5b69ff8097ac" type="radio">
+</input><label class="sd-tab-label" for="0b329f2c-aa49-4ca7-82a2-e8eb11496238">
 Linux/Mac</label><div class="sd-tab-content docutils">
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-sSL<span class="w"> </span>https://install.python-poetry.org<span class="w"> </span><span class="p">|</span><span class="w"> </span>python3<span class="w"> </span>-
 </pre></div>
 </div>
 </div>
-<input id="2688cbd2-6034-4197-b70c-b72cd1e7fb4b" name="de7e2738-da80-4d68-a530-a32505f89319" type="radio">
-</input><label class="sd-tab-label" for="2688cbd2-6034-4197-b70c-b72cd1e7fb4b">
+<input id="ac25ff49-c7f5-41a0-b3c0-1532d988e6f5" name="67888a06-8d8a-465f-92bc-5b69ff8097ac" type="radio">
+</input><label class="sd-tab-label" for="ac25ff49-c7f5-41a0-b3c0-1532d988e6f5">
 Windows</label><div class="sd-tab-content docutils">
 <div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="nb">Invoke-WebRequest</span> <span class="n">-Uri</span> <span class="n">https</span><span class="p">://</span><span class="n">install</span><span class="p">.</span><span class="n">python-poetry</span><span class="p">.</span><span class="n">org</span> <span class="n">-UseBasicParsing</span><span class="p">).</span><span class="n">Content</span> <span class="p">|</span> <span class="n">python</span> <span class="p">-</span>
 </pre></div>
@@ -718,8 +737,8 @@ Windows</label><div class="sd-tab-content docutils">
 <div class="section" id="usage">
 <h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="ded575ad-3bd9-4bc7-a175-38a9073d5a16" name="1e0291a0-7f83-4310-961c-a85132be70d2" type="radio">
-</input><label class="sd-tab-label" for="ded575ad-3bd9-4bc7-a175-38a9073d5a16">
+<input checked="checked" id="b3504054-c4f6-46aa-a30c-fe12a91130e5" name="5f145aa8-3d10-445c-9097-2666c141f30f" type="radio">
+</input><label class="sd-tab-label" for="b3504054-c4f6-46aa-a30c-fe12a91130e5">
 devcontainer</label><div class="sd-tab-content docutils">
 <ul>
 <li><p>open the devcontainer</p>
@@ -742,8 +761,8 @@ devcontainer<span class="w"> </span>open<span class="w">   </span><span class="c
 </li>
 </ul>
 </div>
-<input id="dc69d152-ea3c-4e91-abba-54d282f7e4c8" name="1e0291a0-7f83-4310-961c-a85132be70d2" type="radio">
-</input><label class="sd-tab-label" for="dc69d152-ea3c-4e91-abba-54d282f7e4c8">
+<input id="340c50d5-5c4a-445b-b031-b7e010d0bcb4" name="5f145aa8-3d10-445c-9097-2666c141f30f" type="radio">
+</input><label class="sd-tab-label" for="340c50d5-5c4a-445b-b031-b7e010d0bcb4">
 native development (windows, linux, etc.)</label><div class="sd-tab-content docutils">
 <ul>
 <li><p>Open the repo in vscode</p></li>
@@ -781,6 +800,20 @@ make<span class="w"> </span><span class="o">[</span>doxygen<span class="p">|</sp
 </div>
 <p>You can then see the generated documentation by opening <code class="docutils literal notranslate"><span class="pre">.build/html/index.html</span></code>.</p>
 </li>
+</ul>
+</div>
+<div class="section" id="updating-dependencies">
+<h2>Updating dependencies<a class="headerlink" href="#updating-dependencies" title="Permalink to this headline">¶</a></h2>
+<p>If you want to update the projects dependencies do the following:</p>
+<ul>
+<li><p>checkin/stash all your local changes (so you could reverse easily and see the differences quite easy)</p></li>
+<li><p>update your dependencies:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>poetry<span class="w"> </span>up<span class="w"> </span>--latest<span class="w"> </span>--without<span class="w"> </span>ci
+</pre></div>
+</div>
+</li>
+<li><p>review the updates e.g. in vscode with git diff</p></li>
+<li><p>test everything 😄</p></li>
 </ul>
 </div>
 <div class="section" id="troubleshooting">
@@ -841,7 +874,7 @@ install it (e.g. via chocolatey “choco install make”), and afterwards config
     <footer class="footer">
   <p>
     
-      Last updated on &#39;Thu Apr 6 14:28:45 2023&#39;, &#39;cc8fe1e&#39;.<br/>
+      Last updated on &#39;Thu Apr 20 08:34:04 2023&#39;, &#39;d0a6476&#39;.<br/>
   </p>
 </footer>
 </main>

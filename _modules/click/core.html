@@ -1,7 +1,7 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -54,7 +54,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
+    <meta name="docsearch:language" content="en">
     
 
     <!-- Google Analytics -->
@@ -343,6 +343,15 @@
          <code class="xref py py-mod docutils literal notranslate">
           <span class="pre">
            doxysphinx.utils.pathlib_fix
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../docs/auto_api/doxysphinx/utils/rst/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           doxysphinx.utils.rst
           </span>
          </code>
         </a>
@@ -1188,7 +1197,7 @@
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">default_map</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">default_map</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
 
-            <span class="k">if</span> <span class="n">call</span> <span class="ow">and</span> <span class="n">callable</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">call</span> <span class="ow">and</span> <span class="nb">callable</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
                 <span class="k">return</span> <span class="n">value</span><span class="p">()</span>
 
             <span class="k">return</span> <span class="n">value</span>
@@ -1590,7 +1599,7 @@
                     <span class="n">ctx</span><span class="o">.</span><span class="n">exit</span><span class="p">()</span>
             <span class="k">except</span> <span class="p">(</span><span class="ne">EOFError</span><span class="p">,</span> <span class="ne">KeyboardInterrupt</span><span class="p">):</span>
                 <span class="n">echo</span><span class="p">(</span><span class="n">file</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="p">)</span>
-                <span class="k">raise</span> <span class="n">Abort</span><span class="p">()</span> <span class="kn">from</span> <span class="bp">None</span>
+                <span class="k">raise</span> <span class="n">Abort</span><span class="p">()</span> <span class="kn">from</span> <span class="kc">None</span>
             <span class="k">except</span> <span class="n">ClickException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
                 <span class="k">if</span> <span class="ow">not</span> <span class="n">standalone_mode</span><span class="p">:</span>
                     <span class="k">raise</span>
@@ -2368,7 +2377,7 @@
 
         <span class="n">func</span><span class="p">:</span> <span class="n">t</span><span class="o">.</span><span class="n">Optional</span><span class="p">[</span><span class="n">t</span><span class="o">.</span><span class="n">Callable</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
 
-        <span class="k">if</span> <span class="n">args</span> <span class="ow">and</span> <span class="n">callable</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+        <span class="k">if</span> <span class="n">args</span> <span class="ow">and</span> <span class="nb">callable</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
             <span class="k">assert</span> <span class="p">(</span>
                 <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">kwargs</span>
             <span class="p">),</span> <span class="s2">&quot;Use &#39;command(**kwargs)(callable)&#39; to provide arguments.&quot;</span>
@@ -2416,7 +2425,7 @@
 
         <span class="n">func</span><span class="p">:</span> <span class="n">t</span><span class="o">.</span><span class="n">Optional</span><span class="p">[</span><span class="n">t</span><span class="o">.</span><span class="n">Callable</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
 
-        <span class="k">if</span> <span class="n">args</span> <span class="ow">and</span> <span class="n">callable</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+        <span class="k">if</span> <span class="n">args</span> <span class="ow">and</span> <span class="nb">callable</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
             <span class="k">assert</span> <span class="p">(</span>
                 <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">kwargs</span>
             <span class="p">),</span> <span class="s2">&quot;Use &#39;group(**kwargs)(callable)&#39; to provide arguments.&quot;</span>
@@ -2626,7 +2635,7 @@
                 <span class="p">)</span>
 
             <span class="c1"># Skip no default or callable default.</span>
-            <span class="n">check_default</span> <span class="o">=</span> <span class="n">default</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">callable</span><span class="p">(</span><span class="n">default</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span>
+            <span class="n">check_default</span> <span class="o">=</span> <span class="n">default</span> <span class="k">if</span> <span class="ow">not</span> <span class="nb">callable</span><span class="p">(</span><span class="n">default</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span>
 
             <span class="k">if</span> <span class="n">check_default</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
                 <span class="k">if</span> <span class="n">multiple</span><span class="p">:</span>
@@ -2636,7 +2645,7 @@
                     <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
                         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
                             <span class="s2">&quot;&#39;default&#39; must be a list when &#39;multiple&#39; is true.&quot;</span>
-                        <span class="p">)</span> <span class="kn">from</span> <span class="bp">None</span>
+                        <span class="p">)</span> <span class="kn">from</span> <span class="kc">None</span>
 
                 <span class="c1"># Can be None for multiple with empty default.</span>
                 <span class="k">if</span> <span class="n">nargs</span> <span class="o">!=</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">check_default</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
@@ -2651,7 +2660,7 @@
                         <span class="k">else</span><span class="p">:</span>
                             <span class="n">message</span> <span class="o">=</span> <span class="s2">&quot;&#39;default&#39; must be a list when &#39;nargs&#39; != 1.&quot;</span>
 
-                        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">message</span><span class="p">)</span> <span class="kn">from</span> <span class="bp">None</span>
+                        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">message</span><span class="p">)</span> <span class="kn">from</span> <span class="kc">None</span>
 
                     <span class="k">if</span> <span class="n">nargs</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">check_default</span><span class="p">)</span> <span class="o">!=</span> <span class="n">nargs</span><span class="p">:</span>
                         <span class="n">subject</span> <span class="o">=</span> <span class="s2">&quot;item length&quot;</span> <span class="k">if</span> <span class="n">multiple</span> <span class="k">else</span> <span class="s2">&quot;length&quot;</span>
@@ -2750,7 +2759,7 @@
         <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">default</span>
 
-        <span class="k">if</span> <span class="n">call</span> <span class="ow">and</span> <span class="n">callable</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">call</span> <span class="ow">and</span> <span class="nb">callable</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
             <span class="n">value</span> <span class="o">=</span> <span class="n">value</span><span class="p">()</span>
 
         <span class="k">return</span> <span class="n">value</span>
@@ -2794,7 +2803,7 @@
                 <span class="c1"># the command line.</span>
                 <span class="k">raise</span> <span class="n">BadParameter</span><span class="p">(</span>
                     <span class="n">_</span><span class="p">(</span><span class="s2">&quot;Value must be an iterable.&quot;</span><span class="p">),</span> <span class="n">ctx</span><span class="o">=</span><span class="n">ctx</span><span class="p">,</span> <span class="n">param</span><span class="o">=</span><span class="bp">self</span>
-                <span class="p">)</span> <span class="kn">from</span> <span class="bp">None</span>
+                <span class="p">)</span> <span class="kn">from</span> <span class="kc">None</span>
 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">nargs</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">type</span><span class="o">.</span><span class="n">is_composite</span><span class="p">:</span>
             <span class="n">convert</span><span class="p">:</span> <span class="n">t</span><span class="o">.</span><span class="n">Callable</span><span class="p">[[</span><span class="n">t</span><span class="o">.</span><span class="n">Any</span><span class="p">],</span> <span class="n">t</span><span class="o">.</span><span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span>
@@ -3535,7 +3544,7 @@
     <footer class="footer">
   <p>
     
-      Last updated on &#39;Thu Apr 6 14:28:45 2023&#39;, &#39;cc8fe1e&#39;.<br/>
+      Last updated on &#39;Thu Apr 20 08:34:04 2023&#39;, &#39;d0a6476&#39;.<br/>
   </p>
 </footer>
 </main>

@@ -1,7 +1,7 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -54,7 +54,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
+    <meta name="docsearch:language" content="en">
     
 
     <!-- Google Analytics -->
@@ -347,6 +347,15 @@
          </code>
         </a>
        </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../docs/auto_api/doxysphinx/utils/rst/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           doxysphinx.utils.rst
+          </span>
+         </code>
+        </a>
+       </li>
       </ul>
      </li>
      <li class="toctree-l3">
@@ -544,10 +553,12 @@
 <span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">lru_cache</span>
 <span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
 <span class="kn">from</span> <span class="nn">textwrap</span> <span class="kn">import</span> <span class="n">dedent</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Protocol</span><span class="p">,</span> <span class="n">Set</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Iterable</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Protocol</span><span class="p">,</span> <span class="n">Set</span><span class="p">,</span> <span class="n">Tuple</span>
 
 <span class="kn">from</span> <span class="nn">lxml</span> <span class="kn">import</span> <span class="n">html</span> <span class="k">as</span> <span class="n">etree</span>  <span class="c1"># nosec: B410</span>
 <span class="kn">from</span> <span class="nn">lxml.etree</span> <span class="kn">import</span> <span class="n">_Element</span><span class="p">,</span> <span class="n">_ElementTree</span>  <span class="c1"># nosec: B410</span>
+
+<span class="kn">from</span> <span class="nn">doxysphinx.utils.exceptions</span> <span class="kn">import</span> <span class="n">ApplicationError</span>
 
 
 <div class="viewcode-block" id="HtmlParseResult"><a class="viewcode-back" href="../../docs/auto_api/doxysphinx/html_parser/index.html#doxysphinx.html_parser.HtmlParseResult">[docs]</a><span class="nd">@dataclass</span>
@@ -570,10 +581,11 @@
 <span class="sd">       in sphinx menu structure.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">used_snippet_formats</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Set</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;The list of snippet format that are used inside the html tree if any.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;The list of snippet formats that are used inside the html tree if any.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">tree</span><span class="p">:</span> <span class="n">_ElementTree</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;The html/xml element tree.</span>
+    <span class="n">tree</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">_ElementTree</span><span class="p">]</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;The html/xml element tree or None if nothing was parsed because the html shouldn&#39;t be handled as mixed</span>
+<span class="sd">       mode content.</span>
 <span class="sd">    &quot;&quot;&quot;</span></div>
 
 
@@ -630,6 +642,11 @@
     <span class="nb">format</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;None&quot;</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;The format this element processor processes... like &#39;rst&#39;, &#39;md&#39; etc.&quot;&quot;&quot;</span>
 
+    <span class="c1"># can_process_regex: str = &quot;&quot;</span>
+    <span class="c1"># &quot;&quot;&quot;A regex that, when used on an html file checks whether the current element processor</span>
+    <span class="c1">#    can process that file (finds elements). This is (as optimiziation) for a quick check before loading the</span>
+    <span class="c1">#    complete dom (and for eventually skipping it).&quot;&quot;&quot;</span>
+
 <div class="viewcode-block" id="ElementProcessor.try_process"><a class="viewcode-back" href="../../docs/auto_api/doxysphinx/html_parser/index.html#doxysphinx.html_parser.ElementProcessor.try_process">[docs]</a>    <span class="k">def</span> <span class="nf">try_process</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">element</span><span class="p">:</span> <span class="n">_Element</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Try to process an element.</span>
 
@@ -647,7 +664,7 @@
     <span class="n">is_final</span> <span class="o">=</span> <span class="kc">True</span>
 
     <span class="n">rst_role_regex</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span>
-        <span class="sa">r</span><span class="s2">&quot;:(?P&lt;role_name&gt;[A-Za-z0-9-_:]*?):[`&#39;</span><span class="se">\&quot;</span><span class="s2">](?P&lt;role_content&gt;.*?)[`&#39;</span><span class="se">\&quot;</span><span class="s2">]&quot;</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">MULTILINE</span> <span class="o">|</span> <span class="n">re</span><span class="o">.</span><span class="n">DOTALL</span>
+        <span class="sa">r</span><span class="s2">&quot;\s*?:(?P&lt;role_name&gt;[A-Za-z0-9-_:]*?):[`&#39;</span><span class="se">\&quot;</span><span class="s2">](?P&lt;role_content&gt;.*?)[`&#39;</span><span class="se">\&quot;</span><span class="s2">]\s*?&quot;</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">MULTILINE</span> <span class="o">|</span> <span class="n">re</span><span class="o">.</span><span class="n">DOTALL</span>
     <span class="p">)</span>
 
 <div class="viewcode-block" id="RstInlineProcessor.try_process"><a class="viewcode-back" href="../../docs/auto_api/doxysphinx/html_parser/index.html#doxysphinx.html_parser.RstInlineProcessor.try_process">[docs]</a>    <span class="k">def</span> <span class="nf">try_process</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">element</span><span class="p">:</span> <span class="n">_Element</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
@@ -661,8 +678,9 @@
             <span class="k">return</span> <span class="kc">False</span>
 
         <span class="c1"># check if syntax matches sphinx/rst role</span>
-        <span class="n">normalized_content</span> <span class="o">=</span> <span class="n">element</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
-        <span class="n">match</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rst_role_regex</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">normalized_content</span><span class="p">)</span>
+        <span class="c1"># normalized_content = element.text.strip()</span>
+        <span class="c1"># match = self.rst_role_regex.match(normalized_content)</span>
+        <span class="n">match</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rst_role_regex</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">element</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">match</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">return</span> <span class="kc">False</span>
 
@@ -720,7 +738,6 @@
             <span class="k">return</span> <span class="kc">False</span>
 
         <span class="k">if</span> <span class="n">content</span> <span class="o">:=</span> <span class="n">_try_parse_rst_block_content</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
-
             <span class="c1"># add newlines around the element tags to have the beginning and closing tags at the beginning of line each</span>
             <span class="n">_ensure_newline_before_element</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
             <span class="n">_ensure_newline_after_element</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
@@ -747,8 +764,7 @@
 <span class="sd">    the raw html directive. However this will destroy the newlines in pre tags. To overcome that</span>
 <span class="sd">    We change the pre output here to a div with inner line divs (which is also supported by doxygen).</span>
 
-<span class="sd">    This should be the last processor applied (when everything else is done).</span>
-<span class="sd">    The reason is that it gets really hard to debug if we change the structure inbetween processors.</span>
+<span class="sd">    This processor is special because it should only run when any other processor has done something.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">elements</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;pre&quot;</span><span class="p">]</span>
@@ -838,7 +854,6 @@
         <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">content</span> <span class="o">:=</span> <span class="n">_try_parse_rst_block_content</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
-
             <span class="c1"># add newlines around the element tags to have the beginning and closing tags at the beginning of line each</span>
             <span class="n">_ensure_newline_before_element</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
             <span class="n">_ensure_newline_after_element</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
@@ -979,8 +994,13 @@
         <span class="n">RstInlineProcessor</span><span class="p">(),</span>
         <span class="n">RstBlockProcessor</span><span class="p">(),</span>
         <span class="n">MarkdownRstBlockProcessor</span><span class="p">(),</span>
-        <span class="n">PreToDivProcessor</span><span class="p">(),</span>
     <span class="p">]</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Processors can transform/normalize the tree.&quot;&quot;&quot;</span>
+
+    <span class="n">_post_processors</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">ElementProcessor</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">PreToDivProcessor</span><span class="p">()]</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Post processors are only executed when any other processor changed the tree before.&quot;&quot;&quot;</span>
+
+    <span class="n">_title_regex</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;&lt;title&gt;(.*?)&lt;/title&gt;&quot;</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source_directory</span><span class="p">:</span> <span class="n">Path</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -989,7 +1009,6 @@
 <span class="sd">        :param source_directory:  the directory where the html files are located.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_source_directory</span> <span class="o">=</span> <span class="n">source_directory</span>
-        <span class="c1"># self._parser = etree.HTMLParser(huge_tree=True, recover=False)</span>
 
 <div class="viewcode-block" id="DoxygenHtmlParser.parse"><a class="viewcode-back" href="../../docs/auto_api/doxysphinx/html_parser/index.html#doxysphinx.html_parser.DoxygenHtmlParser.parse">[docs]</a>    <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">HtmlParseResult</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Parse a doxygen HTML file into an ElementTree and normalize its inner data to contain &lt;rst&gt;-tags.</span>
@@ -999,33 +1018,56 @@
 <span class="sd">        :return: The result of the parsing</span>
 <span class="sd">        :rtype: ParseResult</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">tree</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">file</span><span class="o">.</span><span class="n">as_posix</span><span class="p">())</span>  <span class="c1"># type: ignore # nosec B320</span>
+        <span class="n">buffer</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">read_text</span><span class="p">()</span>
+        <span class="n">tree</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">document_fromstring</span><span class="p">(</span><span class="n">buffer</span><span class="p">)</span><span class="o">.</span><span class="n">getroottree</span><span class="p">()</span>
 
-        <span class="n">meta_title</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;//title&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>  <span class="c1"># type: ignore</span>
+        <span class="n">meta_title</span><span class="p">,</span> <span class="n">project</span><span class="p">,</span> <span class="n">title</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_read_project_and_title</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="n">file</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_should_parse</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="n">file</span><span class="p">):</span>
+            <span class="n">used_snippet_formats</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_normalize_tree</span><span class="p">(</span><span class="n">tree</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">used_snippet_formats</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">HtmlParseResult</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">project</span><span class="p">,</span> <span class="n">meta_title</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">used_snippet_formats</span><span class="p">,</span> <span class="n">tree</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">HtmlParseResult</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">project</span><span class="p">,</span> <span class="n">meta_title</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span></div>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_read_project_and_title</span><span class="p">(</span><span class="n">source</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">file</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]:</span>
+        <span class="n">title_match</span> <span class="o">=</span> <span class="n">DoxygenHtmlParser</span><span class="o">.</span><span class="n">_title_regex</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">source</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">title_match</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">ApplicationError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;html file </span><span class="si">{</span><span class="n">file</span><span class="si">}</span><span class="s2"> seems to have no &lt;title&gt;-element.&quot;</span><span class="p">)</span>
+        <span class="n">meta_title</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">title_match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
         <span class="n">first</span><span class="p">,</span> <span class="o">*</span><span class="n">_</span><span class="p">,</span> <span class="n">last</span> <span class="o">=</span> <span class="n">meta_title</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;:&quot;</span><span class="p">)</span>
         <span class="n">project</span> <span class="o">=</span> <span class="n">first</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
         <span class="n">title</span> <span class="o">=</span> <span class="n">last</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">meta_title</span><span class="p">,</span> <span class="n">project</span><span class="p">,</span> <span class="n">title</span>
 
-        <span class="n">used_snippet_formats</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_normalize_tree_and_get_used_formats</span><span class="p">(</span><span class="n">tree</span><span class="p">)</span>
-
-        <span class="k">return</span> <span class="n">HtmlParseResult</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">project</span><span class="p">,</span> <span class="n">meta_title</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">used_snippet_formats</span><span class="p">,</span> <span class="n">tree</span><span class="p">)</span></div>
-
-    <span class="k">def</span> <span class="nf">_should_parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-        <span class="c1"># if no supported element (identified by closing tag) is in the file...</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="nb">any</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&lt;/</span><span class="si">{</span><span class="n">element</span><span class="si">}</span><span class="s2">&gt;&quot;</span> <span class="ow">in</span> <span class="n">source</span> <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_all_supported_elements</span><span class="p">()):</span>
-            <span class="c1"># fast exit</span>
+    <span class="k">def</span> <span class="nf">_should_parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">file</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="c1"># fail fast for doxygen htmls were no docs could be present:</span>
+        <span class="n">filename</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">stem</span>
+        <span class="k">if</span> <span class="n">filename</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;_source&quot;</span><span class="p">):</span>  <span class="c1"># source code listings shouldn&#39;t be parsed by us</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="c1"># elif filename.startswith(&quot;dir_&quot;): # in fact dirs can have comments via @dir special command</span>
+        <span class="c1">#    return False</span>
+        <span class="k">elif</span> <span class="n">filename</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;functions_&quot;</span><span class="p">):</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">elif</span> <span class="n">filename</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;globals_&quot;</span><span class="p">):</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">elif</span> <span class="n">filename</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;classes&quot;</span><span class="p">,</span> <span class="s2">&quot;functions&quot;</span><span class="p">,</span> <span class="s2">&quot;modules&quot;</span><span class="p">,</span> <span class="s2">&quot;globals&quot;</span><span class="p">,</span> <span class="s2">&quot;files&quot;</span><span class="p">]:</span>
             <span class="k">return</span> <span class="kc">False</span>
 
-        <span class="c1"># get content of each element and</span>
-
-        <span class="k">return</span> <span class="kc">True</span>
+        <span class="c1"># check for doxygen verbatim elements we are interested in (if none are present we can skip the file)</span>
+        <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">s</span> <span class="ow">in</span> <span class="n">source</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;&lt;code&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;pre&quot;</span><span class="p">,</span> <span class="s1">&#39;&lt;div class=&quot;fragment&quot;&#39;</span><span class="p">]):</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
 
     <span class="nd">@staticmethod</span>
     <span class="nd">@lru_cache</span><span class="p">(</span><span class="n">maxsize</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">_all_supported_elements</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Set</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
         <span class="k">return</span> <span class="p">{</span><span class="n">e</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">DoxygenHtmlParser</span><span class="o">.</span><span class="n">_processors</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">p</span><span class="o">.</span><span class="n">elements</span><span class="p">}</span>
 
-    <span class="k">def</span> <span class="nf">_normalize_tree_and_get_used_formats</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tree</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Set</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+    <span class="k">def</span> <span class="nf">_normalize_tree</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tree</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Set</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Normalize a doxygen html tree.</span>
 
 <span class="sd">        Searches for pre and code tags, re-formats them and creates different &lt;snippet-*&gt;-tags out of it.</span>
@@ -1033,7 +1075,7 @@
 <span class="sd">        assigned to either html-content or snippet content (and in the un-normalized source html we&#39;ve got them mixed</span>
 <span class="sd">        at the closing tag).</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">used_snipped_formats</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+        <span class="n">found_snippet_formats</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
 
         <span class="c1"># prefetch element candidates.</span>
         <span class="c1"># We do that because if there are bugs in a processor which will change the tree one might get strange</span>
@@ -1041,38 +1083,41 @@
         <span class="c1"># So this is just a means to make debugging easier...</span>
         <span class="n">element_candidates</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">iter</span><span class="p">(</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">_all_supported_elements</span><span class="p">()))</span>
 
-        <span class="c1"># search for all supported elements in element tree</span>
+        <span class="c1"># search for all supported elements in element tree and apply the processors</span>
         <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">element_candidates</span><span class="p">:</span>
+            <span class="c1"># apply the processors on the element</span>
+            <span class="n">applied_processors</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_apply_processors</span><span class="p">(</span><span class="n">element</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_processors</span><span class="p">)</span>
+            <span class="n">detected_formats</span> <span class="o">=</span> <span class="p">[</span><span class="n">p</span><span class="o">.</span><span class="n">format</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">applied_processors</span> <span class="k">if</span> <span class="n">p</span><span class="o">.</span><span class="n">format</span><span class="p">]</span>
+            <span class="n">found_snippet_formats</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">detected_formats</span><span class="p">)</span>
 
-            <span class="c1"># try to apply each processor...</span>
-            <span class="k">for</span> <span class="n">processor</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_processors</span><span class="p">:</span>
+        <span class="c1"># if the tree was normalized (= snippets were found) apply the post-</span>
+        <span class="k">if</span> <span class="n">found_snippet_formats</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">element_candidates</span><span class="p">:</span>
+                <span class="n">applied_post_processors</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_apply_processors</span><span class="p">(</span><span class="n">element</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_post_processors</span><span class="p">)</span>
+                <span class="n">detected_formats</span> <span class="o">=</span> <span class="p">[</span><span class="n">p</span><span class="o">.</span><span class="n">format</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">applied_post_processors</span> <span class="k">if</span> <span class="n">p</span><span class="o">.</span><span class="n">format</span><span class="p">]</span>
+                <span class="n">found_snippet_formats</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">detected_formats</span><span class="p">)</span>
 
-                <span class="c1"># if the current element isn&#39;t supported by the current processor skip to the next one</span>
-                <span class="k">if</span> <span class="n">element</span><span class="o">.</span><span class="n">tag</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">processor</span><span class="o">.</span><span class="n">elements</span><span class="p">:</span>
-                    <span class="k">continue</span>
+        <span class="k">return</span> <span class="n">found_snippet_formats</span>
 
-                <span class="c1"># try to process the element</span>
-                <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_try_process</span><span class="p">(</span><span class="n">element</span><span class="p">,</span> <span class="n">processor</span><span class="p">):</span>
-                    <span class="k">continue</span>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_apply_processors</span><span class="p">(</span><span class="n">element</span><span class="p">:</span> <span class="n">_Element</span><span class="p">,</span> <span class="n">processors</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">ElementProcessor</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Iterable</span><span class="p">[</span><span class="n">ElementProcessor</span><span class="p">]:</span>
+        <span class="c1"># try to apply each processor...</span>
+        <span class="k">for</span> <span class="n">processor</span> <span class="ow">in</span> <span class="n">processors</span><span class="p">:</span>
+            <span class="c1"># if the current element isn&#39;t supported by the current processor skip to the next one</span>
+            <span class="k">if</span> <span class="n">element</span><span class="o">.</span><span class="n">tag</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">processor</span><span class="o">.</span><span class="n">elements</span><span class="p">:</span>
+                <span class="k">continue</span>
 
-                <span class="c1"># if it was processed add the used format to the output...</span>
-                <span class="k">if</span> <span class="n">processor</span><span class="o">.</span><span class="n">format</span><span class="p">:</span>
-                    <span class="n">used_snipped_formats</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">processor</span><span class="o">.</span><span class="n">format</span><span class="p">)</span>
+            <span class="c1"># process element</span>
+            <span class="n">processed</span> <span class="o">=</span> <span class="n">processor</span><span class="o">.</span><span class="n">try_process</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">processed</span><span class="p">:</span>
+                <span class="k">continue</span>
 
-                <span class="c1"># if the processor is final (no further processors considered) -&gt; break the loop</span>
-                <span class="k">if</span> <span class="n">processor</span><span class="o">.</span><span class="n">is_final</span><span class="p">:</span>
-                    <span class="k">break</span>
+            <span class="c1"># return the processor because it could process the element</span>
+            <span class="k">yield</span> <span class="n">processor</span>
 
-        <span class="k">return</span> <span class="n">used_snipped_formats</span>
-
-    <span class="k">def</span> <span class="nf">_try_process</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">element</span><span class="p">:</span> <span class="n">_Element</span><span class="p">,</span> <span class="n">processor</span><span class="p">:</span> <span class="n">ElementProcessor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-        <span class="c1"># fail if element isn&#39;t supported by processor</span>
-        <span class="k">if</span> <span class="n">element</span><span class="o">.</span><span class="n">tag</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">processor</span><span class="o">.</span><span class="n">elements</span><span class="p">:</span>
-            <span class="k">return</span> <span class="kc">False</span>
-
-        <span class="c1"># fail if processing returns</span>
-        <span class="n">processed</span> <span class="o">=</span> <span class="n">processor</span><span class="o">.</span><span class="n">try_process</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">processed</span></div>
+            <span class="c1"># if the processor is final stop moving over processors...</span>
+            <span class="k">if</span> <span class="n">processor</span><span class="o">.</span><span class="n">is_final</span><span class="p">:</span>
+                <span class="k">break</span></div>
 </pre></div>
 
               </div>
@@ -1087,7 +1132,7 @@
     <footer class="footer">
   <p>
     
-      Last updated on &#39;Thu Apr 6 14:28:45 2023&#39;, &#39;cc8fe1e&#39;.<br/>
+      Last updated on &#39;Thu Apr 20 08:34:04 2023&#39;, &#39;d0a6476&#39;.<br/>
   </p>
 </footer>
 </main>

@@ -54,7 +54,7 @@ Inline rst is a major problem because of the following:
 
    The main use case for inline rst are sphinx roles which are normally (in rst) written in a form like:
 
-   ```plain
+   ```rst
    :role_name:`role_content`
    ```
 

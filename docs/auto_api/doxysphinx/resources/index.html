@@ -1,7 +1,7 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -56,7 +56,7 @@
     <link rel="next" title="doxysphinx.sphinx" href="../sphinx/index.html" />
     <link rel="prev" title="doxysphinx.process" href="../process/index.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
+    <meta name="docsearch:language" content="en">
     
 
     <!-- Google Analytics -->
@@ -345,6 +345,15 @@
          <code class="xref py py-mod docutils literal notranslate">
           <span class="pre">
            doxysphinx.utils.pathlib_fix
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../utils/rst/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           doxysphinx.utils.rst
           </span>
          </code>
         </a>
@@ -773,25 +782,40 @@ files are located)</p>
 <dt class="sig sig-object py" id="doxysphinx.resources.CssScoper">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">doxysphinx.resources.</span></span><span class="sig-name descname"><span class="pre">CssScoper</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">css_selector</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/doxysphinx/resources.html#CssScoper"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#doxysphinx.resources.CssScoper" title="Permalink to this definition">¶</a></dt>
 <dd><p>Scopes css-stylesheets to a special selector.</p>
-<p>This is done with the help of dartsass (a sass processor).</p>
+<p>This is done with the help of libsass (as the sass-syntax extends css with nesting).</p>
+<p>Our original problem was that the doxygen stylesheet and the sphinx theme stylesheets collide in some
+ways (e.g. global styles like heading-styles etc…). We therefore needed to have a mechanism to apply
+doxygen stylesheets only to doxygen content (not to the outer sphinx theme shell). We do this via sass,
+because sass is css compatible but adds some nice features to it. You can for example nest styles.
+We use that here to define an outer class and nest the whole doxygen stylesheet below it in a temporary
+sass stylesheet which then gets compiled back to css. With this
+we kill 2 birds with one stone:
+* all doxygen rules are now scoped so they are not applied to the sphinx bits shell anymore….
+* all doxygen rules now are more specialized than any of the outer sphinx style rules (they will win in browser).</p>
+<p>In the end that means that sphinx styles are applied to sphinx bits and doxygen styles are applied to
+doxygen bits. We still need to fix some minor issues with a custom stylesheet (which we also apply here).</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="doxysphinx.resources.CssScoper.scope">
-<span class="sig-name descname"><span class="pre">scope</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stylesheet</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pathlib.Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">additional_css_rules</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scss_patch_callback</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="pre">pathlib.Path</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">None</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">pathlib.Path</span></span></span><a class="reference internal" href="../../../../_modules/doxysphinx/resources.html#CssScoper.scope"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#doxysphinx.resources.CssScoper.scope" title="Permalink to this definition">¶</a></dt>
-<dd><p>Scopes a stylesheet to given selector.</p>
-<p>The process is as follows: The original stylesheet will be moved to .original.scss.
-Then an scss file (same name like stylesheet) that will import that .original.scss
-file will be created. This will be compiled to the same filename as the original
-stylesheet with the help of dartsass.</p>
+<span class="sig-name descname"><span class="pre">scope</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stylesheet</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pathlib.Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pathlib.Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">additional_css_rules</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">content_patch_callback</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">pathlib.Path</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../../../_modules/doxysphinx/resources.html#CssScoper.scope"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#doxysphinx.resources.CssScoper.scope" title="Permalink to this definition">¶</a></dt>
+<dd><p>Scope a stylesheet to given selector.</p>
+<p>The process is as follows: The original stylesheet is read, processed, hashed and compiled to the
+target. If a target already exists and the hash is identical nothing is compiled and written.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>stylesheet</strong> – The stylesheet to scope.</p></li>
+<li><p><strong>stylesheet</strong> – The path to a stylesheet to scope.</p></li>
 <li><p><strong>additional_css_rules</strong> – Additional css rules to inject.</p></li>
-<li><p><strong>scss_patch_callback</strong> – A callback that will be called on the original file</p></li>
+<li><p><strong>scss_patch_callback</strong> – A callback that will be called on the original file.
+Note: we had a bug in doxygen.css and a sass compatibility fix for doxygen-awesome that made
+this mechanism necessary. With one of the recent doxygen versions the doxygen.css bug was fixed
+however we still keep it here some time.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>The path to the written stylesheet (should be identical to stylesheet).</p>
+<dt class="field-even">Param</dt>
+<dd class="field-even"><p>target: The path to a stylesheet where the results are written to.</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The path to the written stylesheet (should be identical to stylesheet).</p>
 </dd>
 </dl>
 </dd></dl>
@@ -829,7 +853,7 @@ stylesheet with the help of dartsass.</p>
     <footer class="footer">
   <p>
     
-      Last updated on &#39;Thu Apr 6 14:28:45 2023&#39;, &#39;cc8fe1e&#39;.<br/>
+      Last updated on &#39;Thu Apr 20 08:34:04 2023&#39;, &#39;d0a6476&#39;.<br/>
   </p>
 </footer>
 </main>

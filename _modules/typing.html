@@ -1,7 +1,7 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -54,7 +54,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
+    <meta name="docsearch:language" content="en">
     
 
     <!-- Google Analytics -->
@@ -343,6 +343,15 @@
          <code class="xref py py-mod docutils literal notranslate">
           <span class="pre">
            doxysphinx.utils.pathlib_fix
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../docs/auto_api/doxysphinx/utils/rst/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           doxysphinx.utils.rst
           </span>
          </code>
         </a>
@@ -697,7 +706,7 @@
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">arg</span><span class="p">,</span> <span class="p">(</span><span class="nb">type</span><span class="p">,</span> <span class="n">TypeVar</span><span class="p">,</span> <span class="n">ForwardRef</span><span class="p">,</span> <span class="n">types</span><span class="o">.</span><span class="n">UnionType</span><span class="p">,</span> <span class="n">ParamSpec</span><span class="p">,</span>
                         <span class="n">ParamSpecArgs</span><span class="p">,</span> <span class="n">ParamSpecKwargs</span><span class="p">)):</span>
         <span class="k">return</span> <span class="n">arg</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">callable</span><span class="p">(</span><span class="n">arg</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">callable</span><span class="p">(</span><span class="n">arg</span><span class="p">):</span>
         <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">msg</span><span class="si">}</span><span class="s2"> Got </span><span class="si">{</span><span class="n">arg</span><span class="si">!r:</span><span class="s2">.100</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">arg</span>
 
@@ -1949,7 +1958,7 @@
 
 <span class="k">def</span> <span class="nf">_is_callable_members_only</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
     <span class="c1"># PEP 544 prohibits using issubclass() with protocols that have non-method members.</span>
-    <span class="k">return</span> <span class="nb">all</span><span class="p">(</span><span class="n">callable</span><span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">attr</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span> <span class="k">for</span> <span class="n">attr</span> <span class="ow">in</span> <span class="n">_get_protocol_attrs</span><span class="p">(</span><span class="bp">cls</span><span class="p">))</span>
+    <span class="k">return</span> <span class="nb">all</span><span class="p">(</span><span class="nb">callable</span><span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">attr</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span> <span class="k">for</span> <span class="n">attr</span> <span class="ow">in</span> <span class="n">_get_protocol_attrs</span><span class="p">(</span><span class="bp">cls</span><span class="p">))</span>
 
 
 <span class="k">def</span> <span class="nf">_no_init_or_replace_init</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
@@ -2030,7 +2039,7 @@
         <span class="k">if</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_is_protocol</span><span class="p">:</span>
             <span class="k">if</span> <span class="nb">all</span><span class="p">(</span><span class="nb">hasattr</span><span class="p">(</span><span class="n">instance</span><span class="p">,</span> <span class="n">attr</span><span class="p">)</span> <span class="ow">and</span>
                     <span class="c1"># All *methods* can be blocked by setting them to None.</span>
-                    <span class="p">(</span><span class="ow">not</span> <span class="n">callable</span><span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">attr</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span> <span class="ow">or</span>
+                    <span class="p">(</span><span class="ow">not</span> <span class="nb">callable</span><span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">attr</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span> <span class="ow">or</span>
                      <span class="nb">getattr</span><span class="p">(</span><span class="n">instance</span><span class="p">,</span> <span class="n">attr</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span>
                     <span class="k">for</span> <span class="n">attr</span> <span class="ow">in</span> <span class="n">_get_protocol_attrs</span><span class="p">(</span><span class="bp">cls</span><span class="p">)):</span>
                 <span class="k">return</span> <span class="kc">True</span>
@@ -3213,7 +3222,7 @@
     <footer class="footer">
   <p>
     
-      Last updated on &#39;Thu Apr 6 14:28:45 2023&#39;, &#39;cc8fe1e&#39;.<br/>
+      Last updated on &#39;Thu Apr 20 08:34:04 2023&#39;, &#39;d0a6476&#39;.<br/>
   </p>
 </footer>
 </main>

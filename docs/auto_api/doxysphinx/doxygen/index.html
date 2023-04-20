@@ -1,7 +1,7 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -56,7 +56,7 @@
     <link rel="next" title="doxysphinx.html_parser" href="../html_parser/index.html" />
     <link rel="prev" title="doxysphinx.cli" href="../cli/index.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
+    <meta name="docsearch:language" content="en">
     
 
     <!-- Google Analytics -->
@@ -345,6 +345,15 @@
          <code class="xref py py-mod docutils literal notranslate">
           <span class="pre">
            doxysphinx.utils.pathlib_fix
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../utils/rst/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           doxysphinx.utils.rst
           </span>
          </code>
         </a>
@@ -910,11 +919,13 @@ The values of OUTPUT_DIRECTORY and GENERATE_TAGFILE will be set after instantiat
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>config</strong> – the imported doxyfile.</p></li>
 <li><p><strong>sphinx_source_dir</strong> – the sphinx directory (necessary for output directory validation).</p></li>
+<li><p><strong>doxygen_cwd</strong> – the directory for doxygen, paths from doxyfile are relative from here</p></li>
 </ul>
 </dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>False, if there is a deviation to the defined mandatory or optional settings.</p>
+</dd>
 </dl>
-<p>:param doxygen_cwd the directory for doxygen, paths from doxyfile are relative from here
-:return: False, if there is a deviation to the defined mandatory or optional settings.</p>
 </dd></dl>
 
 </dd></dl>
@@ -986,7 +997,7 @@ In the html output path.</p>
     <footer class="footer">
   <p>
     
-      Last updated on &#39;Thu Apr 6 14:28:45 2023&#39;, &#39;cc8fe1e&#39;.<br/>
+      Last updated on &#39;Thu Apr 20 08:34:04 2023&#39;, &#39;d0a6476&#39;.<br/>
   </p>
 </footer>
 </main>
