@@ -71,13 +71,13 @@ types-pyyaml = "^6.0.12.2"
 [tool.poetry.group.ci]
 optional = true
 [tool.poetry.group.ci.dependencies]
-pytest = "*"
-pytest-cov = "*"
-pytest-emoji = "*"
-pytest-md = "*"
-pex = "*"
-pre-commit = "*"
-commitizen = "*"
+pytest = "^7.2.2"
+pytest-cov = "^4.0.0"
+pytest-emoji = "^0.2.0"
+pytest-md = "^0.2.0"
+pex = "^2.1.131"
+pre-commit = "^3.2.2"
+commitizen = "^2.42.1"
 
 [tool.poetry.scripts]
 doxysphinx = "doxysphinx.cli:cli"
