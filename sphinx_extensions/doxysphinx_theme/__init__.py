@@ -13,6 +13,7 @@ This extensions add custom javascript files depending on theme.
 Currently only supporting Book and RTD theme.
 """
 
+import logging
 import pathlib
 
 from sphinx.application import Sphinx
@@ -20,7 +21,7 @@ from sphinx.config import Config
 
 
 def setup(app: Sphinx):
-    """Setups up the replacer extension."""
+    """Setups up the doxysphinx themes extension."""
     app.connect("config-inited", doxysphinx_theme_extension)
     return {"parallel_read_safe": True, "parallel_write_safe": True, "version": "0.1.0"}
 
@@ -42,4 +43,6 @@ def doxysphinx_theme_extension(app: Sphinx, config: Config):
     elif config.html_theme == "sphinx_rtd_theme":
         app.add_js_file("js/customize-navbar-rtd.js")
         app.add_css_file("css/sphinx-rtd-theme-custom.css")
+        if config.html_theme_options["collapse_navigation"]:
+            logging.warning("We are forcefully setting 'collapse_navigation' flag to 'False' in RTD theme options")
         config.html_theme_options["collapse_navigation"] = False

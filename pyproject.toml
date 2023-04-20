@@ -33,7 +33,7 @@ classifiers = [
     "Topic :: Documentation :: Sphinx",
     "Topic :: Documentation",
 ]
-packages = [{ include = "doxysphinx" }]
+packages = [{ include = "doxysphinx" }, { include = "sphinx_extensions" }]
 
 [tool.poetry.dependencies]
 python = ">=3.8,<3.11"
