@@ -248,6 +248,11 @@ this:
 ### Recommended Setup
 
 * To link from sphinx documentation directly to doxygen documented symbols -> see our [setting up doxylink](doxylink_setup.md) guide.(__Strongly recommended.__)
+* Add Doxysphinx Theme extension to get support for navbar bugfix with loosing focus on opening Doxygen files.
+
+### Notes
+
+* Doxysphinx is supporting incremental behavior from V3.2.1 (Will work properly with Doxygen V1.9.7 and above)
 
 ### Related Reading
 

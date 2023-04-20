@@ -37,11 +37,10 @@ def multi_glob(*glob_patterns: str) -> List[str]:
     return result
 
 
-def last_updated_from_git(repo_url: str) -> str:
+def last_updated_from_git() -> str:
     """Get the last updated string from git command (needs a git repository!).
 
     :return: The last updated string
-    :rtype: str
     """
     git_cmd_timestamp = ["git", "log", "--pretty=format:'%ad'", "--date=local", "-n1"]
     git_cmd_commit = ["git", "log", "--pretty=format:'%h'", "--date=local", "-n1"]
@@ -80,8 +79,6 @@ def theme_options(theme: str) -> Dict[str, Any]:
 
     elif theme == "sphinx_rtd_theme":
         return {
-            "show_nav_level": 1,
-            "collapse_navigation": True,
             "github_url": "https://github.com/boschglobal/doxysphinx",
             "repository_url": "https://github.com/boschglobal/doxysphinx",
             "logo_only": False,
