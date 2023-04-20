@@ -13,6 +13,30 @@
 
 <!--next-version-placeholder-->
 
+## v3.3.0 (2023-04-20)
+
+### Feat
+
+- **prerequisites**: dartsass isn't needed anymore because we switched to libsass
+
+### Fix
+
+- **styling**: fixes doxygen page headings
+- **parser**: removed annotated.html from parsing exclusion list
+- **resourceprovision**: fixed caching not working for stylesheets
+- **devcontainer**: fixed devcontainer which was broken on first run.
+- **pre-commit**: reactivated conventional commit checking
+
+### Refactor
+
+- fix for flake8 error C418 in toc.py
+
+### Perf
+
+- improve performance by parallelizing work over available cores
+- improve performance by better preselection
+- improved performance of json loading by an order of magnitude
+
 ## v3.2.3 (2023-04-06)
 
 ### Fix
