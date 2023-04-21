@@ -92,8 +92,8 @@ extensions = [
     "sphinx.ext.inheritance_diagram",
     "sphinx_design",
     # in-repo sphinx extensions:
-    "sphinx_extensions.replacer",
-    "sphinx_extensions.doxysphinx_theme",
+    "doxysphinx.ext.replacer",
+    "doxysphinx.ext.sphinx_theme",
 ]
 
 # Plantuml

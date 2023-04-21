@@ -22,11 +22,11 @@ from sphinx.config import Config
 
 def setup(app: Sphinx):
     """Setups up the doxysphinx themes extension."""
-    app.connect("config-inited", doxysphinx_theme_extension)
+    app.connect("config-inited", sphinx_theme_extension)
     return {"parallel_read_safe": True, "parallel_write_safe": True, "version": "0.1.0"}
 
 
-def doxysphinx_theme_extension(app: Sphinx, config: Config):
+def sphinx_theme_extension(app: Sphinx, config: Config):
     """Add custom javascript files specific to theme and set theme options.
 
     :param app: Sphinx app

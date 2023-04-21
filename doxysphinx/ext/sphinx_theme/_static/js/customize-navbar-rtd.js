@@ -31,7 +31,6 @@ function findCurrentRoute() {
         var lastActiveNav = window.sessionStorage.getItem("href");
         var allTags = document.querySelectorAll("li");
         for (let i = 0; i < allTags.length; i++) {
-            console.log(allTags[i].getElementsByTagName("a")[0].href);
             if (allTags[i].getElementsByTagName("a")[0].href == lastActiveNav) {
                 allTags[i].getElementsByTagName("a")[0].classList.add("current");
                 allTags[i].getElementsByTagName("a")[0].setAttribute("aria-expanded", "true")

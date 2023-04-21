@@ -20,4 +20,6 @@ This is the api reference for doxysphinx.
 :maxdepth: 1
 
 auto_api/doxysphinx/index
+auto_api/sphinx_theme/index
+auto_api/replacer/index
 ```
