@@ -13,6 +13,12 @@
 
 <!--next-version-placeholder-->
 
+## v3.3.2 (2023-04-27)
+
+### Fix
+
+- check if doxygen.css exists before pre-processing
+
 ## v3.3.1 (2023-04-27)
 
 ### Fix
