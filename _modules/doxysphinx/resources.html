@@ -660,15 +660,16 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;copied files:</span><span class="se">\n</span><span class="si">{</span><span class="n">stringify_paths</span><span class="p">(</span><span class="n">copied_files</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
         <span class="c1"># postprocessing (patching + sass)</span>
-        <span class="c1"># ... for doxygen.css</span>
-        <span class="n">written_doxygen_css</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_css_scoper</span><span class="o">.</span><span class="n">scope</span><span class="p">(</span>
-            <span class="n">stylesheet</span><span class="o">=</span><span class="n">doxygen_css</span><span class="p">,</span>
-            <span class="n">target</span><span class="o">=</span><span class="n">target</span> <span class="o">/</span> <span class="n">doxygen_css</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
-            <span class="n">additional_css_rules</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_custom_styles</span><span class="p">,</span>
-            <span class="n">content_patch_callback</span><span class="o">=</span><span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="nb">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="s2">&quot;code.JavaDocCode</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;code.JavaDocCode {</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">),</span>
-        <span class="p">)</span>
-        <span class="k">if</span> <span class="n">written_doxygen_css</span><span class="p">:</span>
-            <span class="n">copied_files</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">written_doxygen_css</span><span class="p">)</span>
+        <span class="c1"># ... for doxygen.css if existing (a custom HTML_STYLESHEET disables it)</span>
+        <span class="k">if</span> <span class="n">doxygen_css</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+            <span class="n">written_doxygen_css</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_css_scoper</span><span class="o">.</span><span class="n">scope</span><span class="p">(</span>
+                <span class="n">stylesheet</span><span class="o">=</span><span class="n">doxygen_css</span><span class="p">,</span>
+                <span class="n">target</span><span class="o">=</span><span class="n">target</span> <span class="o">/</span> <span class="n">doxygen_css</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+                <span class="n">additional_css_rules</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_custom_styles</span><span class="p">,</span>
+                <span class="n">content_patch_callback</span><span class="o">=</span><span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="nb">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="s2">&quot;code.JavaDocCode</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;code.JavaDocCode {</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">),</span>
+            <span class="p">)</span>
+            <span class="k">if</span> <span class="n">written_doxygen_css</span><span class="p">:</span>
+                <span class="n">copied_files</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">written_doxygen_css</span><span class="p">)</span>
         <span class="c1"># ... for doxygen_awesome.css if existing</span>
         <span class="k">if</span> <span class="n">doxygen_awesome_css</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
             <span class="n">written_doxygen_awesome_css</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_css_scoper</span><span class="o">.</span><span class="n">scope</span><span class="p">(</span>
@@ -833,7 +834,7 @@
     <footer class="footer">
   <p>
     
-      Last updated on &#39;Thu Apr 27 15:00:18 2023&#39;, &#39;0b5a3b0&#39;.<br/>
+      Last updated on &#39;Thu Apr 27 15:30:53 2023&#39;, &#39;24115ae&#39;.<br/>
   </p>
 </footer>
 </main>
