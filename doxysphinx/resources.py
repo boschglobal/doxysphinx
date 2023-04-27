@@ -218,7 +218,7 @@ class CssScoper:
             raise ApplicationError(f"source ({stylesheet}) and target ({target}) stylesheets cannot be identical.")
 
         # load stylesheet and apply patches
-        css_content = stylesheet.read_text()
+        css_content = stylesheet.read_text(encoding="UTF-8")
 
         if content_patch_callback:
             css_content = content_patch_callback(css_content)
