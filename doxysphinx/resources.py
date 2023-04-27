@@ -126,15 +126,16 @@ class DoxygenResourceProvider:
         self._logger.debug(f"copied files:\n{stringify_paths(copied_files)}")
 
         # postprocessing (patching + sass)
-        # ... for doxygen.css
-        written_doxygen_css = self._css_scoper.scope(
-            stylesheet=doxygen_css,
-            target=target / doxygen_css.name,
-            additional_css_rules=self._custom_styles,
-            content_patch_callback=lambda s: str.replace(s, "code.JavaDocCode\n", "code.JavaDocCode {\n"),
-        )
-        if written_doxygen_css:
-            copied_files.append(written_doxygen_css)
+        # ... for doxygen.css if existing (a custom HTML_STYLESHEET disables it)
+        if doxygen_css.exists():
+            written_doxygen_css = self._css_scoper.scope(
+                stylesheet=doxygen_css,
+                target=target / doxygen_css.name,
+                additional_css_rules=self._custom_styles,
+                content_patch_callback=lambda s: str.replace(s, "code.JavaDocCode\n", "code.JavaDocCode {\n"),
+            )
+            if written_doxygen_css:
+                copied_files.append(written_doxygen_css)
         # ... for doxygen_awesome.css if existing
         if doxygen_awesome_css.exists():
             written_doxygen_awesome_css = self._css_scoper.scope(
