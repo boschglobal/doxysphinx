@@ -13,6 +13,12 @@
 
 <!--next-version-placeholder-->
 
+## v3.3.1 (2023-04-27)
+
+### Fix
+
+- **toc**: Fix illegal characters in structural dummy titles
+
 ## v3.3.0 (2023-04-20)
 
 ### Feat
