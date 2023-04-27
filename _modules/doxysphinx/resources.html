@@ -753,7 +753,7 @@
             <span class="k">raise</span> <span class="n">ApplicationError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;source (</span><span class="si">{</span><span class="n">stylesheet</span><span class="si">}</span><span class="s2">) and target (</span><span class="si">{</span><span class="n">target</span><span class="si">}</span><span class="s2">) stylesheets cannot be identical.&quot;</span><span class="p">)</span>
 
         <span class="c1"># load stylesheet and apply patches</span>
-        <span class="n">css_content</span> <span class="o">=</span> <span class="n">stylesheet</span><span class="o">.</span><span class="n">read_text</span><span class="p">()</span>
+        <span class="n">css_content</span> <span class="o">=</span> <span class="n">stylesheet</span><span class="o">.</span><span class="n">read_text</span><span class="p">(</span><span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;UTF-8&quot;</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">content_patch_callback</span><span class="p">:</span>
             <span class="n">css_content</span> <span class="o">=</span> <span class="n">content_patch_callback</span><span class="p">(</span><span class="n">css_content</span><span class="p">)</span>
@@ -834,7 +834,7 @@
     <footer class="footer">
   <p>
     
-      Last updated on &#39;Thu Apr 27 15:30:53 2023&#39;, &#39;24115ae&#39;.<br/>
+      Last updated on &#39;Thu Apr 27 15:36:21 2023&#39;, &#39;c9c544c&#39;.<br/>
   </p>
 </footer>
 </main>
