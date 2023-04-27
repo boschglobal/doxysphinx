@@ -31,9 +31,9 @@
     <link rel="stylesheet" type="text/css" href="../../_static/assets/jsonview.bundle.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/libs/html/datatables.min.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/layouts.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/styles.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/modern.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/styles.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/layouts.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-book-theme-custom.css" />
     
   <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
@@ -543,6 +543,7 @@
 <span class="sd">&quot;&quot;&quot;The toc module contains classes related to the toctree generation for doxygen htmls/rsts.&quot;&quot;&quot;</span>
 
 <span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">unicodedata</span>
 <span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="n">replace</span>
 <span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Iterable</span><span class="p">,</span> <span class="n">Iterator</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Protocol</span><span class="p">,</span> <span class="n">Tuple</span>
@@ -722,8 +723,22 @@
 
         <span class="k">return</span> <span class="n">prefix_replaced</span> <span class="o">+</span> <span class="n">split_start_search</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\\</span><span class="s1">&quot;&#39;</span><span class="p">,</span> <span class="s1">&#39;&quot;&#39;</span><span class="p">),</span> <span class="n">split_end_search</span> <span class="o">+</span> <span class="n">suffix</span>
 
+    <span class="k">def</span> <span class="nf">_sanitize_filename</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sanitize value to make it usable as a filename.</span>
+
+<span class="sd">        - Try to replace unicode characters with ascii fallbacks</span>
+<span class="sd">        - drop any remaining non-ascii characters</span>
+<span class="sd">        - converts to lower case</span>
+<span class="sd">        - replace whitespace and slashes with underscores</span>
+<span class="sd">        - keeps only alphanumerics, dash and underscore</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="n">unicodedata</span><span class="o">.</span><span class="n">normalize</span><span class="p">(</span><span class="s2">&quot;NFKD&quot;</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;ascii&quot;</span><span class="p">,</span> <span class="s2">&quot;ignore&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;ascii&quot;</span><span class="p">)</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;[\s/]&quot;</span><span class="p">,</span> <span class="s2">&quot;_&quot;</span><span class="p">,</span> <span class="n">value</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span>
+        <span class="k">return</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;[^\w\-_]&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+
     <span class="k">def</span> <span class="nf">_prepare_structural_dummy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">structural_dummy</span><span class="p">:</span> <span class="n">_MenuEntry</span><span class="p">):</span>
-        <span class="n">clean_title</span> <span class="o">=</span> <span class="n">structural_dummy</span><span class="o">.</span><span class="n">title</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="s2">&quot;_&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+        <span class="n">clean_title</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sanitize_filename</span><span class="p">(</span><span class="n">structural_dummy</span><span class="o">.</span><span class="n">title</span><span class="p">)</span>
         <span class="n">toc_docname</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">structural_dummy</span><span class="o">.</span><span class="n">docname</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">clean_title</span><span class="si">}</span><span class="s2">&quot;</span>
         <span class="n">structural_dummy</span><span class="o">.</span><span class="n">docname</span> <span class="o">=</span> <span class="n">toc_docname</span>
 
@@ -811,7 +826,7 @@
     <footer class="footer">
   <p>
     
-      Last updated on &#39;Thu Apr 20 08:34:04 2023&#39;, &#39;d0a6476&#39;.<br/>
+      Last updated on &#39;Thu Apr 27 15:00:18 2023&#39;, &#39;0b5a3b0&#39;.<br/>
   </p>
 </footer>
 </main>
