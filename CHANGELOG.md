@@ -13,6 +13,12 @@
 
 <!--next-version-placeholder-->
 
+## v3.3.3 (2023-04-27)
+
+### Fix
+
+- Encoding issues on windows
+
 ## v3.3.2 (2023-04-27)
 
 ### Fix
