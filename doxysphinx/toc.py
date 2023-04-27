@@ -9,6 +9,7 @@
 """The toc module contains classes related to the toctree generation for doxygen htmls/rsts."""
 
 import re
+import unicodedata
 from dataclasses import dataclass, field, replace
 from pathlib import Path
 from typing import Any, Dict, Iterable, Iterator, List, Protocol, Tuple
@@ -188,8 +189,22 @@ class DoxygenTocGenerator:
 
         return prefix_replaced + split_start_search.replace('\\"', '"'), split_end_search + suffix
 
+    def _sanitize_filename(self, value: str) -> str:
+        """Sanitize value to make it usable as a filename.
+
+        - Try to replace unicode characters with ascii fallbacks
+        - drop any remaining non-ascii characters
+        - converts to lower case
+        - replace whitespace and slashes with underscores
+        - keeps only alphanumerics, dash and underscore
+        """
+        value = unicodedata.normalize("NFKD", value)
+        value = value.encode("ascii", "ignore").decode("ascii")
+        value = re.sub(r"[\s/]", "_", value.lower())
+        return re.sub(r"[^\w\-_]", "", value)
+
     def _prepare_structural_dummy(self, structural_dummy: _MenuEntry):
-        clean_title = structural_dummy.title.replace(" ", "_").lower()
+        clean_title = self._sanitize_filename(structural_dummy.title)
         toc_docname = f"{structural_dummy.docname}_{clean_title}"
         structural_dummy.docname = toc_docname
 
