@@ -255,7 +255,7 @@ class CssScoper:
         compiled_css = compiled_css.replace(f"{self._selector} html {{", "html {")
 
         # write stylesheet
-        target.write_text(compiled_css)
+        target.write_text(compiled_css, encoding="UTF-8")
 
         self._logger.debug(
             f"scoped original stylesheet '{stylesheet}' to selector '{self._selector}' in target '{target}'."
