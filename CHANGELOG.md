@@ -13,6 +13,12 @@
 
 <!--next-version-placeholder-->
 
+## v3.3.4 (2023-06-16)
+
+### Fix
+
+- **resources**: writing compiled css as utf-8 now
+
 ## v3.3.3 (2023-04-27)
 
 ### Fix
