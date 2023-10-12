@@ -74,7 +74,7 @@ github_username = "anyone"  # these just need to be set that the sphinx toolbox 
 github_repository = "any"
 # -- Sphinx extensions -------------------------------------------------------
 extensions = [
-    "sphinxcontrib.needs",
+    "sphinx_needs",
     "sphinxcontrib.plantuml",
     "sphinx.ext.mathjax",
     "sphinx.ext.ifconfig",
