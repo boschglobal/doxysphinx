@@ -9,20 +9,50 @@
 =====================================================================================
 */
 
-@media (min-width: 1200px) {
-
-    .container,
-    .container-lg,
-    .container-md,
-    .container-sm,
-    .container-xl {
+/* make sphinx book scale over the complete width:*/
+@media(min-width: 960px) {
+    .bd-page-width {
         max-width: 100% !important;
+        width: 100%
     }
+}
+
+@media (min-width: 992px) {
+    .bd-sidebar-primary {
+        flex-basis: 20%;
+        max-width: 25em;
+    }
+}
+
+body div.bd-container {
+    justify-content: left;
+}
+
+div.bd-article-container {
+    max-width: 100% !important;
+}
+
+.bd-main .bd-content .bd-article-container {
+    max-width: 100%;
+    /* default is 60em */
+}
+
+.bd-page-width {
+    max-width: 100%;
+    /* default is 88rem */
+}
+
+/* color fixes to have sidebar in white smoke */
+
+.bd-sidebar {
+    background: whitesmoke;
 }
 
 body {
     background-color: white;
 }
+
+/* other styling stuff */
 
 .copyright {
     font-size: small;
@@ -47,11 +77,6 @@ body {
 
 p.rubric {
     border-bottom: none !important;
-}
-
-/* navigation bar color override */
-.bd-sidebar#site-navigation {
-    background: whitesmoke;
 }
 
 #search-input {
