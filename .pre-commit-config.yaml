@@ -24,7 +24,7 @@ repos:
 # formatting related
 
 - repo: https://github.com/pre-commit/pre-commit-hooks
-  rev: v4.4.0
+  rev: v4.5.0
   hooks:
   - id: trailing-whitespace
   - id: end-of-file-fixer
@@ -35,7 +35,7 @@ repos:
     args: ["--maxkb=4096"]
 
 - repo: https://github.com/psf/black
-  rev: 23.3.0
+  rev: 23.9.1
   hooks:
   - id: black
     types: [python]
@@ -47,7 +47,7 @@ repos:
     args: ["--profile", "black", "--filter-files"]
 
 - repo: https://github.com/pycqa/flake8
-  rev: 6.0.0
+  rev: 6.1.0
   hooks:
   - id: flake8
     additional_dependencies: [
@@ -62,7 +62,7 @@ repos:
     types: [python]
 
 - repo: https://github.com/pre-commit/mirrors-mypy
-  rev: v1.2.0
+  rev: v1.6.0
   hooks:
   - id: mypy
     args: [ "--show-error-codes" ]
@@ -91,14 +91,14 @@ repos:
 #   -   id: pip-audit
 
 - repo: https://github.com/commitizen-tools/commitizen
-  rev: v2.42.1
+  rev: 3.10.0
   hooks:
     - id: commitizen
     - id: commitizen-branch
       stages: [push]
 
 - repo: https://github.com/python-poetry/poetry
-  rev: 1.4.0
+  rev: 1.6.0
   hooks:
     - id: poetry-check
     - id: poetry-lock
