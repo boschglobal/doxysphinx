@@ -13,6 +13,13 @@
 
 <!--next-version-placeholder-->
 
+## v3.3.6 (2023-10-12)
+
+### Fix
+
+- **docs**: fixed sphinx autoapi issue in docs build
+- **docs**: upgraded sphinx book theme (and dependencies in general)
+
 ## v3.3.5 (2023-10-12)
 
 ## v3.3.4 (2023-06-16)
