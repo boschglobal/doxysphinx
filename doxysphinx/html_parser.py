@@ -484,7 +484,7 @@ class DoxygenHtmlParser:
         :return: The result of the parsing
         :rtype: ParseResult
         """
-        buffer = file.read_text()
+        buffer = file.read_text(encoding="utf-8")
         tree = etree.document_fromstring(buffer).getroottree()
 
         meta_title, project, title = self._read_project_and_title(buffer, file)

@@ -42,3 +42,5 @@ Please keep the list sorted.
   * Stefan Schulz - <stefan.schulz@itemis.com>
 * Stream HPC B.V.
   * Gergely Meszaros <gergely@streamhpc.com>
+* Klarälvdalens Datakonsult AB (KDAB)
+  * Jonatan Wallmander <jonatan.wallmander@kdab.com>
