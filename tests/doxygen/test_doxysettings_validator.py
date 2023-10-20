@@ -72,7 +72,7 @@ def update_dict(params: ConfigDict):
         (
             update_dict({"OUTPUT_DIRECTORY": "/em-hackathon/code"}),
             [
-                f'The doxygen OUTPUT_DIR of "{"/em-hackathon/code" + "/html"}" defined in the doxyfile'
+                f'The doxygen OUTPUT_DIR of "{Path.cwd().joinpath("/em-hackathon/code", "html")}" defined in the doxyfile'
                 f' is not in a sub-path of the sphinx source directory "{Path.cwd()}".'
             ],  # wrong output directory
         ),
