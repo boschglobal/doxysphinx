@@ -15,7 +15,7 @@ import re
 import shutil
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Any, Dict, List, Union
+from typing import Any, Dict, List, Tuple, Union, cast
 
 import pyjson5
 
@@ -162,6 +162,18 @@ class DoxygenSettingsValidator:
     }
     """A dictionary containing further optional settings for the doxygen config."""
 
+    @staticmethod
+    def _normalize_option(key: str, value: Union[str, List[str]]) -> Union[str, List[str]]:
+        """Normalize incoming value before comparing to recommended/mandatory setting."""
+        if key in ("OUTPUT_DIRECTORY", "GENERATE_TAGFILE"):
+            return Path(cast(str, value)).as_posix()
+
+        return value
+
+    @classmethod
+    def _normalize_item(cls, kv: Tuple[str, Union[str, List[str]]]) -> Tuple[str, Union[str, List[str]]]:
+        return (kv[0], cls._normalize_option(kv[0], kv[1]))
+
     validation_errors: List[str] = []
     """List of the validation errors including the doxyflag with its used and the correct value."""
     absolute_out: Path
@@ -205,10 +217,10 @@ class DoxygenSettingsValidator:
         self.absolute_out = path_resolve(out)
         stringified_out = str(out) if out.is_absolute() else f'"{out}" (resolved to "{self.absolute_out}")'
 
-        self.mandatory_settings["OUTPUT_DIRECTORY"] = str(config["OUTPUT_DIRECTORY"])
+        self.mandatory_settings["OUTPUT_DIRECTORY"] = Path(cast(str, config["OUTPUT_DIRECTORY"])).as_posix()
 
         if path_is_relative_to(out, sphinx_source_dir):
-            self.optional_settings["GENERATE_TAGFILE"] = os.path.relpath(out / "tagfile.xml", doxygen_cwd)
+            self.optional_settings["GENERATE_TAGFILE"] = out.joinpath("tagfile.xml").relative_to(doxygen_cwd).as_posix()
             return True
         else:
             self.optional_settings["GENERATE_TAGFILE"] = "docs/doxygen/demo/html/tagfile.xml"  # default value
@@ -222,7 +234,7 @@ class DoxygenSettingsValidator:
         imported_settings = settings
         target_settings = self.mandatory_settings
         validation_successful = True
-        if all(item in imported_settings.items() for item in target_settings.items()):
+        if all(self._normalize_item(item) in imported_settings.items() for item in target_settings.items()):
             return validation_successful
 
         contained_settings_target = {
@@ -238,7 +250,8 @@ class DoxygenSettingsValidator:
             validation_successful = False
 
         for key in contained_settings_target.keys():
-            if not contained_settings_target[key] == target_settings[key]:
+            contained_setting = self._normalize_option(key, contained_settings_target[key])
+            if not contained_setting == target_settings[key]:
                 self.validation_errors.append(
                     (
                         f"Error: Wrong value {contained_settings_target[key]} for {key}, {target_settings[key]} is required."
@@ -252,7 +265,7 @@ class DoxygenSettingsValidator:
         imported_settings = settings
         target_settings = self.optional_settings
         validation_successful = True
-        if all(item in imported_settings.items() for item in target_settings.items()):
+        if all(self._normalize_item(item) in imported_settings.items() for item in target_settings.items()):
             return validation_successful
 
         contained_settings_target = {
@@ -268,7 +281,8 @@ class DoxygenSettingsValidator:
             validation_successful = False
 
         for key in contained_settings_target.keys():
-            if not contained_settings_target[key] == target_settings[key]:
+            contained_setting = self._normalize_option(key, contained_settings_target[key])
+            if not contained_setting == target_settings[key]:
                 self.validation_errors.append(
                     (
                         f"Hint: Wrong value {contained_settings_target[key]} for {key}, {target_settings[key]} is recommended."
