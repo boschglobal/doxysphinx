@@ -13,6 +13,13 @@
 
 <!--next-version-placeholder-->
 
+## v3.3.7 (2023-10-20)
+
+### Fix
+
+- **doxygen.py**: Fix parsing of Windows newlines when on Posix
+- **doxygen.py**: Don't fail on forward slashes on Windows
+
 ## v3.3.6 (2023-10-12)
 
 ### Fix
