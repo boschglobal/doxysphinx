@@ -54,7 +54,8 @@ def test_doxyfile_reader_lineendings_workasexpected(load_input, expected_config:
 
 @pytest.fixture
 def load_input(request):
-    return request.param.read_text()
+    # Don't replace newlines with '\n', subprocess.stdout.decode() doesn't either
+    return request.param.open(newline="").read()
 
 
 @pytest.fixture
