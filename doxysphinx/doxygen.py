@@ -98,7 +98,7 @@ def _parse_stdout(text: str) -> ConfigDict:
     pure_text = os.linesep.join([line for line in lines if _is_config_line(line)])
 
     ParserElement.set_default_whitespace_chars(" \t")
-    line_end = LineEnd() if os.linesep == "\n" else White("\r\n")
+    line_end = White("\r\n") | LineEnd()
 
     doxy_flag = Word(srange("[A-Z_]")) + FollowedBy("=")
     list_items = delimited_list(
