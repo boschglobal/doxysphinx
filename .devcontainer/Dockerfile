@@ -10,8 +10,8 @@
 ## =====================================================================================
 ##
 
-ARG VARIANT=3.10
-FROM mcr.microsoft.com/devcontainers/python:${VARIANT}
+ARG VARIANT=3.12
+FROM --platform=linux/amd64 mcr.microsoft.com/devcontainers/python:${VARIANT}
 
 LABEL maintainer="Bosch Doxysphinx Team <https://github.com/boschglobal/doxysphinx/>"
 
