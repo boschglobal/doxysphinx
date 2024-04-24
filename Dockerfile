@@ -11,10 +11,10 @@
 
 FROM python:3-slim
 
-ARG VARIANT=3.10
+ARG VARIANT=3.12
 FROM mcr.microsoft.com/vscode/devcontainers/python:${VARIANT}
 
-LABEL maintainer="Bosch Docs as Doxysphinx <https://github.com/boschglobal/doxysphinx>"
+LABEL maintainer="Bosch Docs as Code Doxysphinx <https://github.com/boschglobal/doxysphinx>"
 
 RUN useradd -ms /bin/bash doxysphinx_user
 

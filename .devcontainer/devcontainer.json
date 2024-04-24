@@ -4,7 +4,7 @@
     "dockerfile": "Dockerfile",
     "context": "../",
     "args": {
-      "VARIANT": "3.10",
+      "VARIANT": "3.12",
       "WORKSPACE_DIR": "${containerWorkspaceFolder}"
     }
   },
@@ -63,6 +63,6 @@
   // It's necessary to do this here because in Dockerfile we do not have the config files (pyproject.toml +
   // .pre-commit-config.yaml) available.
   // "postCreateCommand": "pre-commit install --install-hooks && pre-commit autoupdate",
-  "onCreateCommand": "poetry install --with sphinx && pre-commit install --install-hooks && pre-commit autoupdate",
+  // "onCreateCommand": "poetry install --with sphinx && pre-commit install --install-hooks && pre-commit autoupdate",
   "remoteUser": "vscode"
 }
