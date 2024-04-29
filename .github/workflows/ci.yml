@@ -17,6 +17,9 @@ on:
       - main
   pull_request:
 
+permissions:
+  contents: write  
+
 env:
   python-version: 3.9
 
