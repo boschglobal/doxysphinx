@@ -18,7 +18,7 @@ on:
   pull_request:
 
 permissions:
-  contents: write  
+  contents: write
 
 env:
   python-version: 3.9

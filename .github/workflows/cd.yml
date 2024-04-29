@@ -16,7 +16,7 @@ on:
     types: [published]
 
 permissions:
-  contents: write    
+  contents: write
 
 env:
   python-version: 3.9
