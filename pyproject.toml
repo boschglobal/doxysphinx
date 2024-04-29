@@ -9,7 +9,7 @@
 
 [tool.poetry]
 name = "doxysphinx"
-version = "3.3.8"
+version = "3.3.7"
 description = "Integrates doxygen html documentation with sphinx."
 authors = [
     "Nirmal Sasidharan <nirmal.sasidharan@de.bosch.com>",
@@ -45,7 +45,7 @@ pyparsing = "^3.0.9"
 mpire = "^2.6.0"
 pyjson5 = "^1.6.2"
 libsass = "^0.22.0"
-numpy = "^1.26.4" # Adding this version of numpy to support python 3.12
+numpy = "^1.26.4"                                       # Adding this version of numpy to support python 3.12
 
 [tool.poetry.group.sphinx.dependencies]
 sphinx = "<7"
@@ -85,7 +85,7 @@ doxysphinx = "doxysphinx.cli:cli"
 
 [tool.commitizen]
 name = "cz_conventional_commits"
-version = "3.3.8"
+version = "3.3.7"
 tag_format = "v$version"
 version_files = ["pyproject.toml:^version"]
 bump_message = """chore(release): release $current_version → $new_version by commitizen [skip-ci]
