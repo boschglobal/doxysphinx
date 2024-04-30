@@ -55,10 +55,9 @@ jobs:
 
     - name: "Deploy to pypi repository"
       env:
-        PYPI_USER: ${{ secrets.PYPI_USERNAME }}
-        PYPI_PASS: ${{ secrets.PYPI_PASSWORD }}
+        POETRY_PYPI_TOKEN_PYPI: ${{ secrets.PYPI_TOKEN }}
       run: |
-        poetry publish --username "$PYPI_USER" --password "$PYPI_PASS"
+        poetry publish
 
     - name: "Deploy binaries to gh-release"
       uses: softprops/action-gh-release@v1
