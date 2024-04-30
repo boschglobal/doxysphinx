@@ -13,18 +13,6 @@
 
 <!--next-version-placeholder-->
 
-## v3.3.8 (2024-04-30)
-
-### Fix
-
-- fix broken release of v3.3.8 (try #3) (#128)
-- fix broken release of v3.3.8 (try #2) (#127)
-- fix broken release of v3.3.8 (#126)
-- **python-version**: Updated python to 3.12 and dependencies
-- **python-version**: Updated python to 3.12 and dependencies
-- **python-version**: Added numpy to pyproject
-- **python-version**: Updated python to 3.12 and dependencies
-
 ## v3.3.7 (2023-10-20)
 
 ### Fix
