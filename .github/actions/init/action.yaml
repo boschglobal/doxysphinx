@@ -43,7 +43,7 @@ runs:
     shell: bash
 
   - name: "Ensure python (with poetry caching)"
-    uses: actions/setup-python@v3
+    uses: actions/setup-python@v5
     with:
       python-version: ${{ inputs.python-version }}
       cache: 'poetry'
