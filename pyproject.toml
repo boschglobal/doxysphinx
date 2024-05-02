@@ -46,6 +46,7 @@ mpire = "^2.6.0"
 pyjson5 = "^1.6.2"
 libsass = "^0.22.0"
 numpy = "^1.26.4"                                       # Adding this version of numpy to support python 3.12
+matplotlib = "^3.8.4"
 
 [tool.poetry.group.sphinx.dependencies]
 sphinx = "<=7.3.7"
