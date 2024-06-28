@@ -114,6 +114,9 @@ class Builder:
         processed.
         """
         for html_file in doxygen_html_dir.glob("*.html"):
+            # For Doxygen>=1.10.0 this file can be skipped
+            if html_file.name == "doxygen_crawl.html":
+                continue
             rst_file = html_file.with_suffix(".rst")
 
             hash_from_html = hash_blake2b(html_file)

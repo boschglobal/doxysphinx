@@ -40,7 +40,7 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/*
 
 # Update doxygen to latest
-RUN wget -c https://www.doxygen.nl/files/doxygen-1.9.6.linux.bin.tar.gz -O /tmp/doxygen.tar.gz \
+RUN wget -c https://www.doxygen.nl/files/doxygen-1.11.0.linux.bin.tar.gz -O /tmp/doxygen.tar.gz \
     && mkdir -p /tmp/doxygen \
     && tar -xzvf /tmp/doxygen.tar.gz --strip-components=1 -C /tmp/doxygen/ \
     && mv /tmp/doxygen/bin/* /usr/bin \
