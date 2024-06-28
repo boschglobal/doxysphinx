@@ -13,6 +13,12 @@
 
 <!--next-version-placeholder-->
 
+## v3.3.9 (2024-06-28)
+
+### Fix
+
+- **process.py**: Fix to support Doxygen 1.10 and 1.11 (#141)
+
 ## v3.3.8 (2024-04-30)
 
 ### Fix
