@@ -13,6 +13,12 @@
 
 <!--next-version-placeholder-->
 
+## v3.3.10 (2024-07-16)
+
+### Fix
+
+- **toc.py**: Use UTF-8 encoding for reading files (#148)
+
 ## v3.3.9 (2024-06-28)
 
 ### Fix
