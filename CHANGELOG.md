@@ -13,6 +13,12 @@
 
 <!--next-version-placeholder-->
 
+## v3.3.11 (2024-09-04)
+
+### Fix
+
+- upgrade sphinx and sphinx-needs
+
 ## v3.3.10 (2024-07-16)
 
 ### Fix
