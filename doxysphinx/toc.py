@@ -165,7 +165,7 @@ class DoxygenTocGenerator:
         """
         # load html file as string and remove the newline chars
         blueprint = self._source_dir / "index.html"
-        complete_html = blueprint.read_text()
+        complete_html = blueprint.read_text(encoding="UTF-8")
         linearized_html = complete_html.replace("\n", "").replace("\r", "")
 
         # split the html string on the content element
