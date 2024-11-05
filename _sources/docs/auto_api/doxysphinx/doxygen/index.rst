@@ -1,5 +1,5 @@
-:py:mod:`doxysphinx.doxygen`
-============================
+doxysphinx.doxygen
+==================
 
 .. py:module:: doxysphinx.doxygen
 
@@ -9,11 +9,16 @@
 
 
 
-Module Contents
----------------
+Attributes
+----------
+
+.. autoapisummary::
+
+   doxysphinx.doxygen.ConfigDict
+
 
 Classes
-~~~~~~~
+-------
 
 .. autoapisummary::
 
@@ -22,9 +27,8 @@ Classes
    doxysphinx.doxygen.DoxygenOutputPathValidator
 
 
-
 Functions
-~~~~~~~~~
+---------
 
 .. autoapisummary::
 
@@ -32,33 +36,22 @@ Functions
    doxysphinx.doxygen.read_js_data_file
 
 
-
-Attributes
-~~~~~~~~~~
-
-.. autoapisummary::
-
-   doxysphinx.doxygen.ConfigDict
-
+Module Contents
+---------------
 
 .. py:data:: ConfigDict
 
-   
-
 .. py:class:: DoxyOutput
-
 
    Class to summarize the strings of the console output and error streams.
 
-   .. py:attribute:: out
-      :type: str
 
-      
+   .. py:attribute:: out
+      :type:  str
+
 
    .. py:attribute:: err
-      :type: str
-
-      
+      :type:  str
 
 
 .. py:function:: read_doxyconfig(doxyfile: pathlib.Path, doxygen_exe: str, doxygen_cwd: pathlib.Path) -> ConfigDict
@@ -76,35 +69,42 @@ Attributes
 
 .. py:class:: DoxygenSettingsValidator
 
-
    Validate doxygen settings for compatibility with doxysphinx.
 
    Doxysphinx requires some settings to be present/set in a specific way.
+
 
    .. py:attribute:: mandatory_settings
 
       A dictionary containing mandatory settings for the doxygen config.
       The values of OUTPUT_DIRECTORY and GENERATE_TAGFILE will be set after instantiation and validation of the filepaths.
 
+
    .. py:attribute:: optional_settings
 
       A dictionary containing further optional settings for the doxygen config.
 
+
    .. py:attribute:: validation_errors
-      :type: List[str]
+      :type:  List[str]
       :value: []
+
 
       List of the validation errors including the doxyflag with its used and the correct value.
 
+
    .. py:attribute:: absolute_out
-      :type: pathlib.Path
+      :type:  pathlib.Path
 
       Absolute path of the output directory.
+
 
    .. py:attribute:: validation_msg
       :value: ''
 
+
       Validation errors merged in one string.
+
 
    .. py:method:: validate(config: ConfigDict, sphinx_source_dir: pathlib.Path, doxygen_cwd: pathlib.Path) -> bool
 
@@ -127,8 +127,14 @@ Attributes
 
 .. py:class:: DoxygenOutputPathValidator
 
-
    Validates doxygen html output paths.
+
+
+   .. py:attribute:: validation_msg
+      :type:  str
+      :value: ''
+
+
 
    .. py:method:: validate(doxygen_html_output: pathlib.Path) -> bool
 

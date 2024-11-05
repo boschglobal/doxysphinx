@@ -1,5 +1,5 @@
-:py:mod:`doxysphinx`
-====================
+doxysphinx
+==========
 
 .. py:module:: doxysphinx
 
@@ -19,26 +19,26 @@
 
 Subpackages
 -----------
-.. toctree::
-   :titlesonly:
-   :maxdepth: 3
 
-   utils/index.rst
+.. toctree::
+   :maxdepth: 1
+
+   /docs/auto_api/doxysphinx/utils/index
 
 
 Submodules
 ----------
+
 .. toctree::
-   :titlesonly:
    :maxdepth: 1
 
-   cli/index.rst
-   doxygen/index.rst
-   html_parser/index.rst
-   process/index.rst
-   resources/index.rst
-   sphinx/index.rst
-   toc/index.rst
-   writer/index.rst
+   /docs/auto_api/doxysphinx/cli/index
+   /docs/auto_api/doxysphinx/doxygen/index
+   /docs/auto_api/doxysphinx/html_parser/index
+   /docs/auto_api/doxysphinx/process/index
+   /docs/auto_api/doxysphinx/resources/index
+   /docs/auto_api/doxysphinx/sphinx/index
+   /docs/auto_api/doxysphinx/toc/index
+   /docs/auto_api/doxysphinx/writer/index
 
 

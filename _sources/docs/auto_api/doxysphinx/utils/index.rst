@@ -1,5 +1,5 @@
-:py:mod:`doxysphinx.utils`
-==========================
+doxysphinx.utils
+================
 
 .. py:module:: doxysphinx.utils
 
@@ -11,15 +11,15 @@
 
 Submodules
 ----------
+
 .. toctree::
-   :titlesonly:
    :maxdepth: 1
 
-   contexts/index.rst
-   exceptions/index.rst
-   files/index.rst
-   iterators/index.rst
-   pathlib_fix/index.rst
-   rst/index.rst
+   /docs/auto_api/doxysphinx/utils/contexts/index
+   /docs/auto_api/doxysphinx/utils/exceptions/index
+   /docs/auto_api/doxysphinx/utils/files/index
+   /docs/auto_api/doxysphinx/utils/iterators/index
+   /docs/auto_api/doxysphinx/utils/pathlib_fix/index
+   /docs/auto_api/doxysphinx/utils/rst/index
 
 

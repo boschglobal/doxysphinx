@@ -1,5 +1,5 @@
-:py:mod:`doxysphinx.process`
-============================
+doxysphinx.process
+==================
 
 .. py:module:: doxysphinx.process
 
@@ -11,11 +11,8 @@
 
 
 
-Module Contents
----------------
-
 Classes
-~~~~~~~
+-------
 
 .. autoapisummary::
 
@@ -23,10 +20,10 @@ Classes
    doxysphinx.process.Cleaner
 
 
-
+Module Contents
+---------------
 
 .. py:class:: Builder(sphinx_source_dir: pathlib.Path, sphinx_output_dir: pathlib.Path, dir_mapper_type: Type[doxysphinx.sphinx.DirectoryMapper] = SphinxHtmlBuilderDirectoryMapper, resource_provider_type: Type[doxysphinx.resources.ResourceProvider] = DoxygenResourceProvider, parser_type: Type[doxysphinx.html_parser.HtmlParser] = DoxygenHtmlParser, writer_type: Type[doxysphinx.writer.Writer] = RstWriter, force_recreation: bool = False, parallel=True)
-
 
    The Builder builds target docs-as-code files out of an existing html documentation.
 
@@ -36,6 +33,7 @@ Classes
    When sphinx then (later - not part of doxysphinx) processes the rst files they will
    resemble the original filenames in the sphinx output directory, thereby keeping
    and internal links intact.
+
 
    .. py:method:: build(doxygen_html_dir: pathlib.Path)
 
@@ -50,8 +48,8 @@ Classes
 
 .. py:class:: Cleaner(sphinx_source_dir: pathlib.Path, sphinx_output_dir: pathlib.Path, dir_mapper_type: Type[doxysphinx.sphinx.DirectoryMapper] = SphinxHtmlBuilderDirectoryMapper, resource_provider_type: Type[doxysphinx.resources.ResourceProvider] = DoxygenResourceProvider, parallel: bool = True)
 
-
    The cleaner cleans files created and copied by the builder.
+
 
    .. py:method:: cleanup(doxygen_html_dir: pathlib.Path)
 

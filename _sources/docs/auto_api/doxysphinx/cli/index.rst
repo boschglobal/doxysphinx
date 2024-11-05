@@ -1,5 +1,5 @@
-:py:mod:`doxysphinx.cli`
-========================
+doxysphinx.cli
+==============
 
 .. py:module:: doxysphinx.cli
 
@@ -22,20 +22,16 @@
 
 
 
-Module Contents
----------------
-
 Classes
-~~~~~~~
+-------
 
 .. autoapisummary::
 
    doxysphinx.cli.DoxygenContext
 
 
-
 Functions
-~~~~~~~~~
+---------
 
 .. autoapisummary::
 
@@ -44,9 +40,10 @@ Functions
    doxysphinx.cli.clean
 
 
+Module Contents
+---------------
 
 .. py:class:: DoxygenContext
-
 
    Represent the options for doxygen that can be set via the cli.
 
@@ -59,20 +56,17 @@ Functions
      "advanced stuff". You will typically want to use that if you're integrating doxysphinx in a ci build
      system. If unsure, use a doxyfile.
 
-   .. py:attribute:: input
-      :type: List[pathlib.Path]
 
-      
+   .. py:attribute:: input
+      :type:  List[pathlib.Path]
+
 
    .. py:attribute:: doxygen_exe
-      :type: str
+      :type:  str
 
-      
 
    .. py:attribute:: doxygen_cwd
-      :type: pathlib.Path
-
-      
+      :type:  pathlib.Path
 
 
 .. py:function:: cli()

@@ -1,5 +1,5 @@
-:py:mod:`doxysphinx.resources`
-==============================
+doxysphinx.resources
+====================
 
 .. py:module:: doxysphinx.resources
 
@@ -11,11 +11,8 @@
 
 
 
-Module Contents
----------------
-
 Classes
-~~~~~~~
+-------
 
 .. autoapisummary::
 
@@ -24,17 +21,19 @@ Classes
    doxysphinx.resources.CssScoper
 
 
-
+Module Contents
+---------------
 
 .. py:class:: ResourceProvider(directory_mapper: doxysphinx.sphinx.DirectoryMapper)
-
 
    Bases: :py:obj:`Protocol`
 
    .. autoapi-inheritance-diagram:: doxysphinx.resources.ResourceProvider
       :parts: 1
 
+
    A resource provider copies/adapts necessary resources (images, stylesheets, etc.) to output.
+
 
    .. py:method:: provide_resources(resource_root: pathlib.Path) -> List[pathlib.Path]
 
@@ -49,6 +48,7 @@ Classes
           return only parts of the resources.
 
 
+
    .. py:method:: cleanup_resources(resource_root: pathlib.Path) -> List[pathlib.Path]
 
       Clean up provided resources that were copied by :meth:`provide_resources`.
@@ -61,10 +61,10 @@ Classes
 
 .. py:class:: DoxygenResourceProvider(directory_mapper: doxysphinx.sphinx.DirectoryMapper)
 
-
    Resource provider that will copy/adapt doxygen html resources to output.
 
    Resource are e.g. stylesheets, images, javascript files etc.
+
 
    .. py:method:: provide_resources(resource_root: pathlib.Path) -> List[pathlib.Path]
 
@@ -76,6 +76,7 @@ Classes
           the html file are located).
 
 
+
    .. py:method:: cleanup_resources(resource_root: pathlib.Path) -> List[pathlib.Path]
 
       Clean up any provisioned resources that were copied to sphinx output.
@@ -83,7 +84,6 @@ Classes
 
 
 .. py:class:: CssScoper(css_selector: str)
-
 
    Scopes css-stylesheets to a special selector.
 
@@ -101,6 +101,7 @@ Classes
 
    In the end that means that sphinx styles are applied to sphinx bits and doxygen styles are applied to
    doxygen bits. We still need to fix some minor issues with a custom stylesheet (which we also apply here).
+
 
    .. py:method:: scope(stylesheet: pathlib.Path, target: pathlib.Path, additional_css_rules: Optional[str] = None, content_patch_callback: Optional[Callable[[str], str]] = None) -> Optional[pathlib.Path]
 

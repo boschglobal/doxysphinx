@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../../../../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>doxysphinx.utils.exceptions &#8212; Doxysphinx</title>
   
@@ -15,51 +14,53 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-<link href="../../../../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-<link href="../../../../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link href="../../../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="../../../../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+  <link href="../../../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/styles/sphinx-book-theme.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/graphviz.css?v=fd3f3429" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/plot_directive.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/assets/jsonview.bundle.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-needs/libs/html/datatables.min.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-needs/common.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-needs/modern.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-needs/styles.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-needs/layouts.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-book-theme-custom.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-needs/common.css?v=bd9ab754" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-needs/layouts.css?v=448c382f" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-needs/styles.css?v=6c8eb985" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-needs/modern.css?v=ffa536d2" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-book-theme-custom.css?v=89a7960a" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
-<link rel="preload" as="script" href="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
-  <script src="../../../../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+  <link rel="preload" as="script" href="../../../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
-    <script src="../../../../../_static/doctools.js"></script>
-    <script src="../../../../../_static/sphinx_highlight.js"></script>
-    <script src="../../../../../_static/clipboard.min.js"></script>
-    <script src="../../../../../_static/copybutton.js"></script>
-    <script src="../../../../../_static/scripts/sphinx-book-theme.js"></script>
-    <script src="../../../../../_static/design-tabs.js"></script>
-    <script src="../../../../../_static/assets/jsonview.bundle.js"></script>
-    <script src="../../../../../_static/assets/jsonview_loader.js"></script>
-    <script src="../../../../../_static/sphinx-needs/libs/html/datatables.min.js"></script>
-    <script src="../../../../../_static/sphinx-needs/libs/html/datatables_loader.js"></script>
-    <script src="../../../../../_static/sphinx-needs/libs/html/sphinx_needs_collapse.js"></script>
+    <script src="../../../../../_static/jquery.js?v=5d32c60e"></script>
+    <script src="../../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+    <script src="../../../../../_static/documentation_options.js?v=b52cc47a"></script>
+    <script src="../../../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="../../../../../_static/design-tabs.js?v=36754332"></script>
+    <script src="../../../../../_static/sphinx-data-viewer/jsonview.bundle.js?v=18cd53c5"></script>
+    <script src="../../../../../_static/sphinx-data-viewer/jsonview_loader.js?v=f7ff7e7d"></script>
+    <script src="../../../../../_static/sphinx-needs/libs/html/datatables.min.js?v=8a4aee21"></script>
+    <script src="../../../../../_static/sphinx-needs/libs/html/datatables_loader.js?v=a2cae175"></script>
+    <script src="../../../../../_static/sphinx-needs/libs/html/sphinx_needs_collapse.js?v=f783d6a5"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'docs/auto_api/doxysphinx/utils/exceptions/index';</script>
     <link rel="index" title="Index" href="../../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../../search.html" />
@@ -67,7 +68,7 @@
     <link rel="prev" title="doxysphinx.utils.contexts" href="../contexts/index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="&#39;Tue Jul 16 14:50:07 2024&#39;, &#39;034f333&#39;"/>
+    <meta name="docbuild:last-update" content="&#39;Tue Nov 5 14:02:56 2024&#39;, &#39;cab4ed3&#39;"/>
   </head>
   
   
@@ -75,27 +76,23 @@
 
   
   
-  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -117,8 +114,13 @@
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
     </header>
   
 
@@ -142,6 +144,8 @@
         <div class="sidebar-primary-item">
 
   
+    
+  
 
 <a class="navbar-brand logo" href="../../../../../index.html">
   
@@ -163,7 +167,7 @@
 
  <script>
  document.write(`
-   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass"></i>
     <span class="search-button__default-text">Search</span>
     <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
@@ -183,69 +187,69 @@
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Usage</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../../../getting_started.html">Getting Started</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../syntax/syntax_guide.html">Syntax Guide</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../syntax/syntax_guide.html">Syntax Guide</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../../syntax/rst_block_syntax.html">Rst Block Syntax</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../syntax/rst_inline_syntax.html">Rst Inline Syntax</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../syntax/comment_styles_syntax.html">Comment Syntax</a></li>
 </ul>
-</li>
+</details></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../alternatives.html">Alternatives</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../faq.html">FAQ</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Examples</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../linking_to_doxygen.html">Linking to Doxygen</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="simple">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../linking_to_doxygen.html">Linking to Doxygen</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
 </ul>
-</li>
+</details></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../using_rst_in_doxygen.html">Commenting in doxygen</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../linking_needs.html">Linking with Sphinx Needs</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Demo documentations</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../doxygen/demo/html/index.html">Doxygen Demo</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../doxygen/demo/html/index.html">Doxygen Demo</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../../doxygen/demo/html/namespaces.html">Namespaces</a></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../../../../doxygen/demo/html/annotated_classes.html">Classes</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../../doxygen/demo/html/annotated_classes.html">Classes</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../../doxygen/demo/html/annotated.html">Class List</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../doxygen/demo/html/classes.html">Class Index</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../doxygen/demo/html/inherits.html">Class Hierarchy</a></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="../../../../doxygen/demo/html/functions_class_members.html">Class Members</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../../doxygen/demo/html/functions_class_members.html">Class Members</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../../doxygen/demo/html/functions.html">All</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../doxygen/demo/html/functions_func.html">Functions</a></li>
 </ul>
-</li>
+</details></li>
 </ul>
-</li>
+</details></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../doxygen/demo/html/files.html">Files</a></li>
 </ul>
-</li>
+</details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Development</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../../../dev_guide.html">Developer Quickstart</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../inner_workings.html">Inner workings</a></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="../../../../apidoc.html">API Reference</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2 current active has-children"><a class="reference internal" href="../../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">doxysphinx</span></code></a><input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l3 current active has-children"><a class="reference internal" href="../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">doxysphinx.utils</span></code></a><input checked="" class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l4"><a class="reference internal" href="../contexts/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">doxysphinx.utils.contexts</span></code></a></li>
-<li class="toctree-l4 current active"><a class="current reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">doxysphinx.utils.exceptions</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="../files/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">doxysphinx.utils.files</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="../iterators/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">doxysphinx.utils.iterators</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="../pathlib_fix/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">doxysphinx.utils.pathlib_fix</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="../rst/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">doxysphinx.utils.rst</span></code></a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../../../../apidoc.html">API Reference</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="../../index.html">doxysphinx</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l3 current active has-children"><a class="reference internal" href="../index.html">doxysphinx.utils</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../contexts/index.html">doxysphinx.utils.contexts</a></li>
+<li class="toctree-l4 current active"><a class="current reference internal" href="#">doxysphinx.utils.exceptions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../files/index.html">doxysphinx.utils.files</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../iterators/index.html">doxysphinx.utils.iterators</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../pathlib_fix/index.html">doxysphinx.utils.pathlib_fix</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../rst/index.html">doxysphinx.utils.rst</a></li>
 </ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../../cli/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">doxysphinx.cli</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../doxygen/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">doxysphinx.doxygen</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../html_parser/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">doxysphinx.html_parser</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../process/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">doxysphinx.process</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../resources/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">doxysphinx.resources</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../sphinx/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">doxysphinx.sphinx</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../toc/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">doxysphinx.toc</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../writer/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">doxysphinx.writer</span></code></a></li>
+</details></li>
+<li class="toctree-l3"><a class="reference internal" href="../../cli/index.html">doxysphinx.cli</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../doxygen/index.html">doxysphinx.doxygen</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../html_parser/index.html">doxysphinx.html_parser</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../process/index.html">doxysphinx.process</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../resources/index.html">doxysphinx.resources</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../sphinx/index.html">doxysphinx.sphinx</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../toc/index.html">doxysphinx.toc</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../writer/index.html">doxysphinx.writer</a></li>
 </ul>
-</li>
+</details></li>
 </ul>
-</li>
+</details></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../CONTRIBUTE.html">How to Contribute</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Related Topics</span></p>
@@ -266,7 +270,7 @@
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -275,14 +279,14 @@
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -407,10 +411,10 @@
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
@@ -418,14 +422,14 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -446,6 +450,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exceptions">Exceptions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module Contents</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#doxysphinx.utils.exceptions.ApplicationError"><code class="docutils literal notranslate"><span class="pre">ApplicationError</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#doxysphinx.utils.exceptions.ValidationError"><code class="docutils literal notranslate"><span class="pre">ValidationError</span></code></a></li>
@@ -464,13 +469,30 @@ document.write(`
                 <article class="bd-article">
                   
   <section id="module-doxysphinx.utils.exceptions">
-<span id="doxysphinx-utils-exceptions"></span><h1><a class="reference internal" href="#module-doxysphinx.utils.exceptions" title="doxysphinx.utils.exceptions"><code class="xref py py-mod docutils literal notranslate"><span class="pre">doxysphinx.utils.exceptions</span></code></a><a class="headerlink" href="#module-doxysphinx.utils.exceptions" title="Permalink to this heading">#</a></h1>
+<span id="doxysphinx-utils-exceptions"></span><h1>doxysphinx.utils.exceptions<a class="headerlink" href="#module-doxysphinx.utils.exceptions" title="Link to this heading">#</a></h1>
 <p>The exception module contains several standard exceptions.</p>
+<section id="exceptions">
+<h2>Exceptions<a class="headerlink" href="#exceptions" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#doxysphinx.utils.exceptions.ApplicationError" title="doxysphinx.utils.exceptions.ApplicationError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ApplicationError</span></code></a></p></td>
+<td><p>A generic application error.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#doxysphinx.utils.exceptions.ValidationError" title="doxysphinx.utils.exceptions.ValidationError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ValidationError</span></code></a></p></td>
+<td><p>A generic error to indicate some validation failed.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#doxysphinx.utils.exceptions.PrerequisiteNotMetError" title="doxysphinx.utils.exceptions.PrerequisiteNotMetError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PrerequisiteNotMetError</span></code></a></p></td>
+<td><p>An application error that indicates that some prerequisite is not met.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
 <section id="module-contents">
-<h2>Module Contents<a class="headerlink" href="#module-contents" title="Permalink to this heading">#</a></h2>
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading">#</a></h2>
 <dl class="py exception">
 <dt class="sig sig-object py" id="doxysphinx.utils.exceptions.ApplicationError">
-<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">doxysphinx.utils.exceptions.</span></span><span class="sig-name descname"><span class="pre">ApplicationError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/doxysphinx/utils/exceptions.html#ApplicationError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#doxysphinx.utils.exceptions.ApplicationError" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">doxysphinx.utils.exceptions.</span></span><span class="sig-name descname"><span class="pre">ApplicationError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/doxysphinx/utils/exceptions.html#ApplicationError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#doxysphinx.utils.exceptions.ApplicationError" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">Exception</span></code></p>
 <div class="graphviz"><img src="../../../../../_images/inheritance-0ee5043938a7577667a9311cbce90efc4bea7d33.png" alt="Inheritance diagram of doxysphinx.utils.exceptions.ApplicationError" usemap="#inheritance7709734f71" class="inheritance graphviz" /></div>
 <map id="inheritance7709734f71" name="inheritance7709734f71">
@@ -480,7 +502,7 @@ document.write(`
 
 <dl class="py exception">
 <dt class="sig sig-object py" id="doxysphinx.utils.exceptions.ValidationError">
-<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">doxysphinx.utils.exceptions.</span></span><span class="sig-name descname"><span class="pre">ValidationError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/doxysphinx/utils/exceptions.html#ValidationError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#doxysphinx.utils.exceptions.ValidationError" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">doxysphinx.utils.exceptions.</span></span><span class="sig-name descname"><span class="pre">ValidationError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/doxysphinx/utils/exceptions.html#ValidationError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#doxysphinx.utils.exceptions.ValidationError" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">Exception</span></code></p>
 <div class="graphviz"><img src="../../../../../_images/inheritance-607bee12fdef3a5658447b7112e29d63bd066402.png" alt="Inheritance diagram of doxysphinx.utils.exceptions.ValidationError" usemap="#inheritance678083ff81" class="inheritance graphviz" /></div>
 <map id="inheritance678083ff81" name="inheritance678083ff81">
@@ -490,7 +512,7 @@ document.write(`
 
 <dl class="py exception">
 <dt class="sig sig-object py" id="doxysphinx.utils.exceptions.PrerequisiteNotMetError">
-<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">doxysphinx.utils.exceptions.</span></span><span class="sig-name descname"><span class="pre">PrerequisiteNotMetError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/doxysphinx/utils/exceptions.html#PrerequisiteNotMetError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#doxysphinx.utils.exceptions.PrerequisiteNotMetError" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">doxysphinx.utils.exceptions.</span></span><span class="sig-name descname"><span class="pre">PrerequisiteNotMetError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/doxysphinx/utils/exceptions.html#PrerequisiteNotMetError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#doxysphinx.utils.exceptions.PrerequisiteNotMetError" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">Exception</span></code></p>
 <div class="graphviz"><img src="../../../../../_images/inheritance-954521ad5bdd9f06bb6a5a882a9484b8c166a449.png" alt="Inheritance diagram of doxysphinx.utils.exceptions.PrerequisiteNotMetError" usemap="#inheritanceb65146e1de" class="inheritance graphviz" /></div>
 <map id="inheritanceb65146e1de" name="inheritanceb65146e1de">
@@ -509,7 +531,7 @@ document.write(`
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -518,7 +540,7 @@ document.write(`
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><code class="xref py py-mod docutils literal notranslate"><span class="pre">doxysphinx.utils.contexts</span></code></p>
+        <p class="prev-next-title">doxysphinx.utils.contexts</p>
       </div>
     </a>
     <a class="right-next"
@@ -526,7 +548,7 @@ document.write(`
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><code class="xref py py-mod docutils literal notranslate"><span class="pre">doxysphinx.utils.files</span></code></p>
+        <p class="prev-next-title">doxysphinx.utils.files</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -546,6 +568,7 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exceptions">Exceptions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module Contents</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#doxysphinx.utils.exceptions.ApplicationError"><code class="docutils literal notranslate"><span class="pre">ApplicationError</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#doxysphinx.utils.exceptions.ValidationError"><code class="docutils literal notranslate"><span class="pre">ValidationError</span></code></a></li>
@@ -574,7 +597,7 @@ document.write(`
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on &#39;Tue Jul 16 14:50:07 2024&#39;, &#39;034f333&#39;.
+  Last updated on &#39;Tue Nov 5 14:02:56 2024&#39;, &#39;cab4ed3&#39;.
   <br/>
 </p>
   </div>
@@ -592,8 +615,8 @@ document.write(`
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
-<script src="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+  <script src="../../../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

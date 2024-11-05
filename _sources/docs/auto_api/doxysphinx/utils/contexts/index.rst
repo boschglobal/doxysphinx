@@ -1,5 +1,5 @@
-:py:mod:`doxysphinx.utils.contexts`
-===================================
+doxysphinx.utils.contexts
+=========================
 
 .. py:module:: doxysphinx.utils.contexts
 
@@ -9,23 +9,21 @@
 
 
 
-Module Contents
----------------
-
 Classes
-~~~~~~~
+-------
 
 .. autoapisummary::
 
    doxysphinx.utils.contexts.TimedContext
 
 
-
+Module Contents
+---------------
 
 .. py:class:: TimedContext
 
-
    Bases: :py:obj:`object`
+
 
    A context manager to measure elapsed time.
 
@@ -39,11 +37,13 @@ Classes
           # do your thing here
           _logger.info(f"elapsed: {tc.elapsed_humanized()}.")
 
+
    .. py:method:: elapsed() -> datetime.timedelta
 
       Get the elapsed time.
 
       :return: The duration.
+
 
 
    .. py:method:: elapsed_humanized() -> str

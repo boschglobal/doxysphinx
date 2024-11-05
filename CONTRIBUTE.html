@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="./" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>How to Contribute &#8212; Doxysphinx</title>
   
@@ -15,51 +14,53 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css" />
-    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=fd3f3429" />
     <link rel="stylesheet" type="text/css" href="_static/plot_directive.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
-    <link rel="stylesheet" type="text/css" href="_static/assets/jsonview.bundle.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-needs/libs/html/datatables.min.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-needs/common.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-needs/modern.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-needs/styles.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-needs/layouts.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme-custom.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-needs/common.css?v=bd9ab754" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-needs/layouts.css?v=448c382f" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-needs/styles.css?v=6c8eb985" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-needs/modern.css?v=ffa536d2" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme-custom.css?v=89a7960a" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
-  <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/sphinx_highlight.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js"></script>
-    <script src="_static/design-tabs.js"></script>
-    <script src="_static/assets/jsonview.bundle.js"></script>
-    <script src="_static/assets/jsonview_loader.js"></script>
-    <script src="_static/sphinx-needs/libs/html/datatables.min.js"></script>
-    <script src="_static/sphinx-needs/libs/html/datatables_loader.js"></script>
-    <script src="_static/sphinx-needs/libs/html/sphinx_needs_collapse.js"></script>
+    <script src="_static/jquery.js?v=5d32c60e"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+    <script src="_static/documentation_options.js?v=b52cc47a"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
+    <script src="_static/sphinx-data-viewer/jsonview.bundle.js?v=18cd53c5"></script>
+    <script src="_static/sphinx-data-viewer/jsonview_loader.js?v=f7ff7e7d"></script>
+    <script src="_static/sphinx-needs/libs/html/datatables.min.js?v=8a4aee21"></script>
+    <script src="_static/sphinx-needs/libs/html/datatables_loader.js?v=a2cae175"></script>
+    <script src="_static/sphinx-needs/libs/html/sphinx_needs_collapse.js?v=f783d6a5"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'CONTRIBUTE';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -67,7 +68,7 @@
     <link rel="prev" title="doxysphinx.writer" href="docs/auto_api/doxysphinx/writer/index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="&#39;Tue Jul 16 14:50:07 2024&#39;, &#39;034f333&#39;"/>
+    <meta name="docbuild:last-update" content="&#39;Tue Nov 5 14:02:56 2024&#39;, &#39;cab4ed3&#39;"/>
   </head>
   
   
@@ -75,27 +76,23 @@
 
   
   
-  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -117,8 +114,13 @@
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
     </header>
   
 
@@ -142,6 +144,8 @@
         <div class="sidebar-primary-item">
 
   
+    
+  
 
 <a class="navbar-brand logo" href="index.html">
   
@@ -163,7 +167,7 @@
 
  <script>
  document.write(`
-   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass"></i>
     <span class="search-button__default-text">Search</span>
     <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
@@ -183,69 +187,69 @@
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Usage</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="docs/getting_started.html">Getting Started</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="docs/syntax/syntax_guide.html">Syntax Guide</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="docs/syntax/syntax_guide.html">Syntax Guide</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="docs/syntax/rst_block_syntax.html">Rst Block Syntax</a></li>
 <li class="toctree-l2"><a class="reference internal" href="docs/syntax/rst_inline_syntax.html">Rst Inline Syntax</a></li>
 <li class="toctree-l2"><a class="reference internal" href="docs/syntax/comment_styles_syntax.html">Comment Syntax</a></li>
 </ul>
-</li>
+</details></li>
 <li class="toctree-l1"><a class="reference internal" href="docs/alternatives.html">Alternatives</a></li>
 <li class="toctree-l1"><a class="reference internal" href="docs/faq.html">FAQ</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Examples</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="docs/linking_to_doxygen.html">Linking to Doxygen</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="simple">
+<li class="toctree-l1 has-children"><a class="reference internal" href="docs/linking_to_doxygen.html">Linking to Doxygen</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
 </ul>
-</li>
+</details></li>
 <li class="toctree-l1"><a class="reference internal" href="docs/using_rst_in_doxygen.html">Commenting in doxygen</a></li>
 <li class="toctree-l1"><a class="reference internal" href="docs/linking_needs.html">Linking with Sphinx Needs</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Demo documentations</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="docs/doxygen/demo/html/index.html">Doxygen Demo</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="docs/doxygen/demo/html/index.html">Doxygen Demo</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="docs/doxygen/demo/html/namespaces.html">Namespaces</a></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="docs/doxygen/demo/html/annotated_classes.html">Classes</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="docs/doxygen/demo/html/annotated_classes.html">Classes</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l3"><a class="reference internal" href="docs/doxygen/demo/html/annotated.html">Class List</a></li>
 <li class="toctree-l3"><a class="reference internal" href="docs/doxygen/demo/html/classes.html">Class Index</a></li>
 <li class="toctree-l3"><a class="reference internal" href="docs/doxygen/demo/html/inherits.html">Class Hierarchy</a></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="docs/doxygen/demo/html/functions_class_members.html">Class Members</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="docs/doxygen/demo/html/functions_class_members.html">Class Members</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="docs/doxygen/demo/html/functions.html">All</a></li>
 <li class="toctree-l4"><a class="reference internal" href="docs/doxygen/demo/html/functions_func.html">Functions</a></li>
 </ul>
-</li>
+</details></li>
 </ul>
-</li>
+</details></li>
 <li class="toctree-l2"><a class="reference internal" href="docs/doxygen/demo/html/files.html">Files</a></li>
 </ul>
-</li>
+</details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Development</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="docs/dev_guide.html">Developer Quickstart</a></li>
 <li class="toctree-l1"><a class="reference internal" href="docs/inner_workings.html">Inner workings</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="docs/apidoc.html">API Reference</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2 has-children"><a class="reference internal" href="docs/auto_api/doxysphinx/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">doxysphinx</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l3 has-children"><a class="reference internal" href="docs/auto_api/doxysphinx/utils/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">doxysphinx.utils</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l4"><a class="reference internal" href="docs/auto_api/doxysphinx/utils/contexts/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">doxysphinx.utils.contexts</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="docs/auto_api/doxysphinx/utils/exceptions/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">doxysphinx.utils.exceptions</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="docs/auto_api/doxysphinx/utils/files/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">doxysphinx.utils.files</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="docs/auto_api/doxysphinx/utils/iterators/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">doxysphinx.utils.iterators</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="docs/auto_api/doxysphinx/utils/pathlib_fix/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">doxysphinx.utils.pathlib_fix</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="docs/auto_api/doxysphinx/utils/rst/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">doxysphinx.utils.rst</span></code></a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="docs/apidoc.html">API Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="docs/auto_api/doxysphinx/index.html">doxysphinx</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="docs/auto_api/doxysphinx/utils/index.html">doxysphinx.utils</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="docs/auto_api/doxysphinx/utils/contexts/index.html">doxysphinx.utils.contexts</a></li>
+<li class="toctree-l4"><a class="reference internal" href="docs/auto_api/doxysphinx/utils/exceptions/index.html">doxysphinx.utils.exceptions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="docs/auto_api/doxysphinx/utils/files/index.html">doxysphinx.utils.files</a></li>
+<li class="toctree-l4"><a class="reference internal" href="docs/auto_api/doxysphinx/utils/iterators/index.html">doxysphinx.utils.iterators</a></li>
+<li class="toctree-l4"><a class="reference internal" href="docs/auto_api/doxysphinx/utils/pathlib_fix/index.html">doxysphinx.utils.pathlib_fix</a></li>
+<li class="toctree-l4"><a class="reference internal" href="docs/auto_api/doxysphinx/utils/rst/index.html">doxysphinx.utils.rst</a></li>
 </ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="docs/auto_api/doxysphinx/cli/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">doxysphinx.cli</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="docs/auto_api/doxysphinx/doxygen/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">doxysphinx.doxygen</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="docs/auto_api/doxysphinx/html_parser/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">doxysphinx.html_parser</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="docs/auto_api/doxysphinx/process/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">doxysphinx.process</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="docs/auto_api/doxysphinx/resources/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">doxysphinx.resources</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="docs/auto_api/doxysphinx/sphinx/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">doxysphinx.sphinx</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="docs/auto_api/doxysphinx/toc/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">doxysphinx.toc</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="docs/auto_api/doxysphinx/writer/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">doxysphinx.writer</span></code></a></li>
+</details></li>
+<li class="toctree-l3"><a class="reference internal" href="docs/auto_api/doxysphinx/cli/index.html">doxysphinx.cli</a></li>
+<li class="toctree-l3"><a class="reference internal" href="docs/auto_api/doxysphinx/doxygen/index.html">doxysphinx.doxygen</a></li>
+<li class="toctree-l3"><a class="reference internal" href="docs/auto_api/doxysphinx/html_parser/index.html">doxysphinx.html_parser</a></li>
+<li class="toctree-l3"><a class="reference internal" href="docs/auto_api/doxysphinx/process/index.html">doxysphinx.process</a></li>
+<li class="toctree-l3"><a class="reference internal" href="docs/auto_api/doxysphinx/resources/index.html">doxysphinx.resources</a></li>
+<li class="toctree-l3"><a class="reference internal" href="docs/auto_api/doxysphinx/sphinx/index.html">doxysphinx.sphinx</a></li>
+<li class="toctree-l3"><a class="reference internal" href="docs/auto_api/doxysphinx/toc/index.html">doxysphinx.toc</a></li>
+<li class="toctree-l3"><a class="reference internal" href="docs/auto_api/doxysphinx/writer/index.html">doxysphinx.writer</a></li>
 </ul>
-</li>
+</details></li>
 </ul>
-</li>
+</details></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">How to Contribute</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Related Topics</span></p>
@@ -266,7 +270,7 @@
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -275,14 +279,14 @@
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -407,10 +411,10 @@
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
@@ -418,14 +422,14 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -479,10 +483,10 @@ document.write(`
                 <article class="bd-article">
                   
   <section id="how-to-contribute">
-<h1>How to Contribute<a class="headerlink" href="#how-to-contribute" title="Permalink to this heading">#</a></h1>
+<h1>How to Contribute<a class="headerlink" href="#how-to-contribute" title="Link to this heading">#</a></h1>
 <p>First of all, thanks for considering contributing to this project!! Your help is highly appreciated!!</p>
 <section id="tldr">
-<h2>TLDR<a class="headerlink" href="#tldr" title="Permalink to this heading">#</a></h2>
+<h2>TLDR<a class="headerlink" href="#tldr" title="Link to this heading">#</a></h2>
 <p>So this document got quite long… here is the very short summary/checklist:</p>
 <ul class="simple">
 <li><p>[ ] don’t commit on main - use <a class="reference internal" href="#pull-requests-only">pull requests only</a></p></li>
@@ -496,7 +500,7 @@ vscode which is configured for the repo to do this automatically.</p></li>
 </ul>
 </section>
 <section id="pull-requests-only">
-<h2>Pull requests only<a class="headerlink" href="#pull-requests-only" title="Permalink to this heading">#</a></h2>
+<h2>Pull requests only<a class="headerlink" href="#pull-requests-only" title="Link to this heading">#</a></h2>
 <p>Use pull requests to contribute to this repository.</p>
 <p>Pushes to the <code class="docutils literal notranslate"><span class="pre">main</span></code> branch are automatically rejected.</p>
 <p>Keep your PRs focussed on a single purpose.
@@ -504,7 +508,7 @@ For example, do not implement multiple features or fix multiple bugs in a single
 Simply create separate PRs instead.</p>
 </section>
 <section id="branch-naming-convention">
-<h2>Branch naming convention<a class="headerlink" href="#branch-naming-convention" title="Permalink to this heading">#</a></h2>
+<h2>Branch naming convention<a class="headerlink" href="#branch-naming-convention" title="Link to this heading">#</a></h2>
 <p>Branches should be named with this scheme:</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>group/short_description
 </pre></div>
@@ -521,14 +525,14 @@ If you have a bigger change please create an issue here in github and use the nu
 e.g. <code class="docutils literal notranslate"><span class="pre">feature/#39_bring_the_unicorns_back</span></code></p>
 </section>
 <section id="conventional-commits">
-<h2>Conventional Commits<a class="headerlink" href="#conventional-commits" title="Permalink to this heading">#</a></h2>
+<h2>Conventional Commits<a class="headerlink" href="#conventional-commits" title="Link to this heading">#</a></h2>
 <p>We use <a class="reference external" href="https://www.conventionalcommits.org/en/v1.0.0/">Conventional Commits</a> to automatically calculate the
 semantic version, create the changelog, and publish the release via
 <a class="reference external" href="https://python-semantic-release.readthedocs.io/en/latest/">Python-Semantic-Release</a> tooling.</p>
 <p>The following is a slightly adapted version (to doxysphinx) of the excellent
 <a class="reference external" href="https://github.com/angular/angular.js/blob/master/DEVELOPERS.md#commits">Angular commit style</a>.</p>
 <section id="commit-message-format">
-<h3>Commit message format<a class="headerlink" href="#commit-message-format" title="Permalink to this heading">#</a></h3>
+<h3>Commit message format<a class="headerlink" href="#commit-message-format" title="Link to this heading">#</a></h3>
 <p>Each commit message consists of a <strong>header</strong>, a <strong>body</strong> and a <strong>footer</strong>. The header has a special
 format that includes a <strong>type</strong>, a <strong>scope</strong> and a <strong>subject</strong>:</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>&lt;type&gt;(&lt;scope&gt;): &lt;subject&gt;
@@ -543,7 +547,7 @@ format that includes a <strong>type</strong>, a <strong>scope</strong> and a <st
 This allows the message to be easier to read on GitHub as well as in various git tools.</p>
 </section>
 <section id="type">
-<h3>Type<a class="headerlink" href="#type" title="Permalink to this heading">#</a></h3>
+<h3>Type<a class="headerlink" href="#type" title="Link to this heading">#</a></h3>
 <p>Must be one of the following:</p>
 <ul class="simple">
 <li><p><strong>feat</strong>: A new feature</p></li>
@@ -559,13 +563,13 @@ generation</p></li>
 </ul>
 </section>
 <section id="scope">
-<h3>Scope<a class="headerlink" href="#scope" title="Permalink to this heading">#</a></h3>
+<h3>Scope<a class="headerlink" href="#scope" title="Link to this heading">#</a></h3>
 <p>The scope could be anything specifying place of the commit change. For example <code class="docutils literal notranslate"><span class="pre">parser</span></code>,
 <code class="docutils literal notranslate"><span class="pre">writer</span></code>, <code class="docutils literal notranslate"><span class="pre">config</span></code>, <code class="docutils literal notranslate"><span class="pre">examples</span></code>, <code class="docutils literal notranslate"><span class="pre">cli</span></code> etc…</p>
 <p>You can use <code class="docutils literal notranslate"><span class="pre">*</span></code> when the change affects more than a single scope or just leave <code class="docutils literal notranslate"><span class="pre">(&lt;scope&gt;)</span></code> out completely.</p>
 </section>
 <section id="subject">
-<h3>Subject<a class="headerlink" href="#subject" title="Permalink to this heading">#</a></h3>
+<h3>Subject<a class="headerlink" href="#subject" title="Link to this heading">#</a></h3>
 <p>The subject contains succinct description of the change:</p>
 <ul class="simple">
 <li><p>use the imperative, present tense: “change” not “changed” nor “changes”</p></li>
@@ -574,25 +578,25 @@ generation</p></li>
 </ul>
 </section>
 <section id="body">
-<h3>Body<a class="headerlink" href="#body" title="Permalink to this heading">#</a></h3>
+<h3>Body<a class="headerlink" href="#body" title="Link to this heading">#</a></h3>
 <p>Just as in the <strong>subject</strong>, use the imperative, present tense: “change” not “changed” nor “changes”.
 The body should include the motivation for the change and contrast this with previous behavior.</p>
 </section>
 <section id="footer">
-<h3>Footer<a class="headerlink" href="#footer" title="Permalink to this heading">#</a></h3>
+<h3>Footer<a class="headerlink" href="#footer" title="Link to this heading">#</a></h3>
 <p>The footer should contain any information about <strong>Breaking Changes</strong> and is also the place to
 <a class="reference external" href="https://help.github.com/articles/closing-issues-via-commit-messages/">reference GitHub issues that this commit closes</a>.</p>
 <p><strong>Breaking Changes</strong> should start with the word <code class="docutils literal notranslate"><span class="pre">BREAKING</span> <span class="pre">CHANGE:</span></code> with a space or two newlines.
 The rest of the commit message is then used for this.</p>
 </section>
 <section id="reverting-a-commit">
-<h3>Reverting a commit<a class="headerlink" href="#reverting-a-commit" title="Permalink to this heading">#</a></h3>
+<h3>Reverting a commit<a class="headerlink" href="#reverting-a-commit" title="Link to this heading">#</a></h3>
 <p>If the commit reverts a previous commit, it should begin with <code class="docutils literal notranslate"><span class="pre">revert:</span></code>, followed by the header of the
 reverted commit.
 In the body it should say: <code class="docutils literal notranslate"><span class="pre">This</span> <span class="pre">reverts</span> <span class="pre">commit</span> <span class="pre">&lt;hash&gt;.</span></code>, where the hash is the SHA of the commit being reverted.</p>
 </section>
 <section id="examples">
-<h3>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">#</a></h3>
+<h3>Examples<a class="headerlink" href="#examples" title="Link to this heading">#</a></h3>
 <ul>
 <li><p>a very short new feature commit message:</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>feat: add button that brings the unicorns back
@@ -621,9 +625,9 @@ The new config mechanism is documentation in our sphinx documentation.
 </section>
 </section>
 <section id="legal-stuff">
-<h2>Legal stuff<a class="headerlink" href="#legal-stuff" title="Permalink to this heading">#</a></h2>
+<h2>Legal stuff<a class="headerlink" href="#legal-stuff" title="Link to this heading">#</a></h2>
 <section id="add-retain-copyright-notices">
-<h3>Add / retain copyright notices<a class="headerlink" href="#add-retain-copyright-notices" title="Permalink to this heading">#</a></h3>
+<h3>Add / retain copyright notices<a class="headerlink" href="#add-retain-copyright-notices" title="Link to this heading">#</a></h3>
 <p>Include a copyright notice and license consistent with the style used by this project.
 If your contribution contains code under the copyright of a third party, document its origin, license,
 and copyright holders.</p>
@@ -631,7 +635,7 @@ and copyright holders.</p>
 <a class="reference download internal" download="" href="_downloads/1c1f750a4407d865d6d16a9c2be41211/.copyright.tmpl"><span class="xref download myst">.copyright.tmpl</span></a></p>
 </section>
 <section id="sign-your-work">
-<h3>Sign your work<a class="headerlink" href="#sign-your-work" title="Permalink to this heading">#</a></h3>
+<h3>Sign your work<a class="headerlink" href="#sign-your-work" title="Link to this heading">#</a></h3>
 <p>This project also tracks patch provenance and licensing using the Developer Certificate of Origin and
 Signed-off-by tags initially developed by the Linux kernel project.</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Developer Certificate of Origin
@@ -688,7 +692,7 @@ automatically sign the commit by running the git-commit command with the
 was involved in authoring the contribution.</p>
 </section>
 <section id="individual-vs-corporate-contributors">
-<h3>Individual vs. Corporate Contributors<a class="headerlink" href="#individual-vs-corporate-contributors" title="Permalink to this heading">#</a></h3>
+<h3>Individual vs. Corporate Contributors<a class="headerlink" href="#individual-vs-corporate-contributors" title="Link to this heading">#</a></h3>
 <p>Often employers or academic institution have ownership over code that is
 written in certain circumstances, so please do due diligence to ensure that
 you have the right to submit the code.</p>
@@ -697,7 +701,7 @@ your employer, then please use your corporate email address in the
 Signed-off-by tag, otherwise use a personal email address.</p>
 </section>
 <section id="maintain-copyright-holder-contributor-list">
-<h3>Maintain Copyright holder / Contributor list<a class="headerlink" href="#maintain-copyright-holder-contributor-list" title="Permalink to this heading">#</a></h3>
+<h3>Maintain Copyright holder / Contributor list<a class="headerlink" href="#maintain-copyright-holder-contributor-list" title="Link to this heading">#</a></h3>
 <p>Each contributor is responsible for identifying themselves in the
 <a class="reference external" href="https://github.com/boschglobal/doxysphinx/blob/main/NOTICE.md">NOTICE.md</a>
 file, the project’s list of copyright holders and authors. Please add
@@ -726,7 +730,7 @@ contribution.</p>
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -735,7 +739,7 @@ contribution.</p>
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><code class="xref py py-mod docutils literal notranslate"><span class="pre">doxysphinx.writer</span></code></p>
+        <p class="prev-next-title">doxysphinx.writer</p>
       </div>
     </a>
     <a class="right-next"
@@ -806,7 +810,7 @@ contribution.</p>
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on &#39;Tue Jul 16 14:50:07 2024&#39;, &#39;034f333&#39;.
+  Last updated on &#39;Tue Nov 5 14:02:56 2024&#39;, &#39;cab4ed3&#39;.
   <br/>
 </p>
   </div>
@@ -824,8 +828,8 @@ contribution.</p>
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

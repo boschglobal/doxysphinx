@@ -1,5 +1,5 @@
-:py:mod:`doxysphinx.writer`
-===========================
+doxysphinx.writer
+=================
 
 .. py:module:: doxysphinx.writer
 
@@ -9,11 +9,8 @@
 
 
 
-Module Contents
----------------
-
 Classes
-~~~~~~~
+-------
 
 .. autoapisummary::
 
@@ -21,17 +18,19 @@ Classes
    doxysphinx.writer.RstWriter
 
 
-
+Module Contents
+---------------
 
 .. py:class:: Writer(source_directory: pathlib.Path, toc_generator_type: Type[doxysphinx.toc.TocGenerator] = DoxygenTocGenerator)
-
 
    Bases: :py:obj:`Protocol`
 
    .. autoapi-inheritance-diagram:: doxysphinx.writer.Writer
       :parts: 1
 
+
    Protocol representing a Writer that write docs-as-code files.
+
 
    .. py:method:: write(parse_result: doxysphinx.html_parser.HtmlParseResult, target_file: pathlib.Path, html_hash: str) -> pathlib.Path
 
@@ -48,8 +47,8 @@ Classes
 
 .. py:class:: RstWriter(source_directory: pathlib.Path, toc_generator_type: Type[doxysphinx.toc.TocGenerator] = DoxygenTocGenerator)
 
-
    Writes sphinx-rst files to disk.
+
 
    .. py:method:: write(parse_result: doxysphinx.html_parser.HtmlParseResult, target_file: pathlib.Path, html_hash: str) -> pathlib.Path
 

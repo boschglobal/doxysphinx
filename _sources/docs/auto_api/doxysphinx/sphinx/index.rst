@@ -1,5 +1,5 @@
-:py:mod:`doxysphinx.sphinx`
-===========================
+doxysphinx.sphinx
+=================
 
 .. py:module:: doxysphinx.sphinx
 
@@ -9,11 +9,8 @@
 
 
 
-Module Contents
----------------
-
 Classes
-~~~~~~~
+-------
 
 .. autoapisummary::
 
@@ -21,15 +18,16 @@ Classes
    doxysphinx.sphinx.SphinxHtmlBuilderDirectoryMapper
 
 
-
+Module Contents
+---------------
 
 .. py:class:: DirectoryMapper(sphinx_source_dir: pathlib.Path, sphinx_output_dir: pathlib.Path)
-
 
    Bases: :py:obj:`Protocol`
 
    .. autoapi-inheritance-diagram:: doxysphinx.sphinx.DirectoryMapper
       :parts: 1
+
 
    Mapper that will calculate the output file path for an input file.
 
@@ -39,6 +37,7 @@ Classes
    The make this mapping an implementation detail this protocol exists.
    It should be implemented for any special handling in mapping files.
 
+
    .. py:method:: map(path: pathlib.Path) -> pathlib.Path
 
       Calculate the path in output for a given path in input.
@@ -47,10 +46,16 @@ Classes
 
 .. py:class:: SphinxHtmlBuilderDirectoryMapper(sphinx_source_dir: pathlib.Path, sphinx_output_dir: pathlib.Path)
 
-
    Mapper that will calculate the output file path for an input file.
 
    This is based on the logic that the sphinx html builder would use.
+
+
+   .. py:attribute:: source
+
+
+   .. py:attribute:: output
+
 
    .. py:method:: map(path: pathlib.Path) -> pathlib.Path
 

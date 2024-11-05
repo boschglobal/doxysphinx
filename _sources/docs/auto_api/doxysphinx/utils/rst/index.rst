@@ -1,5 +1,5 @@
-:py:mod:`doxysphinx.utils.rst`
-==============================
+doxysphinx.utils.rst
+====================
 
 .. py:module:: doxysphinx.utils.rst
 
@@ -9,18 +9,16 @@
 
 
 
-Module Contents
----------------
-
-
 Functions
-~~~~~~~~~
+---------
 
 .. autoapisummary::
 
    doxysphinx.utils.rst.rst_safe_encode
 
 
+Module Contents
+---------------
 
 .. py:function:: rst_safe_encode(text: str) -> str
 

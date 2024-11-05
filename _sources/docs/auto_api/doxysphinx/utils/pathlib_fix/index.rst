@@ -1,5 +1,5 @@
-:py:mod:`doxysphinx.utils.pathlib_fix`
-======================================
+doxysphinx.utils.pathlib_fix
+============================
 
 .. py:module:: doxysphinx.utils.pathlib_fix
 
@@ -9,12 +9,8 @@
 
 
 
-Module Contents
----------------
-
-
 Functions
-~~~~~~~~~
+---------
 
 .. autoapisummary::
 
@@ -22,6 +18,8 @@ Functions
    doxysphinx.utils.pathlib_fix.path_is_relative_to
 
 
+Module Contents
+---------------
 
 .. py:function:: path_resolve(path: pathlib.Path) -> pathlib.Path
 

@@ -1,5 +1,5 @@
-:py:mod:`doxysphinx.utils.iterators`
-====================================
+doxysphinx.utils.iterators
+==========================
 
 .. py:module:: doxysphinx.utils.iterators
 
@@ -9,23 +9,8 @@
 
 
 
-Module Contents
----------------
-
-
-Functions
-~~~~~~~~~
-
-.. autoapisummary::
-
-   doxysphinx.utils.iterators.apply_if
-   doxysphinx.utils.iterators.apply_if_first
-   doxysphinx.utils.iterators.apply
-
-
-
 Attributes
-~~~~~~~~~~
+----------
 
 .. autoapisummary::
 
@@ -34,17 +19,24 @@ Attributes
    doxysphinx.utils.iterators.Action
 
 
-.. py:data:: T
+Functions
+---------
 
-   
+.. autoapisummary::
+
+   doxysphinx.utils.iterators.apply_if
+   doxysphinx.utils.iterators.apply_if_first
+   doxysphinx.utils.iterators.apply
+
+
+Module Contents
+---------------
+
+.. py:data:: T
 
 .. py:data:: Predicate
 
-   
-
 .. py:data:: Action
-
-   
 
 .. py:function:: apply_if(iterable: Iterable[T], check: Predicate[T], action: Action[T])
 

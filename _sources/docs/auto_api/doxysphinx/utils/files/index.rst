@@ -1,5 +1,5 @@
-:py:mod:`doxysphinx.utils.files`
-================================
+doxysphinx.utils.files
+======================
 
 .. py:module:: doxysphinx.utils.files
 
@@ -9,12 +9,8 @@
 
 
 
-Module Contents
----------------
-
-
 Functions
-~~~~~~~~~
+---------
 
 .. autoapisummary::
 
@@ -27,6 +23,8 @@ Functions
    doxysphinx.utils.files.hash_blake2b
 
 
+Module Contents
+---------------
 
 .. py:function:: write_file(file: pathlib.Path, data: Iterable[str], separator: Optional[str] = None)
 

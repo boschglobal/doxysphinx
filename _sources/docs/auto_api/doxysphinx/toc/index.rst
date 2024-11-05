@@ -1,5 +1,5 @@
-:py:mod:`doxysphinx.toc`
-========================
+doxysphinx.toc
+==============
 
 .. py:module:: doxysphinx.toc
 
@@ -9,11 +9,8 @@
 
 
 
-Module Contents
----------------
-
 Classes
-~~~~~~~
+-------
 
 .. autoapisummary::
 
@@ -21,21 +18,23 @@ Classes
    doxysphinx.toc.DoxygenTocGenerator
 
 
-
+Module Contents
+---------------
 
 .. py:class:: TocGenerator(source_dir: pathlib.Path)
-
 
    Bases: :py:obj:`Protocol`
 
    .. autoapi-inheritance-diagram:: doxysphinx.toc.TocGenerator
       :parts: 1
 
+
    TocGenerator protocol.
 
    Gets the source_dir (with the html sources) during init and
    each file to possibly generate a toctree directive for in the :meth:`generate_toc_for`
    method. The implementer has then to choose how to implement the toc generation.
+
 
    .. py:method:: generate_toc_for(file: pathlib.Path) -> Iterable[str]
 
@@ -48,11 +47,14 @@ Classes
 
 .. py:class:: DoxygenTocGenerator(source_dir: pathlib.Path)
 
-
    A TocGenerator for doxygen.
 
    Will read the menudata.js to check whether a toctree
    directive needs to be generated or not.
+
+
+   .. py:attribute:: structural_dummies
+
 
    .. py:method:: generate_toc_for(file: pathlib.Path) -> Iterator[str]
 

@@ -1,5 +1,5 @@
-:py:mod:`doxysphinx.html_parser`
-================================
+doxysphinx.html_parser
+======================
 
 .. py:module:: doxysphinx.html_parser
 
@@ -12,11 +12,8 @@
 
 
 
-Module Contents
----------------
-
 Classes
-~~~~~~~
+-------
 
 .. autoapisummary::
 
@@ -30,43 +27,49 @@ Classes
    doxysphinx.html_parser.DoxygenHtmlParser
 
 
-
+Module Contents
+---------------
 
 .. py:class:: HtmlParseResult
 
-
    Capsules a parsed and processed html tree with meta information.
 
+
    .. py:attribute:: html_input_file
-      :type: pathlib.Path
+      :type:  pathlib.Path
 
       The html file that was parsed.
 
+
    .. py:attribute:: project
-      :type: str
+      :type:  str
 
       The project where this html file belongs to.
       This can be e.g. a directory name or a component/module name etc.
 
+
    .. py:attribute:: meta_title
-      :type: str
+      :type:  str
 
       The html meta title if present in the original html.
       If not just set to document title
 
+
    .. py:attribute:: document_title
-      :type: str
+      :type:  str
 
       The document title. This is the title that is visible e.g.
       in sphinx menu structure.
 
+
    .. py:attribute:: used_snippet_formats
-      :type: Optional[Set[str]]
+      :type:  Optional[Set[str]]
 
       The list of snippet formats that are used inside the html tree if any.
 
+
    .. py:attribute:: tree
-      :type: Optional[lxml.etree._ElementTree]
+      :type:  Optional[lxml.etree._ElementTree]
 
       The html/xml element tree or None if nothing was parsed because the html shouldn't be handled as mixed
       mode content.
@@ -74,19 +77,21 @@ Classes
 
 .. py:class:: HtmlParser(source_directory: pathlib.Path)
 
-
    Bases: :py:obj:`Protocol`
 
    .. autoapi-inheritance-diagram:: doxysphinx.html_parser.HtmlParser
       :parts: 1
+
 
    Html Parser Protocol for parsing html files into a neutral format (that can be then processed further).
 
    You own html parser should find/generate all rst-content in <rst>-tags.
    The further tooling can then work with that.
 
+
    .. py:method:: parse(file: pathlib.Path) -> HtmlParseResult
       :abstractmethod:
+
 
       Parse a html file.
 
@@ -103,39 +108,46 @@ Classes
 
 .. py:class:: ElementProcessor
 
-
    Bases: :py:obj:`Protocol`
 
    .. autoapi-inheritance-diagram:: doxysphinx.html_parser.ElementProcessor
       :parts: 1
 
+
    An ElementProcessor processes specific html elements, one at a time.
 
    Typically this is used to either clean up or transform the elements into a neutralized format.
 
+
    .. py:attribute:: elements
-      :type: List[str]
+      :type:  List[str]
       :value: []
+
 
       A list of html element names this processor can process.
 
       This is for pre-filtering html elements (an optimization). This processors try_process method
       is only called on these elements.
 
+
    .. py:attribute:: is_final
-      :type: bool
+      :type:  bool
       :value: True
+
 
       Whether other processors should be called after this one.
 
       With a "final processor" (is_final == True) processing of an element stops (no other processors considered)
       once the try_process method returns True.
 
+
    .. py:attribute:: format
-      :type: str
+      :type:  str
       :value: 'None'
 
+
       The format this element processor processes... like 'rst', 'md' etc.
+
 
    .. py:method:: try_process(element: lxml.etree._Element) -> bool
 
@@ -148,27 +160,26 @@ Classes
 
 .. py:class:: RstInlineProcessor
 
-
    Element Processor for inline rst elements.
+
 
    .. py:attribute:: elements
       :value: ['code']
 
-      
+
 
    .. py:attribute:: format
       :value: 'rst'
 
-      
+
 
    .. py:attribute:: is_final
       :value: True
 
-      
+
 
    .. py:attribute:: rst_role_regex
 
-      
 
    .. py:method:: try_process(element: lxml.etree._Element) -> bool
 
@@ -181,23 +192,23 @@ Classes
 
 .. py:class:: RstBlockProcessor
 
-
    Element Processor for rst block elements.
+
 
    .. py:attribute:: elements
       :value: ['code', 'pre']
 
-      
+
 
    .. py:attribute:: format
       :value: 'rst'
 
-      
+
 
    .. py:attribute:: is_final
       :value: True
 
-      
+
 
    .. py:method:: try_process(element: lxml.etree._Element) -> bool
 
@@ -210,7 +221,6 @@ Classes
 
 .. py:class:: PreToDivProcessor
 
-
    This Element Processor will change <pre>-tags to <div class="fragments"> tags.
 
    We do this because doxysphinx will linearize html output in the writer to have it in one line in
@@ -219,20 +229,21 @@ Classes
 
    This processor is special because it should only run when any other processor has done something.
 
+
    .. py:attribute:: elements
       :value: ['pre']
 
-      
+
 
    .. py:attribute:: format
       :value: ''
 
-      
+
 
    .. py:attribute:: is_final
       :value: True
 
-      
+
 
    .. py:method:: try_process(element: lxml.etree._Element) -> bool
 
@@ -244,7 +255,6 @@ Classes
 
 
 .. py:class:: MarkdownRstBlockProcessor
-
 
    Element Processor for doxygen markdown block elements.
 
@@ -269,20 +279,21 @@ Classes
         <div class="line">  test</div>
       </div>
 
+
    .. py:attribute:: elements
       :value: ['div']
 
-      
+
 
    .. py:attribute:: format
       :value: 'rst'
 
-      
+
 
    .. py:attribute:: is_final
       :value: True
 
-      
+
 
    .. py:method:: try_process(element: lxml.etree._Element) -> bool
 
@@ -295,8 +306,8 @@ Classes
 
 .. py:class:: DoxygenHtmlParser(source_directory: pathlib.Path)
 
-
    Parser for Doxygen HTML output files.
+
 
    .. py:method:: parse(file: pathlib.Path) -> HtmlParseResult
 
