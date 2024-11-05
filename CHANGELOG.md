@@ -13,6 +13,12 @@
 
 <!--next-version-placeholder-->
 
+## v3.3.12 (2024-11-05)
+
+### Fix
+
+- **cd.yml**: Updated the upload-artifact@v4 (https://github.blog/changelog/2024-02-13-deprecation-notice-v1-and-v2-of-the-artifact-actions/)
+
 ## v3.3.11 (2024-09-04)
 
 ### Fix
