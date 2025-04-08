@@ -252,7 +252,7 @@ class CssScoper:
 
         # the sass compiler does also scope the html element (where typically css variables are
         # stored). We need to remove that scoping again because it will only work if it's in global scope.
-        compiled_css = compiled_css.replace(f"{self._selector} html {{", "html {")
+        compiled_css = compiled_css.replace(f"{self._selector} html", "html")
 
         # write stylesheet
         target.write_text(compiled_css, encoding="UTF-8")
