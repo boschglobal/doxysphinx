@@ -15,9 +15,9 @@ These represent the main functionality of doxysphinx.
 """
 import logging
 from pathlib import Path
-from typing import Iterable, List, Optional, Tuple, Type
+from typing import Iterable, List, Optional, Tuple, Type, Union
 
-from mpire import WorkerPool
+from mpire.pool import WorkerPool
 
 from doxysphinx.html_parser import DoxygenHtmlParser, HtmlParser
 from doxysphinx.resources import DoxygenResourceProvider, ResourceProvider
@@ -50,7 +50,7 @@ class Builder:
         writer_type: Type[Writer] = RstWriter,
         force_recreation: bool = False,
         parallel: bool = True,
-        workers: int | None = None
+        workers: Union[int, None] = None
     ):
         """
         Create a Builder that builds rsts for doxygen html files.
@@ -182,7 +182,7 @@ class Cleaner:
         dir_mapper_type: Type[DirectoryMapper] = SphinxHtmlBuilderDirectoryMapper,
         resource_provider_type: Type[ResourceProvider] = DoxygenResourceProvider,
         parallel: bool = True,
-        workers: int | None = None
+        workers: Union[int, None] = None
     ):
         """
         Create a Cleaner that will cleanup things that the :class:`Builder` created.

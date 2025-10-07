@@ -31,7 +31,7 @@ import importlib.metadata as metadata
 import logging
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Iterator, List
+from typing import Iterator, List, Union
 
 import click
 import click_log  # type: ignore
@@ -120,7 +120,7 @@ def cli():
 @click.argument("sphinx_source", type=click.Path(file_okay=False, exists=True, path_type=Path))
 @click.argument("sphinx_output", type=click.Path(file_okay=False, path_type=Path))
 @_doxygen_context()
-def build(parallel: bool, workers: int | None, sphinx_source: Path, sphinx_output: Path, **kwargs):
+def build(parallel: bool, workers: Union[int, None], sphinx_source: Path, sphinx_output: Path, **kwargs):
     """
     Build rst and copy related files for doxygen projects.
 
@@ -163,7 +163,7 @@ def build(parallel: bool, workers: int | None, sphinx_source: Path, sphinx_outpu
 @click.argument("sphinx_source", type=click.Path(file_okay=False, exists=True, path_type=Path))
 @click.argument("sphinx_output", type=click.Path(file_okay=False, path_type=Path))
 @_doxygen_context()
-def clean(parallel: bool, workers: int | None, sphinx_source: Path, sphinx_output: Path, **kwargs):
+def clean(parallel: bool, workers: Union[int, None], sphinx_source: Path, sphinx_output: Path, **kwargs):
     r"""
     Clean up files created by doxysphinx.
 
