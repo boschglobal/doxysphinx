@@ -224,7 +224,7 @@ class Cleaner:
         if self._parallel:
             if self._workers:
                 self._logger.info(f"running in parallel with limit of {self._workers} workers")
-            with WorkerPool(self._workers) as pool:
+            with WorkerPool(n_jobs=self._workers) as pool:
                 pool.set_shared_objects(self._logger)
                 return pool.map(self._delete_corresponding_file, files)
         else:
