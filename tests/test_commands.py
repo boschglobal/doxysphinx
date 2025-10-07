@@ -45,7 +45,7 @@ def test_build_is_working_as_expected():
 
 
 def test_worker_limiting():
-    """Check if the build is working as expected"""
+    """Test that worker limiting functionality works for build and clean commands"""
     runner = CliRunner()
     repo_root = path_resolve(Path())
 
@@ -104,7 +104,7 @@ def test_incremental_build_working_as_expected():
         cli,
         [
             "--verbosity=DEBUG",
-            "build",
+            "clean",
             str(sphinx_source),
             str(sphinx_output),
             str(doxyfile),
