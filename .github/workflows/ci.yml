@@ -20,11 +20,33 @@ on:
 permissions:
   contents: write
 
-env:
-  python-version: 3.9
+
 
 jobs:
-  ci:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+    matrix:
+      python-version: ["3.9", "3.10", "3.11", "3.12"]
+
+    steps:
+    - name: "Checkout Code"
+      uses: actions/checkout@v4
+      with:
+        submodules: false
+        fetch-depth: 0
+    
+    - name: "Ensure Python/Build Environment v${{ matrix.python-version }}"
+      uses: ./.github/actions/init
+      with:
+        python-version: ${{ matrix.python-version }}
+
+    - name: "Run Tests"
+      run: |
+        mkdir -p docs/doxygen
+        poetry run pytest --emoji -v -s --md $GITHUB_STEP_SUMMARY
+
+  qa:
     runs-on: ubuntu-latest
 
     steps:
@@ -37,27 +59,38 @@ jobs:
     - name: "Ensure Python/Build Environment"
       uses: ./.github/actions/init
       with:
-        python-version: ${{ env.python-version }}
-
-    - name: "Run Tests"
-      run: |
-        mkdir -p docs/doxygen
-        poetry run pytest --emoji -v -s --md $GITHUB_STEP_SUMMARY
+        python-version: "3.12" 
 
     - name: "cache pre-commit"
       uses: actions/cache@v4
       with:
         path: ~/.cache/pre-commit
-        key: ${{ runner.os }}-py${{ env.python-version }}-precommit-${{ hashFiles('.pre-commit-config.yaml') }}
+        key: ${{ runner.os }}-py3.12-precommit-${{ hashFiles('.pre-commit-config.yaml') }}
         restore-keys: |
-          ${{ runner.os }}-py${{ env.python-version }}
+          ${{ runner.os }}-py3.12
 
     - name: "Run quality checks"
       run: |
         SKIP=poetry-lock poetry run pre-commit run --all-files
 
+  release:
+    runs-on: ubuntu-latest
+    needs: [test, qa]
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main' && !contains(github.event.head_commit.message, 'chore(release):')
+
+    jobs:
+    - name: "Checkout Code"
+      uses: actions/checkout@v4
+      with:
+        submodules: false
+        fetch-depth: 0
+
+    - name: "Ensure Python/Build Environment"
+      uses: ./.github/actions/init
+      with:
+        python-version: "3.12"
+
     - name: "Update version, changelog"
-      if: github.event_name == 'push' && github.ref == 'refs/heads/main' && !contains(github.event.head_commit.message, 'chore(release):')
       id: versionbump
       run: |
         git config user.email "actions@github.com"
@@ -74,7 +107,6 @@ jobs:
         GH_TOKEN: ${{ secrets.GITHUBTOKEN }}
 
     - name: "Create Release (will be filled in cd)"
-      if: github.event_name == 'push' && github.ref == 'refs/heads/main' && !contains(github.event.head_commit.message, 'chore(release):')
       uses: softprops/action-gh-release@v1
       with:
         body_path: RELEASE_NOTES.md
