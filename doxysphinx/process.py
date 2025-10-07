@@ -50,7 +50,7 @@ class Builder:
         writer_type: Type[Writer] = RstWriter,
         force_recreation: bool = False,
         parallel: bool = True,
-        workers: Union[int, None] = None
+        workers: Union[int, None] = None,
     ):
         """
         Create a Builder that builds rsts for doxygen html files.
@@ -65,7 +65,7 @@ class Builder:
         :param writer_type: The writer type to use.
         :param force_recreation: whether to force the recreation of rst files
         :param parallel: Whether to run in parallel or not
-        :param workers: The maximum number of concurrent workers allowed in a parallel build 
+        :param workers: The maximum number of concurrent workers allowed in a parallel build
 
         """
         self._dir_mapper = dir_mapper_type(sphinx_source_dir, sphinx_output_dir)
@@ -182,7 +182,7 @@ class Cleaner:
         dir_mapper_type: Type[DirectoryMapper] = SphinxHtmlBuilderDirectoryMapper,
         resource_provider_type: Type[ResourceProvider] = DoxygenResourceProvider,
         parallel: bool = True,
-        workers: Union[int, None] = None
+        workers: Union[int, None] = None,
     ):
         """
         Create a Cleaner that will cleanup things that the :class:`Builder` created.
@@ -196,7 +196,7 @@ class Cleaner:
         :param parser_type: The html parser to use.
         :param writer_type: The writer type to use.
         :param parallel: Whether to run in parallel or not
-        :param workers: The maximum number of concurrent workers allowed in a parallel cleanup 
+        :param workers: The maximum number of concurrent workers allowed in a parallel cleanup
 
         """
         self._dir_mapper = dir_mapper_type(sphinx_source_dir, sphinx_output_dir)
