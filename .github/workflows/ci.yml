@@ -16,6 +16,7 @@ on:
     branches:
       - main
   pull_request:
+    types: [opened, synchronize, reopened]
 
 permissions:
   contents: write
@@ -26,8 +27,8 @@ jobs:
   test:
     runs-on: ubuntu-latest
     strategy:
-    matrix:
-      python-version: ["3.9", "3.10", "3.11", "3.12"]
+      matrix:
+        python-version: ["3.9", "3.10", "3.11", "3.12"]
 
     steps:
     - name: "Checkout Code"
@@ -78,7 +79,7 @@ jobs:
     needs: [test, qa]
     if: github.event_name == 'push' && github.ref == 'refs/heads/main' && !contains(github.event.head_commit.message, 'chore(release):')
 
-    jobs:
+    steps:
     - name: "Checkout Code"
       uses: actions/checkout@v4
       with:
