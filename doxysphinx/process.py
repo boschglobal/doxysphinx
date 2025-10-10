@@ -15,9 +15,9 @@ These represent the main functionality of doxysphinx.
 """
 import logging
 from pathlib import Path
-from typing import Iterable, List, Optional, Tuple, Type
+from typing import Iterable, List, Optional, Tuple, Type, Union
 
-from mpire import WorkerPool
+from mpire.pool import WorkerPool
 
 from doxysphinx.html_parser import DoxygenHtmlParser, HtmlParser
 from doxysphinx.resources import DoxygenResourceProvider, ResourceProvider
@@ -49,7 +49,8 @@ class Builder:
         parser_type: Type[HtmlParser] = DoxygenHtmlParser,
         writer_type: Type[Writer] = RstWriter,
         force_recreation: bool = False,
-        parallel=True,
+        parallel: bool = True,
+        workers: Union[int, None] = None,
     ):
         """
         Create a Builder that builds rsts for doxygen html files.
@@ -63,6 +64,8 @@ class Builder:
         :param parser_type: The html parser to use.
         :param writer_type: The writer type to use.
         :param force_recreation: whether to force the recreation of rst files
+        :param parallel: Whether to run in parallel or not
+        :param workers: The maximum number of concurrent workers allowed in a parallel build
 
         """
         self._dir_mapper = dir_mapper_type(sphinx_source_dir, sphinx_output_dir)
@@ -74,6 +77,7 @@ class Builder:
 
         self._force_recreation = force_recreation
         self._parallel = parallel
+        self._workers = workers
 
     def build(self, doxygen_html_dir: Path):
         """
@@ -100,7 +104,9 @@ class Builder:
         files_with_hashes = list(self._get_doxy_htmls_to_process_with_hashes(doxygen_html_dir))
 
         if self._parallel:
-            with WorkerPool() as pool:
+            if self._workers:
+                self._logger.info(f"running in parallel with limit of {self._workers} workers")
+            with WorkerPool(n_jobs=self._workers) as pool:
                 pool.set_shared_objects(task_args)
                 result = pool.map(self._run, files_with_hashes)
                 return result
@@ -176,6 +182,7 @@ class Cleaner:
         dir_mapper_type: Type[DirectoryMapper] = SphinxHtmlBuilderDirectoryMapper,
         resource_provider_type: Type[ResourceProvider] = DoxygenResourceProvider,
         parallel: bool = True,
+        workers: Union[int, None] = None,
     ):
         """
         Create a Cleaner that will cleanup things that the :class:`Builder` created.
@@ -188,11 +195,14 @@ class Cleaner:
         :param resource_provider_type: The resource provider to use.
         :param parser_type: The html parser to use.
         :param writer_type: The writer type to use.
+        :param parallel: Whether to run in parallel or not
+        :param workers: The maximum number of concurrent workers allowed in a parallel cleanup
 
         """
         self._dir_mapper = dir_mapper_type(sphinx_source_dir, sphinx_output_dir)
         self._resource_provider = resource_provider_type(self._dir_mapper)
         self._parallel = parallel
+        self._workers = workers
 
     def cleanup(self, doxygen_html_dir: Path):
         """
@@ -212,7 +222,9 @@ class Cleaner:
         files = list(doxygen_html_dir.glob("*.html"))
 
         if self._parallel:
-            with WorkerPool() as pool:
+            if self._workers:
+                self._logger.info(f"running in parallel with limit of {self._workers} workers")
+            with WorkerPool(n_jobs=self._workers) as pool:
                 pool.set_shared_objects(self._logger)
                 return pool.map(self._delete_corresponding_file, files)
         else:
