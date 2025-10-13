@@ -58,9 +58,8 @@ def test_longpath_build():
 
     # Use extended-length paths on Windows to support long file names
     if os.name == "nt":
-        source_path = Path(rf"\\?\{repo_root}")
-        target_path = Path(rf"\\?\{long_path}")
-        shutil.copytree(source_path, target_path, dirs_exist_ok=True)
+        # Apply \\?\ prefix only to the shutil operation, not to pathlib operations
+        shutil.copytree(rf"\\?\{repo_root}", rf"\\?\{long_path}", dirs_exist_ok=True)
     else:
         shutil.copytree(repo_root, long_path, dirs_exist_ok=True)
     assert (long_path.exists())
@@ -90,7 +89,7 @@ def test_longpath_build():
 
     # Clean up - use long path prefix on Windows for removal too
     if os.name == "nt":
-        shutil.rmtree(Path(rf"\\?\{long_path}"))
+        shutil.rmtree(rf"\\?\{long_path}")
     else:
         shutil.rmtree(long_path)
 
