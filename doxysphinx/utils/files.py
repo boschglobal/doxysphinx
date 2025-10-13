@@ -137,6 +137,10 @@ def copy_if_different(
         source_file = file
         target_file = target_dir / source_file.relative_to(source_dir)
         target_file.parent.mkdir(parents=True, exist_ok=True)
+        if os.name == 'nt':
+            source_file = r"\\?\%s" % source_file
+            target_file = r"\\?\%s" % target_file
+
         shutil.copy(source_file, target_file)
         result.append(target_file)
 
