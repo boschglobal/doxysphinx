@@ -13,12 +13,6 @@
 
 <!--next-version-placeholder-->
 
-## v3.3.13 (2025-10-10)
-
-### Fix
-
-- Introduce option to limit workers in parallel builds
-
 ## v3.3.12 (2024-11-05)
 
 ### Fix
