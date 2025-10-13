@@ -23,19 +23,15 @@ inputs:
 runs:
   using: "composite"
   steps:
-  - name: "Ensure doxygen"
-    if: inputs.doc-tools
+  - name: "Ensure doxygen (Linux)"
+    if: inputs.doc-tools && runner.os == 'Linux'
     run: sudo apt-get install graphviz doxygen -y
-    # latest doxygen (untested)
-    # run: |
-    #  if ! command -v doxygen &> /dev/null
-    #  then
-    #    echo "doxygen wasn't found... installing now..."
-    #    mkdir -p ~/.local/bin
-    #    curl -sSL https://www.doxygen.nl/files/doxygen-1.9.4.linux.bin.tar.gz | \
-    #    tar -xzvf - --strip-components=1 -C ~/.local/bin bin/doxygen;
-    #  fi
+    shell: bash
 
+  - name: "Ensure doxygen (Windows)"
+    if: inputs.doc-tools && runner.os == 'Windows'
+    run: |
+      choco install doxygen.install graphviz --yes
     shell: bash
 
   - name: "Ensure poetry"

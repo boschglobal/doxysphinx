@@ -25,10 +25,11 @@ permissions:
 
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
     strategy:
       matrix:
         python-version: ["3.9", "3.10", "3.11", "3.12"]
+        os: [ubuntu-latest, windows-latest]
 
     steps:
     - name: "Checkout Code"
@@ -46,6 +47,7 @@ jobs:
       run: |
         mkdir -p docs/doxygen
         poetry run pytest --emoji -v -s --md $GITHUB_STEP_SUMMARY
+      shell: bash
 
   qa:
     runs-on: ubuntu-latest

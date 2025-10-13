@@ -137,8 +137,13 @@ def copy_if_different(
         source_file = file
         target_file = target_dir / source_file.relative_to(source_dir)
         target_file.parent.mkdir(parents=True, exist_ok=True)
-        shutil.copy(source_file, target_file)
-        result.append(target_file)
+        if os.name == "nt":
+            # Use extended-length paths on Windows to support long file names
+            # Apply \\?\ prefix only to the shutil operation, not to pathlib operations
+            shutil.copy(rf"\\?\{source_file}", rf"\\?\{target_file}")
+        else:
+            shutil.copy(source_file, target_file)
+        result.append(target_file)  # Return the original path without prefix
 
     return result
 
