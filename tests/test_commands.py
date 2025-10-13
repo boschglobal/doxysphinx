@@ -7,6 +7,7 @@
 #  - Markus Braun, :em engineering methods AG (contracted by Robert Bosch GmbH)
 # =====================================================================================
 
+import os
 from pathlib import Path
 import shutil
 
@@ -54,7 +55,15 @@ def test_longpath_build():
     # (see https://learn.microsoft.com/en-us/windows/win32/fileio/maximum-file-path-limitation)
     long_dir_name = ("long/" * 70) + "path"
     long_path = repo_root / long_dir_name
-    shutil.copytree(repo_root, long_path, dirs_exist_ok=True)
+
+    # Use extended-length paths on Windows to support long file names
+    if os.name == "nt":
+        source_path = Path(rf"\\?\{repo_root}")
+        target_path = Path(rf"\\?\{long_path}")
+        shutil.copytree(source_path, target_path, dirs_exist_ok=True)
+    else:
+        shutil.copytree(repo_root, long_path, dirs_exist_ok=True)
+    assert (long_path.exists())
 
     sphinx_source = long_path
     sphinx_output = long_path / ".build/html"
@@ -79,8 +88,11 @@ def test_longpath_build():
     assert result.exit_code == 0
     assert (long_path / ".build/html/docs/doxygen/demo/html/doxygen.css").exists()
 
-    # Clean up
-    shutil.rmtree(long_path)
+    # Clean up - use long path prefix on Windows for removal too
+    if os.name == "nt":
+        shutil.rmtree(Path(rf"\\?\{long_path}"))
+    else:
+        shutil.rmtree(long_path)
 
 
 def test_worker_limiting():
