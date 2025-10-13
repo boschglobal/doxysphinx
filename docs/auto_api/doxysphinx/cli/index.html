@@ -37,8 +37,8 @@
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common.css?v=bd9ab754" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/layouts.css?v=448c382f" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/styles.css?v=6c8eb985" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/layouts.css?v=448c382f" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/modern.css?v=ffa536d2" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-book-theme-custom.css?v=89a7960a" />
   
@@ -49,7 +49,7 @@
 
     <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
     <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-    <script src="../../../../_static/documentation_options.js?v=b52cc47a"></script>
+    <script src="../../../../_static/documentation_options.js?v=0ed04667"></script>
     <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -68,7 +68,7 @@
     <link rel="prev" title="doxysphinx.utils.rst" href="../utils/rst/index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="&#39;Tue Nov 5 14:02:56 2024&#39;, &#39;cab4ed3&#39;"/>
+    <meta name="docbuild:last-update" content="&#39;Mon Oct 13 12:02:43 2025&#39;, &#39;40dc9f8&#39;"/>
   </head>
   
   
@@ -511,10 +511,10 @@ see the correct signatures.</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="#doxysphinx.cli.cli" title="doxysphinx.cli.cli"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cli</span></code></a>()</p></td>
 <td><p>Integrates doxygen html documentation with sphinx.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#doxysphinx.cli.build" title="doxysphinx.cli.build"><code class="xref py py-obj docutils literal notranslate"><span class="pre">build</span></code></a>(parallel, sphinx_source, sphinx_output, **kwargs)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#doxysphinx.cli.build" title="doxysphinx.cli.build"><code class="xref py py-obj docutils literal notranslate"><span class="pre">build</span></code></a>(parallel, workers, sphinx_source, sphinx_output, ...)</p></td>
 <td><p>Build rst and copy related files for doxygen projects.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#doxysphinx.cli.clean" title="doxysphinx.cli.clean"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clean</span></code></a>(parallel, sphinx_source, sphinx_output, **kwargs)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#doxysphinx.cli.clean" title="doxysphinx.cli.clean"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clean</span></code></a>(parallel, workers, sphinx_source, sphinx_output, ...)</p></td>
 <td><p>Clean up files created by doxysphinx.</p></td>
 </tr>
 </tbody>
@@ -563,7 +563,7 @@ to) has to live inside sphinx’s input tree.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="doxysphinx.cli.build">
-<span class="sig-prename descclassname"><span class="pre">doxysphinx.cli.</span></span><span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parallel</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sphinx_source</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pathlib.Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sphinx_output</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pathlib.Path</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#doxysphinx.cli.build" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">doxysphinx.cli.</span></span><span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parallel</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">workers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sphinx_source</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pathlib.Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sphinx_output</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pathlib.Path</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#doxysphinx.cli.build" title="Link to this definition">#</a></dt>
 <dd><p>Build rst and copy related files for doxygen projects.</p>
 <p>SPHINX_SOURCE specifies the root of the sphinx source directory tree while SPHINX_OUTPUT specifies the root of the
 sphinx output directory tree.</p>
@@ -580,7 +580,7 @@ so doxysphinx’s <code class="docutils literal notranslate"><span class="pre">S
 
 <dl class="py function">
 <dt class="sig sig-object py" id="doxysphinx.cli.clean">
-<span class="sig-prename descclassname"><span class="pre">doxysphinx.cli.</span></span><span class="sig-name descname"><span class="pre">clean</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parallel</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sphinx_source</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pathlib.Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sphinx_output</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pathlib.Path</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#doxysphinx.cli.clean" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">doxysphinx.cli.</span></span><span class="sig-name descname"><span class="pre">clean</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parallel</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">workers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sphinx_source</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pathlib.Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sphinx_output</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pathlib.Path</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#doxysphinx.cli.clean" title="Link to this definition">#</a></dt>
 <dd><p>Clean up files created by doxysphinx.</p>
 <p>SPHINX_SOURCE specifies the root of the sphinx source directory tree while SPHINX_OUTPUT specifies the root of the
 sphinx output directory tree. The doxygen html outputs are specified through INPUT (multiple possible) either
@@ -671,7 +671,7 @@ by pointing to the doxygen html output directory or by pointing to the doxygen c
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on &#39;Tue Nov 5 14:02:56 2024&#39;, &#39;cab4ed3&#39;.
+  Last updated on &#39;Mon Oct 13 12:02:43 2025&#39;, &#39;40dc9f8&#39;.
   <br/>
 </p>
   </div>

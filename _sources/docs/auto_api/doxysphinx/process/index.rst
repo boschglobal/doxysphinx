@@ -23,7 +23,7 @@ Classes
 Module Contents
 ---------------
 
-.. py:class:: Builder(sphinx_source_dir: pathlib.Path, sphinx_output_dir: pathlib.Path, dir_mapper_type: Type[doxysphinx.sphinx.DirectoryMapper] = SphinxHtmlBuilderDirectoryMapper, resource_provider_type: Type[doxysphinx.resources.ResourceProvider] = DoxygenResourceProvider, parser_type: Type[doxysphinx.html_parser.HtmlParser] = DoxygenHtmlParser, writer_type: Type[doxysphinx.writer.Writer] = RstWriter, force_recreation: bool = False, parallel=True)
+.. py:class:: Builder(sphinx_source_dir: pathlib.Path, sphinx_output_dir: pathlib.Path, dir_mapper_type: Type[doxysphinx.sphinx.DirectoryMapper] = SphinxHtmlBuilderDirectoryMapper, resource_provider_type: Type[doxysphinx.resources.ResourceProvider] = DoxygenResourceProvider, parser_type: Type[doxysphinx.html_parser.HtmlParser] = DoxygenHtmlParser, writer_type: Type[doxysphinx.writer.Writer] = RstWriter, force_recreation: bool = False, parallel: bool = True, workers: Union[int, None] = None)
 
    The Builder builds target docs-as-code files out of an existing html documentation.
 
@@ -46,7 +46,7 @@ Module Contents
 
 
 
-.. py:class:: Cleaner(sphinx_source_dir: pathlib.Path, sphinx_output_dir: pathlib.Path, dir_mapper_type: Type[doxysphinx.sphinx.DirectoryMapper] = SphinxHtmlBuilderDirectoryMapper, resource_provider_type: Type[doxysphinx.resources.ResourceProvider] = DoxygenResourceProvider, parallel: bool = True)
+.. py:class:: Cleaner(sphinx_source_dir: pathlib.Path, sphinx_output_dir: pathlib.Path, dir_mapper_type: Type[doxysphinx.sphinx.DirectoryMapper] = SphinxHtmlBuilderDirectoryMapper, resource_provider_type: Type[doxysphinx.resources.ResourceProvider] = DoxygenResourceProvider, parallel: bool = True, workers: Union[int, None] = None)
 
    The cleaner cleans files created and copied by the builder.
 

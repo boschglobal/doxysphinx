@@ -36,8 +36,8 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common.css?v=bd9ab754" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/layouts.css?v=448c382f" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/styles.css?v=6c8eb985" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/layouts.css?v=448c382f" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/modern.css?v=ffa536d2" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-book-theme-custom.css?v=89a7960a" />
   
@@ -48,7 +48,7 @@
 
     <script src="../../_static/jquery.js?v=5d32c60e"></script>
     <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-    <script src="../../_static/documentation_options.js?v=b52cc47a"></script>
+    <script src="../../_static/documentation_options.js?v=0ed04667"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -65,7 +65,7 @@
     <link rel="search" title="Search" href="../../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="&#39;Tue Nov 5 14:02:56 2024&#39;, &#39;cab4ed3&#39;"/>
+    <meta name="docbuild:last-update" content="&#39;Mon Oct 13 12:02:43 2025&#39;, &#39;40dc9f8&#39;"/>
   </head>
   
   
@@ -389,9 +389,9 @@ document.write(`
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="kn">import</span> <span class="nn">logging</span>
 <span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Iterable</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Type</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Iterable</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Type</span><span class="p">,</span> <span class="n">Union</span>
 
-<span class="kn">from</span> <span class="nn">mpire</span> <span class="kn">import</span> <span class="n">WorkerPool</span>
+<span class="kn">from</span> <span class="nn">mpire.pool</span> <span class="kn">import</span> <span class="n">WorkerPool</span>
 
 <span class="kn">from</span> <span class="nn">doxysphinx.html_parser</span> <span class="kn">import</span> <span class="n">DoxygenHtmlParser</span><span class="p">,</span> <span class="n">HtmlParser</span>
 <span class="kn">from</span> <span class="nn">doxysphinx.resources</span> <span class="kn">import</span> <span class="n">DoxygenResourceProvider</span><span class="p">,</span> <span class="n">ResourceProvider</span>
@@ -425,7 +425,8 @@ document.write(`
         <span class="n">parser_type</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">HtmlParser</span><span class="p">]</span> <span class="o">=</span> <span class="n">DoxygenHtmlParser</span><span class="p">,</span>
         <span class="n">writer_type</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">Writer</span><span class="p">]</span> <span class="o">=</span> <span class="n">RstWriter</span><span class="p">,</span>
         <span class="n">force_recreation</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-        <span class="n">parallel</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">parallel</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="n">workers</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Create a Builder that builds rsts for doxygen html files.</span>
@@ -439,6 +440,8 @@ document.write(`
 <span class="sd">        :param parser_type: The html parser to use.</span>
 <span class="sd">        :param writer_type: The writer type to use.</span>
 <span class="sd">        :param force_recreation: whether to force the recreation of rst files</span>
+<span class="sd">        :param parallel: Whether to run in parallel or not</span>
+<span class="sd">        :param workers: The maximum number of concurrent workers allowed in a parallel build</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_dir_mapper</span> <span class="o">=</span> <span class="n">dir_mapper_type</span><span class="p">(</span><span class="n">sphinx_source_dir</span><span class="p">,</span> <span class="n">sphinx_output_dir</span><span class="p">)</span>
@@ -450,6 +453,7 @@ document.write(`
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_force_recreation</span> <span class="o">=</span> <span class="n">force_recreation</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_parallel</span> <span class="o">=</span> <span class="n">parallel</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_workers</span> <span class="o">=</span> <span class="n">workers</span>
 
 <div class="viewcode-block" id="Builder.build">
 <a class="viewcode-back" href="../../docs/auto_api/doxysphinx/process/index.html#doxysphinx.process.Builder.build">[docs]</a>
@@ -479,7 +483,9 @@ document.write(`
         <span class="n">files_with_hashes</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_get_doxy_htmls_to_process_with_hashes</span><span class="p">(</span><span class="n">doxygen_html_dir</span><span class="p">))</span>
 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parallel</span><span class="p">:</span>
-            <span class="k">with</span> <span class="n">WorkerPool</span><span class="p">()</span> <span class="k">as</span> <span class="n">pool</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_workers</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;running in parallel with limit of </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_workers</span><span class="si">}</span><span class="s2"> workers&quot;</span><span class="p">)</span>
+            <span class="k">with</span> <span class="n">WorkerPool</span><span class="p">(</span><span class="n">n_jobs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_workers</span><span class="p">)</span> <span class="k">as</span> <span class="n">pool</span><span class="p">:</span>
                 <span class="n">pool</span><span class="o">.</span><span class="n">set_shared_objects</span><span class="p">(</span><span class="n">task_args</span><span class="p">)</span>
                 <span class="n">result</span> <span class="o">=</span> <span class="n">pool</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_run</span><span class="p">,</span> <span class="n">files_with_hashes</span><span class="p">)</span>
                 <span class="k">return</span> <span class="n">result</span>
@@ -558,6 +564,7 @@ document.write(`
         <span class="n">dir_mapper_type</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">DirectoryMapper</span><span class="p">]</span> <span class="o">=</span> <span class="n">SphinxHtmlBuilderDirectoryMapper</span><span class="p">,</span>
         <span class="n">resource_provider_type</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">ResourceProvider</span><span class="p">]</span> <span class="o">=</span> <span class="n">DoxygenResourceProvider</span><span class="p">,</span>
         <span class="n">parallel</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="n">workers</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Create a Cleaner that will cleanup things that the :class:`Builder` created.</span>
@@ -570,11 +577,14 @@ document.write(`
 <span class="sd">        :param resource_provider_type: The resource provider to use.</span>
 <span class="sd">        :param parser_type: The html parser to use.</span>
 <span class="sd">        :param writer_type: The writer type to use.</span>
+<span class="sd">        :param parallel: Whether to run in parallel or not</span>
+<span class="sd">        :param workers: The maximum number of concurrent workers allowed in a parallel cleanup</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_dir_mapper</span> <span class="o">=</span> <span class="n">dir_mapper_type</span><span class="p">(</span><span class="n">sphinx_source_dir</span><span class="p">,</span> <span class="n">sphinx_output_dir</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_resource_provider</span> <span class="o">=</span> <span class="n">resource_provider_type</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_dir_mapper</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_parallel</span> <span class="o">=</span> <span class="n">parallel</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_workers</span> <span class="o">=</span> <span class="n">workers</span>
 
 <div class="viewcode-block" id="Cleaner.cleanup">
 <a class="viewcode-back" href="../../docs/auto_api/doxysphinx/process/index.html#doxysphinx.process.Cleaner.cleanup">[docs]</a>
@@ -597,7 +607,9 @@ document.write(`
         <span class="n">files</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">doxygen_html_dir</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">&quot;*.html&quot;</span><span class="p">))</span>
 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parallel</span><span class="p">:</span>
-            <span class="k">with</span> <span class="n">WorkerPool</span><span class="p">()</span> <span class="k">as</span> <span class="n">pool</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_workers</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;running in parallel with limit of </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_workers</span><span class="si">}</span><span class="s2"> workers&quot;</span><span class="p">)</span>
+            <span class="k">with</span> <span class="n">WorkerPool</span><span class="p">(</span><span class="n">n_jobs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_workers</span><span class="p">)</span> <span class="k">as</span> <span class="n">pool</span><span class="p">:</span>
                 <span class="n">pool</span><span class="o">.</span><span class="n">set_shared_objects</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="p">)</span>
                 <span class="k">return</span> <span class="n">pool</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_delete_corresponding_file</span><span class="p">,</span> <span class="n">files</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
@@ -648,7 +660,7 @@ document.write(`
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on &#39;Tue Nov 5 14:02:56 2024&#39;, &#39;cab4ed3&#39;.
+  Last updated on &#39;Mon Oct 13 12:02:43 2025&#39;, &#39;40dc9f8&#39;.
   <br/>
 </p>
   </div>

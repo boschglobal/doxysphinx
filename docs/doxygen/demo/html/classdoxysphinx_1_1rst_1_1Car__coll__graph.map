@@ -1,4 +1,5 @@
 <map id="doxysphinx::rst::Car" name="doxysphinx::rst::Car">
-<area shape="rect" id="node1" title="A car." alt="" coords="257,27,409,54"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,5,209,76"/>
+<area shape="rect" id="Node000001" title="A car." alt="" coords="257,27,409,53"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,209,75"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="223,37,257,37,257,43,223,43"/>
 </map>
