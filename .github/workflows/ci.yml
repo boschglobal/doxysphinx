@@ -47,6 +47,7 @@ jobs:
       run: |
         mkdir -p docs/doxygen
         poetry run pytest --emoji -v -s --md $GITHUB_STEP_SUMMARY
+      shell: bash
 
   qa:
     runs-on: ubuntu-latest
