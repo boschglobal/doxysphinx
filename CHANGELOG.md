@@ -13,6 +13,13 @@
 
 <!--next-version-placeholder-->
 
+## v3.3.14 (2025-10-13)
+
+### Fix
+
+- **python-version**: Bump pre-commit
+- **python-version**: Remove numpy dependency, move matplotlib to sphinx group
+
 ## v3.3.13 (2025-10-13)
 
 ### Fix
