@@ -77,7 +77,7 @@ pytest-cov = "^4.0.0"
 pytest-emoji = "^0.2.0"
 pytest-md = "^0.2.0"
 pex = "^2.1.131"
-pre-commit = "^3.2.2"
+pre-commit = "^4.3.0"
 commitizen = "^2.42.1"
 
 [tool.poetry.requires-plugins]
