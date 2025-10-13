@@ -8,6 +8,7 @@
 # =====================================================================================
 
 from pathlib import Path
+import shutil
 
 from click.testing import CliRunner
 
@@ -39,9 +40,47 @@ def test_build_is_working_as_expected():
         print("Build had errors - std output stream:")
         print(result.stdout)
     assert result.exit_code == 0
-    print("test2")
     assert (repo_root / ".build/html/docs/doxygen/demo/html/doxygen.css").exists()
-    print("test3")
+
+
+def test_longpath_build():
+    """Test building with long paths"""
+    runner = CliRunner()
+    repo_root = path_resolve(Path())
+
+    # Copy our demo directory to a very long path
+    # The path needs to be over 255 characters long to trigger issues on Windows
+    # Windows has a max path length of 255 characters by default
+    # (see https://learn.microsoft.com/en-us/windows/win32/fileio/maximum-file-path-limitation)
+    long_dir_name = ("long/" * 70) + "path"
+    long_path = repo_root / long_dir_name
+    shutil.copytree(repo_root, long_path, dirs_exist_ok=True)
+
+    sphinx_source = long_path
+    sphinx_output = long_path / ".build/html"
+    doxyfile = long_path / "demo" / "demo.doxyfile"
+
+    result = runner.invoke(
+        cli,
+        [
+            "--verbosity=DEBUG",
+            "build",
+            "--doxygen_cwd",
+            str(long_path),
+            str(sphinx_source),
+            str(sphinx_output),
+            str(doxyfile),
+        ],
+    )
+    assert (long_path / "pyproject.toml").exists()
+    if result.exit_code != 0:
+        print("Build had errors - std output stream:")
+        print(result.stdout)
+    assert result.exit_code == 0
+    assert (long_path / ".build/html/docs/doxygen/demo/html/doxygen.css").exists()
+
+    # Clean up
+    shutil.rmtree(long_path)
 
 
 def test_worker_limiting():
@@ -85,9 +124,7 @@ def test_worker_limiting():
         print("Build had errors - std output stream:")
         print(result.stdout)
     assert result.exit_code == 0
-    print("test2")
     assert (repo_root / ".build/html/docs/doxygen/demo/html/doxygen.css").exists()
-    print("test3")
     assert f"running in parallel with limit of {worker_limit} workers" in result.stdout
 
 
