@@ -9,7 +9,7 @@
 
 [tool.poetry]
 name = "doxysphinx"
-version = "3.3.13"
+version = "3.3.14"
 description = "Integrates doxygen html documentation with sphinx."
 authors = [
     "Nirmal Sasidharan <nirmal.sasidharan@de.bosch.com>",
@@ -44,9 +44,7 @@ click-log = "^0.4.0"
 pyparsing = "^3.0.9"
 mpire = "^2.6.0"
 pyjson5 = "^1.6.2"
-libsass = "^0.22.0"
-numpy = "^1.26.4"                                       # Adding this version of numpy to support python 3.12
-matplotlib = "^3.8.4"
+libsass = "^0.22.0"                                     # Adding this version of numpy to support python 3.12
 
 [tool.poetry.group.sphinx.dependencies]
 sphinx = "<=7.3.7"
@@ -59,6 +57,7 @@ sphinx-test-reports = "^1.0.2"
 sphinx-theme = "^1.0"
 sphinx-copybutton = "^0.5.2"
 sphinx-book-theme = "^1.0.1"
+matplotlib = "^3.8.4"
 myst-parser = ">=2.0.0,<=3.0.1"
 toml = "^0.10.2"
 sphinx-design = "^0.5.0"
@@ -78,15 +77,18 @@ pytest-cov = "^4.0.0"
 pytest-emoji = "^0.2.0"
 pytest-md = "^0.2.0"
 pex = "^2.1.131"
-pre-commit = "^3.2.2"
+pre-commit = "^4.3.0"
 commitizen = "^2.42.1"
+
+[tool.poetry.requires-plugins]
+poetry-plugin-export = ">=1.8"
 
 [tool.poetry.scripts]
 doxysphinx = "doxysphinx.cli:cli"
 
 [tool.commitizen]
 name = "cz_conventional_commits"
-version = "3.3.13"
+version = "3.3.14"
 tag_format = "v$version"
 version_files = ["pyproject.toml:^version"]
 bump_message = """chore(release): release $current_version → $new_version by commitizen [skip-ci]
