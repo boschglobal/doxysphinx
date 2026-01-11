@@ -12,12 +12,35 @@ import re
 import unicodedata
 from dataclasses import dataclass, field, replace
 from pathlib import Path
-from typing import Any, Dict, Iterable, Iterator, List, Protocol, Tuple
+from typing import Any, Dict, Iterable, Iterator, List, Protocol, Tuple, Optional
 
 from doxysphinx.doxygen import read_js_data_file
 from doxysphinx.utils.files import write_file
 from doxysphinx.utils.iterators import apply
 
+_ROW_RE = re.compile(
+    r'<tr[^>]*\bid="row_([^"]+)"[^>]*>.*?'
+    r'<a[^>]*\bclass="el"[^>]*\bhref="([^"]+)"[^>]*>(.*?)</a>',
+    re.IGNORECASE | re.DOTALL,
+)
+_TAG_STRIP_RE = re.compile(r"<.*?>", re.DOTALL)
+
+def _strip_tags(s: str) -> str:
+    # titles are usually plain text, but be safe
+    return _TAG_STRIP_RE.sub("", s).replace("&amp;", "&").strip()
+
+def _href_to_docname_and_url(href: str) -> tuple[str, str]:
+    # Keep the original href as url (for completeness),
+    # but docname should be the stem (no .html, no #anchor).
+    href_no_anchor = href.split("#", 1)[0]
+    return Path(href_no_anchor).stem, href
+
+def _row_path(row_id: str) -> List[int]:
+    # "0_" -> [0], "0_2_" -> [0,2], "3_1_10_" -> [3,1,10]
+    row_id = row_id.strip("_")
+    if not row_id:
+        return []
+    return [int(x) for x in row_id.split("_") if x]
 
 class TocGenerator(Protocol):
     """
@@ -54,13 +77,10 @@ class _MenuEntry:
     is_structural_dummy: bool = (
         False  # indicated whether a menu entry references a children's file as a structural dummy
     )
-    is_leaf: bool = field(init=False)
 
-    def __post_init__(self):
-        if not self.children:
-            self.is_leaf = True
-        else:
-            self.is_leaf = False
+    @property
+    def is_leaf(self) -> bool:
+        return not self.children
 
     @staticmethod
     def from_json_node(json_node: Dict[str, Any]) -> "_MenuEntry":
@@ -127,7 +147,6 @@ class _MenuEntry:
 
         return unique_children
 
-
 class DoxygenTocGenerator:
     """
     A TocGenerator for doxygen.
@@ -154,9 +173,107 @@ class DoxygenTocGenerator:
         apply(structural_dummies, self._prepare_structural_dummy)
         apply(structural_dummies, self._create_toc_file_for_structural_dummy)
 
+        # NEW: build modules hierarchy from modules.html (if present)
+        modules_path = source_dir / "modules.html"
+        self._modules_entry: Optional[_MenuEntry] = None
+        if modules_path.exists():
+            self._modules_entry = self._load_modules_tree(modules_path, title="API Reference")
+
         self._menu_lookup: Dict[str, _MenuEntry] = {
             e.docname: e for e in self._flatten_tree(self._menu) if not e.is_leaf
         }
+
+        # NEW: merge modules tree into lookup so group__*.html and modules.html get TOCs
+        if self._modules_entry is not None:
+            for e in self._flatten_tree(self._modules_entry):
+                if not e.is_leaf:
+                    self._menu_lookup[e.docname] = e
+
+
+    def _load_modules_tree(self, modules_html_path: Path, title: str = "API Reference") -> _MenuEntry:
+            html = modules_html_path.read_text(encoding="utf-8", errors="ignore")
+            matches = list(_ROW_RE.finditer(html))
+
+            # Synthetic root representing modules.html itself
+            root = _MenuEntry(
+                title=title,
+                docname="modules",
+                url="modules.html",
+                children=[],
+                is_structural_dummy=False,
+            )
+
+            def ensure_child_list_size(parent: _MenuEntry, idx: int) -> None:
+                # Fill gaps with placeholder structural nodes (not "structural_dummy" in your sense,
+                # just internal placeholders we later prune).
+                while len(parent.children) <= idx:
+                    parent.children.append(
+                        _MenuEntry(
+                            title="__placeholder__",
+                            docname="__placeholder__",
+                            url="__placeholder__",
+                            children=[],
+                            is_structural_dummy=False,
+                        )
+                    )
+
+            def insert(parent: _MenuEntry, path: List[int], node: _MenuEntry) -> None:
+                if not path:
+                    # Replace parent in-place (copy over fields) – but we only call insert with non-empty path
+                    return
+                idx = path[0]
+                ensure_child_list_size(parent, idx)
+
+                if len(path) == 1:
+                    parent.children[idx] = node
+                    return
+
+                # Intermediate structural node:
+                child = parent.children[idx]
+                if child.title == "__placeholder__":
+                    # Use the current node’s identity for the intermediate folder if we don’t have one yet.
+                    # But careful: we only know the final node for full path; intermediates appear as their own rows
+                    # in doxygen, so they should be inserted by their own match eventually.
+                    child = _MenuEntry(
+                        title="__placeholder__",
+                        docname="__placeholder__",
+                        url="__placeholder__",
+                        children=[],
+                        is_structural_dummy=False,
+                    )
+                    parent.children[idx] = child
+
+                insert(parent.children[idx], path[1:], node)
+
+            # First pass: insert each row by its numeric path
+            for m in matches:
+                row_id, href, raw_title = m.group(1), m.group(2), m.group(3)
+                path = _row_path(row_id)
+                docname, url = _href_to_docname_and_url(href)
+
+                entry = _MenuEntry(
+                    title=_strip_tags(raw_title),
+                    docname=docname,
+                    url=url,
+                    children=[],
+                    is_structural_dummy=False,
+                )
+
+                insert(root, path, entry)
+
+            # Second pass: prune placeholders and empty placeholder subtrees
+            def prune(node: _MenuEntry) -> None:
+                kept: List[_MenuEntry] = []
+                for c in node.children:
+                    prune(c)
+                    if c.title == "__placeholder__":
+                        continue
+                    kept.append(c)
+                node.children = kept
+
+            prune(root)
+            return root
+
 
     def _parse_template(self) -> Tuple[str, str]:
         """Parse a "doxygen html template shell" out of the index.html file.
