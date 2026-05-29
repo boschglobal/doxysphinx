@@ -48,7 +48,7 @@ libsass = "^0.22.0"                                     # Adding this version of
 
 [tool.poetry.group.sphinx.dependencies]
 sphinx = "<=7.3.7"
-pillow = "^10.0.1"
+pillow = ">=10.0.1,<13"
 sphinx-rtd-theme = "<=2.0.0"
 sphinx-needs = "<=2.0.0"
 sphinxcontrib-plantuml = "^0.26"
