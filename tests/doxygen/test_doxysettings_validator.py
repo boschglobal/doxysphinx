@@ -4,6 +4,7 @@
 #  Copyright (c) 2023 by Robert Bosch GmbH. All rights reserved.
 #
 #  Author(s):
+#  - Shubham Padkonde
 #  - Celina Adelhardt, :em engineering methods AG (contracted by Robert Bosch GmbH)
 #  - Gergely Meszaros, Stream HPC B.V. (contracted by Advanced Micro Devices Inc.)
 # =====================================================================================
@@ -120,3 +121,16 @@ def test_doxyoutput_path_validation(path_validator, doxygen_html_output: Path, v
 def path_validator():
     path_validator = Path_Validator()
     return path_validator
+
+@pytest.mark.parametrize("html_output", ["html", "api", "nested/api"])
+def test_custom_html_output(tmp_path, monkeypatch, html_output):
+    validator = Validator()
+    monkeypatch.setattr(validator, "mandatory_settings", Validator.mandatory_settings.copy())
+    monkeypatch.setattr(validator, "optional_settings", Validator.optional_settings.copy())
+    config = update_dict({"HTML_OUTPUT": html_output})
+    assert validator._validate_doxygen_out_dirs(config, tmp_path, tmp_path)
+    expected = tmp_path / "docs/doxygen/demo" / html_output
+    assert validator.absolute_out == expected.resolve()
+    assert validator.optional_settings["GENERATE_TAGFILE"] == (
+        expected / "tagfile.xml"
+    ).relative_to(tmp_path).as_posix()
