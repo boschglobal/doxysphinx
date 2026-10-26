@@ -25,7 +25,7 @@ permissions:
 
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     strategy:
       matrix:
         python-version: ["3.9", "3.10", "3.11", "3.12", "3.13", "3.14"]
@@ -49,7 +49,7 @@ jobs:
           --cov=doxysphinx --cov-branch --cov-report=term --cov-fail-under=80
 
   qa:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     steps:
     - name: "Checkout Code"
@@ -76,7 +76,7 @@ jobs:
         SKIP=poetry-lock poetry run pre-commit run --all-files
 
   release:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     needs: [test, qa]
     if: github.event_name == 'push' && github.ref == 'refs/heads/main' && !contains(github.event.head_commit.message, 'chore(release):')
 
