@@ -5,6 +5,7 @@
 #
 #  Author(s):
 #  - Markus Braun, :em engineering methods AG (contracted by Robert Bosch GmbH)
+#  - Umut Alisoglu
 # =====================================================================================
 """
 The resources module contains classes will do resource provisioning and patching.
@@ -132,7 +133,11 @@ class DoxygenResourceProvider:
                 stylesheet=doxygen_css,
                 target=target / doxygen_css.name,
                 additional_css_rules=self._custom_styles,
-                content_patch_callback=lambda s: str.replace(s, "code.JavaDocCode\n", "code.JavaDocCode {\n"),
+                # CSS function names are case-insensitive. Uppercase HSL bypasses the Sass
+                # builtin, which cannot parse Doxygen 1.15's relative color syntax.
+                content_patch_callback=lambda s: s.replace("code.JavaDocCode\n", "code.JavaDocCode {\n").replace(
+                    "hsl(from ", "HSL(from "
+                ),
             )
             if written_doxygen_css:
                 copied_files.append(written_doxygen_css)
