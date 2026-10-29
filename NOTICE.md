@@ -44,3 +44,4 @@ Please keep the list sorted.
   * Gergely Meszaros <gergely@streamhpc.com>
 * Klarälvdalens Datakonsult AB (KDAB)
   * Jonatan Wallmander <jonatan.wallmander@kdab.com>
+* Umut Alisoglu <umutalisoglu@gmail.com>.

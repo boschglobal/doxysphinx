@@ -5,6 +5,7 @@
 #
 #  Author(s):
 #  - Markus Braun, :em engineering methods AG (contracted by Robert Bosch GmbH)
+#  - Umut Alisoglu
 # =====================================================================================
 
 from pathlib import Path
@@ -66,7 +67,7 @@ def test_worker_limiting():
             str(doxyfile),
         ],
     )
-    assert f"running in parallel with limit of {worker_limit} workers" in result.stdout
+    assert f"running in parallel with limit of {worker_limit} workers" in result.output
 
     result = runner.invoke(
         cli,
@@ -88,7 +89,7 @@ def test_worker_limiting():
     print("test2")
     assert (repo_root / ".build/html/docs/doxygen/demo/html/doxygen.css").exists()
     print("test3")
-    assert f"running in parallel with limit of {worker_limit} workers" in result.stdout
+    assert f"running in parallel with limit of {worker_limit} workers" in result.output
 
 
 def test_incremental_build_working_as_expected():
@@ -134,4 +135,4 @@ def test_incremental_build_working_as_expected():
             str(doxyfile),
         ],
     )
-    assert "created 0 rst-files" in result.stdout
+    assert "created 0 rst-files" in result.output
