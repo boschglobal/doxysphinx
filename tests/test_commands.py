@@ -38,7 +38,7 @@ def test_build_is_working_as_expected():
     assert (repo_root / "pyproject.toml").exists()
     if result.exit_code != 0:
         print("Build had errors - std output stream:")
-        print(result.stdout)
+        print(result.output)
     assert result.exit_code == 0
     print("test2")
     assert (repo_root / ".build/html/docs/doxygen/demo/html/doxygen.css").exists()
@@ -84,7 +84,7 @@ def test_worker_limiting():
     assert (repo_root / "pyproject.toml").exists()
     if result.exit_code != 0:
         print("Build had errors - std output stream:")
-        print(result.stdout)
+        print(result.output)
     assert result.exit_code == 0
     print("test2")
     assert (repo_root / ".build/html/docs/doxygen/demo/html/doxygen.css").exists()
