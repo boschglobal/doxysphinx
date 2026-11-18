@@ -116,6 +116,16 @@ def test_doxyoutput_path_validation(path_validator, doxygen_html_output: Path, v
     assert path_validator.validate(doxygen_html_output) == validation_result
 
 
+def test_doxysettings_custom_html_output(validator, working_directory):
+    validator.validation_errors.clear()
+    custom_dict = update_dict({"HTML_OUTPUT": "custom_html"})
+    validator.validate(custom_dict, working_directory, working_directory)
+    expected_out = Path(working_directory) / "docs/doxygen/demo/custom_html"
+    assert validator.absolute_out == expected_out
+    assert validator.optional_settings["GENERATE_TAGFILE"] == "docs/doxygen/demo/custom_html/tagfile.xml"
+
+
+
 @pytest.fixture
 def path_validator():
     path_validator = Path_Validator()
