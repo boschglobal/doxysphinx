@@ -13,14 +13,6 @@
 
 <!--next-version-placeholder-->
 
-## v3.3.15 (2026-11-18)
-
-### Fix
-
-- **codeowners**: Add new codeowner
-- **codeowners**: remove outdated codeowners (#193)
-- **ci**: Pin GitHub Actions runner to Ubuntu 22.04 for Python 3.9 compatibility (#194)
-
 ## v3.3.14 (2025-10-13)
 
 ### Fix
