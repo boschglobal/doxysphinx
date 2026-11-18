@@ -13,14 +13,6 @@
 
 <!--next-version-placeholder-->
 
-## v3.3.15 (XXXX-XX-XX)
-
-### Fix
-
-- **deps**: relax upper bound on lxml (#182, #195)
-- **codeowners**: update codeowners (#193, #195)
-- **ci**: Pin GitHub Actions runner to Ubuntu 22.04 for Python 3.9 compatibility (#194)
-
 ## v3.3.14 (2025-10-13)
 
 ### Fix
