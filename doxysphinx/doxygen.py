@@ -213,7 +213,8 @@ class DoxygenSettingsValidator:
         :return: True if doxygen output directory is located inside the sphinx docs root,
         False if not and doxysphinx should exit.
         """
-        out = Path(doxygen_cwd) / str(config["OUTPUT_DIRECTORY"]) / "html"  # config["HTML_OUTPUT"]
+        html_output = str(config.get("HTML_OUTPUT", "html") or "html")
+        out = Path(doxygen_cwd) / str(config["OUTPUT_DIRECTORY"]) / html_output
         self.absolute_out = path_resolve(out)
         stringified_out = str(out) if out.is_absolute() else f'"{out}" (resolved to "{self.absolute_out}")'
 
@@ -223,7 +224,7 @@ class DoxygenSettingsValidator:
             self.optional_settings["GENERATE_TAGFILE"] = out.joinpath("tagfile.xml").relative_to(doxygen_cwd).as_posix()
             return True
         else:
-            self.optional_settings["GENERATE_TAGFILE"] = "docs/doxygen/demo/html/tagfile.xml"  # default value
+            self.optional_settings["GENERATE_TAGFILE"] = f"docs/doxygen/demo/{html_output}/tagfile.xml"
             self.validation_errors.append(
                 f'The doxygen OUTPUT_DIR of "{stringified_out}" defined in the doxyfile'
                 f' is not in a sub-path of the sphinx source directory "{sphinx_source_dir}".'
