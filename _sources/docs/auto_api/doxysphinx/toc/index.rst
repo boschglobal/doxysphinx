@@ -53,9 +53,6 @@ Module Contents
    directive needs to be generated or not.
 
 
-   .. py:attribute:: structural_dummies
-
-
    .. py:method:: generate_toc_for(file: pathlib.Path) -> Iterator[str]
 
       Generate a toctree directive for a given file.

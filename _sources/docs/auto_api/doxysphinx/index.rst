@@ -17,15 +17,6 @@ doxysphinx
 
 
 
-Subpackages
------------
-
-.. toctree::
-   :maxdepth: 1
-
-   /docs/auto_api/doxysphinx/utils/index
-
-
 Submodules
 ----------
 
@@ -39,6 +30,7 @@ Submodules
    /docs/auto_api/doxysphinx/resources/index
    /docs/auto_api/doxysphinx/sphinx/index
    /docs/auto_api/doxysphinx/toc/index
+   /docs/auto_api/doxysphinx/utils/index
    /docs/auto_api/doxysphinx/writer/index
 
 
