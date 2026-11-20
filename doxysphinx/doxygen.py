@@ -4,6 +4,7 @@
 #  Copyright (c) 2023 by Robert Bosch GmbH. All rights reserved.
 #
 #  Author(s):
+#  - Shubham Padkonde
 #  - Markus Braun, :em engineering methods AG (contracted by Robert Bosch GmbH)
 #  - Celina Adelhardt, :em engineering methods AG (contracted by Robert Bosch GmbH)
 #  - Gergely Meszaros, Stream HPC B.V. (contracted by Advanced Micro Devices Inc.)
@@ -213,7 +214,7 @@ class DoxygenSettingsValidator:
         :return: True if doxygen output directory is located inside the sphinx docs root,
         False if not and doxysphinx should exit.
         """
-        out = Path(doxygen_cwd) / str(config["OUTPUT_DIRECTORY"]) / "html"  # config["HTML_OUTPUT"]
+        out = Path(doxygen_cwd) / str(config["OUTPUT_DIRECTORY"]) / str(config.get("HTML_OUTPUT", "html"))
         self.absolute_out = path_resolve(out)
         stringified_out = str(out) if out.is_absolute() else f'"{out}" (resolved to "{self.absolute_out}")'
 
